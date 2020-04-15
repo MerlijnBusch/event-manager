@@ -1,7 +1,10 @@
 <?php
 
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 
 class CreateUsersTable extends Migration
@@ -19,10 +22,18 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('role');
+            $table->string('role')->default('visitor');
             $table->rememberToken();
             $table->timestamps();
         });
+
+        $user = new User;
+        $user->name = 'Johan';
+        $user->email = 'Johan@example.com';
+        $user->password = Hash::make('password');
+        $user->email_verified_at = Carbon::now();
+        $user->save();
+
     }
 
     /**
