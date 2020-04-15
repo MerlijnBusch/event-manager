@@ -2,12 +2,11 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import VueRouter from 'vue-router'
-
+import Routers from '@/js/routes.js'
 Vue.use(VueRouter);
 
 const routes = [
-    { path: '/', component: require('./components/ExampleComponent.vue') },
-    { path: '/user', component: require('./components/User.vue') }
+    Routes
 ];
 
 const router = new VueRouter({
