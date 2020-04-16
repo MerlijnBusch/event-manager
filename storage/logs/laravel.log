@@ -459,3 +459,293 @@
 #43 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/server.php(21): require_once('/home/merlijn/P...')
 #44 {main}
 "} 
+[2020-04-16 16:05:10] local.ERROR: There are no commands defined in the "mkae" namespace. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"mkae\" namespace. at /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php:574)
+[stacktrace]
+#0 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(625): Symfony\\Component\\Console\\Application->findNamespace('mkae')
+#1 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(228): Symfony\\Component\\Console\\Application->find('mkae:migration')
+#2 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#6 {main}
+"} 
+[2020-04-16 16:24:47] local.ERROR: Command "make:console" is not defined.
+
+Did you mean one of these?
+    make:channel
+    make:command
+    make:component
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:seeder
+    make:test {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:console\" is not defined.
+
+Did you mean one of these?
+    make:channel
+    make:command
+    make:component
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:seeder
+    make:test at /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php:644)
+[stacktrace]
+#0 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(228): Symfony\\Component\\Console\\Application->find('make:console')
+#1 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2020-04-16 16:42:09] local.ERROR: There are no commands defined in the "generate" namespace. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"generate\" namespace. at /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php:574)
+[stacktrace]
+#0 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(625): Symfony\\Component\\Console\\Application->findNamespace('generate')
+#1 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(228): Symfony\\Component\\Console\\Application->find('generate:roles')
+#2 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#6 {main}
+"} 
+[2020-04-16 16:42:17] local.ERROR: Array to string conversion {"exception":"[object] (ErrorException(code: 0): Array to string conversion at /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Support/Str.php:449)
+[stacktrace]
+#0 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Support/Str.php(449): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Array to string...', '/home/merlijn/P...', 449, Array)
+#1 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/QueryException.php(57): Illuminate\\Support\\Str::replaceArray('?', Array, 'insert into `ro...')
+#2 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/QueryException.php(40): Illuminate\\Database\\QueryException->formatMessage('insert into `ro...', Array, Object(ErrorException))
+#3 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(672): Illuminate\\Database\\QueryException->__construct('insert into `ro...', Array, Object(ErrorException))
+#4 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(631): Illuminate\\Database\\Connection->runQueryCallback('insert into `ro...', Array, Object(Closure))
+#5 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(465): Illuminate\\Database\\Connection->run('insert into `ro...', Array, Object(Closure))
+#6 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(417): Illuminate\\Database\\Connection->statement('insert into `ro...', Array)
+#7 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\\Database\\Connection->insert('insert into `ro...', Array)
+#8 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2724): Illuminate\\Database\\Query\\Processors\\Processor->processInsertGetId(Object(Illuminate\\Database\\Query\\Builder), 'insert into `ro...', Array, 'id')
+#9 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1381): Illuminate\\Database\\Query\\Builder->insertGetId(Array, 'id')
+#10 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(865): Illuminate\\Database\\Eloquent\\Builder->__call('insertGetId', Array)
+#11 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(830): Illuminate\\Database\\Eloquent\\Model->insertAndSetId(Object(Illuminate\\Database\\Eloquent\\Builder), Array)
+#12 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(693): Illuminate\\Database\\Eloquent\\Model->performInsert(Object(Illuminate\\Database\\Eloquent\\Builder))
+#13 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/app/Console/Commands/GenerateBasicRolesCommand.php(49): Illuminate\\Database\\Eloquent\\Model->save()
+#14 [internal function]: App\\Console\\Commands\\GenerateBasicRolesCommand->handle()
+#15 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#16 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#17 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#18 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#19 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#20 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Command.php(134): Illuminate\\Container\\Container->call(Array)
+#21 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Command/Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#22 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#23 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#24 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(App\\Console\\Commands\\GenerateBasicRolesCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#25 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#28 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 {main}
+"} 
+[2020-04-16 16:45:39] local.ERROR: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY' (SQL: insert into `roles` (`id`, `role_name`, `color`, `permissions`, `updated_at`, `created_at`) values (1, Visitor, #a0a867, [], 2020-04-16 16:45:39, 2020-04-16 16:45:39)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 23000): SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY' (SQL: insert into `roles` (`id`, `role_name`, `color`, `permissions`, `updated_at`, `created_at`) values (1, Visitor, #a0a867, [], 2020-04-16 16:45:39, 2020-04-16 16:45:39)) at /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php:671)
+[stacktrace]
+#0 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(631): Illuminate\\Database\\Connection->runQueryCallback('insert into `ro...', Array, Object(Closure))
+#1 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(465): Illuminate\\Database\\Connection->run('insert into `ro...', Array, Object(Closure))
+#2 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(417): Illuminate\\Database\\Connection->statement('insert into `ro...', Array)
+#3 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\\Database\\Connection->insert('insert into `ro...', Array)
+#4 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2724): Illuminate\\Database\\Query\\Processors\\Processor->processInsertGetId(Object(Illuminate\\Database\\Query\\Builder), 'insert into `ro...', Array, 'id')
+#5 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1381): Illuminate\\Database\\Query\\Builder->insertGetId(Array, 'id')
+#6 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(865): Illuminate\\Database\\Eloquent\\Builder->__call('insertGetId', Array)
+#7 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(830): Illuminate\\Database\\Eloquent\\Model->insertAndSetId(Object(Illuminate\\Database\\Eloquent\\Builder), Array)
+#8 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(693): Illuminate\\Database\\Eloquent\\Model->performInsert(Object(Illuminate\\Database\\Eloquent\\Builder))
+#9 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/app/Console/Commands/GenerateBasicRolesCommand.php(54): Illuminate\\Database\\Eloquent\\Model->save()
+#10 [internal function]: App\\Console\\Commands\\GenerateBasicRolesCommand->handle()
+#11 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#12 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#13 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#14 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#15 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#16 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Command.php(134): Illuminate\\Container\\Container->call(Array)
+#17 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Command/Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#18 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#19 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#20 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(App\\Console\\Commands\\GenerateBasicRolesCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#21 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#22 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#24 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#25 {main}
+
+[previous exception] [object] (PDOException(code: 23000): SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY' at /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php:464)
+[stacktrace]
+#0 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(464): PDOStatement->execute()
+#1 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(664): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('insert into `ro...', Array)
+#2 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(631): Illuminate\\Database\\Connection->runQueryCallback('insert into `ro...', Array, Object(Closure))
+#3 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(465): Illuminate\\Database\\Connection->run('insert into `ro...', Array, Object(Closure))
+#4 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(417): Illuminate\\Database\\Connection->statement('insert into `ro...', Array)
+#5 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\\Database\\Connection->insert('insert into `ro...', Array)
+#6 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2724): Illuminate\\Database\\Query\\Processors\\Processor->processInsertGetId(Object(Illuminate\\Database\\Query\\Builder), 'insert into `ro...', Array, 'id')
+#7 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1381): Illuminate\\Database\\Query\\Builder->insertGetId(Array, 'id')
+#8 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(865): Illuminate\\Database\\Eloquent\\Builder->__call('insertGetId', Array)
+#9 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(830): Illuminate\\Database\\Eloquent\\Model->insertAndSetId(Object(Illuminate\\Database\\Eloquent\\Builder), Array)
+#10 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(693): Illuminate\\Database\\Eloquent\\Model->performInsert(Object(Illuminate\\Database\\Eloquent\\Builder))
+#11 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/app/Console/Commands/GenerateBasicRolesCommand.php(54): Illuminate\\Database\\Eloquent\\Model->save()
+#12 [internal function]: App\\Console\\Commands\\GenerateBasicRolesCommand->handle()
+#13 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#14 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#15 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#16 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#17 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#18 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Command.php(134): Illuminate\\Container\\Container->call(Array)
+#19 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Command/Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#20 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#21 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#22 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(App\\Console\\Commands\\GenerateBasicRolesCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#24 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#25 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 {main}
+"} 
+[2020-04-16 16:45:55] local.ERROR: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY' (SQL: insert into `roles` (`id`, `role_name`, `color`, `permissions`, `updated_at`, `created_at`) values (1, Visitor, #a0a867, [], 2020-04-16 16:45:55, 2020-04-16 16:45:55)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 23000): SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY' (SQL: insert into `roles` (`id`, `role_name`, `color`, `permissions`, `updated_at`, `created_at`) values (1, Visitor, #a0a867, [], 2020-04-16 16:45:55, 2020-04-16 16:45:55)) at /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php:671)
+[stacktrace]
+#0 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(631): Illuminate\\Database\\Connection->runQueryCallback('insert into `ro...', Array, Object(Closure))
+#1 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(465): Illuminate\\Database\\Connection->run('insert into `ro...', Array, Object(Closure))
+#2 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(417): Illuminate\\Database\\Connection->statement('insert into `ro...', Array)
+#3 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\\Database\\Connection->insert('insert into `ro...', Array)
+#4 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2724): Illuminate\\Database\\Query\\Processors\\Processor->processInsertGetId(Object(Illuminate\\Database\\Query\\Builder), 'insert into `ro...', Array, 'id')
+#5 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1381): Illuminate\\Database\\Query\\Builder->insertGetId(Array, 'id')
+#6 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(865): Illuminate\\Database\\Eloquent\\Builder->__call('insertGetId', Array)
+#7 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(830): Illuminate\\Database\\Eloquent\\Model->insertAndSetId(Object(Illuminate\\Database\\Eloquent\\Builder), Array)
+#8 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(693): Illuminate\\Database\\Eloquent\\Model->performInsert(Object(Illuminate\\Database\\Eloquent\\Builder))
+#9 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/app/Console/Commands/GenerateBasicRolesCommand.php(54): Illuminate\\Database\\Eloquent\\Model->save()
+#10 [internal function]: App\\Console\\Commands\\GenerateBasicRolesCommand->handle()
+#11 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#12 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#13 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#14 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#15 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#16 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Command.php(134): Illuminate\\Container\\Container->call(Array)
+#17 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Command/Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#18 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#19 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#20 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(App\\Console\\Commands\\GenerateBasicRolesCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#21 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#22 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#24 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#25 {main}
+
+[previous exception] [object] (PDOException(code: 23000): SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY' at /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php:464)
+[stacktrace]
+#0 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(464): PDOStatement->execute()
+#1 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(664): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('insert into `ro...', Array)
+#2 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(631): Illuminate\\Database\\Connection->runQueryCallback('insert into `ro...', Array, Object(Closure))
+#3 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(465): Illuminate\\Database\\Connection->run('insert into `ro...', Array, Object(Closure))
+#4 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(417): Illuminate\\Database\\Connection->statement('insert into `ro...', Array)
+#5 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\\Database\\Connection->insert('insert into `ro...', Array)
+#6 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2724): Illuminate\\Database\\Query\\Processors\\Processor->processInsertGetId(Object(Illuminate\\Database\\Query\\Builder), 'insert into `ro...', Array, 'id')
+#7 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1381): Illuminate\\Database\\Query\\Builder->insertGetId(Array, 'id')
+#8 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(865): Illuminate\\Database\\Eloquent\\Builder->__call('insertGetId', Array)
+#9 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(830): Illuminate\\Database\\Eloquent\\Model->insertAndSetId(Object(Illuminate\\Database\\Eloquent\\Builder), Array)
+#10 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(693): Illuminate\\Database\\Eloquent\\Model->performInsert(Object(Illuminate\\Database\\Eloquent\\Builder))
+#11 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/app/Console/Commands/GenerateBasicRolesCommand.php(54): Illuminate\\Database\\Eloquent\\Model->save()
+#12 [internal function]: App\\Console\\Commands\\GenerateBasicRolesCommand->handle()
+#13 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#14 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#15 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#16 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#17 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#18 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Command.php(134): Illuminate\\Container\\Container->call(Array)
+#19 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Command/Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#20 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#21 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#22 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(App\\Console\\Commands\\GenerateBasicRolesCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#24 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#25 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 {main}
+"} 
+[2020-04-16 16:46:42] local.ERROR: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY' (SQL: insert into `roles` (`id`, `role_name`, `color`, `permissions`, `updated_at`, `created_at`) values (1, Admin, #a0a867, [], 2020-04-16 16:46:42, 2020-04-16 16:46:42)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 23000): SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY' (SQL: insert into `roles` (`id`, `role_name`, `color`, `permissions`, `updated_at`, `created_at`) values (1, Admin, #a0a867, [], 2020-04-16 16:46:42, 2020-04-16 16:46:42)) at /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php:671)
+[stacktrace]
+#0 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(631): Illuminate\\Database\\Connection->runQueryCallback('insert into `ro...', Array, Object(Closure))
+#1 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(465): Illuminate\\Database\\Connection->run('insert into `ro...', Array, Object(Closure))
+#2 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(417): Illuminate\\Database\\Connection->statement('insert into `ro...', Array)
+#3 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\\Database\\Connection->insert('insert into `ro...', Array)
+#4 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2724): Illuminate\\Database\\Query\\Processors\\Processor->processInsertGetId(Object(Illuminate\\Database\\Query\\Builder), 'insert into `ro...', Array, 'id')
+#5 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1381): Illuminate\\Database\\Query\\Builder->insertGetId(Array, 'id')
+#6 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(865): Illuminate\\Database\\Eloquent\\Builder->__call('insertGetId', Array)
+#7 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(830): Illuminate\\Database\\Eloquent\\Model->insertAndSetId(Object(Illuminate\\Database\\Eloquent\\Builder), Array)
+#8 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(693): Illuminate\\Database\\Eloquent\\Model->performInsert(Object(Illuminate\\Database\\Eloquent\\Builder))
+#9 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/app/Console/Commands/GenerateBasicRolesCommand.php(47): Illuminate\\Database\\Eloquent\\Model->save()
+#10 [internal function]: App\\Console\\Commands\\GenerateBasicRolesCommand->handle()
+#11 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#12 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#13 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#14 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#15 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#16 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Command.php(134): Illuminate\\Container\\Container->call(Array)
+#17 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Command/Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#18 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#19 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#20 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(App\\Console\\Commands\\GenerateBasicRolesCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#21 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#22 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#24 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#25 {main}
+
+[previous exception] [object] (PDOException(code: 23000): SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY' at /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php:464)
+[stacktrace]
+#0 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(464): PDOStatement->execute()
+#1 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(664): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('insert into `ro...', Array)
+#2 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(631): Illuminate\\Database\\Connection->runQueryCallback('insert into `ro...', Array, Object(Closure))
+#3 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(465): Illuminate\\Database\\Connection->run('insert into `ro...', Array, Object(Closure))
+#4 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(417): Illuminate\\Database\\Connection->statement('insert into `ro...', Array)
+#5 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\\Database\\Connection->insert('insert into `ro...', Array)
+#6 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2724): Illuminate\\Database\\Query\\Processors\\Processor->processInsertGetId(Object(Illuminate\\Database\\Query\\Builder), 'insert into `ro...', Array, 'id')
+#7 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1381): Illuminate\\Database\\Query\\Builder->insertGetId(Array, 'id')
+#8 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(865): Illuminate\\Database\\Eloquent\\Builder->__call('insertGetId', Array)
+#9 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(830): Illuminate\\Database\\Eloquent\\Model->insertAndSetId(Object(Illuminate\\Database\\Eloquent\\Builder), Array)
+#10 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(693): Illuminate\\Database\\Eloquent\\Model->performInsert(Object(Illuminate\\Database\\Eloquent\\Builder))
+#11 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/app/Console/Commands/GenerateBasicRolesCommand.php(47): Illuminate\\Database\\Eloquent\\Model->save()
+#12 [internal function]: App\\Console\\Commands\\GenerateBasicRolesCommand->handle()
+#13 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#14 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#15 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#16 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#17 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#18 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Command.php(134): Illuminate\\Container\\Container->call(Array)
+#19 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Command/Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#20 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#21 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#22 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(App\\Console\\Commands\\GenerateBasicRolesCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#24 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#25 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 {main}
+"} 
