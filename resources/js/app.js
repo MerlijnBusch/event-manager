@@ -1,19 +1,16 @@
-require('./bootstrap');
+import './bootstrap'
+import Vue from 'vue'
+import vuetify from 'vuetify'
 
-window.Vue = require('vue');
-import VueRouter from 'vue-router'
+import Route from '@/js/routes.js'
 
-Vue.use(VueRouter);
-
-const routes = [
-    { path: '/', component: require('./components/ExampleComponent.vue') },
-    { path: '/user', component: require('./components/User.vue') }
-];
-
-const router = new VueRouter({
-    routes
-});
+import App from '@/js/views/App'
 
 const app = new Vue({
-    router
-}).$mount('#app');
+    el: "#app",
+    vuetify,
+    router: Route,
+    render: h => h(App)
+})
+
+export default app;
