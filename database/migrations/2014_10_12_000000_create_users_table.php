@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('role_id')->default(1);
+            $table->integer('role_id');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -31,6 +31,7 @@ class CreateUsersTable extends Migration
         $user->name = 'Johan';
         $user->email = 'Johan@example.com';
         $user->password = Hash::make('password');
+        $user->role_id = 1;
         $user->email_verified_at = Carbon::now();
         $user->save();
 
