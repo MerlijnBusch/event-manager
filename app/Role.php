@@ -5,10 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property int|mixed id
- * @property string|mixed role_name
- * @property string|mixed color
- * @property array|mixed permissions
+ * @property int id
+ * @property string role_name
+ * @property string color
+ * @property array permissions
  */
 
 class Role extends Model

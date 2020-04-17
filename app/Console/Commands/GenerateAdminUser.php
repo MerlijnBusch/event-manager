@@ -43,6 +43,10 @@ class GenerateAdminUser extends Command
     {
         $role = Role::query()->where('role_name', '=', 'Admin')->first();
 
+        if (empty($role->id)) {
+            return 'admin role doesnt have an id, are you sure the admin role is created.';
+        }
+
         $user = new User;
         $user->name = env('ADMIN_NAME');
         $user->email = env('ADMIN_EMAIL');

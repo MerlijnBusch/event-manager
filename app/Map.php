@@ -4,23 +4,24 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
+class Map extends Model
 {
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'user_id',
-        'phone_number',
-        'image',
-        'cv',
+        'name',
+        'json',
+        'event_id',
+        'active',
     ];
 
-    public function user(){
+    public function event(){
 
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Event');
 
     }
 }
