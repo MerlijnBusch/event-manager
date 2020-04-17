@@ -1,5 +1,5 @@
 <template>
     <div>
-        <h1>About component</h1>
+        <h1>Login component</h1>
     </div>
 </template>
