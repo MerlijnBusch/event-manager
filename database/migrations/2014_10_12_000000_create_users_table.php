@@ -26,15 +26,6 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-
-        $user = new User;
-        $user->name = 'Johan';
-        $user->email = 'Johan@example.com';
-        $user->password = Hash::make('password');
-        $user->role_id = 1;
-        $user->email_verified_at = Carbon::now();
-        $user->save();
-
     }
 
     /**

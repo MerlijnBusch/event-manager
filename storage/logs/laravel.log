@@ -749,3 +749,101 @@ Did you mean one of these?
 #26 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #27 {main}
 "} 
+[2020-04-17 08:34:43] local.ERROR: Command "make:console" is not defined.
+
+Did you mean one of these?
+    make:channel
+    make:command
+    make:component
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:seeder
+    make:test {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:console\" is not defined.
+
+Did you mean one of these?
+    make:channel
+    make:command
+    make:component
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:seeder
+    make:test at /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php:644)
+[stacktrace]
+#0 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(228): Symfony\\Component\\Console\\Application->find('make:console')
+#1 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2020-04-17 08:42:10] local.ERROR: Property [id] does not exist on this collection instance. {"exception":"[object] (Exception(code: 0): Property [id] does not exist on this collection instance. at /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Support/Traits/EnumeratesValues.php:847)
+[stacktrace]
+#0 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/app/Console/Commands/GenerateAdminUser.php(45): Illuminate\\Support\\Collection->__get('id')
+#1 [internal function]: App\\Console\\Commands\\GenerateAdminUser->handle()
+#2 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#3 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#4 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#5 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#6 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#7 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Command.php(134): Illuminate\\Container\\Container->call(Array)
+#8 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Command/Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#9 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#10 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#11 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(App\\Console\\Commands\\GenerateAdminUser), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#12 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#13 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#14 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#15 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#16 {main}
+"} 
+[2020-04-17 08:43:29] local.ERROR: Undefined index: id {"exception":"[object] (ErrorException(code: 0): Undefined index: id at /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Support/Collection.php:1307)
+[stacktrace]
+#0 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Support/Collection.php(1307): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Undefined index...', '/home/merlijn/P...', 1307, Array)
+#1 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/app/Console/Commands/GenerateAdminUser.php(45): Illuminate\\Support\\Collection->offsetGet('id')
+#2 [internal function]: App\\Console\\Commands\\GenerateAdminUser->handle()
+#3 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#4 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#5 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#6 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#7 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#8 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Command.php(134): Illuminate\\Container\\Container->call(Array)
+#9 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Command/Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#10 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#11 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#12 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(App\\Console\\Commands\\GenerateAdminUser), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#13 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/symfony/console/Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#14 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Console/Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#15 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#16 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#17 {main}
+"} 
