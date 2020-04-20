@@ -24,4 +24,7 @@ class Permissions extends Model {
     public const __READ_CV__ = 'read_cv';
     public const __WRITE_CV__ = 'write_cv';
 
+    public const __READ_EVENT__ = 'read_event';
+    public const __WRITE_EVENT__ = 'write_event';
+
 }

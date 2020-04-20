@@ -3,83 +3,71 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class EventController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
+     * @throws AuthorizationException
      */
     public function index()
     {
-        //
+        $this->authorize('read', Event::class);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Event $event
+     * @return void
+     * @throws AuthorizationException
      */
-    public function create()
+    public function show(Event $event)
     {
-        //
+        $this->authorize('read', Event::class);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
+     * @throws AuthorizationException
      */
     public function store(Request $request)
     {
-        //
-    }
+        $this->authorize('write', Event::class);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Event  $event
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Event $event)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Event  $event
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Event $event)
-    {
-        //
+        return response()->json('test');
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Event  $event
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Event $event
+     * @return void
+     * @throws AuthorizationException
      */
     public function update(Request $request, Event $event)
     {
-        //
+        $this->authorize('write', Event::class);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Event  $event
-     * @return \Illuminate\Http\Response
+     * @param Event $event
+     * @return void
+     * @throws AuthorizationException
      */
     public function destroy(Event $event)
     {
-        //
+        $this->authorize('write', Event::class);
     }
 }
