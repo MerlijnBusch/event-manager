@@ -847,3 +847,296 @@ Did you mean one of these?
 #16 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #17 {main}
 "} 
+[2020-04-20 11:36:53] local.ERROR: A AddsApiTokenToUsersTable class already exists. {"exception":"[object] (InvalidArgumentException(code: 0): A AddsApiTokenToUsersTable class already exists. at C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\MigrationCreator.php:99)
+[stacktrace]
+#0 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\MigrationCreator.php(59): Illuminate\\Database\\Migrations\\MigrationCreator->ensureMigrationDoesntAlreadyExist('adds_api_token_...', 'C:\\\\wamp64\\\\www\\\
+...')
+#1 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateMakeCommand.php(110): Illuminate\\Database\\Migrations\\MigrationCreator->create('adds_api_token_...', 'C:\\\\wamp64\\\\www\\\
+...', 'users', false)
+#2 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateMakeCommand.php(94): Illuminate\\Database\\Console\\Migrations\\MigrateMakeCommand->writeMigration('adds_api_token_...', 'users', false)
+#3 [internal function]: Illuminate\\Database\\Console\\Migrations\\MigrateMakeCommand->handle()
+#4 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(32): call_user_func_array(Array, Array)
+#5 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#6 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#7 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#8 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#9 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(134): Illuminate\\Container\\Container->call(Array)
+#10 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Command\\Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#11 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#12 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#13 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateMakeCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#14 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#15 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#16 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#17 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#18 {main}
+"} 
+[2020-04-20 11:38:55] local.ERROR: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+ (SQL: SHOW FULL TABLES WHERE table_type = 'BASE TABLE') {"exception":"[object] (Illuminate\\Database\\QueryException(code: 2002): SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+ (SQL: SHOW FULL TABLES WHERE table_type = 'BASE TABLE') at C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:671)
+[stacktrace]
+#0 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(631): Illuminate\\Database\\Connection->runQueryCallback('SHOW FULL TABLE...', Array, Object(Closure))
+#1 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(339): Illuminate\\Database\\Connection->run('SHOW FULL TABLE...', Array, Object(Closure))
+#2 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\MySqlBuilder.php(99): Illuminate\\Database\\Connection->select('SHOW FULL TABLE...')
+#3 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\MySqlBuilder.php(48): Illuminate\\Database\\Schema\\MySqlBuilder->getAllTables()
+#4 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\WipeCommand.php(69): Illuminate\\Database\\Schema\\MySqlBuilder->dropAllTables()
+#5 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\WipeCommand.php(46): Illuminate\\Database\\Console\\WipeCommand->dropAllTables(NULL)
+#6 [internal function]: Illuminate\\Database\\Console\\WipeCommand->handle()
+#7 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(32): call_user_func_array(Array, Array)
+#8 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#9 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#10 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#11 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#12 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(134): Illuminate\\Container\\Container->call(Array)
+#13 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Command\\Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#14 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#15 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(56): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#16 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(28): Illuminate\\Console\\Command->runCommand('db:wipe', Array, Object(Illuminate\\Console\\OutputStyle))
+#17 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\FreshCommand.php(41): Illuminate\\Console\\Command->call('db:wipe', Array)
+#18 [internal function]: Illuminate\\Database\\Console\\Migrations\\FreshCommand->handle()
+#19 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(32): call_user_func_array(Array, Array)
+#20 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#21 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#22 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#23 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#24 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(134): Illuminate\\Container\\Container->call(Array)
+#25 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Command\\Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#26 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#27 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#28 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\FreshCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#31 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#32 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#33 {main}
+
+[previous exception] [object] (PDOException(code: 2002): SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+ at C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php:70)
+[stacktrace]
+#0 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(70): PDO->__construct('mysql:host=127....', 'root', '', Array)
+#1 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(46): Illuminate\\Database\\Connectors\\Connector->createPdoConnection('mysql:host=127....', 'root', '', Array)
+#2 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\MySqlConnector.php(24): Illuminate\\Database\\Connectors\\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\ConnectionFactory.php(182): Illuminate\\Database\\Connectors\\MySqlConnector->connect(Array)
+#4 [internal function]: Illuminate\\Database\\Connectors\\ConnectionFactory->Illuminate\\Database\\Connectors\\{closure}()
+#5 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(926): call_user_func(Object(Closure))
+#6 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(961): Illuminate\\Database\\Connection->getPdo()
+#7 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(405): Illuminate\\Database\\Connection->getReadPdo()
+#8 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(331): Illuminate\\Database\\Connection->getPdoForSelect(true)
+#9 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(664): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('SHOW FULL TABLE...', Array)
+#10 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(631): Illuminate\\Database\\Connection->runQueryCallback('SHOW FULL TABLE...', Array, Object(Closure))
+#11 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(339): Illuminate\\Database\\Connection->run('SHOW FULL TABLE...', Array, Object(Closure))
+#12 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\MySqlBuilder.php(99): Illuminate\\Database\\Connection->select('SHOW FULL TABLE...')
+#13 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\MySqlBuilder.php(48): Illuminate\\Database\\Schema\\MySqlBuilder->getAllTables()
+#14 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\WipeCommand.php(69): Illuminate\\Database\\Schema\\MySqlBuilder->dropAllTables()
+#15 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\WipeCommand.php(46): Illuminate\\Database\\Console\\WipeCommand->dropAllTables(NULL)
+#16 [internal function]: Illuminate\\Database\\Console\\WipeCommand->handle()
+#17 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(32): call_user_func_array(Array, Array)
+#18 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#19 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#20 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#21 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#22 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(134): Illuminate\\Container\\Container->call(Array)
+#23 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Command\\Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#24 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#25 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(56): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#26 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(28): Illuminate\\Console\\Command->runCommand('db:wipe', Array, Object(Illuminate\\Console\\OutputStyle))
+#27 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\FreshCommand.php(41): Illuminate\\Console\\Command->call('db:wipe', Array)
+#28 [internal function]: Illuminate\\Database\\Console\\Migrations\\FreshCommand->handle()
+#29 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(32): call_user_func_array(Array, Array)
+#30 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#31 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#32 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#33 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#34 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(134): Illuminate\\Container\\Container->call(Array)
+#35 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Command\\Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#36 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#37 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#38 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\FreshCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#39 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#40 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#41 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#42 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#43 {main}
+"} 
