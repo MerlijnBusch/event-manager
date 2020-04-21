@@ -20,7 +20,7 @@
     position: relative;
     background-color: $dark;
     color: $orange;
-    padding: 32px 0;
+    padding: 32px 150px;
     border-radius: 10px;
 
     .btn-close-modal {
@@ -37,18 +37,32 @@
     .text-input,.submit-btn {
         padding: 10px;
         border-radius: 5px;
-        border: none;
-        width: 250px;
+        background: white;
+        border: solid 2px $light;
+        width: 100%;
+        &:hover{
+            border: solid 2px $orange;
+        }
     }
 
     .submit-btn {
-        font-weight: bold;
+        cursor: pointer;
+        font-weight: 500;
         background-color: $dark;
-        color: $orange;
+        color: $white;
+        &:hover{
+            background-color: $darkest;
+        }
     }
 
-    label {
-        display: none;
+    .login-label{
+        font-weight: 300;
+        color: $light;
+        display: block;
+        padding: 0;
+        margin-top: 1.5em;
+        margin-bottom: .5em;
+        text-align: left;
     }
 }
 

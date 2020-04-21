@@ -20,7 +20,7 @@
                 </h2>
 
                 <p>
-                    <label for="email">email</label>
+                    <label class="login-label" for="email">email</label>
                     <input
                             class="text-input"
                             id="email"
@@ -32,7 +32,7 @@
                 </p>
 
                 <p>
-                    <label for="password">password</label>
+                    <label class="login-label" for="password">password</label>
                     <input
                             class="text-input"
                             id="password"

@@ -37861,7 +37861,11 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("p", [
-            _c("label", { attrs: { for: "email" } }, [_vm._v("email")]),
+            _c(
+              "label",
+              { staticClass: "login-label", attrs: { for: "email" } },
+              [_vm._v("email")]
+            ),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -37892,7 +37896,11 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("p", [
-            _c("label", { attrs: { for: "password" } }, [_vm._v("password")]),
+            _c(
+              "label",
+              { staticClass: "login-label", attrs: { for: "password" } },
+              [_vm._v("password")]
+            ),
             _vm._v(" "),
             _c("input", {
               directives: [
