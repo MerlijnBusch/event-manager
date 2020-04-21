@@ -1,6 +1,5 @@
 <template>
     <div class="login-holder">
-<!--        <br><br><br><br><br><br>-->
         <div class="login-screen column-desktop-4">
         <button @click="close" class="login-close"><div><div></div></div></button>
             <form
@@ -16,13 +15,14 @@
                     </ul>
                 </div>
 
-                <h2>
+                <h2 class="login-title">
                     Login user
                 </h2>
 
                 <p>
                     <label for="email">email</label>
                     <input
+                            class="text-input"
                             id="email"
                             v-model="email"
                             type="email"
@@ -34,6 +34,7 @@
                 <p>
                     <label for="password">password</label>
                     <input
+                            class="text-input"
                             id="password"
                             v-model="password"
                             type="password"
@@ -46,7 +47,7 @@
                     <input
                             type="submit"
                             value="Login"
-                            class="login-btn"
+                            class="submit-btn"
                     >
                 </p>
 

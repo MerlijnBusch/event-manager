@@ -5,19 +5,22 @@
     top: 0;
     left: 0;
     z-index: 99;
-    background-color: rgba(black, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(black, 0.75);
 }
-
+.login-title{
+    font-size: 32px;
+    letter-spacing: .2px;
+}
 .login-screen {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
     position: relative;
-    top: 25%;
     background-color: $dark;
     color: $orange;
-    padding-bottom: 50px;
+    padding: 32px 0;
     border-radius: 10px;
 
     .btn-close-modal {
@@ -31,13 +34,14 @@
 
     }
 
-    input {
+    .text-input,.submit-btn {
         padding: 10px;
         border-radius: 5px;
+        border: none;
         width: 250px;
     }
 
-    input[type=submit] {
+    .submit-btn {
         font-weight: bold;
         background-color: $dark;
         color: $orange;
