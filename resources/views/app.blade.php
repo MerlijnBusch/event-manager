@@ -10,7 +10,7 @@
 
     <title>Document</title>
 
-    <link href="{{ mix('css/app.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 <body>
 

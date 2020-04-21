@@ -13,7 +13,19 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('login', 'Auth\LoginController@login');
+Route::post('register', 'Auth\RegisterController@register');
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::get('/test', function (Request $request) {
+        return 'test';
+    });
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+    Route::post('logout', 'Auth\LoginController@logout');
+
+    Route::get('event', 'EventController@index')->name('event');
+    Route::get('event/{event}', 'EventController@show')->name('event.show');
+    Route::post('event', 'EventController@store')->name('event.store');
+    Route::patch('event/{event}', 'EventController@update')->name('event.update');
+    Route::delete('event/{event}', 'EventController@destroy')->name('event.destroy');
+
 });

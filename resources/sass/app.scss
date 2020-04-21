@@ -1,6 +1,3 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
 @import "flex-grid";
@@ -9,3 +6,12 @@
 html {box-sizing: border-box;}
 *, *:before, *:after {box-sizing: inherit;}
 
+@import 'components';
+
+body{
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  letter-spacing: normal;
+  line-height: normal;
+}

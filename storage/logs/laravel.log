@@ -847,3 +847,1140 @@ Did you mean one of these?
 #16 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #17 {main}
 "} 
+[2020-04-20 11:36:53] local.ERROR: A AddsApiTokenToUsersTable class already exists. {"exception":"[object] (InvalidArgumentException(code: 0): A AddsApiTokenToUsersTable class already exists. at C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\MigrationCreator.php:99)
+[stacktrace]
+#0 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\MigrationCreator.php(59): Illuminate\\Database\\Migrations\\MigrationCreator->ensureMigrationDoesntAlreadyExist('adds_api_token_...', 'C:\\\\wamp64\\\\www\\\
+...')
+#1 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateMakeCommand.php(110): Illuminate\\Database\\Migrations\\MigrationCreator->create('adds_api_token_...', 'C:\\\\wamp64\\\\www\\\
+...', 'users', false)
+#2 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateMakeCommand.php(94): Illuminate\\Database\\Console\\Migrations\\MigrateMakeCommand->writeMigration('adds_api_token_...', 'users', false)
+#3 [internal function]: Illuminate\\Database\\Console\\Migrations\\MigrateMakeCommand->handle()
+#4 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(32): call_user_func_array(Array, Array)
+#5 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#6 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#7 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#8 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#9 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(134): Illuminate\\Container\\Container->call(Array)
+#10 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Command\\Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#11 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#12 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#13 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateMakeCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#14 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#15 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#16 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#17 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#18 {main}
+"} 
+[2020-04-20 11:38:55] local.ERROR: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+ (SQL: SHOW FULL TABLES WHERE table_type = 'BASE TABLE') {"exception":"[object] (Illuminate\\Database\\QueryException(code: 2002): SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+ (SQL: SHOW FULL TABLES WHERE table_type = 'BASE TABLE') at C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:671)
+[stacktrace]
+#0 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(631): Illuminate\\Database\\Connection->runQueryCallback('SHOW FULL TABLE...', Array, Object(Closure))
+#1 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(339): Illuminate\\Database\\Connection->run('SHOW FULL TABLE...', Array, Object(Closure))
+#2 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\MySqlBuilder.php(99): Illuminate\\Database\\Connection->select('SHOW FULL TABLE...')
+#3 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\MySqlBuilder.php(48): Illuminate\\Database\\Schema\\MySqlBuilder->getAllTables()
+#4 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\WipeCommand.php(69): Illuminate\\Database\\Schema\\MySqlBuilder->dropAllTables()
+#5 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\WipeCommand.php(46): Illuminate\\Database\\Console\\WipeCommand->dropAllTables(NULL)
+#6 [internal function]: Illuminate\\Database\\Console\\WipeCommand->handle()
+#7 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(32): call_user_func_array(Array, Array)
+#8 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#9 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#10 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#11 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#12 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(134): Illuminate\\Container\\Container->call(Array)
+#13 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Command\\Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#14 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#15 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(56): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#16 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(28): Illuminate\\Console\\Command->runCommand('db:wipe', Array, Object(Illuminate\\Console\\OutputStyle))
+#17 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\FreshCommand.php(41): Illuminate\\Console\\Command->call('db:wipe', Array)
+#18 [internal function]: Illuminate\\Database\\Console\\Migrations\\FreshCommand->handle()
+#19 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(32): call_user_func_array(Array, Array)
+#20 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#21 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#22 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#23 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#24 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(134): Illuminate\\Container\\Container->call(Array)
+#25 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Command\\Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#26 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#27 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#28 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\FreshCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#31 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#32 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#33 {main}
+
+[previous exception] [object] (PDOException(code: 2002): SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+ at C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php:70)
+[stacktrace]
+#0 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(70): PDO->__construct('mysql:host=127....', 'root', '', Array)
+#1 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(46): Illuminate\\Database\\Connectors\\Connector->createPdoConnection('mysql:host=127....', 'root', '', Array)
+#2 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\MySqlConnector.php(24): Illuminate\\Database\\Connectors\\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\ConnectionFactory.php(182): Illuminate\\Database\\Connectors\\MySqlConnector->connect(Array)
+#4 [internal function]: Illuminate\\Database\\Connectors\\ConnectionFactory->Illuminate\\Database\\Connectors\\{closure}()
+#5 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(926): call_user_func(Object(Closure))
+#6 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(961): Illuminate\\Database\\Connection->getPdo()
+#7 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(405): Illuminate\\Database\\Connection->getReadPdo()
+#8 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(331): Illuminate\\Database\\Connection->getPdoForSelect(true)
+#9 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(664): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('SHOW FULL TABLE...', Array)
+#10 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(631): Illuminate\\Database\\Connection->runQueryCallback('SHOW FULL TABLE...', Array, Object(Closure))
+#11 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(339): Illuminate\\Database\\Connection->run('SHOW FULL TABLE...', Array, Object(Closure))
+#12 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\MySqlBuilder.php(99): Illuminate\\Database\\Connection->select('SHOW FULL TABLE...')
+#13 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\MySqlBuilder.php(48): Illuminate\\Database\\Schema\\MySqlBuilder->getAllTables()
+#14 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\WipeCommand.php(69): Illuminate\\Database\\Schema\\MySqlBuilder->dropAllTables()
+#15 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\WipeCommand.php(46): Illuminate\\Database\\Console\\WipeCommand->dropAllTables(NULL)
+#16 [internal function]: Illuminate\\Database\\Console\\WipeCommand->handle()
+#17 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(32): call_user_func_array(Array, Array)
+#18 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#19 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#20 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#21 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#22 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(134): Illuminate\\Container\\Container->call(Array)
+#23 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Command\\Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#24 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#25 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(56): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#26 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(28): Illuminate\\Console\\Command->runCommand('db:wipe', Array, Object(Illuminate\\Console\\OutputStyle))
+#27 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\FreshCommand.php(41): Illuminate\\Console\\Command->call('db:wipe', Array)
+#28 [internal function]: Illuminate\\Database\\Console\\Migrations\\FreshCommand->handle()
+#29 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(32): call_user_func_array(Array, Array)
+#30 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#31 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#32 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#33 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#34 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(134): Illuminate\\Container\\Container->call(Array)
+#35 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Command\\Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#36 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#37 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#38 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\FreshCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#39 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#40 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#41 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#42 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#43 {main}
+"} 
+[2020-04-20 12:53:06] local.ERROR: SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd.
+ (SQL: SHOW FULL TABLES WHERE table_type = 'BASE TABLE') {"exception":"[object] (Illuminate\\Database\\QueryException(code: 2002): SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd.
+ (SQL: SHOW FULL TABLES WHERE table_type = 'BASE TABLE') at C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:671)
+[stacktrace]
+#0 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(631): Illuminate\\Database\\Connection->runQueryCallback('SHOW FULL TABLE...', Array, Object(Closure))
+#1 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(339): Illuminate\\Database\\Connection->run('SHOW FULL TABLE...', Array, Object(Closure))
+#2 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\MySqlBuilder.php(99): Illuminate\\Database\\Connection->select('SHOW FULL TABLE...')
+#3 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\MySqlBuilder.php(48): Illuminate\\Database\\Schema\\MySqlBuilder->getAllTables()
+#4 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\WipeCommand.php(69): Illuminate\\Database\\Schema\\MySqlBuilder->dropAllTables()
+#5 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\WipeCommand.php(46): Illuminate\\Database\\Console\\WipeCommand->dropAllTables(NULL)
+#6 [internal function]: Illuminate\\Database\\Console\\WipeCommand->handle()
+#7 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(32): call_user_func_array(Array, Array)
+#8 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#9 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#10 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#11 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#12 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(134): Illuminate\\Container\\Container->call(Array)
+#13 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Command\\Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#14 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#15 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(56): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#16 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(28): Illuminate\\Console\\Command->runCommand('db:wipe', Array, Object(Illuminate\\Console\\OutputStyle))
+#17 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\FreshCommand.php(41): Illuminate\\Console\\Command->call('db:wipe', Array)
+#18 [internal function]: Illuminate\\Database\\Console\\Migrations\\FreshCommand->handle()
+#19 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(32): call_user_func_array(Array, Array)
+#20 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#21 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#22 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#23 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#24 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(134): Illuminate\\Container\\Container->call(Array)
+#25 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Command\\Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#26 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#27 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#28 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\FreshCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#31 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#32 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#33 {main}
+
+[previous exception] [object] (PDOException(code: 2002): SQLSTATE[HY000] [2002] Kan geen verbinding maken omdat de doelcomputer de verbinding actief heeft geweigerd.
+ at C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php:70)
+[stacktrace]
+#0 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(70): PDO->__construct('mysql:host=127....', 'root', '', Array)
+#1 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(46): Illuminate\\Database\\Connectors\\Connector->createPdoConnection('mysql:host=127....', 'root', '', Array)
+#2 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\MySqlConnector.php(24): Illuminate\\Database\\Connectors\\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\ConnectionFactory.php(182): Illuminate\\Database\\Connectors\\MySqlConnector->connect(Array)
+#4 [internal function]: Illuminate\\Database\\Connectors\\ConnectionFactory->Illuminate\\Database\\Connectors\\{closure}()
+#5 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(926): call_user_func(Object(Closure))
+#6 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(961): Illuminate\\Database\\Connection->getPdo()
+#7 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(405): Illuminate\\Database\\Connection->getReadPdo()
+#8 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(331): Illuminate\\Database\\Connection->getPdoForSelect(true)
+#9 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(664): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('SHOW FULL TABLE...', Array)
+#10 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(631): Illuminate\\Database\\Connection->runQueryCallback('SHOW FULL TABLE...', Array, Object(Closure))
+#11 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(339): Illuminate\\Database\\Connection->run('SHOW FULL TABLE...', Array, Object(Closure))
+#12 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\MySqlBuilder.php(99): Illuminate\\Database\\Connection->select('SHOW FULL TABLE...')
+#13 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\MySqlBuilder.php(48): Illuminate\\Database\\Schema\\MySqlBuilder->getAllTables()
+#14 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\WipeCommand.php(69): Illuminate\\Database\\Schema\\MySqlBuilder->dropAllTables()
+#15 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\WipeCommand.php(46): Illuminate\\Database\\Console\\WipeCommand->dropAllTables(NULL)
+#16 [internal function]: Illuminate\\Database\\Console\\WipeCommand->handle()
+#17 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(32): call_user_func_array(Array, Array)
+#18 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#19 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#20 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#21 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#22 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(134): Illuminate\\Container\\Container->call(Array)
+#23 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Command\\Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#24 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#25 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(56): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#26 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(28): Illuminate\\Console\\Command->runCommand('db:wipe', Array, Object(Illuminate\\Console\\OutputStyle))
+#27 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\FreshCommand.php(41): Illuminate\\Console\\Command->call('db:wipe', Array)
+#28 [internal function]: Illuminate\\Database\\Console\\Migrations\\FreshCommand->handle()
+#29 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(32): call_user_func_array(Array, Array)
+#30 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#31 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#32 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#33 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#34 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(134): Illuminate\\Container\\Container->call(Array)
+#35 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Command\\Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#36 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#37 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#38 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\FreshCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#39 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#40 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#41 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#42 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#43 {main}
+"} 
+[2020-04-20 12:53:53] local.ERROR: Command "migrate:fresh\" is not defined.
+
+Did you mean one of these?
+    migrate
+    migrate:fresh
+    migrate:install
+    migrate:refresh
+    migrate:reset
+    migrate:rollback
+    migrate:status {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"migrate:fresh\\\" is not defined.
+
+Did you mean one of these?
+    migrate
+    migrate:fresh
+    migrate:install
+    migrate:refresh
+    migrate:reset
+    migrate:rollback
+    migrate:status at C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php:644)
+[stacktrace]
+#0 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(228): Symfony\\Component\\Console\\Application->find('migrate:fresh\\\\')
+#1 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2020-04-20 12:56:01] local.ERROR: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'name' cannot be null (SQL: insert into `users` (`name`, `email`, `password`, `role_id`, `email_verified_at`, `updated_at`, `created_at`) values (?, ?, $2y$10$UOBGVJpags05Ea46LSxYEOazjYIyplZicloCT9C.mwEerQbsqGPFy, 1, 2020-04-20 12:56:01, 2020-04-20 12:56:01, 2020-04-20 12:56:01)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 23000): SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'name' cannot be null (SQL: insert into `users` (`name`, `email`, `password`, `role_id`, `email_verified_at`, `updated_at`, `created_at`) values (?, ?, $2y$10$UOBGVJpags05Ea46LSxYEOazjYIyplZicloCT9C.mwEerQbsqGPFy, 1, 2020-04-20 12:56:01, 2020-04-20 12:56:01, 2020-04-20 12:56:01)) at C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:671)
+[stacktrace]
+#0 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(631): Illuminate\\Database\\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#1 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(465): Illuminate\\Database\\Connection->run('insert into `us...', Array, Object(Closure))
+#2 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(417): Illuminate\\Database\\Connection->statement('insert into `us...', Array)
+#3 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\Processor.php(32): Illuminate\\Database\\Connection->insert('insert into `us...', Array)
+#4 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(2724): Illuminate\\Database\\Query\\Processors\\Processor->processInsertGetId(Object(Illuminate\\Database\\Query\\Builder), 'insert into `us...', Array, 'id')
+#5 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(1381): Illuminate\\Database\\Query\\Builder->insertGetId(Array, 'id')
+#6 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(865): Illuminate\\Database\\Eloquent\\Builder->__call('insertGetId', Array)
+#7 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(830): Illuminate\\Database\\Eloquent\\Model->insertAndSetId(Object(Illuminate\\Database\\Eloquent\\Builder), Array)
+#8 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(693): Illuminate\\Database\\Eloquent\\Model->performInsert(Object(Illuminate\\Database\\Eloquent\\Builder))
+#9 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\app\\Console\\Commands\\GenerateAdminUser.php(56): Illuminate\\Database\\Eloquent\\Model->save()
+#10 [internal function]: App\\Console\\Commands\\GenerateAdminUser->handle()
+#11 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(32): call_user_func_array(Array, Array)
+#12 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#13 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#14 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#15 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#16 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(134): Illuminate\\Container\\Container->call(Array)
+#17 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Command\\Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#18 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#19 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#20 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(App\\Console\\Commands\\GenerateAdminUser), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#21 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#22 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#24 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#25 {main}
+
+[previous exception] [object] (PDOException(code: 23000): SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'name' cannot be null at C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:464)
+[stacktrace]
+#0 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(464): PDOStatement->execute()
+#1 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(664): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('insert into `us...', Array)
+#2 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(631): Illuminate\\Database\\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#3 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(465): Illuminate\\Database\\Connection->run('insert into `us...', Array, Object(Closure))
+#4 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(417): Illuminate\\Database\\Connection->statement('insert into `us...', Array)
+#5 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\Processor.php(32): Illuminate\\Database\\Connection->insert('insert into `us...', Array)
+#6 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(2724): Illuminate\\Database\\Query\\Processors\\Processor->processInsertGetId(Object(Illuminate\\Database\\Query\\Builder), 'insert into `us...', Array, 'id')
+#7 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(1381): Illuminate\\Database\\Query\\Builder->insertGetId(Array, 'id')
+#8 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(865): Illuminate\\Database\\Eloquent\\Builder->__call('insertGetId', Array)
+#9 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(830): Illuminate\\Database\\Eloquent\\Model->insertAndSetId(Object(Illuminate\\Database\\Eloquent\\Builder), Array)
+#10 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(693): Illuminate\\Database\\Eloquent\\Model->performInsert(Object(Illuminate\\Database\\Eloquent\\Builder))
+#11 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\app\\Console\\Commands\\GenerateAdminUser.php(56): Illuminate\\Database\\Eloquent\\Model->save()
+#12 [internal function]: App\\Console\\Commands\\GenerateAdminUser->handle()
+#13 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(32): call_user_func_array(Array, Array)
+#14 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#15 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#16 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#17 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#18 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(134): Illuminate\\Container\\Container->call(Array)
+#19 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Command\\Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#20 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#21 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#22 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(App\\Console\\Commands\\GenerateAdminUser), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#24 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#25 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 {main}
+"} 
+[2020-04-20 12:57:02] local.ERROR: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY' (SQL: insert into `roles` (`id`, `role_name`, `color`, `permissions`, `updated_at`, `created_at`) values (1, Admin, #a0a867, ["Admin"], 2020-04-20 12:57:02, 2020-04-20 12:57:02)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 23000): SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY' (SQL: insert into `roles` (`id`, `role_name`, `color`, `permissions`, `updated_at`, `created_at`) values (1, Admin, #a0a867, [\"Admin\"], 2020-04-20 12:57:02, 2020-04-20 12:57:02)) at C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:671)
+[stacktrace]
+#0 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(631): Illuminate\\Database\\Connection->runQueryCallback('insert into `ro...', Array, Object(Closure))
+#1 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(465): Illuminate\\Database\\Connection->run('insert into `ro...', Array, Object(Closure))
+#2 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(417): Illuminate\\Database\\Connection->statement('insert into `ro...', Array)
+#3 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\Processor.php(32): Illuminate\\Database\\Connection->insert('insert into `ro...', Array)
+#4 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(2724): Illuminate\\Database\\Query\\Processors\\Processor->processInsertGetId(Object(Illuminate\\Database\\Query\\Builder), 'insert into `ro...', Array, 'id')
+#5 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(1381): Illuminate\\Database\\Query\\Builder->insertGetId(Array, 'id')
+#6 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(865): Illuminate\\Database\\Eloquent\\Builder->__call('insertGetId', Array)
+#7 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(830): Illuminate\\Database\\Eloquent\\Model->insertAndSetId(Object(Illuminate\\Database\\Eloquent\\Builder), Array)
+#8 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(693): Illuminate\\Database\\Eloquent\\Model->performInsert(Object(Illuminate\\Database\\Eloquent\\Builder))
+#9 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\app\\Console\\Commands\\GenerateBasicRolesCommand.php(49): Illuminate\\Database\\Eloquent\\Model->save()
+#10 [internal function]: App\\Console\\Commands\\GenerateBasicRolesCommand->handle()
+#11 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(32): call_user_func_array(Array, Array)
+#12 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#13 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#14 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#15 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#16 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(134): Illuminate\\Container\\Container->call(Array)
+#17 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Command\\Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#18 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#19 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#20 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(App\\Console\\Commands\\GenerateBasicRolesCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#21 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#22 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#24 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#25 {main}
+
+[previous exception] [object] (PDOException(code: 23000): SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY' at C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:464)
+[stacktrace]
+#0 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(464): PDOStatement->execute()
+#1 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(664): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('insert into `ro...', Array)
+#2 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(631): Illuminate\\Database\\Connection->runQueryCallback('insert into `ro...', Array, Object(Closure))
+#3 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(465): Illuminate\\Database\\Connection->run('insert into `ro...', Array, Object(Closure))
+#4 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(417): Illuminate\\Database\\Connection->statement('insert into `ro...', Array)
+#5 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\Processor.php(32): Illuminate\\Database\\Connection->insert('insert into `ro...', Array)
+#6 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(2724): Illuminate\\Database\\Query\\Processors\\Processor->processInsertGetId(Object(Illuminate\\Database\\Query\\Builder), 'insert into `ro...', Array, 'id')
+#7 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(1381): Illuminate\\Database\\Query\\Builder->insertGetId(Array, 'id')
+#8 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(865): Illuminate\\Database\\Eloquent\\Builder->__call('insertGetId', Array)
+#9 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(830): Illuminate\\Database\\Eloquent\\Model->insertAndSetId(Object(Illuminate\\Database\\Eloquent\\Builder), Array)
+#10 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(693): Illuminate\\Database\\Eloquent\\Model->performInsert(Object(Illuminate\\Database\\Eloquent\\Builder))
+#11 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\app\\Console\\Commands\\GenerateBasicRolesCommand.php(49): Illuminate\\Database\\Eloquent\\Model->save()
+#12 [internal function]: App\\Console\\Commands\\GenerateBasicRolesCommand->handle()
+#13 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(32): call_user_func_array(Array, Array)
+#14 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#15 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#16 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#17 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#18 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(134): Illuminate\\Container\\Container->call(Array)
+#19 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Command\\Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#20 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#21 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#22 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(App\\Console\\Commands\\GenerateBasicRolesCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#24 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#25 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 {main}
+"} 
+[2020-04-20 13:02:37] local.ERROR: Route [login] not defined. {"exception":"[object] (Symfony\\Component\\Routing\\Exception\\RouteNotFoundException(code: 0): Route [login] not defined. at C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\UrlGenerator.php:420)
+[stacktrace]
+#0 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\helpers.php(768): Illuminate\\Routing\\UrlGenerator->route('login', Array, true)
+#1 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\app\\Http\\Middleware\\Authenticate.php(18): route('login')
+#2 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\Middleware\\Authenticate.php(83): App\\Http\\Middleware\\Authenticate->redirectTo(Object(Illuminate\\Http\\Request))
+#3 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\Middleware\\Authenticate.php(68): Illuminate\\Auth\\Middleware\\Authenticate->unauthenticated(Object(Illuminate\\Http\\Request), Array)
+#4 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\Middleware\\Authenticate.php(42): Illuminate\\Auth\\Middleware\\Authenticate->authenticate(Object(Illuminate\\Http\\Request), Array)
+#5 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure), 'api')
+#6 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#7 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(687): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#8 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(662): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#9 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(628): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#10 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(617): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#11 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(165): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#12 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#13 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#14 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#15 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#16 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#17 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#18 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#19 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#20 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#21 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\fruitcake\\laravel-cors\\src\\HandleCors.php(36): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#22 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#23 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\fideloper\\proxy\\src\\TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#24 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#25 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#26 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(140): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#27 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(109): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#28 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#29 C:\\Users\\Tim Huijkman\\PhpstormProjects\
+z-evenementenregistratie\\server.php(21): require_once('C:\\\\Users\\\\Tim Hu...')
+#30 {main}
+"} 
+[2020-04-20 17:12:15] local.ERROR: Undefined property: Illuminate\Database\Eloquent\Relations\BelongsTo::$permissions {"userId":1,"exception":"[object] (ErrorException(code: 0): Undefined property: Illuminate\\Database\\Eloquent\\Relations\\BelongsTo::$permissions at /home/merlijn/PhpstormProjects/nz-evenementenregistratie/app/Policies/EventPolicy.php:52)
+[stacktrace]
+#0 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/app/Policies/EventPolicy.php(52): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Undefined prope...', '/home/merlijn/P...', 52, Array)
+#1 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Access/Gate.php(706): App\\Policies\\EventPolicy->create(Object(App\\User))
+#2 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Access/Gate.php(659): Illuminate\\Auth\\Access\\Gate->callPolicyMethod(Object(App\\Policies\\EventPolicy), 'create', Object(App\\User), Array)
+#3 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Access/Gate.php(469): Illuminate\\Auth\\Access\\Gate->Illuminate\\Auth\\Access\\{closure}(Object(App\\User), 'App\\\\Event')
+#4 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Access/Gate.php(366): Illuminate\\Auth\\Access\\Gate->callAuthCallback(Object(App\\User), 'create', Array)
+#5 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Access/Gate.php(331): Illuminate\\Auth\\Access\\Gate->raw('create', Array)
+#6 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Access/Gate.php(318): Illuminate\\Auth\\Access\\Gate->inspect('create', 'App\\\\Event')
+#7 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Auth/Access/AuthorizesRequests.php(23): Illuminate\\Auth\\Access\\Gate->authorize('create', 'App\\\\Event')
+#8 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/app/Http/Controllers/EventController.php(39): App\\Http\\Controllers\\Controller->authorize('create', 'App\\\\Event')
+#9 [internal function]: App\\Http\\Controllers\\EventController->store(Object(Illuminate\\Http\\Request))
+#10 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array(Array, Array)
+#11 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction('store', Array)
+#12 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Route.php(225): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(App\\Http\\Controllers\\EventController), 'store')
+#13 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Route.php(182): Illuminate\\Routing\\Route->runController()
+#14 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(685): Illuminate\\Routing\\Route->run()
+#15 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#16 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(41): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#17 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#18 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(59): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#19 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle(Object(Illuminate\\Http\\Request), Object(Closure), 60, '1')
+#20 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(44): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#21 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure), 'api')
+#22 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#23 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(687): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#24 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(662): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#25 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(628): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#26 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(617): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#27 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(165): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#28 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#29 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#30 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#31 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#32 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#33 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#34 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#35 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#36 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/fruitcake/laravel-cors/src/HandleCors.php(36): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/fideloper/proxy/src/TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#41 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#42 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(140): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#43 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(109): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#44 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#45 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/server.php(21): require_once('/home/merlijn/P...')
+#46 {main}
+"} 
+[2020-04-20 17:14:17] local.ERROR: in_array() expects parameter 2 to be array, string given {"userId":1,"exception":"[object] (ErrorException(code: 0): in_array() expects parameter 2 to be array, string given at /home/merlijn/PhpstormProjects/nz-evenementenregistratie/app/Policies/EventPolicy.php:52)
+[stacktrace]
+#0 [internal function]: Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'in_array() expe...', '/home/merlijn/P...', 52, Array)
+#1 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/app/Policies/EventPolicy.php(52): in_array('read_event', '[\"Admin\"]')
+#2 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Access/Gate.php(706): App\\Policies\\EventPolicy->create(Object(App\\User))
+#3 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Access/Gate.php(659): Illuminate\\Auth\\Access\\Gate->callPolicyMethod(Object(App\\Policies\\EventPolicy), 'create', Object(App\\User), Array)
+#4 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Access/Gate.php(469): Illuminate\\Auth\\Access\\Gate->Illuminate\\Auth\\Access\\{closure}(Object(App\\User), 'App\\\\Event')
+#5 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Access/Gate.php(366): Illuminate\\Auth\\Access\\Gate->callAuthCallback(Object(App\\User), 'create', Array)
+#6 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Access/Gate.php(331): Illuminate\\Auth\\Access\\Gate->raw('create', Array)
+#7 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Access/Gate.php(318): Illuminate\\Auth\\Access\\Gate->inspect('create', 'App\\\\Event')
+#8 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Auth/Access/AuthorizesRequests.php(23): Illuminate\\Auth\\Access\\Gate->authorize('create', 'App\\\\Event')
+#9 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/app/Http/Controllers/EventController.php(39): App\\Http\\Controllers\\Controller->authorize('create', 'App\\\\Event')
+#10 [internal function]: App\\Http\\Controllers\\EventController->store(Object(Illuminate\\Http\\Request))
+#11 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array(Array, Array)
+#12 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction('store', Array)
+#13 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Route.php(225): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(App\\Http\\Controllers\\EventController), 'store')
+#14 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Route.php(182): Illuminate\\Routing\\Route->runController()
+#15 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(685): Illuminate\\Routing\\Route->run()
+#16 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#17 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(41): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#18 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#19 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(59): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#20 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle(Object(Illuminate\\Http\\Request), Object(Closure), 60, '1')
+#21 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(44): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#22 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure), 'api')
+#23 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#24 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(687): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#25 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(662): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#26 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(628): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#27 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(617): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#28 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(165): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#29 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#30 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#34 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#35 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#36 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#37 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#38 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/fruitcake/laravel-cors/src/HandleCors.php(36): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#39 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#40 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/fideloper/proxy/src/TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#41 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#42 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#43 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(140): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#44 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(109): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#45 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#46 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/server.php(21): require_once('/home/merlijn/P...')
+#47 {main}
+"} 
+[2020-04-20 17:15:08] local.ERROR: syntax error, unexpected ';', expecting ',' or ')' {"userId":1,"exception":"[object] (ParseError(code: 0): syntax error, unexpected ';', expecting ',' or ')' at /home/merlijn/PhpstormProjects/nz-evenementenregistratie/app/Policies/EventPolicy.php:52)
+[stacktrace]
+#0 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/composer/ClassLoader.php(322): Composer\\Autoload\\includeFile('/home/merlijn/P...')
+#1 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Policies\\\\Ev...')
+#2 [internal function]: spl_autoload_call('App\\\\Policies\\\\Ev...')
+#3 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/Container.php(805): ReflectionClass->__construct('App\\\\Policies\\\\Ev...')
+#4 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/Container.php(687): Illuminate\\Container\\Container->build('App\\\\Policies\\\\Ev...')
+#5 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(794): Illuminate\\Container\\Container->resolve('App\\\\Policies\\\\Ev...', Array, true)
+#6 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Container/Container.php(633): Illuminate\\Foundation\\Application->resolve('App\\\\Policies\\\\Ev...', Array)
+#7 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(779): Illuminate\\Container\\Container->make('App\\\\Policies\\\\Ev...', Array)
+#8 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Access/Gate.php(624): Illuminate\\Foundation\\Application->make('App\\\\Policies\\\\Ev...')
+#9 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Access/Gate.php(568): Illuminate\\Auth\\Access\\Gate->resolvePolicy('App\\\\Policies\\\\Ev...')
+#10 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Access/Gate.php(528): Illuminate\\Auth\\Access\\Gate->getPolicyFor('App\\\\Event')
+#11 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Access/Gate.php(467): Illuminate\\Auth\\Access\\Gate->resolveAuthCallback(Object(App\\User), 'create', Array)
+#12 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Access/Gate.php(366): Illuminate\\Auth\\Access\\Gate->callAuthCallback(Object(App\\User), 'create', Array)
+#13 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Access/Gate.php(331): Illuminate\\Auth\\Access\\Gate->raw('create', Array)
+#14 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Access/Gate.php(318): Illuminate\\Auth\\Access\\Gate->inspect('create', 'App\\\\Event')
+#15 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Auth/Access/AuthorizesRequests.php(23): Illuminate\\Auth\\Access\\Gate->authorize('create', 'App\\\\Event')
+#16 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/app/Http/Controllers/EventController.php(39): App\\Http\\Controllers\\Controller->authorize('create', 'App\\\\Event')
+#17 [internal function]: App\\Http\\Controllers\\EventController->store(Object(Illuminate\\Http\\Request))
+#18 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array(Array, Array)
+#19 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction('store', Array)
+#20 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Route.php(225): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(App\\Http\\Controllers\\EventController), 'store')
+#21 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Route.php(182): Illuminate\\Routing\\Route->runController()
+#22 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(685): Illuminate\\Routing\\Route->run()
+#23 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#24 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(41): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#25 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#26 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(59): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#27 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle(Object(Illuminate\\Http\\Request), Object(Closure), 60, '1')
+#28 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(44): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure), 'api')
+#30 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(687): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#32 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(662): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#33 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(628): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#34 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(617): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#35 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(165): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#36 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#37 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#41 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#42 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#43 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#44 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#45 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/fruitcake/laravel-cors/src/HandleCors.php(36): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#46 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#47 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/fideloper/proxy/src/TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#48 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#49 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#50 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(140): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#51 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(109): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#52 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#53 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/server.php(21): require_once('/home/merlijn/P...')
+#54 {main}
+"} 
+[2020-04-21 08:53:51] local.ERROR: Cannot use object of type Illuminate\Validation\Validator as array {"userId":1,"exception":"[object] (Error(code: 0): Cannot use object of type Illuminate\\Validation\\Validator as array at /home/merlijn/PhpstormProjects/nz-evenementenregistratie/app/Http/Controllers/EventController.php:57)
+[stacktrace]
+#0 [internal function]: App\\Http\\Controllers\\EventController->store(Object(Illuminate\\Http\\Request))
+#1 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array(Array, Array)
+#2 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction('store', Array)
+#3 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Route.php(225): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(App\\Http\\Controllers\\EventController), 'store')
+#4 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Route.php(182): Illuminate\\Routing\\Route->runController()
+#5 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(685): Illuminate\\Routing\\Route->run()
+#6 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#7 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(41): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#8 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#9 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(59): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#10 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle(Object(Illuminate\\Http\\Request), Object(Closure), 60, '1')
+#11 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(44): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#12 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure), 'api')
+#13 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#14 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(687): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#15 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(662): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#16 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(628): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#17 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(617): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#18 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(165): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#19 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#20 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#21 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#22 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#23 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#24 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#25 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#26 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#27 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/fruitcake/laravel-cors/src/HandleCors.php(36): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/fideloper/proxy/src/TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(140): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#34 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(109): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#35 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#36 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/server.php(21): require_once('/home/merlijn/P...')
+#37 {main}
+"} 
+[2020-04-21 10:10:37] local.ERROR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'events.deleted_at' in 'where clause' (SQL: select * from `events` where `id` = 1 and `events`.`deleted_at` is null limit 1) {"userId":1,"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'events.deleted_at' in 'where clause' (SQL: select * from `events` where `id` = 1 and `events`.`deleted_at` is null limit 1) at /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php:671)
+[stacktrace]
+#0 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(631): Illuminate\\Database\\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#1 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(339): Illuminate\\Database\\Connection->run('select * from `...', Array, Object(Closure))
+#2 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2178): Illuminate\\Database\\Connection->select('select * from `...', Array, true)
+#3 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2166): Illuminate\\Database\\Query\\Builder->runSelect()
+#4 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2638): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#5 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2167): Illuminate\\Database\\Query\\Builder->onceWithColumns(Array, Object(Closure))
+#6 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(539): Illuminate\\Database\\Query\\Builder->get(Array)
+#7 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(523): Illuminate\\Database\\Eloquent\\Builder->getModels(Array)
+#8 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Concerns/BuildsQueries.php(143): Illuminate\\Database\\Eloquent\\Builder->get(Array)
+#9 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1510): Illuminate\\Database\\Eloquent\\Builder->first()
+#10 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/ImplicitRouteBinding.php(45): Illuminate\\Database\\Eloquent\\Model->resolveRouteBinding('1', NULL)
+#11 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(798): Illuminate\\Routing\\ImplicitRouteBinding::resolveForRoute(Object(Illuminate\\Foundation\\Application), Object(Illuminate\\Routing\\Route))
+#12 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(39): Illuminate\\Routing\\Router->substituteImplicitBindings(Object(Illuminate\\Routing\\Route))
+#13 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#14 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(59): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#15 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle(Object(Illuminate\\Http\\Request), Object(Closure), 60, '1')
+#16 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(44): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#17 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure), 'api')
+#18 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#19 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(687): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#20 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(662): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#21 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(628): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#22 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(617): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#23 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(165): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#24 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#25 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#26 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#27 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#28 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#29 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#30 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#31 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#32 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#33 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/fruitcake/laravel-cors/src/HandleCors.php(36): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#34 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#35 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/fideloper/proxy/src/TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#36 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(140): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#39 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(109): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#40 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#41 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/server.php(21): require_once('/home/merlijn/P...')
+#42 {main}
+
+[previous exception] [object] (PDOException(code: 42S22): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'events.deleted_at' in 'where clause' at /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php:331)
+[stacktrace]
+#0 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(331): PDO->prepare('select * from `...')
+#1 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(664): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('select * from `...', Array)
+#2 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(631): Illuminate\\Database\\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#3 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Connection.php(339): Illuminate\\Database\\Connection->run('select * from `...', Array, Object(Closure))
+#4 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2178): Illuminate\\Database\\Connection->select('select * from `...', Array, true)
+#5 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2166): Illuminate\\Database\\Query\\Builder->runSelect()
+#6 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2638): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#7 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2167): Illuminate\\Database\\Query\\Builder->onceWithColumns(Array, Object(Closure))
+#8 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(539): Illuminate\\Database\\Query\\Builder->get(Array)
+#9 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(523): Illuminate\\Database\\Eloquent\\Builder->getModels(Array)
+#10 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Concerns/BuildsQueries.php(143): Illuminate\\Database\\Eloquent\\Builder->get(Array)
+#11 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1510): Illuminate\\Database\\Eloquent\\Builder->first()
+#12 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/ImplicitRouteBinding.php(45): Illuminate\\Database\\Eloquent\\Model->resolveRouteBinding('1', NULL)
+#13 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(798): Illuminate\\Routing\\ImplicitRouteBinding::resolveForRoute(Object(Illuminate\\Foundation\\Application), Object(Illuminate\\Routing\\Route))
+#14 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(39): Illuminate\\Routing\\Router->substituteImplicitBindings(Object(Illuminate\\Routing\\Route))
+#15 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#16 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php(59): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#17 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle(Object(Illuminate\\Http\\Request), Object(Closure), 60, '1')
+#18 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(44): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#19 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure), 'api')
+#20 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#21 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(687): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#22 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(662): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#23 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(628): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#24 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(617): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#25 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(165): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#26 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#27 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#28 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#29 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#30 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#31 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#32 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#33 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#34 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#35 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/fruitcake/laravel-cors/src/HandleCors.php(36): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#36 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/fideloper/proxy/src/TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(140): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#41 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(109): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#42 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#43 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/server.php(21): require_once('/home/merlijn/P...')
+#44 {main}
+"} 
+[2020-04-21 10:11:39] local.ERROR: Route [login] not defined. {"exception":"[object] (Symfony\\Component\\Routing\\Exception\\RouteNotFoundException(code: 0): Route [login] not defined. at /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:420)
+[stacktrace]
+#0 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(768): Illuminate\\Routing\\UrlGenerator->route('login', Array, true)
+#1 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/app/Http/Middleware/Authenticate.php(18): route('login')
+#2 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(83): App\\Http\\Middleware\\Authenticate->redirectTo(Object(Illuminate\\Http\\Request))
+#3 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(68): Illuminate\\Auth\\Middleware\\Authenticate->unauthenticated(Object(Illuminate\\Http\\Request), Array)
+#4 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(42): Illuminate\\Auth\\Middleware\\Authenticate->authenticate(Object(Illuminate\\Http\\Request), Array)
+#5 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure), 'api')
+#6 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#7 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(687): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#8 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(662): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#9 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(628): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#10 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(617): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#11 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(165): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#12 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#13 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#14 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#15 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#16 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#17 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#18 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#19 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#20 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#21 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/fruitcake/laravel-cors/src/HandleCors.php(36): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#22 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#23 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/fideloper/proxy/src/TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#24 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#25 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#26 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(140): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#27 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(109): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#28 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#29 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/server.php(21): require_once('/home/merlijn/P...')
+#30 {main}
+"} 
+[2020-04-21 10:11:52] local.ERROR: Route [login] not defined. {"exception":"[object] (Symfony\\Component\\Routing\\Exception\\RouteNotFoundException(code: 0): Route [login] not defined. at /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:420)
+[stacktrace]
+#0 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(768): Illuminate\\Routing\\UrlGenerator->route('login', Array, true)
+#1 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/app/Http/Middleware/Authenticate.php(18): route('login')
+#2 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(83): App\\Http\\Middleware\\Authenticate->redirectTo(Object(Illuminate\\Http\\Request))
+#3 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(68): Illuminate\\Auth\\Middleware\\Authenticate->unauthenticated(Object(Illuminate\\Http\\Request), Array)
+#4 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(42): Illuminate\\Auth\\Middleware\\Authenticate->authenticate(Object(Illuminate\\Http\\Request), Array)
+#5 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure), 'api')
+#6 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#7 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(687): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#8 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(662): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#9 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(628): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#10 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Routing/Router.php(617): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#11 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(165): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#12 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#13 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#14 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#15 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#16 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#17 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#18 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#19 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#20 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#21 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/fruitcake/laravel-cors/src/HandleCors.php(36): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#22 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#23 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/fideloper/proxy/src/TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#24 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#25 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#26 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(140): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#27 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(109): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#28 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#29 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/server.php(21): require_once('/home/merlijn/P...')
+#30 {main}
+"} 
