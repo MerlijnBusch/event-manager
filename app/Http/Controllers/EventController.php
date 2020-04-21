@@ -33,8 +33,7 @@ class EventController extends Controller
     public function show(Event $event)
     {
         $this->authorize('read', Event::class);
-
-        return response()->json(Event::query()->wheres('id', '=', $event));
+        return response()->json($event);
     }
 
     /**
@@ -85,7 +84,7 @@ class EventController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        $event = Event::findOrFail($event);
+        $event = Event::findOrFail($event->id);
         $event->update($request->all());
 
         return response()->json(['message' => 'Event ' . $event->name . ' updated successfully']);
