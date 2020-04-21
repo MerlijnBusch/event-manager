@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Rules\PhoneNumberValidator;
+use App\Rules\UrlValidator;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use App\Profile;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -14,29 +17,53 @@ class ProfileController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function index()
     {
         $this->authorize('read', Profile::class);
 
-        return response()->json(Profile::all());
+        $profiles = Profile::with('user')->get();
+
+        return response()->json($profiles);
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Profile $profile
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function show(Profile $profile)
+    {
+        $this->authorize('read', Profile::class);
+
+        $profile = Profile::findOrFail($profile->id)->with('user')->get();
+
+        return response()->json($profile);
+    }
+
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function store(Request $request)
     {
         $this->authorize('write', Profile::class);
 
-        //@todo merlijn custom validation image url en phone number
+        if (Profile::where('user_id', '=', Auth::id())->count() > 0) {
+            return response()->json(['message' => 'Profile already exist on this user']);
+        }
+
         $validator = Validator::make($request->all(), [
-            'phone_number' => 'int',
-            'image' => 'string',
+            'phone_number' => [new PhoneNumberValidator, 'required_without_all:image'],
+            'image' => ['string',new UrlValidator, 'required_without_all:phone_number'],
         ]);
 
         if ($validator->fails()) {
@@ -44,7 +71,7 @@ class ProfileController extends Controller
         }
 
         $profile = new Profile;
-        $profile->user_id = Auth::user()->id;
+        $profile->user_id = Auth::id();
         $profile->phone_number = $request->phone_number;
         $profile->image = $request->image;
         $profile->save();
@@ -53,32 +80,24 @@ class ProfileController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Profile  $profile
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Profile $profile)
-    {
-        $this->authorize('read', Profile::class);
-        return response()->json($profile);
-    }
-
-    /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Profile  $profile
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Profile $profile
+     * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function update(Request $request, Profile $profile)
     {
         $this->authorize('write', Profile::class);
 
-        //@todo merlijn custom validation image url
+        if (Profile::where('user_id', '=', Auth::id())->count() > 0) {
+            return response()->json(['message' => 'Profile already exist on this user']);
+        }
+
         $validator = Validator::make($request->all(), [
-            'phone_number' => 'int',
-            'image' => 'string',
+            'phone_number' => [new PhoneNumberValidator, 'required_without_all:image'],
+            'image' => ['string',new UrlValidator, 'required_without_all:phone_number'],
         ]);
 
         if ($validator->fails()) {
@@ -86,7 +105,7 @@ class ProfileController extends Controller
         }
 
         $profile = Profile::findOrFail($profile->id);
-        $profile->user_id = Auth::user()->id;
+        $profile->user_id = Auth::id();
         $profile->phone_number = $request->phone_number;
         $profile->image = $request->image;
         $profile->update();
@@ -99,8 +118,9 @@ class ProfileController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Profile  $profile
-     * @return \Illuminate\Http\Response
+     * @param Profile $profile
+     * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function destroy(Profile $profile)
     {
@@ -111,12 +131,12 @@ class ProfileController extends Controller
 
         return response()->json(['message' => 'Profile deleted successfully']);
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function storecv(Request $request)
     {
@@ -126,8 +146,8 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Profile  $profile
-     * @return \Illuminate\Http\Response
+     * @param Profile $profile
+     * @return Response
      */
     public function showcv(Profile $profile)
     {
