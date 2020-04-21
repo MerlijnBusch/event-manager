@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Profile;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
@@ -14,17 +18,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $this->authorize('read', Profile::class);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return response()->json(Profile::all());
     }
 
     /**
@@ -35,7 +31,25 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->authorize('write', Profile::class);
+
+        //@todo merlijn custom validation image url en phone number
+        $validator = Validator::make($request->all(), [
+            'phone_number' => 'int',
+            'image' => 'string',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        $profile = new Profile;
+        $profile->user_id = Auth::user()->id;
+        $profile->phone_number = $request->phone_number;
+        $profile->image = $request->image;
+        $profile->save();
+
+        return response()->json(['message' => 'Profile created succesfully']);
     }
 
     /**
@@ -46,18 +60,8 @@ class ProfileController extends Controller
      */
     public function show(Profile $profile)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Profile  $profile
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Profile $profile)
-    {
-        //
+        $this->authorize('read', Profile::class);
+        return response()->json($profile);
     }
 
     /**
@@ -69,7 +73,27 @@ class ProfileController extends Controller
      */
     public function update(Request $request, Profile $profile)
     {
-        //
+        $this->authorize('write', Profile::class);
+
+        //@todo merlijn custom validation image url
+        $validator = Validator::make($request->all(), [
+            'phone_number' => 'int',
+            'image' => 'string',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        $profile = Profile::findOrFail($profile->id);
+        $profile->user_id = Auth::user()->id;
+        $profile->phone_number = $request->phone_number;
+        $profile->image = $request->image;
+        $profile->update();
+
+        $name = $profile->user->name;
+
+        return response()->json(['message' => 'Profile ' . $name . ' updated successfully']);
     }
 
     /**
@@ -79,6 +103,33 @@ class ProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Profile $profile)
+    {
+        $this->authorize('write', Profile::class);
+
+        $profile = Profile::findOrFail($profile->id);
+        $profile->delete();
+
+        return response()->json(['message' => 'Profile deleted successfully']);
+    }
+    
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storecv(Request $request)
+    {
+        //@todo merlijn
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Profile  $profile
+     * @return \Illuminate\Http\Response
+     */
+    public function showcv(Profile $profile)
     {
         //
     }
