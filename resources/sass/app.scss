@@ -1,5 +1,10 @@
 // Variables
 @import 'variables';
+@import "flex-grid";
+
+
+html {box-sizing: border-box;}
+*, *:before, *:after {box-sizing: inherit;}
 
 @import 'components';
 
