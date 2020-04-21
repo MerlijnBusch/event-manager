@@ -1,0 +1,48 @@
+$navbar-height: 80px;
+$navbar-padding: 24px;
+$sidenav-width: 400px;
+
+.navbar{
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: $navbar-height;
+  background: $dark;
+  .navbar-inner{
+    position: relative;
+    padding: $navbar-padding;
+    height: calc(100% - #{$navbar-padding}*2);
+    width: calc(100% - #{$navbar-padding}*2);
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.navbar-logo{
+  height: 100%;
+}
+
+.navbar-hamburger{
+  position: absolute;
+  right: $navbar-padding;
+  width: $navbar-height - $navbar-padding*2;
+  height: $navbar-height - $navbar-padding*2;
+  border: none;
+  background-color: transparent;
+}
+
+.sidenav{
+  &.sidenav-hidden{
+    right: -$sidenav-width;
+  }
+  right: 0;
+  position: fixed;
+  height: 100vw;
+  top: 0;
+  width: $sidenav-width;
+  background-color: $darkest;
+  transition: right ease-in-out .2s;
+}
+
+

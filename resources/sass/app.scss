@@ -1,8 +1,12 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import 'components';
+
+body{
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  letter-spacing: normal;
+  line-height: normal;
+}
