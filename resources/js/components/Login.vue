@@ -1,48 +1,58 @@
 <template>
-    <div>
-        <br><br><br><br><br><br>
-        <button @click="close">Close modal bla bla bla</button>
-        <form
-                id="app"
-                @submit="checkForm"
-                method="post"
-        >
+    <div class="login-holder">
+        <div class="login-screen column-desktop-4">
+        <button @click="close" class="login-close"><div><div></div></div></button>
+            <form
+                    id="app"
+                    @submit="checkForm"
+                    method="post"
+            >
 
-            <div v-if="errors.length">
-                <b>Please correct the following error(s):</b>
-                <ul>
-                    <li v-for="error in errors">{{ error }}</li>
-                </ul>
-            </div>
+                <div v-if="errors.length">
+                    <b>Please correct the following error(s):</b>
+                    <ul>
+                        <li v-for="error in errors">{{ error }}</li>
+                    </ul>
+                </div>
 
-            <p>
-                <label for="email">email</label>
-                <input
-                        id="email"
-                        v-model="email"
-                        type="email"
-                        name="email"
-                >
-            </p>
+                <h2 class="login-title">
+                    Login user
+                </h2>
 
-            <p>
-                <label for="password">password</label>
-                <input
-                        id="password"
-                        v-model="password"
-                        type="password"
-                        name="password"
-                >
-            </p>
+                <p>
+                    <label for="email">email</label>
+                    <input
+                            class="text-input"
+                            id="email"
+                            v-model="email"
+                            type="email"
+                            name="email"
+                            placeholder="Email"
+                    >
+                </p>
 
-            <p>
-                <input
-                        type="submit"
-                        value="Submit"
-                >
-            </p>
+                <p>
+                    <label for="password">password</label>
+                    <input
+                            class="text-input"
+                            id="password"
+                            v-model="password"
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                    >
+                </p>
 
-        </form>
+                <p>
+                    <input
+                            type="submit"
+                            value="Login"
+                            class="submit-btn"
+                    >
+                </p>
+
+            </form>
+        </div>
     </div>
 </template>
 

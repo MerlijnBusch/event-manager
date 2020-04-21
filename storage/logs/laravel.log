@@ -1984,6 +1984,117 @@ z-evenementenregistratie\\server.php(21): require_once('C:\\\\Users\\\\Tim Hu...
 #29 /home/merlijn/PhpstormProjects/nz-evenementenregistratie/server.php(21): require_once('/home/merlijn/P...')
 #30 {main}
 "} 
+[2020-04-21 12:57:07] local.ERROR: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'name' cannot be null (SQL: insert into `users` (`name`, `email`, `password`, `role_id`, `email_verified_at`, `updated_at`, `created_at`) values (?, ?, $2y$10$my54Khm0B9TRqOwx0kXipugxvpxLwUnKfUdhpM7jbuczw/tjxHv5q, 1, 2020-04-21 12:57:06, 2020-04-21 12:57:06, 2020-04-21 12:57:06)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 23000): SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'name' cannot be null (SQL: insert into `users` (`name`, `email`, `password`, `role_id`, `email_verified_at`, `updated_at`, `created_at`) values (?, ?, $2y$10$my54Khm0B9TRqOwx0kXipugxvpxLwUnKfUdhpM7jbuczw/tjxHv5q, 1, 2020-04-21 12:57:06, 2020-04-21 12:57:06, 2020-04-21 12:57:06)) at C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:671)
+[stacktrace]
+#0 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(631): Illuminate\\Database\\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#1 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(465): Illuminate\\Database\\Connection->run('insert into `us...', Array, Object(Closure))
+#2 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(417): Illuminate\\Database\\Connection->statement('insert into `us...', Array)
+#3 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\Processor.php(32): Illuminate\\Database\\Connection->insert('insert into `us...', Array)
+#4 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(2724): Illuminate\\Database\\Query\\Processors\\Processor->processInsertGetId(Object(Illuminate\\Database\\Query\\Builder), 'insert into `us...', Array, 'id')
+#5 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(1381): Illuminate\\Database\\Query\\Builder->insertGetId(Array, 'id')
+#6 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(865): Illuminate\\Database\\Eloquent\\Builder->__call('insertGetId', Array)
+#7 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(830): Illuminate\\Database\\Eloquent\\Model->insertAndSetId(Object(Illuminate\\Database\\Eloquent\\Builder), Array)
+#8 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(693): Illuminate\\Database\\Eloquent\\Model->performInsert(Object(Illuminate\\Database\\Eloquent\\Builder))
+#9 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\app\\Console\\Commands\\GenerateAdminUser.php(56): Illuminate\\Database\\Eloquent\\Model->save()
+#10 [internal function]: App\\Console\\Commands\\GenerateAdminUser->handle()
+#11 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(32): call_user_func_array(Array, Array)
+#12 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#13 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#14 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#15 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#16 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(134): Illuminate\\Container\\Container->call(Array)
+#17 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Command\\Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#18 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#19 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#20 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(App\\Console\\Commands\\GenerateAdminUser), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#21 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#22 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#24 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#25 {main}
+
+[previous exception] [object] (PDOException(code: 23000): SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'name' cannot be null at C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:464)
+[stacktrace]
+#0 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(464): PDOStatement->execute()
+#1 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(664): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('insert into `us...', Array)
+#2 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(631): Illuminate\\Database\\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#3 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(465): Illuminate\\Database\\Connection->run('insert into `us...', Array, Object(Closure))
+#4 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(417): Illuminate\\Database\\Connection->statement('insert into `us...', Array)
+#5 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\Processor.php(32): Illuminate\\Database\\Connection->insert('insert into `us...', Array)
+#6 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(2724): Illuminate\\Database\\Query\\Processors\\Processor->processInsertGetId(Object(Illuminate\\Database\\Query\\Builder), 'insert into `us...', Array, 'id')
+#7 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(1381): Illuminate\\Database\\Query\\Builder->insertGetId(Array, 'id')
+#8 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(865): Illuminate\\Database\\Eloquent\\Builder->__call('insertGetId', Array)
+#9 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(830): Illuminate\\Database\\Eloquent\\Model->insertAndSetId(Object(Illuminate\\Database\\Eloquent\\Builder), Array)
+#10 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(693): Illuminate\\Database\\Eloquent\\Model->performInsert(Object(Illuminate\\Database\\Eloquent\\Builder))
+#11 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\app\\Console\\Commands\\GenerateAdminUser.php(56): Illuminate\\Database\\Eloquent\\Model->save()
+#12 [internal function]: App\\Console\\Commands\\GenerateAdminUser->handle()
+#13 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(32): call_user_func_array(Array, Array)
+#14 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#15 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#16 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#17 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#18 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(134): Illuminate\\Container\\Container->call(Array)
+#19 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Command\\Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#20 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#21 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(912): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#22 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(264): Symfony\\Component\\Console\\Application->doRunCommand(Object(App\\Console\\Commands\\GenerateAdminUser), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\symfony\\console\\Application.php(140): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#24 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#25 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 C:\\Users\\lemme\\PhpstormProjects\
+z-evenementenregistratie\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 {main}
 [2020-04-21 11:31:40] local.ERROR: syntax error, unexpected 'use' (T_USE), expecting ',' or ';' {"userId":1,"exception":"[object] (ParseError(code: 0): syntax error, unexpected 'use' (T_USE), expecting ',' or ';' at C:\\Users\\Plug\\Desktop\
 z-evenementenregistratie\\app\\Policies\\ProfilePolicy.php:6)
 [stacktrace]
