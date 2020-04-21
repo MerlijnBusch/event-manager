@@ -101,7 +101,7 @@ class EventController extends Controller
     {
         $this->authorize('write', Event::class);
 
-        $event = Event::findOrFail($event);
+        $event = Event::findOrFail($event->id);
         $event->delete();
 
         return response()->json(['message' => 'Event deleted successfully']);
