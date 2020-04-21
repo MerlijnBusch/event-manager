@@ -52,8 +52,8 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "heroku-postbuild": "npm run prod",
         "post-autoload-dump": [
-            "@npm run dev",
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
         ],
