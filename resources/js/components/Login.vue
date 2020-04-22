@@ -1,8 +1,5 @@
 <template>
-    <div class="login-holder">
-        <div class="login-screen column-desktop-4">
-
-            <form
+                <form
                     id="app"
                     @submit="checkForm"
                     method="post"

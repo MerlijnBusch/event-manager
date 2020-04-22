@@ -311,45 +311,13 @@ html {
   width: 80%;
 }
 
-.login-holder {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  z-index: 99;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.75);
-}
-
 .login-title {
   font-size: 32px;
   letter-spacing: 0.2px;
 }
 
-.login-screen {
-  display: block;
-  text-align: center;
-  position: relative;
-  background-color: #1F1F1F;
-  color: #E6A65C;
-  padding: 32px 150px;
-  border-radius: 10px;
-}
-
-.login-screen .btn-close-modal {
-  margin-bottom: 25px;
-  margin-top: 5px;
-  margin-left: 80%;
-  border-radius: 5px;
-  background-color: #1F1F1F;
-  color: #E6A65C;
-}
-
-.login-screen .text-input,
-.login-screen .submit-btn {
+.text-input,
+.submit-btn {
   padding: 10px;
   border-radius: 5px;
   background: white;
@@ -357,23 +325,23 @@ html {
   width: 100%;
 }
 
-.login-screen .text-input:hover,
-.login-screen .submit-btn:hover {
+.text-input:hover,
+.submit-btn:hover {
   border: solid 2px #E6A65C;
 }
 
-.login-screen .submit-btn {
+.submit-btn {
   cursor: pointer;
   font-weight: 500;
   background-color: #1F1F1F;
   color: #FFFFFF;
 }
 
-.login-screen .submit-btn:hover {
+.submit-btn:hover {
   background-color: #0F0F0F;
 }
 
-.login-screen .login-label {
+.login-label {
   font-weight: 300;
   color: #767676;
   display: block;
@@ -405,7 +373,7 @@ html {
   height: 3px;
   background-color: transparent;
   position: absolute;
-  top: calc( 50% - 24px / 16 );
+  top: calc(50% - 24px / 16);
 }
 
 .login-close > div > div:before,
@@ -421,6 +389,38 @@ html {
 
 .login-close > div > div:after {
   transform: rotate(45deg);
+}
+
+.modal_holder {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal_screen {
+  display: block;
+  text-align: center;
+  position: relative;
+  background-color: #1F1F1F;
+  color: #E6A65C;
+  padding: 32px 150px;
+  border-radius: 10px;
+}
+
+.btn-close-modal {
+  margin-bottom: 25px;
+  margin-top: 5px;
+  margin-left: 80%;
+  border-radius: 5px;
+  background-color: #1F1F1F;
+  color: #E6A65C;
 }
 
 body {

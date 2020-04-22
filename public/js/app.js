@@ -1984,9 +1984,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2044,6 +2041,13 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Login */ "./resources/js/components/Login.vue");
 /* harmony import */ var _ForgotPassword__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ForgotPassword */ "./resources/js/components/ForgotPassword.vue");
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -37919,105 +37923,99 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "login-holder" }, [
-    _c("div", { staticClass: "login-screen column-desktop-4" }, [
-      _c(
-        "form",
-        { attrs: { id: "app", method: "post" }, on: { submit: _vm.checkForm } },
-        [
-          _vm.errors.length
-            ? _c("div", [
-                _c("b", [_vm._v("Please correct the following error(s):")]),
-                _vm._v(" "),
-                _c(
-                  "ul",
-                  _vm._l(_vm.errors, function(error) {
-                    return _c("li", [_vm._v(_vm._s(error))])
-                  }),
-                  0
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _c("h2", { staticClass: "login-title" }, [
-            _vm._v("\n                Login user\n            ")
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _c(
-              "label",
-              { staticClass: "login-label", attrs: { for: "email" } },
-              [_vm._v("email")]
-            ),
+  return _c(
+    "form",
+    { attrs: { id: "app", method: "post" }, on: { submit: _vm.checkForm } },
+    [
+      _vm.errors.length
+        ? _c("div", [
+            _c("b", [_vm._v("Please correct the following error(s):")]),
             _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.email,
-                  expression: "email"
-                }
-              ],
-              staticClass: "text-input",
-              attrs: {
-                id: "email",
-                type: "email",
-                name: "email",
-                placeholder: "Email"
-              },
-              domProps: { value: _vm.email },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.email = $event.target.value
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("p", [
             _c(
-              "label",
-              { staticClass: "login-label", attrs: { for: "password" } },
-              [_vm._v("password")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.password,
-                  expression: "password"
-                }
-              ],
-              staticClass: "text-input",
-              attrs: {
-                id: "password",
-                type: "password",
-                name: "password",
-                placeholder: "Password"
-              },
-              domProps: { value: _vm.password },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.password = $event.target.value
-                }
+              "ul",
+              _vm._l(_vm.errors, function(error) {
+                return _c("li", [_vm._v(_vm._s(error))])
+              }),
+              0
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("h2", { staticClass: "login-title" }, [
+        _vm._v("\n                Login user\n            ")
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _c("label", { staticClass: "login-label", attrs: { for: "email" } }, [
+          _vm._v("email")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.email,
+              expression: "email"
+            }
+          ],
+          staticClass: "text-input",
+          attrs: {
+            id: "email",
+            type: "email",
+            name: "email",
+            placeholder: "Email"
+          },
+          domProps: { value: _vm.email },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
               }
-            })
-          ]),
-          _vm._v(" "),
-          _vm._m(0)
-        ]
-      )
-    ])
-  ])
+              _vm.email = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _c(
+          "label",
+          { staticClass: "login-label", attrs: { for: "password" } },
+          [_vm._v("password")]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.password,
+              expression: "password"
+            }
+          ],
+          staticClass: "text-input",
+          attrs: {
+            id: "password",
+            type: "password",
+            name: "password",
+            placeholder: "Password"
+          },
+          domProps: { value: _vm.password },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.password = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
@@ -38053,51 +38051,53 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("button", { staticClass: "login-close", on: { click: _vm.close } }, [
-      _vm._m(0)
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      [
-        _vm.selectroute === "login"
-          ? _c("login")
-          : _vm.selectroute === "ForgotPassword"
-          ? _c("forgot-password")
-          : _vm._e()
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c("div", [
-      _vm.selectroute !== "login"
-        ? _c(
-            "button",
-            {
-              on: {
-                click: function($event) {
-                  _vm.selectroute = "login"
-                }
-              }
-            },
-            [_vm._v("Login")]
-          )
-        : _vm._e(),
+  return _c("div", { staticClass: "modal_holder" }, [
+    _c("div", { staticClass: "modal_screen column-desktop-4" }, [
+      _c("button", { staticClass: "login-close", on: { click: _vm.close } }, [
+        _vm._m(0)
+      ]),
       _vm._v(" "),
-      _vm.selectroute !== "ForgotPassword"
-        ? _c(
-            "button",
-            {
-              on: {
-                click: function($event) {
-                  _vm.selectroute = "ForgotPassword"
+      _c(
+        "div",
+        [
+          _vm.selectroute === "login"
+            ? _c("login")
+            : _vm.selectroute === "ForgotPassword"
+            ? _c("forgot-password")
+            : _vm._e()
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", [
+        _vm.selectroute !== "login"
+          ? _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    _vm.selectroute = "login"
+                  }
                 }
-              }
-            },
-            [_vm._v("Forgot Password")]
-          )
-        : _vm._e()
+              },
+              [_vm._v("Login")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.selectroute !== "ForgotPassword"
+          ? _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    _vm.selectroute = "ForgotPassword"
+                  }
+                }
+              },
+              [_vm._v("Forgot Password\n            ")]
+            )
+          : _vm._e()
+      ])
     ])
   ])
 }
@@ -53927,8 +53927,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\nlz\nz-evenementenregistratie\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\wamp64\www\nlz\nz-evenementenregistratie\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Tim Huijkman\PhpstormProjects\nz-evenementenregistratie\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Tim Huijkman\PhpstormProjects\nz-evenementenregistratie\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

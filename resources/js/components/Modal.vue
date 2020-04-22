@@ -1,13 +1,20 @@
 <template>
-    <div>
-        <button @click="close" class="login-close"><div><div></div></div></button>
-        <div>
-            <login v-if="selectroute==='login'"></login>
-            <forgot-password v-else-if="selectroute==='ForgotPassword'"></forgot-password>
-        </div>
-        <div>
-            <button @click="selectroute='login'" v-if="selectroute!=='login'">Login</button>
-            <button @click="selectroute='ForgotPassword'" v-if="selectroute!=='ForgotPassword'">Forgot Password</button>
+    <div class="modal_holder">
+        <div class="modal_screen column-desktop-4">
+            <button @click="close" class="login-close">
+                <div>
+                    <div></div>
+                </div>
+            </button>
+            <div>
+                <login v-if="selectroute==='login'"></login>
+                <forgot-password v-else-if="selectroute==='ForgotPassword'"></forgot-password>
+            </div>
+            <div>
+                <button @click="selectroute='login'" v-if="selectroute!=='login'">Login</button>
+                <button @click="selectroute='ForgotPassword'" v-if="selectroute!=='ForgotPassword'">Forgot Password
+                </button>
+            </div>
         </div>
     </div>
 </template>
@@ -18,15 +25,15 @@
 
     export default {
         name: "Modal",
-        data(){
+        data() {
             return {
                 selectroute: "login"
 
             }
         },
-        components: {login,ForgotPassword},
-        methods:{
-            close(){
+        components: {login, ForgotPassword},
+        methods: {
+            close() {
                 this.$emit("close");
             }
         }
