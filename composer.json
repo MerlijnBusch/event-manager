@@ -65,8 +65,8 @@
         "post-install-cmd": [
             "php artisan clear-compiled",
             "php artisan migrate:fresh",
-            "php artisan rules:generate",
-            "php artisan rules:admin",
+            "php artisan roles:generate",
+            "php artisan roles:admin",
             "chmod -R 777 public/"
         ]
     }
