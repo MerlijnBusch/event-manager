@@ -62,7 +62,7 @@ class ProfileController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'phone_number' => [new PhoneNumberValidator, 'required_without_all:image'],
+            'phone_number' => ['string',new PhoneNumberValidator, 'required_without_all:image'],
             'image' => ['string',new UrlValidator, 'required_without_all:phone_number'],
         ]);
 
@@ -165,14 +165,6 @@ class ProfileController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        if (Profile::where('user_id', '=', Auth::id())->count() > 0) {
-            $profile = Profile::where('user_id', '=', Auth::id());
-            $profile->cv = $request->cv;
-            $profile->update();
-
-            return response()->json(['message' => 'Profile cv updated successfully'], 200);
-        }
-
         $profile = new Profile;
         $profile->user_id = Auth::id();
         $profile->cv = $request->cv;
@@ -182,4 +174,31 @@ class ProfileController extends Controller
 
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function updatecv(Request $request, Profile $profile)
+    {
+        $this->authorize('write', Profile::class);
+        $this->authorize('writeCV', Profile::class);
+    
+        $validator = Validator::make($request->all(), [
+            'cv' => [new HtmlValidator, 'required'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        $profile = Profile::findOrFail($profile->id);
+        $profile->user_id = Auth::id();
+        $profile->cv = $request->cv;
+        $profile->update();
+
+        return response()->json(['message' => 'CV updated successfully'], 200);
+    }
 }
