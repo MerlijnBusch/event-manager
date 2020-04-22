@@ -1,7 +1,7 @@
 <template>
     <div>
         <NavBar @openLogin="openLogin" :loggedIn="loggedIn"></NavBar>
-        <login v-if="modal_login_open" @loggedIn="loggedInHandler" @close="closeLogin"></login>
+        <Modal v-if="modal_open" @loggedIn="loggedInHandler" @close="closeLogin"></Modal>
         <div class="main">
             <router-view></router-view>
         </div>
@@ -10,27 +10,27 @@
 
 <script>
     import NavBar from '../components/Navbar.vue'
-    import login from '../components/Login.vue'
+    import Modal from '../components/Modal.vue'
 
     export default {
         data() {
             return {
                 loggedIn: false,
-                modal_login_open: false,
+                modal_open: false,
             }
         },
         methods:{
             openLogin(){
-                this.modal_login_open = true;
+                this.modal_open = true;
             },
           closeLogin(){
-              this.modal_login_open = false;
+              this.modal_open = false;
           },
             loggedInHandler (e){
               this.loggedIn = true;
               console.log(e);
             },
         },
-        components: {login, NavBar},
+        components: {Modal, NavBar},
     }
 </script>

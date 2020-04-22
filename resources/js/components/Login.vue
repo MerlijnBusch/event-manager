@@ -1,7 +1,7 @@
 <template>
     <div class="login-holder">
         <div class="login-screen column-desktop-4">
-        <button @click="close" class="login-close"><div><div></div></div></button>
+
             <form
                     id="app"
                     @submit="checkForm"
@@ -68,9 +68,6 @@
             }
         },
         methods: {
-            close(){
-                this.$emit("close");
-            },
             checkForm: function (e) {
                 this.errors = [];
 
