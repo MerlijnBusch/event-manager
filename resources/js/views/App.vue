@@ -1,6 +1,6 @@
 <template>
     <div>
-        <NavBar @openLogin="openLogin" :loggedIn="loggedIn"></NavBar>
+        <NavBar @logout="loggedIn = false" @openLogin="openLogin" :loggedIn="loggedIn"></NavBar>
         <Modal v-if="modal_open" @loggedIn="loggedInHandler" @close="closeLogin"></Modal>
         <div class="main">
             <router-view></router-view>

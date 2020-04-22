@@ -7,7 +7,7 @@
                 </div>
             </button>
             <div>
-                <login v-if="selectroute==='login'"></login>
+                <login @close="close" @loggedIn="loggedInHandler" v-if="selectroute==='login'"></login>
                 <forgot-password v-else-if="selectroute==='ForgotPassword'"></forgot-password>
             </div>
             <div>
@@ -35,7 +35,10 @@
         methods: {
             close() {
                 this.$emit("close");
-            }
+            },
+            loggedInHandler (e){
+                this.$emit("loggedIn", e);
+            },
         }
     }
 

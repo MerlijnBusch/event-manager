@@ -1982,8 +1982,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2008,7 +2006,7 @@ __webpack_require__.r(__webpack_exports__);
           if (response.status === 200) {
             _this.$emit("loggedIn", response.request.response);
 
-            _this.close();
+            _this.$emit("close");
           }
         })["catch"](function (e) {
           _this.errors.push(e);
@@ -2078,6 +2076,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     close: function close() {
       this.$emit("close");
+    },
+    loggedInHandler: function loggedInHandler(e) {
+      this.$emit("loggedIn", e);
     }
   }
 });
@@ -2121,6 +2122,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['loggedIn'],
   watch: {
@@ -2132,6 +2134,10 @@ __webpack_require__.r(__webpack_exports__);
     openLogin: function openLogin() {
       this.siderbarIsOpen = false;
       this.$emit('openLogin');
+    },
+    logout: function logout() {
+      this.siderbarIsOpen = false;
+      this.$emit('logout');
     }
   },
   data: function data() {
@@ -37942,7 +37948,7 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       _c("h2", { staticClass: "login-title" }, [
-        _vm._v("\n                Login user\n            ")
+        _vm._v("\n        Login user\n    ")
       ]),
       _vm._v(" "),
       _c("p", [
@@ -38061,7 +38067,9 @@ var render = function() {
         "div",
         [
           _vm.selectroute === "login"
-            ? _c("login")
+            ? _c("login", {
+                on: { close: _vm.close, loggedIn: _vm.loggedInHandler }
+              })
             : _vm.selectroute === "ForgotPassword"
             ? _c("forgot-password")
             : _vm._e()
@@ -38189,7 +38197,7 @@ var render = function() {
               ? _c("button", { on: { click: _vm.openLogin } }, [
                   _vm._v("Login")
                 ])
-              : _vm._e()
+              : _c("button", { on: { click: _vm.logout } }, [_vm._v("Logout")])
           ],
           1
         )
@@ -38237,7 +38245,12 @@ var render = function() {
     [
       _c("NavBar", {
         attrs: { loggedIn: _vm.loggedIn },
-        on: { openLogin: _vm.openLogin }
+        on: {
+          logout: function($event) {
+            _vm.loggedIn = false
+          },
+          openLogin: _vm.openLogin
+        }
       }),
       _vm._v(" "),
       _vm.modal_open
