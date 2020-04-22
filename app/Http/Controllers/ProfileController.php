@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Profile;
+use App\Rules\HtmlValidator;
 use App\Rules\PhoneNumberValidator;
 use App\Rules\UrlValidator;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Auth;
-use App\Profile;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Access\AuthorizationException;
 
 class ProfileController extends Controller
 {
@@ -26,7 +26,7 @@ class ProfileController extends Controller
 
         $profiles = Profile::with('user')->get();
 
-        return response()->json($profiles);
+        return response()->json($profiles, 200);
     }
 
     /**
@@ -42,7 +42,7 @@ class ProfileController extends Controller
 
         $profile = Profile::findOrFail($profile->id)->with('user')->get();
 
-        return response()->json($profile);
+        return response()->json($profile, 200);
     }
 
 
@@ -76,7 +76,7 @@ class ProfileController extends Controller
         $profile->image = $request->image;
         $profile->save();
 
-        return response()->json(['message' => 'Profile created succesfully']);
+        return response()->json(['message' => 'Profile created succesfully'], 200);
     }
 
     /**
@@ -90,10 +90,6 @@ class ProfileController extends Controller
     public function update(Request $request, Profile $profile)
     {
         $this->authorize('write', Profile::class);
-
-        if (Profile::where('user_id', '=', Auth::id())->count() > 0) {
-            return response()->json(['message' => 'Profile already exist on this user']);
-        }
 
         $validator = Validator::make($request->all(), [
             'phone_number' => [new PhoneNumberValidator, 'required_without_all:image'],
@@ -112,7 +108,7 @@ class ProfileController extends Controller
 
         $name = $profile->user->name;
 
-        return response()->json(['message' => 'Profile ' . $name . ' updated successfully']);
+        return response()->json(['message' => 'Profile ' . $name . ' updated successfully'], 200);
     }
 
     /**
@@ -129,28 +125,61 @@ class ProfileController extends Controller
         $profile = Profile::findOrFail($profile->id);
         $profile->delete();
 
-        return response()->json(['message' => 'Profile deleted successfully']);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function storecv(Request $request)
-    {
-        //@todo merlijn
+        return response()->json(['message' => 'Profile deleted successfully'], 200);
     }
 
     /**
      * Display the specified resource.
      *
      * @param Profile $profile
-     * @return Response
+     * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function showcv(Profile $profile)
     {
-        //
+        $this->authorize('read', Profile::class);
+        $this->authorize('readCV', Profile::class);
+
+        $cv = Profile::findOrFail($profile->id)->pluck('cv');
+
+        return response()->json($cv, 200);
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function storecv(Request $request)
+    {
+        $this->authorize('write', Profile::class);
+        $this->authorize('writeCV', Profile::class);
+
+        $validator = Validator::make($request->all(), [
+            'cv' => [new HtmlValidator, 'required'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        if (Profile::where('user_id', '=', Auth::id())->count() > 0) {
+            $profile = Profile::where('user_id', '=', Auth::id());
+            $profile->cv = $request->cv;
+            $profile->update();
+
+            return response()->json(['message' => 'Profile cv updated successfully'], 200);
+        }
+
+        $profile = new Profile;
+        $profile->user_id = Auth::id();
+        $profile->cv = $request->cv;
+        $profile->save();
+
+        return response()->json(['message' => 'Profile cv created successfully'], 200);
+
+    }
+
 }
