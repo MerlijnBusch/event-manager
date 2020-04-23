@@ -4,8 +4,16 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\Response;
 
 class LoginController extends Controller
 {
@@ -41,8 +49,8 @@ class LoginController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse|\Symfony\Component\HttpFoundation\Response
-     * @throws \Illuminate\Validation\ValidationException
+     * @return JsonResponse|Response
+     * @throws ValidationException
      */
     public function login(Request $request)
     {
@@ -60,6 +68,10 @@ class LoginController extends Controller
         return $this->sendFailedLoginResponse($request);
     }
 
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function logout(Request $request)
     {
         $user = Auth::guard('api')->user();
@@ -70,5 +82,23 @@ class LoginController extends Controller
         }
 
         return response()->json(['data' => 'User logged out.'], 200);
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function refresh(Request $request)
+    {
+        $user = User::find(Auth::id());
+        $user->api_token = Hash::make(Str::random(120), [
+            'memory' => 1024,
+            'time' => 2,
+            'threads' => 2,
+        ]);
+        $user->api_token_expired_date = Carbon::now()->addHour();
+        $user->save();
+
+        return response()->json(['message' => $user->api_token], 200);
     }
 }

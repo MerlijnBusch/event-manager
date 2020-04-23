@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 
 import Home from '@/js/components/Home';
 import About from '@/js/components/About';
+import ResetPasswordForm from '@/js/components/ResetPasswordForm';
 
 Vue.use(VueRouter);
 
@@ -20,7 +21,12 @@ const router = new VueRouter({
             component: About
         },
         {
-            path: '/reset-password',
+            path: '/reset-password/:token',
+            name: 'reset-password-form',
+            component: ResetPasswordForm,
+            meta: {
+                auth: false
+            }
         }
 
     ]

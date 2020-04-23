@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 //use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -33,8 +35,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token','role_id','email_verified_at',
-
+        'password', 'remember_token','role_id','email_verified_at', 'api_token_expired_date',
     ];
 
     /**
@@ -58,9 +59,13 @@ class User extends Authenticatable
 
     }
 
-    public function generateToken()
-    {
-        $this->api_token = Str::random(60);
+    public function generateToken() {
+        $this->api_token = Hash::make(Str::random(120), [
+            'memory' => 1024,
+            'time' => 2,
+            'threads' => 2,
+        ]);
+        $this->api_token_expired_date = Carbon::now()->addHour();
         $this->save();
 
         return $this->api_token;

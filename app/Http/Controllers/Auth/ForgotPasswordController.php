@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Foundation\Auth\ResetsPasswords;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
+
 
 class ForgotPasswordController extends Controller
 {
@@ -22,7 +23,7 @@ class ForgotPasswordController extends Controller
 
     use SendsPasswordResetEmails;
 
-    public function sendPasswordResetLink(Request $request)
+    public function sendPasswordResetLink(\Illuminate\Http\Request $request )
     {
         return $this->sendResetLinkEmail($request);
     }

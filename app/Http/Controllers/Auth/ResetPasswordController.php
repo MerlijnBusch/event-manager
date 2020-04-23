@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
-use Illuminate\Http\Client\Request;
+use Illuminate\Http\Request;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 
@@ -40,7 +40,7 @@ class ResetPasswordController extends Controller
     protected function resetPassword($user, $password)
     {
         $user->password = Hash::make($password);
-        $user->save();
+        $user->update();
         event(new PasswordReset($user));
     }
     protected function sendResetResponse(Request $request, $response)
