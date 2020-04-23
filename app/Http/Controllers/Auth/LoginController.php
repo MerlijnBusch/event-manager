@@ -65,7 +65,7 @@ class LoginController extends Controller
             ]);
         }
 
-        return $this->sendFailedLoginResponse($request);
+        return response()->json(['message' => 'Login failed']);
     }
 
     /**

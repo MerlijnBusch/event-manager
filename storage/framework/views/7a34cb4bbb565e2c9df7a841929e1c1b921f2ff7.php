@@ -9,11 +9,10 @@
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
     <title>Document</title>
-
-    <link href="<?php echo e(mix('css/app.css')); ?>">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="<?php echo e(mix('css/app.css')); ?>">
 </head>
 <body>
-
     <div id="app"></div>
 
 
