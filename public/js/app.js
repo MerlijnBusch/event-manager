@@ -1908,12 +1908,42 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "ForgotPassword"
+  name: "ForgotPassword",
+  data: function data() {
+    return {
+      email: 'user@example.com',
+      has_error: false
+    };
+  },
+  methods: {
+    requestResetPassword: function requestResetPassword() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/reset-password", {
+        email: this.email
+      }).then(function (result) {
+        _this.response = result.data;
+        console.log(result.data);
+      }, function (error) {
+        console.error(error);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -37874,7 +37904,57 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Forgot Password")])
+  return _c(
+    "form",
+    {
+      attrs: { autocomplete: "off", method: "post" },
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.requestResetPassword($event)
+        }
+      }
+    },
+    [
+      _c("h1", [_vm._v("Forgot Password")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "email" } }, [_vm._v("E-mail")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.email,
+              expression: "email"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "email",
+            id: "email",
+            placeholder: "user@example.com",
+            required: ""
+          },
+          domProps: { value: _vm.email },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.email = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "btn btn-primary",
+        attrs: { type: "submit", value: "Send Password Reset Link" }
+      })
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -53830,6 +53910,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _js_components_Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/js/components/Home */ "./resources/js/components/Home.vue");
 /* harmony import */ var _js_components_About__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/js/components/About */ "./resources/js/components/About.vue");
+/* harmony import */ var _js_components_ForgotPassword__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/js/components/ForgotPassword */ "./resources/js/components/ForgotPassword.vue");
+
 
 
 
@@ -53845,9 +53927,15 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/about',
     name: 'about',
     component: _js_components_About__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }, {
-    path: '/reset-password'
-  }]
+  } // Moet in modal. {
+  //     path: '/reset-password/:token',
+  //     name: 'reset-password-form',
+  //     component: ResetPasswordForm,
+  //     meta: {
+  //         auth:false
+  //     }
+  // }
+  ]
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
 

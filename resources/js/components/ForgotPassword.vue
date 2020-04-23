@@ -1,25 +1,28 @@
 <template>
-    <h1>Forgot Password</h1>
-</template>
     <form autocomplete="off" @submit.prevent="requestResetPassword" method="post">
+        <h1>Forgot Password</h1>
         <div class="form-group">
             <label for="email">E-mail</label>
             <input type="email" id="email" class="form-control" placeholder="user@example.com" v-model="email" required>
         </div>
-        <button type="submit" class="btn btn-primary">Send Password Reset Link</button>
+        <input type="submit" class="btn btn-primary" value="Send Password Reset Link">
     </form>
+</template>
+
 <script>
+    import axios from 'axios';
+
     export default {
         name: "ForgotPassword",
         data() {
             return {
-                email: null,
+                email: 'user@example.com',
                 has_error: false
             }
         },
         methods: {
             requestResetPassword() {
-                this.$http.post("/reset-password", {email: this.email}).then(result => {
+                axios.post("/api/reset-password", {email: this.email}).then(result => {
                     this.response = result.data;
                     console.log(result.data);
                 }, error => {
