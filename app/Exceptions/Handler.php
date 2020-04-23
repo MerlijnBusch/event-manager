@@ -3,6 +3,8 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Request;
@@ -54,16 +56,23 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        // This will replace our 404 response with
-        // a JSON response.
-        if ($exception instanceof ModelNotFoundException &&
-            $request->wantsJson())
-        {
-            return response()->json([
-                'data' => 'Resource not found'
-            ], 404);
+        if ($exception instanceof ModelNotFoundException && $request->wantsJson()) {
+            return $this->message('Resource not found', 404);
         }
 
+        if($request->is('api/*')){
+            if($exception instanceof ModelNotFoundException){
+                return $this->message('Resource not found', 404);
+            } else if($exception instanceof AuthenticationException){
+                return $this->message('User is not Authenticated', 403);
+            } else if($exception instanceof AuthorizationException){
+                return $this->message('User is not Authorized to perform this action', 403);
+            }
+        }
         return parent::render($request, $exception);
+    }
+
+    private function message($message, $status){
+        return response()->json(['message' => $message], $status);
     }
 }
