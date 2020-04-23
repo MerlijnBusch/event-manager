@@ -406,6 +406,36 @@ html {
   border: solid 2px #E6A65C;
 }
 
+.form-forgot-pass input {
+  padding: 10px;
+  margin-bottom: 25px;
+  border-radius: 5px;
+  background: white;
+  border: solid 2px #767676;
+  width: 100%;
+}
+
+.form-forgot-pass input:hover {
+  border: solid 2px #E6A65C;
+}
+
+.form-forgot-pass input[type=email] {
+  margin-top: 10px;
+}
+
+.form-forgot-pass .btn-pass-reset {
+  cursor: pointer;
+  font-weight: 500;
+  background-color: #1F1F1F;
+  color: #FFFFFF;
+  border: solid 2px #767676;
+  width: 100%;
+}
+
+.form-forgot-pass .btn-pass-reset:hover {
+  background-color: #0F0F0F;
+}
+
 .modal_holder {
   position: fixed;
   width: 100vw;

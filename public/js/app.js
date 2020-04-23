@@ -37970,6 +37970,7 @@ var render = function() {
   return _c(
     "form",
     {
+      staticClass: "form-forgot-pass",
       attrs: { autocomplete: "off", method: "post" },
       on: {
         submit: function($event) {
@@ -38013,7 +38014,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("input", {
-        staticClass: "btn btn-primary",
+        staticClass: "btn btn-primary btn-pass-reset",
         attrs: { type: "submit", value: "Send Password Reset Link" }
       })
     ]
