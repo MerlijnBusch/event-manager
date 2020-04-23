@@ -3,24 +3,12 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
 Route::post('login', 'Auth\LoginController@login');
 Route::post('register', 'Auth\RegisterController@register');
 Route::post('reset-password', 'Auth\ForgotPasswordController@sendPasswordResetLink');
 Route::post('reset/password', 'Auth\ResetPasswordController@callResetPassword');
+
 Route::group(['middleware' => 'auth:api'], function () {
-    Route::get('/test', function (Request $request) {
-        return 'test';
-    });
 
     Route::post('logout', 'Auth\LoginController@logout');
 
@@ -39,6 +27,12 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('profile-cv/{profile}', 'ProfileController@showcv')->name('profile.cv.show');
     Route::post('profile-cv', 'ProfileController@storecv')->name('profile.cv.store');
     Route::patch('profile-cv/update/{profile}','ProfileController@updatecv')->name('profile.cv.update');
+
+    Route::get('role', 'RoleController@index')->name('role');
+    Route::get('role/{role}', 'RoleController@show')->name('role.show');
+    Route::post('role', 'RoleController@store')->name('role.store');
+    Route::patch('role/{role}', 'RoleController@update')->name('role.update');
+    Route::delete('role/{role}', 'RoleController@destroy')->name('profile.destroy');
 
 });
 

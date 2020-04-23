@@ -3,83 +3,119 @@
 namespace App\Http\Controllers;
 
 use App\Role;
+use App\Rules\ColorValidator;
+use App\Rules\PermissionExistValidator;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function index()
     {
-        //
-    }
+        $this->authorize('read', Role::class);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+        $roles = Role::all();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return response()->json($roles, 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Role  $role
-     * @return \Illuminate\Http\Response
+     * @param Role $role
+     * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function show(Role $role)
     {
-        //
+        $this->authorize('read', Role::class);
+
+        return response()->json($role, 200);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Store a newly created resource in storage.
      *
-     * @param  \App\Role  $role
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return JsonResponse
+     * @throws AuthorizationException
      */
-    public function edit(Role $role)
+    public function store(Request $request)
     {
-        //
+        $this->authorize('write', Role::class);
+
+        $validator = Validator::make($request->all(), [
+            'role_name' => ['string', 'required', 'max:100'],
+            'color' => ['string', new ColorValidator],
+            'permissions' => [new PermissionExistValidator],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        $role = new Role;
+        $role->role_name = $request->role_name;
+        $role->color = $request->color;
+        $role->permissions = json_encode($request->permissions);
+        $role->save();
+
+        return response()->json(['message' => 'Role created successfully'], 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Role  $role
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Role $role
+     * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function update(Request $request, Role $role)
     {
-        //
+        $this->authorize('write', Role::class);
+
+        $validator = Validator::make($request->all(), [
+            'role_name' => ['string', 'required', 'max:100'],
+            'color' => ['string', new ColorValidator],
+            'permissions' => [new PermissionExistValidator],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        $role = Role::findOrFail($role->id);
+        $role->role_name = $request->role_name;
+        $role->color = $request->color;
+        $role->permissions = json_encode($request->permissions);
+        $role->update();
+
+        return response()->json(['message' => 'Role updated successfully'], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Role  $role
-     * @return \Illuminate\Http\Response
+     * @param Role $role
+     * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function destroy(Role $role)
     {
-        //
+        $this->authorize('write', Role::class);
+
+        $role = Role::findOrFail($role->id);
+        $role->delete();
+
+        return response()->json(['message' => 'Role deleted successfully']);
     }
 }

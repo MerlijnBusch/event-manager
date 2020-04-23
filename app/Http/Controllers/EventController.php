@@ -33,6 +33,7 @@ class EventController extends Controller
     public function show(Event $event)
     {
         $this->authorize('read', Event::class);
+
         return response()->json($event);
     }
 
