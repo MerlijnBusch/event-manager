@@ -83,22 +83,4 @@ class LoginController extends Controller
 
         return response()->json(['data' => 'User logged out.'], 200);
     }
-
-    /**
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function refresh(Request $request)
-    {
-        $user = User::find(Auth::id());
-        $user->api_token = Hash::make(Str::random(120), [
-            'memory' => 1024,
-            'time' => 2,
-            'threads' => 2,
-        ]);
-        $user->api_token_expired_date = Carbon::now()->addHour();
-        $user->save();
-
-        return response()->json(['message' => $user->api_token], 200);
-    }
 }
