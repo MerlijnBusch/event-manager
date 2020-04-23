@@ -20,6 +20,7 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
         return 'test';
     });
 
+    Route::post('refresh-token','Auth\LoginController@refresh');
     Route::post('logout', 'Auth\LoginController@logout');
 
     Route::get('event', 'EventController@index')->name('event');

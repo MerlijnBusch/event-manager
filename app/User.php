@@ -3,6 +3,7 @@
 namespace App;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 //use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -59,8 +60,7 @@ class User extends Authenticatable
 
     }
 
-    public function generateToken()
-    {
+    public function generateToken() {
         $this->api_token = Hash::make(Str::random(120), [
             'memory' => 1024,
             'time' => 2,
