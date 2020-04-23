@@ -38201,55 +38201,62 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "modal_holder" }, [
-    _c("div", { staticClass: "modal_screen column-desktop-4" }, [
-      _c("button", { staticClass: "login-close", on: { click: _vm.close } }, [
-        _vm._m(0)
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        [
-          _vm.selectroute === "login"
-            ? _c("login", {
-                on: { close: _vm.close, loggedIn: _vm.loggedInHandler }
-              })
-            : _vm.selectroute === "ForgotPassword"
-            ? _c("forgot-password")
-            : _vm._e()
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", [
-        _vm.selectroute !== "login"
-          ? _c(
-              "button",
-              {
-                on: {
-                  click: function($event) {
-                    _vm.selectroute = "login"
-                  }
-                }
-              },
-              [_vm._v("Login")]
-            )
-          : _vm._e(),
+    _c(
+      "div",
+      {
+        staticClass:
+          "modal_screen column-desktop-4 column-tablet-9 column-mobile-12"
+      },
+      [
+        _c("button", { staticClass: "login-close", on: { click: _vm.close } }, [
+          _vm._m(0)
+        ]),
         _vm._v(" "),
-        _vm.selectroute !== "ForgotPassword"
-          ? _c(
-              "button",
-              {
-                on: {
-                  click: function($event) {
-                    _vm.selectroute = "ForgotPassword"
+        _c(
+          "div",
+          [
+            _vm.selectroute === "login"
+              ? _c("login", {
+                  on: { close: _vm.close, loggedIn: _vm.loggedInHandler }
+                })
+              : _vm.selectroute === "ForgotPassword"
+              ? _c("forgot-password")
+              : _vm._e()
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "btn-forgot-pass" }, [
+          _vm.selectroute !== "login"
+            ? _c(
+                "button",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.selectroute = "login"
+                    }
                   }
-                }
-              },
-              [_vm._v("Forgot Password\n            ")]
-            )
-          : _vm._e()
-      ])
-    ])
+                },
+                [_vm._v("Login")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.selectroute !== "ForgotPassword"
+            ? _c(
+                "button",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.selectroute = "ForgotPassword"
+                    }
+                  }
+                },
+                [_vm._v("Forgot Password\n            ")]
+              )
+            : _vm._e()
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -54298,8 +54305,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\nlz\nz-evenementenregistratie\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\wamp64\www\nlz\nz-evenementenregistratie\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\lemme\PhpstormProjects\nz-evenementenregistratie\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\lemme\PhpstormProjects\nz-evenementenregistratie\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

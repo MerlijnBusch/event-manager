@@ -1,6 +1,6 @@
 <template>
     <div class="modal_holder">
-        <div class="modal_screen column-desktop-4">
+        <div class="modal_screen column-desktop-4 column-tablet-9 column-mobile-12">
             <button @click="close" class="login-close">
                 <div>
                     <div></div>
@@ -10,7 +10,7 @@
                 <login @close="close" @loggedIn="loggedInHandler" v-if="selectroute==='login'"></login>
                 <forgot-password v-else-if="selectroute==='ForgotPassword'"></forgot-password>
             </div>
-            <div>
+            <div class="btn-forgot-pass">
                 <button @click="selectroute='login'" v-if="selectroute!=='login'">Login</button>
                 <button @click="selectroute='ForgotPassword'" v-if="selectroute!=='ForgotPassword'">Forgot Password
                 </button>
