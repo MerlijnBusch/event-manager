@@ -16,7 +16,9 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "nesbot/carbon": "^2.32",
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-libxml": "*",
+        "ext-dom": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
@@ -61,6 +63,13 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "post-install-cmd": [
+            "php artisan clear-compiled",
+            "php artisan migrate:fresh",
+            "php artisan roles:generate",
+            "php artisan roles:admin",
+            "chmod -R 777 public/"
         ]
     }
 }

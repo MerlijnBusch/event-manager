@@ -38,6 +38,7 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     Route::get('profile-cv/{profile}', 'ProfileController@showcv')->name('profile.cv.show');
     Route::post('profile-cv', 'ProfileController@storecv')->name('profile.cv.store');
+    Route::patch('profile-cv/update/{profile}','ProfileController@updatecv')->name('profile.cv.update');
 
 });
 
