@@ -15,11 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 Route::post('login', 'Auth\LoginController@login');
 Route::post('register', 'Auth\RegisterController@register');
-Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
-    Route::get('/test', function (Request $request) {
-        return 'test';
-    });
+Route::post('reset-password', 'Auth\ForgotPasswordController@sendPasswordResetLink');
+Route::post('reset/password', 'Auth\ResetPasswordController@callResetPassword');
 
+Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::post('refresh-token','Auth\LoginController@refresh');
     Route::post('logout', 'Auth\LoginController@logout');
 

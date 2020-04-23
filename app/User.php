@@ -3,7 +3,6 @@
 namespace App;
 
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 //use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -70,5 +69,10 @@ class User extends Authenticatable
         $this->save();
 
         return $this->api_token;
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new \App\Notifications\MailResetPasswordNotification($token));
     }
 }
