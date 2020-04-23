@@ -4004,3 +4004,819 @@ z-evenementenregistratie\\server.php(21): require_once('C:\\\\wamp64\\\\www\\\
 ...')
 #39 {main}
 "} 
+[2020-04-23 11:12:40] local.ERROR: Unresolvable dependency resolving [Parameter #0 [ <required> $request ]] in class Illuminate\Http\Client\Request {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Unresolvable dependency resolving [Parameter #0 [ <required> $request ]] in class Illuminate\\Http\\Client\\Request at C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:995)
+[stacktrace]
+#0 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(933): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(874): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(687): Illuminate\\Container\\Container->build('Illuminate\\\\Http...')
+#4 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(794): Illuminate\\Container\\Container->resolve('Illuminate\\\\Http...', Array, true)
+#5 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(633): Illuminate\\Foundation\\Application->resolve('Illuminate\\\\Http...', Array)
+#6 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(779): Illuminate\\Container\\Container->make('Illuminate\\\\Http...', Array)
+#7 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteDependencyResolverTrait.php(80): Illuminate\\Foundation\\Application->make('Illuminate\\\\Http...')
+#8 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteDependencyResolverTrait.php(47): Illuminate\\Routing\\ControllerDispatcher->transformDependency(Object(ReflectionParameter), Array, Object(stdClass))
+#9 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteDependencyResolverTrait.php(27): Illuminate\\Routing\\ControllerDispatcher->resolveMethodDependencies(Array, Object(ReflectionMethod))
+#10 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(41): Illuminate\\Routing\\ControllerDispatcher->resolveClassMethodDependencies(Array, Object(App\\Http\\Controllers\\Auth\\ResetPasswordController), 'callResetPasswo...')
+#11 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(225): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(App\\Http\\Controllers\\Auth\\ResetPasswordController), 'callResetPasswo...')
+#12 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(182): Illuminate\\Routing\\Route->runController()
+#13 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(685): Illuminate\\Routing\\Route->run()
+#14 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#15 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(41): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#16 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#17 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php(59): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#18 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle(Object(Illuminate\\Http\\Request), Object(Closure), 60, '1')
+#19 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#20 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(687): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#21 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(662): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#22 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(628): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#23 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(617): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#24 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(165): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#25 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#26 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#27 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#34 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\fruitcake\\laravel-cors\\src\\HandleCors.php(36): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#35 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#36 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\fideloper\\proxy\\src\\TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#37 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#38 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#39 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(140): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#40 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(109): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#41 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#42 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\server.php(21): require_once('C:\\\\wamp64\\\\www\\\
+...')
+#43 {main}
+"} 
+[2020-04-23 11:12:42] local.ERROR: Unresolvable dependency resolving [Parameter #0 [ <required> $request ]] in class Illuminate\Http\Client\Request {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Unresolvable dependency resolving [Parameter #0 [ <required> $request ]] in class Illuminate\\Http\\Client\\Request at C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:995)
+[stacktrace]
+#0 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(933): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(874): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(687): Illuminate\\Container\\Container->build('Illuminate\\\\Http...')
+#4 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(794): Illuminate\\Container\\Container->resolve('Illuminate\\\\Http...', Array, true)
+#5 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(633): Illuminate\\Foundation\\Application->resolve('Illuminate\\\\Http...', Array)
+#6 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(779): Illuminate\\Container\\Container->make('Illuminate\\\\Http...', Array)
+#7 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteDependencyResolverTrait.php(80): Illuminate\\Foundation\\Application->make('Illuminate\\\\Http...')
+#8 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteDependencyResolverTrait.php(47): Illuminate\\Routing\\ControllerDispatcher->transformDependency(Object(ReflectionParameter), Array, Object(stdClass))
+#9 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteDependencyResolverTrait.php(27): Illuminate\\Routing\\ControllerDispatcher->resolveMethodDependencies(Array, Object(ReflectionMethod))
+#10 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(41): Illuminate\\Routing\\ControllerDispatcher->resolveClassMethodDependencies(Array, Object(App\\Http\\Controllers\\Auth\\ResetPasswordController), 'callResetPasswo...')
+#11 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(225): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(App\\Http\\Controllers\\Auth\\ResetPasswordController), 'callResetPasswo...')
+#12 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(182): Illuminate\\Routing\\Route->runController()
+#13 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(685): Illuminate\\Routing\\Route->run()
+#14 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#15 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(41): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#16 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#17 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php(59): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#18 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle(Object(Illuminate\\Http\\Request), Object(Closure), 60, '1')
+#19 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#20 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(687): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#21 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(662): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#22 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(628): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#23 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(617): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#24 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(165): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#25 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#26 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#27 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#34 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\fruitcake\\laravel-cors\\src\\HandleCors.php(36): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#35 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#36 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\fideloper\\proxy\\src\\TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#37 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#38 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#39 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(140): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#40 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(109): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#41 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#42 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\server.php(21): require_once('C:\\\\wamp64\\\\www\\\
+...')
+#43 {main}
+"} 
+[2020-04-23 11:12:43] local.ERROR: Unresolvable dependency resolving [Parameter #0 [ <required> $request ]] in class Illuminate\Http\Client\Request {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Unresolvable dependency resolving [Parameter #0 [ <required> $request ]] in class Illuminate\\Http\\Client\\Request at C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:995)
+[stacktrace]
+#0 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(933): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(874): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(687): Illuminate\\Container\\Container->build('Illuminate\\\\Http...')
+#4 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(794): Illuminate\\Container\\Container->resolve('Illuminate\\\\Http...', Array, true)
+#5 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(633): Illuminate\\Foundation\\Application->resolve('Illuminate\\\\Http...', Array)
+#6 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(779): Illuminate\\Container\\Container->make('Illuminate\\\\Http...', Array)
+#7 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteDependencyResolverTrait.php(80): Illuminate\\Foundation\\Application->make('Illuminate\\\\Http...')
+#8 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteDependencyResolverTrait.php(47): Illuminate\\Routing\\ControllerDispatcher->transformDependency(Object(ReflectionParameter), Array, Object(stdClass))
+#9 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteDependencyResolverTrait.php(27): Illuminate\\Routing\\ControllerDispatcher->resolveMethodDependencies(Array, Object(ReflectionMethod))
+#10 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(41): Illuminate\\Routing\\ControllerDispatcher->resolveClassMethodDependencies(Array, Object(App\\Http\\Controllers\\Auth\\ResetPasswordController), 'callResetPasswo...')
+#11 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(225): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(App\\Http\\Controllers\\Auth\\ResetPasswordController), 'callResetPasswo...')
+#12 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(182): Illuminate\\Routing\\Route->runController()
+#13 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(685): Illuminate\\Routing\\Route->run()
+#14 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#15 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(41): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#16 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#17 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php(59): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#18 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle(Object(Illuminate\\Http\\Request), Object(Closure), 60, '1')
+#19 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#20 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(687): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#21 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(662): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#22 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(628): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#23 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(617): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#24 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(165): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#25 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#26 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#27 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#34 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\fruitcake\\laravel-cors\\src\\HandleCors.php(36): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#35 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#36 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\fideloper\\proxy\\src\\TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#37 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#38 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#39 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(140): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#40 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(109): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#41 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#42 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\server.php(21): require_once('C:\\\\wamp64\\\\www\\\
+...')
+#43 {main}
+"} 
+[2020-04-23 11:12:43] local.ERROR: Unresolvable dependency resolving [Parameter #0 [ <required> $request ]] in class Illuminate\Http\Client\Request {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Unresolvable dependency resolving [Parameter #0 [ <required> $request ]] in class Illuminate\\Http\\Client\\Request at C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:995)
+[stacktrace]
+#0 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(933): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(874): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(687): Illuminate\\Container\\Container->build('Illuminate\\\\Http...')
+#4 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(794): Illuminate\\Container\\Container->resolve('Illuminate\\\\Http...', Array, true)
+#5 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(633): Illuminate\\Foundation\\Application->resolve('Illuminate\\\\Http...', Array)
+#6 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(779): Illuminate\\Container\\Container->make('Illuminate\\\\Http...', Array)
+#7 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteDependencyResolverTrait.php(80): Illuminate\\Foundation\\Application->make('Illuminate\\\\Http...')
+#8 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteDependencyResolverTrait.php(47): Illuminate\\Routing\\ControllerDispatcher->transformDependency(Object(ReflectionParameter), Array, Object(stdClass))
+#9 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteDependencyResolverTrait.php(27): Illuminate\\Routing\\ControllerDispatcher->resolveMethodDependencies(Array, Object(ReflectionMethod))
+#10 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(41): Illuminate\\Routing\\ControllerDispatcher->resolveClassMethodDependencies(Array, Object(App\\Http\\Controllers\\Auth\\ResetPasswordController), 'callResetPasswo...')
+#11 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(225): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(App\\Http\\Controllers\\Auth\\ResetPasswordController), 'callResetPasswo...')
+#12 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(182): Illuminate\\Routing\\Route->runController()
+#13 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(685): Illuminate\\Routing\\Route->run()
+#14 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#15 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(41): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#16 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#17 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php(59): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#18 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle(Object(Illuminate\\Http\\Request), Object(Closure), 60, '1')
+#19 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#20 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(687): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#21 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(662): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#22 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(628): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#23 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(617): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#24 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(165): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#25 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#26 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#27 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#34 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\fruitcake\\laravel-cors\\src\\HandleCors.php(36): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#35 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#36 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\fideloper\\proxy\\src\\TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#37 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#38 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#39 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(140): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#40 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(109): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#41 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#42 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\server.php(21): require_once('C:\\\\wamp64\\\\www\\\
+...')
+#43 {main}
+"} 
+[2020-04-23 11:12:44] local.ERROR: Unresolvable dependency resolving [Parameter #0 [ <required> $request ]] in class Illuminate\Http\Client\Request {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Unresolvable dependency resolving [Parameter #0 [ <required> $request ]] in class Illuminate\\Http\\Client\\Request at C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:995)
+[stacktrace]
+#0 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(933): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(874): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(687): Illuminate\\Container\\Container->build('Illuminate\\\\Http...')
+#4 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(794): Illuminate\\Container\\Container->resolve('Illuminate\\\\Http...', Array, true)
+#5 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(633): Illuminate\\Foundation\\Application->resolve('Illuminate\\\\Http...', Array)
+#6 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(779): Illuminate\\Container\\Container->make('Illuminate\\\\Http...', Array)
+#7 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteDependencyResolverTrait.php(80): Illuminate\\Foundation\\Application->make('Illuminate\\\\Http...')
+#8 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteDependencyResolverTrait.php(47): Illuminate\\Routing\\ControllerDispatcher->transformDependency(Object(ReflectionParameter), Array, Object(stdClass))
+#9 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteDependencyResolverTrait.php(27): Illuminate\\Routing\\ControllerDispatcher->resolveMethodDependencies(Array, Object(ReflectionMethod))
+#10 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(41): Illuminate\\Routing\\ControllerDispatcher->resolveClassMethodDependencies(Array, Object(App\\Http\\Controllers\\Auth\\ResetPasswordController), 'callResetPasswo...')
+#11 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(225): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(App\\Http\\Controllers\\Auth\\ResetPasswordController), 'callResetPasswo...')
+#12 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(182): Illuminate\\Routing\\Route->runController()
+#13 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(685): Illuminate\\Routing\\Route->run()
+#14 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#15 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(41): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#16 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#17 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php(59): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#18 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle(Object(Illuminate\\Http\\Request), Object(Closure), 60, '1')
+#19 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#20 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(687): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#21 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(662): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#22 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(628): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#23 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(617): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#24 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(165): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#25 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#26 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#27 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#34 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\fruitcake\\laravel-cors\\src\\HandleCors.php(36): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#35 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#36 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\fideloper\\proxy\\src\\TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#37 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#38 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#39 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(140): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#40 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(109): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#41 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#42 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\server.php(21): require_once('C:\\\\wamp64\\\\www\\\
+...')
+#43 {main}
+"} 
+[2020-04-23 11:13:34] local.ERROR: Unresolvable dependency resolving [Parameter #0 [ <required> $request ]] in class Illuminate\Http\Client\Request {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Unresolvable dependency resolving [Parameter #0 [ <required> $request ]] in class Illuminate\\Http\\Client\\Request at C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:995)
+[stacktrace]
+#0 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(933): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(874): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(687): Illuminate\\Container\\Container->build('Illuminate\\\\Http...')
+#4 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(794): Illuminate\\Container\\Container->resolve('Illuminate\\\\Http...', Array, true)
+#5 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(633): Illuminate\\Foundation\\Application->resolve('Illuminate\\\\Http...', Array)
+#6 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(779): Illuminate\\Container\\Container->make('Illuminate\\\\Http...', Array)
+#7 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteDependencyResolverTrait.php(80): Illuminate\\Foundation\\Application->make('Illuminate\\\\Http...')
+#8 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteDependencyResolverTrait.php(47): Illuminate\\Routing\\ControllerDispatcher->transformDependency(Object(ReflectionParameter), Array, Object(stdClass))
+#9 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteDependencyResolverTrait.php(27): Illuminate\\Routing\\ControllerDispatcher->resolveMethodDependencies(Array, Object(ReflectionMethod))
+#10 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php(41): Illuminate\\Routing\\ControllerDispatcher->resolveClassMethodDependencies(Array, Object(App\\Http\\Controllers\\Auth\\ResetPasswordController), 'callResetPasswo...')
+#11 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(225): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(App\\Http\\Controllers\\Auth\\ResetPasswordController), 'callResetPasswo...')
+#12 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(182): Illuminate\\Routing\\Route->runController()
+#13 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(685): Illuminate\\Routing\\Route->run()
+#14 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#15 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(41): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#16 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#17 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\ThrottleRequests.php(59): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#18 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Routing\\Middleware\\ThrottleRequests->handle(Object(Illuminate\\Http\\Request), Object(Closure), 60, '1')
+#19 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#20 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(687): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#21 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(662): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#22 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(628): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#23 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(617): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#24 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(165): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#25 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#26 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#27 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#34 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\fruitcake\\laravel-cors\\src\\HandleCors.php(36): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#35 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#36 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\fideloper\\proxy\\src\\TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#37 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#38 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#39 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(140): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#40 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(109): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#41 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#42 C:\\wamp64\\www\
+lz\
+z-evenementenregistratie\\server.php(21): require_once('C:\\\\wamp64\\\\www\\\
+...')
+#43 {main}
+"} 
