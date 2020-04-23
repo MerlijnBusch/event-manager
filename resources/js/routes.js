@@ -20,22 +20,14 @@ const router = new VueRouter({
             name: 'about',
             component: About
         },
-        {
-            path: '/reset-password',
-            name: 'reset-password',
-            component: ForgotPassword,
-            meta: {
-                auth:false
-            }
-        },
-        {
-            path: '/reset-password/:token',
-            name: 'reset-password-form',
-            component: ResetPasswordForm,
-            meta: {
-                auth:false
-            }
-        }
+        // Moet in modal. {
+        //     path: '/reset-password/:token',
+        //     name: 'reset-password-form',
+        //     component: ResetPasswordForm,
+        //     meta: {
+        //         auth:false
+        //     }
+        // }
 
     ]
 });

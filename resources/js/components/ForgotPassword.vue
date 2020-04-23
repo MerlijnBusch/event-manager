@@ -19,7 +19,7 @@
         },
         methods: {
             requestResetPassword() {
-                this.$http.post("/auth/reset-password", {email: this.email}).then(result => {
+                this.$http.post("/reset-password", {email: this.email}).then(result => {
                     this.response = result.data;
                     console.log(result.data);
                 }, error => {
