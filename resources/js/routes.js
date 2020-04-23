@@ -18,7 +18,11 @@ const router = new VueRouter({
             path: '/about',
             name: 'about',
             component: About
+        },
+        {
+            path: '/reset-password',
         }
+
     ]
 });
 

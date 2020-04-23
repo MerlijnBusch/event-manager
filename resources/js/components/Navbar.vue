@@ -21,6 +21,7 @@
                 <router-link to="/about">About</router-link>
                 <div class="sidenav-link-divider"></div>
                 <button v-if="!loggedIn" @click="openLogin">Login</button>
+                <button v-else @click="logout">Logout</button>
             </div>
         </div>
     </div>
@@ -40,6 +41,10 @@
             openLogin() {
                 this.siderbarIsOpen = false;
                 this.$emit('openLogin')
+            },
+            logout(){
+                this.siderbarIsOpen = false;
+                this.$emit('logout')
             }
         },
         data() {
