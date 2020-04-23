@@ -23,9 +23,8 @@ class ForgotPasswordController extends Controller
 
     use SendsPasswordResetEmails;
 
-    public function sendPasswordResetLink(Request $request)
+    public function sendPasswordResetLink(\Illuminate\Http\Request $request )
     {
-
         return $this->sendResetLinkEmail($request);
     }
 

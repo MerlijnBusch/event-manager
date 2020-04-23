@@ -2,6 +2,7 @@
 
 namespace App;
 
+
 use Illuminate\Support\Str;
 //use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -33,7 +34,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token','role_id','email_verified_at',
+        'password', 'remember_token', 'role_id', 'email_verified_at',
 
     ];
 
@@ -46,13 +47,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function profile(){
+    public function profile()
+    {
 
         return $this->hasOne('App\Profile', 'user_id');
 
     }
 
-    public function role(){
+    public function role()
+    {
 
         return $this->belongsTo('App\Role');
 
