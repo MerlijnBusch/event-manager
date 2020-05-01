@@ -27,9 +27,9 @@ class EventExistValidator implements Rule
     public function passes($attribute, $value)
     {
         if(Event::where('id', $value)->first() == null){
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     /**
