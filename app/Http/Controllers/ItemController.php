@@ -14,7 +14,10 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        $this->authorize('read', Event::class);
+
+        return response()->json(Event::all());
+    }
     }
 
     /**
