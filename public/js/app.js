@@ -37980,7 +37980,7 @@ var render = function() {
       }
     },
     [
-      _c("h1", [_vm._v("Forgot Password")]),
+      _c("h1", [_vm._v("Wachtwoord vergeten")]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c("label", { attrs: { for: "email" } }, [_vm._v("E-mail")]),
@@ -38015,7 +38015,7 @@ var render = function() {
       _vm._v(" "),
       _c("input", {
         staticClass: "btn btn-primary btn-pass-reset",
-        attrs: { type: "submit", value: "Send Password Reset Link" }
+        attrs: { type: "submit", value: "Stuur wachtwoord reset link" }
       })
     ]
   )
@@ -38092,12 +38092,12 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       _c("h2", { staticClass: "login-title" }, [
-        _vm._v("\n        Login user\n    ")
+        _vm._v("\n        Login\n    ")
       ]),
       _vm._v(" "),
       _c("p", [
         _c("label", { staticClass: "login-label", attrs: { for: "email" } }, [
-          _vm._v("email")
+          _vm._v("E-mail")
         ]),
         _vm._v(" "),
         _c("input", {
@@ -38132,7 +38132,7 @@ var render = function() {
         _c(
           "label",
           { staticClass: "login-label", attrs: { for: "password" } },
-          [_vm._v("password")]
+          [_vm._v("Wphpachtwoord")]
         ),
         _vm._v(" "),
         _c("input", {
@@ -38252,7 +38252,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("Forgot Password\n            ")]
+                [_vm._v("Wachtwoord vergeten\n            ")]
               )
             : _vm._e()
         ])

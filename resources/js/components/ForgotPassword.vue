@@ -1,11 +1,11 @@
 <template>
     <form autocomplete="off" @submit.prevent="requestResetPassword" method="post" class="form-forgot-pass">
-        <h1>Forgot Password</h1>
+        <h1>Wachtwoord vergeten</h1>
         <div class="form-group">
             <label for="email">E-mail</label>
             <input type="email" id="email" class="form-control" placeholder="user@example.com" v-model="email" required>
         </div>
-        <input type="submit" class="btn btn-primary btn-pass-reset" value="Send Password Reset Link">
+        <input type="submit" class="btn btn-primary btn-pass-reset" value="Stuur wachtwoord reset link">
     </form>
 </template>
 

@@ -12,7 +12,7 @@
             </div>
             <div class="btn-forgot-pass">
                 <button @click="selectroute='login'" v-if="selectroute!=='login'">Login</button>
-                <button @click="selectroute='ForgotPassword'" v-if="selectroute!=='ForgotPassword'">Forgot Password
+                <button @click="selectroute='ForgotPassword'" v-if="selectroute!=='ForgotPassword'">Wachtwoord vergeten
                 </button>
             </div>
         </div>
