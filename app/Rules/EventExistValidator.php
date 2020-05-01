@@ -2,7 +2,7 @@
 
 namespace App\Rules;
 
-use App\Map;
+use App\Event;
 use Illuminate\Contracts\Validation\Rule;
 
 class EventExistValidator implements Rule
@@ -26,7 +26,7 @@ class EventExistValidator implements Rule
      */
     public function passes($attribute, $value)
     {
-        if(Map::find($value)->first() == null){
+        if(Event::where('id', $value)->first() == null){
             return true;
         }
         return false;
