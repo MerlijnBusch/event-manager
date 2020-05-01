@@ -26,7 +26,7 @@ class EventExistValidator implements Rule
      */
     public function passes($attribute, $value)
     {
-        if(Map::find($value)->count() < 0){
+        if(Map::find($value)->first() == null){
             return true;
         }
         return false;
