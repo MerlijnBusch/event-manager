@@ -76,3 +76,24 @@
     }
   }
 }
+
+.login-forgotpassword{
+  width: 100%;
+  padding: 0;
+  margin: 0 !important;
+  text-align: right;
+  button{
+    background: none;
+    border: none;
+    color: $light;
+    text-decoration: underline;
+    &:hover{
+      color: $orange;
+    }
+  }
+}
+
+#app p {
+  margin: 0;
+  margin-top: 32px;
+}
