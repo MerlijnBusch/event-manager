@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Item;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ItemController extends Controller
 {
@@ -14,20 +17,9 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $this->authorize('read', Event::class);
+        $this->authorize('read', Item::class);
 
-        return response()->json(Event::all());
-    }
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return response()->json(Item::all());
     }
 
     /**
@@ -38,7 +30,23 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->authorize('write', Item::class);
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'type' => 'required|max:255',
+            'description' => 'required|min:10',
+            'event_id' => 'required|max:255',
+            'date' => 'required|date',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        Item::create($request->all());
+
+        return response()->json(['message' => 'Item created successfully']);
     }
 
     /**
@@ -49,18 +57,9 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        //
-    }
+        $this->authorize('read', Event::class);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Item  $item
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Item $item)
-    {
-        //
+        return response()->json($item);
     }
 
     /**
@@ -72,7 +71,24 @@ class ItemController extends Controller
      */
     public function update(Request $request, Item $item)
     {
-        //
+        $this->authorize('write', Item::class);
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'type' => 'required|max:255',
+            'description' => 'required|min:10',
+            'event_id' => 'required|max:255',
+            'date' => 'required|date',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        $event = Item::findOrFail($event->id);
+        $event->update($request->all());
+
+        return response()->json(['message' => 'Item ' . $item->name . ' updated successfully']);
     }
 
     /**
