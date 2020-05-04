@@ -26,9 +26,9 @@ class Event extends Model
 
     }
 
-    public function registrationEvent(){
+    public function settings(){
 
-        return $this->hasOne('App\RegistrationEventsSettings', 'event_id');
+        return $this->hasOne('App\EventSettings', 'event_id');
 
     }
 
