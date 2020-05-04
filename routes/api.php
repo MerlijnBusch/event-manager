@@ -19,8 +19,10 @@ Route::post('reset-password', 'Auth\ForgotPasswordController@sendPasswordResetLi
 Route::post('reset/password', 'Auth\ResetPasswordController@callResetPassword');
 
 Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
-    Route::get('refresh-token','UserController@updatetoken');
     Route::post('logout', 'Auth\LoginController@logout');
+
+    Route::get('refresh-token','UserController@updatetoken');
+    Route::post('/search/profile','UserController@search');
 
     Route::get('event', 'EventController@index')->name('event');
     Route::get('event/{event}', 'EventController@show')->name('event.show');
