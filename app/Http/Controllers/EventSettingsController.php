@@ -69,11 +69,18 @@ class EventSettingsController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        if (EventSettings::where('event_id', $request->event_id)->first() == null) {
+        if (EventSettings::where('event_id', $request->event_id)->first() != null) {
             return response()->json(['message' => 'Event Settings already exist for this Event'], 403);
         }
 
-        EventSettings::create($request->all());
+        $settings = new EventSettings;
+        $settings->event_id = $request->event_id;
+        $settings->visible_registrations = $request->visible_registrations;
+        $settings->max_registrations = $request->max_registrations;
+        $settings->primary_color = $request->primary_color;
+        $settings->secondary_color = $request->secondary_color;
+        $settings->active = $request->active;
+        $settings->save();
 
         return response()->json(['message' => 'Event Settings created successfully'], 200);
     }
@@ -105,7 +112,14 @@ class EventSettingsController extends Controller
         }
 
         $settings = EventSettings::query()->where('event_id', $event->id)->first();
-        $settings->update($request->all());
+
+        $settings->event_id = $request->event_id;
+        $settings->visible_registrations = $request->visible_registrations;
+        $settings->max_registrations = $request->max_registrations;
+        $settings->primary_color = $request->primary_color;
+        $settings->secondary_color = $request->secondary_color;
+        $settings->active = $request->active;
+        $settings->update();
 
         return response()->json(['message' => 'Event Settings updated successfully'], 200);
 
