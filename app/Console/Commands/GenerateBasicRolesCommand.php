@@ -43,6 +43,7 @@ class GenerateBasicRolesCommand extends Command
         $role->id = 1;
         $role->role_name = 'Admin';
         $role->color = '#a0a867';
+        $role->selectable = false;
         $role->permissions = json_encode([
             Permissions::__ADMIN__
         ]);
@@ -52,6 +53,7 @@ class GenerateBasicRolesCommand extends Command
         $role->id = 2;
         $role->role_name = 'Visitor';
         $role->color = '#a0a867';
+        $role->selectable = true;
         $role->permissions = json_encode([]);
         $role->save();
 
@@ -59,6 +61,7 @@ class GenerateBasicRolesCommand extends Command
         $role->id = 3;
         $role->role_name = 'Job Seeker';
         $role->color = '#a0a867';
+        $role->selectable = true;
         $role->permissions = json_encode([
             Permissions::__READ_CV__,
             Permissions::__WRITE_CV__
@@ -69,6 +72,7 @@ class GenerateBasicRolesCommand extends Command
         $role->id = 4;
         $role->role_name = 'Stand Holder';
         $role->color = '#a0a867';
+        $role->selectable = true;
         $role->permissions = json_encode([
             Permissions::__READ_CV__
         ]);
