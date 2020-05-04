@@ -2,6 +2,9 @@
     <form autocomplete="off" @submit.prevent="requestResetPassword" method="post" class="form-forgot-pass">
         <h1>Wachtwoord vergeten</h1>
         <div class="form-group">
+            <div class="form-forgot-returnmessage" v-if="message !== null">
+                {{message}}
+            </div>
             <p class="forgot-email-label"><label for="email">E-mail</label></p>
             <input type="email" id="email" class="form-control" placeholder="user@example.com" v-model="email" required>
             <p class="form-forgot-pass-account">
@@ -20,14 +23,14 @@
         data() {
             return {
                 email: 'user@example.com',
-                has_error: false
+                has_error: false,
+                message: null,
             }
         },
         methods: {
             requestResetPassword() {
                 axios.post("/api/reset-password", {email: this.email}).then(result => {
-                    this.response = result.data;
-                    console.log(result.data);
+                    this.message = result.data.message
                 }, error => {
                     console.error(error);
                 });

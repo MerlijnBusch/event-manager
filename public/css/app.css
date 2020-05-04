@@ -484,6 +484,12 @@ html {
   color: #767676;
 }
 
+.form-forgot-returnmessage {
+  text-align: left;
+  padding: 12px 24px;
+  color: #767676;
+}
+
 .modal_holder {
   position: fixed;
   width: 100vw;

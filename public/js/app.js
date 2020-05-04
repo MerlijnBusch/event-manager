@@ -1924,13 +1924,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ForgotPassword",
   data: function data() {
     return {
       email: 'user@example.com',
-      has_error: false
+      has_error: false,
+      message: null
     };
   },
   methods: {
@@ -1940,8 +1944,7 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/reset-password", {
         email: this.email
       }).then(function (result) {
-        _this.response = result.data;
-        console.log(result.data);
+        _this.message = result.data.message;
       }, function (error) {
         console.error(error);
       });
@@ -37982,6 +37985,12 @@ var render = function() {
       _c("h1", [_vm._v("Wachtwoord vergeten")]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
+        _vm.message !== null
+          ? _c("div", { staticClass: "form-forgot-returnmessage" }, [
+              _vm._v("\n            " + _vm._s(_vm.message) + "\n        ")
+            ])
+          : _vm._e(),
+        _vm._v(" "),
         _vm._m(0),
         _vm._v(" "),
         _c("input", {
