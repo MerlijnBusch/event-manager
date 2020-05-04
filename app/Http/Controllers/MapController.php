@@ -3,83 +3,112 @@
 namespace App\Http\Controllers;
 
 use App\Map;
+use App\Rules\EventExistValidator;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class MapController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function index()
     {
-        //
-    }
+        $this->authorize('read', Map::class);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+        $maps = Map::all();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return response()->json($maps, 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Map  $map
-     * @return \Illuminate\Http\Response
+     * @param Map $map
+     * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function show(Map $map)
     {
-        //
+        $this->authorize('read', Map::class);
+
+        return response()->json($map, 200);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Store a newly created resource in storage.
      *
-     * @param  \App\Map  $map
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return JsonResponse
+     * @throws AuthorizationException
      */
-    public function edit(Map $map)
+    public function store(Request $request)
     {
-        //
+        $this->authorize('write', Map::class);
+
+        $validator = Validator::make($request->all(), [
+            'name' => ['required','max:255'],
+            'json' => ['required'],
+            'event_id' => ['required', new EventExistValidator],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        Map::create($request->all());
+
+        return response()->json(['message' => 'Map created successfully']);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Map  $map
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Map $map
+     * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function update(Request $request, Map $map)
     {
-        //
+        $this->authorize('write', Map::class);
+
+        $validator = Validator::make($request->all(), [
+            'name' => ['required','max:255'],
+            'json' => ['required'],
+            'event_id' => ['required', new EventExistValidator],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        $map = Map::findOrFail($map->id);
+        $map->update($request->all());
+
+        return response()->json(['message' => 'Event ' . $map->name . ' updated successfully']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Map  $map
-     * @return \Illuminate\Http\Response
+     * @param Map $map
+     * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function destroy(Map $map)
     {
-        //
+        $this->authorize('write', Map::class);
+
+        $map = Map::findOrFail($map->id);
+        $map->delete();
+
+        return response()->json(['message' => 'Map deleted successfully']);
+
     }
 }
