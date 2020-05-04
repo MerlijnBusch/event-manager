@@ -30,6 +30,10 @@ class UserController extends Controller
         return response()->json(['message' => $user->api_token], 200);
     }
 
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function search(Request $request){
 
         $validator = Validator::make($request->all(), [

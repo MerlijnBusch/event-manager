@@ -4,8 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class RegistrationEventsSettings extends Model
+class EventSettings extends Model
 {
+    public const __VISIBLE_REGISTRATIONS__ = 180;
+    public const __MAX_REGISTRATIONS__ = 200;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -23,5 +26,4 @@ class RegistrationEventsSettings extends Model
         return $this->belongsTo('App\Event');
 
     }
-
 }
