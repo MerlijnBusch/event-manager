@@ -7,13 +7,8 @@
                 </div>
             </button>
             <div>
-                <login @close="close" @loggedIn="loggedInHandler" v-if="selectroute==='login'"></login>
-                <forgot-password v-else-if="selectroute==='ForgotPassword'"></forgot-password>
-            </div>
-            <div class="btn-forgot-pass">
-                <button @click="selectroute='login'" v-if="selectroute!=='login'">Login</button>
-                <button @click="selectroute='ForgotPassword'" v-if="selectroute!=='ForgotPassword'">Wachtwoord vergeten
-                </button>
+                <login @close="close" @forgotpassword="selectroute='ForgotPassword'" @loggedIn="loggedInHandler" v-if="selectroute==='login'"></login>
+                <forgot-password v-else-if="selectroute==='ForgotPassword'" @login="selectroute='login'"></forgot-password>
             </div>
         </div>
     </div>

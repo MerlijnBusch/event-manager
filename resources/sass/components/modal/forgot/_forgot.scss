@@ -1,50 +1,74 @@
 //forgot password button
 .btn-forgot-pass {
-    button {
-        padding: 5px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-weight: 500;
-        background-color: #1F1F1F;
-        color: #FFFFFF;
-        border: solid 2px #767676;
+  button {
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    background-color: #1F1F1F;
+    color: #FFFFFF;
+    border: solid 2px #767676;
 
-        &:hover{
-            background-color: #0F0F0F;
-            border: solid 2px #E6A65C;
-        }
+    &:hover {
+      background-color: #0F0F0F;
+      border: solid 2px #E6A65C;
     }
+  }
 }
 
 //forgot password modal
 .form-forgot-pass {
-    input {
-        padding: 10px;
-        margin-bottom: 25px;
-        border-radius: 5px;
-        background: white;
-        border: solid 2px #767676;
-        width: 100%;
+  input {
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding: 10px;
+    border-radius: 5px;
+    background: white;
+    border: solid 2px #767676;
+    width: 100%;
 
-        &:hover {
-            border: solid 2px #E6A65C;
-        }
+    &:hover {
+      border: solid 2px #E6A65C;
     }
+  }
 
-    input[type=email] {
-        margin-top: 10px;
+
+  .btn-pass-reset {
+    cursor: pointer;
+    font-weight: 500;
+    background-color: #1F1F1F;
+    color: #FFFFFF;
+    border: solid 2px #767676;
+    width: 100%;
+
+    &:hover {
+      background-color: #0F0F0F;
     }
+  }
+}
 
-    .btn-pass-reset {
-        cursor: pointer;
-        font-weight: 500;
-        background-color: #1F1F1F;
-        color: #FFFFFF;
-        border: solid 2px #767676;
-        width: 100%;
+.form-forgot-pass-account {
+  margin: 0;
+  width: 100%;
+  text-align: right;
+  margin-bottom: 25px;
+  .form-forgot-pass-account-button {
+    background: none;
+    border: none;
+    color: $light;
+    justify-self: flex-end;
+    text-decoration: underline;
 
-        &:hover {
-            background-color: #0F0F0F;
-        }
+    &:hover {
+      color: $orange;
     }
+  }
+}
+
+.forgot-email-label{
+  text-align: left;
+  margin: 0;
+  label{
+    color: $light;
+  }
 }

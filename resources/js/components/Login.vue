@@ -29,7 +29,7 @@
         </p>
 
         <p>
-            <label class="login-label" for="password">Wphpachtwoord</label>
+            <label class="login-label" for="password">Wachtwoord</label>
             <input
                     class="text-input"
                     id="password"
@@ -39,7 +39,9 @@
                     placeholder="Password"
             >
         </p>
-
+        <p class="login-forgotpassword">
+            <button @click="$emit('forgotpassword')">Wachtwoord vergeten</button>
+        </p>
         <p>
             <input
                     type="submit"
@@ -47,7 +49,6 @@
                     class="submit-btn"
             >
         </p>
-
     </form>
 </template>
 
