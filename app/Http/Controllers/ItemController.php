@@ -57,7 +57,7 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        $this->authorize('read', Event::class);
+        $this->authorize('read', Item::class);
 
         return response()->json($item);
     }
@@ -85,8 +85,8 @@ class ItemController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        $event = Item::findOrFail($event->id);
-        $event->update($request->all());
+        $item = Item::findOrFail($item->id);
+        $item->update($request->all());
 
         return response()->json(['message' => 'Item ' . $item->name . ' updated successfully']);
     }
