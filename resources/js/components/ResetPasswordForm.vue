@@ -1,20 +1,26 @@
 <template>
-    <div class="resetpassword-form">
-        <form autocomplete="off" @submit.prevent="resetPassword" method="post">
-            <div class="form-group">
-                <label for="email">E-mail</label>
-                <input type="email" id="email" class="form-control" placeholder="user@example.com" v-model="email" required>
+    <div class="full-page-form">
+        <div class="form-holder">
+        <form class="form" autocomplete="off" @submit.prevent="resetPassword" method="post">
+            <h2 class="form-title">Reset your password</h2>
+            <div class="form-line">
+                <label class="form-label" for="email">E-mail</label>
+                <input type="email" id="email" class="form-text-input" v-model="email" required>
             </div>
-            <div class="form-group">
-                <label for="email">Password</label>
-                <input type="password" id="password" class="form-control" placeholder="" v-model="password" required>
+            <div class="form-line">
+                <label class="form-label" for="password">Password</label>
+                <input type="password" id="password" class="form-text-input" v-model="password" required>
             </div>
-            <div class="form-group">
-                <label for="email">Confirm Password</label>
-                <input type="password" id="password_confirmation" class="form-control" placeholder="" v-model="password_confirmation" required>
+            <div class="form-line">
+                <label class="form-label" for="password_confirmation">Confirm Password</label>
+                <input type="password" id="password_confirmation" class="form-text-input" v-model="password_confirmation" required>
             </div>
-            <input type="submit" class="btn btn-primary" value="Update">
+
+            <div class="form-line">
+                <input type="submit" class="form-button" value="Update">
+            </div>
         </form>
+        </div>
     </div>
 </template>
 

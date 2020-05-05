@@ -11,7 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(black, 0.75);
+  background: radial-gradient(ellipse at bottom left, transparentize(darken($light,25%),.2), transparentize($darkest,.2));
 }
 
 .modal_screen {
