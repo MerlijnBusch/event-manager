@@ -33,11 +33,11 @@ class ItemController extends Controller
         $this->authorize('write', Item::class);
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
-            'type' => 'required|max:255',
-            'description' => 'required|min:10',
-            'event_id' => 'required|max:255',
-            'date' => 'required|date',
+            'name' => ['required|max:255'],
+            'type' => ['required|max:255', new ItemTypeValidator],
+            'description' => ['required|min:10'],
+            'event_id' => ['required', new EventExistValidator],
+            'date' => ['required|date'],
         ]);
 
         if ($validator->fails()) {
@@ -74,11 +74,11 @@ class ItemController extends Controller
         $this->authorize('write', Item::class);
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
-            'type' => 'required|max:255',
-            'description' => 'required|min:10',
-            'event_id' => 'required|max:255',
-            'date' => 'required|date',
+            'name' => ['required|max:255'],
+            'type' => ['required|max:255', new ItemTypeValidator],
+            'description' => ['required|min:10'],
+            'event_id' => ['required', new EventExistValidator],
+            'date' => ['required|date'],
         ]);
 
         if ($validator->fails()) {
@@ -99,6 +99,11 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        //
+        $this->authorize('write', Item::class);
+
+        $item = Item::findOrFail($item->id);
+        $item->delete();
+
+        return response()->json(['message' => 'Item deleted successfully'], 200);
     }
 }
