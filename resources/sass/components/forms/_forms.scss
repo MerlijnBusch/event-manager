@@ -8,6 +8,12 @@
   }
 
   .form-errors {
+    padding: 16px;
+    font-weight: 300;
+    font-size: 16px;
+    color: $orange;
+    border: solid 1px $orange;
+    background-color: transparentize($orange,.8);
   }
 
   .form-title {

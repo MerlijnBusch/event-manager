@@ -16,7 +16,7 @@
                 <input type="password" id="password_confirmation" class="form-text-input" v-model="password_confirmation" required>
             </div>
 
-            <div class="form-line">
+            <div class="form-line form-line-hasbutton">
                 <input type="submit" class="form-button" value="Update">
             </div>
         </form>

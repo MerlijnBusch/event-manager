@@ -1,16 +1,15 @@
 <template>
     <form class="form" id="app" @submit="checkForm" method="post">
+        <h2 class="form-title">
+            Login
+        </h2>
 
         <div class="form-errors" v-if="errors.length">
-            <b>Please correct the following error(s):</b>
+            <p>Please correct the following error(s):</p>
             <ul>
                 <li v-for="error in errors">{{ error }}</li>
             </ul>
         </div>
-
-        <h2 class="form-title">
-            Login
-        </h2>
 
         <div class="form-line">
             <label class="form-label" for="email">E-mail</label>

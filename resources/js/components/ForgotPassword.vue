@@ -7,9 +7,14 @@
         <div class="form-line form-loading" v-if="isLoading">
             <loading></loading>
         </div>
-        <div class="form-errors" v-if="message !== null">
-            {{message}}
+
+        <div class="form-errors" v-if="errors.length">
+            <p>Please correct the following error(s):</p>
+            <ul>
+                <li v-for="error in errors">{{ error }}</li>
+            </ul>
         </div>
+
         <div class="form-line">
             <label class="form-label" for="email">E-mail</label>
             <input class="form-text-input" type="email" id="email" v-model="email" required>

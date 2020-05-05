@@ -1934,6 +1934,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1979,7 +1984,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-//
 //
 //
 //
@@ -37986,9 +37990,17 @@ var render = function() {
           )
         : _vm._e(),
       _vm._v(" "),
-      _vm.message !== null
+      _vm.errors.length
         ? _c("div", { staticClass: "form-errors" }, [
-            _vm._v("\n        " + _vm._s(_vm.message) + "\n    ")
+            _c("p", [_vm._v("Please correct the following error(s):")]),
+            _vm._v(" "),
+            _c(
+              "ul",
+              _vm._l(_vm.errors, function(error) {
+                return _c("li", [_vm._v(_vm._s(error))])
+              }),
+              0
+            )
           ])
         : _vm._e(),
       _vm._v(" "),
@@ -38110,9 +38122,13 @@ var render = function() {
       on: { submit: _vm.checkForm }
     },
     [
+      _c("h2", { staticClass: "form-title" }, [
+        _vm._v("\n        Login\n    ")
+      ]),
+      _vm._v(" "),
       _vm.errors.length
         ? _c("div", { staticClass: "form-errors" }, [
-            _c("b", [_vm._v("Please correct the following error(s):")]),
+            _c("p", [_vm._v("Please correct the following error(s):")]),
             _vm._v(" "),
             _c(
               "ul",
@@ -38123,10 +38139,6 @@ var render = function() {
             )
           ])
         : _vm._e(),
-      _vm._v(" "),
-      _c("h2", { staticClass: "form-title" }, [
-        _vm._v("\n        Login\n    ")
-      ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-line" }, [
         _c("label", { staticClass: "form-label", attrs: { for: "email" } }, [
@@ -38544,7 +38556,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-line" }, [
+    return _c("div", { staticClass: "form-line form-line-hasbutton" }, [
       _c("input", {
         staticClass: "form-button",
         attrs: { type: "submit", value: "Update" }
