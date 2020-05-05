@@ -33,6 +33,8 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::post('event/{event}/subscribe', 'EventController@subscribe')->name('event.subscribe.store');
     Route::delete('event/{event}/subscribe', 'EventController@unsubscribe')->name('event.subscribe.destroy');
 
+    Route::get('event-overview', 'OverviewController@index')->name('event.overview');
+
     Route::get('event-settings', 'EventSettingsController@index')->name('event-settings');
     Route::get('event-settings/{event}', 'EventSettingsController@show')->name('event-settings.show');
     Route::post('event-settings', 'EventSettingsController@store')->name('event-settings.store');
