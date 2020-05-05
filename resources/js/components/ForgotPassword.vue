@@ -1,18 +1,23 @@
 <template>
-    <form autocomplete="off" @submit.prevent="requestResetPassword" method="post" class="form-forgot-pass">
-        <h1>Wachtwoord vergeten</h1>
-        <div class="form-group">
-            <loading v-if="isLoading"></loading>
-            <div class="form-forgot-returnmessage" v-if="message !== null">
-                {{message}}
-            </div>
-            <p class="forgot-email-label"><label for="email">E-mail</label></p>
-            <input type="email" id="email" class="form-control" placeholder="user@example.com" v-model="email" required>
-            <p class="form-forgot-pass-account">
-                <button class="form-forgot-pass-account-button" @click="$emit('login')">Ik heb al een account</button>
-            </p>
+    <form class="form" autocomplete="off" @submit="requestResetPassword" method="post">
+        <h2 class="form-title">
+            Wachtwoord vergeten
+        </h2>
+
+        <div class="form-line form-loading" v-if="isLoading">
+            <loading></loading>
         </div>
-        <input type="submit" class="btn btn-primary btn-pass-reset" value="Stuur wachtwoord reset link">
+        <div class="form-errors" v-if="message !== null">
+            {{message}}
+        </div>
+        <div class="form-line">
+            <label class="form-label" for="email">E-mail</label>
+            <input class="form-text-input" type="email" id="email" v-model="email" required>
+            <button class="form-afterinput-link" @click="$emit('login')">Ik heb al een account</button>
+        </div>
+        <div class="form-line form-line-hasbutton">
+            <input type="submit" class="form-button" value="Stuur wachtwoord reset link">
+        </div>
     </form>
 </template>
 
@@ -24,7 +29,7 @@
         name: "ForgotPassword",
         data() {
             return {
-                email: 'user@example.com',
+                email: 'Admin@example.com',
                 has_error: false,
                 message: null,
                 isLoading: false,

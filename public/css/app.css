@@ -6,7 +6,6 @@
 .flex-grid {
   display: flex;
   justify-content: space-between;
-  text-align: center;
 }
 
 @media (min-width: 980px) {
@@ -311,185 +310,6 @@ html {
   width: 80%;
 }
 
-.login-title {
-  font-size: 32px;
-  letter-spacing: 0.2px;
-}
-
-.text-input,
-.submit-btn {
-  padding: 10px;
-  border-radius: 5px;
-  background: white;
-  border: solid 2px #767676;
-  width: 100%;
-}
-
-.text-input:hover,
-.submit-btn:hover {
-  border: solid 2px #E6A65C;
-}
-
-.submit-btn {
-  cursor: pointer;
-  font-weight: 500;
-  background-color: #1F1F1F;
-  color: #FFFFFF;
-}
-
-.submit-btn:hover {
-  background-color: #0F0F0F;
-}
-
-.login-label {
-  font-weight: 300;
-  color: #767676;
-  display: block;
-  padding: 0;
-  margin-top: 1.5em;
-  margin-bottom: 0.5em;
-  text-align: left;
-}
-
-.login-close {
-  position: absolute;
-  right: 24px;
-  top: 24px;
-  width: 32px;
-  height: 32px;
-  border: none;
-  padding: 0;
-  background-color: transparent;
-}
-
-.login-close > div {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.login-close > div > div {
-  width: 32px;
-  height: 3px;
-  background-color: transparent;
-  position: absolute;
-  top: calc(50% - 24px / 16);
-}
-
-.login-close > div > div:before,
-.login-close > div > div:after {
-  position: absolute;
-  content: "";
-  width: inherit;
-  height: inherit;
-  display: block;
-  background: white;
-  transform: rotate(-45deg);
-}
-
-.login-close > div > div:after {
-  transform: rotate(45deg);
-}
-
-.login-forgotpassword {
-  width: 100%;
-  padding: 0;
-  margin: 0 !important;
-  text-align: right;
-}
-
-.login-forgotpassword button {
-  background: none;
-  border: none;
-  color: #767676;
-  text-decoration: underline;
-}
-
-.login-forgotpassword button:hover {
-  color: #E6A65C;
-}
-
-#app p {
-  margin: 0;
-  margin-top: 32px;
-}
-
-.btn-forgot-pass button {
-  padding: 5px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 500;
-  background-color: #1F1F1F;
-  color: #FFFFFF;
-  border: solid 2px #767676;
-}
-
-.btn-forgot-pass button:hover {
-  background-color: #0F0F0F;
-  border: solid 2px #E6A65C;
-}
-
-.form-forgot-pass input {
-  margin-top: 10px;
-  margin-bottom: 0;
-  padding: 10px;
-  border-radius: 5px;
-  background: white;
-  border: solid 2px #767676;
-  width: 100%;
-}
-
-.form-forgot-pass input:hover {
-  border: solid 2px #E6A65C;
-}
-
-.form-forgot-pass .btn-pass-reset {
-  cursor: pointer;
-  font-weight: 500;
-  background-color: #1F1F1F;
-  color: #FFFFFF;
-  border: solid 2px #767676;
-  width: 100%;
-}
-
-.form-forgot-pass .btn-pass-reset:hover {
-  background-color: #0F0F0F;
-}
-
-.form-forgot-pass-account {
-  margin: 0;
-  width: 100%;
-  text-align: right;
-  margin-bottom: 25px;
-}
-
-.form-forgot-pass-account .form-forgot-pass-account-button {
-  background: none;
-  border: none;
-  color: #767676;
-  justify-self: flex-end;
-  text-decoration: underline;
-}
-
-.form-forgot-pass-account .form-forgot-pass-account-button:hover {
-  color: #E6A65C;
-}
-
-.forgot-email-label {
-  text-align: left;
-  margin: 0;
-}
-
-.forgot-email-label label {
-  color: #767676;
-}
-
-.form-forgot-returnmessage {
-  text-align: left;
-  padding: 12px 24px;
-  color: #767676;
-}
-
 .modal_holder {
   position: fixed;
   width: 100vw;
@@ -505,7 +325,6 @@ html {
 
 .modal_screen {
   display: block;
-  text-align: center;
   position: relative;
   background-color: #1F1F1F;
   color: #E6A65C;
@@ -519,13 +338,44 @@ html {
   }
 }
 
-.btn-close-modal {
-  margin-bottom: 25px;
-  margin-top: 5px;
-  margin-left: 80%;
-  border-radius: 5px;
-  background-color: #1F1F1F;
-  color: #E6A65C;
+.modal-close {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+}
+
+.modal-close > div {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.modal-close > div > div {
+  width: 32px;
+  height: 3px;
+  background-color: transparent;
+  position: absolute;
+  top: calc(50% - 24px / 16);
+}
+
+.modal-close > div > div:before,
+.modal-close > div > div:after {
+  position: absolute;
+  content: "";
+  width: inherit;
+  height: inherit;
+  display: block;
+  background: white;
+  transform: rotate(-45deg);
+}
+
+.modal-close > div > div:after {
+  transform: rotate(45deg);
 }
 
 .loading {
@@ -665,6 +515,73 @@ html {
     background-color: #767676;
     opacity: 0.25;
   }
+}
+
+.form .form-line {
+  width: 100%;
+  padding: 14px 0;
+}
+
+.form .form-title {
+  text-align: center;
+  font-size: 32px;
+  color: #E6A65C;
+  padding: 0;
+  margin: 4px 0;
+}
+
+.form .form-label {
+  color: #767676;
+  font-weight: 300;
+  font-size: 18px;
+  padding-bottom: 4px;
+}
+
+.form .form-text-input {
+  padding: 10px;
+  border-radius: 5px;
+  background: white;
+  border: solid 2px #767676;
+  width: 100%;
+}
+
+.form .form-text-input:hover {
+  border: solid 2px #E6A65C;
+}
+
+.form .form-afterinput-link {
+  background: none;
+  border: none;
+  color: #767676;
+  text-decoration: underline;
+  float: right;
+  padding: 2px;
+}
+
+.form .form-afterinput-link:hover {
+  color: #E6A65C;
+}
+
+.form .form-line-hasbutton {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.form .form-button {
+  padding: 12px 22px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  background-color: #1F1F1F;
+  color: #FFFFFF;
+  border: solid 2px #767676;
+  min-width: 50%;
+}
+
+.form .form-button:hover {
+  background-color: #0F0F0F;
+  border: solid 2px #E6A65C;
 }
 
 body {

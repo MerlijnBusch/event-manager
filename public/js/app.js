@@ -1929,13 +1929,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ForgotPassword",
   data: function data() {
     return {
-      email: 'user@example.com',
+      email: 'Admin@example.com',
       has_error: false,
       message: null,
       isLoading: false
@@ -1974,30 +1979,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -37981,81 +37962,72 @@ var render = function() {
   return _c(
     "form",
     {
-      staticClass: "form-forgot-pass",
+      staticClass: "form",
       attrs: { autocomplete: "off", method: "post" },
-      on: {
-        submit: function($event) {
-          $event.preventDefault()
-          return _vm.requestResetPassword($event)
-        }
-      }
+      on: { submit: _vm.requestResetPassword }
     },
     [
-      _c("h1", [_vm._v("Wachtwoord vergeten")]),
+      _c("h2", { staticClass: "form-title" }, [
+        _vm._v("\n        Wachtwoord vergeten\n    ")
+      ]),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "form-group" },
-        [
-          _vm.isLoading ? _c("loading") : _vm._e(),
-          _vm._v(" "),
-          _vm.message !== null
-            ? _c("div", { staticClass: "form-forgot-returnmessage" }, [
-                _vm._v("\n            " + _vm._s(_vm.message) + "\n        ")
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.email,
-                expression: "email"
+      _vm.isLoading
+        ? _c(
+            "div",
+            { staticClass: "form-line form-loading" },
+            [_c("loading")],
+            1
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.message !== null
+        ? _c("div", { staticClass: "form-errors" }, [
+            _vm._v("\n        " + _vm._s(_vm.message) + "\n    ")
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-line" }, [
+        _c("label", { staticClass: "form-label", attrs: { for: "email" } }, [
+          _vm._v("E-mail")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.email,
+              expression: "email"
+            }
+          ],
+          staticClass: "form-text-input",
+          attrs: { type: "email", id: "email", required: "" },
+          domProps: { value: _vm.email },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
               }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              type: "email",
-              id: "email",
-              placeholder: "user@example.com",
-              required: ""
-            },
-            domProps: { value: _vm.email },
+              _vm.email = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "form-afterinput-link",
             on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.email = $event.target.value
+              click: function($event) {
+                return _vm.$emit("login")
               }
             }
-          }),
-          _vm._v(" "),
-          _c("p", { staticClass: "form-forgot-pass-account" }, [
-            _c(
-              "button",
-              {
-                staticClass: "form-forgot-pass-account-button",
-                on: {
-                  click: function($event) {
-                    return _vm.$emit("login")
-                  }
-                }
-              },
-              [_vm._v("Ik heb al een account")]
-            )
-          ])
-        ],
-        1
-      ),
+          },
+          [_vm._v("Ik heb al een account")]
+        )
+      ]),
       _vm._v(" "),
-      _c("input", {
-        staticClass: "btn btn-primary btn-pass-reset",
-        attrs: { type: "submit", value: "Stuur wachtwoord reset link" }
-      })
+      _vm._m(0)
     ]
   )
 }
@@ -38064,8 +38036,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "forgot-email-label" }, [
-      _c("label", { attrs: { for: "email" } }, [_vm._v("E-mail")])
+    return _c("div", { staticClass: "form-line form-line-hasbutton" }, [
+      _c("input", {
+        staticClass: "form-button",
+        attrs: { type: "submit", value: "Stuur wachtwoord reset link" }
+      })
     ])
   }
 ]
@@ -38123,10 +38098,14 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "form",
-    { attrs: { id: "app", method: "post" }, on: { submit: _vm.checkForm } },
+    {
+      staticClass: "form",
+      attrs: { id: "app", method: "post" },
+      on: { submit: _vm.checkForm }
+    },
     [
       _vm.errors.length
-        ? _c("div", [
+        ? _c("div", { staticClass: "form-errors" }, [
             _c("b", [_vm._v("Please correct the following error(s):")]),
             _vm._v(" "),
             _c(
@@ -38139,12 +38118,12 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
-      _c("h2", { staticClass: "login-title" }, [
+      _c("h2", { staticClass: "form-title" }, [
         _vm._v("\n        Login\n    ")
       ]),
       _vm._v(" "),
-      _c("p", [
-        _c("label", { staticClass: "login-label", attrs: { for: "email" } }, [
+      _c("div", { staticClass: "form-line" }, [
+        _c("label", { staticClass: "form-label", attrs: { for: "email" } }, [
           _vm._v("E-mail")
         ]),
         _vm._v(" "),
@@ -38157,7 +38136,7 @@ var render = function() {
               expression: "email"
             }
           ],
-          staticClass: "text-input",
+          staticClass: "form-text-input",
           attrs: {
             id: "email",
             type: "email",
@@ -38176,12 +38155,10 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      _c("p", [
-        _c(
-          "label",
-          { staticClass: "login-label", attrs: { for: "password" } },
-          [_vm._v("Wachtwoord")]
-        ),
+      _c("div", { staticClass: "form-line" }, [
+        _c("label", { staticClass: "form-label", attrs: { for: "password" } }, [
+          _vm._v("Wachtwoord")
+        ]),
         _vm._v(" "),
         _c("input", {
           directives: [
@@ -38192,7 +38169,7 @@ var render = function() {
               expression: "password"
             }
           ],
-          staticClass: "text-input",
+          staticClass: "form-text-input",
           attrs: {
             id: "password",
             type: "password",
@@ -38208,13 +38185,12 @@ var render = function() {
               _vm.password = $event.target.value
             }
           }
-        })
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "login-forgotpassword" }, [
+        }),
+        _vm._v(" "),
         _c(
           "button",
           {
+            staticClass: "form-afterinput-link",
             on: {
               click: function($event) {
                 return _vm.$emit("forgotpassword")
@@ -38234,9 +38210,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", [
+    return _c("div", { staticClass: "form-line form-line-hasbutton" }, [
       _c("input", {
-        staticClass: "submit-btn",
+        staticClass: "form-button",
         attrs: { type: "submit", value: "Login" }
       })
     ])
@@ -38271,7 +38247,7 @@ var render = function() {
           "modal_screen column-desktop-4 column-tablet-9 column-mobile-12"
       },
       [
-        _c("button", { staticClass: "login-close", on: { click: _vm.close } }, [
+        _c("button", { staticClass: "modal-close", on: { click: _vm.close } }, [
           _vm._m(0)
         ]),
         _vm._v(" "),
