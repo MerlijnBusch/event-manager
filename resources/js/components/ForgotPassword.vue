@@ -1,5 +1,5 @@
 <template>
-    <form class="form" autocomplete="off" @submit="requestResetPassword" method="post">
+    <form class="form" autocomplete="off" @submit.prevent="requestResetPassword">
         <h2 class="form-title">
             Wachtwoord vergeten
         </h2>
@@ -9,15 +9,19 @@
         </div>
 
         <div class="form-errors" v-if="errors.length">
-            <p>Please correct the following error(s):</p>
+            <p>Fout:</p>
             <ul>
                 <li v-for="error in errors">{{ error }}</li>
             </ul>
         </div>
 
+        <div class="form-message" v-if="!!message">
+            {{message}}
+        </div>
+
         <div class="form-line">
             <label class="form-label" for="email">E-mail</label>
-            <input class="form-text-input" type="email" id="email" v-model="email" required>
+            <input class="form-text-input" type="text" id="email" v-model="email">
             <button class="form-afterinput-link" @click="$emit('login')">Ik heb al een account</button>
         </div>
         <div class="form-line form-line-hasbutton">
@@ -35,21 +39,34 @@
         data() {
             return {
                 email: 'Admin@example.com',
-                has_error: false,
                 message: null,
                 isLoading: false,
+                errors: [],
             }
         },
         components: {loading},
         methods: {
             requestResetPassword() {
+                this.errors = [];
                 this.isLoading = true;
-                axios.post("/api/reset-password", {email: this.email}).then(result => {
-                    this.message = result.data.message;
-                    this.isLoading = false;
-                }, error => {
-                    console.error(error);
-                });
+
+                switch (true) {
+                    case this.email.length === 0:
+                        this.isLoading = false;
+                        this.errors.push('Er is niks ingevuld');
+                        break;
+                    case /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/.test(this.email) === false:
+                        this.isLoading = false;
+                        this.errors.push('Er is geen email ingevuld');
+                        break;
+                    default:
+                        axios.post("/api/reset-password", {email: this.email}).then(result => {
+                            this.message = result.data.message;
+                            this.isLoading = false;
+                        }, error => {
+                            this.errors.push(error)
+                        });
+                }
             }
         }
     }

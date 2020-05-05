@@ -1939,6 +1939,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1946,9 +1950,9 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       email: 'Admin@example.com',
-      has_error: false,
       message: null,
-      isLoading: false
+      isLoading: false,
+      errors: []
     };
   },
   components: {
@@ -1958,15 +1962,30 @@ __webpack_require__.r(__webpack_exports__);
     requestResetPassword: function requestResetPassword() {
       var _this = this;
 
+      this.errors = [];
       this.isLoading = true;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/reset-password", {
-        email: this.email
-      }).then(function (result) {
-        _this.message = result.data.message;
-        _this.isLoading = false;
-      }, function (error) {
-        console.error(error);
-      });
+
+      switch (true) {
+        case this.email.length === 0:
+          this.isLoading = false;
+          this.errors.push('Er is niks ingevuld');
+          break;
+
+        case /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/.test(this.email) === false:
+          this.isLoading = false;
+          this.errors.push('Er is geen email ingevuld');
+          break;
+
+        default:
+          axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/reset-password", {
+            email: this.email
+          }).then(function (result) {
+            _this.message = result.data.message;
+            _this.isLoading = false;
+          }, function (error) {
+            _this.errors.push(error);
+          });
+      }
     }
   }
 });
@@ -37973,8 +37992,13 @@ var render = function() {
     "form",
     {
       staticClass: "form",
-      attrs: { autocomplete: "off", method: "post" },
-      on: { submit: _vm.requestResetPassword }
+      attrs: { autocomplete: "off" },
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.requestResetPassword($event)
+        }
+      }
     },
     [
       _c("h2", { staticClass: "form-title" }, [
@@ -37992,7 +38016,7 @@ var render = function() {
       _vm._v(" "),
       _vm.errors.length
         ? _c("div", { staticClass: "form-errors" }, [
-            _c("p", [_vm._v("Please correct the following error(s):")]),
+            _c("p", [_vm._v("Fout:")]),
             _vm._v(" "),
             _c(
               "ul",
@@ -38001,6 +38025,12 @@ var render = function() {
               }),
               0
             )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      !!_vm.message
+        ? _c("div", { staticClass: "form-message" }, [
+            _vm._v("\n        " + _vm._s(_vm.message) + "\n    ")
           ])
         : _vm._e(),
       _vm._v(" "),
@@ -38019,7 +38049,7 @@ var render = function() {
             }
           ],
           staticClass: "form-text-input",
-          attrs: { type: "email", id: "email", required: "" },
+          attrs: { type: "text", id: "email" },
           domProps: { value: _vm.email },
           on: {
             input: function($event) {
@@ -38128,7 +38158,7 @@ var render = function() {
       _vm._v(" "),
       _vm.errors.length
         ? _c("div", { staticClass: "form-errors" }, [
-            _c("p", [_vm._v("Please correct the following error(s):")]),
+            _c("p", [_vm._v("Fout:")]),
             _vm._v(" "),
             _c(
               "ul",

@@ -5,7 +5,7 @@
         </h2>
 
         <div class="form-errors" v-if="errors.length">
-            <p>Please correct the following error(s):</p>
+            <p>Fout:</p>
             <ul>
                 <li v-for="error in errors">{{ error }}</li>
             </ul>
