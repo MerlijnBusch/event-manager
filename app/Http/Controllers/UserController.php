@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -27,5 +28,28 @@ class UserController extends Controller
         $user->update();
 
         return response()->json(['message' => $user->api_token], 200);
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function search(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'search' => ['string']
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        $user = User::query()
+            ->where('name','LIKE','%' . $request->search . '%')
+            ->orWhere('email','LIKE','%' . $request->search . '%')
+            ->with('profile')
+            ->get();
+
+        return response()->json(['message' => $user], 200);
     }
 }

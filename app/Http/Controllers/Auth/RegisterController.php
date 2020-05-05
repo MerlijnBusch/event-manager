@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Rules\RoleSelectableValidator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -54,7 +55,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'role_id' => ['required', 'int']
+            'role_id' => ['required', 'int', new RoleSelectableValidator]
         ]);
     }
 
@@ -66,7 +67,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        var_dump($data);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

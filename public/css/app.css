@@ -391,6 +391,105 @@ html {
   transform: rotate(45deg);
 }
 
+.login-forgotpassword {
+  width: 100%;
+  padding: 0;
+  margin: 0 !important;
+  text-align: right;
+}
+
+.login-forgotpassword button {
+  background: none;
+  border: none;
+  color: #767676;
+  text-decoration: underline;
+}
+
+.login-forgotpassword button:hover {
+  color: #E6A65C;
+}
+
+#app p {
+  margin: 0;
+  margin-top: 32px;
+}
+
+.btn-forgot-pass button {
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  background-color: #1F1F1F;
+  color: #FFFFFF;
+  border: solid 2px #767676;
+}
+
+.btn-forgot-pass button:hover {
+  background-color: #0F0F0F;
+  border: solid 2px #E6A65C;
+}
+
+.form-forgot-pass input {
+  margin-top: 10px;
+  margin-bottom: 0;
+  padding: 10px;
+  border-radius: 5px;
+  background: white;
+  border: solid 2px #767676;
+  width: 100%;
+}
+
+.form-forgot-pass input:hover {
+  border: solid 2px #E6A65C;
+}
+
+.form-forgot-pass .btn-pass-reset {
+  cursor: pointer;
+  font-weight: 500;
+  background-color: #1F1F1F;
+  color: #FFFFFF;
+  border: solid 2px #767676;
+  width: 100%;
+}
+
+.form-forgot-pass .btn-pass-reset:hover {
+  background-color: #0F0F0F;
+}
+
+.form-forgot-pass-account {
+  margin: 0;
+  width: 100%;
+  text-align: right;
+  margin-bottom: 25px;
+}
+
+.form-forgot-pass-account .form-forgot-pass-account-button {
+  background: none;
+  border: none;
+  color: #767676;
+  justify-self: flex-end;
+  text-decoration: underline;
+}
+
+.form-forgot-pass-account .form-forgot-pass-account-button:hover {
+  color: #E6A65C;
+}
+
+.forgot-email-label {
+  text-align: left;
+  margin: 0;
+}
+
+.forgot-email-label label {
+  color: #767676;
+}
+
+.form-forgot-returnmessage {
+  text-align: left;
+  padding: 12px 24px;
+  color: #767676;
+}
+
 .modal_holder {
   position: fixed;
   width: 100vw;
@@ -412,6 +511,12 @@ html {
   color: #E6A65C;
   padding: 32px 150px;
   border-radius: 10px;
+}
+
+@media only screen and (min-width: 970px) and (max-width: 1410px) {
+  .modal_screen {
+    padding: 32px 75px;
+  }
 }
 
 .btn-close-modal {

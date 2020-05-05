@@ -33,4 +33,10 @@ class Permissions extends Model {
     public const __READ_ITEM__ = 'read_item';
     public const __WRITE_ITEM__ = 'write_item';
 
+    public const __READ_EVENT_SETTINGS__ = 'read_event_settings';
+    public const __WRITE_EVENT_SETTINGS__ = 'write_event_settings';
+
+    public const __READ_MAP__ = 'read_map';
+    public const __WRITE_MAP__ = 'write_map';
+
 }

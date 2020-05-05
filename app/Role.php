@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int id
  * @property string role_name
  * @property string color
+ * @property string selectable
  * @property array permissions
  */
 
@@ -22,6 +23,7 @@ class Role extends Model
         'role_name',
         'color',
         'permissions',
+        'selectable'
     ];
 
     public function user(){
