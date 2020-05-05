@@ -2,8 +2,18 @@
 
 namespace App;
 
+use Carbon\CarbonInterface;
+use Illuminate\Database\Eloquent\HigherOrderBuilderProxy;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property mixed|string name
+ * @property mixed|string type
+ * @property mixed|string description
+ * @property HigherOrderBuilderProxy|mixed event_id
+ * @property Carbon|CarbonInterface|mixed date
+ * @property bool|mixed active
+ */
 class Item extends Model
 {
 

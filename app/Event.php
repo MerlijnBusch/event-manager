@@ -5,6 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * @property mixed|string name
+ * @property mixed|string description
+ * @property Carbon|mixed date
+ */
 class Event extends Model
 {
     use SoftDeletes;
