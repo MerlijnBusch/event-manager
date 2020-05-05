@@ -2,6 +2,7 @@
     <form autocomplete="off" @submit.prevent="requestResetPassword" method="post" class="form-forgot-pass">
         <h1>Wachtwoord vergeten</h1>
         <div class="form-group">
+            <loading v-if="isLoading"></loading>
             <div class="form-forgot-returnmessage" v-if="message !== null">
                 {{message}}
             </div>
@@ -17,6 +18,7 @@
 
 <script>
     import axios from 'axios';
+    import loading from './loading'
 
     export default {
         name: "ForgotPassword",
@@ -25,12 +27,16 @@
                 email: 'user@example.com',
                 has_error: false,
                 message: null,
+                isLoading: false,
             }
         },
+        components: {loading},
         methods: {
             requestResetPassword() {
+                this.isLoading = true;
                 axios.post("/api/reset-password", {email: this.email}).then(result => {
-                    this.message = result.data.message
+                    this.message = result.data.message;
+                    this.isLoading = false;
                 }, error => {
                     console.error(error);
                 });

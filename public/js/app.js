@@ -1910,6 +1910,7 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _loading__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./loading */ "./resources/js/components/loading.vue");
 //
 //
 //
@@ -1927,6 +1928,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ForgotPassword",
@@ -1934,17 +1937,23 @@ __webpack_require__.r(__webpack_exports__);
     return {
       email: 'user@example.com',
       has_error: false,
-      message: null
+      message: null,
+      isLoading: false
     };
+  },
+  components: {
+    loading: _loading__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
     requestResetPassword: function requestResetPassword() {
       var _this = this;
 
+      this.isLoading = true;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/reset-password", {
         email: this.email
       }).then(function (result) {
         _this.message = result.data.message;
+        _this.isLoading = false;
       }, function (error) {
         console.error(error);
       });
@@ -2213,7 +2222,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      token: null,
+      token: this.$route.params.token,
       email: null,
       password: null,
       password_confirmation: null,
@@ -2225,7 +2234,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.post("/api/reset/password/", {
-        token: this.$route.params.token,
+        token: this.token,
         email: this.email,
         password: this.password,
         password_confirmation: this.password_confirmation
@@ -37984,57 +37993,64 @@ var render = function() {
     [
       _c("h1", [_vm._v("Wachtwoord vergeten")]),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _vm.message !== null
-          ? _c("div", { staticClass: "form-forgot-returnmessage" }, [
-              _vm._v("\n            " + _vm._s(_vm.message) + "\n        ")
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.email,
-              expression: "email"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: {
-            type: "email",
-            id: "email",
-            placeholder: "user@example.com",
-            required: ""
-          },
-          domProps: { value: _vm.email },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+      _c(
+        "div",
+        { staticClass: "form-group" },
+        [
+          _vm.isLoading ? _c("loading") : _vm._e(),
+          _vm._v(" "),
+          _vm.message !== null
+            ? _c("div", { staticClass: "form-forgot-returnmessage" }, [
+                _vm._v("\n            " + _vm._s(_vm.message) + "\n        ")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.email,
+                expression: "email"
               }
-              _vm.email = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("p", { staticClass: "form-forgot-pass-account" }, [
-          _c(
-            "button",
-            {
-              staticClass: "form-forgot-pass-account-button",
-              on: {
-                click: function($event) {
-                  return _vm.$emit("login")
-                }
-              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "email",
+              id: "email",
+              placeholder: "user@example.com",
+              required: ""
             },
-            [_vm._v("Ik heb al een account")]
-          )
-        ])
-      ]),
+            domProps: { value: _vm.email },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.email = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("p", { staticClass: "form-forgot-pass-account" }, [
+            _c(
+              "button",
+              {
+                staticClass: "form-forgot-pass-account-button",
+                on: {
+                  click: function($event) {
+                    return _vm.$emit("login")
+                  }
+                }
+              },
+              [_vm._v("Ik heb al een account")]
+            )
+          ])
+        ],
+        1
+      ),
       _vm._v(" "),
       _c("input", {
         staticClass: "btn btn-primary btn-pass-reset",
@@ -38419,8 +38435,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm._v(_vm._s(_vm.token) + "\n    "),
+  return _c("div", { staticClass: "resetpassword-form" }, [
     _c(
       "form",
       {
@@ -38537,6 +38552,57 @@ var render = function() {
   ])
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/loading.vue?vue&type=template&id=664164c1&":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/loading.vue?vue&type=template&id=664164c1& ***!
+  \**********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "loading" }, [
+      _c("div", [_c("div")]),
+      _vm._v(" "),
+      _c("div", [_c("div")]),
+      _vm._v(" "),
+      _c("div", [_c("div")]),
+      _vm._v(" "),
+      _c("div", [_c("div")]),
+      _vm._v(" "),
+      _c("div", [_c("div")]),
+      _vm._v(" "),
+      _c("div", [_c("div")]),
+      _vm._v(" "),
+      _c("div", [_c("div")]),
+      _vm._v(" "),
+      _c("div", [_c("div")]),
+      _vm._v(" "),
+      _c("div", [_c("div")]),
+      _vm._v(" "),
+      _c("div", [_c("div")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -54203,6 +54269,59 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/loading.vue":
+/*!*********************************************!*\
+  !*** ./resources/js/components/loading.vue ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _loading_vue_vue_type_template_id_664164c1___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./loading.vue?vue&type=template&id=664164c1& */ "./resources/js/components/loading.vue?vue&type=template&id=664164c1&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _loading_vue_vue_type_template_id_664164c1___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _loading_vue_vue_type_template_id_664164c1___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/loading.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/loading.vue?vue&type=template&id=664164c1&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/loading.vue?vue&type=template&id=664164c1& ***!
+  \****************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_loading_vue_vue_type_template_id_664164c1___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./loading.vue?vue&type=template&id=664164c1& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/loading.vue?vue&type=template&id=664164c1&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_loading_vue_vue_type_template_id_664164c1___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_loading_vue_vue_type_template_id_664164c1___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/routes.js":
 /*!********************************!*\
   !*** ./resources/js/routes.js ***!
@@ -54334,8 +54453,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/merlijn/PhpstormProjects/nz-evenementenregistratie/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/merlijn/PhpstormProjects/nz-evenementenregistratie/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Tim Huijkman\PhpstormProjects\nz-evenementenregistratie\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Tim Huijkman\PhpstormProjects\nz-evenementenregistratie\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

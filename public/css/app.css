@@ -528,6 +528,145 @@ html {
   color: #E6A65C;
 }
 
+.loading {
+  width: 24px;
+  height: 24px;
+  margin: 24px auto;
+  position: relative;
+}
+
+.loading > div {
+  position: absolute;
+  width: 50%;
+  height: 4px;
+  top: 50%;
+  left: 50%;
+}
+
+.loading > div:nth-child(1) {
+  transform: translate(-50%, -50%) rotate(36deg);
+}
+
+.loading > div:nth-child(1) > div {
+  -webkit-animation-delay: 0.08s;
+          animation-delay: 0.08s;
+}
+
+.loading > div:nth-child(2) {
+  transform: translate(-50%, -50%) rotate(72deg);
+}
+
+.loading > div:nth-child(2) > div {
+  -webkit-animation-delay: 0.16s;
+          animation-delay: 0.16s;
+}
+
+.loading > div:nth-child(3) {
+  transform: translate(-50%, -50%) rotate(108deg);
+}
+
+.loading > div:nth-child(3) > div {
+  -webkit-animation-delay: 0.24s;
+          animation-delay: 0.24s;
+}
+
+.loading > div:nth-child(4) {
+  transform: translate(-50%, -50%) rotate(144deg);
+}
+
+.loading > div:nth-child(4) > div {
+  -webkit-animation-delay: 0.32s;
+          animation-delay: 0.32s;
+}
+
+.loading > div:nth-child(5) {
+  transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.loading > div:nth-child(5) > div {
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+.loading > div:nth-child(6) {
+  transform: translate(-50%, -50%) rotate(216deg);
+}
+
+.loading > div:nth-child(6) > div {
+  -webkit-animation-delay: 0.48s;
+          animation-delay: 0.48s;
+}
+
+.loading > div:nth-child(7) {
+  transform: translate(-50%, -50%) rotate(252deg);
+}
+
+.loading > div:nth-child(7) > div {
+  -webkit-animation-delay: 0.56s;
+          animation-delay: 0.56s;
+}
+
+.loading > div:nth-child(8) {
+  transform: translate(-50%, -50%) rotate(288deg);
+}
+
+.loading > div:nth-child(8) > div {
+  -webkit-animation-delay: 0.64s;
+          animation-delay: 0.64s;
+}
+
+.loading > div:nth-child(9) {
+  transform: translate(-50%, -50%) rotate(324deg);
+}
+
+.loading > div:nth-child(9) > div {
+  -webkit-animation-delay: 0.72s;
+          animation-delay: 0.72s;
+}
+
+.loading > div:nth-child(10) {
+  transform: translate(-50%, -50%) rotate(360deg);
+}
+
+.loading > div:nth-child(10) > div {
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
+}
+
+.loading > div > div {
+  border-radius: 2px;
+  width: 100%;
+  height: 100%;
+  background: #E6A65C;
+  -webkit-animation: loading-fade 0.8s infinite;
+          animation: loading-fade 0.8s infinite;
+  transform: translateX(150%);
+}
+
+@-webkit-keyframes loading-fade {
+  0%, 100% {
+    transform: translateX(150%);
+  }
+
+  50% {
+    transform: translateX(125%);
+    background-color: #767676;
+    opacity: 0.25;
+  }
+}
+
+@keyframes loading-fade {
+  0%, 100% {
+    transform: translateX(150%);
+  }
+
+  50% {
+    transform: translateX(125%);
+    background-color: #767676;
+    opacity: 0.25;
+  }
+}
+
 body {
   padding: 0;
   min-height: 100vh;

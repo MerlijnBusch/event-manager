@@ -1,5 +1,5 @@
 <template>
-    <div>{{token}}
+    <div class="resetpassword-form">
         <form autocomplete="off" @submit.prevent="resetPassword" method="post">
             <div class="form-group">
                 <label for="email">E-mail</label>
@@ -22,7 +22,7 @@
     export default {
         data() {
             return {
-                token: null,
+                token: this.$route.params.token,
                 email: null,
                 password: null,
                 password_confirmation: null,
@@ -32,7 +32,7 @@
         methods: {
             resetPassword() {
                     axios.post("/api/reset/password/", {
-                    token: this.$route.params.token,
+                    token: this.token,
                     email: this.email,
                     password: this.password,
                     password_confirmation: this.password_confirmation
