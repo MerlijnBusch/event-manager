@@ -48,9 +48,15 @@
                         "email": this.email,
                         "password": this.password,
                     }).then(response => {
+                        console.log(response)
                         if (response.status === 200) {
-                            this.$emit("loggedIn", response.request.response);
-                            this.$emit("close");
+                           if (console.log(!!response.data.data)) {
+                               this.$emit("loggedIn", response.request.response);
+                               this.$emit("close");
+                           } else {
+                               this.errors.push("Kan niet inloggen met deze gegevens");
+                           }
+
                         }
                     })
                         .catch(e => {
