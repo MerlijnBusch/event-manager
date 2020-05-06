@@ -19,16 +19,16 @@
                 modal_open: false,
             }
         },
-        methods:{
-            openLogin(){
+        methods: {
+            openLogin() {
                 this.modal_open = true;
             },
-          closeLogin(){
-              this.modal_open = false;
-          },
-            loggedInHandler (e){
-              this.loggedIn = true;
-              console.log(e);
+            closeLogin() {
+                this.modal_open = false;
+            },
+            loggedInHandler(e) {
+                this.loggedIn = true;
+                console.log(e);
             },
         },
         components: {Modal, NavBar},
