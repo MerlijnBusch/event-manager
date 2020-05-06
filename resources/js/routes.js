@@ -34,9 +34,6 @@ const router = new VueRouter({
             path: '/reset-password/:token',
             name: 'reset-password-form',
             component: ResetPasswordForm,
-            meta: {
-                auth: false
-            }
         },
         {
             path: '/example',
