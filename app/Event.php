@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property mixed settings
  * @property mixed item
  * @property mixed map
+ * @property mixed id
  */
 class Event extends Model
 {

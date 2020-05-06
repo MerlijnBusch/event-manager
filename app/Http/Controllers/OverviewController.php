@@ -11,7 +11,14 @@ class OverviewController extends Controller
 {
     public function index(Event $event)
     {
-        return response()->json( Event::query()->with('settings', 'map', 'item')->where('active', true)->get(), 200);
+
+        return response()->json( Event::query()->whereHas('settings', function($q) use($event){
+            $q->where('active', true)->where('event_id', $event->id);
+        })->whereHas('map', function($q) use($event){
+            $q->where('active', true)->where('event_id', $event->id);
+        })->whereHas('item', function($q) use($event){
+        $q->where('active', true)->where('event_id', $event->id);
+        })->get());
     }
 
 }
