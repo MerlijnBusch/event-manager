@@ -117,17 +117,8 @@ class EventController extends Controller
      * @param Event $event
      * @return JsonResponse
      */
-    public function subscribe(Request $request, Event $event)
+    public function subscribe(Event $event)
     {
-        $validator = Validator::make($request->all(), [
-            'event_id' => ['required', new EventExistValidator, 'integer'],
-            'user_id' => ['required', 'integer'],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
-
         if (RegistrationEvents::query()
                 ->where('user_id', Auth::id())
                 ->where('event_id', $event->id)
