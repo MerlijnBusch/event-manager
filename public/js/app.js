@@ -2088,7 +2088,7 @@ __webpack_require__.r(__webpack_exports__);
           "password": this.password
         }).then(function (response) {
           if (response.status === 200) {
-            _this.$user.data = JSON.parse(response.request.response);
+            _this.$user.data = JSON.parse(response.request.response).data;
 
             _this.$emit("loggedIn", response.request.response);
 
@@ -2384,14 +2384,14 @@ __webpack_require__.r(__webpack_exports__);
       this.errors = [];
       this.headers = {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + this.$user.data.data.api_token
+        'Authorization': 'Bearer ' + this.$user.data.api_token
       };
       this.date = {
         "name": this.name,
         "description": this.description,
         "date": this.date
       };
-      console.log(this.$user.data, this.$user.data.data.api_token);
+      console.log(this.$user, this.$user.data.api_token);
 
       if (this.name && this.description) {
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(window.location.origin + "/api/event", this.data, {
@@ -39448,7 +39448,15 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "form",
-    { attrs: { id: "app", method: "post" }, on: { submit: _vm.checkForm } },
+    {
+      attrs: { id: "app", method: "post" },
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.checkForm($event)
+        }
+      }
+    },
     [
       _vm.errors.length
         ? _c("div", [
@@ -55564,8 +55572,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/merlijn/PhpstormProjects/nz-evenementenregistratie/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/merlijn/PhpstormProjects/nz-evenementenregistratie/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Tim Huijkman\PhpstormProjects\nz-evenementenregistratie\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Tim Huijkman\PhpstormProjects\nz-evenementenregistratie\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -1,7 +1,7 @@
 <template>
     <form
         id="app"
-        @submit="checkForm"
+        @submit.prevent="checkForm"
         method="post"
     >
 
@@ -75,11 +75,12 @@
         },
         methods: {
             checkForm: function (e) {
+
                 this.errors = [];
 
                 this.headers = {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + this.$user.data.data.api_token
+                    'Authorization': 'Bearer ' + this.$user.data.api_token
                 }
 
                 this.date = {
@@ -87,7 +88,7 @@
                     "description": this.description,
                     "date": this.date,
                 }
-                console.log(this.$user.data, this.$user.data.data.api_token);
+                console.log(this.$user, this.$user.data.api_token);
                 if (this.name && this.description) {
                     axios.post(window.location.origin + `/api/event`, this.data, {headers: this.headers}).then(response => {
                         if (response.status === 200) {

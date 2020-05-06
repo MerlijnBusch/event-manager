@@ -78,7 +78,7 @@
                         "password": this.password,
                     }).then(response => {
                         if (response.status === 200) {
-                            this.$user.data = JSON.parse(response.request.response);
+                            this.$user.data = JSON.parse(response.request.response).data;
                             this.$emit("loggedIn", response.request.response);
                             this.$emit("close");
                         }
