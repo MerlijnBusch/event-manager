@@ -28,7 +28,7 @@ class ItemTypeValidator implements Rule
     {
         $item = new Item;
         $allTypes = $item->getAllItemTypes();
-        return  in_array($allTypes, $value);
+        return  in_array($value, $allTypes);
     }
 
     /**
