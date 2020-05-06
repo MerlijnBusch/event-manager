@@ -2097,10 +2097,16 @@ __webpack_require__.r(__webpack_exports__);
           "email": this.email,
           "password": this.password
         }).then(function (response) {
-          if (response.status === 200) {
-            _this.$emit("loggedIn", response.request.response);
+          console.log(response);
 
-            _this.$emit("close");
+          if (response.status === 200) {
+            if (console.log(!!response.data.data)) {
+              _this.$emit("loggedIn", response.request.response);
+
+              _this.$emit("close");
+            } else {
+              _this.errors.push("Kan niet inloggen met deze gegevens");
+            }
           }
         })["catch"](function (e) {
           _this.errors.push(e);
