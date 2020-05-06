@@ -311,6 +311,20 @@ html {
   width: 80%;
 }
 
+.navbar-user {
+  position: absolute;
+  left: 24px;
+  bottom: 40px;
+  transform: translateY(150%);
+  font-size: 18px;
+  font-weight: 300;
+  color: #FFFFFF;
+}
+
+.navbar-user .navbar-user-name {
+  color: #E6A65C;
+}
+
 .login-title {
   font-size: 32px;
   letter-spacing: 0.2px;
