@@ -6,7 +6,6 @@
 .flex-grid {
   display: flex;
   justify-content: space-between;
-  text-align: center;
 }
 
 @media (min-width: 980px) {
@@ -311,183 +310,18 @@ html {
   width: 80%;
 }
 
-.login-title {
-  font-size: 32px;
-  letter-spacing: 0.2px;
-}
-
-.text-input,
-.submit-btn {
-  padding: 10px;
-  border-radius: 5px;
-  background: white;
-  border: solid 2px #767676;
-  width: 100%;
-}
-
-.text-input:hover,
-.submit-btn:hover {
-  border: solid 2px #E6A65C;
-}
-
-.submit-btn {
-  cursor: pointer;
-  font-weight: 500;
-  background-color: #1F1F1F;
-  color: #FFFFFF;
-}
-
-.submit-btn:hover {
-  background-color: #0F0F0F;
-}
-
-.login-label {
+.navbar-user {
+  position: absolute;
+  left: 24px;
+  bottom: 40px;
+  transform: translateY(150%);
+  font-size: 18px;
   font-weight: 300;
-  color: #767676;
-  display: block;
-  padding: 0;
-  margin-top: 1.5em;
-  margin-bottom: 0.5em;
-  text-align: left;
-}
-
-.login-close {
-  position: absolute;
-  right: 24px;
-  top: 24px;
-  width: 32px;
-  height: 32px;
-  border: none;
-  padding: 0;
-  background-color: transparent;
-}
-
-.login-close > div {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.login-close > div > div {
-  width: 32px;
-  height: 3px;
-  background-color: transparent;
-  position: absolute;
-  top: calc(50% - 24px / 16);
-}
-
-.login-close > div > div:before,
-.login-close > div > div:after {
-  position: absolute;
-  content: "";
-  width: inherit;
-  height: inherit;
-  display: block;
-  background: white;
-  transform: rotate(-45deg);
-}
-
-.login-close > div > div:after {
-  transform: rotate(45deg);
-}
-
-.login-forgotpassword {
-  width: 100%;
-  padding: 0;
-  margin: 0 !important;
-  text-align: right;
-}
-
-.login-forgotpassword button {
-  background: none;
-  border: none;
-  color: #767676;
-  text-decoration: underline;
-}
-
-.login-forgotpassword button:hover {
-  color: #E6A65C;
-}
-
-#app p {
-  margin: 0;
-  margin-top: 32px;
-}
-
-.btn-forgot-pass button {
-  padding: 5px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 500;
-  background-color: #1F1F1F;
   color: #FFFFFF;
-  border: solid 2px #767676;
 }
 
-.btn-forgot-pass button:hover {
-  background-color: #0F0F0F;
-  border: solid 2px #E6A65C;
-}
-
-.form-forgot-pass input {
-  margin-top: 10px;
-  margin-bottom: 0;
-  padding: 10px;
-  border-radius: 5px;
-  background: white;
-  border: solid 2px #767676;
-  width: 100%;
-}
-
-.form-forgot-pass input:hover {
-  border: solid 2px #E6A65C;
-}
-
-.form-forgot-pass .btn-pass-reset {
-  cursor: pointer;
-  font-weight: 500;
-  background-color: #1F1F1F;
-  color: #FFFFFF;
-  border: solid 2px #767676;
-  width: 100%;
-}
-
-.form-forgot-pass .btn-pass-reset:hover {
-  background-color: #0F0F0F;
-}
-
-.form-forgot-pass-account {
-  margin: 0;
-  width: 100%;
-  text-align: right;
-  margin-bottom: 25px;
-}
-
-.form-forgot-pass-account .form-forgot-pass-account-button {
-  background: none;
-  border: none;
-  color: #767676;
-  justify-self: flex-end;
-  text-decoration: underline;
-}
-
-.form-forgot-pass-account .form-forgot-pass-account-button:hover {
+.navbar-user .navbar-user-name {
   color: #E6A65C;
-}
-
-.forgot-email-label {
-  text-align: left;
-  margin: 0;
-}
-
-.forgot-email-label label {
-  color: #767676;
-}
-
-.form-forgot-returnmessage {
-  text-align: left;
-  padding: 12px 24px;
-  color: #767676;
 }
 
 .modal_holder {
@@ -500,12 +334,11 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.75);
+  background: radial-gradient(ellipse at bottom left, rgba(54, 54, 54, 0.8), rgba(15, 15, 15, 0.8));
 }
 
 .modal_screen {
   display: block;
-  text-align: center;
   position: relative;
   background-color: #1F1F1F;
   color: #E6A65C;
@@ -519,17 +352,290 @@ html {
   }
 }
 
-.btn-close-modal {
-  margin-bottom: 25px;
-  margin-top: 5px;
-  margin-left: 80%;
-  border-radius: 5px;
-  background-color: #1F1F1F;
+.modal-close {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+}
+
+.modal-close > div {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.modal-close > div > div {
+  width: 32px;
+  height: 3px;
+  background-color: transparent;
+  position: absolute;
+  top: calc(50% - 24px / 16);
+}
+
+.modal-close > div > div:before,
+.modal-close > div > div:after {
+  position: absolute;
+  content: "";
+  width: inherit;
+  height: inherit;
+  display: block;
+  background: white;
+  transform: rotate(-45deg);
+}
+
+.modal-close > div > div:after {
+  transform: rotate(45deg);
+}
+
+.loading {
+  width: 24px;
+  height: 24px;
+  margin: 24px auto;
+  position: relative;
+}
+
+.loading > div {
+  position: absolute;
+  width: 50%;
+  height: 4px;
+  top: 50%;
+  left: 50%;
+}
+
+.loading > div:nth-child(1) {
+  transform: translate(-50%, -50%) rotate(36deg);
+}
+
+.loading > div:nth-child(1) > div {
+  -webkit-animation-delay: 0.08s;
+          animation-delay: 0.08s;
+}
+
+.loading > div:nth-child(2) {
+  transform: translate(-50%, -50%) rotate(72deg);
+}
+
+.loading > div:nth-child(2) > div {
+  -webkit-animation-delay: 0.16s;
+          animation-delay: 0.16s;
+}
+
+.loading > div:nth-child(3) {
+  transform: translate(-50%, -50%) rotate(108deg);
+}
+
+.loading > div:nth-child(3) > div {
+  -webkit-animation-delay: 0.24s;
+          animation-delay: 0.24s;
+}
+
+.loading > div:nth-child(4) {
+  transform: translate(-50%, -50%) rotate(144deg);
+}
+
+.loading > div:nth-child(4) > div {
+  -webkit-animation-delay: 0.32s;
+          animation-delay: 0.32s;
+}
+
+.loading > div:nth-child(5) {
+  transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.loading > div:nth-child(5) > div {
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+.loading > div:nth-child(6) {
+  transform: translate(-50%, -50%) rotate(216deg);
+}
+
+.loading > div:nth-child(6) > div {
+  -webkit-animation-delay: 0.48s;
+          animation-delay: 0.48s;
+}
+
+.loading > div:nth-child(7) {
+  transform: translate(-50%, -50%) rotate(252deg);
+}
+
+.loading > div:nth-child(7) > div {
+  -webkit-animation-delay: 0.56s;
+          animation-delay: 0.56s;
+}
+
+.loading > div:nth-child(8) {
+  transform: translate(-50%, -50%) rotate(288deg);
+}
+
+.loading > div:nth-child(8) > div {
+  -webkit-animation-delay: 0.64s;
+          animation-delay: 0.64s;
+}
+
+.loading > div:nth-child(9) {
+  transform: translate(-50%, -50%) rotate(324deg);
+}
+
+.loading > div:nth-child(9) > div {
+  -webkit-animation-delay: 0.72s;
+          animation-delay: 0.72s;
+}
+
+.loading > div:nth-child(10) {
+  transform: translate(-50%, -50%) rotate(360deg);
+}
+
+.loading > div:nth-child(10) > div {
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
+}
+
+.loading > div > div {
+  border-radius: 2px;
+  width: 100%;
+  height: 100%;
+  background: #E6A65C;
+  -webkit-animation: loading-fade 0.8s infinite;
+          animation: loading-fade 0.8s infinite;
+  transform: translateX(150%);
+}
+
+@-webkit-keyframes loading-fade {
+  0%, 100% {
+    transform: translateX(150%);
+  }
+
+  50% {
+    transform: translateX(125%);
+    background-color: #767676;
+    opacity: 0.25;
+  }
+}
+
+@keyframes loading-fade {
+  0%, 100% {
+    transform: translateX(150%);
+  }
+
+  50% {
+    transform: translateX(125%);
+    background-color: #767676;
+    opacity: 0.25;
+  }
+}
+
+.form {
+  min-width: 300px;
+}
+
+.form .form-line {
+  width: 100%;
+  padding: 14px 0;
+}
+
+.form .form-errors {
+  padding: 16px;
+  font-weight: 300;
+  font-size: 16px;
   color: #E6A65C;
+  border: solid 1px #E6A65C;
+  background-color: rgba(230, 166, 92, 0.2);
+}
+
+.form .form-message {
+  text-align: center;
+  color: #767676;
+  padding: 0.5em 0;
+}
+
+.form .form-title {
+  font-weight: 500;
+  text-align: center;
+  font-size: 32px;
+  color: #E6A65C;
+  padding: 0;
+  margin: 4px 0;
+}
+
+.form .form-label {
+  color: #767676;
+  font-weight: 300;
+  font-size: 18px;
+  padding-bottom: 4px;
+}
+
+.form .form-text-input {
+  padding: 10px;
+  border-radius: 5px;
+  background: white;
+  border: solid 2px #767676;
+  width: 100%;
+}
+
+.form .form-text-input:hover {
+  border: solid 2px #E6A65C;
+}
+
+.form .form-afterinput-link {
+  background: none;
+  border: none;
+  color: #767676;
+  text-decoration: underline;
+  float: right;
+  padding: 2px;
+}
+
+.form .form-afterinput-link:hover {
+  color: #E6A65C;
+}
+
+.form .form-line-hasbutton {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.form .form-button {
+  padding: 12px 22px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  background-color: #1F1F1F;
+  color: #FFFFFF;
+  border: solid 2px #767676;
+  min-width: 50%;
+}
+
+.form .form-button:hover {
+  background-color: #0F0F0F;
+  border: solid 2px #E6A65C;
+}
+
+.full-page-form {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-page-form .form-holder {
+  flex: 0;
+  border-radius: 4px;
+  padding: 24px 150px;
+  background: #1F1F1F;
 }
 
 body {
   padding: 0;
+  margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
   letter-spacing: normal;
@@ -537,6 +643,8 @@ body {
 }
 
 .main {
-  padding-top: 84px;
+  padding-top: 80px;
+  min-height: 100vh;
+  display: flex;
 }
 
