@@ -68,12 +68,17 @@
             checkForm: function (e) {
                 this.errors = [];
 
+                window.addEventListener("loggedIn", (e) => {
+                    console.log(e);
+                });
+
                 if (this.email && this.password) {
                     axios.post(window.location.origin + `/api/login`, {
                         "email": this.email,
                         "password": this.password,
                     }).then(response => {
                         if (response.status === 200) {
+                            this.$user.data = JSON.parse(response.request.response).data;
                             this.$emit("loggedIn", response.request.response);
                             this.$emit("close");
                         }
