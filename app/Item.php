@@ -5,6 +5,7 @@ namespace App;
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\HigherOrderBuilderProxy;
 use Illuminate\Database\Eloquent\Model;
+use ReflectionClass;
 
 /**
  * @property mixed|string name
@@ -16,6 +17,15 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Item extends Model
 {
+
+    public function getAllItemTypes() {
+        try {
+            $reflectionClass = new ReflectionClass($this);
+            return $reflectionClass->getConstants();
+        } catch (\ReflectionException $e) {
+            abort(500, "Internal Server Error");
+        }
+    }
 
     public const __CONGRESS_SPEAKERS__ = 'congress_speakers';
     public const __KEYNOTES__ = 'keynotes';

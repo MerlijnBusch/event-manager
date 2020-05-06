@@ -26,10 +26,9 @@ class ItemTypeValidator implements Rule
      */
     public function passes($attribute, $value)
     {
-        if(Item::where('type', $value) == "keynotes" || Item::where('type', $value) == "congress_speakers" ){
-            return false;
-        }
-        return true;
+        $item = new Item;
+        $allTypes = $item->getAllItemTypes();
+        return  in_array($allTypes, $value);
     }
 
     /**
