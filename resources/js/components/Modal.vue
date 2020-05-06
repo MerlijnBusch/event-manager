@@ -1,7 +1,7 @@
 <template>
     <div class="modal_holder">
         <div class="modal_screen column-desktop-4 column-tablet-9 column-mobile-12">
-            <button @click="close" class="login-close">
+            <button @click="close" class="modal-close">
                 <div>
                     <div></div>
                 </div>
