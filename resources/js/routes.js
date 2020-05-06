@@ -20,7 +20,10 @@ const router = new VueRouter({
         {
             path: '/about',
             name: 'about',
-            component: About
+            component: About,
+            meta: {
+                auth: true
+            }
         },
         {
             path: '/form/event',
@@ -42,6 +45,15 @@ const router = new VueRouter({
         },
 
     ]
+});
+
+router.beforeEach((to, from, next) => {
+    if (!!to.meta.auth && to.meta.auth) {
+    // auth here and then call for "next();"
+        next();
+    } else {
+        next();
+    }
 });
 
 export default router;
