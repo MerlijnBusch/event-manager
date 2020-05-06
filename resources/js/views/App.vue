@@ -1,6 +1,6 @@
 <template>
     <div>
-        <NavBar @logout="loggedIn = false" @openLogin="openLogin" :loggedIn="loggedIn"></NavBar>
+        <NavBar @logout="loggedIn = false" @openLogin="openLogin" :user-data="userData" :loggedIn="loggedIn"></NavBar>
         <Modal v-if="modal_open" @loggedIn="loggedInHandler" @close="closeLogin"></Modal>
         <div class="main">
             <router-view></router-view>
@@ -17,18 +17,19 @@
             return {
                 loggedIn: false,
                 modal_open: false,
+                userData: [],
             }
         },
-        methods: {
-            openLogin() {
+        methods:{
+            openLogin(){
                 this.modal_open = true;
             },
-            closeLogin() {
-                this.modal_open = false;
-            },
-            loggedInHandler(e) {
-                this.loggedIn = true;
-                console.log(e);
+          closeLogin(){
+              this.modal_open = false;
+          },
+            loggedInHandler (e){
+              this.loggedIn = true;
+              this.userData = JSON.parse(e).data;
             },
         },
         components: {Modal, NavBar},
