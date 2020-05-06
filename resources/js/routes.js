@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 
 import Home from '@/js/components/Home';
 import About from '@/js/components/About';
+import Example from '@/js/components/Example'
 import ResetPasswordForm from '@/js/components/ResetPasswordForm';
 
 Vue.use(VueRouter);

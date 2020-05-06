@@ -56,6 +56,12 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::patch('role/{role}', 'RoleController@update')->name('role.update');
     Route::delete('role/{role}', 'RoleController@destroy')->name('role.destroy');
 
+    Route::get('item', 'ItemController@index')->name('item');
+    Route::get('item/{item}', 'ItemController@show')->name('item.show');
+    Route::post('item', 'ItemController@store')->name('item.store');
+    Route::patch('item/{item}', 'ItemController@update')->name('item.update');
+    Route::delete('item/{item}', 'ItemController@destroy')->name('item.destroy');
+
     Route::get('map', 'MapController@index')->name('map');
     Route::get('map/{map}', 'MapController@show')->name('map.show');
     Route::post('map', 'MapController@store')->name('map.store');
