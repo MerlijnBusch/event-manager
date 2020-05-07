@@ -7,7 +7,7 @@
         <div class="form-errors" v-if="errors.length">
             <p>Fout:</p>
             <ul>
-                <li v-for="error in errors">{{ error }}</li>
+                <li :key=(index) v-for="(error, index) in errors">{{ error }}</li>
             </ul>
         </div>
 
