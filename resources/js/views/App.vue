@@ -1,7 +1,7 @@
 <template>
     <div>
-        <NavBar @logout="loggedIn = false" @openLogin="openLogin" :user-data="userData" :loggedIn="loggedIn"></NavBar>
-        <Modal v-if="modal_open" @loggedIn="loggedInHandler" @close="closeLogin"></Modal>
+        <NavBar @logout="loggedIn = false" @openLogin="openLogin" :loggedIn="loggedIn"></NavBar>
+        <Modal v-if="modal_open || ($route.params.loggedIn !== undefined && !$route.params.loggedIn)" @loggedIn="loggedInHandler" @close="closeLogin"></Modal>
         <div class="main">
             <router-view></router-view>
         </div>
