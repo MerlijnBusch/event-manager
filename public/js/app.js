@@ -2475,7 +2475,6 @@ __webpack_require__.r(__webpack_exports__);
  when items is tapped it will take the see that as the selected item when the copy state is on true
  key ctrl + c start copy state
  key ctrl + v start copying items and copy state on false in case user mis clicks
- key ctrl + z to undo all changes in the copy state
  key escape to stop the copy state and clear the copy item
  */
 
@@ -2487,7 +2486,7 @@ __webpack_require__.r(__webpack_exports__);
       counter: 0,
       copyState: false,
       copyItem: {},
-      updatedItemsCopyState: []
+      timeout: undefined
     };
   },
   methods: {
@@ -2572,6 +2571,9 @@ __webpack_require__.r(__webpack_exports__);
       container.appendChild(this.createNewDomElement());
     },
     createNewDomElement: function createNewDomElement() {
+      var backgroundColorCodeItem = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.backgroundColorCodeItem;
+      var width = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 150;
+      var height = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 150;
       var item = dom_create_element__WEBPACK_IMPORTED_MODULE_2___default()({
         selector: 'div',
         id: "stand-id-".concat(this.counter),
@@ -2581,13 +2583,16 @@ __webpack_require__.r(__webpack_exports__);
           html: "stand-id-".concat(this.counter)
         })
       });
-      item.style.backgroundColor = this.backgroundColorCodeItem;
+      item.style.backgroundColor = backgroundColorCodeItem;
+      item.style.width = width + "px";
+      item.style.height = height + "px";
       return item;
     },
     deleteItemFromArray: function deleteItemFromArray(event) {
       this.items = this.items.filter(function (obj) {
         return obj.id !== event.detail;
       });
+      this.counter--;
     },
     setDragPosition: function setDragPosition(event) {
       var _this = this;
@@ -2630,21 +2635,33 @@ __webpack_require__.r(__webpack_exports__);
       }, 100);
     },
     startCopyPasteState: function startCopyPasteState(event) {
-      console.log(event);
-      if (event.code === "KeyC" && event.ctrlKey === true) this.copyState = true;
+      var _this3 = this;
 
-      if (event.code === "KeyV" && event.ctrlKey === true) {
-        this.copyState = false; // set copy state on false and start pasting the items
+      if (event.code === "KeyC" && event.ctrlKey === true) {
+        this.copyState = true;
       }
 
-      if (event.code === "KeyZ" && event.ctrlKey === true) {//undo all changes
+      if (event.code === "KeyV" && event.ctrlKey === true && this.copyItem.id !== undefined) {
+        this.copyState = false; // set copy state on false and start pasting the items
+
+        if (this.timeout === undefined) {
+          this.items.push(this.generateItemObject(this.copyItem.style.width, this.copyItem.style.height, this.copyItem.positionFromParent.x, this.copyItem.positionFromParent.y, this.copyItem.style.backgroundColor));
+          var container = this.$refs.mapHolder;
+          container.appendChild(this.createNewDomElement(this.copyItem.style.backgroundColor, this.copyItem.style.width, this.copyItem.style.height));
+          this.timeout = setTimeout(function () {
+            _this3.timeout = undefined;
+          }, 1000);
+        }
       }
 
       if (event.code === "Escape") {
-        this.copyState = false; // clear copy state
-
-        this.copyItem = {};
+        this.clearCopyState();
       }
+    },
+    clearCopyState: function clearCopyState() {
+      this.copyState = false; // clear copy state
+
+      this.copyItem = {};
     },
     setCopyPasteItem: function setCopyPasteItem(event) {
       if (this.copyState) this.copyItem = this.items.find(function (el) {
@@ -2660,7 +2677,6 @@ __webpack_require__.r(__webpack_exports__);
       this.counter++;
       return {
         id: "stand-id-".concat(this.counter),
-        name: 'some item wowow',
         user_id: undefined,
         style: {
           width: width,
@@ -2682,10 +2698,11 @@ __webpack_require__.r(__webpack_exports__);
     this.init();
   },
   beforeDestroy: function beforeDestroy() {
+    this.clearCopyState();
     window.removeEventListener('delete-item', this.deleteItemFromArray, false);
     window.removeEventListener('update-background-color', this.updateItemBackgroundColor, false);
     window.removeEventListener('keydown', this.startCopyPasteState, false);
-    window.removeEventListener('keydown', this.setCopyPasteItem, false);
+    window.removeEventListener('set-copied-item', this.setCopyPasteItem, false);
   }
 });
 
@@ -7304,7 +7321,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.map-container {\n    display: flex;\n    flex-direction: row;\n    width: 100%;\n}\n.map-holder {\n    width: 1500px;\n    height: 2000px;\n    background-color: lightgray;\n}\n.draggable {\n    position: absolute;\n    width: 150px;\n    height: 150px;\n    color: white;\n    touch-action: none;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    transform: translate(0px, 0px);\n}\n.map-settings-container {\n    width: 200px;\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    padding: 8px;\n}\n.button-create-item {\n    height: 30px;\n}\n.map-settings-container-items {\n    padding-top: 4px;\n    padding-bottom: 4px;\n    width: 100%;\n}\n", ""]);
+exports.push([module.i, "\n.map-container {\n    display: flex;\n    flex-direction: row;\n    width: 100%;\n}\n.map-holder {\n    width: 1500px;\n    height: 2000px;\n    background-color: lightgray;\n}\n.draggable {\n    position: absolute;\n    color: white;\n    touch-action: none;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    transform: translate(0px, 0px);\n}\n.map-settings-container {\n    width: 200px;\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    padding: 8px;\n}\n.button-create-item {\n    height: 30px;\n}\n.map-settings-container-items {\n    padding-top: 4px;\n    padding-bottom: 4px;\n    width: 100%;\n}\n", ""]);
 
 // exports
 

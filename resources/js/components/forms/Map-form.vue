@@ -23,7 +23,6 @@
      when items is tapped it will take the see that as the selected item when the copy state is on true
      key ctrl + c start copy state
      key ctrl + v start copying items and copy state on false in case user mis clicks
-     key ctrl + z to undo all changes in the copy state
      key escape to stop the copy state and clear the copy item
      */
 
@@ -35,7 +34,7 @@
                 counter: 0,
                 copyState: false,
                 copyItem: {},
-                updatedItemsCopyState: [],
+                timeout: undefined,
             }
         },
         methods: {
@@ -114,24 +113,26 @@
                 const container = this.$refs.mapHolder;
                 container.appendChild(this.createNewDomElement());
             },
-            createNewDomElement() {
+            createNewDomElement(backgroundColorCodeItem = this.backgroundColorCodeItem, width = 150, height = 150) {
                 const item = create({
                     selector: 'div',
                     id: `stand-id-${this.counter}`,
                     styles: 'draggable',
-
                     children: create({
                         selector: 'p',
                         html: `stand-id-${this.counter}`,
                     })
                 });
-                item.style.backgroundColor = this.backgroundColorCodeItem;
+                item.style.backgroundColor = backgroundColorCodeItem;
+                item.style.width = width + "px";
+                item.style.height = height + "px";
                 return item;
             },
             deleteItemFromArray(event) {
                 this.items = this.items.filter((obj) => {
                     return obj.id !== event.detail;
                 });
+                this.counter--;
             },
             setDragPosition(event) {
                 setTimeout(() => {
@@ -171,18 +172,37 @@
                 }, 100)
             },
             startCopyPasteState(event) {
-                console.log(event)
-                if (event.code === "KeyC" && event.ctrlKey === true) this.copyState = true;
-                if (event.code === "KeyV" && event.ctrlKey === true) {
-                    this.copyState = false; // set copy state on false and start pasting the items
+                if (event.code === "KeyC" && event.ctrlKey === true) {
+                    this.copyState = true;
                 }
-                if (event.code === "KeyZ" && event.ctrlKey === true) {
-                    //undo all changes
+                if (event.code === "KeyV" && event.ctrlKey === true && this.copyItem.id !== undefined) {
+                    this.copyState = false; // set copy state on false and start pasting the items
+                    if (this.timeout === undefined) {
+                        this.items.push(this.generateItemObject(
+                            this.copyItem.style.width,
+                            this.copyItem.style.height,
+                            this.copyItem.positionFromParent.x,
+                            this.copyItem.positionFromParent.y,
+                            this.copyItem.style.backgroundColor
+                        ));
+                        const container = this.$refs.mapHolder;
+                        container.appendChild(this.createNewDomElement(
+                            this.copyItem.style.backgroundColor,
+                            this.copyItem.style.width,
+                            this.copyItem.style.height
+                        ));
+                        this.timeout = setTimeout(() => {
+                            this.timeout = undefined;
+                        }, 1000)
+                    }
                 }
                 if (event.code === "Escape") {
-                    this.copyState = false; // clear copy state
-                    this.copyItem = {};
+                    this.clearCopyState();
                 }
+            },
+            clearCopyState() {
+                this.copyState = false; // clear copy state
+                this.copyItem = {};
             },
             setCopyPasteItem(event) {
                 if (this.copyState) this.copyItem = this.items.find(el => el.id === event.detail.target.id)
@@ -191,7 +211,6 @@
                 this.counter++;
                 return {
                     id: `stand-id-${this.counter}`,
-                    name: 'some item wowow',
                     user_id: undefined,
                     style: {
                         width: width,
@@ -213,10 +232,11 @@
             this.init()
         },
         beforeDestroy() {
+            this.clearCopyState();
             window.removeEventListener('delete-item', this.deleteItemFromArray, false);
             window.removeEventListener('update-background-color', this.updateItemBackgroundColor, false);
             window.removeEventListener('keydown', this.startCopyPasteState, false);
-            window.removeEventListener('keydown', this.setCopyPasteItem, false);
+            window.removeEventListener('set-copied-item', this.setCopyPasteItem, false);
         }
     }
 </script>
@@ -236,8 +256,6 @@
 
     .draggable {
         position: absolute;
-        width: 150px;
-        height: 150px;
         color: white;
         touch-action: none;
         user-select: none;
