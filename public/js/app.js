@@ -2466,11 +2466,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
 /**
- double tap items or box to delete item,
+ double tap items on box to delete item,
  when color is selected and items is holden it will change that items color,
  when items is tapped it will take the see that as the selected item when the copy state is on true
  key ctrl + c start copy state
@@ -2688,6 +2690,15 @@ __webpack_require__.r(__webpack_exports__);
           y: y
         }
       };
+    },
+    storeMap: function storeMap() {},
+    clearMap: function clearMap() {
+      if (!confirm('Weet u zeker dat u de map wilt leeg maken')) return null;
+      var container = this.$refs.mapHolder;
+      container.innerHTML = '';
+      this.counter = 0;
+      this.items = [];
+      this.clearCopyState();
     }
   },
   mounted: function mounted() {
@@ -40096,7 +40107,25 @@ var render = function() {
             }
           }
         })
-      ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "button-create-item map-settings-container-items",
+          on: { click: _vm.storeMap }
+        },
+        [_vm._v("Create Map")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "button-create-item map-settings-container-items",
+          on: { click: _vm.clearMap }
+        },
+        [_vm._v("Clear map")]
+      )
     ]),
     _vm._v(" "),
     _c("div", { ref: "mapHolder", staticClass: "map-holder" })

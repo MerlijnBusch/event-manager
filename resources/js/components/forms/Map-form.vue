@@ -7,6 +7,8 @@
                 <input type="color" name="select-color" id="select-color" v-bind:value="this.backgroundColorCodeItem"
                        @change="setItemBackgroundColorData($event)"/>
             </div>
+            <button class="button-create-item map-settings-container-items" v-on:click="storeMap">Create Map</button>
+            <button class="button-create-item map-settings-container-items" v-on:click="clearMap">Clear map</button>
         </div>
         <div class="map-holder" ref="mapHolder"></div>
     </div>
@@ -18,7 +20,7 @@
     import create from 'dom-create-element';
 
     /**
-     double tap items or box to delete item,
+     double tap items on box to delete item,
      when color is selected and items is holden it will change that items color,
      when items is tapped it will take the see that as the selected item when the copy state is on true
      key ctrl + c start copy state
@@ -222,6 +224,17 @@
                         y: y,
                     }
                 }
+            },
+            storeMap(){
+
+            },
+            clearMap(){
+                if (!confirm('Weet u zeker dat u de map wilt leeg maken')) return null;
+                const container = this.$refs.mapHolder;
+                container.innerHTML = '';
+                this.counter = 0;
+                this.items = [];
+                this.clearCopyState();
             }
         },
         mounted() {
