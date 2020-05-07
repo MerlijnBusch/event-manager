@@ -2461,14 +2461,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
+
+/**
+ double tap items or box to delete item,
+ when color is selected and items is holden it will change that items color,
+ when items is tapped it will take the see that as the selected item when the copy state is on true
+ key ctrl + c start copy state
+ key ctrl + v start copying items and copy state on false in case user mis clicks
+ key ctrl + z to undo all changes in the copy state
+ key escape to stop the copy state and clear the copy item
+ */
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       items: [],
-      counter: 0
+      backgroundColorCodeItem: "#2195e8",
+      counter: 0,
+      copyState: false,
+      copyItem: {},
+      updatedItemsCopyState: []
     };
   },
   methods: {
@@ -2525,8 +2544,19 @@ __webpack_require__.r(__webpack_exports__);
         }
 
         e.preventDefault();
+      }).on('hold', function (event) {
+        window.dispatchEvent(new CustomEvent('update-background-color', {
+          detail: event
+        }));
+      }).on('tap', function (event) {
+        window.dispatchEvent(new CustomEvent('set-copied-item', {
+          detail: event
+        }));
       });
       window.addEventListener('delete-item', this.deleteItemFromArray, false);
+      window.addEventListener('update-background-color', this.updateItemBackgroundColor, false);
+      window.addEventListener('keydown', this.startCopyPasteState, false);
+      window.addEventListener('set-copied-item', this.setCopyPasteItem, false);
     },
     updatePosition: function updatePosition(event) {
       var target = event.target;
@@ -2537,25 +2567,12 @@ __webpack_require__.r(__webpack_exports__);
       target.setAttribute('data-y', y);
     },
     addNewItem: function addNewItem() {
-      var newItem = {
-        id: "stand-id-".concat(this.counter),
-        name: 'some item wowow',
-        style: {
-          width: 150,
-          height: 150
-        },
-        positionFromParent: {
-          x: 0,
-          y: 0
-        }
-      };
-      this.items.push(newItem);
+      this.items.push(this.generateItemObject());
       var container = this.$refs.mapHolder;
       container.appendChild(this.createNewDomElement());
-      this.counter++;
     },
     createNewDomElement: function createNewDomElement() {
-      return dom_create_element__WEBPACK_IMPORTED_MODULE_2___default()({
+      var item = dom_create_element__WEBPACK_IMPORTED_MODULE_2___default()({
         selector: 'div',
         id: "stand-id-".concat(this.counter),
         styles: 'draggable',
@@ -2564,6 +2581,8 @@ __webpack_require__.r(__webpack_exports__);
           html: "stand-id-".concat(this.counter)
         })
       });
+      item.style.backgroundColor = this.backgroundColorCodeItem;
+      return item;
     },
     deleteItemFromArray: function deleteItemFromArray(event) {
       this.items = this.items.filter(function (obj) {
@@ -2595,11 +2614,78 @@ __webpack_require__.r(__webpack_exports__);
       target.style.webkitTransform = target.style.transform = 'translate(' + x + 'px,' + y + 'px)';
       target.setAttribute('data-x', x);
       target.setAttribute('data-y', y);
+    },
+    setItemBackgroundColorData: function setItemBackgroundColorData(event) {
+      this.backgroundColorCodeItem = event.target.value;
+    },
+    updateItemBackgroundColor: function updateItemBackgroundColor(event) {
+      var _this2 = this;
+
+      var el = event.detail.target;
+      el.style.backgroundColor = this.backgroundColorCodeItem;
+      setTimeout(function () {
+        _this2.items.forEach(function (element, index) {
+          if (element.id === el.id) _this2.items[index].style.backgroundColor = _this2.backgroundColorCodeItem;
+        });
+      }, 100);
+    },
+    startCopyPasteState: function startCopyPasteState(event) {
+      console.log(event);
+      if (event.code === "KeyC" && event.ctrlKey === true) this.copyState = true;
+
+      if (event.code === "KeyV" && event.ctrlKey === true) {
+        this.copyState = false; // set copy state on false and start pasting the items
+      }
+
+      if (event.code === "KeyZ" && event.ctrlKey === true) {//undo all changes
+      }
+
+      if (event.code === "Escape") {
+        this.copyState = false; // clear copy state
+
+        this.copyItem = {};
+      }
+    },
+    setCopyPasteItem: function setCopyPasteItem(event) {
+      if (this.copyState) this.copyItem = this.items.find(function (el) {
+        return el.id === event.detail.target.id;
+      });
+    },
+    generateItemObject: function generateItemObject() {
+      var width = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 150;
+      var height = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 150;
+      var x = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+      var y = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
+      var backgroundColorCodeItem = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : this.backgroundColorCodeItem;
+      this.counter++;
+      return {
+        id: "stand-id-".concat(this.counter),
+        name: 'some item wowow',
+        user_id: undefined,
+        style: {
+          width: width,
+          height: height,
+          backgroundColor: backgroundColorCodeItem
+        },
+        positionFromParent: {
+          x: x,
+          y: y
+        }
+      };
     }
   },
   mounted: function mounted() {
     this.deleteItemFromArray = this.deleteItemFromArray.bind(this);
+    this.updateItemBackgroundColor = this.updateItemBackgroundColor.bind(this);
+    this.startCopyPasteState = this.startCopyPasteState.bind(this);
+    this.setCopyPasteItem = this.setCopyPasteItem.bind(this);
     this.init();
+  },
+  beforeDestroy: function beforeDestroy() {
+    window.removeEventListener('delete-item', this.deleteItemFromArray, false);
+    window.removeEventListener('update-background-color', this.updateItemBackgroundColor, false);
+    window.removeEventListener('keydown', this.startCopyPasteState, false);
+    window.removeEventListener('keydown', this.setCopyPasteItem, false);
   }
 });
 
@@ -7218,7 +7304,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.map-container {\n    display: flex;\n    flex-direction: row;\n    width: 100%;\n}\n.map-holder {\n    width: 1500px;\n    height: 2000px;\n    background-color: lightgray;\n}\n.draggable {\n    position: absolute;\n    width: 150px;\n    height: 150px;\n    background-color: #29e;\n    color: white;\n    touch-action: none;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    transform: translate(0px, 0px);\n}\n.map-settings-container{\n    width: 200px;\n    display: flex;\n    justify-content: start;\n    padding: 8px;\n}\n.button-create-item {\n    width: 100%;\n    height: 30px;\n}\n", ""]);
+exports.push([module.i, "\n.map-container {\n    display: flex;\n    flex-direction: row;\n    width: 100%;\n}\n.map-holder {\n    width: 1500px;\n    height: 2000px;\n    background-color: lightgray;\n}\n.draggable {\n    position: absolute;\n    width: 150px;\n    height: 150px;\n    color: white;\n    touch-action: none;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    transform: translate(0px, 0px);\n}\n.map-settings-container {\n    width: 200px;\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    padding: 8px;\n}\n.button-create-item {\n    height: 30px;\n}\n.map-settings-container-items {\n    padding-top: 4px;\n    padding-bottom: 4px;\n    width: 100%;\n}\n", ""]);
 
 // exports
 
@@ -39972,9 +40058,28 @@ var render = function() {
     _c("div", { staticClass: "map-settings-container" }, [
       _c(
         "button",
-        { staticClass: "button-create-item", on: { click: _vm.addNewItem } },
+        {
+          staticClass: "button-create-item map-settings-container-items",
+          on: { click: _vm.addNewItem }
+        },
         [_vm._v("AddNewItem")]
-      )
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "map-settings-container-items" }, [
+        _c("label", { attrs: { for: "select-color" } }, [
+          _vm._v("Select color")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          attrs: { type: "color", name: "select-color", id: "select-color" },
+          domProps: { value: this.backgroundColorCodeItem },
+          on: {
+            change: function($event) {
+              return _vm.setItemBackgroundColorData($event)
+            }
+          }
+        })
+      ])
     ]),
     _vm._v(" "),
     _c("div", { ref: "mapHolder", staticClass: "map-holder" })

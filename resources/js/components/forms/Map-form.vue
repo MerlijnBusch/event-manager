@@ -1,7 +1,12 @@
 <template>
     <div class="map-container">
         <div class="map-settings-container">
-            <button class="button-create-item" v-on:click="addNewItem">AddNewItem</button>
+            <button class="button-create-item map-settings-container-items" v-on:click="addNewItem">AddNewItem</button>
+            <div class="map-settings-container-items">
+                <label for="select-color">Select color</label>
+                <input type="color" name="select-color" id="select-color" v-bind:value="this.backgroundColorCodeItem"
+                       @change="setItemBackgroundColorData($event)"/>
+            </div>
         </div>
         <div class="map-holder" ref="mapHolder"></div>
     </div>
@@ -12,11 +17,25 @@
     import interact from 'interactjs'
     import create from 'dom-create-element';
 
+    /**
+     double tap items or box to delete item,
+     when color is selected and items is holden it will change that items color,
+     when items is tapped it will take the see that as the selected item when the copy state is on true
+     key ctrl + c start copy state
+     key ctrl + v start copying items and copy state on false in case user mis clicks
+     key ctrl + z to undo all changes in the copy state
+     key escape to stop the copy state and clear the copy item
+     */
+
     export default {
         data() {
             return {
                 items: [],
+                backgroundColorCodeItem: "#2195e8",
                 counter: 0,
+                copyState: false,
+                copyItem: {},
+                updatedItemsCopyState: [],
             }
         },
         methods: {
@@ -48,10 +67,10 @@
                             }),
                             interact.modifiers.snap({
                                 targets: [
-                                    interact.createSnapGrid({ x: 20, y: 20 })
+                                    interact.createSnapGrid({x: 20, y: 20})
                                 ],
                                 range: Infinity,
-                                relativePoints: [ { x: 0, y: 0 } ]
+                                relativePoints: [{x: 0, y: 0}]
                             }),
                         ],
                         autoScroll: true,
@@ -69,7 +88,16 @@
                         }
                         e.preventDefault()
                     })
+                    .on('hold', function (event) {
+                        window.dispatchEvent(new CustomEvent('update-background-color', {detail: event}));
+                    })
+                    .on('tap', function (event) {
+                        window.dispatchEvent(new CustomEvent('set-copied-item', {detail: event}));
+                    })
                 window.addEventListener('delete-item', this.deleteItemFromArray, false);
+                window.addEventListener('update-background-color', this.updateItemBackgroundColor, false);
+                window.addEventListener('keydown', this.startCopyPasteState, false);
+                window.addEventListener('set-copied-item', this.setCopyPasteItem, false);
             },
             updatePosition(event) {
                 let target = event.target
@@ -82,33 +110,23 @@
                 target.setAttribute('data-y', y)
             },
             addNewItem() {
-                const newItem = {
-                    id: `stand-id-${this.counter}`,
-                    name: 'some item wowow',
-                    style: {
-                        width: 150,
-                        height: 150,
-                    },
-                    positionFromParent: {
-                        x: 0,
-                        y: 0,
-                    }
-                }
-                this.items.push(newItem);
+                this.items.push(this.generateItemObject());
                 const container = this.$refs.mapHolder;
                 container.appendChild(this.createNewDomElement());
-                this.counter++;
             },
             createNewDomElement() {
-                return create({
+                const item = create({
                     selector: 'div',
                     id: `stand-id-${this.counter}`,
                     styles: 'draggable',
+
                     children: create({
                         selector: 'p',
                         html: `stand-id-${this.counter}`,
                     })
                 });
+                item.style.backgroundColor = this.backgroundColorCodeItem;
+                return item;
             },
             deleteItemFromArray(event) {
                 this.items = this.items.filter((obj) => {
@@ -139,11 +157,66 @@
                     'translate(' + x + 'px,' + y + 'px)'
                 target.setAttribute('data-x', x)
                 target.setAttribute('data-y', y)
+            },
+            setItemBackgroundColorData(event) {
+                this.backgroundColorCodeItem = event.target.value;
+            },
+            updateItemBackgroundColor(event) {
+                let el = event.detail.target;
+                el.style.backgroundColor = this.backgroundColorCodeItem
+                setTimeout(() => {
+                    this.items.forEach((element, index) => {
+                        if (element.id === el.id) this.items[index].style.backgroundColor = this.backgroundColorCodeItem;
+                    });
+                }, 100)
+            },
+            startCopyPasteState(event) {
+                console.log(event)
+                if (event.code === "KeyC" && event.ctrlKey === true) this.copyState = true;
+                if (event.code === "KeyV" && event.ctrlKey === true) {
+                    this.copyState = false; // set copy state on false and start pasting the items
+                }
+                if (event.code === "KeyZ" && event.ctrlKey === true) {
+                    //undo all changes
+                }
+                if (event.code === "Escape") {
+                    this.copyState = false; // clear copy state
+                    this.copyItem = {};
+                }
+            },
+            setCopyPasteItem(event) {
+                if (this.copyState) this.copyItem = this.items.find(el => el.id === event.detail.target.id)
+            },
+            generateItemObject(width = 150, height = 150, x = 0, y = 0, backgroundColorCodeItem = this.backgroundColorCodeItem) {
+                this.counter++;
+                return {
+                    id: `stand-id-${this.counter}`,
+                    name: 'some item wowow',
+                    user_id: undefined,
+                    style: {
+                        width: width,
+                        height: height,
+                        backgroundColor: backgroundColorCodeItem,
+                    },
+                    positionFromParent: {
+                        x: x,
+                        y: y,
+                    }
+                }
             }
         },
         mounted() {
             this.deleteItemFromArray = this.deleteItemFromArray.bind(this)
+            this.updateItemBackgroundColor = this.updateItemBackgroundColor.bind(this)
+            this.startCopyPasteState = this.startCopyPasteState.bind(this);
+            this.setCopyPasteItem = this.setCopyPasteItem.bind(this);
             this.init()
+        },
+        beforeDestroy() {
+            window.removeEventListener('delete-item', this.deleteItemFromArray, false);
+            window.removeEventListener('update-background-color', this.updateItemBackgroundColor, false);
+            window.removeEventListener('keydown', this.startCopyPasteState, false);
+            window.removeEventListener('keydown', this.setCopyPasteItem, false);
         }
     }
 </script>
@@ -165,7 +238,6 @@
         position: absolute;
         width: 150px;
         height: 150px;
-        background-color: #29e;
         color: white;
         touch-action: none;
         user-select: none;
@@ -173,15 +245,21 @@
         transform: translate(0px, 0px);
     }
 
-    .map-settings-container{
+    .map-settings-container {
         width: 200px;
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
+        flex-direction: column;
         padding: 8px;
     }
 
     .button-create-item {
-        width: 100%;
         height: 30px;
+    }
+
+    .map-settings-container-items {
+        padding-top: 4px;
+        padding-bottom: 4px;
+        width: 100%;
     }
 </style>
