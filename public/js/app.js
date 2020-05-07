@@ -2691,7 +2691,28 @@ __webpack_require__.r(__webpack_exports__);
         }
       };
     },
-    storeMap: function storeMap() {},
+    storeMap: function storeMap() {
+      var _this4 = this;
+
+      var headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.$user.data.api_token
+      };
+      var data = {
+        "name": "some map name for now to test",
+        "json": JSON.stringify(this.items),
+        "event_id": 1
+      };
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(window.location.origin + "/api/map", data, {
+        headers: headers
+      }).then(function (response) {
+        if (response.status === 200) {
+          console.log('success', response);
+        }
+      })["catch"](function (e) {
+        _this4.errors.push(e);
+      });
+    },
     clearMap: function clearMap() {
       if (!confirm('Weet u zeker dat u de map wilt leeg maken')) return null;
       var container = this.$refs.mapHolder;

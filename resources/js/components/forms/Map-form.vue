@@ -225,10 +225,25 @@
                     }
                 }
             },
-            storeMap(){
-
+            storeMap() {
+                const headers = {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + this.$user.data.api_token
+                }
+                const data = {
+                    "name": "some map name for now to test",
+                    "json": JSON.stringify(this.items),
+                    "event_id": 1,
+                }
+                axios.post(window.location.origin + `/api/map`, data, {headers: headers}).then(response => {
+                    if (response.status === 200) {
+                        console.log('success', response)
+                    }
+                }).catch(e => {
+                    this.errors.push(e)
+                })
             },
-            clearMap(){
+            clearMap() {
                 if (!confirm('Weet u zeker dat u de map wilt leeg maken')) return null;
                 const container = this.$refs.mapHolder;
                 container.innerHTML = '';
