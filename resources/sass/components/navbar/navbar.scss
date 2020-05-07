@@ -161,3 +161,16 @@ $sidenav-width: 400px;
 
 }
 
+.navbar-user{
+  position: absolute;
+  left: $navbar-padding;
+  bottom: $navbar-height/2;
+  transform: translateY(150%);
+  font-size: 18px;
+  font-weight: 300;
+  color: $white;
+  .navbar-user-name{
+    color: $orange;
+  }
+}
+

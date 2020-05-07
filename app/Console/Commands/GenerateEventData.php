@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Event;
 use App\EventSettings;
 use App\Item;
+use App\Map;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 
@@ -68,5 +69,12 @@ class GenerateEventData extends Command
         $item->date = $date->copy()->addHour();
         $item->active = true;
         $item->save();
+
+        $map = new Map;
+        $map->name = "Map name";
+        $map->json = "{}";
+        $map->event_id = $event->id;
+        $map->active = true;
+        $map->save();
     }
 }
