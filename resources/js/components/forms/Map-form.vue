@@ -1,7 +1,7 @@
 <template>
     <div class="map-container">
-        <div>
-            <button v-on:click="addNewItem">AddNewItem</button>
+        <div class="map-settings-container">
+            <button class="button-create-item" v-on:click="addNewItem">AddNewItem</button>
         </div>
         <div class="map-holder" ref="mapHolder"></div>
     </div>
@@ -45,7 +45,14 @@
                             interact.modifiers.restrictRect({
                                 restriction: 'parent',
                                 endOnly: true
-                            })
+                            }),
+                            interact.modifiers.snap({
+                                targets: [
+                                    interact.createSnapGrid({ x: 20, y: 20 })
+                                ],
+                                range: Infinity,
+                                relativePoints: [ { x: 0, y: 0 } ]
+                            }),
                         ],
                         autoScroll: true,
                         listeners: {
@@ -149,20 +156,32 @@
     }
 
     .map-holder {
-        width: 100%;
-        height: 50%;
+        width: 1500px;
+        height: 2000px;
         background-color: lightgray;
     }
 
     .draggable {
         position: absolute;
         width: 150px;
-        min-height: 150px;
+        height: 150px;
         background-color: #29e;
         color: white;
         touch-action: none;
         user-select: none;
         -webkit-transform: translate(0px, 0px);
         transform: translate(0px, 0px);
+    }
+
+    .map-settings-container{
+        width: 200px;
+        display: flex;
+        justify-content: start;
+        padding: 8px;
+    }
+
+    .button-create-item {
+        width: 100%;
+        height: 30px;
     }
 </style>

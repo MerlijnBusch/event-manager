@@ -2498,6 +2498,16 @@ __webpack_require__.r(__webpack_exports__);
         modifiers: [interactjs__WEBPACK_IMPORTED_MODULE_1___default.a.modifiers.restrictRect({
           restriction: 'parent',
           endOnly: true
+        }), interactjs__WEBPACK_IMPORTED_MODULE_1___default.a.modifiers.snap({
+          targets: [interactjs__WEBPACK_IMPORTED_MODULE_1___default.a.createSnapGrid({
+            x: 20,
+            y: 20
+          })],
+          range: Infinity,
+          relativePoints: [{
+            x: 0,
+            y: 0
+          }]
         })],
         autoScroll: true,
         listeners: {
@@ -7208,7 +7218,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.map-container {\n    display: flex;\n    flex-direction: row;\n    width: 100%;\n}\n.map-holder {\n    width: 100%;\n    height: 50%;\n    background-color: lightgray;\n}\n.draggable {\n    position: absolute;\n    width: 150px;\n    min-height: 150px;\n    background-color: #29e;\n    color: white;\n    touch-action: none;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    transform: translate(0px, 0px);\n}\n", ""]);
+exports.push([module.i, "\n.map-container {\n    display: flex;\n    flex-direction: row;\n    width: 100%;\n}\n.map-holder {\n    width: 1500px;\n    height: 2000px;\n    background-color: lightgray;\n}\n.draggable {\n    position: absolute;\n    width: 150px;\n    height: 150px;\n    background-color: #29e;\n    color: white;\n    touch-action: none;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    transform: translate(0px, 0px);\n}\n.map-settings-container{\n    width: 200px;\n    display: flex;\n    justify-content: start;\n    padding: 8px;\n}\n.button-create-item {\n    width: 100%;\n    height: 30px;\n}\n", ""]);
 
 // exports
 
@@ -39959,8 +39969,12 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "map-container" }, [
-    _c("div", [
-      _c("button", { on: { click: _vm.addNewItem } }, [_vm._v("AddNewItem")])
+    _c("div", { staticClass: "map-settings-container" }, [
+      _c(
+        "button",
+        { staticClass: "button-create-item", on: { click: _vm.addNewItem } },
+        [_vm._v("AddNewItem")]
+      )
     ]),
     _vm._v(" "),
     _c("div", { ref: "mapHolder", staticClass: "map-holder" })
