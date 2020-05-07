@@ -43,6 +43,10 @@
             checkForm: function (e) {
                 this.errors = [];
 
+                window.addEventListener("loggedIn", (e) => {
+                    console.log(e);
+                });
+
                 if (this.email && this.password) {
                     axios.post(window.location.origin + `/api/login`, {
                         "email": this.email,
@@ -50,13 +54,9 @@
                     }).then(response => {
                         console.log(response)
                         if (response.status === 200) {
-                           if (console.log(!!response.data.data)) {
-                               this.$emit("loggedIn", response.request.response);
-                               this.$emit("close");
-                           } else {
-                               this.errors.push("Kan niet inloggen met deze gegevens");
-                           }
-
+                            this.$user.data = JSON.parse(response.request.response).data;
+                            this.$emit("loggedIn", response.request.response);
+                            this.$emit("close");
                         }
                     })
                         .catch(e => {

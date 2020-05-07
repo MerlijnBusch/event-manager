@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 import Home from '@/js/components/Home';
 import About from '@/js/components/About';
 import Example from '@/js/components/Example'
+import EventForm from '@/js/components/forms/Event-form'
 import ResetPasswordForm from '@/js/components/ResetPasswordForm';
 
 Vue.use(VueRouter);
@@ -20,6 +21,11 @@ const router = new VueRouter({
             path: '/about',
             name: 'about',
             component: About,
+        },
+        {
+            path: '/form/event',
+            name: 'event-form',
+            component: EventForm,
             meta: {
                 auth: true
             }
@@ -28,9 +34,6 @@ const router = new VueRouter({
             path: '/reset-password/:token',
             name: 'reset-password-form',
             component: ResetPasswordForm,
-            meta: {
-                auth: false
-            }
         },
         {
             path: '/example',
@@ -39,15 +42,6 @@ const router = new VueRouter({
         },
 
     ]
-});
-
-router.beforeEach((to, from, next) => {
-    if (!!to.meta.auth && to.meta.auth) {
-    // auth here and then call for "next();"
-        next();
-    } else {
-        next();
-    }
 });
 
 export default router;
