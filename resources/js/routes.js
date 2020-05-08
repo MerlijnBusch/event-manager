@@ -5,6 +5,7 @@ import Home from '@/js/components/Home';
 import About from '@/js/components/About';
 import Example from '@/js/components/Example'
 import EventForm from '@/js/components/forms/Event-form'
+import EventSettingsForm from '@/js/components/forms/Event-Settings-form'
 import MapForm from '@/js/components/forms/Map-form'
 import ResetPasswordForm from '@/js/components/ResetPasswordForm';
 
@@ -29,9 +30,14 @@ const router = new VueRouter({
             component: EventForm,
         },
         {
-            path: '/form/map',
+            path: '/form/map/:event_id',
             name: 'map-form',
             component: MapForm
+        },
+        {
+            path: '/form/event-settings/:event_id',
+            name: 'event-settings-form',
+            component: EventSettingsForm
         },
         {
             path: '/reset-password/:token',

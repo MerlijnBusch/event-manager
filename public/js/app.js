@@ -2310,6 +2310,142 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/Event-Settings-form.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/Event-Settings-form.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      errors: [],
+      event_id: this.$route.params.event_id,
+      visible_registrations: null,
+      max_registrations: null,
+      primary_color: '',
+      secondary_color: '',
+      active: false
+    };
+  },
+  methods: {
+    checkForm: function checkForm(e) {
+      var _this = this;
+
+      this.errors = [];
+      var headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.$user.data.api_token
+      };
+      var data = {
+        "event_id": this.event_id,
+        "visible_registrations": this.visible_registrations,
+        "max_registrations": this.max_registrations,
+        "primary_color": this.primary_color,
+        "secondary_color": this.secondary_color,
+        "active": this.active
+      };
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(window.location.origin + "/api/event-settings", data, {
+        headers: headers
+      }).then(function (response) {
+        if (response.status === 200) {
+          console.log('success', response);
+        }
+      })["catch"](function (e) {
+        _this.errors.push(e);
+      });
+      e.preventDefault();
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/Event-form.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/Event-form.vue?vue&type=script&lang=js& ***!
@@ -2408,7 +2544,6 @@ __webpack_require__.r(__webpack_exports__);
         "description": this.description,
         "date": this.date
       };
-      console.log(this.$user, this.$user.data.api_token);
 
       if (this.name && this.description) {
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(window.location.origin + "/api/event", this.data, {
@@ -2471,7 +2606,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/**
+/** @todo display this is the front end a popup for if the user forgets
  double tap items on box to delete item,
  when color is selected and items is holden it will change that items color,
  when items is tapped it will take the see that as the selected item when the copy state is on true
@@ -2484,6 +2619,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      event_id: this.$route.params.event_id,
       items: [],
       backgroundColorCodeItem: "#2195e8",
       counter: 0,
@@ -2538,7 +2674,6 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).on('doubletap', function (e) {
         if (confirm('Wilt u dit item verweideren')) {
-          console.log(e);
           var id = e.target.id;
           e.target.parentNode.removeChild(e.target);
           window.dispatchEvent(new CustomEvent('delete-item', {
@@ -2712,7 +2847,7 @@ __webpack_require__.r(__webpack_exports__);
       var data = {
         "name": "some map name for now to test",
         "json": JSON.stringify(this.items),
-        "event_id": 1
+        "event_id": this.event_id
       };
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(window.location.origin + "/api/map", data, {
         headers: headers
@@ -39930,6 +40065,254 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/Event-Settings-form.vue?vue&type=template&id=19a26a40&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/Event-Settings-form.vue?vue&type=template&id=19a26a40& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    {
+      attrs: { id: "app", method: "post" },
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.checkForm($event)
+        }
+      }
+    },
+    [
+      _vm.errors.length
+        ? _c("div", [
+            _c("b", [_vm._v("Please correct the following error(s):")]),
+            _vm._v(" "),
+            _c(
+              "ul",
+              _vm._l(_vm.errors, function(error) {
+                return _c("li", [_vm._v(_vm._s(error))])
+              }),
+              0
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("h2", { staticClass: "form-title" }, [
+        _vm._v("\n        Event Settings\n    ")
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _c(
+          "label",
+          {
+            staticClass: "form-label",
+            attrs: { for: "visible_registrations" }
+          },
+          [_vm._v("Visible registrations")]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.visible_registrations,
+              expression: "visible_registrations"
+            }
+          ],
+          staticClass: "text-input",
+          attrs: {
+            id: "visible_registrations",
+            type: "number",
+            name: "visible_registrations",
+            placeholder: "Visible registration"
+          },
+          domProps: { value: _vm.visible_registrations },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.visible_registrations = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _c(
+          "label",
+          { staticClass: "form-label", attrs: { for: "max_registrations" } },
+          [_vm._v("Max registrations")]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.max_registrations,
+              expression: "max_registrations"
+            }
+          ],
+          staticClass: "text-input",
+          attrs: {
+            id: "max_registrations",
+            type: "number",
+            name: "max_registrations",
+            placeholder: "Max registration"
+          },
+          domProps: { value: _vm.max_registrations },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.max_registrations = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _c(
+          "label",
+          { staticClass: "form-label", attrs: { for: "primary_color" } },
+          [_vm._v("Primary color")]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.primary_color,
+              expression: "primary_color"
+            }
+          ],
+          staticClass: "text-input",
+          attrs: { id: "primary_color", type: "color", name: "primary_color" },
+          domProps: { value: _vm.primary_color },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.primary_color = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _c(
+          "label",
+          { staticClass: "form-label", attrs: { for: "secondary_color" } },
+          [_vm._v("Secondary color")]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.secondary_color,
+              expression: "secondary_color"
+            }
+          ],
+          staticClass: "text-input",
+          attrs: {
+            id: "secondary_color",
+            type: "color",
+            name: "secondary_color"
+          },
+          domProps: { value: _vm.secondary_color },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.secondary_color = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _c("label", { staticClass: "form-label", attrs: { for: "active" } }, [
+          _vm._v("Active")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.active,
+              expression: "active"
+            }
+          ],
+          staticClass: "text-input",
+          attrs: { id: "active", type: "checkbox", name: "active" },
+          domProps: {
+            checked: Array.isArray(_vm.active)
+              ? _vm._i(_vm.active, null) > -1
+              : _vm.active
+          },
+          on: {
+            change: function($event) {
+              var $$a = _vm.active,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = null,
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 && (_vm.active = $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    (_vm.active = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+                }
+              } else {
+                _vm.active = $$c
+              }
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c("input", {
+        staticClass: "submit-btn",
+        attrs: { type: "submit", value: "Submit" }
+      })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/Event-form.vue?vue&type=template&id=13d6c4e2&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/Event-form.vue?vue&type=template&id=13d6c4e2& ***!
@@ -39971,12 +40354,12 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
-      _c("h2", { staticClass: "login-title" }, [
+      _c("h2", { staticClass: "form-title" }, [
         _vm._v("\n        Event\n    ")
       ]),
       _vm._v(" "),
       _c("p", [
-        _c("label", { staticClass: "login-label", attrs: { for: "name" } }, [
+        _c("label", { staticClass: "form-label", attrs: { for: "name" } }, [
           _vm._v("Name")
         ]),
         _vm._v(" "),
@@ -40011,7 +40394,7 @@ var render = function() {
       _c("p", [
         _c(
           "label",
-          { staticClass: "login-label", attrs: { for: "description" } },
+          { staticClass: "form-label", attrs: { for: "description" } },
           [_vm._v("Description")]
         ),
         _vm._v(" "),
@@ -40044,7 +40427,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("p", [
-        _c("label", { staticClass: "login-label", attrs: { for: "date" } }, [
+        _c("label", { staticClass: "form-label", attrs: { for: "date" } }, [
           _vm._v("Date")
         ]),
         _vm._v(" "),
@@ -55981,6 +56364,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/forms/Event-Settings-form.vue":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/forms/Event-Settings-form.vue ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Event_Settings_form_vue_vue_type_template_id_19a26a40___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Event-Settings-form.vue?vue&type=template&id=19a26a40& */ "./resources/js/components/forms/Event-Settings-form.vue?vue&type=template&id=19a26a40&");
+/* harmony import */ var _Event_Settings_form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Event-Settings-form.vue?vue&type=script&lang=js& */ "./resources/js/components/forms/Event-Settings-form.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Event_Settings_form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Event_Settings_form_vue_vue_type_template_id_19a26a40___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Event_Settings_form_vue_vue_type_template_id_19a26a40___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/forms/Event-Settings-form.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/forms/Event-Settings-form.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/forms/Event-Settings-form.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Event_Settings_form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Event-Settings-form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/Event-Settings-form.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Event_Settings_form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/forms/Event-Settings-form.vue?vue&type=template&id=19a26a40&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/forms/Event-Settings-form.vue?vue&type=template&id=19a26a40& ***!
+  \**********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Event_Settings_form_vue_vue_type_template_id_19a26a40___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Event-Settings-form.vue?vue&type=template&id=19a26a40& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/Event-Settings-form.vue?vue&type=template&id=19a26a40&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Event_Settings_form_vue_vue_type_template_id_19a26a40___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Event_Settings_form_vue_vue_type_template_id_19a26a40___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/forms/Event-form.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/forms/Event-form.vue ***!
@@ -56206,8 +56658,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_components_About__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/js/components/About */ "./resources/js/components/About.vue");
 /* harmony import */ var _js_components_Example__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/js/components/Example */ "./resources/js/components/Example.vue");
 /* harmony import */ var _js_components_forms_Event_form__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/js/components/forms/Event-form */ "./resources/js/components/forms/Event-form.vue");
-/* harmony import */ var _js_components_forms_Map_form__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/js/components/forms/Map-form */ "./resources/js/components/forms/Map-form.vue");
-/* harmony import */ var _js_components_ResetPasswordForm__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/js/components/ResetPasswordForm */ "./resources/js/components/ResetPasswordForm.vue");
+/* harmony import */ var _js_components_forms_Event_Settings_form__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/js/components/forms/Event-Settings-form */ "./resources/js/components/forms/Event-Settings-form.vue");
+/* harmony import */ var _js_components_forms_Map_form__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/js/components/forms/Map-form */ "./resources/js/components/forms/Map-form.vue");
+/* harmony import */ var _js_components_ResetPasswordForm__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/js/components/ResetPasswordForm */ "./resources/js/components/ResetPasswordForm.vue");
+
 
 
 
@@ -56232,13 +56686,17 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: 'event-form',
     component: _js_components_forms_Event_form__WEBPACK_IMPORTED_MODULE_5__["default"]
   }, {
-    path: '/form/map',
+    path: '/form/map/:event_id',
     name: 'map-form',
-    component: _js_components_forms_Map_form__WEBPACK_IMPORTED_MODULE_6__["default"]
+    component: _js_components_forms_Map_form__WEBPACK_IMPORTED_MODULE_7__["default"]
+  }, {
+    path: '/form/event-settings/:event_id',
+    name: 'event-settings-form',
+    component: _js_components_forms_Event_Settings_form__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, {
     path: '/reset-password/:token',
     name: 'reset-password-form',
-    component: _js_components_ResetPasswordForm__WEBPACK_IMPORTED_MODULE_7__["default"],
+    component: _js_components_ResetPasswordForm__WEBPACK_IMPORTED_MODULE_8__["default"],
     meta: {
       auth: false
     }

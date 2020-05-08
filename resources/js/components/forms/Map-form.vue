@@ -19,7 +19,7 @@
     import interact from 'interactjs'
     import create from 'dom-create-element';
 
-    /**
+    /** @todo display this is the front end a popup for if the user forgets
      double tap items on box to delete item,
      when color is selected and items is holden it will change that items color,
      when items is tapped it will take the see that as the selected item when the copy state is on true
@@ -32,6 +32,7 @@
     export default {
         data() {
             return {
+                event_id: this.$route.params.event_id,
                 items: [],
                 backgroundColorCodeItem: "#2195e8",
                 counter: 0,
@@ -84,7 +85,6 @@
                     })
                     .on('doubletap', function (e) {
                         if (confirm('Wilt u dit item verweideren')) {
-                            console.log(e)
                             const id = e.target.id
                             e.target.parentNode.removeChild(e.target);
                             window.dispatchEvent(new CustomEvent('delete-item', {detail: id}));
@@ -243,7 +243,7 @@
                 const data = {
                     "name": "some map name for now to test",
                     "json": JSON.stringify(this.items),
-                    "event_id": 1,
+                    "event_id": this.event_id,
                 }
                 axios.post(window.location.origin + `/api/map`, data, {headers: headers}).then(response => {
                     if (response.status === 200) {

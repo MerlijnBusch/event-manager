@@ -12,12 +12,12 @@
             </ul>
         </div>
 
-        <h2 class="login-title">
+        <h2 class="form-title">
             Event
         </h2>
 
         <p>
-            <label class="login-label" for="name">Name</label>
+            <label class="form-label" for="name">Name</label>
             <input
                 class="text-input"
                 id="name"
@@ -29,7 +29,7 @@
         </p>
 
         <p>
-            <label class="login-label" for="description">Description</label>
+            <label class="form-label" for="description">Description</label>
             <textarea
                 class="text-input"
                 id="description"
@@ -41,7 +41,7 @@
         </p>
 
         <p>
-            <label class="login-label" for="date">Date</label>
+            <label class="form-label" for="date">Date</label>
             <input
                 class="text-input"
                 id="date"
@@ -88,7 +88,6 @@
                     "description": this.description,
                     "date": this.date,
                 }
-                console.log(this.$user, this.$user.data.api_token);
                 if (this.name && this.description) {
                     axios.post(window.location.origin + `/api/event`, this.data, {headers: this.headers}).then(response => {
                         if (response.status === 200) {
