@@ -25,6 +25,7 @@
      when items is tapped it will take the see that as the selected item when the copy state is on true
      key ctrl + c start copy state
      key ctrl + v start copying items and copy state on false in case user mis clicks
+     key ctrl + z undo last item from copy state
      key escape to stop the copy state and clear the copy item
      */
 
@@ -197,6 +198,9 @@
                             this.timeout = undefined;
                         }, 1000)
                     }
+                }
+                if (event.code === "KeyZ" && event.ctrlKey === true && this.copyItem.id !== undefined) {
+                    if(this.items[this.items.length -1].id !== "stand-id-3") this.items.pop()
                 }
                 if (event.code === "Escape") {
                     this.clearCopyState();
