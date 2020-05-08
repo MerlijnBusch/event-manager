@@ -2489,7 +2489,8 @@ __webpack_require__.r(__webpack_exports__);
       counter: 0,
       copyState: false,
       copyItem: {},
-      timeout: undefined
+      timeoutPaste: undefined,
+      timeoutUndo: undefined
     };
   },
   methods: {
@@ -2647,18 +2648,23 @@ __webpack_require__.r(__webpack_exports__);
       if (event.code === "KeyV" && event.ctrlKey === true && this.copyItem.id !== undefined) {
         this.copyState = false; // set copy state on false and start pasting the items
 
-        if (this.timeout === undefined) {
+        if (this.timeoutPaste === undefined) {
           this.items.push(this.generateItemObject(this.copyItem.style.width, this.copyItem.style.height, this.copyItem.positionFromParent.x, this.copyItem.positionFromParent.y, this.copyItem.style.backgroundColor));
           var container = this.$refs.mapHolder;
           container.appendChild(this.createNewDomElement(this.copyItem.style.backgroundColor, this.copyItem.style.width, this.copyItem.style.height));
-          this.timeout = setTimeout(function () {
-            _this3.timeout = undefined;
-          }, 1000);
+          this.timeoutPaste = setTimeout(function () {
+            _this3.timeoutPaste = undefined;
+          }, 500);
         }
       }
 
       if (event.code === "KeyZ" && event.ctrlKey === true && this.copyItem.id !== undefined) {
-        if (this.items[this.items.length - 1].id !== "stand-id-3") this.items.pop();
+        if (this.items[this.items.length - 1].id !== "stand-id-3" && this.timeoutUndo === undefined) {
+          this.items.pop();
+          this.timeoutUndo = setTimeout(function () {
+            _this3.timeoutUndo = undefined;
+          }, 500);
+        }
       }
 
       if (event.code === "Escape") {
@@ -2676,8 +2682,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     generateItemObject: function generateItemObject() {
-      var width = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 150;
-      var height = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 150;
+      var width = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 100;
+      var height = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 100;
       var x = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
       var y = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
       var backgroundColorCodeItem = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : this.backgroundColorCodeItem;

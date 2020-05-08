@@ -37,7 +37,8 @@
                 counter: 0,
                 copyState: false,
                 copyItem: {},
-                timeout: undefined,
+                timeoutPaste: undefined,
+                timeoutUndo: undefined,
             }
         },
         methods: {
@@ -180,7 +181,7 @@
                 }
                 if (event.code === "KeyV" && event.ctrlKey === true && this.copyItem.id !== undefined) {
                     this.copyState = false; // set copy state on false and start pasting the items
-                    if (this.timeout === undefined) {
+                    if (this.timeoutPaste === undefined) {
                         this.items.push(this.generateItemObject(
                             this.copyItem.style.width,
                             this.copyItem.style.height,
@@ -194,13 +195,18 @@
                             this.copyItem.style.width,
                             this.copyItem.style.height
                         ));
-                        this.timeout = setTimeout(() => {
-                            this.timeout = undefined;
-                        }, 1000)
+                        this.timeoutPaste = setTimeout(() => {
+                            this.timeoutPaste = undefined;
+                        }, 500)
                     }
                 }
                 if (event.code === "KeyZ" && event.ctrlKey === true && this.copyItem.id !== undefined) {
-                    if(this.items[this.items.length -1].id !== "stand-id-3") this.items.pop()
+                    if(this.items[this.items.length -1].id !== "stand-id-3" && this.timeoutUndo === undefined) {
+                        this.items.pop();
+                        this.timeoutUndo = setTimeout(() => {
+                            this.timeoutUndo = undefined;
+                        }, 500)
+                    }
                 }
                 if (event.code === "Escape") {
                     this.clearCopyState();
@@ -213,7 +219,7 @@
             setCopyPasteItem(event) {
                 if (this.copyState) this.copyItem = this.items.find(el => el.id === event.detail.target.id)
             },
-            generateItemObject(width = 150, height = 150, x = 0, y = 0, backgroundColorCodeItem = this.backgroundColorCodeItem) {
+            generateItemObject(width = 100, height = 100, x = 0, y = 0, backgroundColorCodeItem = this.backgroundColorCodeItem) {
                 this.counter++;
                 return {
                     id: `stand-id-${this.counter}`,
