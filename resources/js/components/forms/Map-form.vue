@@ -15,9 +15,9 @@
 </template>
 
 <script>
-    import axios from 'axios';
     import interact from 'interactjs'
     import create from 'dom-create-element';
+    import API from "../../Api";
 
     /** @todo display this is the front end a popup for if the user forgets
      double tap items on box to delete item,
@@ -236,22 +236,13 @@
                 }
             },
             storeMap() {
-                const headers = {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + this.$user.data.api_token
-                }
                 const data = {
                     "name": "some map name for now to test",
                     "json": JSON.stringify(this.items),
                     "event_id": this.event_id,
                 }
-                axios.post(window.location.origin + `/api/map`, data, {headers: headers}).then(response => {
-                    if (response.status === 200) {
-                        console.log('success', response)
-                    }
-                }).catch(e => {
-                    this.errors.push(e)
-                })
+
+                API.post(data, '/api/map`');
             },
             clearMap() {
                 if (!confirm('Weet u zeker dat u de map wilt leeg maken')) return null;

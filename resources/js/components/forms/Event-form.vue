@@ -62,7 +62,7 @@
 </template>
 
 <script>
-    import axios from 'axios';
+    import API from "../../Api";
 
     export default {
         data() {
@@ -78,25 +78,13 @@
 
                 this.errors = [];
 
-                this.headers = {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + this.$user.data.api_token
-                }
-
-                this.date = {
+                const data = {
                     "name": this.name,
                     "description": this.description,
                     "date": this.date,
                 }
-                if (this.name && this.description) {
-                    axios.post(window.location.origin + `/api/event`, this.data, {headers: this.headers}).then(response => {
-                        if (response.status === 200) {
-                            console.log('success', response)
-                        }
-                    }).catch(e => {
-                        this.errors.push(e)
-                    })
-                }
+
+                API.post(data, '/api/event')
 
                 if (!this.name) {
                     this.errors.push('name required.');

@@ -29,6 +29,7 @@
 
 <script>
     import axios from 'axios';
+    import API from '../Api';
 
     export default {
         data() {
@@ -49,8 +50,8 @@
                         "password": this.password,
                     }).then(response => {
                         if (response.status === 200) {
-                            console.log(response.request.response)
                             this.$user.data = JSON.parse(response.request.response);
+                            API.setToken(this.$user.data.data.api_token);
                             this.$emit("loggedIn", response.request.response);
                             this.$emit("close");
                         }

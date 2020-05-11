@@ -8,6 +8,7 @@ import EventForm from '@/js/components/forms/Event-form'
 import EventSettingsForm from '@/js/components/forms/Event-Settings-form'
 import RoleForm from '@/js/components/forms/Role-form'
 import MapForm from '@/js/components/forms/Map-form'
+import ProfileForm from '@/js/components/forms/Profile-form'
 import ResetPasswordForm from '@/js/components/ResetPasswordForm';
 
 Vue.use(VueRouter);
@@ -39,6 +40,11 @@ const router = new VueRouter({
             path: '/form/role',
             name: 'role-form',
             component: RoleForm
+        },
+        {
+            path: '/form/profile',
+            name: 'profile-form',
+            component: ProfileForm
         },
         {
             path: '/form/event-settings/:event_id',

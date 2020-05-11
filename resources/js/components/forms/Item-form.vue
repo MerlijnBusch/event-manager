@@ -67,7 +67,7 @@
 </template>
 
 <script>
-    import axios from 'axios';
+    import API from "../../Api";
 
     export default {
         data() {
@@ -85,11 +85,6 @@
 
                 this.errors = [];
 
-                const headers = {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + this.$user.data.api_token
-                }
-
                 const data = {
                     "event_id": this.event_id,
                     "name": this.name,
@@ -97,13 +92,8 @@
                     "description": this.description,
                     "date": this.date,
                 }
-                axios.post(window.location.origin + `/api/item`, data, {headers: headers}).then(response => {
-                    if (response.status === 200) {
-                        console.log('success', response)
-                    }
-                }).catch(e => {
-                    this.errors.push(e)
-                })
+
+                API.post(data, '/api/item');
 
                 e.preventDefault();
             }

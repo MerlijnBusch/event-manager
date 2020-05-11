@@ -48,8 +48,7 @@
 </template>
 
 <script>
-    import axios from 'axios';
-    import functions from "../../functions";
+    import API from "../../Api";
 
     export default {
         data() {
@@ -84,10 +83,11 @@
             }
         },
         async mounted() {
-            const data = await functions.get(this.$user.data.data.api_token, '/api/permissions');
+            const data = await API.get('/api/permissions');
             for (const key in data.data.message) {
                 if (data.data.message.hasOwnProperty(key) && key.substring(0, 2) === "__") this.options.push({name: key, value: data.data.message[key]});
             }
+            console.log(this.options);
         },
     }
 </script>
