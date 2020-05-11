@@ -50,7 +50,7 @@
                     }).then(response => {
                         console.log(response)
                         if (response.status === 200) {
-                           if (console.log(!!response.data.data)) {
+                           if (!!response.data.data) {
                                this.$emit("loggedIn", response.request.response);
                                this.$emit("close");
                            } else {

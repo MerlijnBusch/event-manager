@@ -2100,7 +2100,7 @@ __webpack_require__.r(__webpack_exports__);
           console.log(response);
 
           if (response.status === 200) {
-            if (console.log(!!response.data.data)) {
+            if (!!response.data.data) {
               _this.$emit("loggedIn", response.request.response);
 
               _this.$emit("close");
@@ -2343,8 +2343,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       loggedIn: false,
-      modal_open: false,
-      userData: []
+      modal_open: false
     };
   },
   methods: {
@@ -2356,7 +2355,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     loggedInHandler: function loggedInHandler(e) {
       this.loggedIn = true;
-      this.userData = JSON.parse(e).data;
+      this.$user.data = JSON.parse(e).data;
     }
   },
   components: {
@@ -39130,7 +39129,7 @@ var render = function() {
           ? _c("div", { staticClass: "navbar-user" }, [
               _vm._v("\n                Welkom "),
               _c("span", { staticClass: "navbar-user-name" }, [
-                _vm._v(_vm._s(_vm.userData.name))
+                _vm._v(_vm._s(_vm.$user.data.name))
               ]),
               _vm._v("!\n            ")
             ])
@@ -39446,7 +39445,7 @@ var render = function() {
     "div",
     [
       _c("NavBar", {
-        attrs: { "user-data": _vm.userData, loggedIn: _vm.loggedIn },
+        attrs: { loggedIn: _vm.loggedIn },
         on: {
           logout: function($event) {
             _vm.loggedIn = false
@@ -54578,8 +54577,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_views_App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/js/views/App */ "./resources/js/views/App.vue");
 
 
+var user = {
+  data: {}
+};
+
+user.install = function () {
+  Object.defineProperty(vue__WEBPACK_IMPORTED_MODULE_1___default.a.prototype, '$user', {
+    get: function get() {
+      return user;
+    }
+  });
+};
+
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(user);
 
 
+_js_routes_js__WEBPACK_IMPORTED_MODULE_2__["default"].beforeEach(function (to, from, next) {
+  if (!!to.meta.auth && to.meta.auth || !!to.params.loggedIn && !to.params.loggedIn) {
+    if (!!user.data.api_key) {
+      next();
+    } else {
+      to.params.loggedIn = false;
+      next();
+    }
+  } else {
+    next();
+  }
+});
 var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
   el: "#app",
   router: _js_routes_js__WEBPACK_IMPORTED_MODULE_2__["default"],
