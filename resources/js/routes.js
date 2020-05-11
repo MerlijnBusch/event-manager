@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 import Home from '@/js/components/Home';
 import About from '@/js/components/About';
 import Example from '@/js/components/Example'
+import DropdownExample from '@/js/components/DropdownExample'
 import EventForm from '@/js/components/forms/Event-form'
 import ResetPasswordForm from '@/js/components/ResetPasswordForm';
 
@@ -39,6 +40,11 @@ const router = new VueRouter({
             path: '/example',
             name: 'example',
             component: Example
+        },
+        {
+            path: '/dropdown',
+            name: 'dropdown',
+            component: DropdownExample
         },
 
     ]
