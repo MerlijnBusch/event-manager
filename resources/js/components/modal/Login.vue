@@ -7,7 +7,7 @@
         <div class="form-errors" v-if="errors.length">
             <p>Fout:</p>
             <ul>
-                <li v-for="error in errors">{{ error }}</li>
+                <li :key=(index) v-for="(error, index) in errors">{{ error }}</li>
             </ul>
         </div>
 
@@ -29,7 +29,6 @@
 
 <script>
     import axios from 'axios';
-    import API from '../Api';
 
     export default {
         data() {
@@ -49,11 +48,15 @@
                         "email": this.email,
                         "password": this.password,
                     }).then(response => {
+                        console.log(response)
                         if (response.status === 200) {
-                            this.$user.data = JSON.parse(response.request.response);
-                            API.setToken(this.$user.data.data.api_token);
-                            this.$emit("loggedIn", response.request.response);
-                            this.$emit("close");
+                           if (!!response.data.data) {
+                               this.$emit("loggedIn", response.request.response);
+                               this.$emit("close");
+                           } else {
+                               this.errors.push("Kan niet inloggen met deze gegevens");
+                           }
+
                         }
                     })
                         .catch(e => {

@@ -1,15 +1,12 @@
 import Vue from 'vue';
 import VueRouter from "vue-router";
 
-import Home from '@/js/components/Home';
-import About from '@/js/components/About';
-import Example from '@/js/components/Example'
-import EventForm from '@/js/components/forms/Event-form'
-import EventSettingsForm from '@/js/components/forms/Event-Settings-form'
-import RoleForm from '@/js/components/forms/Role-form'
-import MapForm from '@/js/components/forms/Map-form'
-import ProfileForm from '@/js/components/forms/Profile-form'
-import ResetPasswordForm from '@/js/components/ResetPasswordForm';
+import Home from '@/js/views/Home';
+import About from '@/js/views/About';
+import Example from '@/js/views/Example'
+import DropdownExample from '@/js/views/DropdownExample'
+import EventForm from '@/js/views/forms/Event-form'
+import ResetPasswordForm from '@/js/views/forms/ResetPasswordForm';
 
 Vue.use(VueRouter);
 
@@ -24,45 +21,30 @@ const router = new VueRouter({
         {
             path: '/about',
             name: 'about',
-            component: About
+            component: About,
         },
         {
             path: '/form/event',
             name: 'event-form',
             component: EventForm,
-        },
-        {
-            path: '/form/map/:event_id',
-            name: 'map-form',
-            component: MapForm
-        },
-        {
-            path: '/form/role',
-            name: 'role-form',
-            component: RoleForm
-        },
-        {
-            path: '/form/profile',
-            name: 'profile-form',
-            component: ProfileForm
-        },
-        {
-            path: '/form/event-settings/:event_id',
-            name: 'event-settings-form',
-            component: EventSettingsForm
+            meta: {
+                auth: true
+            }
         },
         {
             path: '/reset-password/:token',
             name: 'reset-password-form',
             component: ResetPasswordForm,
-            meta: {
-                auth: false
-            }
         },
         {
             path: '/example',
             name: 'example',
             component: Example
+        },
+        {
+            path: '/dropdown',
+            name: 'dropdown',
+            component: DropdownExample
         },
 
     ]

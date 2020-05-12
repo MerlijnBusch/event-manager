@@ -3,7 +3,7 @@
         <div class="navbar">
             <div class="navbar-inner">
                 <div class="navbar-user" v-if="loggedIn">
-                    Welkom <span class="navbar-user-name">{{userData.name}}</span>!
+                    Welkom <span class="navbar-user-name">{{$user.data.name}}</span>!
                 </div>
                 <img class="navbar-logo" src="/img/nz-logo-light.png">
                 <button class="navbar-hamburger" @click="siderbarIsOpen = true">
