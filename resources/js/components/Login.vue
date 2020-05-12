@@ -7,7 +7,7 @@
         <div class="form-errors" v-if="errors.length">
             <p>Fout:</p>
             <ul>
-                <li v-for="error in errors">{{ error }}</li>
+                <li :key=(index) v-for="(error, index) in errors">{{ error }}</li>
             </ul>
         </div>
 
@@ -50,7 +50,7 @@
                     }).then(response => {
                         console.log(response)
                         if (response.status === 200) {
-                           if (console.log(!!response.data.data)) {
+                           if (!!response.data.data) {
                                this.$emit("loggedIn", response.request.response);
                                this.$emit("close");
                            } else {
