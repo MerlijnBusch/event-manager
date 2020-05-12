@@ -17,7 +17,7 @@ Route::post('login', 'Auth\LoginController@login');
 Route::post('register', 'Auth\RegisterController@register');
 Route::post('reset-password', 'Auth\ForgotPasswordController@sendPasswordResetLink');
 Route::post('reset/password', 'Auth\ResetPasswordController@callResetPassword');
-Route::get('event-overview', 'OverviewController@index')->name('event.overview');
+Route::get('event-overview/{event}', 'OverviewController@index')->name('event.overview');
 
 Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::post('logout', 'Auth\LoginController@logout');
