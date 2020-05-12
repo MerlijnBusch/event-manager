@@ -211,7 +211,7 @@
                 this.backgroundColorCodeItem = event.target.value;
             },
             updateItemBackgroundColor(event) {
-                let el = event.detail.target;
+                let el = event.detail.currentTarget;
                 el.style.backgroundColor = this.backgroundColorCodeItem
                 setTimeout(() => {
                     this.items.forEach((element, index) => {

@@ -2790,7 +2790,7 @@ var meterToPixel = 50;
     updateItemBackgroundColor: function updateItemBackgroundColor(event) {
       var _this2 = this;
 
-      var el = event.detail.target;
+      var el = event.detail.currentTarget;
       el.style.backgroundColor = this.backgroundColorCodeItem;
       setTimeout(function () {
         _this2.items.forEach(function (element, index) {
