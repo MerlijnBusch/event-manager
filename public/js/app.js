@@ -38048,7 +38048,65 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("Home component")])])
+    return _c("div", { staticClass: "homepage-full" }, [
+      _c("h1", [_vm._v("Evenementen")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex-wrapper" }, [
+        _c("div", { staticClass: "home-events flex-grid" }, [
+          _c("div", { staticClass: "home-event column-desktop-4" }, [
+            _c("h2", [_vm._v("Event Title")]),
+            _vm._v(" "),
+            _c("hr", { staticClass: "home-divider" }),
+            _vm._v(" "),
+            _c("p", { staticClass: "home-description" }, [
+              _vm._v(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare pulvinar augue, a ullamcorper lectus."
+              )
+            ]),
+            _vm._v(" "),
+            _c("hr", { staticClass: "home-divider-2" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex-wrapper" }, [
+              _c("div", { staticClass: "flex-grid" }, [
+                _c("p", { staticClass: "home-date column-desktop-6" }, [
+                  _vm._v("Datum")
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "home-location column-desktop-6" }, [
+                  _vm._v("Locatie")
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "home-event column-desktop-4" }, [
+            _c("h2", [_vm._v("Event Title 2")]),
+            _vm._v(" "),
+            _c("hr", { staticClass: "home-divider" }),
+            _vm._v(" "),
+            _c("p", { staticClass: "home-description" }, [
+              _vm._v(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare pulvinar augue, a ullamcorper lectus."
+              )
+            ]),
+            _vm._v(" "),
+            _c("hr", { staticClass: "home-divider-2" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex-wrapper" }, [
+              _c("div", { staticClass: "flex-grid" }, [
+                _c("p", { staticClass: "home-date column-desktop-6" }, [
+                  _vm._v("Datum")
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "home-location column-desktop-6" }, [
+                  _vm._v("Locatie")
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -54298,8 +54356,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\nlz\nz-evenementenregistratie\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\wamp64\www\nlz\nz-evenementenregistratie\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\lemme\PhpstormProjects\nz-evenementenregistratie\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\lemme\PhpstormProjects\nz-evenementenregistratie\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
