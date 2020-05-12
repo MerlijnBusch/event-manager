@@ -2674,8 +2674,8 @@ var meterToPixel = 50;
         }
       }).on('doubletap', function (e) {
         if (confirm('Wilt u dit item verweideren')) {
-          var id = e.target.id;
-          e.target.parentNode.removeChild(e.target);
+          var id = e.currentTarget.id;
+          e.currentTarget.parentNode.removeChild(e.currentTarget);
           window.dispatchEvent(new CustomEvent('delete-item', {
             detail: id
           }));
@@ -2698,7 +2698,6 @@ var meterToPixel = 50;
       var container = this.$refs.mapHolder;
       container.style.minWidth = this.map.width + "px";
       container.style.minHeight = this.map.height + "px";
-      console.log('test');
     },
     updateMapWidth: function updateMapWidth(event) {
       var width = event.target.value;
@@ -2819,11 +2818,13 @@ var meterToPixel = 50;
         }
       }
 
-      if (event.code === "KeyZ" && event.ctrlKey === true && this.copyItem.id !== undefined) {
-        console.log('test');
-
+      if (event.code === "KeyZ" && event.ctrlKey === true) {
         if (this.items[this.items.length - 1].id !== this.copyItem.id && this.timeoutUndo === undefined) {
           this.items.pop();
+          var _container = this.$refs.mapHolder;
+
+          _container.removeChild(_container.lastChild);
+
           this.timeoutUndo = setTimeout(function () {
             _this3.timeoutUndo = undefined;
           }, 500);
@@ -2841,7 +2842,7 @@ var meterToPixel = 50;
     },
     setCopyPasteItem: function setCopyPasteItem(event) {
       if (this.copyState) this.copyItem = this.items.find(function (el) {
-        return el.id === event.detail.target.id;
+        return el.id === event.detail.currentTarget.id;
       });
     },
     generateItemObject: function generateItemObject() {

@@ -99,8 +99,8 @@
                     })
                     .on('doubletap', function (e) {
                         if (confirm('Wilt u dit item verweideren')) {
-                            const id = e.target.id
-                            e.target.parentNode.removeChild(e.target);
+                            const id = e.currentTarget.id
+                            e.currentTarget.parentNode.removeChild(e.currentTarget);
                             window.dispatchEvent(new CustomEvent('delete-item', {detail: id}));
                         }
                         e.preventDefault()
@@ -119,8 +119,6 @@
                 const container = this.$refs.mapHolder;
                 container.style.minWidth = this.map.width + "px";
                 container.style.minHeight = this.map.height + "px";
-
-                console.log('test')
             },
             updateMapWidth(event){
                 let width = event.target.value;
@@ -182,7 +180,6 @@
                 this.items = this.items.filter((obj) => {
                     return obj.id !== event.detail;
                 });
-
             },
             setDragPosition(event) {
                 setTimeout(() => {
@@ -247,13 +244,14 @@
                         }, 500)
                     }
                 }
-                if (event.code === "KeyZ" && event.ctrlKey === true && this.copyItem.id !== undefined) {
-                    console.log('test');
+                if (event.code === "KeyZ" && event.ctrlKey === true) {
                     if(this.items[this.items.length - 1].id !==  this.copyItem.id && this.timeoutUndo === undefined) {
                         this.items.pop();
+                        const container = this.$refs.mapHolder;
+                        container.removeChild(container.lastChild);
                         this.timeoutUndo = setTimeout(() => {
                             this.timeoutUndo = undefined;
-                        }, 500)
+                        }, 500);
                     }
                 }
                 if (event.code === "Escape") {
@@ -265,7 +263,7 @@
                 this.copyItem = {};
             },
             setCopyPasteItem(event) {
-                if (this.copyState) this.copyItem = this.items.find(el => el.id === event.detail.target.id)
+                if (this.copyState) this.copyItem = this.items.find(el => el.id === event.detail.currentTarget.id)
             },
             generateItemObject(width = 100, height = 100, x = 0, y = 0, backgroundColorCodeItem = this.backgroundColorCodeItem) {
                 this.counter++;
