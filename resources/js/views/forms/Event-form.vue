@@ -86,13 +86,6 @@
 
                 API.post(data, '/api/event')
 
-                if (!this.name) {
-                    this.errors.push('name required.');
-                }
-                if (!this.description) {
-                    this.errors.push('description required.');
-                }
-
                 e.preventDefault();
             }
         }

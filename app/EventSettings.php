@@ -30,6 +30,10 @@ class EventSettings extends Model
         'active',
     ];
 
+    protected $hidden = [
+        'active'
+    ];
+
     public function event(){
 
         return $this->belongsTo('App\Event');
