@@ -1,54 +1,29 @@
 <template>
-    <form
-            id="app"
-            @submit="checkForm"
-            method="post"
-    >
-
-        <div v-if="errors.length">
-            <b>Please correct the following error(s):</b>
-            <ul>
-                <li v-for="error in errors">{{ error }}</li>
-            </ul>
-        </div>
-
-        <h2 class="login-title">
+    <form class="form" id="app" @submit="checkForm" method="post">
+        <h2 class="form-title">
             Login
         </h2>
 
-        <p>
-            <label class="login-label" for="email">E-mail</label>
-            <input
-                    class="text-input"
-                    id="email"
-                    v-model="email"
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-            >
-        </p>
+        <div class="form-errors" v-if="errors.length">
+            <p>Fout:</p>
+            <ul>
+                <li :key=(index) v-for="(error, index) in errors">{{ error }}</li>
+            </ul>
+        </div>
 
-        <p>
-            <label class="login-label" for="password">Wachtwoord</label>
-            <input
-                    class="text-input"
-                    id="password"
-                    v-model="password"
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-            >
-        </p>
-        <p class="login-forgotpassword">
-            <button @click="$emit('forgotpassword')">Wachtwoord vergeten</button>
-        </p>
-        <p>
-            <input
-                    type="submit"
-                    value="Login"
-                    class="submit-btn"
-            >
-        </p>
+        <div class="form-line">
+            <label class="form-label" for="email">E-mail</label>
+            <input class="form-text-input" id="email" v-model="email" type="email" name="email" placeholder="Email">
+        </div>
+
+        <div class="form-line">
+            <label class="form-label" for="password">Wachtwoord</label>
+            <input class="form-text-input" id="password" v-model="password" type="password" name="password" placeholder="Password">
+            <button class="form-afterinput-link" @click="$emit('forgotpassword')">Wachtwoord vergeten</button>
+        </div>
+        <div class="form-line form-line-hasbutton">
+            <input type="submit" value="Login" class="form-button">
+        </div>
     </form>
 </template>
 
@@ -73,9 +48,15 @@
                         "email": this.email,
                         "password": this.password,
                     }).then(response => {
+                        console.log(response)
                         if (response.status === 200) {
-                            this.$emit("loggedIn", response.request.response);
-                            this.$emit("close");
+                           if (!!response.data.data) {
+                               this.$emit("loggedIn", response.request.response);
+                               this.$emit("close");
+                           } else {
+                               this.errors.push("Kan niet inloggen met deze gegevens");
+                           }
+
                         }
                     })
                         .catch(e => {

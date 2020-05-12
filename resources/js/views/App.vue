@@ -1,6 +1,6 @@
 <template>
     <div>
-        <NavBar @logout="loggedIn = false" @openLogin="openLogin" :loggedIn="loggedIn"></NavBar>
+        <NavBar @logout="logOut()" @openLogin="openLogin" :loggedIn="loggedIn"></NavBar>
         <Modal v-if="modal_open" @loggedIn="loggedInHandler" @close="closeLogin"></Modal>
         <div class="main">
             <router-view></router-view>
@@ -26,10 +26,22 @@
             closeLogin() {
                 this.modal_open = false;
             },
+            logOut() {
+                this.loggedIn = false;
+                this.$user.data = {};
+                localStorage.removeItem('user');
+            },
             loggedInHandler(e) {
                 this.loggedIn = true;
-                console.log(e);
+                this.$user.data = JSON.parse(e).data;
+                localStorage.setItem('user', JSON.stringify(this.$user.data));
             },
+        },
+        created(){
+            if (localStorage.getItem('user') !== null){
+                this.loggedIn = true;
+                this.$user.data = JSON.parse(localStorage.getItem('user'));
+            }
         },
         components: {Modal, NavBar},
     }
