@@ -2587,6 +2587,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2600,11 +2609,18 @@ __webpack_require__.r(__webpack_exports__);
  key escape to stop the copy state and clear the copy item
  */
 
+var meterToPixel = 50;
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       event_id: this.$route.params.event_id,
       items: [],
+      mapWidth: 30,
+      mapHeight: 50,
+      map: {
+        width: 30 * meterToPixel,
+        height: 50 * meterToPixel
+      },
       backgroundColorCodeItem: "#2195e8",
       counter: 0,
       copyState: false,
@@ -2642,8 +2658,8 @@ __webpack_require__.r(__webpack_exports__);
           endOnly: true
         }), interactjs__WEBPACK_IMPORTED_MODULE_0___default.a.modifiers.snap({
           targets: [interactjs__WEBPACK_IMPORTED_MODULE_0___default.a.createSnapGrid({
-            x: 20,
-            y: 20
+            x: 10,
+            y: 10
           })],
           range: Infinity,
           relativePoints: [{
@@ -2679,6 +2695,26 @@ __webpack_require__.r(__webpack_exports__);
       window.addEventListener('update-background-color', this.updateItemBackgroundColor, false);
       window.addEventListener('keydown', this.startCopyPasteState, false);
       window.addEventListener('set-copied-item', this.setCopyPasteItem, false);
+      var container = this.$refs.mapHolder;
+      container.style.minWidth = this.map.width + "px";
+      container.style.minHeight = this.map.height + "px";
+      console.log('test');
+    },
+    updateMapWidth: function updateMapWidth(event) {
+      var width = event.target.value;
+      if (isNaN(parseInt(width))) width = 30;
+      this.mapWidth = width;
+      this.map.width = this.mapWidth * meterToPixel;
+      var container = this.$refs.mapHolder;
+      container.style.minWidth = this.map.width + "px";
+    },
+    updateMapHeight: function updateMapHeight(event) {
+      var height = event.target.value;
+      if (isNaN(parseInt(height))) height = 50;
+      this.mapHeight = height;
+      this.map.height = this.mapHeight * meterToPixel;
+      var container = this.$refs.mapHolder;
+      container.style.minHeight = this.map.height + "px";
     },
     updatePosition: function updatePosition(event) {
       var target = event.target;
@@ -2706,16 +2742,21 @@ __webpack_require__.r(__webpack_exports__);
           html: "stand-id-".concat(this.counter)
         })
       });
+      var paragraph = dom_create_element__WEBPACK_IMPORTED_MODULE_1___default()({
+        selector: 'div',
+        id: "dimensions",
+        html: "width: " + width / meterToPixel + "m,<br> height: " + height / meterToPixel + "m"
+      });
       item.style.backgroundColor = backgroundColorCodeItem;
       item.style.width = width + "px";
       item.style.height = height + "px";
+      item.appendChild(paragraph);
       return item;
     },
     deleteItemFromArray: function deleteItemFromArray(event) {
       this.items = this.items.filter(function (obj) {
         return obj.id !== event.detail;
       });
-      this.counter--;
     },
     setDragPosition: function setDragPosition(event) {
       var _this = this;
@@ -2742,6 +2783,7 @@ __webpack_require__.r(__webpack_exports__);
       target.style.webkitTransform = target.style.transform = 'translate(' + x + 'px,' + y + 'px)';
       target.setAttribute('data-x', x);
       target.setAttribute('data-y', y);
+      target.lastChild.innerHTML = "width: " + event.rect.width / meterToPixel + "m,<br> height: " + event.rect.height / meterToPixel + "m";
     },
     setItemBackgroundColorData: function setItemBackgroundColorData(event) {
       this.backgroundColorCodeItem = event.target.value;
@@ -2778,7 +2820,9 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       if (event.code === "KeyZ" && event.ctrlKey === true && this.copyItem.id !== undefined) {
-        if (this.items[this.items.length - 1].id !== "stand-id-3" && this.timeoutUndo === undefined) {
+        console.log('test');
+
+        if (this.items[this.items.length - 1].id !== this.copyItem.id && this.timeoutUndo === undefined) {
           this.items.pop();
           this.timeoutUndo = setTimeout(function () {
             _this3.timeoutUndo = undefined;
@@ -7687,7 +7731,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.map-container {\n    display: flex;\n    flex-direction: row;\n    width: 100%;\n}\n.map-holder {\n    width: 1500px;\n    height: 2000px;\n    background-color: lightgray;\n}\n.draggable {\n    position: absolute;\n    color: white;\n    touch-action: none;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    transform: translate(0px, 0px);\n}\n.map-settings-container {\n    width: 200px;\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    padding: 8px;\n}\n.button-create-item {\n    height: 30px;\n}\n.map-settings-container-items {\n    padding-top: 4px;\n    padding-bottom: 4px;\n    width: 100%;\n}\n", ""]);
+exports.push([module.i, "\n.map-container {\n    display: flex;\n    flex-direction: row;\n    width: 100%;\n}\n.map-holder {\n    background-color: #f6f6f6;\n    background-size: 50px 50px;\n    background-image: linear-gradient(to right, grey 1px, transparent 1px), linear-gradient(grey 1px, transparent 1px);\n}\n.draggable {\n    position: absolute;\n    color: white;\n    touch-action: none;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    transform: translate(0px, 0px);\n}\n.map-settings-container {\n    min-width: 200px;\n    max-width: 200px;\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    padding: 8px;\n}\n.button-create-item {\n    height: 30px;\n}\n.map-settings-container-items {\n    padding-top: 4px;\n    padding-bottom: 4px;\n    width: 100%;\n}\n", ""]);
 
 // exports
 
@@ -41441,6 +41485,8 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "map-settings-container-items" }, [
+        _c("hr"),
+        _vm._v(" "),
         _c("label", { attrs: { for: "select-color" } }, [
           _vm._v("Select color")
         ]),
@@ -41453,7 +41499,39 @@ var render = function() {
               return _vm.setItemBackgroundColorData($event)
             }
           }
-        })
+        }),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "map_width" } }, [
+          _vm._v("Select Map Width in meters")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          attrs: { type: "text", name: "map_width", id: "map_width" },
+          domProps: { value: this.mapWidth },
+          on: {
+            change: function($event) {
+              return _vm.updateMapWidth($event)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "map_height" } }, [
+          _vm._v("Select Map Height in meters")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          attrs: { type: "text", name: "map_height", id: "map_height" },
+          domProps: { value: this.mapHeight },
+          on: {
+            change: function($event) {
+              return _vm.updateMapHeight($event)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("hr")
       ]),
       _vm._v(" "),
       _c(
@@ -41462,7 +41540,7 @@ var render = function() {
           staticClass: "button-create-item map-settings-container-items",
           on: { click: _vm.storeMap }
         },
-        [_vm._v("Create Map")]
+        [_vm._v("Store Map")]
       ),
       _vm._v(" "),
       _c(

@@ -3,11 +3,20 @@
         <div class="map-settings-container">
             <button class="button-create-item map-settings-container-items" v-on:click="addNewItem">AddNewItem</button>
             <div class="map-settings-container-items">
+                <hr>
                 <label for="select-color">Select color</label>
                 <input type="color" name="select-color" id="select-color" v-bind:value="this.backgroundColorCodeItem"
                        @change="setItemBackgroundColorData($event)"/>
+                <hr>
+                <label for="map_width">Select Map Width in meters</label>
+                <input type="text" name="map_width" id="map_width" v-bind:value="this.mapWidth"
+                       @change="updateMapWidth($event)"/>
+                <label for="map_height">Select Map Height in meters</label>
+                <input type="text" name="map_height" id="map_height" v-bind:value="this.mapHeight"
+                       @change="updateMapHeight($event)"/>
+                <hr>
             </div>
-            <button class="button-create-item map-settings-container-items" v-on:click="storeMap">Create Map</button>
+            <button class="button-create-item map-settings-container-items" v-on:click="storeMap">Store Map</button>
             <button class="button-create-item map-settings-container-items" v-on:click="clearMap">Clear map</button>
         </div>
         <div class="map-holder" ref="mapHolder"></div>
@@ -29,11 +38,16 @@
      key escape to stop the copy state and clear the copy item
      */
 
+    const meterToPixel = 50;
+
     export default {
         data() {
             return {
                 event_id: this.$route.params.event_id,
                 items: [],
+                mapWidth: 30,
+                mapHeight: 50,
+                map: {width: (30 * meterToPixel), height: (50 * meterToPixel)},
                 backgroundColorCodeItem: "#2195e8",
                 counter: 0,
                 copyState: false,
@@ -71,7 +85,7 @@
                             }),
                             interact.modifiers.snap({
                                 targets: [
-                                    interact.createSnapGrid({x: 20, y: 20})
+                                    interact.createSnapGrid({x: 10, y: 10})
                                 ],
                                 range: Infinity,
                                 relativePoints: [{x: 0, y: 0}]
@@ -101,6 +115,30 @@
                 window.addEventListener('update-background-color', this.updateItemBackgroundColor, false);
                 window.addEventListener('keydown', this.startCopyPasteState, false);
                 window.addEventListener('set-copied-item', this.setCopyPasteItem, false);
+
+                const container = this.$refs.mapHolder;
+                container.style.minWidth = this.map.width + "px";
+                container.style.minHeight = this.map.height + "px";
+
+                console.log('test')
+            },
+            updateMapWidth(event){
+                let width = event.target.value;
+                if(isNaN(parseInt(width))) width = 30;
+                this.mapWidth = width;
+                this.map.width = this.mapWidth * meterToPixel;
+
+                const container = this.$refs.mapHolder;
+                container.style.minWidth = this.map.width + "px";
+            },
+            updateMapHeight(event){
+                let height = event.target.value;
+                if(isNaN(parseInt(height))) height = 50;
+                this.mapHeight = height
+                this.map.height = this.mapHeight * meterToPixel;
+
+                const container = this.$refs.mapHolder;
+                container.style.minHeight = this.map.height + "px";
             },
             updatePosition(event) {
                 let target = event.target
@@ -127,16 +165,24 @@
                         html: `stand-id-${this.counter}`,
                     })
                 });
+
+                const paragraph = create({
+                    selector: 'div',
+                    id: "dimensions",
+                    html: "width: " + (width / meterToPixel) + "m,<br> height: " + (height / meterToPixel) + "m"
+                })
+
                 item.style.backgroundColor = backgroundColorCodeItem;
                 item.style.width = width + "px";
                 item.style.height = height + "px";
+                item.appendChild(paragraph)
                 return item;
             },
             deleteItemFromArray(event) {
                 this.items = this.items.filter((obj) => {
                     return obj.id !== event.detail;
                 });
-                this.counter--;
+
             },
             setDragPosition(event) {
                 setTimeout(() => {
@@ -162,6 +208,7 @@
                     'translate(' + x + 'px,' + y + 'px)'
                 target.setAttribute('data-x', x)
                 target.setAttribute('data-y', y)
+                target.lastChild.innerHTML = "width: " + (event.rect.width / meterToPixel) + "m,<br> height: " + (event.rect.height / meterToPixel) + "m"
             },
             setItemBackgroundColorData(event) {
                 this.backgroundColorCodeItem = event.target.value;
@@ -201,7 +248,8 @@
                     }
                 }
                 if (event.code === "KeyZ" && event.ctrlKey === true && this.copyItem.id !== undefined) {
-                    if(this.items[this.items.length -1].id !== "stand-id-3" && this.timeoutUndo === undefined) {
+                    console.log('test');
+                    if(this.items[this.items.length - 1].id !==  this.copyItem.id && this.timeoutUndo === undefined) {
                         this.items.pop();
                         this.timeoutUndo = setTimeout(() => {
                             this.timeoutUndo = undefined;
@@ -278,9 +326,9 @@
     }
 
     .map-holder {
-        width: 1500px;
-        height: 2000px;
-        background-color: lightgray;
+        background-color: #f6f6f6;
+        background-size: 50px 50px;
+        background-image: linear-gradient(to right, grey 1px, transparent 1px), linear-gradient(grey 1px, transparent 1px);
     }
 
     .draggable {
@@ -293,7 +341,8 @@
     }
 
     .map-settings-container {
-        width: 200px;
+        min-width: 200px;
+        max-width: 200px;
         display: flex;
         justify-content: flex-start;
         flex-direction: column;
