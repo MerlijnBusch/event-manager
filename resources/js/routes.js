@@ -1,12 +1,12 @@
 import Vue from 'vue';
 import VueRouter from "vue-router";
 
-import Home from '@/js/components/Home';
-import About from '@/js/components/About';
-import Example from '@/js/components/Example'
-import DropdownExample from '@/js/components/DropdownExample'
-import EventForm from '@/js/components/forms/Event-form'
-import ResetPasswordForm from '@/js/components/ResetPasswordForm';
+import Home from '@/js/views/Home';
+import About from '@/js/views/About';
+import Example from '@/js/views/Example'
+import DropdownExample from '@/js/views/DropdownExample'
+import EventForm from '@/js/views/forms/Event-form'
+import ResetPasswordForm from '@/js/views/forms/ResetPasswordForm';
 
 Vue.use(VueRouter);
 

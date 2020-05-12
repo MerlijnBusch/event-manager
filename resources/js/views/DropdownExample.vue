@@ -5,7 +5,7 @@
     </div>
 </template>
 <script>
-    import Dropdown from "./dropdown";
+    import Dropdown from "@/js/components/dropdown";
     export default {
         components: {Dropdown},
         data(){

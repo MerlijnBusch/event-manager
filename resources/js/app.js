@@ -17,7 +17,7 @@ Vue.use(user);
 
 import Route from '@/js/routes.js'
 
-import App from '@/js/views/App'
+import App from '@/js/App.vue'
 
 Route.beforeEach((to, from, next) => {
     let loginData = JSON.parse(localStorage.getItem('user'));

@@ -16,8 +16,8 @@
 </template>
 
 <script>
-    import login from "./Login"
-    import ForgotPassword from "./ForgotPassword"
+    import login from "@/js/components/modal/Login"
+    import ForgotPassword from "@/js/components/modal/ForgotPassword"
 
     export default {
         name: "Modal",
