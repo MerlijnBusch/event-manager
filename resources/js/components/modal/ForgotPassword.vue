@@ -32,7 +32,7 @@
 
 <script>
     import axios from 'axios';
-    import loading from './loading'
+    import loading from '@/js/components/loading'
 
     export default {
         name: "ForgotPassword",

@@ -9,8 +9,8 @@
 </template>
 
 <script>
-    import NavBar from '../components/Navbar.vue'
-    import Modal from '../components/Modal.vue'
+    import NavBar from '@/js/components/Navbar.vue'
+    import Modal from '@/js/components/modal/Modal.vue'
 
     export default {
         data() {
