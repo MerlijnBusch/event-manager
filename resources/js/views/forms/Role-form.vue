@@ -84,6 +84,7 @@
         },
         async mounted() {
             const data = await API.get('/api/permissions');
+            console.log(data);
             for (const key in data.data.message) {
                 if (data.data.message.hasOwnProperty(key) && key.substring(0, 2) === "__") this.options.push({name: key, value: data.data.message[key]});
             }

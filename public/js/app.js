@@ -3225,6 +3225,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
             case 2:
               data = _context2.sent;
+              console.log(data);
 
               for (key in data.data.message) {
                 if (data.data.message.hasOwnProperty(key) && key.substring(0, 2) === "__") _this.options.push({
@@ -3235,7 +3236,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               console.log(_this.options);
 
-            case 5:
+            case 6:
             case "end":
               return _context2.stop();
           }
@@ -57306,7 +57307,7 @@ var API = /*#__PURE__*/function () {
       this.token = token;
       this.headers = {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + this.token
+        'Authorization': 'Bearer ' + token
       };
     }
   }, {
@@ -57454,6 +57455,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _js_routes_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/js/routes.js */ "./resources/js/routes.js");
 /* harmony import */ var _js_App_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/js/App.vue */ "./resources/js/App.vue");
+/* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Api */ "./resources/js/Api.js");
 
 
 var user = {
@@ -57471,12 +57473,14 @@ user.install = function () {
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(user);
 
 
+
 _js_routes_js__WEBPACK_IMPORTED_MODULE_2__["default"].beforeEach(function (to, from, next) {
   var loginData = JSON.parse(localStorage.getItem('user'));
 
   if (!!user.data.id) {
     if (loginData !== null) {
       user.data = loginData;
+      _Api__WEBPACK_IMPORTED_MODULE_4__["default"].setToken(loginData.api_token);
       to.params.loggedIn = true;
     }
   }
@@ -57830,15 +57834,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************************!*\
   !*** ./resources/js/components/modal/Login.vue ***!
   \*************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Login_vue_vue_type_template_id_280c80ec___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Login.vue?vue&type=template&id=280c80ec& */ "./resources/js/components/modal/Login.vue?vue&type=template&id=280c80ec&");
 /* harmony import */ var _Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Login.vue?vue&type=script&lang=js& */ "./resources/js/components/modal/Login.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -57868,7 +57871,7 @@ component.options.__file = "resources/js/components/modal/Login.vue"
 /*!**************************************************************************!*\
   !*** ./resources/js/components/modal/Login.vue?vue&type=script&lang=js& ***!
   \**************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57981,12 +57984,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_views_About__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/js/views/About */ "./resources/js/views/About.vue");
 /* harmony import */ var _js_views_Example__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/js/views/Example */ "./resources/js/views/Example.vue");
 /* harmony import */ var _js_views_DropdownExample__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/js/views/DropdownExample */ "./resources/js/views/DropdownExample.vue");
-/* harmony import */ var _js_views_forms_Event_form__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @/js/views/forms/Event-form */ "./resources/js/views/forms/Event-form.vue");
+/* harmony import */ var _js_views_forms_Event_form__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/js/views/forms/Event-form */ "./resources/js/views/forms/Event-form.vue");
 /* harmony import */ var _js_views_forms_ResetPasswordForm__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/js/views/forms/ResetPasswordForm */ "./resources/js/views/forms/ResetPasswordForm.vue");
 /* harmony import */ var _js_views_forms_Event_Settings_form__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/js/views/forms/Event-Settings-form */ "./resources/js/views/forms/Event-Settings-form.vue");
 /* harmony import */ var _js_views_forms_Role_form__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/js/views/forms/Role-form */ "./resources/js/views/forms/Role-form.vue");
 /* harmony import */ var _js_views_forms_Map_form__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @/js/views/forms/Map-form */ "./resources/js/views/forms/Map-form.vue");
 /* harmony import */ var _js_views_forms_Profile_form__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @/js/views/forms/Profile-form */ "./resources/js/views/forms/Profile-form.vue");
+/* harmony import */ var _js_views_forms_CV_form__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @/js/views/forms/CV-form */ "./resources/js/views/forms/CV-form.vue");
+
 
 
 
@@ -58013,7 +58018,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '/form/event',
     name: 'event-form',
-    component: _js_views_forms_Event_form__WEBPACK_IMPORTED_MODULE_12__["default"]
+    component: _js_views_forms_Event_form__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, {
     path: '/form/map/:event_id',
     name: 'map-form',
@@ -58026,6 +58031,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/form/profile',
     name: 'profile-form',
     component: _js_views_forms_Profile_form__WEBPACK_IMPORTED_MODULE_11__["default"]
+  }, {
+    path: '/form/profile-cv',
+    name: 'profile-cv-form',
+    component: _js_views_forms_CV_form__WEBPACK_IMPORTED_MODULE_12__["default"]
   }, {
     path: '/form/event-settings/:event_id',
     name: 'event-settings-form',
@@ -58310,6 +58319,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_63cd6604___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/views/forms/CV-form.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/views/forms/CV-form.vue ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+var render, staticRenderFns
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__["default"])(
+  script,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+component.options.__file = "resources/js/views/forms/CV-form.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 

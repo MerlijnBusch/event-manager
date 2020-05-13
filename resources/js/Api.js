@@ -11,7 +11,7 @@ export default class API {
         this.token = token;
         this.headers = {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + this.token
+            'Authorization': 'Bearer ' + token
         }
     }
 
