@@ -57477,12 +57477,10 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(user);
 _js_routes_js__WEBPACK_IMPORTED_MODULE_2__["default"].beforeEach(function (to, from, next) {
   var loginData = JSON.parse(localStorage.getItem('user'));
 
-  if (!!user.data.id) {
-    if (loginData !== null) {
-      user.data = loginData;
-      _Api__WEBPACK_IMPORTED_MODULE_4__["default"].setToken(loginData.api_token);
-      to.params.loggedIn = true;
-    }
+  if (loginData !== null) {
+    user.data = loginData;
+    _Api__WEBPACK_IMPORTED_MODULE_4__["default"].setToken(loginData.api_token);
+    to.params.loggedIn = true;
   }
 
   if (!!to.meta.auth && to.meta.auth || !!to.params.loggedIn && !to.params.loggedIn) {
@@ -58804,8 +58802,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/merlijn/PhpstormProjects/nz-evenementenregistratie/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/merlijn/PhpstormProjects/nz-evenementenregistratie/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Tim Huijkman\PhpstormProjects\nz-evenementenregistratie\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Tim Huijkman\PhpstormProjects\nz-evenementenregistratie\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
