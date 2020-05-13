@@ -2396,6 +2396,82 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/forms/CV-form.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/forms/CV-form.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Api */ "./resources/js/Api.js");
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {};
+  },
+  methods: {
+    submit: function submit() {
+      var reader = new FileReader();
+      var file = this.$refs.pdf;
+      console.log(file, reader, file.files[0]);
+
+      reader.onload = function () {
+        var data = reader.result,
+            base64 = data.replace(/^[^,]*,/, ''),
+            upload = {
+          cv: data
+        };
+        console.log(data, dd(data));
+
+        function dd(s) {
+          var e = {},
+              i,
+              b = 0,
+              c,
+              x,
+              l = 0,
+              a,
+              r = '',
+              w = String.fromCharCode,
+              L = s.length;
+          var A = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+
+          for (i = 0; i < 64; i++) {
+            e[A.charAt(i)] = i;
+          }
+
+          for (x = 0; x < L; x++) {
+            c = e[s.charAt(x)];
+            b = (b << 6) + c;
+            l += 6;
+
+            while (l >= 8) {
+              ((a = b >>> (l -= 8) & 0xff) || x < L - 2) && (r += w(a));
+            }
+          }
+
+          return r;
+        }
+
+        _Api__WEBPACK_IMPORTED_MODULE_0__["default"].post(upload, '/api/profile-cv'); // profile-cv
+      };
+
+      reader.readAsDataURL(file.files[0]);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/forms/Event-Settings-form.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/forms/Event-Settings-form.vue?vue&type=script&lang=js& ***!
@@ -41219,6 +41295,44 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/forms/CV-form.vue?vue&type=template&id=5edf6e8f&":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/forms/CV-form.vue?vue&type=template&id=5edf6e8f& ***!
+  \***********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("input", {
+      ref: "pdf",
+      attrs: { type: "file", name: "pdf", id: "pdf" }
+    }),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        staticClass: "button-create-item map-settings-container-items",
+        on: { click: _vm.submit }
+      },
+      [_vm._v("submit")]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/forms/Event-Settings-form.vue?vue&type=template&id=f3dacaa8&":
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/forms/Event-Settings-form.vue?vue&type=template&id=f3dacaa8& ***!
@@ -57297,6 +57411,10 @@ var API = /*#__PURE__*/function () {
     this.token = null;
     this.headers = null;
   }
+  /**
+   * @param token
+   */
+
 
   _createClass(API, null, [{
     key: "setToken",
@@ -57307,6 +57425,11 @@ var API = /*#__PURE__*/function () {
         'Authorization': 'Bearer ' + token
       };
     }
+    /**
+     * @param url
+     * @returns {Promise<AxiosResponse<any>>}
+     */
+
   }, {
     key: "get",
     value: function () {
@@ -57333,6 +57456,12 @@ var API = /*#__PURE__*/function () {
 
       return get;
     }()
+    /**
+     * @param data
+     * @param url
+     * @returns {Promise<AxiosResponse<any>>}
+     */
+
   }, {
     key: "post",
     value: function () {
@@ -58326,17 +58455,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-var render, staticRenderFns
-var script = {}
+/* harmony import */ var _CV_form_vue_vue_type_template_id_5edf6e8f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CV-form.vue?vue&type=template&id=5edf6e8f& */ "./resources/js/views/forms/CV-form.vue?vue&type=template&id=5edf6e8f&");
+/* harmony import */ var _CV_form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CV-form.vue?vue&type=script&lang=js& */ "./resources/js/views/forms/CV-form.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__["default"])(
-  script,
-  render,
-  staticRenderFns,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CV_form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CV_form_vue_vue_type_template_id_5edf6e8f___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CV_form_vue_vue_type_template_id_5edf6e8f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -58344,8 +58476,42 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
   
 )
 
+/* hot reload */
+if (false) { var api; }
 component.options.__file = "resources/js/views/forms/CV-form.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/forms/CV-form.vue?vue&type=script&lang=js&":
+/*!***********************************************************************!*\
+  !*** ./resources/js/views/forms/CV-form.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CV_form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./CV-form.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/forms/CV-form.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CV_form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/forms/CV-form.vue?vue&type=template&id=5edf6e8f&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/views/forms/CV-form.vue?vue&type=template&id=5edf6e8f& ***!
+  \*****************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CV_form_vue_vue_type_template_id_5edf6e8f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./CV-form.vue?vue&type=template&id=5edf6e8f& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/forms/CV-form.vue?vue&type=template&id=5edf6e8f&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CV_form_vue_vue_type_template_id_5edf6e8f___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CV_form_vue_vue_type_template_id_5edf6e8f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
@@ -58799,8 +58965,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Tim Huijkman\PhpstormProjects\nz-evenementenregistratie\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Tim Huijkman\PhpstormProjects\nz-evenementenregistratie\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/merlijn/PhpstormProjects/nz-evenementenregistratie/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/merlijn/PhpstormProjects/nz-evenementenregistratie/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

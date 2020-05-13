@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Profile;
+use App\Rules\Base64Validator;
 use App\Rules\HtmlValidator;
 use App\Rules\PhoneNumberValidator;
 use App\Rules\UrlValidator;
@@ -158,19 +159,20 @@ class ProfileController extends Controller
         $this->authorize('writeCV', Profile::class);
 
         $validator = Validator::make($request->all(), [
-            'cv' => [new HtmlValidator, 'required'],
+            'cv' => [new Base64Validator, 'required'],
         ]);
 
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
 
-        $profile = new Profile;
-        $profile->user_id = Auth::id();
-        $profile->cv = $request->cv;
-        $profile->save();
+//
+//        $profile = new Profile;
+//        $profile->user_id = Auth::id();
+//        $profile->cv = $request->cv;
+//        $profile->save();
 
-        return response()->json(['message' => 'Profile cv created successfully'], 200);
+        return response()->json(['message' => $request->cv], 200);
 
     }
 
@@ -185,9 +187,9 @@ class ProfileController extends Controller
     {
         $this->authorize('write', Profile::class);
         $this->authorize('writeCV', Profile::class);
-    
+
         $validator = Validator::make($request->all(), [
-            'cv' => [new HtmlValidator, 'required'],
+            'cv' => [new Base64Validator, 'required'],
         ]);
 
         if ($validator->fails()) {

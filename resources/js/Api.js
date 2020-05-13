@@ -7,6 +7,9 @@ export default class API {
         this.headers = null
     }
 
+    /**
+     * @param token
+     */
     static setToken(token){
         this.token = token;
         this.headers = {
@@ -15,10 +18,19 @@ export default class API {
         }
     }
 
+    /**
+     * @param url
+     * @returns {Promise<AxiosResponse<any>>}
+     */
     static async get(url){
         return axios.get(window.location.origin + url, {headers: this.headers})
     }
 
+    /**
+     * @param data
+     * @param url
+     * @returns {Promise<AxiosResponse<any>>}
+     */
     static async post(data, url){
         return axios.post(window.location.origin + url, data, {headers: this.headers})
     }

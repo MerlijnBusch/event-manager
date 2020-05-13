@@ -7,6 +7,10 @@ mix.webpackConfig({
         alias: {
             '@':__dirname + '/resources'
         }
+    },
+    node: {
+        fs: 'empty',
+        // tls: 'empty'
     }
 })
 /*
