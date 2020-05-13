@@ -18,13 +18,18 @@
                 </div>
                 <div class="form-line">
                     <label class="form-label" for="color">Color</label>
-                    <input class="form-text-input" id="color" v-model="color" type="color" name="color" placeholder="Color"
+                    <input class="form-text-input" id="color" v-model="color" type="color" name="color"
+                           placeholder="Color"
                     />
                 </div>
-                    <div class="form-line form-line-hasbutton">
-                    <input type="submit" class="form-button" value="Submit"
-                    >
+                <div class="form-line">
+                    {{current}}
+                    <dropdown :options="options" :current="current" @setCurrent="setCurrent"></dropdown>
                 </div>
+                <div class="form-line form-line-hasbutton">
+                    <input type="submit" class="form-button" value="Submit">
+                </div>
+
             </form>
         </div>
     </div>
@@ -32,7 +37,7 @@
 
 <script>
     import API from "../../Api";
-    import dropDown from '@/js/components/dropdown'
+    import dropdown from '@/js/components/dropdown'
 
     export default {
         name: 'Role-Form',
@@ -43,10 +48,14 @@
                 color: '',
                 permissions: [],
                 options: [],
+                current: [],
             }
         },
-        components: {dropDown},
+        components: {dropdown},
         methods: {
+            setCurrent(v){
+                this.current = v;
+            },
             checkForm: async function (e) {
                 // this.errors = [];
                 //
@@ -75,8 +84,8 @@
             for (const key in data.data.message) {
                 if (data.data.message.hasOwnProperty(key) && key.substring(0, 2) === "__") {
                     options.push({
-                        name: key,
-                        value: data.data.message[key]
+                        value: key,
+                        name: data.data.message[key]
                     });
                 }
             }

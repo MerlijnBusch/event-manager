@@ -1,12 +1,13 @@
 <template>
     <div class="dropdown">
         <button @click="isOpen = !isOpen" class="dropdown-current">
-            <span v-text="current"></span>
+            <span v-for="selected in newCurrent">{{selected.name}}</span>
         </button>
         <div class="dropdown-options" v-if="isOpen">
-            <button class="dropdown-option" @click="()=>{setCurrent(option); isOpen = false}" v-for="option in options">
-                {{option}}
-            </button>
+            <div class="dropdown-option" v-for="option in options">
+                <input type="checkbox" :checked="option.status" :id="option.value" :value="option" v-model="newCurrent">
+                <label :for="option.value">{{option.name}}</label>
+            </div>
         </div>
     </div>
 </template>
@@ -14,15 +15,21 @@
 <script>
     export default {
         props: ['options', 'current'],
-        data(){
-            return{
+        data() {
+            return {
                 isOpen: false,
+                optionsStatus: [],
+                newCurrent: [],
             }
         },
-        methods:{
-            setCurrent(v){
-                this.$emit('setCurrent', v)
-            }
+        watch: {
+            newCurrent: function () {
+                this.$emit('setCurrent', this.newCurrent)
+            },
+        },
+        mounted() {
+            this.newCurrent = this.current;
+            this.optionsStatus = this.options;
         }
     }
 </script>
@@ -39,13 +46,17 @@
 
             > span {
                 min-height: 1em;
-                display: inline-block;
                 min-width: 100%;
+                &+span:before{
+                    content: ', ';
+                }
             }
         }
-        .dropdown-options{
+
+        .dropdown-options {
             width: 100%;
-            .dropdown-option{
+
+            .dropdown-option {
                 width: 100%;
                 text-align: left;
                 display: block;
