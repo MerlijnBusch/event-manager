@@ -1,12 +1,13 @@
 <template>
     <div class="modal_holder">
         <div class="modal_screen column-desktop-4 column-tablet-9 column-mobile-12">
-            <button @click="close" class="modal-close">
+            <button v-if="!($route.params.loggedIn !== undefined && !$route.params.loggedIn)" @click="close" class="modal-close">
                 <div>
                     <div></div>
                 </div>
             </button>
             <div>
+                <p v-if="($route.params.loggedIn !== undefined && !$route.params.loggedIn)">You need to be logged in to acces this route!</p>
                 <login @close="close" @forgotpassword="selectroute='ForgotPassword'" @loggedIn="loggedInHandler" v-if="selectroute==='login'"></login>
                 <forgot-password v-else-if="selectroute==='ForgotPassword'" @login="selectroute='login'"></forgot-password>
             </div>
@@ -15,8 +16,8 @@
 </template>
 
 <script>
-    import login from "./Login"
-    import ForgotPassword from "./ForgotPassword"
+    import login from "@/js/components/modal/Login"
+    import ForgotPassword from "@/js/components/modal/ForgotPassword"
 
     export default {
         name: "Modal",

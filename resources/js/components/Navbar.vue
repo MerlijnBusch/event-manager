@@ -3,7 +3,7 @@
         <div class="navbar">
             <div class="navbar-inner">
                 <div class="navbar-user" v-if="loggedIn">
-                    Welkom <span class="navbar-user-name">{{userData.name}}</span>!
+                    Welkom <span class="navbar-user-name">{{$user.data.name}}</span>!
                 </div>
                 <img class="navbar-logo" src="/img/nz-logo-light.png">
                 <button class="navbar-hamburger" @click="siderbarIsOpen = true">
@@ -22,6 +22,7 @@
             <div class="sidenav-links">
                 <router-link to="/" exact>Home</router-link>
                 <router-link to="/about">About</router-link>
+                <router-link to="/form/role">Role test</router-link>
                 <div class="sidenav-link-divider"></div>
                 <button v-if="!loggedIn" @click="openLogin">Login</button>
                 <button v-else @click="logout">Logout</button>
