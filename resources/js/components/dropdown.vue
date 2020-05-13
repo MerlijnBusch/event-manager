@@ -2,23 +2,24 @@
     <div class="dropdown">
         <button @click="isOpen = !isOpen" class="dropdown-current">
             <span v-for="selected in newCurrent">{{selected.name}}</span>
+            <span class="dropdown_placeholder" v-if="!newCurrent.length">{{placeholder}}</span>
             <div class="dropdown-icon">
                 <i class="fas fa-chevron-down" v-if="!isOpen"></i>
                 <i class="fas fa-chevron-up" v-else></i>
             </div>
         </button>
         <div class="dropdown-options" v-if="isOpen">
-            <div class="dropdown-option" v-for="option in options">
-                <input type="checkbox" :checked="option.status" :id="option.value" :value="option" v-model="newCurrent">
-                <label :for="option.value">{{option.name}}</label>
-            </div>
+            <label class="dropdown-option" v-for="option in options" :class="{'dropdown-option-selected': newCurrent.includes(option)}">
+                <input type="checkbox" :value="option" v-model="newCurrent">
+                <span>{{option.name}}</span>
+            </label>
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        props: ['options', 'current'],
+        props: ['options', 'current', 'placeholder'],
         data() {
             return {
                 isOpen: false,

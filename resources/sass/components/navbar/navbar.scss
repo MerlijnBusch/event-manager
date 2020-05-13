@@ -3,6 +3,7 @@ $navbar-padding: 24px;
 $sidenav-width: 400px;
 
 .navbar {
+  z-index: 1;
   width: 100vw;
   position: fixed;
   top: 0;
@@ -64,6 +65,7 @@ $sidenav-width: 400px;
 }
 
 .sidenav {
+  z-index: 2;
   &.sidenav-hidden {
     right: -$sidenav-width;
   }

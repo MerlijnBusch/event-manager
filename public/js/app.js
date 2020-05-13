@@ -2068,8 +2068,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['options', 'current'],
+  props: ['options', 'current', 'placeholder'],
   data: function data() {
     return {
       isOpen: false,
@@ -40629,6 +40630,12 @@ var render = function() {
           return _c("span", [_vm._v(_vm._s(selected.name))])
         }),
         _vm._v(" "),
+        !_vm.newCurrent.length
+          ? _c("span", { staticClass: "dropdown_placeholder" }, [
+              _vm._v(_vm._s(_vm.placeholder))
+            ])
+          : _vm._e(),
+        _vm._v(" "),
         _c("div", { staticClass: "dropdown-icon" }, [
           !_vm.isOpen
             ? _c("i", { staticClass: "fas fa-chevron-down" })
@@ -40643,51 +40650,57 @@ var render = function() {
           "div",
           { staticClass: "dropdown-options" },
           _vm._l(_vm.options, function(option) {
-            return _c("div", { staticClass: "dropdown-option" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.newCurrent,
-                    expression: "newCurrent"
-                  }
-                ],
-                attrs: { type: "checkbox", id: option.value },
-                domProps: {
-                  checked: option.status,
-                  value: option,
-                  checked: Array.isArray(_vm.newCurrent)
-                    ? _vm._i(_vm.newCurrent, option) > -1
-                    : _vm.newCurrent
-                },
-                on: {
-                  change: function($event) {
-                    var $$a = _vm.newCurrent,
-                      $$el = $event.target,
-                      $$c = $$el.checked ? true : false
-                    if (Array.isArray($$a)) {
-                      var $$v = option,
-                        $$i = _vm._i($$a, $$v)
-                      if ($$el.checked) {
-                        $$i < 0 && (_vm.newCurrent = $$a.concat([$$v]))
+            return _c(
+              "label",
+              {
+                staticClass: "dropdown-option",
+                class: {
+                  "dropdown-option-selected": _vm.newCurrent.includes(option)
+                }
+              },
+              [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.newCurrent,
+                      expression: "newCurrent"
+                    }
+                  ],
+                  attrs: { type: "checkbox" },
+                  domProps: {
+                    value: option,
+                    checked: Array.isArray(_vm.newCurrent)
+                      ? _vm._i(_vm.newCurrent, option) > -1
+                      : _vm.newCurrent
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.newCurrent,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = option,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.newCurrent = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.newCurrent = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
                       } else {
-                        $$i > -1 &&
-                          (_vm.newCurrent = $$a
-                            .slice(0, $$i)
-                            .concat($$a.slice($$i + 1)))
+                        _vm.newCurrent = $$c
                       }
-                    } else {
-                      _vm.newCurrent = $$c
                     }
                   }
-                }
-              }),
-              _vm._v(" "),
-              _c("label", { attrs: { for: option.value } }, [
-                _vm._v(_vm._s(option.name))
-              ])
-            ])
+                }),
+                _vm._v(" "),
+                _c("span", [_vm._v(_vm._s(option.name))])
+              ]
+            )
           }),
           0
         )
@@ -42210,7 +42223,11 @@ var render = function() {
             { staticClass: "form-line" },
             [
               _c("dropdown", {
-                attrs: { options: _vm.options, current: _vm.current },
+                attrs: {
+                  placeholder: "role permisions",
+                  options: _vm.options,
+                  current: _vm.current
+                },
                 on: { setCurrent: _vm.setCurrent }
               })
             ],
