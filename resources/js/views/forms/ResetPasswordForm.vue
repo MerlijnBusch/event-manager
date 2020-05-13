@@ -44,7 +44,6 @@
                     password_confirmation: this.password_confirmation
                 })
                     .then(result => {
-                         console.log(result.data);
                         this.$router.push({name: 'login'})
                     }, error => {
                         console.error(error);

@@ -68,4 +68,5 @@ class UserController extends Controller
         return response()->json(['message' => $permissions->getAllPermissions()], 200);
 
     }
+
 }

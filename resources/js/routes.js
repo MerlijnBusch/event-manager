@@ -7,6 +7,7 @@ import Example from '@/js/views/Example'
 import DropdownExample from '@/js/views/DropdownExample'
 import EventForm from '@/js/views/forms/Event-form'
 import ResetPasswordForm from '@/js/views/forms/ResetPasswordForm';
+import UserRegistrationForm from '@/js/views/forms/User-Registration-form';
 
 Vue.use(VueRouter);
 
@@ -37,9 +38,9 @@ const router = new VueRouter({
             component: ResetPasswordForm,
         },
         {
-            path: '/example',
-            name: 'example',
-            component: Example
+            path: '/user-registration',
+            name: 'user-registration-form',
+            component: UserRegistrationForm
         },
         {
             path: '/dropdown',
