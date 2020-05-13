@@ -495,18 +495,31 @@ body {
   padding-left: 30px;
 }
 
+@media only screen and (max-width: 601px) {
+  .homepage-full .home-event .home-date {
+    margin-right: 15px;
+  }
+}
+
 .homepage-full .home-event .home-location {
   padding-right: 250px;
+}
+
+@media (min-width: 980px) and (max-width: 1433px) {
+  .homepage-full .home-event .home-location {
+    padding-right: 0;
+  }
 }
 
 .homepage-full .home-event hr.home-divider {
   border: 2px solid #E6A65C;
   width: 40%;
   margin-left: 30px;
+  border-radius: 20px;
 }
 
 .homepage-full .home-event hr.home-divider-2 {
-  border: 0.5px solid #C1C1C1;
+  border: 0.5px solid #404040;
   width: 75%;
   margin: 0 0 5px 30px;
 }
