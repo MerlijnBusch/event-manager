@@ -3218,7 +3218,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -42247,11 +42246,6 @@ var render = function() {
             "div",
             { staticClass: "form-line" },
             [
-              _vm._v(
-                "\n                " +
-                  _vm._s(_vm.current) +
-                  "\n                "
-              ),
               _c("dropdown", {
                 attrs: { options: _vm.options, current: _vm.current },
                 on: { setCurrent: _vm.setCurrent }
@@ -58887,8 +58881,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/merlijn/PhpstormProjects/nz-evenementenregistratie/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/merlijn/PhpstormProjects/nz-evenementenregistratie/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Tim Huijkman\PhpstormProjects\nz-evenementenregistratie\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Tim Huijkman\PhpstormProjects\nz-evenementenregistratie\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -23,7 +23,6 @@
                     />
                 </div>
                 <div class="form-line">
-                    {{current}}
                     <dropdown :options="options" :current="current" @setCurrent="setCurrent"></dropdown>
                 </div>
                 <div class="form-line form-line-hasbutton">
