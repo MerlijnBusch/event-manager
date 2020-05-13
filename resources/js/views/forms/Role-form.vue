@@ -1,56 +1,41 @@
 <template>
-    <form
-        id="app"
-        @submit.prevent="checkForm"
-        method="post"
-    >
+    <div class="full-page-form">
+        <div class="form-holder">
+            <form class="form" @submit.prevent="checkForm" method="post">
+                <h2 class="form-title">Event Settings</h2>
 
-        <div v-if="errors.length">
-            <b>Please correct the following error(s):</b>
-            <ul>
-                <li v-for="error in errors">{{ error }}</li>
-            </ul>
+                <div v-if="errors.length">
+                    <b>Please correct the following error(s):</b>
+                    <ul>
+                        <li v-for="error in errors">{{ error }}</li>
+                    </ul>
+                </div>
+
+                <div class="form-line">
+                    <label class="form-label" for="role_name">Role Name</label>
+                    <input class="form-text-input" id="role_name" v-model="role_name" type="text" name="role_name"
+                           placeholder="Role name">
+                </div>
+                <div class="form-line">
+                    <label class="form-label" for="color">Color</label>
+                    <input class="form-text-input" id="color" v-model="color" type="color" name="color" placeholder="Color"
+                    />
+                </div>
+                    <div class="form-line form-line-hasbutton">
+                    <input type="submit" class="form-button" value="Submit"
+                    >
+                </div>
+            </form>
         </div>
-
-        <h2 class="form-title">
-            Event Settings
-        </h2>
-        <p>
-            <label class="form-label" for="role_name">Role Name</label>
-            <input
-                class="text-input"
-                id="role_name"
-                v-model="role_name"
-                type="number"
-                name="role_name"
-                placeholder="Role name"
-            >
-        </p>
-        <p>
-            <label class="form-label" for="color">Color</label>
-            <input
-                class="text-input"
-                id="color"
-                v-model="color"
-                type="color"
-                name="color"
-                placeholder="Color"
-            />
-        </p>
-        <p>
-            <input
-                type="submit"
-                value="Submit"
-                class="submit-btn"
-            >
-        </p>
-    </form>
+    </div>
 </template>
 
 <script>
     import API from "../../Api";
+    import dropDown from '@/js/components/dropdown'
 
     export default {
+        name: 'Role-Form',
         data() {
             return {
                 errors: [],
@@ -60,6 +45,7 @@
                 options: [],
             }
         },
+        components: {dropDown},
         methods: {
             checkForm: async function (e) {
                 // this.errors = [];
@@ -85,10 +71,16 @@
         async mounted() {
             const data = await API.get('/api/permissions');
             console.log(data);
+            let options = this.options;
             for (const key in data.data.message) {
-                if (data.data.message.hasOwnProperty(key) && key.substring(0, 2) === "__") this.options.push({name: key, value: data.data.message[key]});
+                if (data.data.message.hasOwnProperty(key) && key.substring(0, 2) === "__") {
+                    options.push({
+                        name: key,
+                        value: data.data.message[key]
+                    });
+                }
             }
-            console.log(this.options);
+            this.options = options;
         },
     }
 </script>

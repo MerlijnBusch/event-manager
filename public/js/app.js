@@ -3124,6 +3124,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Api */ "./resources/js/Api.js");
+/* harmony import */ var _js_components_dropdown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/js/components/dropdown */ "./resources/js/components/dropdown.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -3162,25 +3163,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'Role-Form',
   data: function data() {
     return {
       errors: [],
@@ -3189,6 +3175,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       permissions: [],
       options: []
     };
+  },
+  components: {
+    dropDown: _js_components_dropdown__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   methods: {
     checkForm: function () {
@@ -3215,7 +3204,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var _this = this;
 
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-      var data, key;
+      var data, options, key;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -3226,17 +3215,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 2:
               data = _context2.sent;
               console.log(data);
+              options = _this.options;
 
               for (key in data.data.message) {
-                if (data.data.message.hasOwnProperty(key) && key.substring(0, 2) === "__") _this.options.push({
-                  name: key,
-                  value: data.data.message[key]
-                });
+                if (data.data.message.hasOwnProperty(key) && key.substring(0, 2) === "__") {
+                  options.push({
+                    name: key,
+                    value: data.data.message[key]
+                  });
+                }
               }
 
-              console.log(_this.options);
+              _this.options = options;
 
-            case 6:
+            case 7:
             case "end":
               return _context2.stop();
           }
@@ -42056,116 +42048,121 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "form",
-    {
-      attrs: { id: "app", method: "post" },
-      on: {
-        submit: function($event) {
-          $event.preventDefault()
-          return _vm.checkForm($event)
-        }
-      }
-    },
-    [
-      _vm.errors.length
-        ? _c("div", [
-            _c("b", [_vm._v("Please correct the following error(s):")]),
-            _vm._v(" "),
+  return _c("div", { staticClass: "full-page-form" }, [
+    _c("div", { staticClass: "form-holder" }, [
+      _c(
+        "form",
+        {
+          staticClass: "form",
+          attrs: { method: "post" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.checkForm($event)
+            }
+          }
+        },
+        [
+          _c("h2", { staticClass: "form-title" }, [_vm._v("Event Settings")]),
+          _vm._v(" "),
+          _vm.errors.length
+            ? _c("div", [
+                _c("b", [_vm._v("Please correct the following error(s):")]),
+                _vm._v(" "),
+                _c(
+                  "ul",
+                  _vm._l(_vm.errors, function(error) {
+                    return _c("li", [_vm._v(_vm._s(error))])
+                  }),
+                  0
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-line" }, [
             _c(
-              "ul",
-              _vm._l(_vm.errors, function(error) {
-                return _c("li", [_vm._v(_vm._s(error))])
-              }),
-              0
-            )
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _c("h2", { staticClass: "form-title" }, [
-        _vm._v("\n        Event Settings\n    ")
-      ]),
-      _vm._v(" "),
-      _c("p", [
-        _c(
-          "label",
-          { staticClass: "form-label", attrs: { for: "role_name" } },
-          [_vm._v("Role Name")]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.role_name,
-              expression: "role_name"
-            }
-          ],
-          staticClass: "text-input",
-          attrs: {
-            id: "role_name",
-            type: "number",
-            name: "role_name",
-            placeholder: "Role name"
-          },
-          domProps: { value: _vm.role_name },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+              "label",
+              { staticClass: "form-label", attrs: { for: "role_name" } },
+              [_vm._v("Role Name")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.role_name,
+                  expression: "role_name"
+                }
+              ],
+              staticClass: "form-text-input",
+              attrs: {
+                id: "role_name",
+                type: "text",
+                name: "role_name",
+                placeholder: "Role name"
+              },
+              domProps: { value: _vm.role_name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.role_name = $event.target.value
+                }
               }
-              _vm.role_name = $event.target.value
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("p", [
-        _c("label", { staticClass: "form-label", attrs: { for: "color" } }, [
-          _vm._v("Color")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.color,
-              expression: "color"
-            }
-          ],
-          staticClass: "text-input",
-          attrs: {
-            id: "color",
-            type: "color",
-            name: "color",
-            placeholder: "Color"
-          },
-          domProps: { value: _vm.color },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-line" }, [
+            _c(
+              "label",
+              { staticClass: "form-label", attrs: { for: "color" } },
+              [_vm._v("Color")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.color,
+                  expression: "color"
+                }
+              ],
+              staticClass: "form-text-input",
+              attrs: {
+                id: "color",
+                type: "color",
+                name: "color",
+                placeholder: "Color"
+              },
+              domProps: { value: _vm.color },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.color = $event.target.value
+                }
               }
-              _vm.color = $event.target.value
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _vm._m(0)
-    ]
-  )
+            })
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", [
+    return _c("div", { staticClass: "form-line form-line-hasbutton" }, [
       _c("input", {
-        staticClass: "submit-btn",
+        staticClass: "form-button",
         attrs: { type: "submit", value: "Submit" }
       })
     ])
