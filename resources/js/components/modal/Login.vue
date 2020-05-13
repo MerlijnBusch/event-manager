@@ -48,7 +48,6 @@
                         "email": this.email,
                         "password": this.password,
                     }).then(response => {
-                        console.log(response)
                         if (response.status === 200) {
                            if (!!response.data.data) {
                                this.$emit("loggedIn", response.request.response);
