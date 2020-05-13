@@ -3,6 +3,13 @@
 @import "flex-grid";
 
 
+@import '../../node_modules/font-awesome/scss/font-awesome';
+.fas, .fas:before, .fas:after {
+  font-style: normal;
+  font-family: FontAwesome;
+}
+
+
 html {box-sizing: border-box;}
 *, *:before, *:after {box-sizing: inherit; font-family: $font-family;}
 

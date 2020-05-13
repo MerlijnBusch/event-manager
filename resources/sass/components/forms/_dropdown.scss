@@ -1,0 +1,28 @@
+.dropdown {
+  background: $light;
+
+  .dropdown-current {
+    width: 100%;
+    padding: 24px 12px;
+    background: grey;
+    text-align: left;
+
+    > span {
+      min-height: 1em;
+      min-width: 100%;
+      &+span:before{
+        content: ', ';
+      }
+    }
+  }
+
+  .dropdown-options {
+    width: 100%;
+
+    .dropdown-option {
+      width: 100%;
+      text-align: left;
+      display: block;
+    }
+  }
+}
