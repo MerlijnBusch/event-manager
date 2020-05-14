@@ -1899,6 +1899,228 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Event.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Event.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'Event',
+  methods: {
+    formatDate: function formatDate(date) {
+      var datetime = new Date(date);
+      return datetime.getDate() + "-" + (datetime.getMonth() + 1) + "-" + datetime.getFullYear();
+    },
+    deselectSpeakers: function deselectSpeakers(index, speaker) {
+      for (var i = 0; i < this.congress[index].speakers.length; i++) {
+        this.congress[index].speakers[i].selected = false;
+      }
+
+      this.congress[index].speaker.selected = false;
+      console.log(speaker);
+      speaker.selected = true; // this.$forceUpdate();
+    }
+  },
+  data: function data() {
+    return {
+      title: 'Tides Europe',
+      backgroundImage: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+      color: '#E6A65C',
+      description: 'Tides offers the science,\n' + 'technologies and partners you \n' + 'need to grow your business',
+      tickets: {
+        current: 98,
+        max: 110,
+        isShowing: true
+      },
+      program: [{
+        title: 'Opening',
+        description: 'Voor ondernemers en werkzoekende',
+        time: '11:00-12:00'
+      }, {
+        title: 'Officele Opening',
+        description: 'Door Edward Stigter',
+        time: '12:30-13:00'
+      }, {
+        title: 'Speeddates',
+        description: 'Voor studenten',
+        time: '13:00-13:30'
+      }, {
+        title: 'Finale',
+        description: 'Prijsuitrijking',
+        time: '13:30-14:00'
+      }],
+      info: {
+        date: '17 november 2018',
+        location: 'Alkmaar entrance B',
+        price: '45 - 180 EUR'
+      },
+      congress: [{
+        time: '9:00 - 10:00',
+        speakers: [{
+          selected: false,
+          name: 'Merijn Everaarts',
+          position: 'CEO Dopper'
+        }, {
+          selected: false,
+          name: 'Eva Janssen',
+          position: 'Market analyst'
+        }, {
+          selected: false,
+          name: 'Merijn Everaarts',
+          position: 'CEO Dopper'
+        }, {
+          selected: false,
+          name: 'Eva Janssen',
+          position: 'Market analyst'
+        }],
+        speaker: {
+          selected: false,
+          time: '11:00 - 12:00',
+          name: 'Syp Arends',
+          position: 'CEO Pyroil'
+        }
+      }, {
+        time: '13:00 - 14:00',
+        speakers: [{
+          selected: false,
+          name: 'Merijn Everaarts',
+          position: 'CEO Dopper'
+        }, {
+          selected: false,
+          name: 'Eva Janssen',
+          position: 'Market analyst'
+        }, {
+          selected: false,
+          name: 'Merijn Everaarts',
+          position: 'CEO Dopper'
+        }, {
+          selected: false,
+          name: 'Eva Janssen',
+          position: 'Market analyst'
+        }],
+        speaker: {
+          selected: false,
+          time: '14:00 - 15:00',
+          name: 'Syp Arends',
+          position: 'CEO Pyroil'
+        }
+      }, {
+        time: '15:30 - 16:30',
+        speakers: [{
+          selected: false,
+          name: 'Merijn Everaarts',
+          position: 'CEO Dopper'
+        }, {
+          selected: false,
+          name: 'Eva Janssen',
+          position: 'Market analyst'
+        }, {
+          selected: false,
+          name: 'Merijn Everaarts',
+          position: 'CEO Dopper'
+        }, {
+          selected: false,
+          name: 'Eva Janssen',
+          position: 'Market analyst'
+        }],
+        speaker: {
+          selected: false,
+          time: '14:00 - 15:00',
+          name: 'Syp Arends',
+          position: 'CEOlPyroil'
+        }
+      }]
+    };
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ForgotPassword.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ForgotPassword.vue?vue&type=script&lang=js& ***!
@@ -1984,24 +2206,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       items: [{
         title: 'TIDES Europe',
+        color: '#E6A65C',
         description: 'Tides offers the science,\n' + 'technologies and partners you\n' + 'need to grow your business',
-        date: new Date(),
-        location: 'Amsterdam'
+        date: '17 november 2018',
+        location: 'Alkmaar, Alkmaar'
       }, {
-        title: 'TIDES Europe',
-        description: 'Tides offers the science,\n' + 'technologies and partners you\n' + 'need to grow your business',
-        date: new Date(),
-        location: 'Amsterdam'
+        title: 'METS Trade',
+        color: '#5CE6B1',
+        description: 'Kickstart Europe is een strategie & netwerk\n' + 'conferentie aan de start van het jaar, voor\n' + 'C-level in data center, connectivity en\n' + 'cloud professionals.',
+        date: '3 december 2019',
+        location: 'Alkmaar, Alkmaar'
       }, {
-        title: 'TIDES Europe',
-        description: 'Tides offers the science,\n' + 'technologies and partners you\n' + 'need to grow your business',
-        date: new Date(),
-        location: 'Amsterdam'
+        title: 'Home delivery\n' + 'europe',
+        color: '#5CB6E6',
+        description: 'Home Delivery World Europe 2020 is the\n' + 'industry’s best retail logistics event,\n' + 'covering Parcel, Heavy Goods, Data &\n' + 'Analytics, Grocery, Urban Logistic',
+        date: '4 januari 2020',
+        location: 'Alkmaar, Alkmaar'
       }]
     };
   },
@@ -38020,6 +38251,314 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Event.vue?vue&type=template&id=5793e382&":
+/*!********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Event.vue?vue&type=template&id=5793e382& ***!
+  \********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "event-page" }, [
+    _c("div", {
+      staticClass: "bg",
+      style: { backgroundImage: "url(" + _vm.backgroundImage + ")" }
+    }),
+    _vm._v(" "),
+    _c("div", { staticClass: "titlebar" }, [
+      _c("h1", {
+        staticClass: "title",
+        domProps: { textContent: _vm._s(_vm.title) }
+      }),
+      _vm._v(" "),
+      _c("h4", {
+        staticClass: "description",
+        domProps: { textContent: _vm._s(_vm.description) }
+      }),
+      _vm._v(" "),
+      _c("span", {
+        staticClass: "date",
+        domProps: { textContent: _vm._s(_vm.formatDate(_vm.info.date)) }
+      }),
+      _vm._v(" "),
+      _vm.tickets.isShowing
+        ? _c("div", { staticClass: "ticketview" }, [
+            _c("span", [_vm._v(_vm._s(_vm.tickets.current) + "/")]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(_vm.tickets.max) + "/")])
+          ])
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "program-info-bla" }, [
+      _c(
+        "div",
+        { staticClass: "program" },
+        [
+          _c("b", [_vm._v("Programma")]),
+          _vm._v(" "),
+          _vm._l(_vm.program, function(part) {
+            return _c("div", [
+              _c("b", { staticClass: "title" }, [_vm._v(_vm._s(part.title))]),
+              _vm._v(" "),
+              _c("p", { staticClass: "description" }, [
+                _vm._v(_vm._s(part.description))
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "date" }, [_vm._v(_vm._s(part.time))])
+            ])
+          })
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "info" }, [
+        _c("b", [_vm._v("Info")]),
+        _vm._v(" "),
+        _c("div", [
+          _c("b", [_vm._v("Datum")]),
+          _vm._v(" "),
+          _c("span", [_vm._v(_vm._s(_vm.formatDate(_vm.info.date)))])
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c("b", [_vm._v("Locatie")]),
+          _vm._v(" "),
+          _c("span", [_vm._v(_vm._s(_vm.info.location))])
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c("b", [_vm._v("Prijs")]),
+          _vm._v(" "),
+          _c("span", [_vm._v(_vm._s(_vm.info.price))])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "congress" }, [
+      _c("b", { staticClass: "title" }, [_vm._v("Congress")]),
+      _vm._v(" "),
+      _c("p", { staticClass: "description" }, [
+        _vm._v(
+          "\n            Bekijk en selecteer lezingen\n            per ronde voor dit evenement.\n        "
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "rounds" },
+        _vm._l(_vm.congress, function(round, index) {
+          return _c("div", { staticClass: "round" }, [
+            _c("b", [
+              _vm._v("Ronde " + _vm._s(index + 1) + " "),
+              _c("span", [_vm._v(_vm._s(round.time))])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "speakers" },
+              _vm._l(round.speakers, function(speaker) {
+                return _c("div", [
+                  _c("b", [_vm._v(_vm._s(speaker.name))]),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(speaker.position))]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: speaker.selected,
+                        expression: "speaker.selected"
+                      }
+                    ],
+                    attrs: { type: "checkbox" },
+                    domProps: {
+                      checked: Array.isArray(speaker.selected)
+                        ? _vm._i(speaker.selected, null) > -1
+                        : speaker.selected
+                    },
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$a = speaker.selected,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = null,
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                _vm.$set(speaker, "selected", $$a.concat([$$v]))
+                            } else {
+                              $$i > -1 &&
+                                _vm.$set(
+                                  speaker,
+                                  "selected",
+                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                )
+                            }
+                          } else {
+                            _vm.$set(speaker, "selected", $$c)
+                          }
+                        },
+                        function($event) {
+                          return _vm.deselectSpeakers(index, speaker)
+                        }
+                      ]
+                    }
+                  })
+                ])
+              }),
+              0
+            ),
+            _vm._v(" "),
+            _c("b", [
+              _vm._v("Keynotespreker "),
+              _c("span", [_vm._v(_vm._s(round.speaker.time))])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "keynote-bla" }, [
+              _c("b", [_vm._v(_vm._s(round.speaker.name))]),
+              _vm._v(" "),
+              _c("span", [_vm._v(_vm._s(round.speaker.position))]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: round.speaker.selected,
+                    expression: "round.speaker.selected"
+                  }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  checked: Array.isArray(round.speaker.selected)
+                    ? _vm._i(round.speaker.selected, null) > -1
+                    : round.speaker.selected
+                },
+                on: {
+                  change: [
+                    function($event) {
+                      var $$a = round.speaker.selected,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              round.speaker,
+                              "selected",
+                              $$a.concat([$$v])
+                            )
+                        } else {
+                          $$i > -1 &&
+                            _vm.$set(
+                              round.speaker,
+                              "selected",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
+                        }
+                      } else {
+                        _vm.$set(round.speaker, "selected", $$c)
+                      }
+                    },
+                    function($event) {
+                      return _vm.deselectSpeakers(index, round.speaker)
+                    }
+                  ]
+                }
+              })
+            ])
+          ])
+        }),
+        0
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "selected-speakers" },
+      [
+        _c("b", [_vm._v("Geselecteerde Sprekers")]),
+        _vm._v(" "),
+        _vm._l(_vm.congress, function(round, index) {
+          return _c(
+            "div",
+            { staticStyle: { background: "#eee" } },
+            [
+              _c("b", [
+                _vm._v("Ronde " + _vm._s(index + 1) + " "),
+                _c("span", [_vm._v(_vm._s(round.time))])
+              ]),
+              _vm._v(" "),
+              round.speaker.selected
+                ? _c("div", [
+                    _c("b", [_vm._v(_vm._s(round.speaker.name))]),
+                    _vm._v(" "),
+                    _c("span", [_vm._v(_vm._s(round.speaker.description))]),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        on: {
+                          click: function($event) {
+                            round.speaker.selected = false
+                          }
+                        }
+                      },
+                      [_vm._v("X")]
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm._l(round.speakers, function(speaker) {
+                return speaker.selected
+                  ? _c("div", [
+                      _c("b", [_vm._v(_vm._s(speaker.name))]),
+                      _vm._v(" "),
+                      _c("span", [_vm._v(_vm._s(speaker.description))]),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          on: {
+                            click: function($event) {
+                              speaker.selected = false
+                            }
+                          }
+                        },
+                        [_vm._v("X")]
+                      )
+                    ])
+                  : _vm._e()
+              })
+            ],
+            2
+          )
+        })
+      ],
+      2
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ForgotPassword.vue?vue&type=template&id=3ac5fb09&scoped=true&":
 /*!*****************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ForgotPassword.vue?vue&type=template&id=3ac5fb09&scoped=true& ***!
@@ -38121,33 +38660,61 @@ var render = function() {
             "div",
             {
               staticClass:
-                "home-event column-desktop-4 column-tablet-12 column-mobile-12"
+                "home-event column-desktop-4 column-tablet-6 column-mobile-12"
             },
             [
-              _c("div", { staticClass: "home-event-background" }),
+              _c("div", {
+                staticClass: "home-event-background",
+                style: { backgroundColor: item.color }
+              }),
               _vm._v(" "),
-              _c("h2", [_vm._v(_vm._s(item.title))]),
-              _vm._v(" "),
-              _c("hr", { staticClass: "home-divider" }),
-              _vm._v(" "),
-              _c("p", { staticClass: "home-description" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(item.description) +
-                    "\n                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("hr", { staticClass: "home-divider-2" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "flex-wrapper" }, [
-                _c("div", { staticClass: "flex-grid" }, [
-                  _c("p", { staticClass: "home-date column-desktop-6" }, [
-                    _vm._v(_vm._s(_vm.formatDate(item.date)))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "home-location column-desktop-6" }, [
-                    _vm._v(_vm._s(item.location))
+              _c("div", { staticClass: "home-event-content" }, [
+                _c("h2", [_vm._v(_vm._s(item.title))]),
+                _vm._v(" "),
+                _c("hr", {
+                  staticClass: "home-divider",
+                  style: { borderColor: item.color }
+                }),
+                _vm._v(" "),
+                _c("p", { staticClass: "home-description" }, [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(item.description) +
+                      "\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("hr", { staticClass: "home-divider-2" }),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex-wrapper" }, [
+                  _c("div", { staticClass: "flex-grid" }, [
+                    _c(
+                      "p",
+                      {
+                        staticClass:
+                          "home-date column-desktop-6 column-tablet-6 column-mobile-12"
+                      },
+                      [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(_vm.formatDate(item.date))
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "p",
+                      {
+                        staticClass:
+                          "home-location column-desktop-6 column-tablet-6 column-mobile-12"
+                      },
+                      [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(item.location)
+                        )
+                      ]
+                    )
                   ])
                 ])
               ])
@@ -53878,6 +54445,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Event.vue":
+/*!*******************************************!*\
+  !*** ./resources/js/components/Event.vue ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Event_vue_vue_type_template_id_5793e382___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Event.vue?vue&type=template&id=5793e382& */ "./resources/js/components/Event.vue?vue&type=template&id=5793e382&");
+/* harmony import */ var _Event_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Event.vue?vue&type=script&lang=js& */ "./resources/js/components/Event.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Event_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Event_vue_vue_type_template_id_5793e382___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Event_vue_vue_type_template_id_5793e382___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Event.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Event.vue?vue&type=script&lang=js&":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/Event.vue?vue&type=script&lang=js& ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Event_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Event.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Event.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Event_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Event.vue?vue&type=template&id=5793e382&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/Event.vue?vue&type=template&id=5793e382& ***!
+  \**************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Event_vue_vue_type_template_id_5793e382___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Event.vue?vue&type=template&id=5793e382& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Event.vue?vue&type=template&id=5793e382&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Event_vue_vue_type_template_id_5793e382___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Event_vue_vue_type_template_id_5793e382___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/ForgotPassword.vue":
 /*!****************************************************!*\
   !*** ./resources/js/components/ForgotPassword.vue ***!
@@ -54306,7 +54942,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _js_components_Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/js/components/Home */ "./resources/js/components/Home.vue");
 /* harmony import */ var _js_components_About__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/js/components/About */ "./resources/js/components/About.vue");
-/* harmony import */ var _js_components_ResetPasswordForm__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/js/components/ResetPasswordForm */ "./resources/js/components/ResetPasswordForm.vue");
+/* harmony import */ var _js_components_Event__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/js/components/Event */ "./resources/js/components/Event.vue");
+/* harmony import */ var _js_components_ResetPasswordForm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/js/components/ResetPasswordForm */ "./resources/js/components/ResetPasswordForm.vue");
+
 
 
 
@@ -54320,13 +54958,17 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: 'home',
     component: _js_components_Home__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, {
+    path: '/event',
+    name: 'event',
+    component: _js_components_Event__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }, {
     path: '/about',
     name: 'about',
     component: _js_components_About__WEBPACK_IMPORTED_MODULE_3__["default"]
   }, {
     path: '/reset-password/:token',
     name: 'reset-password-form',
-    component: _js_components_ResetPasswordForm__WEBPACK_IMPORTED_MODULE_4__["default"],
+    component: _js_components_ResetPasswordForm__WEBPACK_IMPORTED_MODULE_5__["default"],
     meta: {
       auth: false
     }

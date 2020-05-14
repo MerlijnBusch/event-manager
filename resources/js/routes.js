@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 
 import Home from '@/js/components/Home';
 import About from '@/js/components/About';
+import Event from '@/js/components/Event';
 import ResetPasswordForm from '@/js/components/ResetPasswordForm';
 
 Vue.use(VueRouter);
@@ -14,6 +15,11 @@ const router = new VueRouter({
             path: '/',
             name: 'home',
             component: Home
+        },
+        {
+            path: '/event',
+            name: 'event',
+            component: Event
         },
         {
             path: '/about',

@@ -16,6 +16,9 @@ body{
   line-height: normal;
 }
 
-.main{
-  padding-top: 84px;
+.main {
+  padding-top: 80px !important;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
