@@ -1,0 +1,110 @@
+.dropdown {
+  z-index: 0;
+  border-radius: 5px;
+  position: relative;
+  background: $light;
+  .dropdown-icon{
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+  };
+  .dropdown_placeholder{
+    color: $light;
+  }
+  .dropdown-current {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background: $white;
+    border: solid 2px $light;
+    text-align: left;
+
+    > span {
+      min-height: 1em;
+      min-width: 100%;
+
+      & + span:before {
+        content: ', ';
+      }
+    }
+  }
+
+  .dropdown-options {
+    width: 100%;
+    max-height: 350px;
+    overflow-y: auto;
+    border: inset 1px $medium;
+    border-radius: 0 0 15px 15px;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background: $white;
+    color: $dark;
+    &::-webkit-scrollbar {
+      width: 20px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border: 5px solid rgba(0, 0, 0, 0);
+      width: 15px;
+      background-clip: padding-box;
+      -webkit-border-radius: 15px;
+      background-color: $dark;
+      -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05), inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: $medium;
+    }
+
+    .dropdown-option {
+      width: 100%;
+      padding: 12px 24px;
+      text-align: left;
+      display: block;
+      position: relative;
+      input, span{
+        z-index: 1;
+        position: relative;
+      }
+      &:after{
+        content: '';
+        z-index: 0;
+        width: 0;
+        transition: ease-in-out width .3s, ease-in-out background-color .3s;
+        height: 100%;
+        position: absolute;
+        background-color: transparentize($orange,.5);
+        left: 0;
+        top: 0;
+      }
+      &:hover:after{
+        width: 12px;
+      }
+      &.dropdown-option-selected {
+        &:hover:after{
+          width: 50%;
+        }
+        &:after {
+          background-color: $orange;
+          width: calc(100% - 12px);
+        }
+      }
+
+      & + .dropdown-option:before {
+        content: '';
+        position: absolute;
+        width: calc(100% - 24px);
+        top: 0;
+        left: 12px;
+        background: $light;
+        height: 1px;
+      }
+    }
+  }
+}

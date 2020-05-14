@@ -23,8 +23,7 @@
                     />
                 </div>
                 <div class="form-line">
-                    {{current}}
-                    <dropdown :options="options" :current="current" @setCurrent="setCurrent"></dropdown>
+                    <dropdown placeholder="role permisions" :options="options" :current="current" @setCurrent="setCurrent"></dropdown>
                 </div>
                 <div class="form-line form-line-hasbutton">
                     <input type="submit" class="form-button" value="Submit">
