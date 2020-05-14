@@ -2357,9 +2357,6 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.errors = [];
-      window.addEventListener("loggedIn", function (e) {
-        console.log(e);
-      });
 
       if (this.email && this.password) {
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(window.location.origin + "/api/login", {

@@ -45,10 +45,6 @@
             checkForm: function (e) {
                 this.errors = [];
 
-                window.addEventListener("loggedIn", (e) => {
-                    console.log(e);
-                });
-
                 if (this.email && this.password) {
                     axios.post(window.location.origin + `/api/login`, {
                         "email": this.email,
