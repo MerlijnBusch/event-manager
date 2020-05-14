@@ -166,11 +166,10 @@ class ProfileController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-//
-//        $profile = new Profile;
-//        $profile->user_id = Auth::id();
-//        $profile->cv = $request->cv;
-//        $profile->save();
+        $profile = new Profile;
+        $profile->user_id = Auth::id();
+        $profile->cv = $request->cv;
+        $profile->save();
 
         return response()->json(['message' => $request->cv], 200);
 

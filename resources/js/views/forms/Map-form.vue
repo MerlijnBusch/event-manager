@@ -120,18 +120,18 @@
                 container.style.minWidth = this.map.width + "px";
                 container.style.minHeight = this.map.height + "px";
             },
-            updateMapWidth(event){
+            updateMapWidth(event) {
                 let width = event.target.value;
-                if(isNaN(parseInt(width))) width = 30;
+                if (isNaN(parseInt(width))) width = 30;
                 this.mapWidth = width;
                 this.map.width = this.mapWidth * meterToPixel;
 
                 const container = this.$refs.mapHolder;
                 container.style.minWidth = this.map.width + "px";
             },
-            updateMapHeight(event){
+            updateMapHeight(event) {
                 let height = event.target.value;
-                if(isNaN(parseInt(height))) height = 50;
+                if (isNaN(parseInt(height))) height = 50;
                 this.mapHeight = height
                 this.map.height = this.mapHeight * meterToPixel;
 
@@ -245,7 +245,7 @@
                     }
                 }
                 if (event.code === "KeyZ" && event.ctrlKey === true) {
-                    if(this.items[this.items.length - 1].id !==  this.copyItem.id && this.timeoutUndo === undefined) {
+                    if (this.items[this.items.length - 1].id !== this.copyItem.id && this.timeoutUndo === undefined) {
                         this.items.pop();
                         const container = this.$refs.mapHolder;
                         container.removeChild(container.lastChild);
@@ -284,8 +284,11 @@
             storeMap() {
                 const data = {
                     "name": "some map name for now to test",
-                    "json": JSON.stringify(this.items),
-                    "event_id": this.event_id,
+                    json: JSON.stringify({
+                        items: this.items,
+                        map: this.map
+                    }),
+                    event_id: this.event_id,
                 }
 
                 API.post(data, '/api/map`');

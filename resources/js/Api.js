@@ -29,10 +29,12 @@ export default class API {
     /**
      * @param data
      * @param url
+     * @param update
      * @returns {Promise<AxiosResponse<any>>}
      */
-    static async post(data, url){
-        return axios.post(window.location.origin + url, data, {headers: this.headers})
+    static async post(data, url, update = false){
+        if(update) return axios.patch(window.location.origin + url, data, {headers: this.headers});
+        return axios.post(window.location.origin + url, data, {headers: this.headers});
     }
 }
 

@@ -1,50 +1,54 @@
 <template>
-    <form
-        id="app"
-        @submit.prevent="checkForm"
-        method="post"
-    >
+    <div class="full-page-form">
+        <div class="form-holder">
+            <form
+                class="form"
+                @submit.prevent="checkForm"
+                method="post"
+            >
 
-        <div v-if="errors.length">
-            <b>Please correct the following error(s):</b>
-            <ul>
-                <li v-for="error in errors">{{ error }}</li>
-            </ul>
+                <div v-if="errors.length">
+                    <b>Please correct the following error(s):</b>
+                    <ul>
+                        <li v-for="error in errors">{{ error }}</li>
+                    </ul>
+                </div>
+
+                <h2 class="form-title">
+                    Profile form
+                </h2>
+                <div class="form-line">
+                    <label class="form-label" for="image">Image url</label>
+                    <input
+                        class="form-text-input"
+                        id="image"
+                        v-model="image"
+                        type="number"
+                        name="image"
+                        placeholder="Item name"
+                    >
+                </div>
+                <div class="form-line">
+                    <label class="form-label" for="phone_number">Phone number</label>
+                    <textarea
+                        class="form-text-input"
+                        id="phone_number"
+                        v-model="phone_number"
+                        type="phone_number"
+                        name="phone_number"
+                        placeholder="Phone number"
+                    ></textarea>
+                </div>
+                <div class="form-line">
+                    <input
+                        type="submit"
+                        value="Submit"
+                        class="submit-btn"
+                    >
+                </div>
+            </form>
         </div>
-
-        <h2 class="form-title">
-            Profile form
-        </h2>
-        <p>
-            <label class="form-label" for="image">Image url</label>
-            <input
-                class="text-input"
-                id="image"
-                v-model="image"
-                type="number"
-                name="image"
-                placeholder="Item name"
-            >
-        </p>
-        <p>
-            <label class="form-label" for="phone_number">Phone number</label>
-            <textarea
-                class="text-input"
-                id="phone_number"
-                v-model="phone_number"
-                type="phone_number"
-                name="phone_number"
-                placeholder="Phone number"
-            ></textarea>
-        </p>
-        <p>
-            <input
-                type="submit"
-                value="Submit"
-                class="submit-btn"
-            >
-        </p>
-    </form>
+    </div>
 </template>
 
 <script>

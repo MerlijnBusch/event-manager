@@ -18,7 +18,7 @@ class CreateProfilesTable extends Migration
             $table->integer('user_id');
             $table->string('phone_number')->nullable();
             $table->string('image')->nullable();
-            $table->string('cv')->nullable();
+            $table->longText('cv')->nullable();
             $table->timestamps();
         });
     }
