@@ -1,0 +1,96 @@
+@import "./resetPassword";
+
+.form {
+  .form-line {
+    width: 100%;
+    padding: $padding-small 0;
+  }
+
+  .form-errors {
+    padding: $padding-small;
+    font-weight: 300;
+    font-size: $font-size-normal;
+    color: $theme-color;
+    border: solid 1px $theme-color;
+    background-color: transparentize($theme-color,.8);
+  }
+
+  .form-message{
+    text-align: center;
+    color: $mid-gray;
+    padding: $padding-block;
+  }
+
+  .form-title {
+    font-weight: 500;
+    text-align: center;
+    font-size: $font-size-medium;
+    color: $theme-color;
+    padding: 0;
+    margin: 4px 0;
+  }
+
+  .form-label {
+    color: $mid-gray;
+    font-weight: 300;
+    font-size: $font-size-normal;
+    padding-bottom: $padding-tiny;
+  }
+
+  .form-text-input {
+    padding: 10px;
+    border-radius: $border-radius-tiny;
+    background: white;
+    border: solid 2px $mid-gray;
+    width: 100%;
+
+    &:hover {
+      border: solid 2px $theme-color;
+    }
+  }
+
+  .form-afterinput-link{
+    background: none;
+    border: none;
+    color: $mid-gray;
+    text-decoration: underline;
+    float: right;
+    padding: 2px;
+    &:hover{
+      color: $theme-color;
+    }
+  }
+  .form-line-hasbutton{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .form-button {
+    padding: 12px 22px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    background-color: $deep-gray;
+    color: $basic-gray;
+    border: solid 2px $mid-gray;
+    min-width: 50%;
+    &:hover {
+      background-color: $black;
+      border: solid 2px $theme-color;
+    }
+  }
+}
+
+.full-page-form{
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .form-holder{
+    flex: 0;
+    border-radius: 4px;
+    padding: $padding-medium $padding-huge * 2;
+    background: $deep-gray;
+  }
+}

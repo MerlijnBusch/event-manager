@@ -2,9 +2,16 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * @property mixed settings
+ * @property mixed item
+ * @property mixed map
+ * @property mixed id
+ */
 class Event extends Model
 {
     use SoftDeletes;
@@ -26,9 +33,9 @@ class Event extends Model
 
     }
 
-    public function registrationEvent(){
+    public function settings(){
 
-        return $this->hasOne('App\RegistrationEventsSettings', 'event_id');
+        return $this->hasOne('App\EventSettings', 'event_id');
 
     }
 

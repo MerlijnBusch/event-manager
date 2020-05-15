@@ -19,6 +19,7 @@ class CreateRolesTable extends Migration
             $table->string('role_name');
             $table->string('color')->nullable();
             $table->longText('permissions');
+            $table->boolean('selectable')->default(false);
         });
     }
 

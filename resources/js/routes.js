@@ -1,10 +1,13 @@
 import Vue from 'vue';
 import VueRouter from "vue-router";
 
-import Home from '@/js/components/Home';
-import About from '@/js/components/About';
-import Event from '@/js/components/Event';
-import ResetPasswordForm from '@/js/components/ResetPasswordForm';
+import Home from '@/js/views/Home';
+import Event from '@/js/views/Event';
+import About from '@/js/views/About';
+import EventForm from '@/js/views/forms/Event-form'
+import ResetPasswordForm from '@/js/views/forms/ResetPasswordForm';
+import Example from '@/js/views/Example'
+import DropdownExample from '@/js/views/DropdownExample'
 
 Vue.use(VueRouter);
 
@@ -24,16 +27,31 @@ const router = new VueRouter({
         {
             path: '/about',
             name: 'about',
-            component: About
+            component: About,
+        },
+        {
+            path: '/form/event',
+            name: 'event-form',
+            component: EventForm,
+            meta: {
+                auth: true
+            }
         },
         {
             path: '/reset-password/:token',
             name: 'reset-password-form',
             component: ResetPasswordForm,
-            meta: {
-                auth: false
-            }
-        }
+        },
+        {
+            path: '/example',
+            name: 'example',
+            component: Example
+        },
+        {
+            path: '/dropdown',
+            name: 'dropdown',
+            component: DropdownExample
+        },
 
     ]
 });
