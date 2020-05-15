@@ -39,9 +39,9 @@ class Event extends Model
 
     }
 
-    public function item(){
+    public function program(){
 
-        return $this->hasMany('App\Item', 'event_id');
+        return $this->hasMany('App\Program', 'event_id');
 
     }
 }

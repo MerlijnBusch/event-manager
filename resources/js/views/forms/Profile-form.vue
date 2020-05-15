@@ -23,21 +23,21 @@
                         class="form-text-input"
                         id="image"
                         v-model="image"
-                        type="number"
+                        type="url"
                         name="image"
                         placeholder="Item name"
                     >
                 </div>
                 <div class="form-line">
                     <label class="form-label" for="phone_number">Phone number</label>
-                    <textarea
+                    <input
                         class="form-text-input"
                         id="phone_number"
                         v-model="phone_number"
-                        type="phone_number"
+                        type="text"
                         name="phone_number"
                         placeholder="Phone number"
-                    ></textarea>
+                    >
                 </div>
                 <div class="form-line">
                     <input

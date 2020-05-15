@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\HigherOrderBuilderProxy;
 use Illuminate\Database\Eloquent\Model;
@@ -27,7 +28,6 @@ class Item extends Model
         }
     }
 
-    public const __CONGRESS_SPEAKERS__ = 'congress_speakers';
     public const __KEYNOTES__ = 'keynotes';
 
     /**
@@ -44,9 +44,9 @@ class Item extends Model
         'active',
     ];
 
-    public function event(){
+    public function program(){
 
-        return $this->belongsTo('App\Event');
+        return $this->belongsTo('App\Program');
 
     }
 }

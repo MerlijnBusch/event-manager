@@ -70676,7 +70676,7 @@ var render = function() {
               staticClass: "form-text-input",
               attrs: {
                 id: "image",
-                type: "number",
+                type: "url",
                 name: "image",
                 placeholder: "Item name"
               },
@@ -70699,7 +70699,7 @@ var render = function() {
               [_vm._v("Phone number")]
             ),
             _vm._v(" "),
-            _c("textarea", {
+            _c("input", {
               directives: [
                 {
                   name: "model",
@@ -70711,7 +70711,7 @@ var render = function() {
               staticClass: "form-text-input",
               attrs: {
                 id: "phone_number",
-                type: "phone_number",
+                type: "text",
                 name: "phone_number",
                 placeholder: "Phone number"
               },
