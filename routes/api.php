@@ -70,6 +70,7 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::delete('map/{map}', 'MapController@destroy')->name('map.destroy');
 
     Route::get('/admin', 'AdminController@index');
+    Route::get('/admin/{event}', 'AdminController@event');
 
 });
 

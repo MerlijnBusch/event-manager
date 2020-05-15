@@ -2485,10 +2485,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   name: 'Role-Form',
   data: function data() {
     return {
-      events: []
+      events: [],
+      selectedEventId: null
     };
   },
+  methods: {
+    setSelectedEventId: function setSelectedEventId(id) {
+      console.log(id);
+      this.selectedEventId = id;
+    }
+  },
   mounted: function mounted() {
+    var _this = this;
+
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
       var data;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -2500,9 +2509,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
             case 2:
               data = _context.sent;
+              _this.events = data.data;
               console.log(data, 'test');
 
-            case 4:
+            case 5:
             case "end":
               return _context.stop();
           }
@@ -10095,7 +10105,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.admin-container {\n}\n.admin-sidebar {\n}\n.admin-sidebar-event-container {\n}\n.admin-main {\n}\n.admin-event-container {\n}\n.admin-program-container {\n}\n", ""]);
+exports.push([module.i, "\n.admin-container {\n    margin: 0;\n    padding: 0;\n    display: flex;\n    flex-direction: row;\n    flex: 1;\n}\n.admin-sidebar {\n    min-width: 285px;\n    max-width: 285px;\n}\n.admin-sidebar-event-container {\n    padding: 8px;\n    width: 100%;\n    justify-content: start;\n}\n.admin-main {\n    flex: 1;\n    background-color: yellow;\n}\n.admin-event-container {\n}\n.admin-program-container {\n}\n.admin-sidebar-event-list-item {\n}\n", ""]);
 
 // exports
 
@@ -69980,25 +69990,47 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "admin-container" }, [
+    _c(
+      "div",
+      { staticClass: "admin-sidebar" },
+      _vm._l(_vm.events, function(event) {
+        return _c(
+          "div",
+          { key: event.name, staticClass: "admin-sidebar-event-container" },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "admin-sidebar-event-list-item",
+                on: {
+                  click: function($event) {
+                    return _vm.setSelectedEventId(event.id)
+                  }
+                }
+              },
+              [_vm._v(_vm._s(event.name))]
+            )
+          ]
+        )
+      }),
+      0
+    ),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "admin-container" }, [
-      _c("div", { staticClass: "admin-sidebar" }, [
-        _c("div", { staticClass: "admin-sidebar-event-container" })
+    return _c("div", { staticClass: "admin-main" }, [
+      _c("div", { staticClass: "admin-event-container" }, [
+        _c("h1", [_vm._v("test")])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "admin-main" }, [
-        _c("div", { staticClass: "admin-event-container" }, [
-          _c("h1", [_vm._v("test")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "admin-program-container" })
-      ])
+      _c("div", { staticClass: "admin-program-container" })
     ])
   }
 ]
