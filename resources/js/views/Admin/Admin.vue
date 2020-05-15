@@ -6,8 +6,9 @@
             </div>
         </div>
         <div class="admin-main">
-            <div class="admin-event-container">
-                <h1>test</h1>
+            <event-form v-if="this.currentEvent.event" v-bind:event="currentEvent.event"></event-form>
+            <div class="admin-event-settings-container" v-if="this.currentEvent.settings">
+
             </div>
             <div class="admin-program-container">
 
@@ -18,6 +19,7 @@
 
 <script>
     import API from "@/js/Api";
+    import EventForm from "./components/EventForm";
 
     export default {
         name: 'Role-Form',
@@ -25,13 +27,17 @@
             return {
                 events: [],
                 selectedEventId: null,
+                currentEvent: [],
             }
         },
+        components: {EventForm},
         methods: {
-            setSelectedEventId(id){
-                console.log(id)
+            async setSelectedEventId(id){
                 this.selectedEventId = id;
-            },
+                const data = await API.get('/api/admin/' + id);
+                this.currentEvent = data.data;
+                console.log(this.currentEvent);
+            }
         },
         async mounted() {
             const data = await API.get('/api/admin');
@@ -68,7 +74,8 @@
     }
 
     .admin-event-container {
-
+        padding: 16px;
+        margin-top: 4px;
     }
 
     .admin-program-container {
@@ -76,5 +83,25 @@
     }
 
     .admin-sidebar-event-list-item {
+    }
+
+    .admin-text-editor {
+        margin-top: 8px;
+    }
+
+    .ql-editor {
+        max-height: 200px !important;
+    }
+
+    .admin-event-title-input {
+        background: transparent;
+        outline: transparent;
+        border: transparent;
+        width: 100%;
+        font-size: xx-large;
+    }
+
+    .admin-event-title-input:focus {
+        border-bottom: 2px solid lightblue;
     }
 </style>

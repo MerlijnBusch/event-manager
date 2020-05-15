@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class EventController extends Controller
-{
+{//@todo update this controller
     /**
      * Display a listing of the resource.
      *

@@ -13,7 +13,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property mixed id
  * @property mixed|string name
  * @property mixed|string description
- * @property Carbon|mixed date
+ * @property Carbon|mixed date_start
+ * @property Carbon|mixed date_end
+ * @property boolean active
  */
 class Event extends Model
 {
@@ -27,7 +29,9 @@ class Event extends Model
     protected $fillable = [
         'name',
         'description',
-        'date',
+        'date_start',
+        'date_end',
+        'active',
     ];
 
     public function map(){

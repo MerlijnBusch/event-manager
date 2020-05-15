@@ -7,36 +7,42 @@ use App\EventSettings;
 use App\Item;
 use App\Permissions;
 use App\Program;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    public function index(){
-        if(!$this->isAdmin(Auth::user())){
-            return response()->json('Unauthorized', 403);
-        }
+    /**
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function index()
+    {
+        $this->authorize('read', Event::class);
 
         return response()->json(Event::query()->get());
     }
 
-    public function event(Event $event){
-        if(!$this->isAdmin(Auth::user())){
-            return response()->json('Unauthorized', 403);
+    /**
+     * @param Event $event
+     * @return JsonResponse
+     */
+    public function event(Event $event)
+    {
+        $eventSettings = [];
+        $programs = [];
+
+        if (Auth::user()->can('read', EventSettings::class)) {
+            $eventSettings = EventSettings::query()->where('event_id', $event->id)->get();
         }
 
-        $eventSettings = EventSettings::query()->where('event_id', $event->id)->get();
-        $programs = Program::query()->where('event_id', $event->id)->get();
-        $items = [];
-        foreach ($programs as $p){
-            $s = Item::query()->where('program_id', $p->id)->get();
-            array_push($items, $s);
+        if (Auth::user()->can('read', Program::class) && Auth::user()->can('read', Item::class)) {
+            $programs = Program::query()->where('event_id', $event->id)->with('items')->get();
         }
 
-        return response()->json([$event, $eventSettings, $programs, $items], 200);
+        return response()->json(["event" => $event, "settings" => $eventSettings, "programs" => $programs], 200);
     }
 
-    protected function isAdmin($user){
-        return in_array(Permissions::__ADMIN__, json_decode($user->role->permissions, 1));
-    }
 }

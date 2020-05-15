@@ -1,5 +1,8 @@
 import './bootstrap'
 import Vue from 'vue'
+import VueQuill from 'vue-quill'
+
+Vue.use(VueQuill)
 
 const user = {
     data: {}
