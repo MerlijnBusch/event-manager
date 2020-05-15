@@ -13,8 +13,7 @@
                 </div>
                 <div class="form-line">
                     <label class="form-label" for="password_confirmation">Confirm Password</label>
-                    <input type="password" id="password_confirmation" class="form-text-input"
-                           v-model="password_confirmation" required>
+                    <input type="password" id="password_confirmation" class="form-text-input" v-model="password_confirmation" required>
                 </div>
 
                 <div class="form-line form-line-hasbutton">

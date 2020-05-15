@@ -1,11 +1,7 @@
 <template>
     <div class="full-page-form">
         <div class="form-holder">
-            <form
-                class="form"
-                @submit.prevent="checkForm"
-                method="post"
-            >
+            <form class="form" @submit.prevent="checkForm" method="post">
 
                 <div v-if="errors.length">
                     <b>Please correct the following error(s):</b>
@@ -19,14 +15,7 @@
                 </h2>
                 <div class="form-line">
                     <label class="form-label" for="name">Name</label>
-                    <input
-                        class="form-text-input"
-                        id="name"
-                        v-model="name"
-                        type="number"
-                        name="name"
-                        placeholder="Item name"
-                    >
+                    <input class="form-text-input" id="name" v-model="name" type="number" name="name" placeholder="Item name">
                 </div>
                 <div class="form-line">
                     <label class="form-label" for="type">type</label>
@@ -38,32 +27,15 @@
                 </div>
                 <div class="form-line">
                     <label class="form-label" for="description">Description</label>
-                    <textarea
-                        class="form-text-input"
-                        id="description"
-                        v-model="description"
-                        type="description"
-                        name="description"
-                        placeholder="Event description"
-                    ></textarea>
+                    <textarea class="form-text-input" id="description" v-model="description" type="description" name="description" placeholder="Event description"></textarea>
                 </div>
                 <div class="form-line">
                     <label class="form-label" for="date">Date</label>
-                    <input
-                        class="form-text-input"
-                        id="date"
-                        v-model="date"
-                        type="date"
-                        name="date"
-                        placeholder="Event date"
-                    />
+                    <input class="form-text-input" id="date" v-model="date" type="date" name="date" placeholder="Event date"/>
                 </div>
                 <div class="form-line">
                     <input
-                        type="submit"
-                        value="Submit"
-                        class="submit-btn"
-                    >
+                        type="submit" value="Submit" class="submit-btn">
                 </div>
             </form>
         </div>
@@ -71,7 +43,7 @@
 </template>
 
 <script>
-    import API from "../../Api";
+    import API from "@/js/Api";
 
     export default {
         data() {
@@ -95,7 +67,7 @@
                     "type": this.type,
                     "description": this.description,
                     "date": this.date,
-                }
+                };
 
                 API.post(data, '/api/item');
 

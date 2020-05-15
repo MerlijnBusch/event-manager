@@ -27,6 +27,7 @@ const router = new VueRouter({
             name: 'about',
             component: About,
         },
+        //Forms
         {
             path: '/form/event',
             name: 'event-form',
@@ -65,6 +66,7 @@ const router = new VueRouter({
             name: 'reset-password-form',
             component: ResetPasswordForm,
         },
+        //Examples
         {
             path: '/example',
             name: 'example',

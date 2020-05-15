@@ -5,15 +5,12 @@
             <div class="map-settings-container-items">
                 <hr>
                 <label for="select-color">Select color</label>
-                <input type="color" name="select-color" id="select-color" v-bind:value="this.backgroundColorCodeItem"
-                       @change="setItemBackgroundColorData($event)"/>
+                <input type="color" name="select-color" id="select-color" v-bind:value="this.backgroundColorCodeItem" @change="setItemBackgroundColorData($event)"/>
                 <hr>
                 <label for="map_width">Select Map Width in meters</label>
-                <input type="text" name="map_width" id="map_width" v-bind:value="this.mapWidth"
-                       @change="updateMapWidth($event)"/>
+                <input type="text" name="map_width" id="map_width" v-bind:value="this.mapWidth" @change="updateMapWidth($event)"/>
                 <label for="map_height">Select Map Height in meters</label>
-                <input type="text" name="map_height" id="map_height" v-bind:value="this.mapHeight"
-                       @change="updateMapHeight($event)"/>
+                <input type="text" name="map_height" id="map_height" v-bind:value="this.mapHeight" @change="updateMapHeight($event)"/>
                 <hr>
             </div>
             <button class="button-create-item map-settings-container-items" v-on:click="storeMap">Store Map</button>
@@ -132,20 +129,20 @@
             updateMapHeight(event) {
                 let height = event.target.value;
                 if (isNaN(parseInt(height))) height = 50;
-                this.mapHeight = height
+                this.mapHeight = height;
                 this.map.height = this.mapHeight * meterToPixel;
 
                 const container = this.$refs.mapHolder;
                 container.style.minHeight = this.map.height + "px";
             },
             updatePosition(event) {
-                let target = event.target
-                let x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
-                let y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+                let target = event.target;
+                let x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+                let y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
                 target.style.webkitTransform =
                     target.style.transform =
-                        'translate(' + x + 'px, ' + y + 'px)'
-                target.setAttribute('data-x', x)
+                        'translate(' + x + 'px, ' + y + 'px)';
+                target.setAttribute('data-x', x);
                 target.setAttribute('data-y', y)
             },
             addNewItem() {
@@ -168,12 +165,12 @@
                     selector: 'div',
                     id: "dimensions",
                     html: "width: " + (width / meterToPixel) + "m,<br> height: " + (height / meterToPixel) + "m"
-                })
+                });
 
                 item.style.backgroundColor = backgroundColorCodeItem;
                 item.style.width = width + "px";
                 item.style.height = height + "px";
-                item.appendChild(paragraph)
+                item.appendChild(paragraph);
                 return item;
             },
             deleteItemFromArray(event) {
