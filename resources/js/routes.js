@@ -11,6 +11,7 @@ import RoleForm from '@/js/views/forms/Role-form'
 import MapForm from '@/js/views/forms/Map-form'
 import ProfileForm from '@/js/views/forms/Profile-form'
 import CVForm from '@/js/views/forms/CV-form'
+import AdminIndex from '@/js/views/Admin/Admin';
 
 Vue.use(VueRouter);
 
@@ -71,6 +72,11 @@ const router = new VueRouter({
             path: '/example',
             name: 'example',
             component: Example
+        },
+        {
+            path: '/admin',
+            name: 'admin',
+            component: AdminIndex,
         }
 
     ]

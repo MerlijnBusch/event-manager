@@ -68,6 +68,9 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::post('map', 'MapController@store')->name('map.store');
     Route::patch('map/{map}', 'MapController@update')->name('map.update');
     Route::delete('map/{map}', 'MapController@destroy')->name('map.destroy');
+
+    Route::get('/admin', 'AdminController@index');
+
 });
 
 
