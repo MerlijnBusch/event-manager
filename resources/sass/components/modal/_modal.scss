@@ -70,3 +70,13 @@ $close-button-size: 32px;
     }
   }
 }
+
+
+.btn-close-modal {
+  margin-bottom: 25px;
+  margin-top: 5px;
+  margin-left: 80%;
+  border-radius: 5px;
+  background-color: $deep-gray;
+  color: $theme-color;
+}

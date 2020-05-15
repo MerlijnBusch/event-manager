@@ -2,11 +2,12 @@ import Vue from 'vue';
 import VueRouter from "vue-router";
 
 import Home from '@/js/views/Home';
+import Event from '@/js/views/Event';
 import About from '@/js/views/About';
-import Example from '@/js/views/Example'
-import DropdownExample from '@/js/views/DropdownExample'
 import EventForm from '@/js/views/forms/Event-form'
 import ResetPasswordForm from '@/js/views/forms/ResetPasswordForm';
+import Example from '@/js/views/Example'
+import DropdownExample from '@/js/views/DropdownExample'
 
 Vue.use(VueRouter);
 
@@ -17,6 +18,11 @@ const router = new VueRouter({
             path: '/',
             name: 'home',
             component: Home
+        },
+        {
+            path: '/event',
+            name: 'event',
+            component: Event
         },
         {
             path: '/about',

@@ -1,0 +1,78 @@
+.login-title {
+  font-size: 32px;
+  letter-spacing: .2px;
+}
+
+.text-input, .submit-btn {
+  padding: 10px;
+  border-radius: 5px;
+  background: white;
+  border: solid 2px $basic-gray;
+  width: 100%;
+
+  &:hover {
+    border: solid 2px $theme-color;
+  }
+}
+
+.submit-btn {
+  cursor: pointer;
+  font-weight: 500;
+  background-color: $deep-gray;
+  color: $basic-gray;
+
+  &:hover {
+    background-color: $black;
+  }
+}
+
+.login-label {
+  font-weight: 300;
+  color: $basic-gray;
+  display: block;
+  padding: 0;
+  margin-top: 1.5em;
+  margin-bottom: .5em;
+  text-align: left;
+}
+
+
+//button
+.login-close {
+  position: absolute;
+  right: $padding-medium;
+  top: $padding-medium;
+  width: $navbar-height - $padding-huge;
+  height: $navbar-height - $padding-huge;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+
+  > div {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    > div {
+      width: $navbar-height - $padding-huge;
+      height: $padding-medium / 8;
+      background-color: transparent;
+      position: absolute;
+      top: calc(50% - #{$padding-medium} / 16);
+
+      &:before, &:after {
+        position: absolute;
+        content: '';
+        width: inherit;
+        height: inherit;
+        display: block;
+        background: white;
+        transform: rotate(-45deg);
+      }
+
+      &:after {
+        transform: rotate(45deg);
+      }
+    }
+  }
+}

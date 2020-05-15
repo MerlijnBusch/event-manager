@@ -27,8 +27,8 @@ $sidenav-width: 400px;
 .navbar-hamburger {
   position: absolute;
   right: $padding-medium;
-  width: $navbar-height - $padding-medium*2;
-  height: $navbar-height - $padding-medium*2;
+  width: $navbar-height - $padding-huge;
+  height: $navbar-height - $padding-huge;
   border: none;
   padding: 0;
   background-color: transparent;
@@ -39,7 +39,7 @@ $sidenav-width: 400px;
     position: relative;
 
     > div {
-      width: $navbar-height - $padding-medium*2;
+      width: $navbar-height - $padding-huge;
       height: $padding-medium / 8;
       background-color: white;
       position: absolute;
@@ -52,12 +52,12 @@ $sidenav-width: 400px;
         height: inherit;
         display: block;
         background: white;
-        bottom: ($navbar-height - $padding-medium*2) / 2 - $padding-medium / 8;
+        bottom: ($navbar-height - $padding-huge) / 2 - $padding-medium / 8;
       }
 
       &:after {
         bottom: unset;
-        top: ($navbar-height - $padding-medium*2) / 2 - $padding-medium / 8;
+        top: ($navbar-height - $padding-huge) / 2 - $padding-medium / 8;
       }
     }
   }
@@ -82,7 +82,7 @@ $sidenav-width: 400px;
 }
 
 .sidenav-links {
-  margin: $padding-medium+$navbar-height $padding-medium*2;
+  margin: $padding-medium+$navbar-height $padding-huge;
 
   a, button {
     width: 100%;
