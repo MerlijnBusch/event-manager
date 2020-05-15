@@ -17,9 +17,11 @@ class CreateProgramsTable extends Migration
             $table->id();
             $table->integer('event_id');
             $table->string('name');
-            $table->string('date');
+            $table->string('date_start');
+            $table->string('date_end');
             $table->text('description');
             $table->string('type');
+            $table->boolean('active');
             $table->timestamps();
         });
     }

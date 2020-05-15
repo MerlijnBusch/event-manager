@@ -19,7 +19,8 @@ class CreateItemsTable extends Migration
             $table->string('type');
             $table->longText('description');
             $table->integer('program_id');
-            $table->string('date');
+            $table->string('date_start');
+            $table->string('date_end');
             $table->boolean('active')->default(false);
             $table->timestamps();
         });

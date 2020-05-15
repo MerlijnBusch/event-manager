@@ -12,9 +12,10 @@ use ReflectionClass;
  * @property mixed|string name
  * @property mixed|string type
  * @property mixed|string description
- * @property HigherOrderBuilderProxy|mixed event_id
- * @property Carbon|CarbonInterface|mixed date
  * @property bool|mixed active
+ * @property HigherOrderBuilderProxy|mixed program_id
+ * @property Carbon|CarbonInterface|mixed date_start
+ * @property Carbon|CarbonInterface|mixed date_end
  */
 class Item extends Model
 {
@@ -40,8 +41,9 @@ class Item extends Model
         'name',
         'type',
         'description',
-        'event_id',
-        'date',
+        'program_id',
+        'date_start',
+        'date_end',
         'active',
     ];
 

@@ -11,6 +11,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property mixed item
  * @property mixed map
  * @property mixed id
+ * @property mixed|string name
+ * @property mixed|string description
+ * @property Carbon|mixed date
  */
 class Event extends Model
 {
