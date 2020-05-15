@@ -1,6 +1,6 @@
 <template>
     <div class="modal_holder">
-        <div class="modal_screen column-desktop-4 column-tablet-9 column-mobile-12">
+        <div class="modal_screen column-desktop-5 column-tablet-9 column-mobile-11">
             <button v-if="!($route.params.loggedIn !== undefined && !$route.params.loggedIn)" @click="close" class="modal-close">
                 <div>
                     <div></div>

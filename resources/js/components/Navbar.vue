@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="sidenav" :class="{'sidenav-hidden' : !siderbarIsOpen}">
-            <button class="sidenav-close" @click="siderbarIsOpen = false">
+            <button class="sidenav-close modal-close" @click="siderbarIsOpen = false">
                 <div>
                     <div></div>
                 </div>

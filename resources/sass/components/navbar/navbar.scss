@@ -1,20 +1,20 @@
 $navbar-height: 80px;
-$navbar-padding: 24px;
 $sidenav-width: 400px;
 
 .navbar {
+  box-shadow: $shadow;
   width: 100vw;
   position: fixed;
   top: 0;
   left: 0;
   height: $navbar-height;
-  background: $dark;
+  background: $deep-gray;
 
   .navbar-inner {
     position: relative;
-    margin: $navbar-padding;
-    height: calc(100% - #{$navbar-padding} * 2);
-    width: calc(100% - #{$navbar-padding} * 2);
+    margin: $padding-medium;
+    height: calc(100% - #{$padding-medium} * 2);
+    width: calc(100% - #{$padding-medium} * 2);
     display: flex;
     justify-content: center;
   }
@@ -26,9 +26,9 @@ $sidenav-width: 400px;
 
 .navbar-hamburger {
   position: absolute;
-  right: $navbar-padding;
-  width: $navbar-height - $navbar-padding*2;
-  height: $navbar-height - $navbar-padding*2;
+  right: $padding-medium;
+  width: $navbar-height - $padding-medium*2;
+  height: $navbar-height - $padding-medium*2;
   border: none;
   padding: 0;
   background-color: transparent;
@@ -39,11 +39,11 @@ $sidenav-width: 400px;
     position: relative;
 
     > div {
-      width: $navbar-height - $navbar-padding*2;
-      height: $navbar-padding / 8;
+      width: $navbar-height - $padding-medium*2;
+      height: $padding-medium / 8;
       background-color: white;
       position: absolute;
-      top: calc(50% - #{$navbar-padding} / 16);
+      top: calc(50% - #{$padding-medium} / 16);
 
       &:before, &:after {
         position: absolute;
@@ -52,12 +52,12 @@ $sidenav-width: 400px;
         height: inherit;
         display: block;
         background: white;
-        bottom: ($navbar-height - $navbar-padding*2) / 2 - $navbar-padding / 8;
+        bottom: ($navbar-height - $padding-medium*2) / 2 - $padding-medium / 8;
       }
 
       &:after {
         bottom: unset;
-        top: ($navbar-height - $navbar-padding*2) / 2 - $navbar-padding / 8;
+        top: ($navbar-height - $padding-medium*2) / 2 - $padding-medium / 8;
       }
     }
   }
@@ -73,60 +73,25 @@ $sidenav-width: 400px;
   height: 100vw;
   top: 0;
   width: $sidenav-width;
-  background-color: $darkest;
-  transition: right ease-in-out .2s;
+  background-color: $black;
+  transition: right ease-in-out $animation-time;
 }
 
-.sidenav-close {
-  position: absolute;
-  right: $navbar-padding;
-  top: $navbar-padding;
-  width: $navbar-height - $navbar-padding*2;
-  height: $navbar-height - $navbar-padding*2;
-  border: none;
-  padding: 0;
-  background-color: transparent;
+.sidenav-close{
 
-  > div {
-    width: 100%;
-    height: 100%;
-    position: relative;
-
-    > div {
-      width: $navbar-height - $navbar-padding*2;
-      height: $navbar-padding / 8;
-      background-color: transparent;
-      position: absolute;
-      top: calc(50% - #{$navbar-padding} / 16);
-
-      &:before, &:after {
-        position: absolute;
-        content: '';
-        width: inherit;
-        height: inherit;
-        display: block;
-        background: white;
-        transform: rotate(-45deg);
-      }
-
-      &:after {
-        transform: rotate(45deg);
-      }
-    }
-  }
 }
 
 .sidenav-links {
-  margin: $navbar-padding+$navbar-height $navbar-padding*2;
+  margin: $padding-medium+$navbar-height $padding-medium*2;
 
   a, button {
     width: 100%;
     display: block;
     text-align: left;
-    padding: 8px 4px;
+    padding: $padding-block;
     margin: 18px 0;
-    color: $white;
-    font-size: 24px;
+    color: $basic-gray;
+    font-size: $font-size-medium;
     border: none;
     text-decoration: none;
     background: none;
@@ -140,9 +105,9 @@ $sidenav-width: 400px;
       position: absolute;
       width: 0;
       height: 4px;
-      background-color: $white;
+      background-color: $basic-gray;
       z-index: 1;
-      transition: width ease-in-out .3s, background-color linear .2s;
+      transition: width ease-in-out $animation-time, background-color linear $animation-time/2;
     }
 
     &.router-link-active {
@@ -153,7 +118,7 @@ $sidenav-width: 400px;
 
     &:hover {
       &:after {
-        background-color: $orange;
+        background-color: $theme-color;
         width: 80%;
       }
     }
@@ -163,14 +128,14 @@ $sidenav-width: 400px;
 
 .navbar-user{
   position: absolute;
-  left: $navbar-padding;
+  left: $padding-medium;
   bottom: $navbar-height/2;
   transform: translateY(150%);
   font-size: 18px;
   font-weight: 300;
-  color: $white;
+  color: $basic-gray;
   .navbar-user-name{
-    color: $orange;
+    color: $theme-color;
   }
 }
 
