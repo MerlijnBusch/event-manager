@@ -35,4 +35,4 @@ $font-size-small: $font-size-basis * .75;
 $animation-time: .3s;
 
 // Shadow
-$shadow: 0 -10px 15px 0 transparentize($black, .15);
+$shadow: 0 -10px 15px 0 transparentize($black,1-.15);
