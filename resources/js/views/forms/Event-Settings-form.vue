@@ -1,11 +1,7 @@
 <template>
     <div class="full-page-form">
         <div class="form-holder">
-            <form
-                class="form"
-                @submit.prevent="checkForm"
-                method="post"
-            >
+            <form class="form" @submit.prevent="checkForm" method="post">
 
                 <div v-if="errors.length">
                     <b>Please correct the following error(s):</b>
@@ -19,62 +15,26 @@
                 </h2>
                 <div class="form-line">
                     <label class="form-label" for="visible_registrations">Visible registrations</label>
-                    <input
-                        class="form-text-input"
-                        id="visible_registrations"
-                        v-model="visible_registrations"
-                        type="number"
-                        name="visible_registrations"
-                        placeholder="Visible registration"
-                    >
+                    <input class="form-text-input" id="visible_registrations" v-model="visible_registrations" type="number" name="visible_registrations" placeholder="Visible registration">
                 </div>
                 <div class="form-line">
                     <label class="form-label" for="max_registrations">Max registrations</label>
-                    <input
-                        class="form-text-input"
-                        id="max_registrations"
-                        v-model="max_registrations"
-                        type="number"
-                        name="max_registrations"
-                        placeholder="Max registration"
-                    >
+                    <input class="form-text-input" id="max_registrations" v-model="max_registrations" type="number" name="max_registrations" placeholder="Max registration">
                 </div>
                 <div class="form-line">
                     <label class="form-label" for="primary_color">Primary color</label>
-                    <input
-                        class="form-text-input"
-                        id="primary_color"
-                        v-model="primary_color"
-                        type="color"
-                        name="primary_color"
-                    >
+                    <input class="form-text-input" id="primary_color" v-model="primary_color" type="color" name="primary_color">
                 </div>
                 <div class="form-line">
                     <label class="form-label" for="secondary_color">Secondary color</label>
-                    <input
-                        class="form-text-input"
-                        id="secondary_color"
-                        v-model="secondary_color"
-                        type="color"
-                        name="secondary_color"
-                    >
+                    <input class="form-text-input" id="secondary_color" v-model="secondary_color" type="color" name="secondary_color">
                 </div>
                 <div class="form-line">
                     <label class="form-label" for="active">Active</label>
-                    <input
-                        class="form-text-input"
-                        id="active"
-                        v-model="active"
-                        type="checkbox"
-                        name="active"
-                    >
+                    <input class="form-text-input" id="active" v-model="active" type="checkbox" name="active">
                 </div>
                 <div class="form-line">
-                    <input
-                        type="submit"
-                        value="Submit"
-                        class="submit-btn"
-                    >
+                    <input type="submit" value="Submit" class="submit-btn">
                 </div>
             </form>
         </div>
@@ -82,7 +42,7 @@
 </template>
 
 <script>
-    import API from "../../Api";
+    import API from "@/js/Api";
 
     export default {
         data() {
@@ -108,7 +68,7 @@
                     "primary_color": this.primary_color,
                     "secondary_color": this.secondary_color,
                     "active": this.active,
-                }
+                };
 
                 API.post(data, '/api/event-settings');
 

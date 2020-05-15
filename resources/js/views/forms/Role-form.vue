@@ -35,7 +35,7 @@
 </template>
 
 <script>
-    import API from "../../Api";
+    import API from "@/js/Api";
     import dropdown from '@/js/components/dropdown'
 
     export default {
@@ -78,8 +78,9 @@
         },
         async mounted() {
             const data = await API.get('/api/permissions');
-            console.log(data);
+
             let options = this.options;
+
             for (const key in data.data.message) {
                 if (data.data.message.hasOwnProperty(key) && key.substring(0, 2) === "__") {
                     options.push({

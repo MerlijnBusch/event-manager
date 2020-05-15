@@ -1,11 +1,7 @@
 <template>
     <div class="full-page-form">
         <div class="form-holder">
-            <form
-                class="form"
-                @submit.prevent="checkForm"
-                method="post"
-            >
+            <form class="form" @submit.prevent="checkForm" method="post">
 
                 <div v-if="errors.length">
                     <b>Please correct the following error(s):</b>
@@ -40,11 +36,7 @@
                     >
                 </div>
                 <div class="form-line">
-                    <input
-                        type="submit"
-                        value="Submit"
-                        class="submit-btn"
-                    >
+                    <input type="submit" value="Submit" class="submit-btn">
                 </div>
             </form>
         </div>
@@ -52,7 +44,7 @@
 </template>
 
 <script>
-    import API from "../../Api";
+    import API from "@/js/Api";
 
     export default {
         data() {
