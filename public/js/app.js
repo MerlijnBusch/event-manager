@@ -2642,6 +2642,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -40279,9 +40281,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "homepage-full" }, [
-    _c("h1", [_vm._v("Evenementen")]),
+    _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "flex-wrapper" }, [
+    _c("div", { staticClass: "flex-wrapper homepage-inner" }, [
       _c(
         "div",
         { staticClass: "home-events flex-grid" },
@@ -40316,7 +40318,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("hr", { staticClass: "home-divider-2" }),
                 _vm._v(" "),
-                _c("div", { staticClass: "flex-wrapper" }, [
+                _c("div", { staticClass: "home-event-details" }, [
                   _c("div", { staticClass: "flex-grid" }, [
                     _c(
                       "p",
@@ -40356,7 +40358,16 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flex-wrapper" }, [
+      _c("h1", [_vm._v("Evenementen")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -56941,8 +56952,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\lemme\PhpstormProjects\nz-evenementenregistratie\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\lemme\PhpstormProjects\nz-evenementenregistratie\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Tim Huijkman\PhpstormProjects\nz-evenementenregistratie\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Tim Huijkman\PhpstormProjects\nz-evenementenregistratie\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

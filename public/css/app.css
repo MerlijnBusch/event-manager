@@ -687,21 +687,30 @@ body {
 .homepage-full {
   height: 100%;
   flex: 1;
+  background-color: #404040;
+  display: flex;
+  flex-direction: column;
+}
+
+.homepage-full .homepage-inner {
+  border-radius: 14px 14px 0 0;
   background-color: #1F1F1F;
+  margin: 0;
+  flex: 1;
+  padding-top: 66px;
 }
 
 .homepage-full h1 {
-  background-color: #404040;
-  color: #767676;
-  font-size: 32px;
-  padding: 32px 32px 32px 48px;
-  margin-top: 0;
+  color: #C1C1C1;
+  font-size: 36px;
+  padding: 0;
+  margin: 0;
 }
 
 .homepage-full .home-event {
   display: flex;
   flex-direction: column;
-  background-color: #404040;
+  background-color: #272727;
   border-radius: 20px;
   margin-bottom: 50px;
   box-shadow: -2px 10px 15px rgba(0, 0, 0, 0.3);
@@ -738,11 +747,6 @@ body {
   font-weight: bold;
   text-align: left;
   width: 80%;
-}
-
-.homepage-full .home-event .flex-wrapper {
-  margin: 0;
-  padding: 0;
 }
 
 .homepage-full .home-event .home-date,

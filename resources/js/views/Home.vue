@@ -1,8 +1,10 @@
 <template>
     <div class="homepage-full">
-        <h1>Evenementen</h1>
-
         <div class="flex-wrapper">
+            <h1>Evenementen</h1>
+        </div>
+
+        <div class="flex-wrapper homepage-inner">
             <div class="home-events flex-grid">
                 <div v-for="item in items" class="home-event column-desktop-4 column-tablet-6 column-mobile-12">
                     <div class="home-event-background" :style="{backgroundColor: item.color}">
@@ -15,7 +17,7 @@
                             {{item.description}}
                         </p>
                         <hr class="home-divider-2">
-                        <div class="flex-wrapper">
+                        <div class="home-event-details">
                             <div class="flex-grid">
                                 <p class="home-date column-desktop-6 column-tablet-6 column-mobile-12">
                                     {{formatDate(item.date)}}</p>
