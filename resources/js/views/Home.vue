@@ -44,7 +44,7 @@
                             'technologies and partners you\n' +
                             'need to grow your business',
                         date: '17 november 2018',
-                        location: 'Alkmaar, Alkmaar'
+                        location: 'Alkmaar'
                     },
                     {
                         title: 'METS Trade',
@@ -55,7 +55,7 @@
                             'C-level in data center, connectivity en\n' +
                             'cloud professionals.',
                         date:'3 december 2019',
-                        location: 'Alkmaar, Alkmaar'
+                        location: 'Alkmaar'
                     },
                     {
                         title: 'Home delivery\n' +
@@ -67,7 +67,7 @@
                             'covering Parcel, Heavy Goods, Data &\n' +
                             'Analytics, Grocery, Urban Logistic',
                         date: '4 januari 2020',
-                        location: 'Alkmaar, Alkmaar'
+                        location: 'Alkmaar'
                     }],
             }
         },

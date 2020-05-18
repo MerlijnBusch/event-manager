@@ -2650,19 +2650,19 @@ __webpack_require__.r(__webpack_exports__);
         color: '#E6A65C',
         description: 'Tides offers the science,\n' + 'technologies and partners you\n' + 'need to grow your business',
         date: '17 november 2018',
-        location: 'Alkmaar, Alkmaar'
+        location: 'Alkmaar'
       }, {
         title: 'METS Trade',
         color: '#5CE6B1',
         description: 'Kickstart Europe is een strategie & netwerk\n' + 'conferentie aan de start van het jaar, voor\n' + 'C-level in data center, connectivity en\n' + 'cloud professionals.',
         date: '3 december 2019',
-        location: 'Alkmaar, Alkmaar'
+        location: 'Alkmaar'
       }, {
         title: 'Home delivery\n' + 'europe',
         color: '#5CB6E6',
         description: 'Home Delivery World Europe 2020 is the\n' + 'industry’s best retail logistics event,\n' + 'covering Parcel, Heavy Goods, Data &\n' + 'Analytics, Grocery, Urban Logistic',
         date: '4 januari 2020',
-        location: 'Alkmaar, Alkmaar'
+        location: 'Alkmaar'
       }]
     };
   },
@@ -56941,8 +56941,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Tim Huijkman\PhpstormProjects\nz-evenementenregistratie\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Tim Huijkman\PhpstormProjects\nz-evenementenregistratie\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\lemme\PhpstormProjects\nz-evenementenregistratie\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\lemme\PhpstormProjects\nz-evenementenregistratie\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

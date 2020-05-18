@@ -723,7 +723,7 @@ body {
 .homepage-full .home-event h2 {
   padding: 0;
   margin-top: 0.33em;
-  color: #767676;
+  color: #C1C1C1;
   font-size: 49px;
   text-align: left;
   margin-bottom: 0;
@@ -732,7 +732,7 @@ body {
 .homepage-full .home-event .home-description {
   flex: 1;
   padding: 0 0 20px 0;
-  color: #767676;
+  color: #C1C1C1;
   font-size: 18px;
   line-height: 1.5;
   font-weight: bold;
@@ -747,7 +747,7 @@ body {
 
 .homepage-full .home-event .home-date,
 .homepage-full .home-event .home-location {
-  color: #767676;
+  color: #C1C1C1;
   margin: 0 30px 30px 0;
   font-size: 13px;
   font-weight: bold;
@@ -761,7 +761,7 @@ body {
 }
 
 .homepage-full .home-event hr.home-divider-2 {
-  border: 0.5px solid #404040;
+  border: 0.5px solid #767676;
   width: 100%;
   margin: 0 0 8px;
 }
