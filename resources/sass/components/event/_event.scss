@@ -3,7 +3,7 @@
   margin-top: -150px;
   z-index: 0;
   position: relative;
-  height: 600px;
+  height: 525px;
   background-position: center center;
   background-size: cover;
 }
@@ -29,8 +29,13 @@
 
 //my-speakers
 .event-my_speakers {
-  background-color: $dark-gray;
+  background-color: $basic-gray;
   @import "./speakers";
+}
+
+//EVENT MODAL?
+.event-modal{
+  background-color: $dark-gray;
 }
 
 
@@ -40,6 +45,7 @@
   animation: event-apear .3s ease-out;
   transform: translateY(-150px);
   > *{
+    box-shadow: $shadow;
     border-radius: $border-radius-big $border-radius-big 0 0;
     margin-top: -$border-radius-big;
     padding: $padding-huge $padding-huge $padding-huge + $border-radius-big;
