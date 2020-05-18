@@ -17,9 +17,6 @@ class CreateEventsTable extends Migration
             $table->id();
             $table->string('name');
             $table->longText('description');
-            $table->string('date_start');
-            $table->string('date_end');
-            $table->boolean('active');
             $table->softDeletes();
             $table->timestamps();
         });

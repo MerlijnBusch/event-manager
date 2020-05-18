@@ -48,9 +48,6 @@ class GenerateEventData extends Command
         $event = New Event;
         $event->name = 'The cool kids invation event';
         $event->description = '<h1>test</h1>';
-        $event->date_start = $date;
-        $event->date_end = $date->copy()->addWeek();;
-        $event->active = true;
         $event->save();
 
         $event = Event::query()->where('name', 'The cool kids invation event')->first();
@@ -61,6 +58,8 @@ class GenerateEventData extends Command
         $settings->max_registrations = EventSettings::__MAX_REGISTRATIONS__;
         $settings->primary_color = "#7d4497";
         $settings->secondary_color = "#649744";
+        $settings->date_start = $date;
+        $settings->date_end = $date->copy()->addWeek();
         $settings->active = true;
         $settings->save();
 
@@ -79,7 +78,7 @@ class GenerateEventData extends Command
         $item = new Item;
         $item->name = "Item 1";
         $item->type = Item::__KEYNOTES__;
-        $item->description = "s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting's simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting";
+        $item->description = "<p>test bro xd some message</p>";
         $item->program_id = $program->id;
         $item->date_start = $date->copy()->addHour();
         $item->date_end = $date->copy()->addHour(1);
@@ -89,7 +88,7 @@ class GenerateEventData extends Command
         $item = new Item;
         $item->name = "Item 2";
         $item->type = Item::__NONE__;
-        $item->description = "seeeee simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting's simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting";
+        $item->description = "<p>test bro xd some message</p>";
         $item->program_id = $program->id;
         $item->date_start = $date->copy()->addHour();
         $item->date_end = $date->copy()->addHour(1);

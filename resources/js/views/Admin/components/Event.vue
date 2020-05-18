@@ -3,18 +3,6 @@
         <input class="admin-event-title-input" id="name" v-model="event.name" type="text" name="name"
                placeholder="Event name"/>
         <quill class="admin-text-editor" output="html" v-model="event.description" :config="config"></quill>
-        <div class="admin-event-date-active">
-            <div>
-                <label for="date_start">start date</label>
-                <input type="date" name="date_start" id="date_start" v-model="event.date_start">
-                <label for="date_end">end date</label>
-                <input type="date" name="date_end" id="date_end" v-model="event.date_end">
-            </div>
-            <div>
-                <label for="active">active</label>
-                <input type="checkbox" name="active" id="active" v-model="event.active">
-            </div>
-        </div>
     </div>
 </template>
 
@@ -73,12 +61,5 @@
 
     .admin-event-title-input:focus {
         border-bottom: 2px solid lightblue;
-    }
-
-    .admin-event-date-active {
-        margin-top: 8px;
-        display: flex;
-        justify-content: space-between;
-        align-content: center;
     }
 </style>

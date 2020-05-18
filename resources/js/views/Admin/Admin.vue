@@ -4,9 +4,12 @@
             <div v-for="event in events" :key="event.name" class="admin-sidebar-event-container">
                 <div class="admin-sidebar-event-list-item" v-on:click="setSelectedEventId(event.id)">{{event.name}}
                 </div>
+                <div v-if="currentEvent.settings" class="admin-sidebar-event-settings" v-on:click="updateDisplay(currentEvent.settings, false)">
+                    Event settings
+                </div>
                 <div v-if="currentEvent.programs" v-for="program in currentEvent.programs">
                     <div class="admin-sidebar-program-container">
-                        <div class="admin-sidebar-program-title" v-on:click="displayProgram(program)">{{program.name}}
+                        <div class="admin-sidebar-program-title" v-on:click="updateDisplay(program)">{{program.name}}
                         </div>
                         <div class="admin-sidebar-program-action-container">
                             <div class="admin-sidebar-program-action-update"></div>
@@ -56,6 +59,7 @@
                 selectedEventId: null,
                 currentEvent: [],
                 program: null,
+                settings: null,
             }
         },
         components: {Event, Program, Item},
@@ -66,13 +70,16 @@
                 this.currentEvent = data.data;
                 console.log(this.debug(this.currentEvent));
             },
-            displayProgram(program) {
-                this.program = program;
-                console.log(this.debug(program));
+            updateDisplay(display, isProgram = true) {
+                if(isProgram) {
+                    this.program = display;
+                    this.settings = null;
+                } else {
+                    this.program = null;
+                    this.settings = display;
+                }
+                console.log(this.debug(display));
             },
-            debug(data) {
-                return JSON.parse(JSON.stringify(data))
-            }
         },
         async mounted() {
             const data = await API.get('/api/admin');
@@ -123,7 +130,6 @@
         justify-content: space-between;
         align-items: center;
         height: 32px;
-        padding-left: 16px;
         border-bottom: 2px solid lightblue;
     }
 
@@ -204,5 +210,13 @@
 
     .admin-item-display-container-for {
         padding: 8px;
+    }
+
+    .admin-sidebar-event-settings {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 32px;
+        border-bottom: 2px solid lightblue;
     }
 </style>

@@ -35,7 +35,7 @@ class AdminController extends Controller
         $programs = [];
 
         if (Auth::user()->can('read', EventSettings::class)) {
-            $eventSettings = EventSettings::query()->where('event_id', $event->id)->get();
+            $eventSettings = EventSettings::query()->where('event_id', $event->id)->first();
         }
 
         if (Auth::user()->can('read', Program::class) && Auth::user()->can('read', Item::class)) {
