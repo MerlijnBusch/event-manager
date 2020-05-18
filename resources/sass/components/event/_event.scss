@@ -36,6 +36,9 @@
   margin: 0;
   animation: event-apear .3s ease-out;
   transform: translateY(-150px);
+  > *{
+    padding: $padding-huge;
+  }
 }
 
 @keyframes event-apear {
