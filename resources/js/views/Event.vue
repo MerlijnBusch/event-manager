@@ -36,31 +36,42 @@
                     </div>
                 </div>
             </div>
-            <div class="event-congress column-desktop-8 column-tablet-6 column-mobile-12">
-                <b class="event-congress-title">Congress</b>
-                <p class="event-congress-description">
+            <div class="event-congress column-desktop-8 column-tablet-6 column-mobile-12 flex-grid">
+                <b class="event-congress-title column-desktop-12 column-tablet-12 column-mobile-12">Congress</b>
+                <p class="event-congress-description column-desktop-4 column-tablet-4 column-mobile-4">
                     Bekijk en selecteer lezingen
                     per ronde voor dit evenement.
                 </p>
-                <div class="event-congress-rounds">
-                    <div class="event-congress-round" v-for="(round, index) in congress">
-                        <b class="event-congress-round-title">Ronde {{index+1}} <span>{{round.time}}</span></b>
-                        <div class="event-congress-round-speakers">
-                            <div class="event-congress-round-speaker" v-for="speaker in round.speakers">
-                                <b class="event-congress-round-speaker-title">{{speaker.name}}</b>
-                                <span class="event-congress-round-speaker-position">{{speaker.position}}</span>
-                                <input class="event-congress-round-speaker-checkbox" type="checkbox"
-                                       @change="deselectSpeakers(index, speaker)"
-                                       v-model="speaker.selected">
+                <div class="event-congress-rounds column-desktop-12 column-tablet-12 column-mobile-12 flex-grid">
+                    <div class="event-congress-round  column-desktop-4 column-tablet-12 column-mobile-12"
+                         v-for="(round, index) in congress">
+                        <div class="event-congress-round-content">
+                            <b class="event-congress-round-title">Ronde {{index+1}} <span>{{round.time}}</span></b>
+                            <div class="event-congress-round-speakers">
+                                <div class="event-congress-round-speaker" v-for="speaker in round.speakers">
+                                    <div class="event-congress-round-speaker-content">
+                                        <b class="event-congress-round-speaker-title">{{speaker.name}}</b>
+                                        <span class="event-congress-round-speaker-position">{{speaker.position}}</span>
+                                    </div>
+                                    <div class="event-congress-round-checkbox-holder">
+                                        <input class="event-congress-round-speaker-checkbox" type="checkbox"
+                                               @change="deselectSpeakers(index, speaker)"
+                                               v-model="speaker.selected">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <b>Keynotespreker <span>{{round.speaker.time}}</span></b>
-                        <div class="event-congress-round-keynote">
-                            <b class="event-congress-round-keynote-title">{{round.speaker.name}}</b>
-                            <span class="event-congress-round-keynote-position">{{round.speaker.position}}</span>
-                            <input class="event-congress-round-keynote-checkbox" type="checkbox"
-                                   @change="deselectSpeakers(index, round.speaker)"
-                                   v-model="round.speaker.selected">
+                            <b class="event-congress-round-title">Keynotespreker <span>{{round.speaker.time}}</span></b>
+                            <div class="event-congress-round-keynote">
+                                <div class="event-congress-round-speaker-content">
+                                    <b class="event-congress-round-speaker-title">{{round.speaker.name}}</b>
+                                    <span class="event-congress-round-speaker-position">{{round.speaker.position}}</span>
+                                </div>
+                                <div class="event-congress-round-checkbox-holder">
+                                    <input class="event-congress-round-speaker-checkbox" type="checkbox"
+                                           @change="deselectSpeakers(index, round.speaker)"
+                                           v-model="round.speaker.selected">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

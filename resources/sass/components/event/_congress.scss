@@ -1,11 +1,93 @@
 & {
   .event-congress-title {
-      color: $mid-gray;
-      font-size: $font-size-medium;
+    color: $mid-gray;
+    font-size: $font-size-big;
+  }
+
+  .event-congress-description {
+    color: $basic-gray;
+    font-weight: 600;
+    font-size: $font-size-normal;
+  }
+
+  .event-congress-rounds {
+
+    .event-congress-round:first-child .event-congress-round-content {
+      padding-right: $padding-medium;
     }
 
-    .event-congress-description {
-      color: $basic-gray;
-      font-size: $font-size-normal;
+    .event-congress-round:not(:first-child):not(:last-child) {
+      &:after {
+        left: -$padding-medium/2;
+      }
+
+      .event-congress-round-content {
+        padding-left: $padding-medium/2;
+        padding-right: $padding-medium/2;
+      }
     }
+
+    .event-congress-round:last-child {
+      &:after {
+        left: 0;
+      }
+
+      .event-congress-round-content {
+        padding-left: $padding-medium;
+      }
+
+
+    }
+
+    .event-congress-round + .event-congress-round {
+      position: relative;
+
+      &:after {
+        position: absolute;
+        content: '';
+        height: 100%;
+        width: 1px;
+        background: $mid-gray;
+        top: 0;
+
+      }
+    }
+
+    .event-congress-round-title {
+      color: $theme-color;
+      font-size: $font-size-normal;
+
+      > span {
+        color: $basic-gray;
+        float: right;
+      }
+    }
+
+    .event-congress-round-speakers .event-congress-round-speaker, .event-congress-round-keynote {
+      padding-top: $padding-tiny;
+      padding-bottom: $padding-tiny;
+      display: flex;
+
+      .event-congress-round-speaker-content {
+        flex: 1;
+
+        .event-congress-round-speaker-title {
+          display: block;
+          color: $basic-gray;
+        }
+
+        .event-congress-round-speaker-position {
+          display: block;
+          color: $basic-gray;
+        }
+      }
+
+      .event-congress-round-speaker-checkbox-holder {
+        width: 25px;
+      }
+    }
+
+  }
+
+
 }

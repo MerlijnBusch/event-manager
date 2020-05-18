@@ -6,23 +6,25 @@
 
         <div class="flex-wrapper homepage-inner">
             <div class="home-events flex-grid">
-                <div v-for="item in items" class="home-event column-desktop-4 column-tablet-6 column-mobile-12">
-                    <div class="home-event-background" :style="{backgroundColor: item.color}">
-                        <!--TODO: Image Background-->
-                    </div>
-                    <div class="home-event-content">
-                        <h2>{{item.title}}</h2>
-                        <hr class="home-divider" :style="{borderColor: item.color}">
-                        <p class="home-description">
-                            {{item.description}}
-                        </p>
-                        <hr class="home-divider-2">
-                        <div class="home-event-details">
-                            <div class="flex-grid">
-                                <p class="home-date column-desktop-6 column-tablet-6 column-mobile-12">
-                                    {{formatDate(item.date)}}</p>
-                                <p class="home-location column-desktop-6 column-tablet-6 column-mobile-12">
-                                    {{item.location}}</p>
+                <div v-for="item in items" class="home-event-outer column-desktop-4 column-tablet-6 column-mobile-12">
+                    <div class="home-event">
+                        <div class="home-event-background" :style="{backgroundColor: item.color}">
+                            <!--TODO: Image Background-->
+                        </div>
+                        <div class="home-event-content">
+                            <h2>{{item.title}}</h2>
+                            <hr class="home-divider" :style="{borderColor: item.color}">
+                            <p class="home-description">
+                                {{item.description}}
+                            </p>
+                            <hr class="home-divider-2">
+                            <div class="home-event-details">
+                                <div class="flex-grid">
+                                    <p class="home-date column-desktop-6 column-tablet-6 column-mobile-12">
+                                        {{formatDate(item.date)}}</p>
+                                    <p class="home-location column-desktop-6 column-tablet-6 column-mobile-12">
+                                        {{item.location}}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -56,7 +58,7 @@
                             'conferentie aan de start van het jaar, voor\n' +
                             'C-level in data center, connectivity en\n' +
                             'cloud professionals.',
-                        date:'3 december 2019',
+                        date: '3 december 2019',
                         location: 'Alkmaar'
                     },
                     {
