@@ -21,9 +21,7 @@
         </div>
         <div class="admin-main">
             <event v-if="this.currentEvent.event" v-bind:event="currentEvent.event"></event>
-            <div class="admin-event-settings-container" v-if="this.currentEvent.settings">
-
-            </div>
+            <settings v-if="settings"  v-bind:settings="settings"></settings>
             <program v-if="program" v-bind:program="program"></program>
             <div class="admin-item-container" v-if="program">
                 <div class="admin-item-list">
@@ -50,6 +48,7 @@
     import Event from "./components/Event";
     import Program from "./components/Program";
     import Item from "./components/Item";
+    import Settings from "./components/Settings";
 
     export default {
         name: 'Role-Form',
@@ -62,13 +61,12 @@
                 settings: null,
             }
         },
-        components: {Event, Program, Item},
+        components: {Event, Program, Item, Settings},
         methods: {
             async setSelectedEventId(id) {
                 this.selectedEventId = id;
                 const data = await API.get('/api/admin/' + id);
                 this.currentEvent = data.data;
-                console.log(this.debug(this.currentEvent));
             },
             updateDisplay(display, isProgram = true) {
                 if(isProgram) {
@@ -78,7 +76,7 @@
                     this.program = null;
                     this.settings = display;
                 }
-                console.log(this.debug(display));
+                console.log(JSON.parse(JSON.stringify(display)))
             },
         },
         async mounted() {
@@ -111,6 +109,7 @@
     }
 
     .admin-main {
+        padding: 16px;
         flex: 1;
         background-color: yellow;
     }

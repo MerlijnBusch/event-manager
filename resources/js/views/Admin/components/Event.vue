@@ -39,7 +39,6 @@
 
 <style>
     .admin-event-container {
-        padding: 16px;
         margin-top: 4px;
     }
 

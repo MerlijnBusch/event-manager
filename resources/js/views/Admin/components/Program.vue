@@ -1,5 +1,5 @@
 <template>
-    <div class="admin-event-container">
+    <div>
         <h1>{{program.name}}</h1>
     </div>
 </template>
