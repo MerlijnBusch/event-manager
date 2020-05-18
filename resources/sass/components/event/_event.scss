@@ -1,0 +1,45 @@
+//background
+.event-background{
+  height: 400px;
+  background-position: center center;
+  background-size: cover;
+}
+
+
+//titlebar
+.event-titlebar {
+  background-color: $dark-gray;
+  @import "./titlebar";
+}
+
+//program_and_info
+.event-program_and_info {
+  background-color: $basic-gray;
+  @import "./program_and_info";
+}
+
+//congress
+.event-congress {
+  background-color: $deep-gray;
+  @import "./congress";
+}
+
+//my-speakers
+.event-my_speakers {
+  background-color: $dark-gray;
+  @import "./speakers";
+}
+
+
+.event-content{
+  flex-wrap: wrap;
+  margin: 0;
+  animation: event-apear .3s ease-out;
+  transform: translateY(-150px);
+}
+
+@keyframes event-apear {
+  from{ transform: translateY(0px)}
+  to{ transform: translateY(-150px)}
+
+}

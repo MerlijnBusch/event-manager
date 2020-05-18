@@ -2424,6 +2424,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Event',
   methods: {
@@ -39907,127 +39925,266 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "event-page" }, [
     _c("div", {
-      staticClass: "bg",
+      staticClass: "event-background",
       style: { backgroundImage: "url(" + _vm.backgroundImage + ")" }
     }),
     _vm._v(" "),
-    _c("div", { staticClass: "titlebar" }, [
-      _c("h1", {
-        staticClass: "title",
-        domProps: { textContent: _vm._s(_vm.title) }
-      }),
-      _vm._v(" "),
-      _c("h4", {
-        staticClass: "description",
-        domProps: { textContent: _vm._s(_vm.description) }
-      }),
-      _vm._v(" "),
-      _c("span", {
-        staticClass: "date",
-        domProps: { textContent: _vm._s(_vm.formatDate(_vm.info.date)) }
-      }),
-      _vm._v(" "),
-      _vm.tickets.isShowing
-        ? _c("div", { staticClass: "ticketview" }, [
-            _c("span", [_vm._v(_vm._s(_vm.tickets.current) + "/")]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(_vm.tickets.max) + "/")])
-          ])
-        : _vm._e()
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "program-info-bla" }, [
+    _c("div", { staticClass: "event-content flex-grid" }, [
       _c(
         "div",
-        { staticClass: "program" },
+        {
+          staticClass:
+            "event-titlebar column-desktop-12 column-tablet-12 column-mobile-12"
+        },
         [
-          _c("b", [_vm._v("Programma")]),
+          _c("h1", {
+            staticClass: "event-titlebar-title",
+            domProps: { textContent: _vm._s(_vm.title) }
+          }),
           _vm._v(" "),
-          _vm._l(_vm.program, function(part) {
-            return _c("div", [
-              _c("b", { staticClass: "title" }, [_vm._v(_vm._s(part.title))]),
-              _vm._v(" "),
-              _c("p", { staticClass: "description" }, [
-                _vm._v(_vm._s(part.description))
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "date" }, [_vm._v(_vm._s(part.time))])
-            ])
-          })
-        ],
-        2
+          _c("h4", {
+            staticClass: "event-titlebar-descript",
+            domProps: { textContent: _vm._s(_vm.description) }
+          }),
+          _vm._v(" "),
+          _c("span", {
+            staticClass: "event-titlebar-date",
+            domProps: { textContent: _vm._s(_vm.formatDate(_vm.info.date)) }
+          }),
+          _vm._v(" "),
+          _vm.tickets.isShowing
+            ? _c("div", { staticClass: "event-titlebar-ticketcounter" }, [
+                _c(
+                  "span",
+                  { staticClass: "event-titlebar-current-ticketcount" },
+                  [_vm._v(_vm._s(_vm.tickets.current) + "/")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  { staticClass: "event-titlebar-maximum-ticketcount" },
+                  [_vm._v(_vm._s(_vm.tickets.max) + "/")]
+                )
+              ])
+            : _vm._e()
+        ]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "info" }, [
-        _c("b", [_vm._v("Info")]),
-        _vm._v(" "),
-        _c("div", [
-          _c("b", [_vm._v("Datum")]),
+      _c(
+        "div",
+        {
+          staticClass:
+            "event-program_and_info column-desktop-4 column-tablet-6 column-mobile-12"
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "event-program" },
+            [
+              _c("b", { staticClass: "event-program-title" }, [
+                _vm._v("Programma")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.program, function(part) {
+                return _c("div", { staticClass: "event-program-part" }, [
+                  _c("b", { staticClass: "event-program-part-title" }, [
+                    _vm._v(_vm._s(part.title))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "event-program-part-description" }, [
+                    _vm._v(_vm._s(part.description))
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "event-program-part-time" }, [
+                    _vm._v(_vm._s(part.time))
+                  ])
+                ])
+              })
+            ],
+            2
+          ),
           _vm._v(" "),
-          _c("span", [_vm._v(_vm._s(_vm.formatDate(_vm.info.date)))])
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("b", [_vm._v("Locatie")]),
-          _vm._v(" "),
-          _c("span", [_vm._v(_vm._s(_vm.info.location))])
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("b", [_vm._v("Prijs")]),
-          _vm._v(" "),
-          _c("span", [_vm._v(_vm._s(_vm.info.price))])
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "congress" }, [
-      _c("b", { staticClass: "title" }, [_vm._v("Congress")]),
-      _vm._v(" "),
-      _c("p", { staticClass: "description" }, [
-        _vm._v(
-          "\n            Bekijk en selecteer lezingen\n            per ronde voor dit evenement.\n        "
-        )
-      ]),
+          _c("div", { staticClass: "event-info" }, [
+            _c("b", { staticClass: "event-info-title" }, [_vm._v("Info")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "event-info-line" }, [
+              _c("b", { staticClass: "event-info-line-title" }, [
+                _vm._v("Datum")
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "event-info-line-content" }, [
+                _vm._v(_vm._s(_vm.formatDate(_vm.info.date)))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "event-info-line" }, [
+              _c("b", { staticClass: "event-info-line-title" }, [
+                _vm._v("Locatie")
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "event-info-line-content" }, [
+                _vm._v(_vm._s(_vm.info.location))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "event-info-line" }, [
+              _c("b", { staticClass: "event-info-line-title" }, [
+                _vm._v("Prijs")
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "event-info-line-content" }, [
+                _vm._v(_vm._s(_vm.info.price))
+              ])
+            ])
+          ])
+        ]
+      ),
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "rounds" },
-        _vm._l(_vm.congress, function(round, index) {
-          return _c("div", { staticClass: "round" }, [
-            _c("b", [
-              _vm._v("Ronde " + _vm._s(index + 1) + " "),
-              _c("span", [_vm._v(_vm._s(round.time))])
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "speakers" },
-              _vm._l(round.speakers, function(speaker) {
-                return _c("div", [
-                  _c("b", [_vm._v(_vm._s(speaker.name))]),
+        {
+          staticClass:
+            "event-congress column-desktop-8 column-tablet-6 column-mobile-12"
+        },
+        [
+          _c("b", { staticClass: "event-congress-title" }, [
+            _vm._v("Congress")
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "event-congress-description" }, [
+            _vm._v(
+              "\n                Bekijk en selecteer lezingen\n                per ronde voor dit evenement.\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "event-congress-rounds" },
+            _vm._l(_vm.congress, function(round, index) {
+              return _c("div", { staticClass: "event-congress-round" }, [
+                _c("b", { staticClass: "event-congress-round-title" }, [
+                  _vm._v("Ronde " + _vm._s(index + 1) + " "),
+                  _c("span", [_vm._v(_vm._s(round.time))])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "event-congress-round-speakers" },
+                  _vm._l(round.speakers, function(speaker) {
+                    return _c(
+                      "div",
+                      { staticClass: "event-congress-round-speaker" },
+                      [
+                        _c(
+                          "b",
+                          { staticClass: "event-congress-round-speaker-title" },
+                          [_vm._v(_vm._s(speaker.name))]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            staticClass: "event-congress-round-speaker-position"
+                          },
+                          [_vm._v(_vm._s(speaker.position))]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: speaker.selected,
+                              expression: "speaker.selected"
+                            }
+                          ],
+                          staticClass: "event-congress-round-speaker-checkbox",
+                          attrs: { type: "checkbox" },
+                          domProps: {
+                            checked: Array.isArray(speaker.selected)
+                              ? _vm._i(speaker.selected, null) > -1
+                              : speaker.selected
+                          },
+                          on: {
+                            change: [
+                              function($event) {
+                                var $$a = speaker.selected,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = null,
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      _vm.$set(
+                                        speaker,
+                                        "selected",
+                                        $$a.concat([$$v])
+                                      )
+                                  } else {
+                                    $$i > -1 &&
+                                      _vm.$set(
+                                        speaker,
+                                        "selected",
+                                        $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1))
+                                      )
+                                  }
+                                } else {
+                                  _vm.$set(speaker, "selected", $$c)
+                                }
+                              },
+                              function($event) {
+                                return _vm.deselectSpeakers(index, speaker)
+                              }
+                            ]
+                          }
+                        })
+                      ]
+                    )
+                  }),
+                  0
+                ),
+                _vm._v(" "),
+                _c("b", [
+                  _vm._v("Keynotespreker "),
+                  _c("span", [_vm._v(_vm._s(round.speaker.time))])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "event-congress-round-keynote" }, [
+                  _c(
+                    "b",
+                    { staticClass: "event-congress-round-keynote-title" },
+                    [_vm._v(_vm._s(round.speaker.name))]
+                  ),
                   _vm._v(" "),
-                  _c("span", [_vm._v(_vm._s(speaker.position))]),
+                  _c(
+                    "span",
+                    { staticClass: "event-congress-round-keynote-position" },
+                    [_vm._v(_vm._s(round.speaker.position))]
+                  ),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: speaker.selected,
-                        expression: "speaker.selected"
+                        value: round.speaker.selected,
+                        expression: "round.speaker.selected"
                       }
                     ],
+                    staticClass: "event-congress-round-keynote-checkbox",
                     attrs: { type: "checkbox" },
                     domProps: {
-                      checked: Array.isArray(speaker.selected)
-                        ? _vm._i(speaker.selected, null) > -1
-                        : speaker.selected
+                      checked: Array.isArray(round.speaker.selected)
+                        ? _vm._i(round.speaker.selected, null) > -1
+                        : round.speaker.selected
                     },
                     on: {
                       change: [
                         function($event) {
-                          var $$a = speaker.selected,
+                          var $$a = round.speaker.selected,
                             $$el = $event.target,
                             $$c = $$el.checked ? true : false
                           if (Array.isArray($$a)) {
@@ -40035,160 +40192,170 @@ var render = function() {
                               $$i = _vm._i($$a, $$v)
                             if ($$el.checked) {
                               $$i < 0 &&
-                                _vm.$set(speaker, "selected", $$a.concat([$$v]))
+                                _vm.$set(
+                                  round.speaker,
+                                  "selected",
+                                  $$a.concat([$$v])
+                                )
                             } else {
                               $$i > -1 &&
                                 _vm.$set(
-                                  speaker,
+                                  round.speaker,
                                   "selected",
                                   $$a.slice(0, $$i).concat($$a.slice($$i + 1))
                                 )
                             }
                           } else {
-                            _vm.$set(speaker, "selected", $$c)
+                            _vm.$set(round.speaker, "selected", $$c)
                           }
                         },
                         function($event) {
-                          return _vm.deselectSpeakers(index, speaker)
+                          return _vm.deselectSpeakers(index, round.speaker)
                         }
                       ]
                     }
                   })
                 ])
-              }),
-              0
-            ),
-            _vm._v(" "),
-            _c("b", [
-              _vm._v("Keynotespreker "),
-              _c("span", [_vm._v(_vm._s(round.speaker.time))])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "keynote-bla" }, [
-              _c("b", [_vm._v(_vm._s(round.speaker.name))]),
-              _vm._v(" "),
-              _c("span", [_vm._v(_vm._s(round.speaker.position))]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: round.speaker.selected,
-                    expression: "round.speaker.selected"
-                  }
-                ],
-                attrs: { type: "checkbox" },
-                domProps: {
-                  checked: Array.isArray(round.speaker.selected)
-                    ? _vm._i(round.speaker.selected, null) > -1
-                    : round.speaker.selected
-                },
-                on: {
-                  change: [
-                    function($event) {
-                      var $$a = round.speaker.selected,
-                        $$el = $event.target,
-                        $$c = $$el.checked ? true : false
-                      if (Array.isArray($$a)) {
-                        var $$v = null,
-                          $$i = _vm._i($$a, $$v)
-                        if ($$el.checked) {
-                          $$i < 0 &&
-                            _vm.$set(
-                              round.speaker,
-                              "selected",
-                              $$a.concat([$$v])
-                            )
-                        } else {
-                          $$i > -1 &&
-                            _vm.$set(
-                              round.speaker,
-                              "selected",
-                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                            )
-                        }
-                      } else {
-                        _vm.$set(round.speaker, "selected", $$c)
-                      }
-                    },
-                    function($event) {
-                      return _vm.deselectSpeakers(index, round.speaker)
-                    }
-                  ]
-                }
-              })
-            ])
-          ])
-        }),
-        0
-      )
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "selected-speakers" },
-      [
-        _c("b", [_vm._v("Geselecteerde Sprekers")]),
-        _vm._v(" "),
-        _vm._l(_vm.congress, function(round, index) {
-          return _c(
-            "div",
-            { staticStyle: { background: "#eee" } },
-            [
-              _c("b", [
-                _vm._v("Ronde " + _vm._s(index + 1) + " "),
-                _c("span", [_vm._v(_vm._s(round.time))])
-              ]),
-              _vm._v(" "),
-              round.speaker.selected
-                ? _c("div", [
-                    _c("b", [_vm._v(_vm._s(round.speaker.name))]),
-                    _vm._v(" "),
-                    _c("span", [_vm._v(_vm._s(round.speaker.description))]),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        on: {
-                          click: function($event) {
-                            round.speaker.selected = false
-                          }
-                        }
-                      },
-                      [_vm._v("X")]
-                    )
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm._l(round.speakers, function(speaker) {
-                return speaker.selected
-                  ? _c("div", [
-                      _c("b", [_vm._v(_vm._s(speaker.name))]),
-                      _vm._v(" "),
-                      _c("span", [_vm._v(_vm._s(speaker.description))]),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          on: {
-                            click: function($event) {
-                              speaker.selected = false
-                            }
-                          }
-                        },
-                        [_vm._v("X")]
-                      )
-                    ])
-                  : _vm._e()
-              })
-            ],
-            2
+              ])
+            }),
+            0
           )
-        })
-      ],
-      2
-    )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "event-my_speakers column-desktop-12 column-tablet-12 column-mobile-12"
+        },
+        [
+          _c("b", { staticClass: "event-my_speakers-title" }, [
+            _vm._v("Geselecteerde Sprekers")
+          ]),
+          _vm._v(" "),
+          _vm._l(_vm.congress, function(round, index) {
+            return _c(
+              "div",
+              { staticClass: "event-my_speakers-round" },
+              [
+                _c("b", { staticClass: "event-my_speakers-round-title" }, [
+                  _vm._v(
+                    "Ronde " + _vm._s(index + 1) + "\n                    "
+                  ),
+                  _c(
+                    "span",
+                    { staticClass: "event-my_speakers-round-title-time" },
+                    [_vm._v(_vm._s(round.time))]
+                  ),
+                  _vm._v(" "),
+                  round.speaker.selected
+                    ? _c(
+                        "span",
+                        {
+                          staticClass: "event-my_speakers-round-title-keynote"
+                        },
+                        [_vm._v("Keynotespreker")]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                round.speaker.selected
+                  ? _c(
+                      "div",
+                      { staticClass: "event-my_speakers-round-speaker" },
+                      [
+                        _c(
+                          "b",
+                          {
+                            staticClass: "event-my_speakers-round-speaker-title"
+                          },
+                          [_vm._v(_vm._s(round.speaker.name))]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            staticClass:
+                              "event-my_speakers-round-speaker-description"
+                          },
+                          [_vm._v(_vm._s(round.speaker.description))]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "event-my_speakers-round-speaker-close-button",
+                            on: {
+                              click: function($event) {
+                                round.speaker.selected = false
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                        X\n                    "
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm._l(round.speakers, function(speaker) {
+                  return speaker.selected
+                    ? _c(
+                        "div",
+                        { directives: [{ name: "else", rawName: "v-else" }] },
+                        [
+                          _c(
+                            "b",
+                            {
+                              staticClass:
+                                "event-my_speakers-round-speaker-title"
+                            },
+                            [_vm._v(_vm._s(speaker.name))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              staticClass:
+                                "event-my_speakers-round-speaker-description"
+                            },
+                            [_vm._v(_vm._s(speaker.description))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "event-my_speakers-round-speaker-close-button",
+                              on: {
+                                click: function($event) {
+                                  speaker.selected = false
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        X\n                    "
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    : _vm._e()
+                })
+              ],
+              2
+            )
+          })
+        ],
+        2
+      )
+    ])
   ])
 }
 var staticRenderFns = []

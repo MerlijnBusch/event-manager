@@ -770,6 +770,56 @@ body {
   margin: 0 0 8px;
 }
 
+.event-background {
+  height: 400px;
+  background-position: center center;
+  background-size: cover;
+}
+
+.event-titlebar {
+  background-color: #404040;
+}
+
+.event-program_and_info {
+  background-color: #C1C1C1;
+}
+
+.event-congress {
+  background-color: #1F1F1F;
+}
+
+.event-my_speakers {
+  background-color: #404040;
+}
+
+.event-content {
+  flex-wrap: wrap;
+  margin: 0;
+  -webkit-animation: event-apear 0.3s ease-out;
+          animation: event-apear 0.3s ease-out;
+  transform: translateY(-150px);
+}
+
+@-webkit-keyframes event-apear {
+  from {
+    transform: translateY(0px);
+  }
+
+  to {
+    transform: translateY(-150px);
+  }
+}
+
+@keyframes event-apear {
+  from {
+    transform: translateY(0px);
+  }
+
+  to {
+    transform: translateY(-150px);
+  }
+}
+
 body {
   padding: 0;
   margin: 0;
