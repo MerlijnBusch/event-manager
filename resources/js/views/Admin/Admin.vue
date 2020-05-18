@@ -6,7 +6,8 @@
                 </div>
                 <div v-if="currentEvent.programs" v-for="program in currentEvent.programs">
                     <div class="admin-sidebar-program-container">
-                        <div class="admin-sidebar-program-title" v-on:click="displayProgram(program)">{{program.name}}</div>
+                        <div class="admin-sidebar-program-title" v-on:click="displayProgram(program)">{{program.name}}
+                        </div>
                         <div class="admin-sidebar-program-action-container">
                             <div class="admin-sidebar-program-action-update"></div>
                             <div class="admin-sidebar-program-action-delete"></div>
@@ -21,8 +22,21 @@
 
             </div>
             <program v-if="program" v-bind:program="program"></program>
-            <div class="admin-program-container">
-
+            <div class="admin-item-container" v-if="program">
+                <div class="admin-item-list">
+                    <div v-for="item in program.items" class="admin-item-list-holder">
+                        <div class="admin-item-list-title">{{item.name}}</div>
+                        <div class="admin-sidebar-item-action-container">
+                            <div class="admin-sidebar-item-action-update"></div>
+                            <div class="admin-sidebar-item-action-delete"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="admin-item-display-container">
+                    <div v-for="item in program.items" class="admin-item-display-container-for">
+                        <item v-bind:item="item"></item>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -32,6 +46,7 @@
     import API from "@/js/Api";
     import Event from "./components/Event";
     import Program from "./components/Program";
+    import Item from "./components/Item";
 
     export default {
         name: 'Role-Form',
@@ -43,7 +58,7 @@
                 program: null,
             }
         },
-        components: {Event, Program},
+        components: {Event, Program, Item},
         methods: {
             async setSelectedEventId(id) {
                 this.selectedEventId = id;
@@ -85,16 +100,12 @@
     .admin-sidebar-event-container {
         padding: 8px;
         width: 100%;
-        justify-content: start;
+        justify-content: flex-start;
     }
 
     .admin-main {
         flex: 1;
         background-color: yellow;
-    }
-
-    .admin-program-container {
-
     }
 
     .admin-sidebar-event-list-item {
@@ -140,4 +151,58 @@
         text-overflow: ellipsis;
     }
 
+    .admin-item-container {
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+    }
+
+    .admin-item-list {
+        width: 200px;
+    }
+
+    .admin-item-list-title {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        height: 30px;
+        padding: 9px;
+    }
+
+    .admin-sidebar-item-action-container {
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+    }
+
+    .admin-sidebar-item-action-update {
+        background: orange;
+        width: 30px;
+        height: 30px;
+    }
+
+    .admin-sidebar-item-action-delete {
+        background: red;
+        width: 30px;
+        height: 30px;
+    }
+
+    .admin-item-list-holder {
+        display: flex;
+        align-items: center;
+        margin-top: 4px;
+    }
+
+    .admin-item-display-container {
+        display: flex;
+        justify-content: flex-start;
+        align-content: center;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    .admin-item-display-container-for {
+        padding: 8px;
+    }
 </style>
