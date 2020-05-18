@@ -2,7 +2,7 @@
     <div class="event-page">
         <div class="event-background" :style="{'backgroundImage': 'url(' + backgroundImage + ')'}"></div>
         <div class="event-content flex-grid">
-            <div class="event-titlebar column-desktop-12 column-tablet-12 column-mobile-12">
+            <div class="event-titlebar column-desktop-12 column-tablet-12 column-mobile-12 flex-grid">
                 <h1 class="event-titlebar-title column-desktop-3" v-text="title"></h1>
                 <h4 class="event-titlebar-descript column-desktop-3" v-text="description"></h4>
                 <span class="event-titlebar-date" v-text="formatDate(info.date)"></span>

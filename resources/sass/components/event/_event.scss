@@ -1,6 +1,9 @@
 //background
 .event-background{
-  height: 400px;
+  margin-top: -150px;
+  z-index: 0;
+  position: relative;
+  height: 600px;
   background-position: center center;
   background-size: cover;
 }
@@ -37,7 +40,9 @@
   animation: event-apear .3s ease-out;
   transform: translateY(-150px);
   > *{
-    padding: $padding-huge;
+    border-radius: $border-radius-big $border-radius-big 0 0;
+    margin-top: -$border-radius-big;
+    padding: $padding-huge $padding-huge $padding-huge + $border-radius-big;
   }
 }
 
