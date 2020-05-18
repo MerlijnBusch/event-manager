@@ -3,10 +3,10 @@
         <div class="event-background" :style="{'backgroundImage': 'url(' + backgroundImage + ')'}"></div>
         <div class="event-content flex-grid">
             <div class="event-titlebar column-desktop-12 column-tablet-12 column-mobile-12">
-                <h1 class="event-titlebar-title" v-text="title"></h1>
-                <h4 class="event-titlebar-descript" v-text="description"></h4>
+                <h1 class="event-titlebar-title column-desktop-3" v-text="title"></h1>
+                <h4 class="event-titlebar-descript column-desktop-3" v-text="description"></h4>
                 <span class="event-titlebar-date" v-text="formatDate(info.date)"></span>
-                <div class="event-titlebar-ticketcounter" v-if="tickets.isShowing">
+                <div class="event-titlebar-ticketcounter column-desktop-3" v-if="tickets.isShowing">
                     <span class="event-titlebar-current-ticketcount">{{tickets.current}}/</span>
                     <span class="event-titlebar-maximum-ticketcount">{{tickets.max}}</span>
                 </div>
