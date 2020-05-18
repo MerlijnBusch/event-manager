@@ -35,8 +35,6 @@
       .event-congress-round-content {
         padding-left: $padding-medium;
       }
-
-
     }
 
     .event-congress-round + .event-congress-round {
@@ -46,8 +44,7 @@
         position: absolute;
         content: '';
         height: 100%;
-        width: 1px;
-        background: $mid-gray;
+        border-left: solid 1px $mid-gray;
         top: 0;
 
       }
