@@ -16,10 +16,11 @@
             </div>
         </div>
         <div class="admin-main">
-            <event-form v-if="this.currentEvent.event" v-bind:event="currentEvent.event"></event-form>
+            <event v-if="this.currentEvent.event" v-bind:event="currentEvent.event"></event>
             <div class="admin-event-settings-container" v-if="this.currentEvent.settings">
 
             </div>
+            <program v-if="program" v-bind:program="program"></program>
             <div class="admin-program-container">
 
             </div>
@@ -29,7 +30,8 @@
 
 <script>
     import API from "@/js/Api";
-    import EventForm from "./components/EventForm";
+    import Event from "./components/Event";
+    import Program from "./components/Program";
 
     export default {
         name: 'Role-Form',
@@ -38,9 +40,10 @@
                 events: [],
                 selectedEventId: null,
                 currentEvent: [],
+                program: null,
             }
         },
-        components: {EventForm},
+        components: {Event, Program},
         methods: {
             async setSelectedEventId(id) {
                 this.selectedEventId = id;
@@ -49,6 +52,7 @@
                 console.log(this.debug(this.currentEvent));
             },
             displayProgram(program) {
+                this.program = program;
                 console.log(this.debug(program));
             },
             debug(data) {

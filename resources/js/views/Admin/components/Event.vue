@@ -30,7 +30,7 @@
     ];
 
     export default {
-        name: 'Role-Form',
+        name: 'Event',
         props: ['event'],
         data() {
             return {
