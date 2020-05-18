@@ -8,7 +8,7 @@
                 <span class="event-titlebar-date" v-text="formatDate(info.date)"></span>
                 <div class="event-titlebar-ticketcounter" v-if="tickets.isShowing">
                     <span class="event-titlebar-current-ticketcount">{{tickets.current}}/</span>
-                    <span class="event-titlebar-maximum-ticketcount">{{tickets.max}}/</span>
+                    <span class="event-titlebar-maximum-ticketcount">{{tickets.max}}</span>
                 </div>
             </div>
             <div class="event-program_and_info column-desktop-4 column-tablet-6 column-mobile-12">
