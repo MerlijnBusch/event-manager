@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from "vue-router";
 
 import Home from '@/js/views/Home';
+import Event from '@/js/views/Event';
 import About from '@/js/views/About';
 import Example from '@/js/views/Example'
 import EventForm from '@/js/views/forms/Event-form'
@@ -24,11 +25,15 @@ const router = new VueRouter({
             component: Home
         },
         {
+            path: '/event',
+            name: 'event',
+            component: Event
+        },
+        {
             path: '/about',
             name: 'about',
             component: About,
         },
-        //Forms
         {
             path: '/form/event',
             name: 'event-form',
@@ -67,7 +72,6 @@ const router = new VueRouter({
             name: 'reset-password-form',
             component: ResetPasswordForm,
         },
-        //Examples
         {
             path: '/example',
             name: 'example',

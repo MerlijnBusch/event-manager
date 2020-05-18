@@ -1,6 +1,8 @@
 @import './login/login';
 @import './forgot/forgot';
 
+$close-button-size: 32px;
+
 .modal_holder {
   position: fixed;
   width: 100vw;
@@ -11,15 +13,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(ellipse at bottom left, transparentize(darken($light,25%),.2), transparentize($darkest,.2));
+  background: radial-gradient(ellipse at bottom left, transparentize($deep-gray,.2), transparentize($black,.2));
 }
 
 .modal_screen {
+  max-width: 550px;
   display: block;
   position: relative;
-  background-color: $dark;
-  color: $orange;
-  padding: 32px 150px;
+  background-color: $deep-gray;
+  color: $theme-color;
+  padding: $padding-medium $padding-huge * 2;
   border-radius: 10px;
 }
 
@@ -31,10 +34,10 @@
 
 .modal-close {
   position: absolute;
-  right: $navbar-padding;
-  top: $navbar-padding;
-  width: $navbar-height - $navbar-padding*2;
-  height: $navbar-height - $navbar-padding*2;
+  right: $padding-medium;
+  top: $padding-medium;
+  width: $close-button-size;
+  height: $close-button-size;
   border: none;
   padding: 0;
   background-color: transparent;
@@ -45,11 +48,11 @@
     position: relative;
 
     > div {
-      width: $navbar-height - $navbar-padding*2;
-      height: $navbar-padding / 8;
+      width: $close-button-size;
+      height: $close-button-size / 8;
       background-color: transparent;
       position: absolute;
-      top: calc(50% - #{$navbar-padding} / 16);
+      top: calc(50% - #{$padding-medium} / 16);
 
       &:before, &:after {
         position: absolute;
@@ -66,4 +69,14 @@
       }
     }
   }
+}
+
+
+.btn-close-modal {
+  margin-bottom: 25px;
+  margin-top: 5px;
+  margin-left: 80%;
+  border-radius: 5px;
+  background-color: $deep-gray;
+  color: $theme-color;
 }
