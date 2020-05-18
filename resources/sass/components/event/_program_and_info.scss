@@ -1,3 +1,59 @@
 &{
+    .event-program {
+
+        .event-program-title {
+            color: $dark-gray;
+            font-size: $font-size-big;
+        }
+
+        .event-program-part {
+            margin-top: 20px;
+        }
+
+        .event-program-part-title {
+            color: $theme-color;
+            font-size: $font-size-basis;
+        }
+
+        .event-program-part-description {
+            color: $dark-gray;
+            margin-top: 0;
+            font-weight: bold;
+        }
+
+        .event-program-part-time {
+            color: $dark-gray;
+        }
+    }
+
+    .event-info {
+
+        .event-info-divider {
+            border: none;
+            border-top: 1px solid $dark-gray;
+            width: 50%;
+            margin: 25px 0;
+        }
+
+        .event-info-title {
+            color: $dark-gray;
+            font-size: $font-size-big;
+        }
+
+        .event-info-line {
+            margin: $padding-small;
+            margin-left: 0;
+        }
+
+        .event-info-line-title {
+            color: $theme-color;
+            font-size: $font-size-basis;
+        }
+
+        .event-info-line-content {
+            color: $dark-gray;
+            font-weight: bold;
+        }
+    }
 
 }

@@ -21,17 +21,18 @@
                     </div>
                 </div>
                 <div class="event-info">
+                    <hr class="event-info-divider">
                     <b class="event-info-title">Info</b>
                     <div class="event-info-line">
-                        <b class="event-info-line-title">Datum</b>
+                        <b class="event-info-line-title">Datum</b><br>
                         <span class="event-info-line-content">{{formatDate(info.date)}}</span>
                     </div>
                     <div class="event-info-line">
-                        <b class="event-info-line-title">Locatie</b>
+                        <b class="event-info-line-title">Locatie</b><br>
                         <span class="event-info-line-content">{{info.location}}</span>
                     </div>
                     <div class="event-info-line">
-                        <b class="event-info-line-title">Prijs</b>
+                        <b class="event-info-line-title">Prijs</b><br>
                         <span class="event-info-line-content">{{info.price}}</span>
                     </div>
                 </div>
