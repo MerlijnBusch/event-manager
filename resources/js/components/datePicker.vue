@@ -1,6 +1,5 @@
 <template>
     <div class="datePicker">
-        <p>{{date.current}}</p>
         <button @click="isOpen = !isOpen"><span v-if="!!value && value.length">{{value}}</span><span
                 v-else>Pick a date</span></button>
         <div v-if="isOpen" class="datePicker-window">
@@ -35,12 +34,27 @@
             </table>
 
             <div>
-                <div>Jump to</div>
-                <select @change="yearMonthIntUpdate" v-model="date.current.year">
-                    <option v-if="date.today" v-for="n in 11" :value="n + date.today.getFullYear() - 1">{{n +
-                        date.today.getFullYear() - 1}}
-                    </option>
-                </select>
+                <div><b>Jump to</b></div>
+                <label>
+                    Year:
+                    <select @change="yearMonthIntUpdate" v-model="date.current.year">
+                        <option v-if="date.today" v-for="n in 11" :value="n + date.today.getFullYear() - 1">
+                            {{n + date.today.getFullYear() - 1}}
+                        </option>
+                    </select>
+                </label>
+                <label>
+                    Month:
+                    <select @change="yearMonthIntUpdate" v-model="date.current.month">
+                        <option v-for="(month,index) in months" :value="index">
+                            {{month}}
+                        </option>
+                    </select>
+                </label>
+            </div>
+            <div>
+                <h3>Time: <span style="font-weight: 300">{{getTimeString(time)}}</span></h3>
+            <input @change="updateValue" style="width: 100%" type="range" min="0" :max="24 * 12" v-model="time">
             </div>
         </div>
     </div>
@@ -51,7 +65,7 @@
         props: ['value'],
         data() {
             return {
-                isOpen: !false,
+                isOpen: false,
                 selectedDate: {
                     start: '',
                     end: ''
@@ -67,6 +81,7 @@
                         year: null,
                     }
                 },
+                time: null,
                 months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             }
         },
@@ -77,14 +92,34 @@
                 this.date.current.day = chosenDate.getDate();
                 this.date.current.month = chosenDate.getMonth();
                 this.date.current.year = chosenDate.getFullYear();
+                this.time = chosenDate.getHours() * 12 + chosenDate.getMinutes() - 12;
             } else {
                 this.date.current.day = this.date.today.getDate();
                 this.date.current.month = this.date.today.getMonth();
                 this.date.current.year = this.date.today.getFullYear();
+                this.time = 12 * 12;
             }
             this.updateCalender();
         },
         methods: {
+            updateValue(){
+              this.value = this.date.current.year + "-" + (this.date.current.month+1) + "-" + this.date.current.day + " " + this.getTimeString(this.time);
+            },
+            getTimeString(time) {
+                let hours = Math.floor(time / 12);
+                let minutes = (time % 12) * 5;
+
+                let hourString = hours + "";
+                if (hourString.length === 1) {
+                    hourString = "0" + hourString;
+                }
+                let minuteString = minutes + "";
+
+                if (minuteString.length === 1) {
+                    minuteString = "0" + minuteString;
+                }
+                return hourString + ":" + minuteString;
+            },
             next() {
                 this.date.current.year = (this.date.current.month === 11) ? this.date.current.year + 1 : this.date.current.year;
                 this.date.current.month = (this.date.current.month + 1) % 12;
@@ -132,10 +167,12 @@
                     }
                     this.table.rows.push(row);
                 }
+                this.updateValue();
 
             },
             pushDate(day) {
                 this.date.current.day = day;
+                this.updateValue();
             }
         }
     }
