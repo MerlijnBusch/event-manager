@@ -5,12 +5,12 @@
   }
 
   .event-titlebar-title {
-    color: $theme-color;
+    color: var(--theme-color);
     font-size: 60px;
   }
 
   .event-titlebar-descript {
-    color: $theme-color;
+    color: var(--theme-color);
     font-size: 30px;
   }
 
@@ -19,7 +19,7 @@
   }
 
   .event-titlebar-ticketcounter {
-    color: $theme-color;
+    color: var(--theme-color);
     font-size: 30px;
     font-weight: bold;
   }

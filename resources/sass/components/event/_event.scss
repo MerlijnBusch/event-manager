@@ -1,3 +1,8 @@
+.event-page{
+  --theme-color: #{$theme-color};
+
+}
+
 //background
 .event-background{
   margin-top: -150px;
@@ -6,6 +11,8 @@
   height: 525px;
   background-position: center center;
   background-size: cover;
+  margin-bottom: -150px;
+  //test: me;
 }
 
 
@@ -17,7 +24,7 @@
 
 //program_and_info
 .event-program_and_info {
-  background-color: $basic-gray;
+  background-color: $mid-gray;
   @import "./program_and_info";
 }
 
@@ -29,7 +36,7 @@
 
 //my-speakers
 .event-my_speakers {
-  background-color: $basic-gray;
+  background-color: $mid-gray;
   @import "./speakers";
 }
 
@@ -42,8 +49,8 @@
 .event-content{
   flex-wrap: wrap;
   margin: 0;
-  animation: event-apear .3s ease-out;
-  transform: translateY(-150px);
+  animation: event-apear $animation-time*2 ease-out;
+  transform: translateY(0);
   > *{
     box-shadow: $shadow;
     border-radius: $border-radius-big $border-radius-big 0 0;
@@ -53,7 +60,7 @@
 }
 
 @keyframes event-apear {
-  from{ transform: translateY(0px)}
-  to{ transform: translateY(-150px)}
+  from{ transform: translateY(150px)}
+  to{ transform: translateY(0)}
 
 }

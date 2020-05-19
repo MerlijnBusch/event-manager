@@ -1,5 +1,5 @@
 <template>
-    <div class="event-page">
+    <div class="event-page" :style="{'--theme-color': color}">
         <div class="event-background" :style="{'backgroundImage': 'url(' + backgroundImage + ')'}"></div>
         <div class="event-content flex-grid">
             <div class="event-titlebar column-desktop-12 column-tablet-12 column-mobile-12 flex-grid">
@@ -15,8 +15,10 @@
                 <div class="event-program">
                     <b class="event-program-title">Programma</b>
                     <div class="event-program-part" v-for="part in program">
-                        <b class="event-program-part-title">{{part.title}}</b>
-                        <p class="event-program-part-description">{{part.description}}</p>
+                        <div class="event-program-part-text">
+                            <b class="event-program-part-title">{{part.title}}</b>
+                            <p class="event-program-part-description">{{part.description}}</p>
+                        </div>
                         <span class="event-program-part-time">{{part.time}}</span>
                     </div>
                 </div>

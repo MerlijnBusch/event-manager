@@ -51,7 +51,7 @@
     }
 
     .event-congress-round-title {
-      color: $theme-color;
+      color: var(--theme-color);
       font-size: $font-size-normal;
 
       > span {
