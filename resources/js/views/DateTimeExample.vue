@@ -2,7 +2,7 @@
     <div>
         <h1>datePicker example component</h1>
         {{dateString}}
-        <datePicker v-model="dateString" @change="$forceupdate"></datePicker>
+        <datePicker v-model="dateString" @update="(v)=>{dateString = v}"></datePicker>
     </div>
 </template>
 <script>

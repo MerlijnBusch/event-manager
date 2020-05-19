@@ -104,6 +104,7 @@
         methods: {
             updateValue(){
               this.value = this.date.current.year + "-" + (this.date.current.month+1) + "-" + this.date.current.day + " " + this.getTimeString(this.time);
+              this.$emit('update', this.value)
             },
             getTimeString(time) {
                 let hours = Math.floor(time / 12);
