@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Program extends Model
 {
-    public const __CONGRESS_SPEAKERS__ = 'congress_speakers';
+    public const __CONGRESS__ = 'congress_program';
     public const __PROGRAM__ = 'program';
 
     /**

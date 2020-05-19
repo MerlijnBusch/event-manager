@@ -9,7 +9,8 @@
                     </div>
                     <div v-if="currentEvent.programs" v-for="program in currentEvent.programs">
                         <div class="admin-sidebar-program-container">
-                            <div class="admin-sidebar-program-title" v-on:click="updateDisplay(program)">{{program.name}}
+                            <div class="admin-sidebar-program-title" v-on:click="updateDisplay(program)">
+                                {{program.name}}
                             </div>
                             <div class="admin-sidebar-program-action-container">
                                 <div class="admin-sidebar-program-action-update"></div>
@@ -19,12 +20,12 @@
                     </div>
                     <div v-if="currentEvent.event">
                         <div v-if="event.id === currentEvent.event.id">
-                        <div
-                            class="admin-create-program-sidebar"
-                            v-on:click="setModalState(`createProgramModal`)"
-                        >
-                            Create Program
-                        </div>
+                            <div
+                                class="admin-create-program-sidebar"
+                                v-on:click="setModalState(`createProgramModal`)"
+                            >
+                                Create Program
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -44,21 +45,43 @@
             <program v-if="program" v-bind:program="program"></program>
             <div class="admin-item-container" v-if="program">
                 <div class="admin-item-list">
-                    <div v-for="item in program.items" class="admin-item-list-holder">
-                        <div class="admin-item-list-title">{{item.name}}</div>
-                        <div class="admin-sidebar-item-action-container">
-                            <div class="admin-sidebar-item-action-update"></div>
-                            <div class="admin-sidebar-item-action-delete"></div>
+                    <div v-for="block in program.block" class="admin-block-list-holder">
+                        {{block.date_start}}<br>
+                        {{block.date_end}}
+                        <div v-for="item in block.items" class="admin-item-list-holder">
+                            <div>{{item.name}}</div>
+                            <div class="admin-sidebar-item-action-container">
+                                <div class="admin-sidebar-item-action-update"></div>
+                                <div class="admin-sidebar-item-action-delete"></div>
+                            </div>
+                        </div>
+                        <h1>add item</h1>
+                    </div>
+                    <div>
+                        <div
+                            class=""
+                            v-on:click="setModalState(`createBlockModal`)"
+                        >
+                            Add block
                         </div>
                     </div>
                 </div>
                 <div class="admin-item-display-container">
-                    <div v-for="item in program.items" class="admin-item-display-container-for">
-                        <item v-bind:item="item"></item>
+                    <div v-for="block in program.block" class="admin-item-display-container-for">
+                        <div v-for="item in block.items">
+                            <item v-bind:item="item"></item>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <create-block-modal
+            v-if="program"
+            v-show="createBlockModal"
+            v-bind:event_id="program.id"
+            @close="setModalState(`createBlockModal`)"
+        />
 
         <create-program-modal
             v-if="currentEvent.event"
@@ -83,9 +106,10 @@
     import Settings from "./components/Settings";
     import CreateEventModal from "./components/modal/CreateEventModal";
     import CreateProgramModal from "./components/modal/CreateProgramModal";
+    import CreateBlockModal from "./components/modal/CreateBlockModal";
 
     export default {
-        name: 'Role-Form',
+        name: 'Admin',
         data() {
             return {
                 events: [],
@@ -95,9 +119,10 @@
                 settings: null,
                 createEventModal: false,
                 createProgramModal: false,
+                createBlockModal: false,
             }
         },
-        components: {Event, Program, Item, Settings, CreateEventModal, CreateProgramModal},
+        components: {Event, Program, Item, Settings, CreateEventModal, CreateProgramModal, CreateBlockModal},
         methods: {
             async setSelectedEventId(id) {
                 this.selectedEventId = id;
@@ -106,7 +131,7 @@
                 console.log(JSON.parse(JSON.stringify(this.currentEvent)))
             },
             updateDisplay(display, isProgram = true) {
-                if (isProgram) {
+                if (isProgram) { // @todo set settings in modal
                     this.program = display;
                     this.settings = null;
                 } else {
@@ -231,10 +256,8 @@
         height: 30px;
     }
 
-    .admin-item-list-holder {
-        display: flex;
-        align-items: center;
-        margin-top: 4px;
+    .admin-block-list-holder {
+        background-color: red;
     }
 
     .admin-item-display-container {
@@ -271,5 +294,12 @@
         align-items: center;
         justify-content: flex-start;
         display: flex;
+    }
+
+    .admin-item-list-holder {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 32px;
     }
 </style>

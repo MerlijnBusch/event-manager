@@ -437,6 +437,10 @@ html {
   font-size: larger;
 }
 
+.admin-ql-need-min-height .ql-editor {
+  min-height: 200px !important;
+}
+
 .modal_holder {
   position: fixed;
   width: 100vw;
