@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Block;
 use App\Event;
 use App\EventSettings;
 use App\Item;
@@ -43,7 +44,7 @@ class GenerateEventData extends Command
      */
     public function handle()
     {
-        $date = Carbon::now()->addWeek();
+        $date = Carbon::now();
 
         $event = New Event;
         $event->name = 'The cool kids invation event';
@@ -68,18 +69,26 @@ class GenerateEventData extends Command
         $program->type = Program::__PROGRAM__;
         $program->description = "testeesttes";
         $program->date_start = $date->copy()->addHour();
-        $program->date_end = $date->copy()->addHour(3);
+        $program->date_end = $date->copy()->addHour(4);
         $program->event_id = $event->id;
         $program->active = true;
         $program->save();
 
         $program = Program::query()->where('name', 'some program')->first();
 
+        $block = new Block;
+        $block->program_id = $program->id;
+        $block->date_start = $date->copy()->addHour();
+        $block->date_end = $date->copy()->addHour(1);
+        $block->save();
+
+        $block = Block::query()->where('program_id', $program->id)->first();
+
         $item = new Item;
         $item->name = "Item 1";
         $item->type = Item::__KEYNOTES__;
         $item->description = "<p>test bro xd some message</p>";
-        $item->program_id = $program->id;
+        $item->block_id = $block->id;
         $item->date_start = $date->copy()->addHour();
         $item->date_end = $date->copy()->addHour(1);
         $item->active = true;
@@ -89,7 +98,7 @@ class GenerateEventData extends Command
         $item->name = "Item 2";
         $item->type = Item::__NONE__;
         $item->description = "<p>test bro xd some message</p>";
-        $item->program_id = $program->id;
+        $item->block_id = $block->id;
         $item->date_start = $date->copy()->addHour();
         $item->date_end = $date->copy()->addHour(1);
         $item->active = true;

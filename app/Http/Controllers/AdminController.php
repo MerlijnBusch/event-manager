@@ -39,7 +39,10 @@ class AdminController extends Controller
         }
 
         if (Auth::user()->can('read', Program::class) && Auth::user()->can('read', Item::class)) {
-            $programs = Program::query()->where('event_id', $event->id)->with('items')->get();
+            $programs = Program::query()
+                ->where('event_id', $event->id)
+                ->with('block')
+                ->with('block.items')->get();
         }
 
         return response()->json(["event" => $event, "settings" => $eventSettings, "programs" => $programs], 200);

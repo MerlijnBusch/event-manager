@@ -47,9 +47,9 @@ class Item extends Model
         'active',
     ];
 
-    public function program(){
+    public function block(){
 
-        return $this->belongsTo('App\Program');
+        return $this->belongsTo('App\Block');
 
     }
 }

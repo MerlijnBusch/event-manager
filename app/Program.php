@@ -36,9 +36,9 @@ class Program extends Model
         'active',
     ];
 
-    public function items(){
+    public function block(){
 
-        return $this->hasMany('App\Item');
+        return $this->hasMany('App\Block');
 
     }
 
