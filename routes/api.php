@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::post('login', 'Auth\LoginController@login');
 Route::post('register', 'Auth\RegisterController@register');
+Route::get('selectable-roles', 'RoleController@showSelectables');
 Route::post('reset-password', 'Auth\ForgotPasswordController@sendPasswordResetLink');
 Route::post('reset/password', 'Auth\ResetPasswordController@callResetPassword');
 Route::get('event-overview/{event}', 'OverviewController@index')->name('event.overview');

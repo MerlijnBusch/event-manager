@@ -1,0 +1,66 @@
+.event-page{
+  --theme-color: #{$theme-color};
+
+}
+
+//background
+.event-background{
+  margin-top: -150px;
+  z-index: 0;
+  position: relative;
+  height: 525px;
+  background-position: center center;
+  background-size: cover;
+  margin-bottom: -150px;
+  //test: me;
+}
+
+
+//titlebar
+.event-titlebar {
+  background-color: $dark-gray;
+  @import "./titlebar";
+}
+
+//program_and_info
+.event-program_and_info {
+  background-color: $mid-gray;
+  @import "./program_and_info";
+}
+
+//congress
+.event-congress {
+  background-color: $deep-gray;
+  @import "./congress";
+}
+
+//my-speakers
+.event-my_speakers {
+  background-color: $mid-gray;
+  @import "./speakers";
+}
+
+//EVENT MODAL?
+.event-modal{
+  background-color: $dark-gray;
+}
+
+
+.event-content{
+  flex-wrap: wrap;
+  margin: 0;
+  animation: event-apear $animation-time*2 ease-out;
+  transform: translateY(0);
+  > *{
+    box-shadow: $shadow;
+    border-radius: $border-radius-big $border-radius-big 0 0;
+    margin-top: -$border-radius-big;
+    padding: $padding-huge $padding-huge $padding-huge + $border-radius-big;
+  }
+}
+
+@keyframes event-apear {
+  from{ transform: translateY(150px)}
+  to{ transform: translateY(0)}
+
+}

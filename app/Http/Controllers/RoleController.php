@@ -119,4 +119,11 @@ class RoleController extends Controller
 
         return response()->json(['message' => 'Role deleted successfully'], 200);
     }
+
+    public function showSelectables()
+    {
+        $roles = Role::all()->where('selectable', 1);
+
+        return response()->json($roles, 200);
+    }
 }

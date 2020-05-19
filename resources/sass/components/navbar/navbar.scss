@@ -5,6 +5,7 @@ $sidenav-width: 400px;
   box-shadow: $shadow;
   width: 100vw;
   position: fixed;
+  z-index: 99;
   top: 0;
   left: 0;
   height: $navbar-height;
@@ -69,6 +70,7 @@ $sidenav-width: 400px;
   }
 
   right: 0;
+  z-index: 100;
   position: fixed;
   height: 100vw;
   top: 0;

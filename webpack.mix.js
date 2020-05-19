@@ -13,6 +13,8 @@ mix.webpackConfig({
         // tls: 'empty'
     }
 })
+
+    mix.copy('node_modules/font-awesome/fonts', 'public/fonts');
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management

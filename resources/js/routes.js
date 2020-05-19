@@ -3,8 +3,8 @@ import VueRouter from "vue-router";
 
 import Home from '@/js/views/Home';
 import Event from '@/js/views/Event';
+import Profile from '@/js/views/Profile';
 import About from '@/js/views/About';
-import Example from '@/js/views/Example'
 import EventForm from '@/js/views/forms/Event-form'
 import ResetPasswordForm from '@/js/views/forms/ResetPasswordForm';
 import EventSettingsForm from '@/js/views/forms/Event-Settings-form'
@@ -13,6 +13,7 @@ import MapForm from '@/js/views/forms/Map-form'
 import ProfileForm from '@/js/views/forms/Profile-form'
 import CVForm from '@/js/views/forms/CV-form'
 import AdminIndex from '@/js/views/Admin/Admin';
+import UserRegistrationForm from '@/js/views/forms/User-Registration-form';
 
 Vue.use(VueRouter);
 
@@ -28,6 +29,11 @@ const router = new VueRouter({
             path: '/event',
             name: 'event',
             component: Event
+        },
+        {
+          path: '/profile',
+          name: 'profile',
+          component: Profile
         },
         {
             path: '/about',
@@ -73,9 +79,9 @@ const router = new VueRouter({
             component: ResetPasswordForm,
         },
         {
-            path: '/example',
-            name: 'example',
-            component: Example
+            path: '/user-registration',
+            name: 'user-registration-form',
+            component: UserRegistrationForm
         },
         {
             path: '/admin',
