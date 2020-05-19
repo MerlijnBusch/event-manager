@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::post('login', 'Auth\LoginController@login');
 Route::post('register', 'Auth\RegisterController@register');
+Route::get('selectable-roles', 'RoleController@showSelectables');
 Route::post('reset-password', 'Auth\ForgotPasswordController@sendPasswordResetLink');
 Route::post('reset/password', 'Auth\ResetPasswordController@callResetPassword');
 Route::get('event-overview/{event}', 'OverviewController@index')->name('event.overview');
@@ -24,6 +25,7 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
 
     Route::get('refresh-token','UserController@updatetoken');
     Route::post('/search/profile','UserController@search');
+    Route::get('/permissions', 'UserController@permissions')->name('user.permissions');
 
     Route::get('event', 'EventController@index')->name('event');
     Route::get('event/{event}', 'EventController@show')->name('event.show');

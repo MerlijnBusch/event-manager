@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Permissions;
+use App\Role;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -52,4 +55,18 @@ class UserController extends Controller
 
         return response()->json(['message' => $user], 200);
     }
+
+    /**
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function permissions(){
+
+        $this->authorize('write', Role::class);
+
+        $permissions = new Permissions;
+        return response()->json(['message' => $permissions->getAllPermissions()], 200);
+
+    }
+
 }
