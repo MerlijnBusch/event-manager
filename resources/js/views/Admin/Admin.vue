@@ -3,31 +3,38 @@
         <div class="admin-sidebar">
             <div v-for="event in events" :key="event.name" class="admin-sidebar-event-container">
                 <div class="admin-sidebar-event-list-item" v-on:click="setSelectedEventId(event.id)">{{event.name}}
-                </div>
-                <div v-if="currentEvent.settings" class="admin-sidebar-event-settings"
-                     v-on:click="updateDisplay(currentEvent.settings, false)">
-                    Event settings
-                </div>
-                <div v-if="currentEvent.programs" v-for="program in currentEvent.programs">
-                    <div class="admin-sidebar-program-container">
-                        <div class="admin-sidebar-program-title" v-on:click="updateDisplay(program)">{{program.name}}
+                    <div v-if="currentEvent.settings" class="admin-sidebar-event-settings"
+                         v-on:click="updateDisplay(currentEvent.settings, false)">
+                        Event settings
+                    </div>
+                    <div v-if="currentEvent.programs" v-for="program in currentEvent.programs">
+                        <div class="admin-sidebar-program-container">
+                            <div class="admin-sidebar-program-title" v-on:click="updateDisplay(program)">{{program.name}}
+                            </div>
+                            <div class="admin-sidebar-program-action-container">
+                                <div class="admin-sidebar-program-action-update"></div>
+                                <div class="admin-sidebar-program-action-delete"></div>
+                            </div>
                         </div>
-                        <div class="admin-sidebar-program-action-container">
-                            <div class="admin-sidebar-program-action-update"></div>
-                            <div class="admin-sidebar-program-action-delete"></div>
+                    </div>
+                    <div v-if="currentEvent.event">
+                        <div v-if="event.id === currentEvent.event.id">
+                        <div
+                            class="admin-create-program-sidebar"
+                            v-on:click="setModalState(`createProgramModal`)"
+                        >
+                            Create Program
+                        </div>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <div
-                        v-on:click="setModalState(`createEventModal`)"
-                    >
-                        Create Event
-                    </div>
-                    <create-event-modal
-                        v-show="createEventModal"
-                        @close="setModalState(`createEventModal`)"
-                    />
+            </div>
+            <div>
+                <div
+                    class="admin-create-event-sidebar"
+                    v-on:click="setModalState(`createEventModal`)"
+                >
+                    Create Event
                 </div>
             </div>
         </div>
@@ -52,6 +59,19 @@
                 </div>
             </div>
         </div>
+
+        <create-program-modal
+            v-if="currentEvent.event"
+            v-show="createProgramModal"
+            v-bind:event_id="currentEvent.event.id"
+            @close="setModalState(`createProgramModal`)"
+        />
+
+        <create-event-modal
+            v-show="createEventModal"
+            @close="setModalState(`createEventModal`)"
+        />
+
     </div>
 </template>
 
@@ -62,6 +82,7 @@
     import Item from "./components/Item";
     import Settings from "./components/Settings";
     import CreateEventModal from "./components/modal/CreateEventModal";
+    import CreateProgramModal from "./components/modal/CreateProgramModal";
 
     export default {
         name: 'Role-Form',
@@ -73,9 +94,10 @@
                 program: null,
                 settings: null,
                 createEventModal: false,
+                createProgramModal: false,
             }
         },
-        components: {Event, Program, Item, Settings, CreateEventModal},
+        components: {Event, Program, Item, Settings, CreateEventModal, CreateProgramModal},
         methods: {
             async setSelectedEventId(id) {
                 this.selectedEventId = id;
@@ -232,5 +254,21 @@
         align-items: center;
         height: 32px;
         border-bottom: 2px solid lightblue;
+    }
+
+    .admin-create-event-sidebar {
+        width: 100%;
+        height: 30px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+
+    .admin-create-program-sidebar {
+        width: 100%;
+        height: 30px;
+        align-items: center;
+        justify-content: flex-start;
+        display: flex;
     }
 </style>
