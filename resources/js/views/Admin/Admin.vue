@@ -4,7 +4,8 @@
             <div v-for="event in events" :key="event.name" class="admin-sidebar-event-container">
                 <div class="admin-sidebar-event-list-item" v-on:click="setSelectedEventId(event.id)">{{event.name}}
                 </div>
-                <div v-if="currentEvent.settings" class="admin-sidebar-event-settings" v-on:click="updateDisplay(currentEvent.settings, false)">
+                <div v-if="currentEvent.settings" class="admin-sidebar-event-settings"
+                     v-on:click="updateDisplay(currentEvent.settings, false)">
                     Event settings
                 </div>
                 <div v-if="currentEvent.programs" v-for="program in currentEvent.programs">
@@ -17,11 +18,22 @@
                         </div>
                     </div>
                 </div>
+                <div>
+                    <div
+                        v-on:click="setModalState(`createEventModal`)"
+                    >
+                        Create Event
+                    </div>
+                    <create-event-modal
+                        v-show="createEventModal"
+                        @close="setModalState(`createEventModal`)"
+                    />
+                </div>
             </div>
         </div>
         <div class="admin-main">
             <event v-if="this.currentEvent.event" v-bind:event="currentEvent.event"></event>
-            <settings v-if="settings"  v-bind:settings="settings"></settings>
+            <settings v-if="settings" v-bind:settings="settings"></settings>
             <program v-if="program" v-bind:program="program"></program>
             <div class="admin-item-container" v-if="program">
                 <div class="admin-item-list">
@@ -49,6 +61,7 @@
     import Program from "./components/Program";
     import Item from "./components/Item";
     import Settings from "./components/Settings";
+    import CreateEventModal from "./components/modal/CreateEventModal";
 
     export default {
         name: 'Role-Form',
@@ -59,9 +72,10 @@
                 currentEvent: [],
                 program: null,
                 settings: null,
+                createEventModal: false,
             }
         },
-        components: {Event, Program, Item, Settings},
+        components: {Event, Program, Item, Settings, CreateEventModal},
         methods: {
             async setSelectedEventId(id) {
                 this.selectedEventId = id;
@@ -69,21 +83,22 @@
                 this.currentEvent = data.data;
             },
             updateDisplay(display, isProgram = true) {
-                if(isProgram) {
+                if (isProgram) {
                     this.program = display;
                     this.settings = null;
                 } else {
                     this.program = null;
                     this.settings = display;
                 }
-                console.log(JSON.parse(JSON.stringify(display)))
+            },
+            setModalState(state) {
+                this[state] = !this[state];
             },
         },
         async mounted() {
             const data = await API.get('/api/admin');
             this.events = data.data;
             console.log(data, 'test');
-
         },
     }
 </script>

@@ -55,7 +55,6 @@ class EventController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
             'description' => 'required|min:10',
-            'date' => 'required|date',
         ]);
 
         if ($validator->fails()) {
@@ -82,7 +81,6 @@ class EventController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
             'description' => 'required|min:10',
-            'date' => 'required|date',
         ]);
 
         if ($validator->fails()) {

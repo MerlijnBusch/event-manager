@@ -1,6 +1,7 @@
 @import './login/login';
 @import './forgot/forgot';
 
+@import "admin-modal";
 $close-button-size: 32px;
 
 .modal_holder {
