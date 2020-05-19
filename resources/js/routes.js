@@ -8,6 +8,7 @@ import About from '@/js/views/About';
 import EventForm from '@/js/views/forms/Event-form'
 import ResetPasswordForm from '@/js/views/forms/ResetPasswordForm';
 import Example from '@/js/views/Example'
+import datepickerExample from '@/js/views/DateTimeExample'
 import DropdownExample from '@/js/views/DropdownExample'
 import UserRegistrationForm from '@/js/views/forms/User-Registration-form';
 
@@ -58,6 +59,11 @@ const router = new VueRouter({
             path: '/dropdown',
             name: 'dropdown',
             component: DropdownExample
+        },
+        {
+            path: '/datepicker',
+            name: 'datepicker',
+            component: datepickerExample
         },
 
     ]
