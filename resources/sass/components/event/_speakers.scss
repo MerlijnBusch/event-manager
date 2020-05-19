@@ -1,0 +1,59 @@
+& {
+  .event-my_speakers-title {
+    color: $dark-gray;
+    font-size: $font-size-big;
+  }
+
+
+  .event-my_speakers-rounds {
+
+    .event-my_speakers-round:first-child .event-my_speaker-round-content {
+      padding-right: $padding-medium;
+    }
+
+    .event-my_speakers-round:not(:first-child):not(:last-child) {
+      &:after {
+        left: -$padding-medium/2;
+      }
+
+      .event-my_speaker-round-content {
+        padding-left: $padding-medium/2;
+        padding-right: $padding-medium/2;
+      }
+    }
+
+    .event-my_speakers-round:last-child {
+      &:after {
+        left: 0;
+      }
+
+      .event-my_speaker-round-content {
+        padding-left: $padding-medium;
+      }
+    }
+
+    .event-my_speakers-round + .event-my_speakers-round {
+      position: relative;
+
+      &:after {
+        position: absolute;
+        content: '';
+        height: 100%;
+        width: 0;
+        border-left: solid 1px $dark-gray;
+        top: 0;
+
+      }
+    }
+
+    .event-my_speakers-round-title {
+      color: var(--theme-color);
+      font-size: $font-size-normal;
+
+      > span {
+        color: $basic-gray;
+        float: right;
+      }
+    }
+  }
+}

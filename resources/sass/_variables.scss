@@ -2,10 +2,39 @@
 $font-family: 'Quicksand', sans-serif;
 
 // Colors
-// these aren't perfect yet
-$darkest: #0F0F0F;
-$dark: #1F1F1F;
-$medium: #404040;
-$light: #767676;
-$white: #FFFFFF;
-$orange: #E6A65C;
+$black: #000000;
+$deep-gray: #1F1F1F;
+$dark-gray: #404040;
+$mid-gray: #767676;
+$basic-gray: #C1C1C1;
+$theme-color: lighten(#FF4800,0%);
+//$theme-color: hsl(random(360), 73%, 63%);
+
+// Padding
+$padding-huge: 42px;
+$padding-big: 32px;
+$padding-medium: 24px;
+$padding-small: 12px;
+$padding-tiny: 6px;
+$padding-block: 12px 8px;
+
+// Borders
+$border-radius-big: 32px;
+$border-radius-small: 14px;
+$border-radius-tiny: 6px;
+
+// Font-sizes
+$font-size-basis: 18px;
+$font-size-huge: $font-size-basis * 2.5;
+$font-size-big: $font-size-basis * 2;
+$font-size-medium: $font-size-basis * 1.5;
+$font-size-normal: $font-size-basis;
+$font-size-small: $font-size-basis * .75;
+
+
+// Animation timing
+$animation-time: .3s;
+
+// Shadow
+$shadow: 0 -10px 15px 0 transparentize($black,1-.15);
+
