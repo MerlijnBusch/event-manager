@@ -61,7 +61,10 @@
                                 v-on:click="addItemToBlock(block.id)"
                             >add item</div>
                             <div class="admin-main-block-action-update">update block</div>
-                            <div class="admin-main-block-action-delete">delete block</div>
+                            <div
+                                class="admin-main-block-action-delete"
+                                v-on:click="deleteBlock(block.id)"
+                            >delete block</div>
                         </div>
                     </div>
                     <div>
@@ -170,8 +173,12 @@
             },
             addItemToBlock(id){
                 this.blockId = id;
-                console.log(this.blockId);
                 this.setModalState('createItemModal');
+            },
+            async deleteBlock(id){
+                API.delete('/api/block/' + id);
+                if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
+                this.forceUpdate();
             }
         },
         async mounted() {

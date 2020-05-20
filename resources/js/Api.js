@@ -36,6 +36,14 @@ export default class API {
         if(update) return axios.patch(window.location.origin + url, data, {headers: this.headers});
         return axios.post(window.location.origin + url, data, {headers: this.headers});
     }
+
+    /**
+     * @param url
+     * @returns {Promise<AxiosResponse<any>>}
+     */
+    static async delete(url){
+        return axios.delete(window.location.origin + url, {headers: this.headers});
+    }
 }
 
 

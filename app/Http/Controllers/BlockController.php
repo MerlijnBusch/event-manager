@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Block;
 use App\Rules\ProgramExistValidator;
+use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,7 @@ class BlockController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -24,8 +26,8 @@ class BlockController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Block  $block
-     * @return \Illuminate\Http\Response
+     * @param Block $block
+     * @return Response
      */
     public function show(Block $block)
     {
@@ -63,8 +65,8 @@ class BlockController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param  \App\Block  $block
-     * @return \Illuminate\Http\Response
+     * @param Block $block
+     * @return Response
      */
     public function update(Request $request, Block $block)
     {
@@ -74,11 +76,16 @@ class BlockController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Block  $block
-     * @return \Illuminate\Http\Response
+     * @param Block $block
+     * @return JsonResponse
+     * @throws Exception
      */
     public function destroy(Block $block)
     {
-        //
+        $this->authorize('write', Block::class);
+
+        $block->delete();
+
+        return response()->json(['message' => 'Item deleted successfully'], 200);
     }
 }

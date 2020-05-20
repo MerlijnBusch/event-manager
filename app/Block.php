@@ -28,4 +28,11 @@ class Block extends Model
         return $this->belongsTo('App\Program');
 
     }
+
+
+    public function delete()
+    {
+        $this->items()->delete();
+        return parent::delete();
+    }
 }
