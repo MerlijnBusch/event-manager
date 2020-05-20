@@ -12,6 +12,7 @@ import RoleForm from '@/js/views/forms/Role-form'
 import MapForm from '@/js/views/forms/Map-form'
 import ProfileForm from '@/js/views/forms/Profile-form'
 import CVForm from '@/js/views/forms/CV-form'
+import datepickerExample from '@/js/views/DateTimeExample'
 import AdminIndex from '@/js/views/Admin/Admin';
 import UserRegistrationForm from '@/js/views/forms/User-Registration-form';
 
@@ -87,7 +88,12 @@ const router = new VueRouter({
             path: '/admin',
             name: 'admin',
             component: AdminIndex,
-        }
+        },
+        {
+            path: '/datepicker',
+            name: 'datepicker',
+            component: datepickerExample
+        },
 
     ]
 });
