@@ -379,7 +379,6 @@ html {
   min-height: 200px;
   background: #FFFFFF;
   box-shadow: 2px 2px 20px 1px;
-  overflow-x: auto;
   display: flex;
   flex-direction: column;
 }
@@ -402,8 +401,10 @@ html {
 }
 
 .admin-modal-body {
-  position: relative;
   padding: 20px 10px;
+  max-height: 60vh;
+  overflow: auto;
+  position: relative;
 }
 
 .admin-modal-btn-close {

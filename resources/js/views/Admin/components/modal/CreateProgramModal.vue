@@ -100,7 +100,7 @@
                 config: Config,
             }
         },
-        name: 'CreateEventModal',
+        name: 'CreateProgramModal',
         props: ['event_id'],
         methods: {
             close() {

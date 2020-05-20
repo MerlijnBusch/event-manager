@@ -41,7 +41,7 @@ class Item extends Model
         'name',
         'type',
         'description',
-        'program_id',
+        'block_id',
         'date_start',
         'date_end',
         'active',

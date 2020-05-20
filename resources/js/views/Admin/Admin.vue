@@ -41,7 +41,7 @@
         </div>
         <div class="admin-main">
             <event v-if="this.currentEvent.event" v-bind:event="currentEvent.event"></event>
-            <settings v-if="settings" v-bind:settings="settings"></settings>
+            <!--            <settings v-if="settings" v-bind:settings="settings"></settings>-->
             <program v-if="program" v-bind:program="program"></program>
             <div class="admin-item-container" v-if="program">
                 <div class="admin-item-list">
@@ -55,7 +55,14 @@
                                 <div class="admin-sidebar-item-action-delete"></div>
                             </div>
                         </div>
-                        <h1>add item</h1>
+                        <div class="admin-main-block-action-container">
+                            <div
+                                class="admin-main-block-action-add-item"
+                                v-on:click="addItemToBlock(block.id)"
+                            >add item</div>
+                            <div class="admin-main-block-action-update">update block</div>
+                            <div class="admin-main-block-action-delete">delete block</div>
+                        </div>
                     </div>
                     <div>
                         <div
@@ -76,10 +83,17 @@
             </div>
         </div>
 
+        <create-item-modal
+            v-if="blockId"
+            v-show="createItemModal"
+            v-bind:id="blockId"
+            @close="setModalState(`createItemModal`)"
+        />
+
         <create-block-modal
             v-if="program"
             v-show="createBlockModal"
-            v-bind:program_id="program.id"
+            v-bind:id="program.id"
             @close="setModalState(`createBlockModal`)"
         />
 
@@ -117,10 +131,11 @@
                 selectedEventId: null,
                 currentEvent: [],
                 program: null,
-                settings: null,
+                blockId: null,
                 createEventModal: false,
                 createProgramModal: false,
                 createBlockModal: false,
+                createItemModal: false,
             }
         },
         components: {
@@ -140,19 +155,24 @@
                 this.currentEvent = data.data;
                 console.log(JSON.parse(JSON.stringify(this.currentEvent)))
             },
-            updateDisplay(display, isProgram = true) {
-                if (isProgram) { // @todo set settings in modal
-                    this.program = display;
-                    this.settings = null;
-                } else {
-                    this.program = null;
-                    this.settings = display;
-                }
+            updateDisplay(display) {
+                this.program = display;
             },
-            setModalState(state) {
+            async setModalState(state) {
                 this[state] = !this[state];
-                if (this.selectedEventId) this.setSelectedEventId(this.selectedEventId)
+                if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
+                this.forceUpdate();
             },
+            forceUpdate() {
+                this.currentEvent.programs.forEach((item, index) => {
+                    if (item.id === this.program.id) this.program = this.currentEvent.programs[index];
+                })
+            },
+            addItemToBlock(id){
+                this.blockId = id;
+                console.log(this.blockId);
+                this.setModalState('createItemModal');
+            }
         },
         async mounted() {
             const data = await API.get('/api/admin');
@@ -303,5 +323,30 @@
         justify-content: space-between;
         align-items: center;
         height: 32px;
+    }
+
+    .admin-main-block-action-container {
+        display: flex;
+        align-content: center;
+        flex-direction: row;
+        flex: 1;
+    }
+
+    .admin-main-block-action-add-item {
+        background-color: cornflowerblue;
+        width: 100%;
+        height: 40px;
+    }
+
+    .admin-main-block-action-update {
+        background-color: orange;
+        width: 100%;
+        height: 40px;
+    }
+
+    .admin-main-block-action-delete {
+        background-color: red;
+        width: 100%;
+        height: 40px;
     }
 </style>

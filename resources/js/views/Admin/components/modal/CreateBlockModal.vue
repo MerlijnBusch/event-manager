@@ -75,18 +75,18 @@
                 date_end: null,
             }
         },
-        name: 'CreateEventModal',
-        props: ['program_id'],
+        name: 'CreateBlockModal',
+        props: ['id'],
         methods: {
             close() {
                 this.$emit('close');
             },
             checkForm: function (e) {
 
-                console.log(this.program_id);
+                console.log(this.id);
 
                 const data = {
-                    program_id: this.program_id,
+                    program_id: this.id,
                     date_start: this.date_start,
                     date_end: this.date_end,
                 };
