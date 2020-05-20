@@ -107,6 +107,7 @@
     import CreateEventModal from "./components/modal/CreateEventModal";
     import CreateProgramModal from "./components/modal/CreateProgramModal";
     import CreateBlockModal from "./components/modal/CreateBlockModal";
+    import CreateItemModal from "./components/modal/CreateItemModal";
 
     export default {
         name: 'Admin',
@@ -122,7 +123,16 @@
                 createBlockModal: false,
             }
         },
-        components: {Event, Program, Item, Settings, CreateEventModal, CreateProgramModal, CreateBlockModal},
+        components: {
+            Event,
+            Program,
+            Item,
+            Settings,
+            CreateEventModal,
+            CreateProgramModal,
+            CreateBlockModal,
+            CreateItemModal
+        },
         methods: {
             async setSelectedEventId(id) {
                 this.selectedEventId = id;
@@ -229,15 +239,6 @@
         width: 200px;
     }
 
-    .admin-item-list-title {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        width: 100%;
-        height: 30px;
-        padding: 9px;
-    }
-
     .admin-sidebar-item-action-container {
         display: flex;
         flex-direction: row;
@@ -257,7 +258,7 @@
     }
 
     .admin-block-list-holder {
-        background-color: red;
+        background-color: green;
     }
 
     .admin-item-display-container {
