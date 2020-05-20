@@ -79,7 +79,7 @@
         <create-block-modal
             v-if="program"
             v-show="createBlockModal"
-            v-bind:event_id="program.id"
+            v-bind:program_id="program.id"
             @close="setModalState(`createBlockModal`)"
         />
 
@@ -151,6 +151,7 @@
             },
             setModalState(state) {
                 this[state] = !this[state];
+                if (this.selectedEventId) this.setSelectedEventId(this.selectedEventId)
             },
         },
         async mounted() {

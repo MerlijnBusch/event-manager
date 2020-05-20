@@ -75,6 +75,8 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
 
     Route::post('/program', 'ProgramController@store');
 
+    Route::post('/block', 'BlockController@store');
+
 });
 
 

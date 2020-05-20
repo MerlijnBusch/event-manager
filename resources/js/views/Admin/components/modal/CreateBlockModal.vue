@@ -14,7 +14,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Create Program
+                            Create Block
                         </p>
 
                         <button
@@ -35,8 +35,8 @@
 
                         <form class="form" @submit.prevent="checkForm" method="post">
 
-                            date_start<input type="text" v-model="date_start">
-                            date_end<input type="text" v-model="date_end">
+                            <date-picker v-model="date_start" @update="(v)=>{date_start = v}"></date-picker>
+                            <date-picker v-model="date_end" @update="(v)=>{date_end = v}"></date-picker>
 
                             <div class="form-line admin-from-submit">
                                 <input type="submit" value="Submit" class="submit-btn admin-form-submit">
@@ -64,8 +64,10 @@
 
 <script>
     import API from "../../../../Api";
+    import DatePicker from "../../../../components/datePicker";
 
     export default {
+        components: {DatePicker},
         data() {
             return {
                 program_id: null,
@@ -89,7 +91,9 @@
                     date_end: this.date_end,
                 };
 
-                API.post(data, '/api/event');
+                API.post(data, '/api/block');
+
+                this.close();
 
                 e.preventDefault();
             }

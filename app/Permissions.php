@@ -43,4 +43,7 @@ class Permissions extends Model {
     public const __READ_PROGRAMS__ = 'read_programs';
     public const __WRITE_PROGRAMS__ = 'write_programs';
 
+    public const __READ_BLOCK__ = 'read_block';
+    public const __WRITE_BLOCK__ = 'write_block';
+
 }
