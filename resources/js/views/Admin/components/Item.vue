@@ -71,6 +71,7 @@
     .admin-item-display-holder .ql-toolbar.ql-snow {
         border: unset;
         display: none;
+        position: relative;
     }
 
     .admin-item-display-holder .ql-container.ql-snow {
@@ -78,7 +79,9 @@
     }
 
     .admin-item-display-holder .ql-editor {
-        max-height: 150px !important;
+        min-height: 100px;
+        max-height: 200px;
+        padding: 0;
     }
 
     .admin-item-title-input {
@@ -86,7 +89,7 @@
         outline: transparent;
         border: transparent;
         width: 100%;
-        font-size: xx-large;
+        font-size: x-large;
     }
 
     .admin-item-title-input:focus {

@@ -317,7 +317,7 @@
     }
 
     .admin-item-display-container-for {
-        padding: 8px;
+        padding: 0px 8px;
     }
 
     .admin-sidebar-event-settings {
