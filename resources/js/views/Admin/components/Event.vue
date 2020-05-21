@@ -23,29 +23,3 @@
         },
     }
 </script>
-
-<style>
-    .admin-event-container {
-        margin-top: 4px;
-    }
-
-    .admin-text-editor {
-        margin-top: 8px;
-    }
-
-    .ql-editor {
-        max-height: 200px !important;
-    }
-
-    .admin-event-title-input {
-        background: transparent;
-        outline: transparent;
-        border: transparent;
-        width: 100%;
-        font-size: xx-large;
-    }
-
-    .admin-event-title-input:focus {
-        border-bottom: 2px solid lightblue;
-    }
-</style>

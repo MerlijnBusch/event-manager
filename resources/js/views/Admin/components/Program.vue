@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="admin-main-program-title">
         <h1>{{program.name}}</h1>
     </div>
 </template>
@@ -19,7 +19,3 @@
         },
     }
 </script>
-
-<style>
-
-</style>

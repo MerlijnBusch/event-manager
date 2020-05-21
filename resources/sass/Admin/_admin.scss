@@ -1,0 +1,170 @@
+@import "Item";
+@import "Event";
+@import "Program";
+
+.admin-container {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.admin-sidebar {
+    min-width: 285px;
+    max-width: 285px;
+}
+
+.admin-sidebar-event-container {
+    padding: 8px;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.admin-main {
+    padding: 16px;
+    flex: 1;
+    background-color: yellow;
+}
+
+.admin-sidebar-event-list-item {
+    font-size: larger;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.admin-sidebar-program-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 32px;
+    border-bottom: 2px solid lightblue;
+}
+
+.admin-sidebar-program-action-container {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+.admin-sidebar-program-action-update {
+    background: orange;
+    width: 30px;
+    height: 30px;
+}
+
+.admin-sidebar-program-action-delete {
+    background: red;
+    width: 30px;
+    height: 30px;
+}
+
+.admin-sidebar-program-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.admin-item-container {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.admin-item-list {
+    width: 300px;
+}
+
+.admin-sidebar-item-action-container {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+.admin-sidebar-item-action-update {
+    background: orange;
+    width: 30px;
+    height: 30px;
+}
+
+.admin-sidebar-item-action-delete {
+    background: red;
+    width: 30px;
+    height: 30px;
+}
+
+.admin-block-list-holder {
+    background-color: green;
+}
+
+.admin-item-display-container {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    flex-direction: column;
+    flex: 1;
+}
+
+.admin-item-display-container-for {
+    padding: 0px 8px;
+}
+
+.admin-sidebar-event-settings {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 32px;
+    border-bottom: 2px solid lightblue;
+}
+
+.admin-create-event-sidebar {
+    width: 100%;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.admin-create-program-sidebar {
+    width: 100%;
+    height: 30px;
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+}
+
+.admin-item-list-holder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 32px;
+}
+
+.admin-main-block-action-container {
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+    flex: 1;
+}
+
+.admin-main-block-action-add-item {
+    background-color: cornflowerblue;
+    width: 100%;
+    height: 40px;
+}
+
+.admin-main-block-action-update {
+    background-color: orange;
+    width: 100%;
+    height: 40px;
+}
+
+.admin-main-block-action-delete {
+    background-color: red;
+    width: 100%;
+    height: 40px;
+}
