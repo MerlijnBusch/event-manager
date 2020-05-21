@@ -2,7 +2,14 @@
     <div class="admin-item-display-holder">
         <input class="admin-item-title-input" id="name" v-model="item.name" type="text" name="name"
                placeholder="Event name"/>
-        <quill class="admin-item-text-editor" output="html" v-model="item.description" :config="config"></quill>
+        <quill
+            @selection-change="selectionChange"
+            ref="qlCon"
+            class="admin-item-text-editor"
+            output="html"
+            v-model="item.description"
+            :config="config"
+        ></quill>
     </div>
 </template>
 
@@ -15,11 +22,35 @@
         data() {
             return {
                 config: Config,
+                isFocus: false,
+            }
+        },
+        methods: {
+            selectionChange(editor, range) {
+                if (range === null && this.isFocus === false) {
+                    this.$refs.qlCon.$el.children[0].style.display = "none";
+                } else if(this.isFocus === true){
+                    this.$refs.qlCon.$el.children[0].style.display = "block";
+                }
+            },
+            focus(event){
+                this.isFocus = true;
+            },
+            blur(event){
+                this.isFocus = false;
             }
         },
         mounted() {
-            console.log(this.item);
+            this.focus = this.focus.bind(this);
+            this.blur = this.blur.bind(this);
+
+            this.$refs.qlCon.$el.addEventListener('focus', this.focus, true);
+            this.$refs.qlCon.$el.addEventListener('blur', this.blur, true);
         },
+        beforeDestroy() {
+            this.$refs.qlCon.$el.removeEventListener('focus', this.focus, true);
+            this.$refs.qlCon.$el.removeEventListener('blur', this.blur, true);
+        }
     }
 </script>
 
@@ -32,9 +63,21 @@
 
     .admin-item-text-editor {
         margin-top: 8px;
+        display: flex;
+        flex: 1;
+        flex-direction: column-reverse;
     }
 
-    .ql-editor {
+    .admin-item-display-holder .ql-toolbar.ql-snow {
+        border: unset;
+        display: none;
+    }
+
+    .admin-item-display-holder .ql-container.ql-snow {
+        border: unset;
+    }
+
+    .admin-item-display-holder .ql-editor {
         max-height: 150px !important;
     }
 
