@@ -1,12 +1,12 @@
 <template>
     <div class="datePicker">
-        <button @click="isOpen = !isOpen"><span v-if="!!value && value.length">{{value}}</span><span
-                v-else>Pick a date</span></button>
+        <div @click="isOpen = !isOpen"><span v-if="!!value && value.length">{{value}}</span><span
+                v-else>Pick a date</span></div>
         <div v-if="isOpen" class="datePicker-window">
             <div>
-                <button @click="previous">previous</button>
+                <div @click="previous">previous</div>
                 <span>{{months[date.current.month]}} {{date.current.year}}</span>
-                <button @click="next">next</button>
+                <div @click="next">next</div>
             </div>
             <table class="table table-bordered table-responsive-sm" id="calendar">
                 <thead>
@@ -24,10 +24,10 @@
                 <tbody id="calendar-body">
                 <tr v-for="row in table.rows">
                     <td v-for="column in row">
-                        <button :class="{'selected' : parseInt(date.current.day) === parseInt(column)}" v-if="column"
+                        <div :class="{'selected' : parseInt(date.current.day) === parseInt(column)}" v-if="column"
                                 @click="pushDate(column)">
                             {{column}}
-                        </button>
+                        </div>
                     </td>
                 </tr>
                 </tbody>

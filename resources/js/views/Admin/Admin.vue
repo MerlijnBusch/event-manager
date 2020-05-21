@@ -2,19 +2,22 @@
     <div class="admin-container">
         <div class="admin-sidebar">
             <div v-for="event in events" :key="event.name" class="admin-sidebar-event-container">
-                <div class="admin-sidebar-event-list-item" v-on:click="setSelectedEventId(event.id)">{{event.name}}
-                    <div v-if="currentEvent.settings" class="admin-sidebar-event-settings"
-                         v-on:click="updateDisplay(currentEvent.settings, false)">
-                        Event settings
-                    </div>
+                <div
+                    class="admin-sidebar-event-list-item"
+                    v-on:click="setSelectedEventId(event.id)"
+                >{{event.name}}
                     <div v-if="currentEvent.programs" v-for="program in currentEvent.programs">
                         <div class="admin-sidebar-program-container">
-                            <div class="admin-sidebar-program-title" v-on:click="updateDisplay(program)">
+                            <div class="admin-sidebar-program-title"
+                                 v-on:click="updateDisplay(program)">
                                 {{program.name}}
                             </div>
                             <div class="admin-sidebar-program-action-container">
-                                <div class="admin-sidebar-program-action-update"></div>
-                                <div class="admin-sidebar-program-action-delete"></div>
+                                <div class="admin-sidebar-program-action-update">u</div>
+                                <div
+                                    class="admin-sidebar-program-action-delete"
+                                    v-on:click="deleteProgram(program.id)"
+                                >d</div>
                             </div>
                         </div>
                     </div>
@@ -41,7 +44,6 @@
         </div>
         <div class="admin-main">
             <event v-if="this.currentEvent.event" v-bind:event="currentEvent.event"></event>
-            <!--            <settings v-if="settings" v-bind:settings="settings"></settings>-->
             <program v-if="program" v-bind:program="program"></program>
             <div class="admin-item-container" v-if="program">
                 <div class="admin-item-list">
@@ -59,12 +61,14 @@
                             <div
                                 class="admin-main-block-action-add-item"
                                 v-on:click="addItemToBlock(block.id)"
-                            >add item</div>
+                            >add item
+                            </div>
                             <div class="admin-main-block-action-update">update block</div>
                             <div
                                 class="admin-main-block-action-delete"
                                 v-on:click="deleteBlock(block.id)"
-                            >delete block</div>
+                            >delete block
+                            </div>
                         </div>
                     </div>
                     <div>
@@ -86,6 +90,13 @@
             </div>
         </div>
 
+<!--        <update-event-settings-modal-->
+<!--            v-if="currentEvent.settings"-->
+<!--            v-show="updateEventSettingsModal"-->
+<!--            v-bind:settings="currentEvent.settings"-->
+<!--            @close="setModalState(`updateEventSettingsModal`)"-->
+<!--        />-->
+
         <create-item-modal
             v-if="blockId"
             v-show="createItemModal"
@@ -103,7 +114,7 @@
         <create-program-modal
             v-if="currentEvent.event"
             v-show="createProgramModal"
-            v-bind:event_id="currentEvent.event.id"
+            v-bind:id="currentEvent.event.id"
             @close="setModalState(`createProgramModal`)"
         />
 
@@ -125,6 +136,7 @@
     import CreateProgramModal from "./components/modal/CreateProgramModal";
     import CreateBlockModal from "./components/modal/CreateBlockModal";
     import CreateItemModal from "./components/modal/CreateItemModal";
+    import UpdateEventSettingsModal from "./components/modal/UpdateEventSettingsModal";
 
     export default {
         name: 'Admin',
@@ -139,6 +151,7 @@
                 createProgramModal: false,
                 createBlockModal: false,
                 createItemModal: false,
+                updateEventSettingsModal: false,
             }
         },
         components: {
@@ -149,7 +162,8 @@
             CreateEventModal,
             CreateProgramModal,
             CreateBlockModal,
-            CreateItemModal
+            CreateItemModal,
+            UpdateEventSettingsModal
         },
         methods: {
             async setSelectedEventId(id) {
@@ -171,12 +185,17 @@
                     if (item.id === this.program.id) this.program = this.currentEvent.programs[index];
                 })
             },
-            addItemToBlock(id){
+            addItemToBlock(id) {
                 this.blockId = id;
                 this.setModalState('createItemModal');
             },
-            async deleteBlock(id){
+            async deleteBlock(id) {
                 API.delete('/api/block/' + id);
+                if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
+                this.forceUpdate();
+            },
+            async deleteProgram(id){
+                API.delete('/api/program/' + id);
                 if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
                 this.forceUpdate();
             }

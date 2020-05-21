@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\HigherOrderBuilderProxy;
 use Illuminate\Database\Eloquent\Model;
+use ReflectionClass;
 
 /**
  * @property mixed|string name
@@ -18,6 +19,15 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Program extends Model
 {
+    public function getAllItemTypes() {
+        try {
+            $reflectionClass = new ReflectionClass($this);
+            return $reflectionClass->getConstants();
+        } catch (\ReflectionException $e) {
+            abort(500, "Internal Server Error");
+        }
+    }
+
     public const __CONGRESS__ = 'congress_program';
     public const __PROGRAM__ = 'program';
 
@@ -46,5 +56,11 @@ class Program extends Model
 
         return $this->belongsTo('App\Event');
 
+    }
+
+    public function delete()
+    {
+        $this->block()->delete();
+        return parent::delete();
     }
 }

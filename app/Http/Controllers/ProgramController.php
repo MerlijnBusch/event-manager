@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Program;
 use App\Rules\EventExistValidator;
 use App\Rules\ProgramTypeValidator;
+use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,7 @@ class ProgramController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -25,8 +27,8 @@ class ProgramController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Program  $program
-     * @return \Illuminate\Http\Response
+     * @param Program $program
+     * @return Response
      */
     public function show(Program $program)
     {
@@ -45,7 +47,7 @@ class ProgramController extends Controller
         $this->authorize('write', Program::class);
 
         $validator = Validator::make($request->all(), [
-            'event_id' => ['string', new EventExistValidator],
+            'event_id' => ['required', new EventExistValidator],
             'name' => ['string'],
             'date_start' => ['string'],
             'date_end' => ['string'],
@@ -68,8 +70,8 @@ class ProgramController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param  \App\Program  $program
-     * @return \Illuminate\Http\Response
+     * @param Program $program
+     * @return Response
      */
     public function update(Request $request, Program $program)
     {
@@ -79,11 +81,17 @@ class ProgramController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Program  $program
-     * @return \Illuminate\Http\Response
+     * @param Program $program
+     * @return JsonResponse
+     * @throws AuthorizationException
+     * @throws Exception
      */
     public function destroy(Program $program)
     {
-        //
+        $this->authorize('write', Program::class);
+
+        $program->delete();
+
+        return response()->json(['message' => 'Program deleted successfully'], 200);
     }
 }

@@ -51,8 +51,8 @@
                                 </select>
                             </div>
 
-                            date_start<input type="text" v-model="date_start">
-                            date_end<input type="text" v-model="date_end">
+                            <date-picker v-model="date_start" @update="(v)=>{date_start = v}"></date-picker>
+                            <date-picker v-model="date_end" @update="(v)=>{date_end = v}"></date-picker>
 
                             <div class="form-line">
                                 <label class="form-label" for="active">Active</label>
@@ -87,6 +87,7 @@
 <script>
     import API from "../../../../Api";
     import {Config} from "../../../../quillConfig";
+    import DatePicker from "../../../../components/datePicker";
 
     export default {
         data() {
@@ -100,23 +101,28 @@
                 config: Config,
             }
         },
+        components: {DatePicker},
         name: 'CreateProgramModal',
-        props: ['event_id'],
+        props: ['id'],
         methods: {
             close() {
                 this.$emit('close');
             },
             checkForm: function (e) {
 
-                console.log(this.event_id);
-                this.errors = [];
-
                 const data = {
+                    event_id: this.id,
                     name: this.name,
                     description: this.description,
+                    date_start: this.date_start,
+                    date_end: this.date_end,
+                    type: this.type,
+                    active: this.active,
                 };
 
-                API.post(data, '/api/event');
+                API.post(data, '/api/program');
+
+                this.close();
 
                 e.preventDefault();
             }
