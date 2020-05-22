@@ -76,7 +76,9 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::post('/program', 'ProgramController@store');
     Route::delete('/program/{program}', 'ProgramController@destroy');
 
+    Route::get('/block/{block}', 'BlockController@show');
     Route::post('/block', 'BlockController@store');
+    Route::patch('/block/{block}', 'BlockController@update');
     Route::delete('/block/{block}', 'BlockController@destroy');
 
 });

@@ -27,11 +27,14 @@ class BlockController extends Controller
      * Display the specified resource.
      *
      * @param Block $block
-     * @return Response
+     * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function show(Block $block)
     {
-        //
+        $this->authorize('read', Block::class);
+
+        return response()->json($block, 200);
     }
 
     /**
@@ -66,11 +69,26 @@ class BlockController extends Controller
      *
      * @param Request $request
      * @param Block $block
-     * @return Response
+     * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function update(Request $request, Block $block)
     {
-        //
+        $this->authorize('write', Block::class);
+
+        $validator = Validator::make($request->all(), [
+            'date_start' => ['required', 'date'],
+            'date_end' => ['required', 'date'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        $block = Block::findOrFail($block->id);
+        $block->update($request->all());
+
+        return response()->json(['message' => 'Block created successfully'], 200);
     }
 
     /**

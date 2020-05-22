@@ -63,7 +63,10 @@
                                 v-on:click="addItemToBlock(block.id)"
                             >add item
                             </div>
-                            <div class="admin-main-block-action-update">update block</div>
+                            <div
+                                class="admin-main-block-action-update"
+                                v-on:click="updateBlock(block.id)"
+                            >update block</div>
                             <div
                                 class="admin-main-block-action-delete"
                                 v-on:click="deleteBlock(block.id)"
@@ -123,6 +126,13 @@
             @close="setModalState(`createEventModal`)"
         />
 
+        <update-block-modal
+            v-if="updateBlockId"
+            v-bind:id="updateBlockId"
+            v-show="updateBlockModal"
+            @close="setModalState(`updateBlockModal`)"
+        />
+
     </div>
 </template>
 
@@ -137,6 +147,7 @@
     import CreateBlockModal from "./components/modal/CreateBlockModal";
     import CreateItemModal from "./components/modal/CreateItemModal";
     import UpdateEventSettingsModal from "./components/modal/UpdateEventSettingsModal";
+    import UpdateBlockModal from "./components/modal/UpdateBlockModal";
 
     export default {
         name: 'Admin',
@@ -147,11 +158,13 @@
                 currentEvent: [],
                 program: null,
                 blockId: null,
+                updateBlockId: null,
                 createEventModal: false,
                 createProgramModal: false,
                 createBlockModal: false,
                 createItemModal: false,
                 updateEventSettingsModal: false,
+                updateBlockModal: false,
             }
         },
         components: {
@@ -163,7 +176,8 @@
             CreateProgramModal,
             CreateBlockModal,
             CreateItemModal,
-            UpdateEventSettingsModal
+            UpdateEventSettingsModal,
+            UpdateBlockModal
         },
         methods: {
             async setSelectedEventId(id) {
@@ -189,6 +203,10 @@
                 this.blockId = id;
                 this.setModalState('createItemModal');
             },
+            updateBlock(id){
+                this.updateBlockId = id;
+                this.setModalState('updateBlockModal');
+            },
             async deleteBlock(id) {
                 API.delete('/api/block/' + id);
                 if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
@@ -203,7 +221,6 @@
         async mounted() {
             const data = await API.get('/api/admin');
             this.events = data.data;
-            console.log(data, 'test');
         },
     }
 </script>
