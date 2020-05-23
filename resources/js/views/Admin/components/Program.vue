@@ -1,6 +1,6 @@
 <template>
     <div class="admin-main-program-title">
-        <h1>{{program.name}}</h1>
+        {{program.name}}
     </div>
 </template>
 

@@ -5,7 +5,11 @@
                 <div
                     class="admin-sidebar-event-list-item"
                     v-on:click="setSelectedEventId(event.id)"
-                >{{event.name}}
+                >
+                    <div class="admin-sidebar-event-name-holder">
+                        <div class="admin-sidebar-event-name">{{event.name}}</div>
+                        <div class="admin-sidebar-event-name-stripe"></div>
+                    </div>
                     <div v-if="currentEvent.programs" v-for="program in currentEvent.programs">
                         <div class="admin-sidebar-program-container">
                             <div class="admin-sidebar-program-title"
@@ -17,7 +21,8 @@
                                 <div
                                     class="admin-sidebar-program-action-delete"
                                     v-on:click="deleteProgram(program.id)"
-                                >d</div>
+                                >d
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -44,61 +49,71 @@
         </div>
         <div class="admin-main">
             <event v-if="this.currentEvent.event" v-bind:event="currentEvent.event"></event>
-            <program v-if="program" v-bind:program="program"></program>
-            <div class="admin-item-container" v-if="program">
-                <div class="admin-item-list">
-                    <div v-for="block in program.block" class="admin-block-list-holder">
-                        {{block.date_start}}<br>
-                        {{block.date_end}}
-                        <div v-for="item in block.items" class="admin-item-list-holder">
-                            <div>{{item.name}}</div>
-                            <div class="admin-sidebar-item-action-container">
-                                <div class="admin-sidebar-item-action-update"></div>
-                                <div class="admin-sidebar-item-action-delete"></div>
+            <div class="admin-main-program-container">
+                <program v-if="program" v-bind:program="program"></program>
+                <div class="admin-item-container" v-if="program">
+                    <div class="admin-item-list">
+                        <div class="admin-block-list">
+                            <div v-for="block in program.block" class="admin-block-list-holder">
+                                <div class="admin-block-list-header">
+                                    <div class="admin-block-list-date">{{block.date_start}} / {{block.date_end}}</div>
+                                    <div class="admin-block-action">
+                                        <i>icon</i>
+                                    </div>
+                                </div>
+                                <div v-for="item in block.items" class="admin-item-list-holder">
+                                    <div>{{item.name}}</div>
+                                    <div class="admin-sidebar-item-action-container">
+                                        <div class="admin-sidebar-item-action-update"></div>
+                                        <div class="admin-sidebar-item-action-delete"></div>
+                                    </div>
+                                </div>
+                                <div class="admin-main-block-action-container">
+                                    <div
+                                        class="admin-main-block-action-add-item"
+                                        v-on:click="addItemToBlock(block.id)"
+                                    >add item
+                                    </div>
+                                    <div
+                                        class="admin-main-block-action-update"
+                                        v-on:click="updateBlock(block.id)"
+                                    >update block
+                                    </div>
+                                    <div
+                                        class="admin-main-block-action-delete"
+                                        v-on:click="deleteBlock(block.id)"
+                                    >delete block
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="admin-main-block-action-container">
+                        <div>
                             <div
-                                class="admin-main-block-action-add-item"
-                                v-on:click="addItemToBlock(block.id)"
-                            >add item
-                            </div>
-                            <div
-                                class="admin-main-block-action-update"
-                                v-on:click="updateBlock(block.id)"
-                            >update block</div>
-                            <div
-                                class="admin-main-block-action-delete"
-                                v-on:click="deleteBlock(block.id)"
-                            >delete block
+                                class="admin-block-list-add-block"
+                                v-on:click="setModalState(`createBlockModal`)"
+                            >
+                                <i>add icon</i>Add block
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <div
-                            class=""
-                            v-on:click="setModalState(`createBlockModal`)"
-                        >
-                            Add block
-                        </div>
-                    </div>
-                </div>
-                <div class="admin-item-display-container">
-                    <div v-for="block in program.block" class="admin-item-display-container-for">
-                        <div v-for="item in block.items">
-                            <item v-bind:item="item"></item>
+                    <div class="admin-item-display-container">
+                        <div v-for="block in program.block" class="admin-item-display-container-for">
+                            <div v-for="item in block.items">
+                                <item v-bind:item="item"></item>
+                                <div class="admin-item-hr"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-<!--        <update-event-settings-modal-->
-<!--            v-if="currentEvent.settings"-->
-<!--            v-show="updateEventSettingsModal"-->
-<!--            v-bind:settings="currentEvent.settings"-->
-<!--            @close="setModalState(`updateEventSettingsModal`)"-->
-<!--        />-->
+        <!--        <update-event-settings-modal-->
+        <!--            v-if="currentEvent.settings"-->
+        <!--            v-show="updateEventSettingsModal"-->
+        <!--            v-bind:settings="currentEvent.settings"-->
+        <!--            @close="setModalState(`updateEventSettingsModal`)"-->
+        <!--        />-->
 
         <create-item-modal
             v-if="blockId"
@@ -203,7 +218,7 @@
                 this.blockId = id;
                 this.setModalState('createItemModal');
             },
-            updateBlock(id){
+            updateBlock(id) {
                 this.updateBlockId = id;
                 this.setModalState('updateBlockModal');
             },
@@ -212,7 +227,7 @@
                 if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
                 this.forceUpdate();
             },
-            async deleteProgram(id){
+            async deleteProgram(id) {
                 API.delete('/api/program/' + id);
                 if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
                 this.forceUpdate();

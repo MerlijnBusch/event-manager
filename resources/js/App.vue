@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="force-height">
         <NavBar @logout="logOut()" @openLogin="openLogin" :loggedIn="loggedIn"></NavBar>
         <Modal v-if="modal_open" @loggedIn="loggedInHandler" @close="closeLogin"></Modal>
         <div class="main">
