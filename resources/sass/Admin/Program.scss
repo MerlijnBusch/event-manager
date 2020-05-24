@@ -1,7 +1,17 @@
-.admin-main-program-title {
+.admin-main-program-title-holder {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     color: whitesmoke;
-    height: 70px;
+    height: 80px;
+    padding: 8px 24px;
+}
+
+.admin-main-program-icon {
+    font-size: 32px;
+    margin-right: 18px;
+}
+
+.admin-main-program-title {
+    font-size: 42px;
 }

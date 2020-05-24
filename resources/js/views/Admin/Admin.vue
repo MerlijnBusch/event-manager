@@ -11,17 +11,20 @@
                         <div class="admin-sidebar-event-name-stripe"></div>
                     </div>
                     <div v-if="currentEvent.programs" v-for="program in currentEvent.programs">
-                        <div class="admin-sidebar-program-container">
+                        <div class="admin-sidebar-program-container" v-if="program.event_id === currentEvent.event.id">
                             <div class="admin-sidebar-program-title"
                                  v-on:click="updateDisplay(program)">
                                 {{program.name}}
                             </div>
                             <div class="admin-sidebar-program-action-container">
-                                <div class="admin-sidebar-program-action-update">u</div>
+                                <div class="admin-sidebar-program-action-update">
+                                    <i class="fas fa-pencil"></i>
+                                </div>
                                 <div
                                     class="admin-sidebar-program-action-delete"
                                     v-on:click="deleteProgram(program.id)"
-                                >d
+                                >
+                                    <i class="fas fa-trash"></i>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +58,10 @@
                     <div class="admin-item-list">
                         <div class="admin-block-list">
                             <div v-for="block in program.block" class="admin-block-list-holder">
-                                <div class="admin-block-list-header">
+                                <div
+                                    class="admin-block-list-header"
+
+                                >
                                     <div class="admin-block-list-date">{{block.date_start}} / {{block.date_end}}</div>
                                     <div class="admin-block-action">
                                         <i>icon</i>
@@ -104,7 +110,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="admin-item-container-line"></div>
                 </div>
+
             </div>
         </div>
 
