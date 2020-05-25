@@ -4,21 +4,30 @@
         <div class="event-content flex-grid">
             <div class="event-titlebar column-desktop-12 column-tablet-12 column-mobile-12">
                 <div class="flex-grid">
-                    <h1 class="event-titlebar-title column-desktop-3" v-text="title"></h1>
-                    <h4 class="event-titlebar-descript column-desktop-3" v-text="description"></h4>
-<!--                    <span class="event-titlebar-date" v-text="formatDate(info.date)"></span>-->
-                    <div class="event-titlebar-ticketcounter column-desktop-3" v-if="tickets.isShowing">
-                        <span class="event-titlebar-current-ticketcount">{{tickets.current}}/</span>
-                        <span class="event-titlebar-maximum-ticketcount">{{tickets.max}}</span>
+                    <div class="event-titlebar-part-holder column-desktop-4">
+                        <h1 class="event-titlebar-title" v-text="title"></h1>
                     </div>
-                </div>
-                <div class="flex-grid">
-                    <span class="event-titlebar-date column-desktop-3" v-text="formatDate(info.date)"></span>
-                    <div class="event-titlebar-line desktop-3">
-                        <hr class="event-titlebar-divider">
-                        <p class="event-titlebar-line-text desktop-3">stel hier uw ticket samen onder</p>
+                    <div class="event-titlebar-part-holder column-desktop-4">
+                        <h4 class="event-titlebar-descript" v-text="description"></h4>
                     </div>
-                    <a href="#" class="event-titlebar-btn">Bekijk plattegrond</a>
+                    <div class="event-titlebar-part-holder column-desktop-4">
+                        <div class="event-titlebar-ticketcounter" v-if="tickets.isShowing">
+                            <span class="event-titlebar-current-ticketcount">{{tickets.current}}/</span>
+                            <span class="event-titlebar-maximum-ticketcount">{{tickets.max}}</span>
+                        </div>
+                    </div>
+                    <div class="event-titlebar-part-holder column-desktop-4">
+                        <span class="event-titlebar-date" v-text="formatDate(info.date)"></span>
+                    </div>
+                    <div class="event-titlebar-part-holder column-desktop-4">
+                        <div class="event-titlebar-line">
+                            <hr class="event-titlebar-divider">
+                            <p class="event-titlebar-line-text desktop-3">stel hier uw ticket samen onder</p>
+                        </div>
+                    </div>
+                    <div class="event-titlebar-part-holder column-desktop-4">
+                        <a href="#" class="event-titlebar-btn">Bekijk plattegrond</a>
+                    </div>
                 </div>
             </div>
             <div class="event-program_and_info column-desktop-4 column-tablet-6 column-mobile-12">
@@ -109,13 +118,13 @@
                             </b>
 
                             <div class="event-my_speakers-round-speaker" v-if="!!speaker">
-                            <b class="event-my_speakers-round-speaker-title">{{speaker.name}}</b>
-                            <span class="event-my_speakers-round-speaker-description">{{speaker.description}}</span>
-                            <button class="event-my_speakers-round-speaker-close-button"
-                            @click="removeSelection(index)">
-                            <!--TODO: Remove X later-->
-                            X
-                            </button>
+                                <b class="event-my_speakers-round-speaker-title">{{speaker.name}}</b>
+                                <span class="event-my_speakers-round-speaker-description">{{speaker.description}}</span>
+                                <button class="event-my_speakers-round-speaker-close-button"
+                                        @click="removeSelection(index)">
+                                    <!--TODO: Remove X later-->
+                                    X
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -145,7 +154,7 @@
                 this.selectedSpeakers = selectedSpeakers;
                 this.$forceUpdate();
             },
-            removeSelection(index){
+            removeSelection(index) {
                 this.selectedSpeakers[index] = null;
                 this.$forceUpdate();
             }
