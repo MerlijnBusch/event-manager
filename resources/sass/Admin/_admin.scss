@@ -1,6 +1,7 @@
 @import "Item";
 @import "Event";
 @import "Program";
+@import "AdminSideBar";
 
 .admin-container {
     margin: 0;
@@ -20,19 +21,8 @@
     flex-direction: column;
 }
 
-.admin-sidebar {
-    background-color: #2e2e2e;
-    color: whitesmoke;
-    min-width: 335px;
-    max-width: 335px;
-}
-
-.admin-sidebar-event-container {
-    width: 100%;
-    justify-content: flex-start;
-}
-
 .admin-main {
+    max-width: calc(100% - 335px);
     padding: 16px 16px 0 16px;
     display: flex;
     flex-grow: 1;
@@ -40,62 +30,6 @@
     height: 100%;
     flex-shrink: 0;
     background-color: #404040;
-}
-
-.admin-sidebar-event-list-item {
-    font-size: larger;
-    justify-content: center;
-    align-items: center;
-    padding: 4px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.admin-sidebar-program-container:hover {
-    background-color: #1f1f1f;
-}
-
-.admin-sidebar-program-container {
-    padding: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 50px;
-}
-
-.admin-sidebar-program-action-container {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-}
-
-.admin-sidebar-program-action-update {
-    background: #404040;
-    width: 35px;
-    height: 35px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    border-radius: 50%;
-    margin: 0px 4px;
-}
-
-.admin-sidebar-program-action-delete {
-    background: #404040;
-    width: 35px;
-    height: 35px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    border-radius: 50%;
-    margin: 0px 4px;
-}
-
-.admin-sidebar-program-title {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .admin-item-container {
@@ -110,24 +44,6 @@
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
-}
-
-.admin-sidebar-item-action-container {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-}
-
-.admin-sidebar-item-action-update {
-    background: orange;
-    width: 30px;
-    height: 30px;
-}
-
-.admin-sidebar-item-action-delete {
-    background: red;
-    width: 30px;
-    height: 30px;
 }
 
 .admin-block-list-holder {
@@ -147,30 +63,6 @@
 
 .admin-item-display-container-for {
     padding: 0px 8px;
-}
-
-.admin-sidebar-event-settings {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 32px;
-    border-bottom: 2px solid lightblue;
-}
-
-.admin-create-event-sidebar {
-    width: 100%;
-    height: 30px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-}
-
-.admin-create-program-sidebar {
-    width: 100%;
-    height: 30px;
-    align-items: center;
-    justify-content: flex-start;
-    display: flex;
 }
 
 .admin-item-list-holder {
@@ -245,24 +137,10 @@
     padding: 8px;
 }
 
-.admin-sidebar-event-name-holder {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.admin-sidebar-event-name {
-
-}
-
-.admin-sidebar-event-name-stripe {
-    background: #3e3e3e;
-    height: 4px;
-    margin: 8px 4px;
-    width: 100%;
-}
-
 .admin-item-container-line {
     width: 25px;
+}
+
+.admin-item-container-footer {
+    height: 40px;
 }

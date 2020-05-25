@@ -520,13 +520,13 @@
 
 @media(pointer: coarse) {
     .ql-snow.ql-toolbar button:hover:not(.ql-active), .ql-snow .ql-toolbar button:hover:not(.ql-active) {
-        color: #444
+        color: #fff
     }
     .ql-snow.ql-toolbar button:hover:not(.ql-active) .ql-fill, .ql-snow .ql-toolbar button:hover:not(.ql-active) .ql-fill, .ql-snow.ql-toolbar button:hover:not(.ql-active) .ql-stroke.ql-fill, .ql-snow .ql-toolbar button:hover:not(.ql-active) .ql-stroke.ql-fill {
-        fill: #444
+        fill: #fff
     }
     .ql-snow.ql-toolbar button:hover:not(.ql-active) .ql-stroke, .ql-snow .ql-toolbar button:hover:not(.ql-active) .ql-stroke, .ql-snow.ql-toolbar button:hover:not(.ql-active) .ql-stroke-miter, .ql-snow .ql-toolbar button:hover:not(.ql-active) .ql-stroke-miter {
-        stroke: #444
+        stroke: #fff
     }
 }
 
@@ -573,7 +573,7 @@
 
 .ql-snow .ql-stroke {
     fill: none;
-    stroke: #444;
+    stroke: #fff;
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-width: 2
@@ -581,13 +581,13 @@
 
 .ql-snow .ql-stroke-miter {
     fill: none;
-    stroke: #444;
+    stroke: #fff;
     stroke-miterlimit: 10;
     stroke-width: 2
 }
 
 .ql-snow .ql-fill, .ql-snow .ql-stroke.ql-fill {
-    fill: #444
+    fill: #fff
 }
 
 .ql-snow .ql-empty {
@@ -729,16 +729,16 @@
 }
 
 .ql-snow .ql-picker.ql-expanded .ql-picker-label {
-    color: #ccc;
+    color: #fff;
     z-index: 2
 }
 
 .ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-fill {
-    fill: #ccc
+    fill: #fff
 }
 
 .ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-stroke {
-    stroke: #ccc
+    stroke: #fff
 }
 
 .ql-snow .ql-picker.ql-expanded .ql-picker-options {
@@ -881,7 +881,8 @@
 }
 
 .ql-snow .ql-picker.ql-size .ql-picker-label::before, .ql-snow .ql-picker.ql-size .ql-picker-item::before {
-    content: 'Normal'
+    content: 'Normal';
+    color: #fff;
 }
 
 .ql-snow .ql-picker.ql-size .ql-picker-label[data-value=small]::before, .ql-snow .ql-picker.ql-size .ql-picker-item[data-value=small]::before {
@@ -941,7 +942,8 @@
 }
 
 .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {
-    border-color: #ccc
+    border-color: #ccc;
+    background-color: #2e2e2e;
 }
 
 .ql-toolbar.ql-snow .ql-color-picker .ql-picker-item.ql-selected, .ql-toolbar.ql-snow .ql-color-picker .ql-picker-item:hover {

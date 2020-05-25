@@ -11,7 +11,7 @@
                         <div class="admin-sidebar-event-name-stripe"></div>
                     </div>
                     <div v-if="currentEvent.programs" v-for="program in currentEvent.programs">
-                        <div class="admin-sidebar-program-container" v-if="program.event_id === currentEvent.event.id">
+                        <div class="admin-sidebar-program-container" v-if="program.event_id === event.id">
                             <div class="admin-sidebar-program-title"
                                  v-on:click="updateDisplay(program)">
                                 {{program.name}}
@@ -52,7 +52,7 @@
         </div>
         <div class="admin-main">
             <event v-if="this.currentEvent.event" v-bind:event="currentEvent.event"></event>
-            <div class="admin-main-program-container">
+            <div class="admin-main-program-container" v-if="program">
                 <program v-if="program" v-bind:program="program"></program>
                 <div class="admin-item-container" v-if="program">
                     <div class="admin-item-list">
@@ -70,8 +70,12 @@
                                 <div v-for="item in block.items" class="admin-item-list-holder">
                                     <div>{{item.name}}</div>
                                     <div class="admin-sidebar-item-action-container">
-                                        <div class="admin-sidebar-item-action-update"></div>
-                                        <div class="admin-sidebar-item-action-delete"></div>
+                                        <div class="admin-sidebar-item-action-update">
+                                            <i class="fas fa-pencil"></i>
+                                        </div>
+                                        <div class="admin-sidebar-item-action-delete">
+                                            <i class="fas fa-trash"></i>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="admin-main-block-action-container">
@@ -112,8 +116,8 @@
                     </div>
                     <div class="admin-item-container-line"></div>
                 </div>
-
             </div>
+            <div class="admin-item-container-footer"></div>
         </div>
 
         <!--        <update-event-settings-modal-->
