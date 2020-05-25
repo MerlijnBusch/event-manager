@@ -62,9 +62,39 @@
                                     class="admin-block-list-header"
 
                                 >
-                                    <div class="admin-block-list-date">{{block.date_start}} / {{block.date_end}}</div>
-                                    <div class="admin-block-action">
-                                        <i>icon</i>
+                                    <div class="admin-block-date-holder">
+                                        <div class="admin-block-list-date">
+                                            {{block.date_start.slice(5)}} / {{block.date_end.slice(5)}}
+                                        </div>
+                                        <div
+                                            class="admin-block-action"
+                                            v-on:click="displayBlockActions(block.id)"
+                                        >
+                                            <i class="fas fa-chevron-left"></i>
+                                        </div>
+                                    </div>
+                                    <div class="admin-block-action-holder" :id="'block-' + block.id">
+                                            <div
+                                                class="admin-block-action-icon-holder"
+                                                v-on:click="addItemToBlock(block.id)"
+                                                title="add item"
+                                            >
+                                                <i class="fas fa-plus-circle admin-block-action-icon"></i>
+                                            </div>
+                                            <div
+                                                class="admin-block-action-icon-holder"
+                                                v-on:click="updateBlock(block.id)"
+                                                title="update this block"
+                                            >
+                                                <i class="fas fa-pencil admin-block-action-icon"></i>
+                                            </div>
+                                            <div
+                                                class="admin-block-action-icon-holder"
+                                                v-on:click="deleteBlock(block.id)"
+                                                title="delete this block"
+                                            >
+                                                <i class="fas fa-trash admin-block-action-icon"></i>
+                                            </div>
                                     </div>
                                 </div>
                                 <div v-for="item in block.items" class="admin-item-list-holder">
@@ -78,23 +108,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="admin-main-block-action-container">
-                                    <div
-                                        class="admin-main-block-action-add-item"
-                                        v-on:click="addItemToBlock(block.id)"
-                                    >add item
-                                    </div>
-                                    <div
-                                        class="admin-main-block-action-update"
-                                        v-on:click="updateBlock(block.id)"
-                                    >update block
-                                    </div>
-                                    <div
-                                        class="admin-main-block-action-delete"
-                                        v-on:click="deleteBlock(block.id)"
-                                    >delete block
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div>
@@ -102,7 +115,7 @@
                                 class="admin-block-list-add-block"
                                 v-on:click="setModalState(`createBlockModal`)"
                             >
-                                <i>add icon</i>Add block
+                                <i class="fas fa-plus-circle admin-block-list-add-icon"></i>Add block
                             </div>
                         </div>
                     </div>
@@ -243,6 +256,12 @@
                 API.delete('/api/program/' + id);
                 if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
                 this.forceUpdate();
+            },displayBlockActions(id){
+                console.log(id);
+                let target = document.getElementById('block-' + id)
+                let width = target.getBoundingClientRect().width;
+                if(width === 0) target.style.width = "120px";
+                else target.style.width = "0px";
             }
         },
         async mounted() {
