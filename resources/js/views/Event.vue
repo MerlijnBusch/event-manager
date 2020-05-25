@@ -57,9 +57,10 @@
                                         <span class="event-congress-round-speaker-position">{{speaker.position}}</span>
                                     </div>
                                     <div class="event-congress-round-checkbox-holder">
-                                        <input class="event-congress-round-speaker-checkbox" type="checkbox"
-                                               @change="deselectSpeakers(index, speaker)"
-                                               v-model="speaker.selected">
+                                        <button class="event-congress-round-speaker-checkbox"
+                                                @click="setSpeaker(index, speaker, round.time)"
+                                        >ADD
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -70,9 +71,10 @@
                                     <span class="event-congress-round-speaker-position">{{round.speaker.position}}</span>
                                 </div>
                                 <div class="event-congress-round-checkbox-holder">
-                                    <input class="event-congress-round-speaker-checkbox" type="checkbox"
-                                           @change="deselectSpeakers(index, round.speaker)"
-                                           v-model="round.speaker.selected">
+                                    <button class="event-congress-round-speaker-checkbox"
+                                            @click="setSpeaker(index, round.speaker, round.speaker.time, true)"
+                                    >ADD
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -86,32 +88,24 @@
                     Sprekers</b>
                 <div class="event-my_speakers-rounds column-desktop-12 column-tablet-12 column-mobile-12 flex-grid">
                     <div class="event-my_speakers-round column-desktop-4 column-tablet-4 column-mobile-12"
-                         v-for="(round,index) in congress">
+                         v-for="(speaker,index) in selectedSpeakers">
                         <div class="event-my_speaker-round-content">
                             <b class="event-my_speakers-round-title">Ronde
                                 {{index + 1}}
-                                <span class="event-my_speakers-round-title-time">{{round.time}}</span>
-                                <span class="event-my_speakers-round-title-keynote"
-                                      v-if="round.speaker.selected">Keynotespreker</span>
+                                <span class="event-my_speakers-round-title-time"
+                                      v-if="!!speaker">{{speaker.time}}</span>
+                                <b class="event-my_speakers-round-title-keynote"
+                                   v-if="!!speaker && speaker.isKeynote">Keynotespreker</b>
                             </b>
 
-                            <div class="event-my_speakers-round-speaker" v-if="round.speaker.selected">
-                                <b class="event-my_speakers-round-speaker-title">{{round.speaker.name}}</b>
-                                <span class="event-my_speakers-round-speaker-description">{{round.speaker.description}}</span>
-                                <button class="event-my_speakers-round-speaker-close-button"
-                                        @click="round.speaker.selected = false">
-                                    <!--TODO: Remove X later-->
-                                    X
-                                </button>
-                            </div>
-                            <div v-else v-for="speaker in round.speakers" v-if="speaker.selected">
-                                <b class="event-my_speakers-round-speaker-title">{{speaker.name}}</b>
-                                <span class="event-my_speakers-round-speaker-description">{{speaker.description}}</span>
-                                <button class="event-my_speakers-round-speaker-close-button"
-                                        @click="speaker.selected = false">
-                                    <!--TODO: Remove X later-->
-                                    X
-                                </button>
+                            <div class="event-my_speakers-round-speaker" v-if="!!speaker">
+                            <b class="event-my_speakers-round-speaker-title">{{speaker.name}}</b>
+                            <span class="event-my_speakers-round-speaker-description">{{speaker.description}}</span>
+                            <button class="event-my_speakers-round-speaker-close-button"
+                            @click="removeSelection(index)">
+                            <!--TODO: Remove X later-->
+                            X
+                            </button>
                             </div>
                         </div>
                     </div>
@@ -124,23 +118,31 @@
 <script>
     export default ({
         name: 'Event',
+        mounted() {
+            this.selectedSpeakers = new Array(this.congress.length);
+        },
         methods: {
             formatDate(date) {
                 let datetime = new Date(date);
                 return datetime.getDate() + "-" + (datetime.getMonth() + 1) + "-" + datetime.getFullYear();
             },
-            deselectSpeakers(index, speaker) {
-                for (let i = 0; i < this.congress[index].speakers.length; i++) {
-                    this.congress[index].speakers[i].selected = false;
-                }
-                this.congress[index].speaker.selected = false;
-                console.log(speaker);
-                speaker.selected = true;
+            setSpeaker(index, speaker, time, isKeynote = false) {
+                let selectedSpeakers = this.selectedSpeakers;
+                speaker = JSON.parse(JSON.stringify(speaker));
+                speaker.isKeynote = isKeynote;
+                speaker.time = time;
+                selectedSpeakers[index] = speaker;
+                this.selectedSpeakers = selectedSpeakers;
                 this.$forceUpdate();
             },
+            removeSelection(index){
+                this.selectedSpeakers[index] = null;
+                this.$forceUpdate();
+            }
         },
         data() {
             return {
+                selectedSpeakers: [],
                 title: 'Tides Europe',
                 backgroundImage: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
                 color: '#E6A65C',
@@ -184,28 +186,23 @@
                         time: '9:00 - 10:00',
                         speakers: [
                             {
-                                selected: false,
                                 name: 'Merijn Everaarts',
                                 position: 'CEO Dopper',
                             },
                             {
-                                selected: false,
                                 name: 'Eva Janssen',
                                 position: 'Market analyst',
                             },
                             {
-                                selected: false,
                                 name: 'Merijn Everaarts',
                                 position: 'CEO Dopper',
                             },
                             {
-                                selected: false,
                                 name: 'Eva Janssen',
                                 position: 'Market analyst',
                             }
                         ],
                         speaker: {
-                            selected: false,
                             time: '11:00 - 12:00',
                             name: 'Syp Arends',
                             position: 'CEO Pyroil',
@@ -215,28 +212,23 @@
                         time: '13:00 - 14:00',
                         speakers: [
                             {
-                                selected: false,
                                 name: 'Merijn Everaarts',
                                 position: 'CEO Dopper',
                             },
                             {
-                                selected: false,
                                 name: 'Eva Janssen',
                                 position: 'Market analyst',
                             },
                             {
-                                selected: false,
                                 name: 'Merijn Everaarts',
                                 position: 'CEO Dopper',
                             },
                             {
-                                selected: false,
                                 name: 'Eva Janssen',
                                 position: 'Market analyst',
                             }
                         ],
                         speaker: {
-                            selected: false,
                             time: '14:00 - 15:00',
                             name: 'Syp Arends',
                             position: 'CEO Pyroil',
@@ -246,28 +238,23 @@
                         time: '15:30 - 16:30',
                         speakers: [
                             {
-                                selected: false,
                                 name: 'Merijn Everaarts',
                                 position: 'CEO Dopper',
                             },
                             {
-                                selected: false,
                                 name: 'Eva Janssen',
                                 position: 'Market analyst',
                             },
                             {
-                                selected: false,
                                 name: 'Merijn Everaarts',
                                 position: 'CEO Dopper',
                             },
                             {
-                                selected: false,
                                 name: 'Eva Janssen',
                                 position: 'Market analyst',
                             }
                         ],
                         speaker: {
-                            selected: false,
                             time: '14:00 - 15:00',
                             name: 'Syp Arends',
                             position: 'CEOlPyroil',

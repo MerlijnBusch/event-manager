@@ -29,4 +29,28 @@ body {
   display: flex;
   flex: 1;
   flex-direction: column;
+  background-color: $deep-gray;
+
+  > div {
+    border-radius: $border-radius-big $border-radius-big 0 0;
+    z-index: 1;
+  }
+
+  > div + div {
+    z-index: 0;
+  }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: .5s;
+  position: absolute;
+}
+
+.fade-enter {
+  transform: translateY(-50vw);
+}
+
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(50vw);
 }
