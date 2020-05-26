@@ -56,14 +56,13 @@
 </template>
 
 <script>
-    //@todo excell to json converter upload to db
     import API from "../../../../Api";
 
     export default {
         data() {
             return {}
         },
-        name: 'CreateBlockModal',
+        name: 'UploadExcelUserModal',
         props: ['id'],
         methods: {
             close() {
@@ -72,6 +71,7 @@
             submit(){
                 const parseExcel = function(file) {
                     let reader = new FileReader();
+                    let array = [];
 
                     reader.onload = function(e) {
                         let data = e.target.result;
@@ -81,9 +81,10 @@
 
                         workbook.SheetNames.forEach(function(sheetName) {
                             let XL_row_object = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
-                            let json_object = JSON.stringify(XL_row_object);
-                            console.log(json_object);
+                            array.push(XL_row_object);
                         })
+
+                        API.post(array, '/admin/excel');
 
                     };
 

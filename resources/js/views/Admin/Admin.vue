@@ -2,6 +2,12 @@
     <div class="admin-container">
         <div class="admin-sidebar">
             <div>
+                <p>users:</p>
+                <div>
+                    <div> Find user</div>
+                    <div> Upload multiple users (excel)</div>
+                </div>
+                <p>events:</p>
                 <div v-for="event in events" :key="event.name" class="admin-sidebar-event-container">
                     <div
                         class="admin-sidebar-event-list-item"
@@ -9,35 +15,35 @@
                     >
                         <div class="admin-sidebar-event-name-holder">
                             <div class="admin-sidebar-event-name">{{event.name}}</div>
-                            <div class="admin-sidebar-event-name-stripe"></div>
                         </div>
-                        <div v-if="currentEvent.programs" v-for="program in currentEvent.programs">
-                            <div class="admin-sidebar-program-container" v-if="program.event_id === event.id">
-                                <div class="admin-sidebar-program-title"
-                                     v-on:click="updateDisplay(program)">
-                                    {{program.name}}
-                                </div>
-                                <div class="admin-sidebar-program-action-container">
-                                    <div class="admin-sidebar-program-action-update">
-                                        <i class="fas fa-pencil"></i>
+                        <div :id="'event-' + event.id" class="admin-sidebar-display-event-options">
+                            <div v-if="event.program" v-for="prog in event.program">
+                                <div class="admin-sidebar-program-container" v-if="prog.event_id === event.id">
+                                    <div class="admin-sidebar-program-title"
+                                         v-on:click="updateDisplay(prog)">
+                                        {{prog.name}}
                                     </div>
-                                    <div
-                                        class="admin-sidebar-program-action-delete"
-                                        v-on:click="deleteProgram(program.id)"
-                                    >
-                                        <i class="fas fa-trash"></i>
+                                    <div class="admin-sidebar-program-action-container">
+                                        <div class="admin-sidebar-program-action-update">
+                                            <i class="fas fa-pencil"></i>
+                                        </div>
+                                        <div
+                                            class="admin-sidebar-program-action-delete"
+                                            v-on:click="deleteProgram(prog.id)"
+                                        >
+                                            <i class="fas fa-trash"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div
-                            v-if="currentEvent.event && event.id === currentEvent.event.id"
-                            class="admin-create-program-sidebar"
-                            v-on:click="setModalState(`createProgramModal`)"
-                        >
-                            <div class="admin-sidebar-program-create-button">
-                                <i class="fas fa-plus-circle"></i> Create Program
+                            <div
+                                class="admin-create-program-sidebar"
+                                v-on:click="setModalState(`createProgramModal`)"
+                            >
+                                <div class="admin-sidebar-program-create-button">
+                                    <i class="fas fa-plus-circle"></i> Create Program
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -181,10 +187,11 @@
             @close="setModalState(`updateBlockModal`)"
         />
 
-        <upload-excell-users-modal
-            v-show="true"
-        >
-        </upload-excell-users-modal>
+        <upload-excel-users-modal
+            v-show="uploadExcelUsersModal"
+            @close="setModalState(`uploadExcelUsersModal`)"
+        />
+
 
     </div>
 </template>
@@ -201,7 +208,7 @@
     import CreateItemModal from "./components/modal/CreateItemModal";
     import UpdateEventSettingsModal from "./components/modal/UpdateEventSettingsModal";
     import UpdateBlockModal from "./components/modal/UpdateBlockModal";
-    import UploadExcellUsersModal from "./components/modal/UploadExcellUsersModal";
+    import UploadExcelUsersModal from "./components/modal/UploadExcelUsersModal";
 
     export default {
         name: 'Admin',
@@ -219,6 +226,7 @@
                 createItemModal: false,
                 updateEventSettingsModal: false,
                 updateBlockModal: false,
+                uploadExcelUsersModal: false,
             }
         },
         components: {
@@ -232,14 +240,20 @@
             CreateItemModal,
             UpdateEventSettingsModal,
             UpdateBlockModal,
-            UploadExcellUsersModal
+            UploadExcelUsersModal
         },
         methods: {
             async setSelectedEventId(id) {
                 this.selectedEventId = id;
                 const data = await API.get('/api/admin/' + id);
                 this.currentEvent = data.data;
-                console.log(JSON.stringify(this.currentEvent, null, 2))
+                setTimeout(() => {
+                    let target = document.getElementById('event-' + id);
+                    let height = target.getBoundingClientRect().height;
+                    if (height === 0) target.style.maxHeight = "500px";
+                    else target.style.maxHeight = "0";
+                }, 500)
+                console.log(JSON.stringify(this.currentEvent))
             },
             updateDisplay(display) {
                 this.program = display;
@@ -288,6 +302,7 @@
         async mounted() {
             const data = await API.get('/api/admin');
             this.events = data.data;
+            console.log(JSON.parse(JSON.stringify(this.events)));
         },
     }
 </script>

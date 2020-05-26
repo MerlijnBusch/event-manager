@@ -17,7 +17,6 @@
     font-size: larger;
     justify-content: center;
     align-items: center;
-    padding: 4px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -130,6 +129,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    background: #111111;
 }
 
 .admin-sidebar-event-name {
@@ -165,7 +165,16 @@
     align-items: center;
 }
 
-.admin-sidebar-event-create-icon{
+.admin-sidebar-event-create-icon {
     font-size: 24px;
     margin: 0 8px;
+}
+
+.admin-sidebar-display-event-options {
+    overflow: hidden;
+    max-height: 0;
+    -webkit-transition: max-height .5s ease-in-out;
+    -moz-transition: max-height .5s ease-in-out;
+    -o-transition: max-height .5s ease-in-out;
+    transition: max-height .5s ease-in-out;
 }

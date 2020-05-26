@@ -22,30 +22,42 @@ class AdminController extends Controller
     {
         $this->authorize('read', Event::class);
 
-        return response()->json(Event::query()->get());
+        $s = Event::query()
+            ->with('program')
+            ->with('settings')
+            ->with('program.block')
+            ->with('program.block.items')
+            ->get();
+
+        return response()->json($s, 200);
     }
 
     /**
      * @param Event $event
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function event(Event $event)
     {
-        $eventSettings = [];
-        $programs = [];
+        $this->authorize('read', Event::class);
+        $this->authorize('read', EventSettings::class);
+        $this->authorize('read', Program::class);
 
-        if (Auth::user()->can('read', EventSettings::class)) {
-            $eventSettings = EventSettings::query()->where('event_id', $event->id)->first();
-        }
+        $eventSettings = EventSettings::query()->where('event_id', $event->id)->first();
 
-        if (Auth::user()->can('read', Program::class) && Auth::user()->can('read', Item::class)) {
-            $programs = Program::query()
+        $programs = Program::query()
                 ->where('event_id', $event->id)
                 ->with('block')
                 ->with('block.items')->get();
-        }
+
 
         return response()->json(["event" => $event, "settings" => $eventSettings, "programs" => $programs], 200);
+    }
+
+    public function excel(Request $request){
+
+        //@todo handle excel also ask what kind of excel should be uploaded
+
     }
 
 }
