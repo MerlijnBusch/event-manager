@@ -14,7 +14,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Create Block
+                            Update Block
                         </p>
 
                         <button

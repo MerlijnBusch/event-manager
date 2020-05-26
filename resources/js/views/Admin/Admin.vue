@@ -60,10 +60,14 @@
                             <div v-for="block in program.block" class="admin-block-list-holder">
                                 <div
                                     class="admin-block-list-header"
-
                                 >
-                                    <div class="admin-block-date-holder">
-                                        <div class="admin-block-list-date">
+                                    <div
+                                        class="admin-block-date-holder"
+                                    >
+                                        <div
+                                            class="admin-block-list-date"
+                                            v-on:click="displayBlockItems(block.id, block.items.length)"
+                                        >
                                             {{block.date_start.slice(5)}} / {{block.date_end.slice(5)}}
                                         </div>
                                         <div
@@ -74,37 +78,39 @@
                                         </div>
                                     </div>
                                     <div class="admin-block-action-holder" :id="'block-' + block.id">
-                                            <div
-                                                class="admin-block-action-icon-holder"
-                                                v-on:click="addItemToBlock(block.id)"
-                                                title="add item"
-                                            >
-                                                <i class="fas fa-plus-circle admin-block-action-icon"></i>
-                                            </div>
-                                            <div
-                                                class="admin-block-action-icon-holder"
-                                                v-on:click="updateBlock(block.id)"
-                                                title="update this block"
-                                            >
-                                                <i class="fas fa-pencil admin-block-action-icon"></i>
-                                            </div>
-                                            <div
-                                                class="admin-block-action-icon-holder"
-                                                v-on:click="deleteBlock(block.id)"
-                                                title="delete this block"
-                                            >
-                                                <i class="fas fa-trash admin-block-action-icon"></i>
-                                            </div>
+                                        <div
+                                            class="admin-block-action-icon-holder"
+                                            v-on:click="addItemToBlock(block.id)"
+                                            title="add item"
+                                        >
+                                            <i class="fas fa-plus-circle admin-block-action-icon"></i>
+                                        </div>
+                                        <div
+                                            class="admin-block-action-icon-holder"
+                                            v-on:click="updateBlock(block.id)"
+                                            title="update this block"
+                                        >
+                                            <i class="fas fa-pencil admin-block-action-icon"></i>
+                                        </div>
+                                        <div
+                                            class="admin-block-action-icon-holder"
+                                            v-on:click="deleteBlock(block.id)"
+                                            title="delete this block"
+                                        >
+                                            <i class="fas fa-trash admin-block-action-icon"></i>
+                                        </div>
                                     </div>
                                 </div>
-                                <div v-for="item in block.items" class="admin-item-list-holder">
-                                    <div>{{item.name}}</div>
-                                    <div class="admin-sidebar-item-action-container">
-                                        <div class="admin-sidebar-item-action-update">
-                                            <i class="fas fa-pencil"></i>
-                                        </div>
-                                        <div class="admin-sidebar-item-action-delete">
-                                            <i class="fas fa-trash"></i>
+                                <div class="admin-block-item-list" :id="'block-items-' + block.id">
+                                    <div v-for="item in block.items" class="admin-item-list-holder">
+                                        <div>{{item.name}}</div>
+                                        <div class="admin-sidebar-item-action-container">
+                                            <div class="admin-sidebar-item-action-update">
+                                                <i class="fas fa-pencil"></i>
+                                            </div>
+                                            <div class="admin-sidebar-item-action-delete">
+                                                <i class="fas fa-trash"></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -256,12 +262,18 @@
                 API.delete('/api/program/' + id);
                 if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
                 this.forceUpdate();
-            },displayBlockActions(id){
-                console.log(id);
+            },
+            displayBlockActions(id) {
                 let target = document.getElementById('block-' + id)
                 let width = target.getBoundingClientRect().width;
-                if(width === 0) target.style.width = "120px";
+                if (width === 0) target.style.width = "120px";
                 else target.style.width = "0px";
+            },
+            displayBlockItems(id, amount){
+                let target = document.getElementById('block-items-' + id)
+                let height = target.getBoundingClientRect().height;
+                if (height === 0) target.style.height = (60 * amount) + "px";
+                else target.style.height = "0px";
             }
         },
         async mounted() {

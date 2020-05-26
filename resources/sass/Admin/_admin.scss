@@ -22,6 +22,7 @@
 }
 
 .admin-main {
+    max-height: calc(100vh - 80px);
     max-width: calc(100% - 335px);
     padding: 16px 16px 0 16px;
     display: flex;
@@ -33,6 +34,7 @@
 }
 
 .admin-item-container {
+    max-height: calc(100% - 80px);
     display: flex;
     height: 100%;
     flex-direction: row;
@@ -50,6 +52,10 @@
 
 }
 
+.admin-item-display-container::-webkit-scrollbar {
+    display: none;
+}
+
 .admin-item-display-container {
     display: flex;
     justify-content: flex-start;
@@ -59,6 +65,7 @@
     background: #2e2e2e;
     padding-left: 16px;
     padding-top: 8px;
+    overflow-y: scroll;
 }
 
 .admin-item-display-container-for {
@@ -145,6 +152,8 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 8px;
+    height: 100%;
+    align-items: center;
 }
 
 .admin-block-action-holder {
@@ -173,4 +182,19 @@
 
 .admin-block-action-icon {
     font-size: 18px;
+}
+
+.admin-block-item-list {
+    overflow: hidden;
+    height: 0;
+    -webkit-transition: height .3s ease-in-out;
+    -moz-transition: height .3s ease-in-out;
+    -o-transition: height .3s ease-in-out;
+    transition: height .3s ease-in-out;
+}
+
+.admin-block-list-date {
+    height: 100%;
+    align-items: center;
+    display: flex;
 }
