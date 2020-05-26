@@ -5,7 +5,23 @@
     color: whitesmoke;
 }
 
+.admin-item-text-editor:focus {
+    border: unset;
+    outline: unset;
+}
+.admin-item-text-editor ::-webkit-scrollbar {
+    display: none;
+}
+
 .admin-item-text-editor {
+    overflow-y: hidden;
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 30px;
+    max-height: 70px;
+    background: transparent;
+    color: white;
+    border: unset;
     margin-top: 8px;
     display: flex;
     flex: 1;

@@ -41,7 +41,11 @@
                                        placeholder="Event name">
                             </div>
 
-                            <quill class="admin-text-editor admin-ql-need-min-height" output="html" v-model="description" :config="config"></quill>
+                            <div class="form-line">
+                                <label class="form-label" for="description">description</label>
+                                <textarea class="form-text-input" id="description" v-model="description" type="text" name="description"
+                                          placeholder="Event name"></textarea>
+                            </div>
 
                             <div class="form-line admin-from-submit">
                                 <input type="submit" value="Submit" class="submit-btn admin-form-submit">
@@ -69,14 +73,12 @@
 
 <script>
     import API from "../../../../Api";
-    import {Config} from "../../../../quillConfig"
 
     export default {
         data() {
             return {
                 name: '',
                 description: '',
-                config: Config,
             }
         },
         name: 'CreateEventModal',

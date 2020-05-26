@@ -1,52 +1,54 @@
 <template>
     <div class="admin-container">
         <div class="admin-sidebar">
-            <div v-for="event in events" :key="event.name" class="admin-sidebar-event-container">
-                <div
-                    class="admin-sidebar-event-list-item"
-                    v-on:click="setSelectedEventId(event.id)"
-                >
-                    <div class="admin-sidebar-event-name-holder">
-                        <div class="admin-sidebar-event-name">{{event.name}}</div>
-                        <div class="admin-sidebar-event-name-stripe"></div>
-                    </div>
-                    <div v-if="currentEvent.programs" v-for="program in currentEvent.programs">
-                        <div class="admin-sidebar-program-container" v-if="program.event_id === event.id">
-                            <div class="admin-sidebar-program-title"
-                                 v-on:click="updateDisplay(program)">
-                                {{program.name}}
-                            </div>
-                            <div class="admin-sidebar-program-action-container">
-                                <div class="admin-sidebar-program-action-update">
-                                    <i class="fas fa-pencil"></i>
+            <div>
+                <div v-for="event in events" :key="event.name" class="admin-sidebar-event-container">
+                    <div
+                        class="admin-sidebar-event-list-item"
+                        v-on:click="setSelectedEventId(event.id)"
+                    >
+                        <div class="admin-sidebar-event-name-holder">
+                            <div class="admin-sidebar-event-name">{{event.name}}</div>
+                            <div class="admin-sidebar-event-name-stripe"></div>
+                        </div>
+                        <div v-if="currentEvent.programs" v-for="program in currentEvent.programs">
+                            <div class="admin-sidebar-program-container" v-if="program.event_id === event.id">
+                                <div class="admin-sidebar-program-title"
+                                     v-on:click="updateDisplay(program)">
+                                    {{program.name}}
                                 </div>
-                                <div
-                                    class="admin-sidebar-program-action-delete"
-                                    v-on:click="deleteProgram(program.id)"
-                                >
-                                    <i class="fas fa-trash"></i>
+                                <div class="admin-sidebar-program-action-container">
+                                    <div class="admin-sidebar-program-action-update">
+                                        <i class="fas fa-pencil"></i>
+                                    </div>
+                                    <div
+                                        class="admin-sidebar-program-action-delete"
+                                        v-on:click="deleteProgram(program.id)"
+                                    >
+                                        <i class="fas fa-trash"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div v-if="currentEvent.event">
-                        <div v-if="event.id === currentEvent.event.id">
-                            <div
-                                class="admin-create-program-sidebar"
-                                v-on:click="setModalState(`createProgramModal`)"
-                            >
-                                Create Program
+
+                        <div
+                            v-if="currentEvent.event && event.id === currentEvent.event.id"
+                            class="admin-create-program-sidebar"
+                            v-on:click="setModalState(`createProgramModal`)"
+                        >
+                            <div class="admin-sidebar-program-create-button">
+                                <i class="fas fa-plus-circle"></i> Create Program
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div>
+            <div class="admin-sidebar-create-event-container">
                 <div
                     class="admin-create-event-sidebar"
                     v-on:click="setModalState(`createEventModal`)"
                 >
-                    Create Event
+                    <i class="fas fa-plus-circle admin-sidebar-event-create-icon"></i>Create Event
                 </div>
             </div>
         </div>
@@ -269,7 +271,7 @@
                 if (width === 0) target.style.width = "120px";
                 else target.style.width = "0px";
             },
-            displayBlockItems(id, amount){
+            displayBlockItems(id, amount) {
                 let target = document.getElementById('block-items-' + id)
                 let height = target.getBoundingClientRect().height;
                 if (height === 0) target.style.height = (60 * amount) + "px";

@@ -41,7 +41,11 @@
                                        placeholder="Event name">
                             </div>
 
-                            <quill class="admin-text-editor admin-ql-need-min-height" output="html" v-model="description" :config="config"></quill>
+                            <div class="form-line">
+                                <label class="form-label" for="description">description</label>
+                                <textarea class="form-text-input" id="description" v-model="description" type="text" name="description"
+                                          placeholder="Event name"></textarea>
+                            </div>
 
                             <div class="form-line">
                                 <label class="form-label" for="type">Name</label>
@@ -88,7 +92,6 @@
 <script>
     import API from "../../../../Api";
     import DatePicker from "../../../../components/datePicker";
-    import {Config} from "../../../../quillConfig";
 
     export default {
         components: {DatePicker},
@@ -100,7 +103,6 @@
                 date_start: null,
                 date_end: null,
                 active: false,
-                config: Config,
             }
         },
         name: 'CreateItemModal',
