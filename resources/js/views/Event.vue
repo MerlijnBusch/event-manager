@@ -31,6 +31,7 @@
                 </div>
             </div>
             <div class="event-program_and_info column-desktop-4 column-tablet-6 column-mobile-12">
+                <div class="event-program_and_info-content">
                 <div class="event-program">
                     <b class="event-program-title">Programma</b>
                     <div class="event-program-part" v-for="part in program">
@@ -58,6 +59,7 @@
                     </div>
                 </div>
             </div>
+            </div>
             <div class="event-congress column-desktop-8 column-tablet-6 column-mobile-12 flex-grid">
                 <b class="event-congress-title column-desktop-12 column-tablet-12 column-mobile-12">Congress</b>
                 <p class="event-congress-description column-desktop-4 column-tablet-4 column-mobile-4">
@@ -76,9 +78,10 @@
                                         <span class="event-congress-round-speaker-position">{{speaker.position}}</span>
                                     </div>
                                     <div class="event-congress-round-checkbox-holder">
-                                        <button class="event-congress-round-speaker-checkbox"
-                                                @click="setSpeaker(index, speaker, round.time)"
-                                        >ADD
+                                        <button class="event-congress-round-speaker-checkbox" :class="{'active' : selectedSpeakers.length && !!selectedSpeakers[index] && selectedSpeakers[index].id === speaker.id}"
+                                                @click="setSpeaker(index, speaker, round.time)">
+                                            <div></div>
+                                            <div></div>
                                         </button>
                                     </div>
                                 </div>
@@ -90,9 +93,10 @@
                                     <span class="event-congress-round-speaker-position">{{round.speaker.position}}</span>
                                 </div>
                                 <div class="event-congress-round-checkbox-holder">
-                                    <button class="event-congress-round-speaker-checkbox"
-                                            @click="setSpeaker(index, round.speaker, round.speaker.time, true)"
-                                    >ADD
+                                    <button class="event-congress-round-speaker-checkbox" :class="{'active' : selectedSpeakers.length && !!selectedSpeakers[index] && selectedSpeakers[index].id === round.speaker.id}"
+                                            @click="setSpeaker(index, round.speaker, round.speaker.time, true)">
+                                    <div></div>
+                                    <div></div>
                                     </button>
                                 </div>
                             </div>
@@ -206,24 +210,29 @@
                         speakers: [
                             {
                                 name: 'Merijn Everaarts',
+                                id: 1,
                                 position: 'CEO Dopper',
                             },
                             {
                                 name: 'Eva Janssen',
+                                id: 2,
                                 position: 'Market analyst',
                             },
                             {
                                 name: 'Merijn Everaarts',
+                                id: 3,
                                 position: 'CEO Dopper',
                             },
                             {
                                 name: 'Eva Janssen',
+                                id: 4,
                                 position: 'Market analyst',
                             }
                         ],
                         speaker: {
                             time: '11:00 - 12:00',
                             name: 'Syp Arends',
+                            id: 5,
                             position: 'CEO Pyroil',
                         },
                     },
@@ -232,24 +241,29 @@
                         speakers: [
                             {
                                 name: 'Merijn Everaarts',
+                                id: 1,
                                 position: 'CEO Dopper',
                             },
                             {
                                 name: 'Eva Janssen',
+                                id: 2,
                                 position: 'Market analyst',
                             },
                             {
                                 name: 'Merijn Everaarts',
+                                id: 3,
                                 position: 'CEO Dopper',
                             },
                             {
                                 name: 'Eva Janssen',
+                                id: 4,
                                 position: 'Market analyst',
                             }
                         ],
                         speaker: {
                             time: '14:00 - 15:00',
                             name: 'Syp Arends',
+                            id: 5,
                             position: 'CEO Pyroil',
                         },
                     },
@@ -258,25 +272,30 @@
                         speakers: [
                             {
                                 name: 'Merijn Everaarts',
+                                id: 1,
                                 position: 'CEO Dopper',
                             },
                             {
                                 name: 'Eva Janssen',
+                                id: 2,
                                 position: 'Market analyst',
                             },
                             {
                                 name: 'Merijn Everaarts',
+                                id: 3,
                                 position: 'CEO Dopper',
                             },
                             {
                                 name: 'Eva Janssen',
+                                id: 4,
                                 position: 'Market analyst',
                             }
                         ],
                         speaker: {
                             time: '14:00 - 15:00',
                             name: 'Syp Arends',
-                            position: 'CEOlPyroil',
+                            id: 5,
+                            position: 'CEO Pyroil',
                         },
                     },
                 ]

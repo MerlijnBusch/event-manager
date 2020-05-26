@@ -79,8 +79,40 @@
         }
       }
 
-      .event-congress-round-speaker-checkbox-holder {
-        width: 25px;
+      .event-congress-round-checkbox-holder {
+        width: 26px;
+
+        .event-congress-round-speaker-checkbox {
+          width: 26px;
+          height: 26px;
+          border-radius: (26px/2);
+          background: transparent;
+          border: solid 2px var(--theme-color);
+          position: relative;
+
+          > div {
+            outline: none;
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            background-color: var(--theme-color);
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            transition: width ($animation-time/2) ease-out, opacity $animation-time ease-out;
+          }
+
+          > div + div {
+            transform: translate(-50%, -50%) rotate(90deg);
+          }
+
+          &.active {
+            > div{
+              opacity: 0;
+              width: 0;
+            }
+          }
+        }
       }
     }
 
