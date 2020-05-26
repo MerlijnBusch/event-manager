@@ -47,6 +47,7 @@
                                 <label class="form-label" for="type">Name</label>
                                 <select id="type" v-model="type">
                                     <option value="keynotes">Key notes</option>
+                                    <option value="speaker">Speaker</option>
                                     <option value="none">none</option>
                                 </select>
                             </div>

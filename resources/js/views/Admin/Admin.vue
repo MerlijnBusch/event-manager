@@ -230,7 +230,7 @@
                 this.selectedEventId = id;
                 const data = await API.get('/api/admin/' + id);
                 this.currentEvent = data.data;
-                console.log(JSON.parse(JSON.stringify(this.currentEvent)))
+                console.log(JSON.stringify(this.currentEvent, null, 2))
             },
             updateDisplay(display) {
                 this.program = display;

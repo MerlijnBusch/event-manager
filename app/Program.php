@@ -46,6 +46,7 @@ class Program extends Model
         'active',
     ];
 
+
     public function block(){
 
         return $this->hasMany('App\Block');

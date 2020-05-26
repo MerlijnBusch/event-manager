@@ -37,8 +37,9 @@ class EventSettings extends Model
     ];
 
     protected $hidden = [
-        'active'
+        'updated_at', 'created_at','active'
     ];
+
 
     public function event(){
 

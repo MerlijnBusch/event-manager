@@ -17,6 +17,10 @@ class Block extends Model
         'date_end',
     ];
 
+    protected $hidden = [
+        'updated_at', 'created_at',
+    ];
+
     public function items(){
 
         return $this->hasMany('App\Item');

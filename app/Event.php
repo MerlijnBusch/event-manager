@@ -28,6 +28,10 @@ class Event extends Model
         'description',
     ];
 
+    protected $hidden = [
+        'updated_at', 'created_at',
+    ];
+
     public function map(){
 
         return $this->hasMany('App\Map', 'event_id');
