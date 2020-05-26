@@ -181,6 +181,11 @@
             @close="setModalState(`updateBlockModal`)"
         />
 
+        <upload-excell-users-modal
+            v-show="true"
+        >
+        </upload-excell-users-modal>
+
     </div>
 </template>
 
@@ -196,6 +201,7 @@
     import CreateItemModal from "./components/modal/CreateItemModal";
     import UpdateEventSettingsModal from "./components/modal/UpdateEventSettingsModal";
     import UpdateBlockModal from "./components/modal/UpdateBlockModal";
+    import UploadExcellUsersModal from "./components/modal/UploadExcellUsersModal";
 
     export default {
         name: 'Admin',
@@ -225,7 +231,8 @@
             CreateBlockModal,
             CreateItemModal,
             UpdateEventSettingsModal,
-            UpdateBlockModal
+            UpdateBlockModal,
+            UploadExcellUsersModal
         },
         methods: {
             async setSelectedEventId(id) {

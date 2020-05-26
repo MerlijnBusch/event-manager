@@ -70,27 +70,33 @@
                 this.$emit('close');
             },
             submit(){
-                const reader = new FileReader();
+                const parseExcel = function(file) {
+                    let reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        let data = e.target.result;
+                        let workbook = XLSX.read(data, {
+                            type: 'binary'
+                        });
+
+                        workbook.SheetNames.forEach(function(sheetName) {
+                            let XL_row_object = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
+                            let json_object = JSON.stringify(XL_row_object);
+                            console.log(json_object);
+                        })
+
+                    };
+
+                    reader.onerror = function(ex) {
+                        console.log(ex);
+                    };
+
+                    reader.readAsBinaryString(file);
+                };
+
                 let file = this.$refs.excell;
                 file = file.files[0];
-
-                // reader.onload = function(e) {
-                //     let data = e.target.result;
-                //     let cfb = XLS.CFB.read(data, {type: 'binary'});
-                //     let wb = XLS.parse_xlscfb(cfb);
-                //     // Loop Over Each Sheet
-                //     wb.SheetNames.forEach(function(sheetName) {
-                //         // Obtain The Current Row As CSV
-                //         var sCSV = XLS.utils.make_csv(wb.Sheets[sheetName]);
-                //         var oJS = XLS.utils.sheet_to_row_object_array(wb.Sheets[sheetName]);
-                //
-                //         $("#my_file_output").html(sCSV);
-                //         console.log(oJS)
-                //     });
-                // };
-
-                // Tell JS To Start Reading The File.. You could delay this if desired
-                // reader.readAsBinaryString(oFile);
+                parseExcel(file);
             },
         },
     };
