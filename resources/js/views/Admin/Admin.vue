@@ -13,7 +13,8 @@
                         class="admin-sidebar-event-list-item"
                         v-on:click="setSelectedEventId(event.id)"
                     >
-                        <div class="admin-sidebar-event-name-holder">
+                        <div class="admin-sidebar-event-name-holder"
+                             v-on:click="eventDropDown(event.id)">
                             <div class="admin-sidebar-event-name">{{event.name}}</div>
                         </div>
                         <div :id="'event-' + event.id" class="admin-sidebar-display-event-options">
@@ -247,13 +248,13 @@
                 this.selectedEventId = id;
                 const data = await API.get('/api/admin/' + id);
                 this.currentEvent = data.data;
-                setTimeout(() => {
-                    let target = document.getElementById('event-' + id);
-                    let height = target.getBoundingClientRect().height;
-                    if (height === 0) target.style.maxHeight = "500px";
-                    else target.style.maxHeight = "0";
-                }, 500)
                 console.log(JSON.stringify(this.currentEvent))
+            },
+            eventDropDown(id){
+                let target = document.getElementById('event-' + id);
+                let height = target.getBoundingClientRect().height;
+                if (height === 0) target.style.maxHeight = "500px";
+                else target.style.maxHeight = "0";
             },
             updateDisplay(display) {
                 this.program = display;
