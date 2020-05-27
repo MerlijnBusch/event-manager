@@ -12,10 +12,10 @@
     font-size: $font-size-normal;
     color: $theme-color;
     border: solid 1px $theme-color;
-    background-color: transparentize($theme-color,.8);
+    background-color: transparentize($theme-color, .8);
   }
 
-  .form-message{
+  .form-message {
     text-align: center;
     color: $mid-gray;
     padding: $padding-block;
@@ -49,22 +49,25 @@
     }
   }
 
-  .form-afterinput-link{
+  .form-afterinput-link {
     background: none;
     border: none;
     color: $mid-gray;
     text-decoration: underline;
     float: right;
     padding: 2px;
-    &:hover{
+
+    &:hover {
       color: $theme-color;
     }
   }
-  .form-line-hasbutton{
+
+  .form-line-hasbutton {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
   }
+
   .form-button {
     padding: 12px 22px;
     border-radius: 5px;
@@ -74,6 +77,7 @@
     color: $basic-gray;
     border: solid 2px $mid-gray;
     min-width: 50%;
+
     &:hover {
       background-color: $black;
       border: solid 2px $theme-color;
@@ -81,13 +85,14 @@
   }
 }
 
-.full-page-form{
+.full-page-form {
   width: 100%;
   min-height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  .form-holder{
+
+  .form-holder {
     flex: 0;
     border-radius: 4px;
     padding: $padding-medium $padding-huge * 2;

@@ -10,7 +10,7 @@ body {
   display: flex;
   flex-direction: column;
 
-  .homepage-inner{
+  .homepage-inner {
     border-radius: $border-radius-small $border-radius-small 0 0;
     background-color: $deep-gray;
     margin: 0;
@@ -18,7 +18,7 @@ body {
     padding-top: $padding-huge + $padding-medium;
   }
 
-  .home-event-details{
+  .home-event-details {
 
   }
 
@@ -37,18 +37,18 @@ body {
     border-radius: 20px;
     margin: 0 $padding-medium 50px;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
-    transition:
-            background-color $animation-time ease-in-out,
-            transform $animation-time ease-in-out,
-            box-shadow $animation-time ease-in-out;
-    &:hover{
+    transition: background-color $animation-time ease-in-out,
+    transform $animation-time ease-in-out,
+    box-shadow $animation-time ease-in-out;
+
+    &:hover {
       background-color: lighten($deep-gray, 6%);
       transform: scale(1.05);
       cursor: pointer;
       box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
     }
 
-    .home-event-content{
+    .home-event-content {
       flex: 1;
       display: flex;
       flex-direction: column;

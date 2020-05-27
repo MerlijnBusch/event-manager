@@ -91,7 +91,7 @@
           position: relative;
 
           > div {
-            outline: none;
+            border-radius: 1px;
             position: absolute;
             width: 50%;
             height: 2px;
@@ -107,7 +107,7 @@
           }
 
           &.active {
-            > div{
+            > div {
               opacity: 0;
               width: 0;
             }
