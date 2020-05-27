@@ -1,10 +1,10 @@
-.event-page{
+.event-page {
   --theme-color: #{$theme-color};
 
 }
 
 //background
-.event-background{
+.event-background {
   margin-top: -150px;
   z-index: 0;
   position: relative;
@@ -41,18 +41,20 @@
 }
 
 //EVENT MODAL?
-.event-modal{
+.event-modal {
   background-color: $dark-gray;
 }
 
 
-.event-content{
+.event-content {
   flex-wrap: wrap;
   margin: 0;
   animation: event-apear $animation-time*2 ease-out;
   transform: translateY(0);
-  > *{
+
+  > * {
     box-shadow: $shadow;
+    position: relative;
     border-radius: $border-radius-big $border-radius-big 0 0;
     margin-top: -$border-radius-big;
     padding: $padding-huge $padding-huge $padding-huge + $border-radius-big;
@@ -60,7 +62,11 @@
 }
 
 @keyframes event-apear {
-  from{ transform: translateY(150px)}
-  to{ transform: translateY(0)}
+  from {
+    transform: translateY(150px)
+  }
+  to {
+    transform: translateY(0)
+  }
 
 }
