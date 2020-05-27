@@ -8,7 +8,7 @@
                         <h1 class="event-titlebar-title" v-text="title"></h1>
                     </div>
                     <div class="event-titlebar-part-holder column-desktop-4">
-                        <h4 class="event-titlebar-descript" v-text="description"></h4>
+                        <h4 class="event-titlebar-description" v-text="description"></h4>
                     </div>
                     <div class="event-titlebar-part-holder column-desktop-4">
                         <div class="event-titlebar-ticketcounter" v-if="tickets.isShowing">
@@ -16,6 +16,7 @@
                             <span class="event-titlebar-maximum-ticketcount">{{tickets.max}}</span>
                         </div>
                     </div>
+                    <div class="event-titlebar-whitespace column-desktop-12"></div>
                     <div class="event-titlebar-part-holder column-desktop-4">
                         <span class="event-titlebar-date" v-text="formatDate(info.date)"></span>
                     </div>
@@ -25,40 +26,40 @@
                             <p class="event-titlebar-line-text desktop-3">stel hier uw ticket samen onder</p>
                         </div>
                     </div>
-                    <div class="event-titlebar-part-holder column-desktop-4">
-                        <a href="#" class="event-titlebar-btn">Bekijk plattegrond</a>
+                    <div class="event-titlebar-part-holder contains-btn column-desktop-4">
+                        <button @click="()=>{}" class="event-titlebar-btn">Bekijk plattegrond</button>
                     </div>
                 </div>
             </div>
             <div class="event-program_and_info column-desktop-4 column-tablet-6 column-mobile-12">
                 <div class="event-program_and_info-content">
-                <div class="event-program">
-                    <b class="event-program-title">Programma</b>
-                    <div class="event-program-part" v-for="part in program">
-                        <div class="event-program-part-text">
-                            <b class="event-program-part-title">{{part.title}}</b>
-                            <p class="event-program-part-description">{{part.description}}</p>
+                    <div class="event-program">
+                        <b class="event-program-title">Programma</b>
+                        <div class="event-program-part" v-for="part in program">
+                            <div class="event-program-part-text">
+                                <b class="event-program-part-title">{{part.title}}</b>
+                                <p class="event-program-part-description">{{part.description}}</p>
+                            </div>
+                            <span class="event-program-part-time">{{part.time}}</span>
                         </div>
-                        <span class="event-program-part-time">{{part.time}}</span>
+                    </div>
+                    <div class="event-info">
+                        <hr class="event-info-divider">
+                        <b class="event-info-title">Info</b>
+                        <div class="event-info-line">
+                            <b class="event-info-line-title">Datum</b><br>
+                            <span class="event-info-line-content">{{formatDate(info.date)}}</span>
+                        </div>
+                        <div class="event-info-line">
+                            <b class="event-info-line-title">Locatie</b><br>
+                            <span class="event-info-line-content">{{info.location}}</span>
+                        </div>
+                        <div class="event-info-line">
+                            <b class="event-info-line-title">Prijs</b><br>
+                            <span class="event-info-line-content">{{info.price}}</span>
+                        </div>
                     </div>
                 </div>
-                <div class="event-info">
-                    <hr class="event-info-divider">
-                    <b class="event-info-title">Info</b>
-                    <div class="event-info-line">
-                        <b class="event-info-line-title">Datum</b><br>
-                        <span class="event-info-line-content">{{formatDate(info.date)}}</span>
-                    </div>
-                    <div class="event-info-line">
-                        <b class="event-info-line-title">Locatie</b><br>
-                        <span class="event-info-line-content">{{info.location}}</span>
-                    </div>
-                    <div class="event-info-line">
-                        <b class="event-info-line-title">Prijs</b><br>
-                        <span class="event-info-line-content">{{info.price}}</span>
-                    </div>
-                </div>
-            </div>
             </div>
             <div class="event-congress column-desktop-8 column-tablet-6 column-mobile-12 flex-grid">
                 <b class="event-congress-title column-desktop-12 column-tablet-12 column-mobile-12">Congress</b>
@@ -78,7 +79,8 @@
                                         <span class="event-congress-round-speaker-position">{{speaker.position}}</span>
                                     </div>
                                     <div class="event-congress-round-checkbox-holder">
-                                        <button class="event-congress-round-speaker-checkbox" :class="{'active' : selectedSpeakers.length && !!selectedSpeakers[index] && selectedSpeakers[index].id === speaker.id}"
+                                        <button class="event-congress-round-speaker-checkbox"
+                                                :class="{'active' : selectedSpeakers.length && !!selectedSpeakers[index] && selectedSpeakers[index].id === speaker.id}"
                                                 @click="setSpeaker(index, speaker, round.time)">
                                             <div></div>
                                             <div></div>
@@ -93,10 +95,11 @@
                                     <span class="event-congress-round-speaker-position">{{round.speaker.position}}</span>
                                 </div>
                                 <div class="event-congress-round-checkbox-holder">
-                                    <button class="event-congress-round-speaker-checkbox" :class="{'active' : selectedSpeakers.length && !!selectedSpeakers[index] && selectedSpeakers[index].id === round.speaker.id}"
+                                    <button class="event-congress-round-speaker-checkbox"
+                                            :class="{'active' : selectedSpeakers.length && !!selectedSpeakers[index] && selectedSpeakers[index].id === round.speaker.id}"
                                             @click="setSpeaker(index, round.speaker, round.speaker.time, true)">
-                                    <div></div>
-                                    <div></div>
+                                        <div></div>
+                                        <div></div>
                                     </button>
                                 </div>
                             </div>
