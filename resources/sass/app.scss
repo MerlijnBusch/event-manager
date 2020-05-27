@@ -65,15 +65,20 @@ html, body {
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $mid-gray;
+    background-color: $mid-gray !important;
 
     &:hover {
-      background-color: $basic-gray;
+      background-color: $basic-gray !important;
     }
   }
 }
 
 * {
+  &:hover{
+    &::-webkit-scrollbar-thumb {
+      background-color: $deep-gray;
+    }
+  }
   &::-webkit-scrollbar {
     width: $scrollbar-width;
   }
@@ -87,7 +92,7 @@ html, body {
     width: $scrollbar-width;
     background-clip: padding-box;
     -webkit-border-radius: 15px;
-    background-color: $deep-gray;
+    background-color: transparent;
   }
 
   &::-webkit-scrollbar-thumb:hover {
