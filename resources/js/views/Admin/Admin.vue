@@ -201,7 +201,7 @@
 
         <find-user-modal
             v-show="findUserModal"
-            @close="setModalState(`uploadExcelUsersModal`)"
+            @close="setModalState(`findUserModal`)"
         />
 
 

@@ -11,6 +11,7 @@ use App\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
@@ -30,7 +31,13 @@ class AdminController extends Controller
             ->with('program.block.items')
             ->get();
 
-        return response()->json($s, 200);
+        $q = User::query()
+            ->where('id', Auth::id())
+            ->with('profile')
+            ->with('role')
+            ->get();
+
+        return response()->json([$s, $q], 200);
     }
 
     /**
