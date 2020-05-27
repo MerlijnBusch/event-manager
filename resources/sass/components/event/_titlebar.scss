@@ -39,6 +39,17 @@
     float: right;
   }
 
+  .event-titlebar-ticketcounter-text {
+      color: $mid-gray;
+      font-weight: bold;
+      font-size: $font-size-normal;
+  }
+
+  .event-titlebar-ticketcounter-vertical-line {
+      border-left: 2px solid var(--theme-color);
+      height: 50px;
+  }
+
    @media (max-width: 670px) {
       .event-titlebar-ticketcounter {display: none;}
    }

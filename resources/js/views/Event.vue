@@ -11,9 +11,13 @@
                         <h4 class="event-titlebar-description" v-text="description"></h4>
                     </div>
                     <div class="event-titlebar-part-holder column-desktop-4">
-                        <div class="event-titlebar-ticketcounter" v-if="tickets.isShowing">
-                            <span class="event-titlebar-current-ticketcount">{{tickets.current}}/</span>
-                            <span class="event-titlebar-maximum-ticketcount">{{tickets.max}}</span>
+                        <div class="event-titlebar-ticketcounter-holder">
+                              <p class="event-titlebar-ticketcounter-text">Aantal tickets verkrijgbaar</p>
+                              <div class="event-titlebar-ticketcounter-vertical-line"></div>
+                              <div class="event-titlebar-ticketcounter" v-if="tickets.isShowing">
+                                  <span class="event-titlebar-current-ticketcount">{{tickets.current}}/</span>
+                                  <span class="event-titlebar-maximum-ticketcount">{{tickets.max}}</span>
+                             </div>
                         </div>
                     </div>
                     <div class="event-titlebar-whitespace column-desktop-12"></div>

@@ -21,6 +21,7 @@
     .event-program-part {
       margin-top: 20px;
       display: flex;
+      width: 80%;
     }
 
     .event-program-part-text {
@@ -33,11 +34,17 @@
 
       .event-program-part-description {
         padding: 0;
-        color: $dark-gray;
+        color: $deep-gray;
         margin: 0;
         font-weight: bold;
+        width: 75%;
       }
     }
+
+      .event-program-part-time {
+          font-weight: bold;
+          color: $deep-gray;
+      }
 
     .event-program-part-time-holder {
       color: $dark-gray;
@@ -50,7 +57,7 @@
     .event-info-divider {
       border: none;
       border-top: 1px solid $dark-gray;
-      width: 75%;
+      width: 80%;
       margin: 25px 0;
     }
 
