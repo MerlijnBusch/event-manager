@@ -7,11 +7,14 @@
   .event-titlebar-title {
     color: var(--theme-color);
     font-size: $font-size-enormous;
+    width: 55%;
+    line-height: 1;
   }
 
   .event-titlebar-descript {
     color: var(--theme-color);
     font-size: $font-size-big;
+    line-height: 1;
   }
 
   .event-titlebar-date {
@@ -24,12 +27,27 @@
     color: var(--theme-color);
     font-size: $font-size-big;
     font-weight: bold;
+    float: right;
   }
 
+   @media (max-width: 670px) {
+      .event-titlebar-ticketcounter {display: none;}
+   }
+
   .event-titlebar-divider {
-    border: none;
-    border-top: 15px solid var(--theme-color);
+      border: none;
+      height: 15px;
+      background: var(--theme-color);
+      border-radius: 7.5px;
+      margin-right: auto;
+      margin-left: 0;
+      width: 50%;
+      display: block;
   }
+
+    @media (max-width: 670px) {
+        .event-titlebar-line {display: none;}
+    }
 
   .event-titlebar-line-text {
     color: $mid-gray;
@@ -45,8 +63,10 @@
     text-align: center;
     text-decoration: none;
     height: 45px;
+    width: 230px;
     font-weight: bold;
     position: relative;
+    float: right;
 
     &:after {
       content: '';
