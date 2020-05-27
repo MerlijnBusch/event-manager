@@ -31,13 +31,7 @@ class AdminController extends Controller
             ->with('program.block.items')
             ->get();
 
-        $q = User::query()
-            ->where('id', Auth::id())
-            ->with('profile')
-            ->with('role')
-            ->get();
-
-        return response()->json([$s, $q], 200);
+        return response()->json($s, 200);
     }
 
     /**
