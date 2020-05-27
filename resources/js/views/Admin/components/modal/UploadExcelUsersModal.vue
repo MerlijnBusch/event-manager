@@ -81,10 +81,14 @@
 
                         workbook.SheetNames.forEach(function(sheetName) {
                             let XL_row_object = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
-                            array.push(XL_row_object);
+                            array = XL_row_object;
+                            console.log(XL_row_object)
                         })
 
-                        API.post(array, '/admin/excel');
+                        console.log(array);
+                        const postData = JSON.stringify(array);
+                        console.log(postData);
+                        API.post(postData, '/api/admin/excel');
 
                     };
 

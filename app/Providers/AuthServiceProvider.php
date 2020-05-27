@@ -21,6 +21,7 @@ class AuthServiceProvider extends ServiceProvider
          'App\Item' => 'App\Policies\ItemPolicy',
          'App\Map' => 'App\Policies\MapPolicy',
          'App\Program' => 'App\Policies\ProgramPolicy',
+         'App\User' => 'App\Policies\UserPolicy',
     ];
 
     /**

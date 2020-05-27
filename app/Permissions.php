@@ -46,4 +46,7 @@ class Permissions extends Model {
     public const __READ_BLOCK__ = 'read_block';
     public const __WRITE_BLOCK__ = 'write_block';
 
+    public const __READ_USER__ = 'read_user';
+    public const __WRITE_USER__ = 'write_user';
+
 }

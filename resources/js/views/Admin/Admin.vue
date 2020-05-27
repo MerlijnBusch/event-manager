@@ -5,7 +5,9 @@
                 <p>users:</p>
                 <div>
                     <div> Find user</div>
-                    <div> Upload multiple users (excel)</div>
+                    <div
+                        v-on:click="setModalState(`uploadExcelUsersModal`)"
+                    > Upload multiple users (excel)</div>
                 </div>
                 <p>events:</p>
                 <div v-for="event in events" :key="event.name" class="admin-sidebar-event-container">
