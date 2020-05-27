@@ -3,14 +3,17 @@
     padding: 0;
     margin: 0;
   }
-  .event-titlebar-whitespace{
+
+  .event-titlebar-whitespace {
     height: $padding-medium;
   }
-  .event-titlebar-part-holder{
-    &.contains-btn{
+
+  .event-titlebar-part-holder {
+    &.contains-btn {
       margin-top: -$padding-medium;
     }
   }
+
   .event-titlebar-title {
     margin: 0;
     color: var(--theme-color);
@@ -34,40 +37,67 @@
 
   .event-titlebar-ticketcounter {
     color: var(--theme-color);
-    font-size: $font-size-big;
     font-weight: bold;
     float: right;
+    padding-left: $padding-small;
+    position: relative;
+
+    > span {
+      display: block;
+      text-align: right;
+      font-weight: bold;
+      font-size: $font-size-huge;
+    }
+
+    &:before {
+      position: absolute;
+      content: '';
+      height: 100%;
+      left: 0;
+      top: 0;
+      width: 2px;
+      background-color: var(--theme-color);
+    }
+  }
+
+  .event-titlebar-ticketcounter-holder {
+    display: flex;
+    justify-content: flex-end;
   }
 
   .event-titlebar-ticketcounter-text {
-      color: $mid-gray;
-      font-weight: bold;
-      font-size: $font-size-normal;
+    color: $mid-gray;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1;
+    padding: 0 $padding-small 0 0;
+    max-width: (100%/3);
+    text-align: right;
+    font-size: $font-size-medium;
   }
 
-  .event-titlebar-ticketcounter-vertical-line {
-      border-left: 2px solid var(--theme-color);
-      height: 50px;
+  @media (max-width: 670px) {
+    .event-titlebar-ticketcounter {
+      display: none;
+    }
   }
-
-   @media (max-width: 670px) {
-      .event-titlebar-ticketcounter {display: none;}
-   }
 
   .event-titlebar-divider {
-      border: none;
-      height: 15px;
-      background: var(--theme-color);
-      border-radius: 7.5px;
-      margin-right: auto;
-      margin-left: 0;
-      width: 50%;
-      display: block;
+    border: none;
+    height: 15px;
+    background: var(--theme-color);
+    border-radius: 7.5px;
+    margin-right: auto;
+    margin-left: 0;
+    width: 50%;
+    display: block;
   }
 
-    @media (max-width: 670px) {
-        .event-titlebar-line {display: none;}
+  @media (max-width: 670px) {
+    .event-titlebar-line {
+      display: none;
     }
+  }
 
   .event-titlebar-line-text {
     color: $mid-gray;
@@ -79,14 +109,14 @@
     color: var(--theme-color);
     border: 2px solid var(--theme-color);
     border-radius: (64px/2);
-    padding: $padding-small $padding-medium;
+    padding: $padding-small $padding-big;
     text-align: center;
     text-decoration: none;
     font-size: $font-size-medium;
     font-weight: 500;
     line-height: 32px;
     height: 64px;
-    min-width: 250px;
+    min-width: 350px;
     position: relative;
     float: right;
 
