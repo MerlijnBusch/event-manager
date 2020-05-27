@@ -1,0 +1,21 @@
+.admin-form-find-user {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.admin-form-find-user-input {
+    flex-grow: 1;
+}
+
+.admin-find-user-main {
+    background: #121212;
+    padding: 12px 24px 12px;
+    height: 100%;
+}
+
+.admin-find-user {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}

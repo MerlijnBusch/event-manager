@@ -6,12 +6,14 @@
                 <div>
                     <div
                         class=""
-                        v-on:click="setModalState(`findUserModal`)"
-                    > Find user</div>
+                        v-on:click="setPage(2)"
+                    > Find user
+                    </div>
                     <div
                         class=""
                         v-on:click="setModalState(`uploadExcelUsersModal`)"
-                    > Upload multiple users (excel)</div>
+                    > Upload multiple users (excel)
+                    </div>
                 </div>
                 <p>events:</p>
                 <div v-for="event in events" :key="event.name" class="admin-sidebar-event-container">
@@ -66,100 +68,96 @@
             </div>
         </div>
         <div class="admin-main">
-            <event v-if="this.currentEvent.event" v-bind:event="currentEvent.event"></event>
-            <div class="admin-main-program-container" v-if="program">
-                <program v-if="program" v-bind:program="program"></program>
-                <div class="admin-item-container" v-if="program">
-                    <div class="admin-item-list">
-                        <div class="admin-block-list">
-                            <div v-for="block in program.block" class="admin-block-list-holder">
-                                <div
-                                    class="admin-block-list-header"
-                                >
+            <div v-if="page === 1">
+                <event v-if="this.currentEvent.event" v-bind:event="currentEvent.event"></event>
+                <div class="admin-main-program-container" v-if="program">
+                    <program v-if="program" v-bind:program="program"></program>
+                    <div class="admin-item-container" v-if="program">
+                        <div class="admin-item-list">
+                            <div class="admin-block-list">
+                                <div v-for="block in program.block" class="admin-block-list-holder">
                                     <div
-                                        class="admin-block-date-holder"
+                                        class="admin-block-list-header"
                                     >
                                         <div
-                                            class="admin-block-list-date"
-                                            v-on:click="displayBlockItems(block.id, block.items.length)"
+                                            class="admin-block-date-holder"
                                         >
-                                            {{block.date_start.slice(5)}} / {{block.date_end.slice(5)}}
-                                        </div>
-                                        <div
-                                            class="admin-block-action"
-                                            v-on:click="displayBlockActions(block.id)"
-                                        >
-                                            <i class="fas fa-chevron-left"></i>
-                                        </div>
-                                    </div>
-                                    <div class="admin-block-action-holder" :id="'block-' + block.id">
-                                        <div
-                                            class="admin-block-action-icon-holder"
-                                            v-on:click="addItemToBlock(block.id)"
-                                            title="add item"
-                                        >
-                                            <i class="fas fa-plus-circle admin-block-action-icon"></i>
-                                        </div>
-                                        <div
-                                            class="admin-block-action-icon-holder"
-                                            v-on:click="updateBlock(block.id)"
-                                            title="update this block"
-                                        >
-                                            <i class="fas fa-pencil admin-block-action-icon"></i>
-                                        </div>
-                                        <div
-                                            class="admin-block-action-icon-holder"
-                                            v-on:click="deleteBlock(block.id)"
-                                            title="delete this block"
-                                        >
-                                            <i class="fas fa-trash admin-block-action-icon"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="admin-block-item-list" :id="'block-items-' + block.id">
-                                    <div v-for="item in block.items" class="admin-item-list-holder">
-                                        <div>{{item.name}}</div>
-                                        <div class="admin-sidebar-item-action-container">
-                                            <div class="admin-sidebar-item-action-update">
-                                                <i class="fas fa-pencil"></i>
+                                            <div
+                                                class="admin-block-list-date"
+                                                v-on:click="displayBlockItems(block.id, block.items.length)"
+                                            >
+                                                {{block.date_start.slice(5)}} / {{block.date_end.slice(5)}}
                                             </div>
-                                            <div class="admin-sidebar-item-action-delete">
-                                                <i class="fas fa-trash"></i>
+                                            <div
+                                                class="admin-block-action"
+                                                v-on:click="displayBlockActions(block.id)"
+                                            >
+                                                <i class="fas fa-chevron-left"></i>
+                                            </div>
+                                        </div>
+                                        <div class="admin-block-action-holder" :id="'block-' + block.id">
+                                            <div
+                                                class="admin-block-action-icon-holder"
+                                                v-on:click="addItemToBlock(block.id)"
+                                                title="add item"
+                                            >
+                                                <i class="fas fa-plus-circle admin-block-action-icon"></i>
+                                            </div>
+                                            <div
+                                                class="admin-block-action-icon-holder"
+                                                v-on:click="updateBlock(block.id)"
+                                                title="update this block"
+                                            >
+                                                <i class="fas fa-pencil admin-block-action-icon"></i>
+                                            </div>
+                                            <div
+                                                class="admin-block-action-icon-holder"
+                                                v-on:click="deleteBlock(block.id)"
+                                                title="delete this block"
+                                            >
+                                                <i class="fas fa-trash admin-block-action-icon"></i>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="admin-block-item-list" :id="'block-items-' + block.id">
+                                        <div v-for="item in block.items" class="admin-item-list-holder">
+                                            <div>{{item.name}}</div>
+                                            <div class="admin-sidebar-item-action-container">
+                                                <div class="admin-sidebar-item-action-update">
+                                                    <i class="fas fa-pencil"></i>
+                                                </div>
+                                                <div class="admin-sidebar-item-action-delete">
+                                                    <i class="fas fa-trash"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div
+                                    class="admin-block-list-add-block"
+                                    v-on:click="setModalState(`createBlockModal`)"
+                                >
+                                    <i class="fas fa-plus-circle admin-block-list-add-icon"></i>Add block
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <div
-                                class="admin-block-list-add-block"
-                                v-on:click="setModalState(`createBlockModal`)"
-                            >
-                                <i class="fas fa-plus-circle admin-block-list-add-icon"></i>Add block
+                        <div class="admin-item-display-container">
+                            <div v-for="block in program.block" class="admin-item-display-container-for">
+                                <div v-for="item in block.items">
+                                    <item v-bind:item="item"></item>
+                                    <div class="admin-item-hr"></div>
+                                </div>
                             </div>
                         </div>
+                        <div class="admin-item-container-line"></div>
                     </div>
-                    <div class="admin-item-display-container">
-                        <div v-for="block in program.block" class="admin-item-display-container-for">
-                            <div v-for="item in block.items">
-                                <item v-bind:item="item"></item>
-                                <div class="admin-item-hr"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="admin-item-container-line"></div>
                 </div>
+                <div class="admin-item-container-footer"></div>
             </div>
-            <div class="admin-item-container-footer"></div>
+            <find-user v-if="page === 2"></find-user>
         </div>
-
-        <!--        <update-event-settings-modal-->
-        <!--            v-if="currentEvent.settings"-->
-        <!--            v-show="updateEventSettingsModal"-->
-        <!--            v-bind:settings="currentEvent.settings"-->
-        <!--            @close="setModalState(`updateEventSettingsModal`)"-->
-        <!--        />-->
 
         <create-item-modal
             v-if="blockId"
@@ -199,13 +197,6 @@
             @close="setModalState(`uploadExcelUsersModal`)"
         />
 
-        <find-user-modal
-            v-show="findUserModal"
-            @close="setModalState(`findUserModal`)"
-        />
-
-
-
     </div>
 </template>
 
@@ -222,12 +213,13 @@
     import UpdateEventSettingsModal from "./components/modal/UpdateEventSettingsModal";
     import UpdateBlockModal from "./components/modal/UpdateBlockModal";
     import UploadExcelUsersModal from "./components/modal/UploadExcelUsersModal";
-    import FindUserModal from "./components/modal/FindUserModal";
+    import FindUser from "./components/FindUser";
 
     export default {
         name: 'Admin',
         data() {
             return {
+                page: 1,
                 events: [],
                 selectedEventId: null,
                 currentEvent: [],
@@ -241,7 +233,6 @@
                 updateEventSettingsModal: false,
                 updateBlockModal: false,
                 uploadExcelUsersModal: false,
-                findUserModal: false
             }
         },
         components: {
@@ -256,7 +247,7 @@
             UpdateEventSettingsModal,
             UpdateBlockModal,
             UploadExcelUsersModal,
-            FindUserModal
+            FindUser
         },
         methods: {
             async setSelectedEventId(id) {
@@ -265,7 +256,10 @@
                 this.currentEvent = data.data;
                 console.log(JSON.stringify(this.currentEvent))
             },
-            eventDropDown(id){
+            setPage(id) {
+                this.page = id;
+            },
+            eventDropDown(id) {
                 let target = document.getElementById('event-' + id);
                 let height = target.getBoundingClientRect().height;
                 if (height === 0) target.style.maxHeight = "500px";
@@ -273,6 +267,7 @@
             },
             updateDisplay(display) {
                 this.program = display;
+                this.setPage(1);
             },
             async setModalState(state) {
                 this[state] = !this[state];
@@ -280,7 +275,7 @@
                 this.forceUpdate();
             },
             forceUpdate() {
-                if(this.currentEvent && this.currentEvent.programs) {
+                if (this.currentEvent && this.currentEvent.programs) {
                     this.currentEvent.programs.forEach((item, index) => {
                         if (item.id === this.program.id) this.program = this.currentEvent.programs[index];
                     })
