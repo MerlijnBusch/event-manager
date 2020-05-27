@@ -7,7 +7,6 @@
 
 <script>
     import API from "@/js/Api";
-    import {Config} from "../../../quillConfig";
 
     export default {
         name: 'Event',
