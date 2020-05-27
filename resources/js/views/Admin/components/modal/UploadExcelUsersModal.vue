@@ -34,7 +34,7 @@
                     <slot name="body">
 
                         <input type="file" id="my_file_input" ref="excell"/>
-                        <button class="button-create-item map-settings-container-items" v-on:click="submit">upload</button>
+                        <button class="button-create-item map-settings-container-items" v-on:click="parseFileInPut">upload</button>
 
                     </slot>
                 </section>
@@ -68,7 +68,7 @@
             close() {
                 this.$emit('close');
             },
-            submit(){
+            parseFileInPut(){
                 const parseExcel = function(file) {
                     let reader = new FileReader();
                     let array = [];

@@ -33,16 +33,19 @@
                 >
                     <slot name="body">
 
-                        <div class="form-line">
-                            <label class="form-label" for="name">Name</label>
-                            <input class="form-text-input" id="name" v-model="name" type="text" name="name"
-                                   placeholder="Event name">
-                        </div>
+                        <form class="form" @submit.prevent="checkForm" method="post">
 
-                        <div class="form-line admin-from-submit">
-                            <input type="submit" value="Submit" class="submit-btn admin-form-submit" v-on:click="submit">
-                        </div>
+                            <div class="form-line">
+                                <label class="form-label" for="search">search</label>
+                                <input class="form-text-input" id="search" v-model="search" type="text" name="search"
+                                       placeholder="Search profile">
+                            </div>
 
+                            <div class="form-line admin-from-submit">
+                                <input type="submit" value="Submit" class="submit-btn admin-form-submit">
+                            </div>
+
+                        </form>
                     </slot>
                 </section>
                 <footer class="admin-modal-footer">
@@ -67,7 +70,9 @@
 
     export default {
         data() {
-            return {}
+            return {
+                search: ''
+            }
         },
         name: 'UploadExcelUserModal',
         props: ['id'],
@@ -75,9 +80,18 @@
             close() {
                 this.$emit('close');
             },
-            submit(){
+            async checkForm(e) {
 
-            },
+                const data = {
+                    search: this.search,
+                };
+
+                const response = await API.post(data, '/api/search/profile');
+                console.log(response);
+
+
+                e.preventDefault();
+            }
         },
     };
 </script>

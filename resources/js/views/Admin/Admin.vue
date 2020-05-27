@@ -280,9 +280,11 @@
                 this.forceUpdate();
             },
             forceUpdate() {
-                this.currentEvent.programs.forEach((item, index) => {
-                    if (item.id === this.program.id) this.program = this.currentEvent.programs[index];
-                })
+                if(this.currentEvent && this.currentEvent.programs) {
+                    this.currentEvent.programs.forEach((item, index) => {
+                        if (item.id === this.program.id) this.program = this.currentEvent.programs[index];
+                    })
+                }
             },
             addItemToBlock(id) {
                 this.blockId = id;
