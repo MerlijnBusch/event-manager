@@ -33,8 +33,15 @@
                 >
                     <slot name="body">
 
-                        <input type="file" id="my_file_input" ref="excell"/>
-                        <button class="button-create-item map-settings-container-items" v-on:click="submit">upload</button>
+                        <div class="form-line">
+                            <label class="form-label" for="name">Name</label>
+                            <input class="form-text-input" id="name" v-model="name" type="text" name="name"
+                                   placeholder="Event name">
+                        </div>
+
+                        <div class="form-line admin-from-submit">
+                            <input type="submit" value="Submit" class="submit-btn admin-form-submit" v-on:click="submit">
+                        </div>
 
                     </slot>
                 </section>
@@ -69,35 +76,7 @@
                 this.$emit('close');
             },
             submit(){
-                const parseExcel = function(file) {
-                    let reader = new FileReader();
-                    let array = [];
 
-                    reader.onload = function(e) {
-                        let data = e.target.result;
-                        let workbook = XLSX.read(data, {
-                            type: 'binary'
-                        });
-
-                        workbook.SheetNames.forEach(function(sheetName) {
-                            array = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
-                        })
-
-                        const postData = JSON.stringify(array);
-                        API.post(postData, '/api/admin/excel');
-
-                    };
-
-                    reader.onerror = function(ex) {
-                        console.log(ex);
-                    };
-
-                    reader.readAsBinaryString(file);
-                };
-
-                let file = this.$refs.excell;
-                file = file.files[0];
-                parseExcel(file);
             },
         },
     };

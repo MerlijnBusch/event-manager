@@ -4,8 +4,12 @@
             <div>
                 <p>users:</p>
                 <div>
-                    <div> Find user</div>
                     <div
+                        class=""
+                        v-on:click="setModalState(`findUserModal`)"
+                    > Find user</div>
+                    <div
+                        class=""
                         v-on:click="setModalState(`uploadExcelUsersModal`)"
                     > Upload multiple users (excel)</div>
                 </div>
@@ -195,6 +199,12 @@
             @close="setModalState(`uploadExcelUsersModal`)"
         />
 
+        <find-user-modal
+            v-show="findUserModal"
+            @close="setModalState(`uploadExcelUsersModal`)"
+        />
+
+
 
     </div>
 </template>
@@ -212,6 +222,7 @@
     import UpdateEventSettingsModal from "./components/modal/UpdateEventSettingsModal";
     import UpdateBlockModal from "./components/modal/UpdateBlockModal";
     import UploadExcelUsersModal from "./components/modal/UploadExcelUsersModal";
+    import FindUserModal from "./components/modal/FindUserModal";
 
     export default {
         name: 'Admin',
@@ -230,6 +241,7 @@
                 updateEventSettingsModal: false,
                 updateBlockModal: false,
                 uploadExcelUsersModal: false,
+                findUserModal: false
             }
         },
         components: {
@@ -243,7 +255,8 @@
             CreateItemModal,
             UpdateEventSettingsModal,
             UpdateBlockModal,
-            UploadExcelUsersModal
+            UploadExcelUsersModal,
+            FindUserModal
         },
         methods: {
             async setSelectedEventId(id) {
