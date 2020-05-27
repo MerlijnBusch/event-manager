@@ -49,7 +49,6 @@
 .event-content {
   flex-wrap: wrap;
   margin: 0;
-  animation: event-apear $animation-time*2 ease-out;
   transform: translateY(0);
 
   > * {
@@ -59,14 +58,4 @@
     margin-top: -$border-radius-big;
     padding: $padding-huge $padding-huge $padding-huge + $border-radius-big;
   }
-}
-
-@keyframes event-apear {
-  from {
-    transform: translateY(150px)
-  }
-  to {
-    transform: translateY(0)
-  }
-
 }

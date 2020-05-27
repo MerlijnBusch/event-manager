@@ -9,7 +9,6 @@
     display: block;
     overflow-y: scroll;
     padding: $padding-huge $padding-huge $padding-huge + $border-radius-big;
-
   }
 
   .event-program {
@@ -61,8 +60,7 @@
     }
 
     .event-info-line {
-      margin: $padding-small;
-      margin-left: 0;
+      margin: $padding-small $padding-small $padding-small 0;
     }
 
     .event-info-line-title {
