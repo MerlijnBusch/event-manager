@@ -97,6 +97,8 @@
 
                 API.post(data, '/api/event');
 
+                this.close();
+
                 e.preventDefault();
             }
         },

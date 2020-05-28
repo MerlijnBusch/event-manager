@@ -278,6 +278,10 @@
                         if (item.id === this.program.id) this.program = this.currentEvent.programs[index];
                     })
                 }
+                setTimeout(async () => {
+                    const data = await API.get('/api/admin');
+                    this.events = data.data;
+                }, 0)
             },
             addItemToBlock(id) {
                 this.blockId = id;
@@ -311,9 +315,7 @@
             }
         },
         async mounted() {
-            const data = await API.get('/api/admin');
-            this.events = data.data;
-            console.log(JSON.parse(JSON.stringify(this.events)));
+            this.forceUpdate();
         },
     }
 </script>

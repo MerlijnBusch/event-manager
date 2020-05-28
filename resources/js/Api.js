@@ -1,4 +1,5 @@
 import axios from 'axios';
+import create from 'dom-create-element';
 
 export default class API {
 
@@ -18,12 +19,37 @@ export default class API {
         }
     }
 
+    static errorCheck(data){
+        const error = create({
+            selector: 'div',
+            styles: 'error-display',
+            children: create({
+                selector: 'p',
+                html: data,
+            })
+        });
+
+        document.getElementById("body").appendChild(error);
+
+        setTimeout(() => {
+            error.style.opacity = 0;
+        }, 5000)
+
+        setTimeout(() => {
+            error.parentNode.removeChild(error);
+        }, 7000)
+    }
+
     /**
      * @param url
      * @returns {Promise<AxiosResponse<any>>}
      */
     static async get(url){
-        return axios.get(window.location.origin + url, {headers: this.headers})
+        try {
+            return await axios.get(window.location.origin + url, {headers: this.headers});
+        } catch (e) {
+            this.errorCheck(e)
+        }
     }
 
     /**
@@ -33,8 +59,12 @@ export default class API {
      * @returns {Promise<AxiosResponse<any>>}
      */
     static async post(data, url, update = false){
-        if(update) return axios.patch(window.location.origin + url, data, {headers: this.headers});
-        return axios.post(window.location.origin + url, data, {headers: this.headers});
+        try {
+            if(update) return await axios.patch(window.location.origin + url, data, {headers: this.headers});
+            return await axios.post(window.location.origin + url, data, {headers: this.headers});
+        } catch (e) {
+            this.errorCheck(e)
+        }
     }
 
     /**
@@ -42,7 +72,11 @@ export default class API {
      * @returns {Promise<AxiosResponse<any>>}
      */
     static async delete(url){
-        return axios.delete(window.location.origin + url, {headers: this.headers});
+        try {
+            return await axios.delete(window.location.origin + url, {headers: this.headers});
+        } catch (e) {
+            this.errorCheck(e)
+        }
     }
 }
 
