@@ -19,24 +19,50 @@ export default class API {
         }
     }
 
+    /**
+     * Error handling to front end that creates a snackbar to give user feedback
+     * @param data
+     */
     static errorCheck(data){
-        const error = create({
+        let error = ""
+        const res = data.response;
+
+        switch (res.status) {
+            case 422:
+                for (const key in res.data) {
+                    if (res.data.hasOwnProperty(key)) error += res.data[key] + "</br>";
+                }
+                break;
+            case 403:
+                error = res.data.message;
+                break;
+            case 404:
+                error = "Not found";
+                break;
+            case 500:
+                error = "Internal server error";
+                break;
+            default:
+                error = "An error occurd try again"
+        }
+
+        const html = create({
             selector: 'div',
             styles: 'error-display',
             children: create({
                 selector: 'p',
-                html: data,
+                html: error,
             })
         });
 
-        document.getElementById("body").appendChild(error);
+        document.getElementById("body").appendChild(html);
 
         setTimeout(() => {
-            error.style.opacity = 0;
+            html.style.opacity = 0;
         }, 5000)
 
         setTimeout(() => {
-            error.parentNode.removeChild(error);
+            html.parentNode.removeChild(html);
         }, 7000)
     }
 
