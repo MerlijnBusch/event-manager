@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Permissions;
 use App\Role;
 use App\Rules\ColorValidator;
 use App\Rules\PermissionExistValidator;
@@ -116,6 +117,13 @@ class RoleController extends Controller
         $role = Role::findOrFail($role->id);
         $role->delete();
 
-        return response()->json(['message' => 'Role deleted successfully']);
+        return response()->json(['message' => 'Role deleted successfully'], 200);
+    }
+
+    public function showSelectables()
+    {
+        $roles = Role::all()->where('selectable', 1);
+
+        return response()->json($roles, 200);
     }
 }

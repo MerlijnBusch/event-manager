@@ -55,7 +55,7 @@
                         this.isLoading = false;
                         this.errors.push('Er is niks ingevuld');
                         break;
-                    case /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/.test(this.email) === false:
+                    case /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$  /.test(this.email) === false:
                         this.isLoading = false;
                         this.errors.push('Er is geen email ingevuld');
                         break;
