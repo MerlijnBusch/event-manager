@@ -13,9 +13,10 @@
                 </div>
 
             </form>
-
-            <div v-for="user in users">
-                {{user.name}}
+            <div class="admin-found-user-container">
+                <div v-for="user in users">
+                    {{user.name}}
+                </div>
             </div>
         </div>
         <div class="admin-item-container-footer"></div>

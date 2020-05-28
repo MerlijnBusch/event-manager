@@ -9,13 +9,22 @@
 }
 
 .admin-find-user-main {
+    flex-direction: column;
+    display: flex;
     background: #121212;
-    padding: 12px 24px 12px;
-    height: 100%;
+    padding: 12px 24px 0px 24px;
+    flex: 1;
 }
 
 .admin-find-user {
     display: flex;
     flex-direction: column;
     flex: 1;
+}
+
+.admin-found-user-container{
+    display: flex;
+    background: #2E2E2E;
+    flex: 1;
+    flex-direction: column;
 }
