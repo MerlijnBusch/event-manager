@@ -6,6 +6,7 @@
 @import "./Admin/admin";
 
 @import '../../node_modules/font-awesome/scss/font-awesome';
+
 .fas, .fas:before, .fas:after {
     font-style: normal;
     font-family: FontAwesome;
@@ -44,4 +45,74 @@ body {
     display: flex;
     flex: 1;
     flex-direction: column;
+    background-color: $deep-gray;
+
+    > div {
+        border-radius: $border-radius-big $border-radius-big 0 0;
+        z-index: 1;
+    }
+
+    > div + div {
+        z-index: 0;
+    }
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: .5s;
+    position: absolute;
+}
+
+.fade-enter {
+    transform: translateY(-50vw);
+}
+
+.fade-leave-to {
+    opacity: 0;
+    transform: translateY(50vw);
+}
+
+$scrollbar-width: 20px;
+$scrollbar-track-width: 15px;
+html, body {
+    background-color: $dark-gray;
+
+    &::-webkit-scrollbar-track {
+        background: $deep-gray;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $mid-gray !important;
+
+        &:hover {
+            background-color: $basic-gray !important;
+        }
+    }
+}
+
+* {
+    &:hover {
+        &::-webkit-scrollbar-thumb {
+            background-color: $deep-gray;
+        }
+    }
+
+    &::-webkit-scrollbar {
+        width: $scrollbar-width;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border: ($scrollbar-width - $scrollbar-track-width) solid rgba(0, 0, 0, 0);
+        width: $scrollbar-width;
+        background-clip: padding-box;
+        -webkit-border-radius: 15px;
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: $dark-gray;
+    }
 }
