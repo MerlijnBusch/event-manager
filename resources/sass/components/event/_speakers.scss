@@ -6,6 +6,24 @@
 
 
   .event-my_speakers-rounds {
+    .event-my_speakers-round {
+      @media (max-width: $mobile-breakpoint) {
+        &:after {
+          border: none;
+          border-top: solid 1px $mid-gray;
+          width: 100% !important;
+          height: 0 !important;
+          left: 0 !important;
+          top: -$padding-small !important;
+        }
+      }
+
+      .event-my_speaker-round-content {
+        @media (max-width: $mobile-breakpoint) {
+          padding: 0 !important;
+        }
+      }
+    }
 
     .event-my_speakers-round:first-child .event-my_speaker-round-content {
       padding-right: $padding-medium;
