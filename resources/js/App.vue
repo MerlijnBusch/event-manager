@@ -3,7 +3,9 @@
         <NavBar @logout="logOut()" @openLogin="openLogin" :loggedIn="loggedIn"></NavBar>
         <Modal v-if="modal_open" @loggedIn="loggedInHandler" @close="closeLogin"></Modal>
         <div class="main">
-            <router-view></router-view>
+            <transition name="fade">
+                <router-view></router-view>
+            </transition>
         </div>
     </div>
 </template>
@@ -46,3 +48,7 @@
         components: {Modal, NavBar},
     }
 </script>
+
+<style lang="scss">
+
+</style>
