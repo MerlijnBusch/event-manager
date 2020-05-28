@@ -1,6 +1,6 @@
 <template>
-    <div class="admin-find-user">
-        <div class="admin-find-user-main">
+    <div class="admin-display-page">
+        <div class="admin-display-page-main">
             <form class="form admin-form-find-user" @submit.prevent="checkForm" method="post">
 
                 <div class="form-line admin-form-find-user-input">
@@ -13,7 +13,7 @@
                 </div>
 
             </form>
-            <div class="admin-found-user-container">
+            <div class="admin-display-page-main-container">
                 <div v-for="user in users">
                     {{user.name}}
                 </div>

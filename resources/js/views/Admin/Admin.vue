@@ -6,6 +6,12 @@
                 <div>
                     <div
                         class=""
+                        v-on:click="setPage(3)"
+                    >
+                        Rollen en permissions
+                    </div>
+                    <div
+                        class=""
                         v-on:click="setPage(2)"
                     > Find user
                     </div>
@@ -155,6 +161,7 @@
             </div>
             <div  v-if="page === 1" class="admin-item-container-footer"></div>
             <find-user v-if="page === 2"></find-user>
+            <rolls v-if="page === 3"></rolls>
         </div>
 
         <create-item-modal
@@ -212,6 +219,7 @@
     import UpdateBlockModal from "./components/modal/UpdateBlockModal";
     import UploadExcelUsersModal from "./components/modal/UploadExcelUsersModal";
     import FindUser from "./components/FindUser";
+    import Rolls from "./components/Rolls";
 
     export default {
         name: 'Admin',
@@ -245,7 +253,8 @@
             UpdateEventSettingsModal,
             UpdateBlockModal,
             UploadExcelUsersModal,
-            FindUser
+            FindUser,
+            Rolls
         },
         methods: {
             async setSelectedEventId(id) {

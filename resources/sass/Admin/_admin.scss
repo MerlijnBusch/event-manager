@@ -203,3 +203,30 @@
 .admin-item-list-holder:hover {
     background-color: #111111;
 }
+
+.admin-display-page {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.admin-display-page-main {
+    flex-direction: column;
+    display: flex;
+    background: #121212;
+    padding: 12px 0px 0px 24px;
+    flex: 1;
+}
+
+.admin-display-page-main-container{
+    display: flex;
+    background: #2E2E2E;
+    flex: 1;
+    flex-direction: column;
+}
+
+.admin-display-page-main-title {
+    color: white;
+}
+
+
