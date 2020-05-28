@@ -48,6 +48,8 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::patch('profile/{profile}', 'ProfileController@update')->name('profile.update');
     Route::delete('profile/{profile}', 'ProfileController@destroy')->name('profile.destroy');
 
+    Route::get('profile-check','ProfileController@check')->name('profile.check');
+
     Route::get('profile-cv/{profile}', 'ProfileController@showcv')->name('profile.cv.show');
     Route::post('profile-cv', 'ProfileController@storecv')->name('profile.cv.store');
     Route::patch('profile-cv/update/{profile}','ProfileController@updatecv')->name('profile.cv.update');
@@ -83,6 +85,8 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::delete('/block/{block}', 'BlockController@destroy');
 
 });
+
+
 
 
 

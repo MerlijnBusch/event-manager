@@ -15,6 +15,7 @@ import CVForm from '@/js/views/forms/CV-form'
 import datepickerExample from '@/js/views/DateTimeExample'
 import AdminIndex from '@/js/views/Admin/Admin';
 import UserRegistrationForm from '@/js/views/forms/User-Registration-form';
+import NotFound from '@/js/views/NotFound';
 
 Vue.use(VueRouter);
 
@@ -94,6 +95,11 @@ const router = new VueRouter({
             name: 'datepicker',
             component: datepickerExample
         },
+        {
+            path: '*',
+            name: 'Pagina niet gevonden',
+            component: NotFound
+        }
 
     ]
 });

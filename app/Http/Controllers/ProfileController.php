@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Profile;
+use App\User;
 use App\Rules\Base64Validator;
 use App\Rules\HtmlValidator;
 use App\Rules\PhoneNumberValidator;
@@ -201,5 +202,15 @@ class ProfileController extends Controller
         $profile->update();
 
         return response()->json(['message' => 'CV updated successfully'], 200);
+    }
+
+    public function check(){
+        $user = User::query()
+            ->where('id', Auth::id())
+            ->with('profile')
+            ->with('role')
+            ->get();
+    return response()->json($user, 200);
+
     }
 }
