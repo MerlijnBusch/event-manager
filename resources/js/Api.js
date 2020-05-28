@@ -35,6 +35,7 @@ export default class API {
                 break;
             case 403:
                 error = res.data.message;
+                window.location.href = window.location.origin;
                 break;
             case 404:
                 error = "Not found";
@@ -43,7 +44,7 @@ export default class API {
                 error = "Internal server error";
                 break;
             default:
-                error = "An error occurd try again"
+                error = "An error occurs try again"
         }
 
         const html = create({
