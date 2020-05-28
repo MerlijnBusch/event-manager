@@ -4,10 +4,10 @@
         <div class="event-content flex-grid">
             <div class="event-titlebar column-desktop-12 column-tablet-12 column-mobile-12">
                 <div class="flex-grid">
-                    <div class="event-titlebar-part-holder column-desktop-4">
+                    <div class="event-titlebar-part-holder column-desktop-4 title-holder">
                         <h1 class="event-titlebar-title" v-text="title"></h1>
                     </div>
-                    <div class="event-titlebar-part-holder column-desktop-4">
+                    <div class="event-titlebar-part-holder column-desktop-4 description-holder">
                         <h4 class="event-titlebar-description" v-text="description"></h4>
                     </div>
                     <div class="event-titlebar-part-holder column-desktop-4">
@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <div class="event-titlebar-whitespace column-desktop-12"></div>
-                    <div class="event-titlebar-part-holder column-desktop-4">
+                    <div class="event-titlebar-part-holder column-desktop-4 date-holder">
                         <span class="event-titlebar-date" v-text="formatDate(info.date)"></span>
                     </div>
                     <div class="event-titlebar-part-holder column-desktop-4">
