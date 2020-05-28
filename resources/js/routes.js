@@ -4,7 +4,6 @@ import VueRouter from "vue-router";
 import Home from '@/js/views/Home';
 import Event from '@/js/views/Event';
 import Profile from '@/js/views/Profile';
-import About from '@/js/views/About';
 import EventForm from '@/js/views/forms/Event-form'
 import ResetPasswordForm from '@/js/views/forms/ResetPasswordForm';
 import DropdownExample from '@/js/views/DropdownExample'
@@ -29,11 +28,6 @@ const router = new VueRouter({
           path: '/profile',
           name: 'profile',
           component: Profile
-        },
-        {
-            path: '/about',
-            name: 'about',
-            component: About,
         },
         {
             path: '/form/event',
