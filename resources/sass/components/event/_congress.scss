@@ -11,9 +11,29 @@
   }
 
   .event-congress-rounds {
+    .event-congress-round {
+
+      @media (max-width: $mobile-breakpoint) {
+        &:after{
+          border: none;
+          border-top: solid 1px $mid-gray;
+          width: 100% !important;
+          height: 0 !important;
+          left: 0 !important;
+          top: -$padding-small !important;
+        }
+      }
+
+      .event-congress-round-content {
+        @media (max-width: $mobile-breakpoint) {
+          padding: 0 !important;
+        }
+      }
+    }
 
     .event-congress-round:first-child .event-congress-round-content {
       padding-right: $padding-medium;
+
     }
 
     .event-congress-round:not(:first-child):not(:last-child) {

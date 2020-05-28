@@ -9,7 +9,7 @@
   justify-content: space-between;
 }
 
-@media (min-width: 980px) {
+@media (min-width: $tablet-breakpoint) {
   .flex-wrapper {
     padding-left: $padding-huge;
     padding-right: $padding-huge;
@@ -65,7 +65,7 @@
 }
 
 
-@media only screen and (min-width: 661px) and (max-width: 979px) {
+@media only screen and (min-width: ($mobile-breakpoint + 1)) and (max-width: ($tablet-breakpoint - 1)) {
   .flex-wrapper {
     padding-left: $padding-medium;
     padding-right: $padding-medium;
@@ -90,7 +90,7 @@
 }
 
 
-@media only screen and (min-width: 0px) and (max-width: 660px) {
+@media only screen and (min-width: 0px) and (max-width: $mobile-breakpoint) {
   .flex-wrapper {
     padding-left: $padding-small;
     padding-right: $padding-small;

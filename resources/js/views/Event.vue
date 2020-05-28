@@ -4,13 +4,13 @@
         <div class="event-content flex-grid">
             <div class="event-titlebar column-desktop-12 column-tablet-12 column-mobile-12">
                 <div class="flex-grid">
-                    <div class="event-titlebar-part-holder column-desktop-4 title-holder">
+                    <div class="event-titlebar-part-holder column-desktop-4 column-tablet-12 column-mobile-12 title-holder">
                         <h1 class="event-titlebar-title" v-text="title"></h1>
                     </div>
-                    <div class="event-titlebar-part-holder column-desktop-4 description-holder">
+                    <div class="event-titlebar-part-holder column-desktop-4 column-tablet-12 column-mobile-12 description-holder">
                         <h4 class="event-titlebar-description" v-text="description"></h4>
                     </div>
-                    <div class="event-titlebar-part-holder column-desktop-4">
+                    <div class="event-titlebar-part-holder column-desktop-4 column-tablet-4 column-mobile-6">
                         <div class="event-titlebar-ticketcounter-holder">
                               <p class="event-titlebar-ticketcounter-text">Aantal tickets verkrijgbaar</p>
                               <div class="event-titlebar-ticketcounter" v-if="tickets.isShowing">
@@ -20,16 +20,16 @@
                         </div>
                     </div>
                     <div class="event-titlebar-whitespace column-desktop-12"></div>
-                    <div class="event-titlebar-part-holder column-desktop-4 date-holder">
+                    <div class="event-titlebar-part-holder column-desktop-4 column-tablet-8 column-mobile-6 date-holder">
                         <span class="event-titlebar-date" v-text="formatDate(info.date)"></span>
                     </div>
-                    <div class="event-titlebar-part-holder column-desktop-4">
+                    <div class="event-titlebar-part-holder column-desktop-4 column-tablet-12 column-mobile-12">
                         <div class="event-titlebar-line">
                             <hr class="event-titlebar-divider">
                             <p class="event-titlebar-line-text desktop-3">stel hier uw ticket samen onder</p>
                         </div>
                     </div>
-                    <div class="event-titlebar-part-holder contains-btn column-desktop-4">
+                    <div class="event-titlebar-part-holder contains-btn column-desktop-4 column-tablet-12 column-mobile-12">
                         <button @click="()=>{}" class="event-titlebar-btn">Bekijk plattegrond</button>
                     </div>
                 </div>
