@@ -54,6 +54,7 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
 
     Route::get('role', 'RoleController@index')->name('role');
     Route::get('role/{role}', 'RoleController@show')->name('role.show');
+    Route::get('role-update-selectable/{role}', 'RoleController@updateSelectable')->name('role.update.selectable');
     Route::post('role', 'RoleController@store')->name('role.store');
     Route::patch('role/{role}', 'RoleController@update')->name('role.update');
     Route::delete('role/{role}', 'RoleController@destroy')->name('role.destroy');

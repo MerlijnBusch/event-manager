@@ -63,7 +63,6 @@
             return {}
         },
         name: 'UploadExcelUserModal',
-        props: ['id'],
         methods: {
             close() {
                 this.$emit('close');
