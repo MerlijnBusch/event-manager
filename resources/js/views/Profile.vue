@@ -55,36 +55,59 @@
             document.getElementById("disableLink").addEventListener("click", function (event) {
                 event.preventDefault()
             });
-        },async mounted(){
-            const data = await API.get("/api/profile-check")
-            console.log(data);
-          if( data.data[0] ){
-          this.data = data.data[0];
-          this.about = this.data.profile.about;
-          this.role_name = this.data.role.role_name;
-          this.contact = this.data.contact;
-          }
-         
+        },async mounted() {
+            const res = await API.get("/api/profile-check");
+            if (!res.data) return
+
+            const data = res.data;
+
+            if (data.profile) {
+                this.about = data.profile.about;
+                this.contact = data.contact;
+                this.image = data.image;
+            }
+
+            if (data.role) {
+                this.role_name = data.role.role_name;
+            }
+
         },
-        methods:{
-            editProfile(){
-                const file = this.image;
-            console.log(reader.readAsDataURL(file));
-            // API.post('/api/profile/').then(result=>{
-            //     this.file = reader.readAsDataURL(file);
-            // }) 
+        methods: {
+           async onFileChange(e) {
+                let base64;
+                var input = this.$refs.image;
+                let file = e.target.files[0];
+                console.log(file.type.split('/')[1]);
+                const reader = new FileReader();
+                let imageTypes = ["png", "jpeg"]
+                if (!file && file.type.split('/')[1] != "jpeg" || "png")
+                    input.replaceWith(input.val('').clone(true));
+                alert("this is not a valid image type!")
+                return;
+
+                reader.onload = function () {
+
+                    base64 = this.result
+                    
+                };
+              
+                await reader.readAsDataURL(file);
+
+                this.image = base64; 
+
             },
-            onFileChange(e) {
-                    var files = e.target.files || e.dataTransfer.files;
-                    var test = [files];
-                    if (!files.length)
-                        return;
-                    test.forEach(file => {
-                        const reader = new FileReader();
-                        var image = reader.readAsDataURL(file);
-                    });
-                    console.log(image);
-                }
+            async editProfile() {
+                const data = {
+                    roleName = this.role_name,
+                    about = this.about,
+                    contact = this.contact,
+                    image = this.image
+                    
+                };
+                await API.post(data, '/api/profile/');
+               
+            }
+           
         }
 
     }

@@ -175,7 +175,11 @@ class ProfileController extends Controller
         return response()->json(['message' => $request->cv], 200);
 
     }
-
+    public function storeProfileWithRelations($request)
+    {
+        var_dump($request); 
+       
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -205,11 +209,14 @@ class ProfileController extends Controller
     }
 
     public function check(){
+        $this->authorize('read', Profile::class);
+        $this->authorize('readCV', Profile::class);
+
         $user = User::query()
             ->where('id', Auth::id())
             ->with('profile')
             ->with('role')
-            ->get();
+            ->first();
     return response()->json($user, 200);
 
     }
