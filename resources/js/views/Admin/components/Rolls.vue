@@ -39,18 +39,30 @@
             </div>
         </div>
         <div class="admin-item-container-footer"></div>
+
+        <update-roll-modal
+            v-bind:id="rollId"
+            v-show="updateRollModal"
+            @close="setModalState(`updateRollModal`)"
+        />
     </div>
 </template>
 
 <script>
     import API from "../../../Api";
+    import UpdateRollModal from "./modal/UpdateRollModal";
 
     export default {
         name: 'Rolls',
         data() {
             return {
                 rolls: [],
+                updateRollModal: false,
+                rollId: null,
             }
+        },
+        components{
+            UpdateRollModal
         },
         methods: {
             handleChange(e) {
@@ -69,10 +81,13 @@
                 } else {
                     API.get('/api/role-update-selectable/' + target.id)
                 }
-                console.log({target})
+            },
+            async setModalState(state) {
+                this[state] = !this[state];
             },
             updateRoll(id) {
-
+                this.rollId = id;
+                this.setModalState('updateRollModal')
             },
             deleteRoll(id) {
                 if (confirm('Weet u zeker dat u deze rol wilt verweideren')) {
