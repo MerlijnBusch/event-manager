@@ -42,7 +42,7 @@
                             </div>
                             <div class="form-line">
                                 <label class="form-label" for="color">Color</label>
-                                <input class="form-text-input" id="color" v-model="color" type="color" name="color"
+                                <input class="form-color-input" id="color" v-model="color" type="color" name="color"
                                        placeholder="Color"
                                 />
                             </div>
@@ -76,18 +76,18 @@
 
 <script>
     import API from "../../../../Api";
-    import dropdown from '@/js/components/dropdown'
+    import dropdown from '@/js/components/dropdown';
 
     export default {
         components: {dropdown},
         data() {
             return {
-                roll_id: null,
+                role_id: null,
                 role_name: '',
                 color: '',
                 permissions: [],
                 options: [],
-                current: [],
+                current: ["Admin"],
             }
         },
         name: 'UpdateRollModal',
@@ -96,33 +96,47 @@
             close() {
                 this.$emit('close');
             },
+            setCurrent(v){
+                this.current = v;
+            },
             checkForm: function (e) {
 
 
                 const data = {
-                    date_start: this.date_start,
-                    date_end: this.date_end,
+                    color: this.color,
+                    role_name: this.role_name,
+                    permissions: this.current,
                 };
 
-                API.post(data, '/api/block/' + this.block_id, true);
+                API.post(data, '/api/role/' + this.role_id, true);
 
                 this.close();
 
                 e.preventDefault();
             },
             setFormData(data){
-                this.date_start = data.data.date_start;
-                this.date_end = data.data.date_end;
-                this.block_id = data.data.id;
+                const res = data.data;
+                this.role_id = res.id;
+                this.color = res.color;
+                this.role_name = res.role_name;
+                this.current = res.permissions;
             }
         },
         watch: {
             id: async function(newVal, oldVal) {
-                this.setFormData(await API.get('/api/block/' + this.id));
+                if(this.id) this.setFormData(await API.get('/api/role/' + this.id));
             }
         },
         async mounted() {
-            this.setFormData(await API.get('/api/block/' + this.id));
+            const data = await API.get('/api/permissions');
+            let options = this.options;
+            for (const key in data.data.message) {
+                if (data.data.message.hasOwnProperty(key) && key.substring(0, 2) === "__") {
+                    options.push(data.data.message[key]);
+                }
+            }
+            this.options = options;
+            if(this.id) this.setFormData(await API.get('/api/role/' + this.id));
         }
     };
 </script>

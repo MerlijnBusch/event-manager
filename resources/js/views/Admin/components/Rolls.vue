@@ -61,7 +61,7 @@
                 rollId: null,
             }
         },
-        components{
+        components: {
             UpdateRollModal
         },
         methods: {
