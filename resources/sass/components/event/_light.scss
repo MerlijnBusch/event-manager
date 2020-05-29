@@ -1,0 +1,15 @@
+$dark-text: #373737;
+$gray: #8A8A8A;
+$medium-text: $gray;
+$white: #FFFFFF;
+$almost-white: #F6F6F6;
+$light-gray: #E7E7E7;
+
+.light{
+  .event-titlebar{
+    background-color: $almost-white;
+  }
+  .event-program_and_info{
+    background-color: $gray;
+  }
+}

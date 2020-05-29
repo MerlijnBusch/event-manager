@@ -13,7 +13,7 @@
       margin-top: -$padding-medium;
       @media (max-width: $mobile-breakpoint) {
         margin-top: $padding-small;
-        button{
+        button {
           width: 100%;
         }
       }
@@ -84,6 +84,17 @@
     }
   }
 
+  .event-titlebar-divider {
+    border: none;
+    height: 15px;
+    background: var(--theme-color);
+    border-radius: 7.5px;
+    margin-right: auto;
+    margin-left: 0;
+    width: 50%;
+    display: block;
+  }
+
   .event-titlebar-ticketcounter-holder {
     display: flex;
     justify-content: flex-end;
@@ -95,7 +106,9 @@
     margin: 0;
     line-height: 1;
     padding: 0 $padding-small 0 0;
-    max-width: (100%/3);
+    width: (100%/3);
+    min-width: min-content;
+    max-width: 100%;
     text-align: right;
     font-size: $font-size-medium;
   }
@@ -108,6 +121,7 @@
         padding-left: unset;
         padding-right: $padding-small;
         margin-right: $padding-small;
+
         &:before {
           right: 0;
           left: unset;
@@ -115,7 +129,7 @@
       }
     }
 
-    .event-titlebar-date{
+    .event-titlebar-date {
       max-width: 100%;
       display: block;
       line-height: 1.5;
@@ -130,6 +144,7 @@
       text-overflow: ellipsis;
       padding-right: $padding-small;
       margin-right: $padding-small;
+
       &:before {
         position: absolute;
         content: '';
