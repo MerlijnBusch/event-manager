@@ -1,9 +1,9 @@
 <template>
     <div class="profile-container flex-grid column-desktop-full">
       <div class="column-desktop-full column-tablet-12 column-mobile-12 profile-top">
-        <h1>{{$user.data.name}}'s profiel</h1>
+        <h1>{{name}}'s profiel</h1>
       </div>
-      <form autocomplete="off" @submit.prevent="editProfile" method="post">
+      <form autocomplete="off" @submit.prevent="editProfile" method="post" class="form-profile-edit">
         <div class="mobile-wrapper flex-grid column-desktop-full">
             <div class="column-desktop-4 column-tablet-6 column-mobile-12 profile-border profile-main-wrapper">
             <p class="profile-edit" :class="{'profile-save-padding': edit}"><a href="#" @click="edit = !edit" id="disableLink"><span>Profiel aanpassen </span><i class="fas fa-cog"></i></a></p>
@@ -13,7 +13,7 @@
             </div>
             <input type="file" name="image" ref="image" @change="onFileChange" >
             <div class="profile-main">
-                <p class="profile-name">{{$user.data.name}}</p>
+                <p class="profile-name">{{name}}</p>
                 <p class="profile-role">{{role_name}}</p>
             </div>
             </div>
@@ -51,6 +51,7 @@
                 contact: null,
                 edit: false,
                 image: null,
+                name: null,
              }
             document.getElementById("disableLink").addEventListener("click", function (event) {
                 event.preventDefault()
@@ -60,6 +61,10 @@
             if (!res.data) return
 
             const data = res.data;
+
+            if(data.name){
+                this.name = data.name;
+            }
 
             if (data.profile) {
                 this.about = data.profile.about;
@@ -98,10 +103,10 @@
             },
             async editProfile() {
                 const data = {
-                    roleName = this.role_name,
-                    about = this.about,
-                    contact = this.contact,
-                    image = this.image
+                    roleName: this.role_name,
+                    about: this.about,
+                    contact: this.contact,
+                    image: this.image
                     
                 };
                 await API.post(data, '/api/profile/');
