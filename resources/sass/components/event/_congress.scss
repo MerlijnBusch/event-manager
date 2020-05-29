@@ -13,7 +13,8 @@
   .event-congress-rounds {
     .event-congress-round {
 
-      @media (max-width: $mobile-breakpoint) {
+      @media (max-width: $tablet-breakpoint) {
+        margin-top: $padding-medium;
         &:after{
           border: none;
           border-top: solid 1px $mid-gray;
@@ -25,7 +26,7 @@
       }
 
       .event-congress-round-content {
-        @media (max-width: $mobile-breakpoint) {
+        @media (max-width: $tablet-breakpoint) {
           padding: 0 !important;
         }
       }
