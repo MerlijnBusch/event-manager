@@ -36,21 +36,34 @@
                         </div>
                     </div>
                 </div>
+                <div
+                    v-on:click="setModalState('createRollModal')"
+                    class="admin-role-create-container"
+                >
+                    <i class="fas fa-plus-circle admin-role-create-icon"></i>create role
+                </div>
             </div>
         </div>
         <div class="admin-item-container-footer"></div>
 
-        <update-roll-modal
+        <update-role-modal
             v-bind:id="rollId"
             v-show="updateRollModal"
             @close="setModalState(`updateRollModal`)"
         />
+
+        <create-role-modal
+            v-show="createRollModal"
+            @close="setModalState(`createRollModal`)"
+        />
+
     </div>
 </template>
 
 <script>
     import API from "../../../Api";
-    import UpdateRollModal from "./modal/UpdateRoleModal";
+    import UpdateRoleModal from "./modal/UpdateRoleModal";
+    import CreateRoleModal from "./modal/CreateRoleModal";
 
     export default {
         name: 'Rolls',
@@ -58,11 +71,13 @@
             return {
                 rolls: [],
                 updateRollModal: false,
+                createRollModal: false,
                 rollId: null,
             }
         },
         components: {
-            UpdateRollModal
+            UpdateRoleModal,
+            CreateRoleModal
         },
         methods: {
             handleChange(e) {
@@ -84,6 +99,8 @@
             },
             async setModalState(state) {
                 this[state] = !this[state];
+                const res = await API.get('/api/role');
+                this.rolls = res.data;
             },
             updateRoll(id) {
                 this.rollId = id;

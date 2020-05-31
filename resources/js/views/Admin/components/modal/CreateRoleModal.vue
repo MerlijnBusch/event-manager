@@ -82,16 +82,14 @@
         components: {dropdown},
         data() {
             return {
-                role_id: null,
                 role_name: '',
-                color: '',
+                color: '#111111',
                 permissions: [],
                 options: [],
                 current: [],
             }
         },
-        name: 'UpdateRollModal',
-        props: ['id'],
+        name: 'CreateRollModal',
         methods: {
             close() {
                 this.$emit('close');
@@ -108,24 +106,12 @@
                     permissions: this.current,
                 };
 
-                API.post(data, '/api/role/' + this.role_id, true);
+                API.post(data, '/api/role');
 
                 this.close();
 
                 e.preventDefault();
             },
-            setFormData(data){
-                const res = data.data;
-                this.role_id = res.id;
-                this.color = res.color;
-                this.role_name = res.role_name;
-                this.current = res.permissions;
-            }
-        },
-        watch: {
-            id: async function(newVal, oldVal) {
-                if(this.id) this.setFormData(await API.get('/api/role/' + this.id));
-            }
         },
         async mounted() {
             const data = await API.get('/api/permissions');
@@ -136,7 +122,6 @@
                 }
             }
             this.options = options;
-            if(this.id) this.setFormData(await API.get('/api/role/' + this.id));
         }
     };
 </script>
