@@ -36,13 +36,13 @@
                         <form class="form" @submit.prevent="checkForm" method="post">
 
                             <div class="form-line">
-                                <label class="form-label" for="role_name">Role Name</label>
-                                <input class="form-text-input" id="role_name" v-model="role_name" type="text" name="role_name"
+                                <label class="form-label" for="create_role_name">Role Name</label>
+                                <input class="form-text-input" id="create_role_name" v-model="role_name" type="text" name="create_role_name"
                                        placeholder="Role name">
                             </div>
                             <div class="form-line">
-                                <label class="form-label" for="color">Color</label>
-                                <input class="form-color-input" id="color" v-model="color" type="color" name="color"
+                                <label class="form-label" for="create_color">Color</label>
+                                <input class="form-color-input" id="create_color" v-model="color" type="color" name="create_color"
                                        placeholder="Color"
                                 />
                             </div>
