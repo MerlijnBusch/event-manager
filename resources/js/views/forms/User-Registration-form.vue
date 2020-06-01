@@ -41,9 +41,7 @@
                 <div class="form-line">
                     <label class="form-label" for="role">Soort Bezoeker</label>
                     <select class="form-text-input" id="role" v-model="role">
-                        <option v-for="userrole in roles" :value="userrole.id">{{userrole.role_name}}</option>
-<!--                        <option value="3">Werkzoekende</option>-->
-<!--                        <option value="4">Standhouder</option>-->
+                        <option v-for="userrole in roles" :value="userrole.id">{{userrole.role_name}}</option>                  
                     </select>
                 </div>
                 <div class="form-line form-line-hasbutton">
@@ -106,7 +104,6 @@
             axios
                 .get('/api/selectable-roles')
                 .then(response => (this.roles = response.data))
-            console.log(this.roles)
         }
     }
 </script>
