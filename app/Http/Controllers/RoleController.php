@@ -102,7 +102,7 @@ class RoleController extends Controller
 
         return response()->json(['message' => 'Role updated successfully'], 200);
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -125,7 +125,9 @@ class RoleController extends Controller
      */
     public function showSelectables()
     {
-        $roles = Role::all()->where('selectable', 1);
+        $roles = Role::query()
+        ->where('selectable', 1)
+        ->get("role_name");
 
         return response()->json($roles, 200);
     }
