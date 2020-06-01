@@ -19,13 +19,30 @@ body {
     padding-bottom: $padding-huge + $padding-medium;
   }
 
-  .home-events{
+  .home-events {
     display: flex;
     flex-wrap: wrap;
-    @media (min-width: ($mobile-breakpoint + 1)) {
-      > div{
-        flex: 1 0 385px;
-        min-width: 385px;
+    @media (min-width: 1920px) {
+      > div {
+        flex: 1 0 600px !important;
+        min-width: 600px !important;
+        max-width: unset !important;
+      }
+    }
+    @media (min-width: ($tablet-breakpoint + 1)) {
+      > div {
+        flex: 1 0 33%;
+        min-width: 365px;
+        max-width: 50%;
+      }
+    }
+    @media (max-width: $tablet-breakpoint) {
+      @media (min-width: ($mobile-breakpoint + 1)) {
+        > div {
+          flex: 1 0 100%;
+          min-width: 100%;
+          max-width: 100%;
+        }
       }
     }
   }
@@ -39,7 +56,9 @@ body {
 
   .home-event-outer {
     display: flex;
-    > home-event{
+
+    > .home-event {
+      width: 100%;
       flex: 1;
     }
   }
@@ -51,10 +70,9 @@ body {
     border-radius: 20px;
     margin: 0 $padding-medium 50px;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
-    transition:
-            background-color $animation-time ease-in-out,
-            transform $animation-time ease-in-out,
-            box-shadow $animation-time ease-in-out;
+    transition: background-color $animation-time ease-in-out,
+    transform $animation-time ease-in-out,
+    box-shadow $animation-time ease-in-out;
 
     &:hover {
       background-color: lighten($deep-gray, 6%);
