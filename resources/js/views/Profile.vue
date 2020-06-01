@@ -64,7 +64,7 @@
                 twitter: null,
                 linkedin: null,
                 phonenumber: null,
-                contact_email: null,   
+                contact_email: null,
                 edit: false,
                 image: null,
             }
@@ -138,7 +138,3 @@
 
 
 </script>
-
-<style>
-
-</style>
