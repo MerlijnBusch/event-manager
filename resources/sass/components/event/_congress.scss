@@ -33,28 +33,28 @@
     }
 
     .event-congress-round:first-child .event-congress-round-content {
-      padding-right: $padding-medium;
+      padding-right: $padding-huge;
 
     }
 
     .event-congress-round:not(:first-child):not(:last-child) {
       &:after {
-        left: -$padding-medium/2;
+        left: -$padding-huge/4;
       }
 
       .event-congress-round-content {
-        padding-left: $padding-medium/2;
-        padding-right: $padding-medium/2;
+        padding-left: $padding-huge/2;
+        padding-right: $padding-huge/2;
       }
     }
 
     .event-congress-round:last-child {
       &:after {
-        left: 0;
+        left: $padding-huge/4;
       }
 
       .event-congress-round-content {
-        padding-left: $padding-medium;
+        padding-left: $padding-huge;
       }
     }
 
@@ -70,14 +70,26 @@
 
       }
     }
-
+    .event-congress-round-speakers + .event-congress-round-title{
+      margin-top: $padding-medium;
+    }
     .event-congress-round-title {
+      display: block;
       color: var(--theme-color);
       font-size: $font-size-normal;
+      margin-bottom: $padding-small;
+      > b{
+        display: inline-block;
+        text-align: left;
+        width: 135px;
+      }
 
       > span {
+        display: inline-block;
         color: $basic-gray;
         float: right;
+        width: 120px;
+        text-align: right;
       }
     }
 
@@ -85,6 +97,7 @@
       padding-top: $padding-tiny;
       padding-bottom: $padding-tiny;
       display: flex;
+      width: 100%;
 
       .event-congress-round-speaker-content {
         flex: 1;
