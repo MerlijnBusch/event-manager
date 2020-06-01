@@ -51,6 +51,7 @@
                                 >
                                     <i class="fas fa-pencil"></i>
                                 </div>
+                                {{event.id}}
                                 <div
                                     class="admin-sidebar-icon"
                                     v-on:click="deleteEvent(event.id)"
@@ -337,11 +338,11 @@
             },
             async deleteEvent(id) {
                 if (!confirm('Weet u zeker dat u dit event wilt verwiederen')) return;
-                if (id === this.currentEvent.event.id) {
+                if (!this.currentEvent.event && id === this.currentEvent.event.id) {
                     this.selectedEventId = null;
                     this.currentEvent = null;
                 }
-                API.delete('/api/event/' + id);
+                if(this.selectedEventId) API.delete('/api/event/' + id);
                 if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
                 this.forceUpdate();
             },
