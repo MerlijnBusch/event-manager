@@ -70,14 +70,26 @@
 
       }
     }
-
+    .event-congress-round-speakers + .event-congress-round-title{
+      margin-top: $padding-medium;
+    }
     .event-congress-round-title {
+      display: block;
       color: var(--theme-color);
       font-size: $font-size-normal;
+      margin-bottom: $padding-small;
+      > b{
+        display: inline-block;
+        text-align: left;
+        width: 135px;
+      }
 
       > span {
+        display: inline-block;
         color: $basic-gray;
         float: right;
+        width: 120px;
+        text-align: right;
       }
     }
 
@@ -85,6 +97,7 @@
       padding-top: $padding-tiny;
       padding-bottom: $padding-tiny;
       display: flex;
+      width: 100%;
 
       .event-congress-round-speaker-content {
         flex: 1;

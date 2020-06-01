@@ -77,7 +77,7 @@
                         <div class="event-congress-round  column-desktop-4 column-tablet-12 column-mobile-12"
                              v-for="(round, index) in congress">
                             <div class="event-congress-round-content">
-                                <b class="event-congress-round-title">Ronde {{index+1}} <span>{{round.time}}</span></b>
+                                <b class="event-congress-round-title"><b>Ronde {{index+1}}</b> <span>{{round.time}}</span></b>
                                 <div class="event-congress-round-speakers">
                                     <div class="event-congress-round-speaker" v-for="speaker in round.speakers">
                                         <div class="event-congress-round-speaker-content">
@@ -94,7 +94,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <b class="event-congress-round-title">Keynotespreker <span>{{round.speaker.time}}</span></b>
+                                <b class="event-congress-round-title"><b>Keynotespreker</b> <span>{{round.speaker.time}}</span></b>
                                 <div class="event-congress-round-keynote">
                                     <div class="event-congress-round-speaker-content">
                                         <b class="event-congress-round-speaker-title">{{round.speaker.name}}</b>
