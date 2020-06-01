@@ -13,7 +13,8 @@
             </div>
             <input type="file" name="image" ref="image" @change="onFileChange" >
             <div class="profile-main">
-                <p class="profile-name">{{name}}</p>
+                <p class="profile-name" v-if="!edit">{{name}}</p>
+                <input type="text" v-model="name" class="profile-name" v-else>
                 <p class="profile-role">{{role_name}}</p>
             </div>
             </div>
