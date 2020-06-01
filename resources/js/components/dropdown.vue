@@ -31,11 +31,13 @@
             newCurrent: function () {
                 this.$emit('setCurrent', this.newCurrent)
             },
+            current: async function(newVal, oldVal) {
+                this.newCurrent = this.current;
+            }
         },
         mounted() {
             this.newCurrent = this.current;
             this.optionsStatus = this.options;
-            console.log(this.options);
         }
     }
 </script>

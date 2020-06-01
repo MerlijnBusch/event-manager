@@ -6,7 +6,7 @@
 
         <div class="flex-wrapper homepage-inner">
             <div class="home-events flex-grid">
-                <div v-for="item in items" class="home-event-outer column-desktop-4 column-tablet-6 column-mobile-12">
+                <div v-for="item in [...items, ...items]" class="home-event-outer column-desktop-4 column-tablet-6 column-mobile-12">
                     <div class="home-event" @click="$router.push('event')">
                         <div class="home-event-background" :style="{backgroundColor: item.color, backgroundImage: 'url(' + item.image + ')'}">
                             <!--TODO: Image Background-->

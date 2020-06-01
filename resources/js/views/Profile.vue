@@ -124,11 +124,15 @@
                 const data = {
                     about: this.about,
                     contact: this.contact,
-                    image: this.image
-
+                    image: this.image,
+                    facebook: this.facebook,
+                    twitter: this.twitter,
+                    linkedin: this.linkedin,
+                    phonenumber: this.phonenumber,
+                    contact_email: this.contact_email
                 };
-                await API.post(data, '/api/profile-edit');
-                await API.post(this.role_name, '/api/role/' + this.user_id)
+                await API.post(data, '/api/profile-edit', true);
+                await API.post(this.role_name, '/api/selectable-role-edit', true);
             }
         }
     }
