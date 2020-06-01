@@ -6,6 +6,10 @@ div.profile-container{
   visibility: hidden;
   display: none;
 }
+.mobile-wrapper{
+  flex: 1;
+  margin-top: 0;
+}
 @media (min-width: 980px) {
   .profile-border{
     border-top-left-radius: 15px;
@@ -14,12 +18,13 @@ div.profile-container{
   }
   .profile-container{
     flex: 1;
+    flex-direction: column;
+    display: flex;
   }
   .profile-top h1{
-    color: #c1c1c1;
+    font-size: $font-size-big;
+    color: $basic-gray;
     font-weight: bold;
-    font-size: 60px;
-    padding: 50px 90px;
     margin: 0;
   }
   .profile-main-wrapper{
