@@ -131,8 +131,8 @@
                     phonenumber: this.phonenumber,
                     contact_email: this.contact_email
                 };
-                await API.post(data, '/api/profile-edit');
-                await API.post(this.role_name, '/api/selectable-role-edit')
+                await API.post(data, '/api/profile-edit', true);
+                await API.post(this.role_name, '/api/selectable-role-edit', true);
             }
         }
     }
