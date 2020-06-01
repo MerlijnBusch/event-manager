@@ -37,7 +37,8 @@ class UserController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function search(Request $request){
+    public function search(Request $request)
+    {
 
         $validator = Validator::make($request->all(), [
             'search' => ['string']
@@ -48,9 +49,9 @@ class UserController extends Controller
         }
 
         $user = User::query()
-            ->where('name','LIKE','%' . $request->search . '%')
-            ->orWhere('email','LIKE','%' . $request->search . '%')
-            ->get(['name','email','id']);
+            ->where('name', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('email', 'LIKE', '%' . $request->search . '%')
+            ->get(['name', 'email', 'id']);
 
         return response()->json(['message' => $user], 200);
     }
@@ -59,7 +60,8 @@ class UserController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function permissions(){
+    public function permissions()
+    {
 
         $this->authorize('write', Role::class);
 
@@ -68,18 +70,18 @@ class UserController extends Controller
 
     }
 
-    public function UpdateSelectableUserRole(Request $request){
-       $this->authorize('write', User::class);
+    public function UpdateSelectableUserRole(Request $request)
+    {
+        $this->authorize('write', User::class);
 
-       $user = User::findOrFail(Auth::id());
+        if (!in_array($request->role_name, Role::query()->where("selectable", true)->get(["id"])->toArray())) {
+            abort(403);
+        }
 
-       if(!in_array(Role::query()->where("selectable", true)->get(["id"])->toArray())){
-           abort(403);
-       }
+        $user = User::findOrFail(Auth::id());
+        $user->role_id = $request->role_name;
+        $user->update();
 
-       $user->role_id = $request->role_name,
-       $user-save();
-
-       return  response()-json(['message' => "Role Edited"])
+        return response()->json(['message' => "Role Edited"]);
     }
 }
