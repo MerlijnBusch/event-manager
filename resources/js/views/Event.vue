@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="event-content-row flex-grid column-desktop-12 column-tablet-12 column-mobile-12">
-                <div class="event-program_and_info column-desktop-4 column-tablet-6 column-mobile-12">
+                <div class="event-program_and_info column-desktop-4 column-tablet-5 column-mobile-12">
                     <div class="event-program_and_info-content">
                         <div class="event-program">
                             <b class="event-program-title">Programma</b>
@@ -67,7 +67,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="event-congress column-desktop-8 column-tablet-6 column-mobile-12 flex-grid">
+                <div class="event-congress column-desktop-8 column-tablet-7 column-mobile-12 flex-grid">
                     <b class="event-congress-title column-desktop-12 column-tablet-12 column-mobile-12">Congress</b>
                     <p class="event-congress-description column-desktop-4 column-tablet-4 column-mobile-4">
                         Bekijk en selecteer lezingen
@@ -117,12 +117,12 @@
             <!--TODO: Modal?-->
 
             <div class="event-content-row flex-grid column-desktop-12 column-tablet-12 column-mobile-12">
-                <div class="event-modal column-desktop-4 column-tablet-4 column-mobile-12"></div>
-                <div class="event-my_speakers column-desktop-8 column-tablet-8 column-mobile-12 flex-grid">
-                    <b class="event-my_speakers-title column-desktop-4 column-tablet-6 column-mobile-12">Geselecteerde
+                <div class="event-modal column-desktop-4 column-tablet-5 column-mobile-12"></div>
+                <div class="event-my_speakers column-desktop-8 column-tablet-7 column-mobile-12 flex-grid">
+                    <b class="event-my_speakers-title column-desktop-4 column-tablet-12 column-mobile-12">Geselecteerde
                         Sprekers</b>
                     <div class="event-my_speakers-rounds column-desktop-12 column-tablet-12 column-mobile-12 flex-grid">
-                        <div class="event-my_speakers-round column-desktop-4 column-tablet-4 column-mobile-12"
+                        <div class="event-my_speakers-round column-desktop-4 column-tablet-12 column-mobile-12"
                              v-for="(speaker,index) in selectedSpeakers">
                             <div class="event-my_speaker-round-content">
                                 <b class="event-my_speakers-round-title">Ronde

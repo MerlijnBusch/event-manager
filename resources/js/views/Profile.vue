@@ -69,7 +69,6 @@
     div.profile-container{
         background-color: #404040;
     }
-    .navbar{z-index: 1;}
 
     @media (min-width: 980px) {
         .profile-border{
