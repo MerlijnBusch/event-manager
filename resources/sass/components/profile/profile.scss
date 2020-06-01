@@ -31,7 +31,6 @@ div.profile-container{
     overflow: hidden;
     background-color: $deep-gray;
     color: $basic-gray;
-    height: 100%;
     position: relative;
 
   }
@@ -43,13 +42,20 @@ div.profile-container{
   }
   .profile-about{
     background-color: $mid-gray;
-    height: 66%;
+    flex: 2;
+    min-height: max-content;
     padding: 100px;
   }
   div.profile-contact{
     background-color: #c1c1c1;
-    height: 34%;
+    flex: 1;
+    min-height: max-content;
     padding: 42px 140px ;
+    margin-top: -11px;
+  }
+  .profile-row-right{
+    display: flex;
+    flex-direction: column;
   }
   .contact-title{
     font-size: 50px;
@@ -158,6 +164,12 @@ div.profile-container{
   }
   .form-profile-edit{
     display: contents;
+  }
+  .contact-input{
+    width: 193px;
+  }
+  .profile-name-edit{
+    width:193px ;
   }
 }
 @media only screen and (min-width: 0px) and (max-width: 660px) {

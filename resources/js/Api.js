@@ -36,6 +36,7 @@ export default class API {
             case 403:
                 error = res.data.message;
                 window.location.href = window.location.origin;
+                
                 break;
             case 404:
                 error = "Not found";
