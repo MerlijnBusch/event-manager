@@ -6,9 +6,12 @@
         <form autocomplete="off" @submit.prevent="editProfile" method="post" class="form-profile-edit">
             <div class="mobile-wrapper flex-grid column-desktop-full">
                 <div class="column-desktop-4 column-tablet-6 column-mobile-12 profile-border profile-main-wrapper">
-                    <p class="profile-edit" :class="{'profile-save-padding': edit}"><a href="#" @click.prevent="edit = !edit"
-                        id="disableLink"><span>Profiel aanpassen </span><i
-                        class="fas fa-cog"></i></a></p>
+                    <p class="profile-edit" :class="{'profile-save-padding': edit}">
+                        <a href="#" @click.prevent="edit = !edit"
+                           id="disableLink">
+                            <span>Profiel aanpassen </span><i class="fas fa-cog"></i>
+                        </a>
+                    </p>
                     <input type="submit" :class="{'profile-save': edit, 'invis': !edit}" v-if=" edit"
                            value="Profiel opslaan" >
                     <div class="profile-foto" :style="!!image ? {backgroundImage: 'url('+image+')'} : ''">
@@ -16,10 +19,11 @@
                     </div>
                     <input type="file" name="image" @change="onFileChange" v-if="edit">
                     <div class="profile-main">
-                        <p class="profile-name" v-if="!edit">{{name}}</p>
-                        <input type="text" v-model="name" class="profile-name-edit" v-else>
+                        <p class="profile-name" >{{name}}</p>
+                        <!--<input type="text" v-model="name" class="profile-name-edit" v-else>-->
                         <p class="profile-role" v-if="!edit">{{role_name}}</p>
-                        <select class="form-text-input" v-model="role_name" v-else>
+                        <select class="form-text-input" v-model="role" v-else>
+                            <option value="" selected>selecteer een role</option>
                             <option v-for="userrole in roles" :value="userrole.id">{{userrole.role_name}}</option>
                         </select>
                     </div>
@@ -92,6 +96,7 @@
                 data: {},
                 roles: [],
                 role_name: null,
+                role: null,
                 about: null,
                 facebook: null,
                 twitter: null,
@@ -123,7 +128,7 @@
                 this.contact_email = data.profile.contact_email;
             }
 
-            if (data.role) {
+            if (data.role) {    
                 this.role_name = data.role.role_name;
             }
 
@@ -131,7 +136,7 @@
             if (!roles.data) return this.roles = "Er zijn geen selecteerbare rollen.";
 
             this.roles = roles.data;
-
+            
         },
         methods: {
             async onFileChange(e) {
@@ -165,13 +170,17 @@
                     contact_email: this.contact_email
                 };
 
-                this.edit = false;
+                const roleData = {
+                    role: this.role
+                };
 
                 await API.post(data, '/api/profile-edit', true);
-                if (this.role_name) {
-                    await API.post(this.role_name, '/api/selectable-role-edit', true);
+                if (this.role) {
+                    await API.post(roleData, '/api/selectable-role-edit', true);
                 }
                 
+            
+                this.edit = false;
             }
         }
     }

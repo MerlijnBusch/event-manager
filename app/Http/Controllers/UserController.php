@@ -72,18 +72,20 @@ class UserController extends Controller
     public function UpdateSelectableUserRole(Request $request)
     {
         $this->authorize('write', User::class);
-
-       if(!$request && !in_array($request->role_name, Role::query()->where("selectable", true)->get(["id"])->toArray())){
+        $user = User::find(Auth::id());
+        var_dump($request->role);
+       if(!$request && !in_array($request->role, Role::query()->where("selectable", true)->get(["id"])->toArray())){
            abort(403);
        }
 
 
-       if($request->role_name){
-
-            $user->role_id = $request->role_name;
+            $user->role_id = $request->role;
             $user->update();
 
-            return  response()-json(['message' => "Role Edited"]);
-       }  
+            return  response()->json(['message' => "Role Edited"]);
+
+
+       
+            
     }
 }

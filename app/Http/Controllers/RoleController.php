@@ -127,7 +127,7 @@ class RoleController extends Controller
     {
         $roles = Role::query()
         ->where('selectable', 1)
-        ->get("role_name");
+        ->get(["id" ,"role_name"]);
 
         return response()->json($roles, 200);
     }
