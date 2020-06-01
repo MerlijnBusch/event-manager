@@ -11,7 +11,7 @@
   .event-titlebar-part-holder {
     &.contains-btn {
       margin-top: -$padding-medium;
-      @media (max-width: $mobile-breakpoint) {
+      @media (max-width: $tablet-breakpoint) {
         margin-top: $padding-small;
         button {
           width: 100%;
@@ -113,7 +113,7 @@
     font-size: $font-size-medium;
   }
 
-  @media (max-width: $mobile-breakpoint) {
+  @media (max-width: $tablet-breakpoint) {
     .event-titlebar-ticketcounter-holder {
       flex-direction: column;
 
@@ -184,7 +184,7 @@
     position: relative;
     float: right;
 
-    @media (max-width: $mobile-breakpoint) {
+    @media (max-width: $tablet-breakpoint) {
       font-size: $font-size-normal;
       padding: $padding-small $padding-medium;
       min-width: unset;

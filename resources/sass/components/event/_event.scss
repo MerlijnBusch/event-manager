@@ -61,7 +61,7 @@
       border-radius: $border-radius-big $border-radius-big 0 0;
       padding: $padding-huge $padding-huge $padding-huge + $border-radius-big;
       margin-top: -($border-radius-big);
-      @media (max-width: $mobile-breakpoint) {
+      @media (max-width: $tablet-breakpoint) {
         padding: $padding-medium $padding-big $padding-big + $border-radius-big;
       }
     }
