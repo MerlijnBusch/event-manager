@@ -120,6 +120,9 @@ class RoleController extends Controller
         return response()->json(['message' => 'Role deleted successfully'], 200);
     }
 
+    /**
+     * @return JsonResponse
+     */
     public function showSelectables()
     {
         $roles = Role::query()
@@ -127,5 +130,21 @@ class RoleController extends Controller
         ->get("role_name");
 
         return response()->json($roles, 200);
+    }
+
+    /**
+     * @param Role $role
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function updateSelectable(Role $role)
+    {
+        $this->authorize('write', Role::class);
+
+        $updateRole = Role::findOrFail($role->id);
+        $updateRole->selectable = !$role->selectable;
+        $updateRole->update();
+
+        return response()->json(['message' => 'Role updated successfully'], 200);
     }
 }

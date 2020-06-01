@@ -88,7 +88,8 @@
                 image: null,
             }
         },
-        name: 'CreateEventModal',
+        name: 'updateEventModal',
+        props: ['id'],
         methods: {
             close() {
                 this.$emit('close');
@@ -134,14 +135,37 @@
                     image.src = base64;
                     prev.innerHTML = '';
                     prev.appendChild(image);
-                    console.log(base64)
                 };
 
                 await reader.readAsDataURL(file);
 
                 this.image = base64;
             },
+            setFormData(data){
+                const res = data.data;
+                this.name = res.name;
+                this.description = res.description;
+                this.image = res.image;
+
+                const prev = this.$refs.previewImage;
+                const image = create({
+                    selector: 'img',
+                    styles: 'event-form-preview-image',
+                });
+
+                image.src = res.image;
+                prev.innerHTML = '';
+                prev.appendChild(image);
+            }
         },
+        watch: {
+            id: async function(newVal, oldVal) {
+                if(this.id) this.setFormData(await API.get('/api/event/' + this.id));
+            }
+        },
+        async mounted() {
+            if(this.id) this.setFormData(await API.get('/api/event/' + this.id));
+        }
     };
 </script>
 

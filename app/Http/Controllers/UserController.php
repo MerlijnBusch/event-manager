@@ -50,8 +50,7 @@ class UserController extends Controller
         $user = User::query()
             ->where('name','LIKE','%' . $request->search . '%')
             ->orWhere('email','LIKE','%' . $request->search . '%')
-            ->with('profile')
-            ->get();
+            ->get(['name','email','id']);
 
         return response()->json(['message' => $user], 200);
     }

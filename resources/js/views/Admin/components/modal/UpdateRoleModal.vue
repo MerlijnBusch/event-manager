@@ -14,7 +14,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Create Event
+                            Update Block
                         </p>
 
                         <button
@@ -36,21 +36,19 @@
                         <form class="form" @submit.prevent="checkForm" method="post">
 
                             <div class="form-line">
-                                <label class="form-label" for="name">Name</label>
-                                <input class="form-text-input" id="name" v-model="name" type="text" name="name"
-                                       placeholder="Event name">
+                                <label class="form-label" for="role_name">Role Name</label>
+                                <input class="form-text-input" id="role_name" v-model="role_name" type="text" name="role_name"
+                                       placeholder="Role name">
                             </div>
-
                             <div class="form-line">
-                                <label class="form-label" for="description">description</label>
-                                <textarea class="form-text-input" id="description" v-model="description" type="text"
-                                          name="description"
-                                          placeholder="Event name"></textarea>
+                                <label class="form-label" for="color">Color</label>
+                                <input class="form-color-input" id="color" v-model="color" type="color" name="color"
+                                       placeholder="Color"
+                                />
                             </div>
-
-                            <input type="file" name="image" @change="onFileChange">
-
-                            <div class="event-form-preview-image-holder" ref="previewImage"></div>
+                            <div class="form-line">
+                                <dropdown placeholder="role permisions" :options="options" :current="current" @setCurrent="setCurrent"></dropdown>
+                            </div>
 
                             <div class="form-line admin-from-submit">
                                 <input type="submit" value="Submit" class="submit-btn admin-form-submit">
@@ -78,70 +76,68 @@
 
 <script>
     import API from "../../../../Api";
-    import create from 'dom-create-element';
+    import dropdown from '@/js/components/dropdown';
 
     export default {
+        components: {dropdown},
         data() {
             return {
-                name: '',
-                description: '',
-                image: null,
+                role_id: null,
+                role_name: '',
+                color: '',
+                permissions: [],
+                options: [],
+                current: [],
             }
         },
-        name: 'CreateEventModal',
+        name: 'UpdateRollModal',
+        props: ['id'],
         methods: {
             close() {
                 this.$emit('close');
             },
+            setCurrent(v){
+                this.current = v;
+            },
             checkForm: function (e) {
 
-                if (this.image === null) return;
 
                 const data = {
-                    name: this.name,
-                    description: this.description,
-                    image: this.image,
+                    color: this.color,
+                    role_name: this.role_name,
+                    permissions: this.current,
                 };
 
-                API.post(data, '/api/event');
+                API.post(data, '/api/role/' + this.role_id, true);
 
                 this.close();
 
                 e.preventDefault();
             },
-            async onFileChange(e) {
-                let base64;
-                const file = e.target.files[0];
-                const reader = new FileReader();
-                const imageTypes = ["png", "jpeg"];
-                const prev = this.$refs.previewImage;
-
-                if (!imageTypes.includes(file.type.split('/')[1])) {
-                    e.target.value = null;
-                    this.image = null;
-                    alert('Verkeerde image type toegestaan [png, jpeg]');
-                    return;
-                }
-
-                reader.onload = function () {
-                    base64 = this.result;
-
-                    const image = create({
-                        selector: 'img',
-                        styles: 'event-form-preview-image',
-                    });
-
-                    image.src = base64;
-                    prev.innerHTML = '';
-                    prev.appendChild(image);
-                    console.log(base64)
-                };
-
-                await reader.readAsDataURL(file);
-
-                this.image = base64;
-            },
+            setFormData(data){
+                const res = data.data;
+                this.role_id = res.id;
+                this.color = res.color;
+                this.role_name = res.role_name;
+                this.current = res.permissions;
+            }
         },
+        watch: {
+            id: async function(newVal, oldVal) {
+                if(this.id) this.setFormData(await API.get('/api/role/' + this.id));
+            }
+        },
+        async mounted() {
+            const data = await API.get('/api/permissions');
+            let options = this.options;
+            for (const key in data.data.message) {
+                if (data.data.message.hasOwnProperty(key) && key.substring(0, 2) === "__") {
+                    options.push(data.data.message[key]);
+                }
+            }
+            this.options = options;
+            if(this.id) this.setFormData(await API.get('/api/role/' + this.id));
+        }
     };
 </script>
 

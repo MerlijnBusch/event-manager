@@ -1,0 +1,17 @@
+.error-display {
+    position: absolute;
+    top: 0;
+    z-index: 1000;
+    background: #404040;
+    right: 0;
+    margin: 20px;
+    color: whitesmoke;
+    padding: 4px 24px;
+    box-shadow: 0px 3px 3px 2px #101010;
+
+    -webkit-transition: opacity 3s ease-in-out;
+    -moz-transition: opacity 3s ease-in-out;
+    -ms-transition: opacity 3s ease-in-out;
+    -o-transition: opacity 3s ease-in-out;
+    opacity: 1;
+}
