@@ -1,6 +1,6 @@
 <template>
-    <div class="profile-container flex-grid column-desktop-full">
-        <div class="column-desktop-full column-tablet-12 column-mobile-12 profile-top">
+    <div class="profile-container">
+        <div class="flex-wrapper profile-top">
             <h1>{{name}}'s profiel</h1>
         </div>
         <form autocomplete="off" @submit.prevent="editProfile" method="post" class="form-profile-edit">
