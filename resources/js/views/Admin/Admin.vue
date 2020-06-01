@@ -5,13 +5,32 @@
                 <p>users:</p>
                 <div>
                     <div
-                        class=""
-                        v-on:click="setModalState(`findUserModal`)"
-                    > Find user</div>
+                        class="admin-sidebar-name-holder"
+                        v-on:click="setPage(3)"
+                    >
+                        <div
+                            class="admin-sidebar-text-name"
+                        >Rollen en permissions
+                        </div>
+                    </div>
                     <div
-                        class=""
+                        class="admin-sidebar-name-holder"
+                        v-on:click="setPage(2)"
+                    >
+                        <div
+                            class="admin-sidebar-text-name"
+                        >Find user
+                        </div>
+                    </div>
+                    <div
+                        class="admin-sidebar-name-holder"
                         v-on:click="setModalState(`uploadExcelUsersModal`)"
-                    > Upload multiple users (excel)</div>
+                    >
+                        <div
+                            class="admin-sidebar-text-name"
+                        >Upload multiple users (excel)
+                        </div>
+                    </div>
                 </div>
                 <p>events:</p>
                 <div v-for="event in events" :key="event.name" class="admin-sidebar-event-container">
@@ -19,9 +38,27 @@
                         class="admin-sidebar-event-list-item"
                         v-on:click="setSelectedEventId(event.id)"
                     >
-                        <div class="admin-sidebar-event-name-holder"
-                             v-on:click="eventDropDown(event.id)">
-                            <div class="admin-sidebar-event-name">{{event.name}}</div>
+                        <div class="admin-sidebar-name-holder">
+                            <div
+                                class="admin-sidebar-text-name"
+                                v-on:click="eventDropDown(event.id)"
+                            >{{event.name}}
+                            </div>
+                            <div class="admin-sidebar-icon-container">
+                                <div
+                                    class="admin-sidebar-icon"
+                                    v-on:click="setModalState(`updateEventModal`)"
+                                >
+                                    <i class="fas fa-pencil"></i>
+                                </div>
+                                <div
+                                    class="admin-sidebar-icon"
+                                    v-on:click="deleteEvent(event.id)"
+                                    title="evenment verweideren"
+                                >
+                                    <i class="fas fa-trash"></i>
+                                </div>
+                            </div>
                         </div>
                         <div :id="'event-' + event.id" class="admin-sidebar-display-event-options">
                             <div v-if="event.program" v-for="prog in event.program">
@@ -66,8 +103,7 @@
             </div>
         </div>
         <div class="admin-main">
-            <event v-if="this.currentEvent.event" v-bind:event="currentEvent.event"></event>
-            <div class="admin-main-program-container" v-if="program">
+            <div class="admin-main-program-container" v-if="program && page === 1">
                 <program v-if="program" v-bind:program="program"></program>
                 <div class="admin-item-container" v-if="program">
                     <div class="admin-item-list">
@@ -151,15 +187,10 @@
                     <div class="admin-item-container-line"></div>
                 </div>
             </div>
-            <div class="admin-item-container-footer"></div>
+            <div v-if="page === 1" class="admin-item-container-footer"></div>
+            <find-user v-if="page === 2"></find-user>
+            <rolls v-if="page === 3"></rolls>
         </div>
-
-        <!--        <update-event-settings-modal-->
-        <!--            v-if="currentEvent.settings"-->
-        <!--            v-show="updateEventSettingsModal"-->
-        <!--            v-bind:settings="currentEvent.settings"-->
-        <!--            @close="setModalState(`updateEventSettingsModal`)"-->
-        <!--        />-->
 
         <create-item-modal
             v-if="blockId"
@@ -199,19 +230,18 @@
             @close="setModalState(`uploadExcelUsersModal`)"
         />
 
-        <find-user-modal
-            v-show="findUserModal"
-            @close="setModalState(`findUserModal`)"
+        <update-event-modal
+            v-if="currentEvent.event"
+            v-bind:id="currentEvent.event.id"
+            v-show="updateEventModal"
+            @close="setModalState(`updateEventModal`)"
         />
-
-
 
     </div>
 </template>
 
 <script>
     import API from "@/js/Api";
-    import Event from "./components/Event";
     import Program from "./components/Program";
     import Item from "./components/Item";
     import Settings from "./components/Settings";
@@ -222,12 +252,15 @@
     import UpdateEventSettingsModal from "./components/modal/UpdateEventSettingsModal";
     import UpdateBlockModal from "./components/modal/UpdateBlockModal";
     import UploadExcelUsersModal from "./components/modal/UploadExcelUsersModal";
-    import FindUserModal from "./components/modal/FindUserModal";
+    import UpdateEventModal from "./components/modal/UpdateEventModal";
+    import FindUser from "./components/FindUser";
+    import Rolls from "./components/Rolls";
 
     export default {
         name: 'Admin',
         data() {
             return {
+                page: 1,
                 events: [],
                 selectedEventId: null,
                 currentEvent: [],
@@ -241,11 +274,10 @@
                 updateEventSettingsModal: false,
                 updateBlockModal: false,
                 uploadExcelUsersModal: false,
-                findUserModal: false
+                updateEventModal: false,
             }
         },
         components: {
-            Event,
             Program,
             Item,
             Settings,
@@ -256,16 +288,20 @@
             UpdateEventSettingsModal,
             UpdateBlockModal,
             UploadExcelUsersModal,
-            FindUserModal
+            UpdateEventModal,
+            FindUser,
+            Rolls,
         },
         methods: {
             async setSelectedEventId(id) {
                 this.selectedEventId = id;
                 const data = await API.get('/api/admin/' + id);
                 this.currentEvent = data.data;
-                console.log(JSON.stringify(this.currentEvent))
             },
-            eventDropDown(id){
+            setPage(id) {
+                this.page = id;
+            },
+            eventDropDown(id) {
                 let target = document.getElementById('event-' + id);
                 let height = target.getBoundingClientRect().height;
                 if (height === 0) target.style.maxHeight = "500px";
@@ -273,6 +309,7 @@
             },
             updateDisplay(display) {
                 this.program = display;
+                this.setPage(1);
             },
             async setModalState(state) {
                 this[state] = !this[state];
@@ -280,9 +317,15 @@
                 this.forceUpdate();
             },
             forceUpdate() {
-                this.currentEvent.programs.forEach((item, index) => {
-                    if (item.id === this.program.id) this.program = this.currentEvent.programs[index];
-                })
+                if (this.currentEvent && this.currentEvent.programs) {
+                    this.currentEvent.programs.forEach((item, index) => {
+                        if (item.id === this.program.id) this.program = this.currentEvent.programs[index];
+                    })
+                }
+                setTimeout(async () => {
+                    const data = await API.get('/api/admin');
+                    this.events = data.data;
+                }, 0)
             },
             addItemToBlock(id) {
                 this.blockId = id;
@@ -291,6 +334,16 @@
             updateBlock(id) {
                 this.updateBlockId = id;
                 this.setModalState('updateBlockModal');
+            },
+            async deleteEvent(id) {
+                if (!confirm('Weet u zeker dat u dit event wilt verwiederen')) return;
+                if (id === this.currentEvent.event.id) {
+                    this.selectedEventId = null;
+                    this.currentEvent = null;
+                }
+                API.delete('/api/event/' + id);
+                if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
+                this.forceUpdate();
             },
             async deleteBlock(id) {
                 API.delete('/api/block/' + id);
@@ -316,9 +369,7 @@
             }
         },
         async mounted() {
-            const data = await API.get('/api/admin');
-            this.events = data.data;
-            console.log(JSON.parse(JSON.stringify(this.events)));
+            this.forceUpdate();
         },
     }
 </script>

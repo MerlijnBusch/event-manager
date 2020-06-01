@@ -1,17 +1,17 @@
 <template>
     <div class="dropdown">
-        <button @click="isOpen = !isOpen" class="dropdown-current">
-            <span v-for="selected in newCurrent">{{selected.name}}</span>
+        <div @click="isOpen = !isOpen" class="dropdown-current">
+            <span v-for="selected in newCurrent" style="margin: 5px;">{{selected}}</span>
             <span class="dropdown_placeholder" v-if="!newCurrent.length">{{placeholder}}</span>
             <div class="dropdown-icon">
                 <i class="fas fa-chevron-down" v-if="!isOpen"></i>
                 <i class="fas fa-chevron-up" v-else></i>
             </div>
-        </button>
+        </div>
         <div class="dropdown-options" v-if="isOpen">
             <label class="dropdown-option" v-for="option in options" :class="{'dropdown-option-selected': newCurrent.includes(option)}">
                 <input type="checkbox" :value="option" v-model="newCurrent">
-                <span>{{option.name}}</span>
+                <span>{{option}}</span>
             </label>
         </div>
     </div>
@@ -35,6 +35,7 @@
         mounted() {
             this.newCurrent = this.current;
             this.optionsStatus = this.options;
+            console.log(this.options);
         }
     }
 </script>

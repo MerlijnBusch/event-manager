@@ -1,4 +1,5 @@
 import axios from 'axios';
+import create from 'dom-create-element';
 
 export default class API {
 
@@ -19,11 +20,63 @@ export default class API {
     }
 
     /**
+     * Error handling to front end that creates a snackbar to give user feedback
+     * @param data
+     */
+    static errorCheck(data){
+        let error = ""
+        const res = data.response;
+
+        switch (res.status) {
+            case 422:
+                for (const key in res.data) {
+                    if (res.data.hasOwnProperty(key)) error += res.data[key] + "</br>";
+                }
+                break;
+            case 403:
+                error = res.data.message;
+                window.location.href = window.location.origin;
+                break;
+            case 404:
+                error = "Not found";
+                break;
+            case 500:
+                error = "Internal server error";
+                break;
+            default:
+                error = "An error occurs try again"
+        }
+
+        const html = create({
+            selector: 'div',
+            styles: 'error-display',
+            children: create({
+                selector: 'p',
+                html: error,
+            })
+        });
+
+        document.getElementById("body").appendChild(html);
+
+        setTimeout(() => {
+            html.style.opacity = 0;
+        }, 5000)
+
+        setTimeout(() => {
+            html.parentNode.removeChild(html);
+        }, 7000)
+    }
+
+    /**
      * @param url
      * @returns {Promise<AxiosResponse<any>>}
      */
     static async get(url){
-        return axios.get(window.location.origin + url, {headers: this.headers})
+        try {
+            return await axios.get(window.location.origin + url, {headers: this.headers});
+        } catch (e) {
+            this.errorCheck(e)
+        }
     }
 
     /**
@@ -33,8 +86,12 @@ export default class API {
      * @returns {Promise<AxiosResponse<any>>}
      */
     static async post(data, url, update = false){
-        if(update) return axios.patch(window.location.origin + url, data, {headers: this.headers});
-        return axios.post(window.location.origin + url, data, {headers: this.headers});
+        try {
+            if(update) return await axios.patch(window.location.origin + url, data, {headers: this.headers});
+            return await axios.post(window.location.origin + url, data, {headers: this.headers});
+        } catch (e) {
+            this.errorCheck(e)
+        }
     }
 
     /**
@@ -42,7 +99,11 @@ export default class API {
      * @returns {Promise<AxiosResponse<any>>}
      */
     static async delete(url){
-        return axios.delete(window.location.origin + url, {headers: this.headers});
+        try {
+            return await axios.delete(window.location.origin + url, {headers: this.headers});
+        } catch (e) {
+            this.errorCheck(e)
+        }
     }
 }
 

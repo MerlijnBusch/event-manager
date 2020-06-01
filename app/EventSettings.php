@@ -37,7 +37,7 @@ class EventSettings extends Model
     ];
 
     protected $hidden = [
-        'updated_at', 'created_at','active'
+        'updated_at', 'created_at','active','deleted_at'
     ];
 
 

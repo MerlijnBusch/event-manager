@@ -15,7 +15,10 @@ class Profile extends Model
         'user_id',
         'phone_number',
         'image',
-        'contact',
+        'facebook',
+        'linkedin',
+        'contact_email',
+        'twitter',  
         'cv',
     ];
 

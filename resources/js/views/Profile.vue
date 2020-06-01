@@ -60,7 +60,6 @@
                 roles: [],
                 role_name: null,
                 about: null,
-                contact: null,
                 edit: false,
                 image: null,
             }
@@ -69,7 +68,7 @@
             });
         }, async mounted() {
             const res = await API.get("/api/profile-check");
-            console.log(res);
+
             if (!res.data) return
 
             const data = res.data;
@@ -80,7 +79,6 @@
 
             if (data.profile) {
                 this.about = data.profile.about;
-                this.contact = data.profile.contact;
                 this.image = data.profile.image;
             }
 
