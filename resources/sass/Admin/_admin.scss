@@ -4,6 +4,7 @@
 @import "AdminSideBar";
 @import "FindUser";
 @import "Rolls";
+@import "../variables";
 
 .admin-container {
     margin: 0;
@@ -24,7 +25,8 @@
 }
 
 .admin-main {
-    max-height: calc(100vh - 80px);
+    min-height: calc(100vh - #{$navbar-height});
+    max-height: calc(100vh - #{$navbar-height});
     max-width: calc(100% - 335px);
     padding: 16px 16px 0 16px;
     display: flex;
