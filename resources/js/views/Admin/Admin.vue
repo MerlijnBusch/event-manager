@@ -47,7 +47,7 @@
                             <div class="admin-sidebar-icon-container">
                                 <div
                                     class="admin-sidebar-icon"
-
+                                    v-on:click="setModalState(`updateEventModal`)"
                                 >
                                     <i class="fas fa-pencil"></i>
                                 </div>
@@ -230,6 +230,13 @@
             @close="setModalState(`uploadExcelUsersModal`)"
         />
 
+        <update-event-modal
+            v-if="currentEvent.event"
+            v-bind:id="currentEvent.event.id"
+            v-show="updateEventModal"
+            @close="setModalState(`updateEventModal`)"
+        />
+
     </div>
 </template>
 
@@ -245,6 +252,7 @@
     import UpdateEventSettingsModal from "./components/modal/UpdateEventSettingsModal";
     import UpdateBlockModal from "./components/modal/UpdateBlockModal";
     import UploadExcelUsersModal from "./components/modal/UploadExcelUsersModal";
+    import UpdateEventModal from "./components/modal/UpdateEventModal";
     import FindUser from "./components/FindUser";
     import Rolls from "./components/Rolls";
 
@@ -266,6 +274,7 @@
                 updateEventSettingsModal: false,
                 updateBlockModal: false,
                 uploadExcelUsersModal: false,
+                updateEventModal: false,
             }
         },
         components: {
@@ -279,8 +288,9 @@
             UpdateEventSettingsModal,
             UpdateBlockModal,
             UploadExcelUsersModal,
+            UpdateEventModal,
             FindUser,
-            Rolls
+            Rolls,
         },
         methods: {
             async setSelectedEventId(id) {
