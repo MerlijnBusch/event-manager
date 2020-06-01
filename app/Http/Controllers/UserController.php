@@ -68,4 +68,18 @@ class UserController extends Controller
 
     }
 
+    public function UpdateSelectableUserRole(Request $request){
+       $this->authorize('write', User::class);
+
+       $user = User::findOrFail(Auth::id());
+
+       if(!in_array(Role::query()->where("selectable", true)->get(["id"])->toArray())){
+           abort(403);
+       }
+
+       $user->role_id = $request->role_name,
+       $user-save();
+
+       return  response()-json(['message' => "Role Edited"])
+    }
 }

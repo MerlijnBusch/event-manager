@@ -81,6 +81,9 @@ $light-gray: #E7E7E7;
       .event-my_speakers-round-speaker {
         background-color: $almost-white;
         box-shadow: 0 0 12px rgb(0, 0, 0, .1);
+        h4{
+          color: $dark-text !important;
+        }
 
         .event-my_speakers-round-speaker-title {
           color: var(--theme-color) !important;

@@ -122,6 +122,7 @@
                     alert('Verkeerde image type toegestaan [png, jpeg]');
                     return;
                 }
+                const vueComp = this;
 
                 reader.onload = function () {
                     base64 = this.result;
@@ -134,12 +135,11 @@
                     image.src = base64;
                     prev.innerHTML = '';
                     prev.appendChild(image);
-                    console.log(base64)
+
+                    vueComp.image = base64
                 };
 
                 await reader.readAsDataURL(file);
-
-                this.image = base64;
             },
         },
     };
