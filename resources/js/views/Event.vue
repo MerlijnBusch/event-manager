@@ -134,13 +134,18 @@
                                 </b>
 
                                 <div class="event-my_speakers-round-speaker" v-if="!!speaker">
-                                    <b class="event-my_speakers-round-speaker-title">{{speaker.name}}</b>
-                                    <span class="event-my_speakers-round-speaker-description">{{speaker.position}}</span>
-                                    <button class="event-my_speakers-round-speaker-close-button"
-                                            @click="removeSelection(index)">
-                                        <!--TODO: Remove X later-->
-                                        X
-                                    </button>
+                                    <div class="event-my_speakers-speaker-content">
+                                        <b class="event-my_speakers-round-speaker-title">{{speaker.name}}</b>
+                                        <span class="event-my_speakers-round-speaker-description">{{speaker.position}}</span>
+                                    </div>
+                                    <div class="event-my_speakers-round-speaker-button-holder" @click="removeSelection(index)">
+                                        <button class="event-my_speakers-round-speaker-button">
+                                            <div></div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div v-else class="event-my_speakers-round-speaker">
+                                    <h4>Er is nog geen spreker uit gekozen voor deze ronde</h4>
                                 </div>
                             </div>
                         </div>

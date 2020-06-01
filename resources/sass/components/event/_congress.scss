@@ -33,28 +33,28 @@
     }
 
     .event-congress-round:first-child .event-congress-round-content {
-      padding-right: $padding-medium;
+      padding-right: $padding-huge;
 
     }
 
     .event-congress-round:not(:first-child):not(:last-child) {
       &:after {
-        left: -$padding-medium/2;
+        left: -$padding-huge/4;
       }
 
       .event-congress-round-content {
-        padding-left: $padding-medium/2;
-        padding-right: $padding-medium/2;
+        padding-left: $padding-huge/2;
+        padding-right: $padding-huge/2;
       }
     }
 
     .event-congress-round:last-child {
       &:after {
-        left: 0;
+        left: $padding-huge/4;
       }
 
       .event-congress-round-content {
-        padding-left: $padding-medium;
+        padding-left: $padding-huge;
       }
     }
 
