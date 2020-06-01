@@ -65,7 +65,6 @@ class UserController extends Controller
 
         $permissions = new Permissions;
         return response()->json(['message' => $permissions->getAllPermissions()], 200);
-
     }
 
     public function UpdateSelectableUserRole(Request $request){
@@ -73,13 +72,16 @@ class UserController extends Controller
 
        $user = User::findOrFail(Auth::id());
 
-       if(!in_array(Role::query()->where("selectable", true)->get(["id"])->toArray())){
+       if(!$request && !in_array($request->role_name, Role::query()->where("selectable", true)->get(["id"])->toArray())){
            abort(403);
        }
 
-       $user->role_id = $request->role_name,
-       $user-save();
+       $user->role_id = $request->role_name;
 
-       return  response()-json(['message' => "Role Edited"])
+       if($request->role_name){
+            $user->update();
+
+            return  response()-json(['message' => "Role Edited"]);
+       }  
     }
 }

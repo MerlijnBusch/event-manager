@@ -98,11 +98,11 @@
         },
         methods: {
             async onFileChange(e) {
-                let base64;
+                const imgData = this;
                 const file = e.target.files[0];
                 const reader = new FileReader();
                 const imageTypes = ["png", "jpeg"];
-
+                
                 if (!imageTypes.includes(file.type.split('/')[1])) {
                     e.target.value = null;
                     this.image = null;
@@ -111,19 +111,15 @@
                 }
 
                 reader.onload = function () {
-
-                    base64 = this.result
-
+                    imgData.image = this.result;
                 };
-
+               
                 await reader.readAsDataURL(file);
-
-                this.image = base64;
+               
             },
             async editProfile() {
                 const data = {
                     about: this.about,
-                    contact: this.contact,
                     image: this.image,
                     facebook: this.facebook,
                     twitter: this.twitter,
@@ -131,6 +127,7 @@
                     phonenumber: this.phonenumber,
                     contact_email: this.contact_email
                 };
+
                 await API.post(data, '/api/profile-edit', true);
                 await API.post(this.role_name, '/api/selectable-role-edit', true);
             }

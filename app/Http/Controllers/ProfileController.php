@@ -93,29 +93,18 @@ class ProfileController extends Controller
     {
         $this->authorize('write', Profile::class);
 
-        $validator = Validator::make($request->all(), [
-            'phone_number' => [new PhoneNumberValidator, 'required_without_all:image'],
-            'image' => ['string',new UrlValidator, 'required_without_all:phone_number'],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
-
-        $profile = new Profile;
-    
-
         Profile::updateOrCreate(
-       
-        $profile->user_id = Auth::id(),
-        $profile->image = $request->image,
-        $profile->about = $request->about,
-        $profile->contact = $request->contact
+        ['user_id' => Auth::id()],
+        ['about' => $request->about,
+        'image' => $request->image,
+        'facebook' => $request->facebook,
+        'twitter' => $request->twitter,
+        'linkedin' => $request->linkedin,
+        'phone_number' => $request->phonenumber,
+        'contact_email' => $request->contact_email]
         );
-
-        $name = $profile->user->name;
-
-        return response()->json(['message' => 'Profile ' . $name . ' updated successfully'], 200);
+       
+        return response()->json(['message' => 'Profile updated successfully '], 200);
     }
 
     /**

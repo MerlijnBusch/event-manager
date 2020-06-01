@@ -22,7 +22,7 @@ class CreateProfilesTable extends Migration
             $table->text('contact_email')->nullable();
             $table->text('twitter')->nullable();
             $table->string('phone_number')->nullable();
-            $table->string('image')->nullable();
+            $table->longtext('image')->nullable();
             $table->longtext('cv')->nullable();
             $table->timestamps();
         });
