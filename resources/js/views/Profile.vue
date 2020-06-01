@@ -16,8 +16,8 @@
                     </div>
                     <input type="file" name="image" @change="onFileChange">
                     <div class="profile-main">
-                        <p class="profile-name">{{$user.data.name}}</p>
-                        <p class="profile-role" v-if="!edit">{{role_name}}</p>
+                        <p class="profile-name" v-if="!edit">{{name}}</p>
+                        <input type="text" v-model="name" class="profile-name" v-else>
                         <select class="form-text-input" v-model="role_name" v-else>
                             <option v-for="userrole in roles" :value="userrole.id">{{userrole.role_name}}</option>
                         </select>
@@ -55,13 +55,17 @@
         name: "Profile",
         data() {
             return {
+                name: null,
                 data: {},
                 roles: [],
                 role_name: null,
                 about: null,
-                contact: null,
+                facebook: null,
+                twitter: null,
+                linkedin: null,
+                phonenumber: null,
+                contact_email: null,   
                 edit: false,
-                // image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wlseKgAAAABJRU5ErkJggg==",
                 image: null,
             }
             document.getElementById("disableLink").addEventListener("click", function (event) {
@@ -69,7 +73,7 @@
             });
         }, async mounted() {
             const res = await API.get("/api/profile-check");
-            console.log(res);
+
             if (!res.data) return
 
             const data = res.data;
@@ -80,7 +84,6 @@
 
             if (data.profile) {
                 this.about = data.profile.about;
-                this.contact = data.profile.contact;
                 this.image = data.profile.image;
             }
 
