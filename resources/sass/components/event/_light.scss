@@ -1,0 +1,95 @@
+$dark-text: #373737;
+$gray: #8A8A8A;
+$medium-text: $gray;
+$white: #FFFFFF;
+$almost-white: #F6F6F6;
+$light-gray: #E7E7E7;
+
+.light {
+  .event-titlebar {
+    background-color: $almost-white;
+
+    .event-titlebar-btn {
+      background-color: $almost-white;
+    }
+  }
+
+  .event-program_and_info {
+    background-color: $light-gray;
+  }
+
+  .event-modal {
+    background-color: var(--theme-color);
+    color: $light-gray;
+  }
+
+  .event-congress {
+    background-color: var(--theme-color);
+
+    .event-congress-title {
+      color: $almost-white !important;
+    }
+
+    span, .event-congress-description {
+      color: $dark-text !important;
+    }
+
+    .event-congress-round {
+      &:after {
+        border-color: $almost-white !important;
+      }
+    }
+
+    .event-congress-round-content {
+      .event-congress-round-title {
+        color: $dark-text;
+
+        > b {
+          color: $almost-white;
+        }
+      }
+
+      .event-congress-round-speaker-checkbox {
+        border-color: $almost-white !important;
+
+        > div {
+          background-color: $almost-white !important;
+        }
+      }
+
+      .event-congress-round-speaker-content {
+        .event-congress-round-speaker-title, .event-congress-round-speaker-position {
+          color: $dark-text !important;
+        }
+      }
+
+    }
+  }
+
+  .event-my_speakers {
+    background-color: $light-gray;
+
+    .event-my_speakers-round:after {
+      border-color: var(--theme-color) !important;
+    }
+
+    .event-my_speaker-round-content {
+      .event-my_speakers-title, .event-my_speakers-round-title-time, .event-my_speakers-round-title-keynote {
+        color: $dark-text !important;
+      }
+
+      .event-my_speakers-round-speaker {
+        background-color: $almost-white;
+        box-shadow: 0 0 12px rgb(0, 0, 0, .1);
+
+        .event-my_speakers-round-speaker-title {
+          color: var(--theme-color) !important;
+        }
+
+        .event-my_speakers-round-speaker-description {
+          color: $dark-text
+        }
+      }
+    }
+  }
+}
