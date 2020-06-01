@@ -60,6 +60,11 @@
                 roles: [],
                 role_name: null,
                 about: null,
+                facebook: null,
+                twitter: null,
+                linkedin: null,
+                phonenumber: null,
+                contact_email: null,   
                 edit: false,
                 image: null,
             }
