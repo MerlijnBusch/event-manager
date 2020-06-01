@@ -18,8 +18,9 @@ class CreateItemsTable extends Migration
             $table->string('name');
             $table->string('type');
             $table->longText('description');
-            $table->string('event_id');
-            $table->string('date');
+            $table->integer('block_id');
+            $table->string('date_start');
+            $table->string('date_end');
             $table->boolean('active')->default(false);
             $table->timestamps();
         });

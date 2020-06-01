@@ -7,7 +7,7 @@ $deep-gray: #1F1F1F;
 $dark-gray: #404040;
 $mid-gray: #767676;
 $basic-gray: #C1C1C1;
-$theme-color: lighten(#FF4800,0%);
+$theme-color: lighten(#FF4800, 0%);
 //$theme-color: hsl(random(360), 73%, 63%);
 
 // Padding
@@ -25,6 +25,7 @@ $border-radius-tiny: 6px;
 
 // Font-sizes
 $font-size-basis: 18px;
+$font-size-enormous: $font-size-basis * 4;
 $font-size-huge: $font-size-basis * 2.5;
 $font-size-big: $font-size-basis * 2;
 $font-size-medium: $font-size-basis * 1.5;
@@ -36,5 +37,9 @@ $font-size-small: $font-size-basis * .75;
 $animation-time: .3s;
 
 // Shadow
-$shadow: 0 -10px 15px 0 transparentize($black,1-.15);
+$shadow: 0 -10px 15px 0 transparentize($black, 1-.15);
+
+//breakpoints
+$tablet-breakpoint: 980px;
+$mobile-breakpoint: 660px;
 

@@ -26,9 +26,14 @@ class Role extends Model
         'selectable'
     ];
 
+    protected $hidden = [
+        'updated_at',
+        'created_at'
+    ];
+
     public function user(){
 
-        return $this->hasOne('App\User', 'role_id');
+        return $this->hasMany('App\User', 'role_id');
 
     }
 }

@@ -18,7 +18,8 @@
 
         <div class="form-line">
             <label class="form-label" for="password">Wachtwoord</label>
-            <input class="form-text-input" id="password" v-model="password" type="password" name="password" placeholder="Password">
+            <input class="form-text-input" id="password" v-model="password" type="password" name="password"
+                   placeholder="Password">
             <button class="form-afterinput-link" @click="$emit('forgotpassword')">Wachtwoord vergeten</button>
         </div>
         <div class="form-line form-line-hasbutton">
@@ -29,6 +30,7 @@
 
 <script>
     import axios from 'axios';
+    import API from '../../Api';
 
     export default {
         data() {
@@ -48,14 +50,11 @@
                         "email": this.email,
                         "password": this.password,
                     }).then(response => {
-                        if (response.status === 200) {
-                           if (!!response.data.data) {
-                               this.$emit("loggedIn", response.request.response);
-                               this.$emit("close");
-                           } else {
-                               this.errors.push("Kan niet inloggen met deze gegevens");
-                           }
-
+                        if (response.status === 200 && response.data.data) {
+                            this.$user.data = JSON.parse(response.request.response);
+                            API.setToken(this.$user.data.data.api_token);
+                            this.$emit("loggedIn", response.request.response);
+                            this.$emit("close");
                         }
                     })
                         .catch(e => {

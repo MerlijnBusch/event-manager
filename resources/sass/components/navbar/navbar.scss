@@ -72,14 +72,14 @@ $sidenav-width: 400px;
   right: 0;
   z-index: 100;
   position: fixed;
-  height: 100vw;
+  height: 100vh;
   top: 0;
   width: $sidenav-width;
   background-color: $black;
   transition: right ease-in-out $animation-time;
 }
 
-.sidenav-close{
+.sidenav-close {
 
 }
 
@@ -128,7 +128,7 @@ $sidenav-width: 400px;
 
 }
 
-.navbar-user{
+.navbar-user {
   position: absolute;
   left: $padding-medium;
   bottom: $navbar-height/2;
@@ -136,7 +136,8 @@ $sidenav-width: 400px;
   font-size: 18px;
   font-weight: 300;
   color: $basic-gray;
-  .navbar-user-name{
+
+  .navbar-user-name {
     color: $theme-color;
   }
 }

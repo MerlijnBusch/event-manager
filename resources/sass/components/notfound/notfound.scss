@@ -1,0 +1,25 @@
+.wrapper-404{
+  flex: 1;
+  padding-top: 50px;
+  text-align: center;
+  background: $dark-gray;
+}
+.wrapper-404 h2, .wrapper-404 h3{
+  color: $basic-gray;
+}
+.wrapper-404 h3 a{
+  font-weight: bold;
+  text-decoration: none;
+  color: $mid-gray;
+  font-size: 21px;
+}
+@media (min-width: 980px) {
+  .wrapper-404 img{
+    width: 720px;
+  }
+}
+@media only screen and (min-width: 0px) and (max-width: 660px) {
+  .wrapper-404 img{
+    width: 333px;
+  }
+}

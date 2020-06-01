@@ -45,8 +45,10 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::get('profile', 'ProfileController@index')->name('profile');
     Route::get('profile/{profile}', 'ProfileController@show')->name('profile.show');
     Route::post('profile', 'ProfileController@store')->name('profile.store');
-    Route::patch('profile/{profile}', 'ProfileController@update')->name('profile.update');
+    Route::patch('profile-edit', 'ProfileController@update')->name('profile.update');
     Route::delete('profile/{profile}', 'ProfileController@destroy')->name('profile.destroy');
+
+    Route::get('profile-check','ProfileController@check')->name('profile.check');
 
     Route::get('profile-cv/{profile}', 'ProfileController@showcv')->name('profile.cv.show');
     Route::post('profile-cv', 'ProfileController@storecv')->name('profile.cv.store');
@@ -54,6 +56,7 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
 
     Route::get('role', 'RoleController@index')->name('role');
     Route::get('role/{role}', 'RoleController@show')->name('role.show');
+    Route::get('role-update-selectable/{role}', 'RoleController@updateSelectable')->name('role.update.selectable');
     Route::post('role', 'RoleController@store')->name('role.store');
     Route::patch('role/{role}', 'RoleController@update')->name('role.update');
     Route::delete('role/{role}', 'RoleController@destroy')->name('role.destroy');
@@ -69,7 +72,22 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::post('map', 'MapController@store')->name('map.store');
     Route::patch('map/{map}', 'MapController@update')->name('map.update');
     Route::delete('map/{map}', 'MapController@destroy')->name('map.destroy');
+
+    Route::get('/admin', 'AdminController@index');
+    Route::get('/admin/{event}', 'AdminController@event');
+    Route::post('/admin/excel', 'AdminController@excel');
+
+    Route::post('/program', 'ProgramController@store');
+    Route::delete('/program/{program}', 'ProgramController@destroy');
+
+    Route::get('/block/{block}', 'BlockController@show');
+    Route::post('/block', 'BlockController@store');
+    Route::patch('/block/{block}', 'BlockController@update');
+    Route::delete('/block/{block}', 'BlockController@destroy');
+
 });
+
+
 
 
 

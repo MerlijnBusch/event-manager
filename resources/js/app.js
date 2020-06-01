@@ -18,15 +18,15 @@ Vue.use(user);
 import Route from '@/js/routes.js'
 
 import App from '@/js/App.vue'
+import Api from "./Api";
 
 Route.beforeEach((to, from, next) => {
     let loginData = JSON.parse(localStorage.getItem('user'));
-    if (!!user.data.id) {
         if (loginData !== null) {
             user.data = loginData;
+            Api.setToken(loginData.api_token);
             to.params.loggedIn = true;
         }
-    }
     if ((!!to.meta.auth && to.meta.auth) || (!!to.params.loggedIn && !to.params.loggedIn)) {
         if (!!user.data.api_key) {
             next();

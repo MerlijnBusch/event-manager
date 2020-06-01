@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Item;
+use App\Rules\BlockExistValidator;
 use App\Rules\EventExistValidator;
 use App\Rules\ItemTypeValidator;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -39,10 +40,12 @@ class ItemController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'max:255'],
-            'type' => ['required', 'max:255', new ItemTypeValidator],
-            'description' => ['required', 'min:10'],
-            'event_id' => ['required', new EventExistValidator],
-            'date' => ['required', 'date'],
+            'type' => ['required', new ItemTypeValidator],
+            'description' => ['required'],
+            'block_id' => ['required', new BlockExistValidator],
+            'date_start' => ['required', 'date'],
+            'date_end' => ['required', 'date'],
+            'active' => ['required', 'boolean'],
         ]);
 
         if ($validator->fails()) {

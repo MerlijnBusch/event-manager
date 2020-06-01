@@ -15,7 +15,15 @@ class Profile extends Model
         'user_id',
         'phone_number',
         'image',
+        'facebook',
+        'linkedin',
+        'contact_email',
+        'twitter',  
         'cv',
+    ];
+
+    protected $hidden = [
+        'updated_at', 'created_at',
     ];
 
     public function user(){

@@ -16,9 +16,14 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
+            $table->text('about')->nullable();
+            $table->text('facebook')->nullable();
+            $table->text('linkedin')->nullable();
+            $table->text('contact_email')->nullable();
+            $table->text('twitter')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('image')->nullable();
-            $table->string('cv')->nullable();
+            $table->longtext('cv')->nullable();
             $table->timestamps();
         });
     }

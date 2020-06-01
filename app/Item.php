@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\HigherOrderBuilderProxy;
 use Illuminate\Database\Eloquent\Model;
@@ -11,9 +12,10 @@ use ReflectionClass;
  * @property mixed|string name
  * @property mixed|string type
  * @property mixed|string description
- * @property HigherOrderBuilderProxy|mixed event_id
- * @property Carbon|CarbonInterface|mixed date
  * @property bool|mixed active
+ * @property HigherOrderBuilderProxy|mixed program_id
+ * @property Carbon|CarbonInterface|mixed date_start
+ * @property Carbon|CarbonInterface|mixed date_end
  */
 class Item extends Model
 {
@@ -27,8 +29,9 @@ class Item extends Model
         }
     }
 
-    public const __CONGRESS_SPEAKERS__ = 'congress_speakers';
     public const __KEYNOTES__ = 'keynotes';
+    public const __SPEAKER__ = 'speaker';
+    public const __NONE__ = 'none';
 
     /**
      * The attributes that are mass assignable.
@@ -39,14 +42,19 @@ class Item extends Model
         'name',
         'type',
         'description',
-        'event_id',
-        'date',
+        'block_id',
+        'date_start',
+        'date_end',
         'active',
     ];
 
-    public function event(){
+    protected $hidden = [
+        'updated_at', 'created_at','deleted_at'
+    ];
 
-        return $this->belongsTo('App\Event');
+    public function block(){
+
+        return $this->belongsTo('App\Block');
 
     }
 }

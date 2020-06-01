@@ -1,0 +1,42 @@
+.admin-roll-list-item:hover {
+    background: #1f1f1f;;
+}
+
+.admin-roll-list-item {
+    justify-content: flex-start;
+    display: flex;
+    align-items: center;
+    padding: 8px 16px
+}
+
+.admin-roll-action-holder {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.admin-roll-action-icon {
+    color: whitesmoke;
+    font-size: 24px;
+    margin: 0px 12px;
+}
+
+.admin-roll-list-item-title{
+    color: whitesmoke;
+}
+
+.admin-role-create-container {
+    margin-top: auto;
+    color: whitesmoke;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.admin-role-create-icon {
+    margin: 0 5px;
+    font-size: 24px;
+}

@@ -1,0 +1,58 @@
+.admin-item-display-holder {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    color: whitesmoke;
+}
+
+.admin-item-text-editor:focus {
+    border: unset;
+    outline: unset;
+}
+.admin-item-text-editor ::-webkit-scrollbar {
+    display: none;
+}
+
+.admin-item-text-editor {
+    overflow-y: hidden;
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 30px;
+    max-height: 70px;
+    background: transparent;
+    color: white;
+    border: unset;
+    margin-top: 8px;
+    display: flex;
+    flex: 1;
+    flex-direction: column-reverse;
+}
+
+.admin-item-display-holder .ql-toolbar.ql-snow {
+    border: unset;
+    display: none;
+    position: relative;
+}
+
+.admin-item-display-holder .ql-container.ql-snow {
+    border: unset;
+}
+
+.admin-item-display-holder .ql-editor {
+    min-height: 100px;
+    max-height: 200px;
+    padding: 0;
+}
+
+.admin-item-title-input {
+    background: transparent;
+    outline: transparent;
+    border: transparent;
+    width: 100%;
+    font-size: x-large;
+    color: whitesmoke;
+}
+
+.admin-item-title-input:focus {
+    border-bottom: 2px solid lightblue;
+}

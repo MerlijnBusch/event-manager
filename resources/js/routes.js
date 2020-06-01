@@ -4,12 +4,16 @@ import VueRouter from "vue-router";
 import Home from '@/js/views/Home';
 import Event from '@/js/views/Event';
 import Profile from '@/js/views/Profile';
-import About from '@/js/views/About';
 import EventForm from '@/js/views/forms/Event-form'
 import ResetPasswordForm from '@/js/views/forms/ResetPasswordForm';
-import Example from '@/js/views/Example'
-import DropdownExample from '@/js/views/DropdownExample'
+import EventSettingsForm from '@/js/views/forms/Event-Settings-form'
+import MapForm from '@/js/views/forms/Map-form'
+import ProfileForm from '@/js/views/forms/Profile-form'
+import CVForm from '@/js/views/forms/CV-form'
+import datepickerExample from '@/js/views/DateTimeExample'
+import AdminIndex from '@/js/views/Admin/Admin';
 import UserRegistrationForm from '@/js/views/forms/User-Registration-form';
+import NotFound from '@/js/views/NotFound';
 
 Vue.use(VueRouter);
 
@@ -32,14 +36,29 @@ const router = new VueRouter({
           component: Profile
         },
         {
-            path: '/about',
-            name: 'about',
-            component: About,
-        },
-        {
             path: '/form/event',
             name: 'event-form',
             component: EventForm,
+        },
+        {
+            path: '/form/map/:event_id',
+            name: 'map-form',
+            component: MapForm
+        },
+        {
+            path: '/form/profile',
+            name: 'profile-form',
+            component: ProfileForm
+        },
+        {
+            path: '/form/profile-cv',
+            name: 'profile-cv-form',
+            component: CVForm
+        },
+        {
+            path: '/form/event-settings/:event_id',
+            name: 'event-settings-form',
+            component: EventSettingsForm,
             meta: {
                 auth: true
             }
@@ -55,10 +74,20 @@ const router = new VueRouter({
             component: UserRegistrationForm
         },
         {
-            path: '/dropdown',
-            name: 'dropdown',
-            component: DropdownExample
+            path: '/admin',
+            name: 'admin',
+            component: AdminIndex,
         },
+        {
+            path: '/datepicker',
+            name: 'datepicker',
+            component: datepickerExample
+        },
+        {
+            path: '*',
+            name: 'Pagina niet gevonden',
+            component: NotFound
+        }
 
     ]
 });
