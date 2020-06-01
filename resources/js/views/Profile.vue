@@ -116,9 +116,9 @@
             if (data.profile) {
                 this.about = data.profile.about;
                 this.image = data.profile.image;
-                this.linkedin = data.profile.linkedin;
                 this.facebook = data.profile.facebook;
                 this.twitter = data.profile.twitter;
+                this.linkedin = data.profile.linkedin;
                 this.phonenumber = data.profile.phonenumber;
                 this.contact_email = data.profile.contact_email;
             }
@@ -168,7 +168,10 @@
                 this.edit = false;
 
                 await API.post(data, '/api/profile-edit', true);
-                await API.post(this.role_name, '/api/selectable-role-edit', true);
+                if (this.role_name) {
+                    await API.post(this.role_name, '/api/selectable-role-edit', true);
+                }
+                
             }
         }
     }
