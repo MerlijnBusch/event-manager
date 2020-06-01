@@ -1,5 +1,7 @@
 <template>
     <div class="event-page" :style="{'--theme-color': color}" :class="{'light': isLightTheme}">
+        <!--TODO: remove this button later-->
+        <button style="z-index: 12; position: relative" @click="isLightTheme = !isLightTheme">{{isLightTheme ? 'doe maar donker' : 'doe maar licht'}}</button>
         <div class="event-background" :style="{'backgroundImage': 'url(' + backgroundImage + ')'}"></div>
         <div class="event-content flex-grid">
             <div class="event-content-row flex-grid column-desktop-12 column-tablet-12 column-mobile-12">
@@ -185,7 +187,7 @@
             return {
                 selectedSpeakers: [],
                 //TODO: CHANGE THIS TO SWITCH TO DARK OR TO LIGHT
-                isLightTheme: true,
+                isLightTheme: false,
                 title: 'Tides Europe',
                 backgroundImage: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
                 color: '#E6A65C',
