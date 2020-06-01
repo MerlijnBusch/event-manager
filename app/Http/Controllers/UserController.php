@@ -70,16 +70,15 @@ class UserController extends Controller
 
     public function UpdateSelectableUserRole(Request $request){
        $this->authorize('write', User::class);
-
-       $user = User::where("id", Auth::id)->findOrFail();
-
-       if ($request->role_name == 1)
-            return response()-json(['message' => "Unauthorized access"])
-	# code...
-}
-       $user->role_id = $request->role_name,
-       $user-save();
-
-       return  response()-json(['message' => "Role Edited"])
+//
+//       $user = User::where("id", Auth::id)->findOrFail();
+//
+//       if ($request->role_name == 1)
+//            return response()-json(['message' => "Unauthorized access"])
+//	    }
+//       $user->role_id = $request->role_name,
+//       $user-save();
+//
+//       return  response()-json(['message' => "Role Edited"])
     }
 }
