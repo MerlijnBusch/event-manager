@@ -37,7 +37,8 @@ class UserController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function search(Request $request){
+    public function search(Request $request)
+    {
 
         $validator = Validator::make($request->all(), [
             'search' => ['string']
@@ -48,9 +49,9 @@ class UserController extends Controller
         }
 
         $user = User::query()
-            ->where('name','LIKE','%' . $request->search . '%')
-            ->orWhere('email','LIKE','%' . $request->search . '%')
-            ->get(['name','email','id']);
+            ->where('name', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('email', 'LIKE', '%' . $request->search . '%')
+            ->get(['name', 'email', 'id']);
 
         return response()->json(['message' => $user], 200);
     }
@@ -59,7 +60,8 @@ class UserController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function permissions(){
+    public function permissions()
+    {
 
         $this->authorize('write', Role::class);
 
@@ -67,10 +69,9 @@ class UserController extends Controller
         return response()->json(['message' => $permissions->getAllPermissions()], 200);
     }
 
-    public function UpdateSelectableUserRole(Request $request){
-       $this->authorize('write', User::class);
-
-       $user = User::findOrFail(Auth::id());
+    public function UpdateSelectableUserRole(Request $request)
+    {
+        $this->authorize('write', User::class);
 
        if(!$request && !in_array($request->role_name, Role::query()->where("selectable", true)->get(["id"])->toArray())){
            abort(403);
