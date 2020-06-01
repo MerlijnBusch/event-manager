@@ -43,9 +43,14 @@
 
                             <div class="form-line">
                                 <label class="form-label" for="description">description</label>
-                                <textarea class="form-text-input" id="description" v-model="description" type="text" name="description"
+                                <textarea class="form-text-input" id="description" v-model="description" type="text"
+                                          name="description"
                                           placeholder="Event name"></textarea>
                             </div>
+
+                            <input type="file" name="image" @change="onFileChange">
+
+                            <div class="event-form-preview-image-holder" ref="previewImage"></div>
 
                             <div class="form-line admin-from-submit">
                                 <input type="submit" value="Submit" class="submit-btn admin-form-submit">
@@ -73,12 +78,14 @@
 
 <script>
     import API from "../../../../Api";
+    import create from 'dom-create-element';
 
     export default {
         data() {
             return {
                 name: '',
                 description: '',
+                image: null,
             }
         },
         name: 'CreateEventModal',
@@ -88,11 +95,12 @@
             },
             checkForm: function (e) {
 
-                this.errors = [];
+                if (this.image === null) return;
 
                 const data = {
                     name: this.name,
                     description: this.description,
+                    image: this.image,
                 };
 
                 API.post(data, '/api/event');
@@ -100,7 +108,39 @@
                 this.close();
 
                 e.preventDefault();
-            }
+            },
+            async onFileChange(e) {
+                let base64;
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                const imageTypes = ["png", "jpeg"];
+                const prev = this.$refs.previewImage;
+
+                if (!imageTypes.includes(file.type.split('/')[1])) {
+                    e.target.value = null;
+                    this.image = null;
+                    alert('Verkeerde image type toegestaan [png, jpeg]');
+                    return;
+                }
+
+                reader.onload = function () {
+                    base64 = this.result;
+
+                    const image = create({
+                        selector: 'img',
+                        styles: 'event-form-preview-image',
+                    });
+
+                    image.src = base64;
+                    prev.innerHTML = '';
+                    prev.appendChild(image);
+                    console.log(base64)
+                };
+
+                await reader.readAsDataURL(file);
+
+                this.image = base64;
+            },
         },
     };
 </script>
