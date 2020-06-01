@@ -8,8 +8,43 @@ $light-gray: #E7E7E7;
 .light{
   .event-titlebar{
     background-color: $almost-white;
+
+    .event-titlebar-btn {
+      background-color: $almost-white;
+    }
   }
+
   .event-program_and_info{
-    background-color: $gray;
+    background-color: $light-gray;
+  }
+
+  .event-congress {
+    background-color: $white;
+
+    .event-congress-title, span, .event-congress-description {
+      color: $dark-text !important;
+    }
+
+    .event-congress-round-content {
+      .event-congress-round-title {
+          color: $dark-text;
+      }
+
+      .event-congress-round-speaker-content {
+          .event-congress-round-speaker-title, .event-congress-round-speaker-position {
+              color: $dark-text !important;
+          }
+      }
+    }
+  }
+
+  .event-my_speakers {
+    background-color: $light-gray;
+
+    .event-my_speaker-round-content {
+        .event-my_speakers-round-title-time {
+            color: $dark-text !important;
+        }
+    }
   }
 }
