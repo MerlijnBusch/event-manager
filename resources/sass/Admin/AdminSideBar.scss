@@ -124,22 +124,32 @@
 }
 
 
-.admin-sidebar-event-name-holder {
-    height: 80px;
+.admin-sidebar-name-holder {
+    padding: 4px 0 4px 12px;
     display: flex;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
     background: #111111;
+    cursor: pointer;
 }
 
-.admin-sidebar-event-name {
+.admin-sidebar-text-name {
     display: flex;
     align-items: center;
     width: 100%;
     justify-content: flex-start;
-    height: 70px;
     padding: 4px;
-    font-size: x-large;
+    font-size: medium;
+}
+
+.admin-sidebar-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-sidebar-icon {
+    margin: 0 6px;
 }
 
 .admin-sidebar-event-name-stripe {
