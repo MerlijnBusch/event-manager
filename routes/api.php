@@ -22,6 +22,7 @@ Route::get('event-overview/{event}', 'OverviewController@index')->name('event.ov
 
 Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::post('logout', 'Auth\LoginController@logout');
+    Route::post('selectable-role-edit', 'Auth\UserController@UpdateSelectableUserRole');
 
     Route::get('refresh-token','UserController@updatetoken');
     Route::post('/search/profile','UserController@search');
