@@ -32,6 +32,12 @@
       width: 80%;
     }
 
+    @media (max-width: $mobile-breakpoint) {
+      .event-program-part {
+          width: 100%;
+      }
+    }
+
     .event-program-part-text {
       flex: 1;
 

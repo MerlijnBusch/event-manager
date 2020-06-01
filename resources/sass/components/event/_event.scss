@@ -3,6 +3,8 @@
 
 }
 
+@import "./light";
+
 //background
 .event-background {
   margin-top: -150px;
@@ -51,14 +53,17 @@
   margin: 0;
   transform: translateY(0);
 
-  > * {
-    box-shadow: $shadow;
-    position: relative;
-    border-radius: $border-radius-big $border-radius-big 0 0;
-    margin-top: -$border-radius-big;
-    padding: $padding-huge $padding-huge $padding-huge + $border-radius-big;
-    @media (max-width: $mobile-breakpoint) {
-      padding: $padding-medium $padding-big $padding-big + $border-radius-big;
+  .event-content-row {
+    margin: 0;
+    > * {
+      box-shadow: $shadow;
+      position: relative;
+      border-radius: $border-radius-big $border-radius-big 0 0;
+      padding: $padding-huge $padding-huge $padding-huge + $border-radius-big;
+      margin-top: -($border-radius-big);
+      @media (max-width: $mobile-breakpoint) {
+        padding: $padding-medium $padding-big $padding-big + $border-radius-big;
+      }
     }
   }
 }
