@@ -77,9 +77,10 @@ class UserController extends Controller
            abort(403);
        }
 
-       $user->role_id = $request->role_name;
 
        if($request->role_name){
+
+            $user->role_id = $request->role_name;
             $user->update();
 
             return  response()-json(['message' => "Role Edited"]);
