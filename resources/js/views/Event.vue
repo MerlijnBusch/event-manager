@@ -62,10 +62,6 @@
                                 <b class="event-info-line-title">Locatie</b><br>
                                 <span class="event-info-line-content">{{info.location}}</span>
                             </div>
-                            <div class="event-info-line">
-                                <b class="event-info-line-title">Prijs</b><br>
-                                <span class="event-info-line-content">{{info.price}}</span>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -224,7 +220,6 @@
                 info: {
                     date: '17 november 2018',
                     location: 'Alkmaar entrance B',
-                    price: '45 - 180 EUR'
                 },
                 congress: [
                     {
