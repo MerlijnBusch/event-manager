@@ -56,7 +56,7 @@ class EventController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => ['required','max:255'],
             'description' => ['required','min:10'],
-            'image' => ['required', new Base64Validator],
+            'image' => ['required'],
         ]);
 
         if ($validator->fails()) {
@@ -83,7 +83,7 @@ class EventController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => ['required','max:255'],
             'description' => ['required','min:10'],
-            'image' => ['required', new Base64Validator],
+            'image' => ['required'],
         ]);
 
         if ($validator->fails()) {

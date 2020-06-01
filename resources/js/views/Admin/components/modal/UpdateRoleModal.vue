@@ -119,7 +119,7 @@
                 this.role_id = res.id;
                 this.color = res.color;
                 this.role_name = res.role_name;
-                this.current = res.permissions;
+                this.current = JSON.parse(res.permissions);
             }
         },
         watch: {
