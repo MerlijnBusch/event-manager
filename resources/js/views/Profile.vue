@@ -55,13 +55,13 @@
         name: "Profile",
         data() {
             return {
+                name: null,
                 data: {},
                 roles: [],
                 role_name: null,
                 about: null,
                 contact: null,
                 edit: false,
-                // image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wlseKgAAAABJRU5ErkJggg==",
                 image: null,
             }
             document.getElementById("disableLink").addEventListener("click", function (event) {
