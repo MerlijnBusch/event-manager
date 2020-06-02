@@ -21,11 +21,10 @@
             </button>
             <div class="sidenav-links">
                 <router-link to="/" exact>Home</router-link>
-                <router-link to="/about">About</router-link>
-                <router-link v-if="loggedIn" to="/Profile">Profile</router-link>
+                <router-link v-if="loggedIn" to="/Profile">Profiel</router-link>
                 <div class="sidenav-link-divider"></div>
-                <button v-if="!loggedIn" @click="openLogin">Login</button>
-                <button v-else @click="logout">Logout</button>
+                <button v-if="!loggedIn" @click="openLogin">Aanmelden</button>
+                <button v-else @click="logout">Uitloggen</button>
             </div>
         </div>
     </div>
