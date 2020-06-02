@@ -86,8 +86,6 @@
             },
             checkForm: function (e) {
 
-                console.log(this.id);
-
                 const data = {
                     program_id: this.id,
                     date_start: this.date_start,

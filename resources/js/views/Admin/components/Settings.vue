@@ -25,7 +25,6 @@
             }
         },
         mounted() {
-            console.log(this.settings.date_end);
             this.date_end = this.settings.date_end;
             this.date_start = this.settings.date_start;
             this.max_registrations = this.settings.max_registrations;

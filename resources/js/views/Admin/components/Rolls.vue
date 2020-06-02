@@ -90,7 +90,6 @@
                     } else {
                         setTimeout(() => {
                             target.checked = false;
-                            console.log(target.checked)
                         }, 100)
                     }
                 } else {
@@ -115,7 +114,6 @@
         async mounted() {
             const res = await API.get('/api/role');
             this.rolls = res.data;
-            console.log(this.rolls)
         }
     }
 </script>

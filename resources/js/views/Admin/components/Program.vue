@@ -15,8 +15,6 @@
 
             }
         },
-        mounted() {
-            console.log(this.program);
-        },
+        mounted() {},
     }
 </script>

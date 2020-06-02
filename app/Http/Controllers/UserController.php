@@ -73,19 +73,14 @@ class UserController extends Controller
     {
         $this->authorize('write', User::class);
         $user = User::find(Auth::id());
-        var_dump($request->role);
-       if(!$request && !in_array($request->role, Role::query()->where("selectable", true)->get(["id"])->toArray())){
-           abort(403);
-       }
 
+        if (!$request && !in_array($request->role, Role::query()->where("selectable", true)->get(["id"])->toArray())) {
+            abort(403);
+        }
 
-            $user->role_id = $request->role;
-            $user->update();
+        $user->role_id = $request->role;
+        $user->update();
 
-            return  response()->json(['message' => "Role Edited"]);
-
-
-       
-            
+        return response()->json(['message' => "Role Edited"]);
     }
 }

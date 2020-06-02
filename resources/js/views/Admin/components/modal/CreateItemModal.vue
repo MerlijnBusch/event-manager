@@ -113,8 +113,6 @@
             },
             checkForm: function (e) {
 
-                console.log(this.id);
-
                 const data = {
                     name:  this.name,
                     type: this.type,
