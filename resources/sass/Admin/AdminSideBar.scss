@@ -140,6 +140,9 @@
     justify-content: flex-start;
     padding: 4px;
     font-size: medium;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .admin-sidebar-icon-container {

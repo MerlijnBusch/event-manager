@@ -60,7 +60,7 @@ class GenerateBasicRolesCommand extends Command
             Permissions::__READ_CV__,
             Permissions::__WRITE_CV__,
             Permissions::__READ_PROFILE__,
-            Permissions::__WRITE_PROFILE__,
+            Permissions::__WRITE_PROFILE__
         ]);
         $role->save();
 
