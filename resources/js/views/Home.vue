@@ -43,7 +43,7 @@
                     {
                         title: 'TIDES Europe',
                         color: '#E6A65C',
-                        image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+                        image: '/img/header1.jpg',
                         description:
                             'Tides offers the science,\n' +
                             'technologies and partners you\n' +
@@ -54,7 +54,7 @@
                     {
                         title: 'METS Trade',
                         color: '#5CE6B1',
-                        image: 'https://images.unsplash.com/photo-1533911675945-49efa7c5beae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1334&q=80',
+                        image: '/img/20191017-CN-1571.jpg',
                         description:
                             'Kickstart Europe is een strategie & netwerk\n' +
                             'conferentie aan de start van het jaar, voor\n' +
@@ -66,7 +66,7 @@
                     {
                         title: 'Home delivery europe',
                         color: '#5CB6E6',
-                        image: 'https://images.unsplash.com/photo-1544944399-af27c461e488?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+                        image: '/img/14468493_657439241084419_4737269611901623894_o.jpg',
                         description:
                             'Home Delivery World Europe 2020 is the\n' +
                             'industry’s best retail logistics event,\n' +
