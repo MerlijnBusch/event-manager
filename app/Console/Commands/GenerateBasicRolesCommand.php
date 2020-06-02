@@ -51,7 +51,7 @@ class GenerateBasicRolesCommand extends Command
 
         $role = new Role;
         $role->id = 2;
-        $role->role_name = 'Visitor';
+        $role->role_name = 'Bezoeker';
         $role->color = '#a0a867';
         $role->selectable = true;
         $role->permissions = json_encode([]);
@@ -59,7 +59,7 @@ class GenerateBasicRolesCommand extends Command
 
         $role = new Role;
         $role->id = 3;
-        $role->role_name = 'Job Seeker';
+        $role->role_name = 'Werk zoekende';
         $role->color = '#a0a867';
         $role->selectable = true;
         $role->permissions = json_encode([
@@ -70,7 +70,7 @@ class GenerateBasicRolesCommand extends Command
 
         $role = new Role;
         $role->id = 4;
-        $role->role_name = 'Stand Holder';
+        $role->role_name = 'Stand houder';
         $role->color = '#a0a867';
         $role->selectable = true;
         $role->permissions = json_encode([
