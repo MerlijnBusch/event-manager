@@ -7,7 +7,6 @@
 /storage
 /storage/*
 /vendor/
-/public
 .env
 .idea
 .env.backup
