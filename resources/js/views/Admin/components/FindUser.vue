@@ -14,8 +14,24 @@
 
             </form>
             <div class="admin-display-page-main-container">
-                <div v-for="user in users">
-                    {{user.name}}
+                <div class="admin-find-user-display-table">
+                    <div class="admin-find-user-table-cell">Naam</div>
+                    <div class="admin-find-user-table-cell">Email</div>
+                    <div class="admin-find-user-table-cell">Rol</div>
+                    <div class="admin-find-user-table-cell-actions"></div>
+                </div>
+                <div v-for="user in users" class="admin-find-user-display-table">
+                    <div class="admin-find-user-table-cell">{{user.name}}</div>
+                    <div class="admin-find-user-table-cell">{{user.email}}</div>
+                    <div class="admin-find-user-table-cell">{{user.role.role_name}}</div>
+                    <div class="admin-find-user-table-cell-actions">
+                        <div class="">
+                            <i class="fas fa-pencil"></i>
+                        </div>
+                        <div class="">
+                            <i class="fas fa-trash"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -41,9 +57,9 @@
                     search: this.search,
                 };
 
-                const response = await API.post(data, '/api/search/profile');
+                const response = await API.post(data, '/api/admin/search');
                 this.users = response.data.message;
-
+                console.log(this.users)
 
                 e.preventDefault();
             }

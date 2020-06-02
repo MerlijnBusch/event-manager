@@ -8,4 +8,26 @@
     flex-grow: 1;
 }
 
+.admin-find-user-display-table {
+    display: flex;
+    align-items: center;
+    justify-items: flex-start;
+    padding: 8px 16px;
+}
 
+.admin-find-user-table-cell {
+    width: 32%;
+    color: whitesmoke;
+    display: flex;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.admin-find-user-table-cell-actions {
+    width: 4%;
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

@@ -96,4 +96,31 @@ class AdminController extends Controller
         return response()->json(['message' => 'Successfully uploaded the excel'], 200);
     }
 
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function search(Request $request)
+    {
+        $this->authorize('read', User::class);
+        $this->authorize('read', Role::class);
+
+        $validator = Validator::make($request->all(), [
+            'search' => ['string']
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        $user = User::query()
+            ->where('name', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('email', 'LIKE', '%' . $request->search . '%')
+            ->with('role')
+            ->get();
+
+        return response()->json(['message' => $user], 200);
+    }
+
 }
