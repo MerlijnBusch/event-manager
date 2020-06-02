@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Profile;
+use App\User;
+use App\Rules\Base64Validator;
 use App\Rules\HtmlValidator;
 use App\Rules\PhoneNumberValidator;
 use App\Rules\UrlValidator;
@@ -87,28 +89,22 @@ class ProfileController extends Controller
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function update(Request $request, Profile $profile)
+    public function update(Request $request)
     {
         $this->authorize('write', Profile::class);
 
-        $validator = Validator::make($request->all(), [
-            'phone_number' => [new PhoneNumberValidator, 'required_without_all:image'],
-            'image' => ['string',new UrlValidator, 'required_without_all:phone_number'],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
-
-        $profile = Profile::findOrFail($profile->id);
-        $profile->user_id = Auth::id();
-        $profile->phone_number = $request->phone_number;
-        $profile->image = $request->image;
-        $profile->update();
-
-        $name = $profile->user->name;
-
-        return response()->json(['message' => 'Profile ' . $name . ' updated successfully'], 200);
+        Profile::updateOrCreate(
+        ['user_id' => Auth::id()],
+        ['about' => $request->about,
+        'image' => $request->image,
+        'facebook' => $request->facebook,
+        'twitter' => $request->twitter,
+        'linkedin' => $request->linkedin,
+        'phone_number' => $request->phonenumber,
+        'contact_email' => $request->contact_email]
+        );
+       
+        return response()->json(['message' => 'Profile updated successfully '], 200);
     }
 
     /**
@@ -158,7 +154,7 @@ class ProfileController extends Controller
         $this->authorize('writeCV', Profile::class);
 
         $validator = Validator::make($request->all(), [
-            'cv' => [new HtmlValidator, 'required'],
+            'cv' => [new Base64Validator, 'required'],
         ]);
 
         if ($validator->fails()) {
@@ -170,7 +166,7 @@ class ProfileController extends Controller
         $profile->cv = $request->cv;
         $profile->save();
 
-        return response()->json(['message' => 'Profile cv created successfully'], 200);
+        return response()->json(['message' => $request->cv], 200);
 
     }
 
@@ -185,9 +181,9 @@ class ProfileController extends Controller
     {
         $this->authorize('write', Profile::class);
         $this->authorize('writeCV', Profile::class);
-    
+
         $validator = Validator::make($request->all(), [
-            'cv' => [new HtmlValidator, 'required'],
+            'cv' => [new Base64Validator, 'required'],
         ]);
 
         if ($validator->fails()) {
@@ -200,5 +196,18 @@ class ProfileController extends Controller
         $profile->update();
 
         return response()->json(['message' => 'CV updated successfully'], 200);
+    }
+
+    public function check(){
+        $this->authorize('read', Profile::class);
+        $this->authorize('readCV', Profile::class);
+
+        $user = User::query()
+            ->where('id', Auth::id())
+            ->with('profile')
+            ->with('role:id,role_name')
+            ->first();
+    return response()->json($user, 200);
+
     }
 }

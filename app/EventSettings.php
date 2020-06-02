@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Carbon\Carbon;
+use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\HigherOrderBuilderProxy;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,6 +14,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property mixed|string secondary_color
  * @property mixed|string primary_color
  * @property bool|mixed active
+ * @property Carbon|mixed date_start
+ * @property Carbon|CarbonInterface|mixed date_end
  */
 class EventSettings extends Model
 {
@@ -27,8 +31,15 @@ class EventSettings extends Model
         'event_id',
         'visible_registrations',
         'max_registrations',
+        'date_start',
+        'date_end',
         'active',
     ];
+
+    protected $hidden = [
+        'updated_at', 'created_at','active','deleted_at'
+    ];
+
 
     public function event(){
 

@@ -2,6 +2,9 @@
     <div>
         <div class="navbar">
             <div class="navbar-inner">
+                <div class="navbar-user" v-if="loggedIn">
+                    Welkom <span class="navbar-user-name">{{$user.data.name}}</span>!
+                </div>
                 <img class="navbar-logo" src="/img/nz-logo-light.png">
                 <button class="navbar-hamburger" @click="siderbarIsOpen = true">
                     <div>
@@ -11,17 +14,17 @@
             </div>
         </div>
         <div class="sidenav" :class="{'sidenav-hidden' : !siderbarIsOpen}">
-            <button class="sidenav-close" @click="siderbarIsOpen = false">
+            <button class="sidenav-close modal-close" @click="siderbarIsOpen = false">
                 <div>
                     <div></div>
                 </div>
             </button>
             <div class="sidenav-links">
                 <router-link to="/" exact>Home</router-link>
-                <router-link to="/about">About</router-link>
+                <router-link v-if="loggedIn" to="/Profile">Profiel</router-link>
                 <div class="sidenav-link-divider"></div>
-                <button v-if="!loggedIn" @click="openLogin">Login</button>
-                <button v-else @click="logout">Logout</button>
+                <button v-if="!loggedIn" @click="openLogin">Aanmelden</button>
+                <button v-else @click="logout">Uitloggen</button>
             </div>
         </div>
     </div>
@@ -30,7 +33,7 @@
 <script>
     export default {
         props: [
-            'loggedIn'
+            'loggedIn', 'userData'
         ],
         watch: {
             $route(to, from) {

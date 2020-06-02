@@ -15,14 +15,18 @@ use Illuminate\Support\Facades\Route;
 */
 Route::post('login', 'Auth\LoginController@login');
 Route::post('register', 'Auth\RegisterController@register');
+Route::get('selectable-roles', 'RoleController@showSelectables');
 Route::post('reset-password', 'Auth\ForgotPasswordController@sendPasswordResetLink');
 Route::post('reset/password', 'Auth\ResetPasswordController@callResetPassword');
+Route::get('event-overview/{event}', 'OverviewController@index')->name('event.overview');
 
 Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::post('logout', 'Auth\LoginController@logout');
+    Route::patch('selectable-role-edit', 'UserController@UpdateSelectableUserRole');
 
     Route::get('refresh-token','UserController@updatetoken');
     Route::post('/search/profile','UserController@search');
+    Route::get('/permissions', 'UserController@permissions')->name('user.permissions');
 
     Route::get('event', 'EventController@index')->name('event');
     Route::get('event/{event}', 'EventController@show')->name('event.show');
@@ -42,8 +46,10 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::get('profile', 'ProfileController@index')->name('profile');
     Route::get('profile/{profile}', 'ProfileController@show')->name('profile.show');
     Route::post('profile', 'ProfileController@store')->name('profile.store');
-    Route::patch('profile/{profile}', 'ProfileController@update')->name('profile.update');
+    Route::patch('profile-edit', 'ProfileController@update')->name('profile.update');
     Route::delete('profile/{profile}', 'ProfileController@destroy')->name('profile.destroy');
+
+    Route::get('profile-check','ProfileController@check')->name('profile.check');
 
     Route::get('profile-cv/{profile}', 'ProfileController@showcv')->name('profile.cv.show');
     Route::post('profile-cv', 'ProfileController@storecv')->name('profile.cv.store');
@@ -51,6 +57,7 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
 
     Route::get('role', 'RoleController@index')->name('role');
     Route::get('role/{role}', 'RoleController@show')->name('role.show');
+    Route::get('role-update-selectable/{role}', 'RoleController@updateSelectable')->name('role.update.selectable');
     Route::post('role', 'RoleController@store')->name('role.store');
     Route::patch('role/{role}', 'RoleController@update')->name('role.update');
     Route::delete('role/{role}', 'RoleController@destroy')->name('role.destroy');
@@ -66,7 +73,22 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::post('map', 'MapController@store')->name('map.store');
     Route::patch('map/{map}', 'MapController@update')->name('map.update');
     Route::delete('map/{map}', 'MapController@destroy')->name('map.destroy');
+
+    Route::get('/admin', 'AdminController@index');
+    Route::get('/admin/{event}', 'AdminController@event');
+    Route::post('/admin/excel', 'AdminController@excel');
+
+    Route::post('/program', 'ProgramController@store');
+    Route::delete('/program/{program}', 'ProgramController@destroy');
+
+    Route::get('/block/{block}', 'BlockController@show');
+    Route::post('/block', 'BlockController@store');
+    Route::patch('/block/{block}', 'BlockController@update');
+    Route::delete('/block/{block}', 'BlockController@destroy');
+
 });
+
+
 
 
 

@@ -7,28 +7,28 @@
   padding: 10px;
   border-radius: 5px;
   background: white;
-  border: solid 2px $light;
+  border: solid 2px $basic-gray;
   width: 100%;
 
   &:hover {
-    border: solid 2px $orange;
+    border: solid 2px $theme-color;
   }
 }
 
 .submit-btn {
   cursor: pointer;
   font-weight: 500;
-  background-color: $dark;
-  color: $white;
+  background-color: $deep-gray;
+  color: $basic-gray;
 
   &:hover {
-    background-color: $darkest;
+    background-color: $black;
   }
 }
 
 .login-label {
   font-weight: 300;
-  color: $light;
+  color: $basic-gray;
   display: block;
   padding: 0;
   margin-top: 1.5em;
@@ -40,10 +40,10 @@
 //button
 .login-close {
   position: absolute;
-  right: $navbar-padding;
-  top: $navbar-padding;
-  width: $navbar-height - $navbar-padding*2;
-  height: $navbar-height - $navbar-padding*2;
+  right: $padding-medium;
+  top: $padding-medium;
+  width: $navbar-height - $padding-huge;
+  height: $navbar-height - $padding-huge;
   border: none;
   padding: 0;
   background-color: transparent;
@@ -54,11 +54,11 @@
     position: relative;
 
     > div {
-      width: $navbar-height - $navbar-padding*2;
-      height: $navbar-padding / 8;
+      width: $navbar-height - $padding-huge;
+      height: $padding-medium / 8;
       background-color: transparent;
       position: absolute;
-      top: calc(50% - #{$navbar-padding} / 16);
+      top: calc(50% - #{$padding-medium} / 16);
 
       &:before, &:after {
         position: absolute;
@@ -75,25 +75,4 @@
       }
     }
   }
-}
-
-.login-forgotpassword{
-  width: 100%;
-  padding: 0;
-  margin: 0 !important;
-  text-align: right;
-  button{
-    background: none;
-    border: none;
-    color: $light;
-    text-decoration: underline;
-    &:hover{
-      color: $orange;
-    }
-  }
-}
-
-#app p {
-  margin: 0;
-  margin-top: 32px;
 }

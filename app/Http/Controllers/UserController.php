@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Permissions;
+use App\Role;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,7 +37,8 @@ class UserController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function search(Request $request){
+    public function search(Request $request)
+    {
 
         $validator = Validator::make($request->all(), [
             'search' => ['string']
@@ -45,11 +49,38 @@ class UserController extends Controller
         }
 
         $user = User::query()
-            ->where('name','LIKE','%' . $request->search . '%')
-            ->orWhere('email','LIKE','%' . $request->search . '%')
-            ->with('profile')
-            ->get();
+            ->where('name', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('email', 'LIKE', '%' . $request->search . '%')
+            ->get(['name', 'email', 'id']);
 
         return response()->json(['message' => $user], 200);
+    }
+
+    /**
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function permissions()
+    {
+
+        $this->authorize('write', Role::class);
+
+        $permissions = new Permissions;
+        return response()->json(['message' => $permissions->getAllPermissions()], 200);
+    }
+
+    public function UpdateSelectableUserRole(Request $request)
+    {
+        $this->authorize('write', User::class);
+        $user = User::find(Auth::id());
+
+        if (!$request && !in_array($request->role, Role::query()->where("selectable", true)->get(["id"])->toArray())) {
+            abort(403);
+        }
+
+        $user->role_id = $request->role;
+        $user->update();
+
+        return response()->json(['message' => "Role Edited"]);
     }
 }

@@ -69,6 +69,7 @@
             "php artisan migrate:fresh",
             "php artisan roles:generate",
             "php artisan roles:admin",
+            "php artisan event:generate",
             "chmod -R 777 public/"
         ]
     }

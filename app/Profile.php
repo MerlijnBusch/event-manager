@@ -14,8 +14,17 @@ class Profile extends Model
     protected $fillable = [
         'user_id',
         'phone_number',
+        'about',
         'image',
+        'facebook',
+        'linkedin',
+        'contact_email',
+        'twitter',  
         'cv',
+    ];
+
+    protected $hidden = [
+        'updated_at', 'created_at',
     ];
 
     public function user(){

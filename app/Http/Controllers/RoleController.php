@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Permissions;
 use App\Role;
 use App\Rules\ColorValidator;
 use App\Rules\PermissionExistValidator;
@@ -101,7 +102,7 @@ class RoleController extends Controller
 
         return response()->json(['message' => 'Role updated successfully'], 200);
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -116,6 +117,34 @@ class RoleController extends Controller
         $role = Role::findOrFail($role->id);
         $role->delete();
 
-        return response()->json(['message' => 'Role deleted successfully']);
+        return response()->json(['message' => 'Role deleted successfully'], 200);
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function showSelectables()
+    {
+        $roles = Role::query()
+        ->where('selectable', 1)
+        ->get(["id" ,"role_name"]);
+
+        return response()->json($roles, 200);
+    }
+
+    /**
+     * @param Role $role
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function updateSelectable(Role $role)
+    {
+        $this->authorize('write', Role::class);
+
+        $updateRole = Role::findOrFail($role->id);
+        $updateRole->selectable = !$role->selectable;
+        $updateRole->update();
+
+        return response()->json(['message' => 'Role updated successfully'], 200);
     }
 }

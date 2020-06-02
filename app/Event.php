@@ -2,13 +2,17 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
+ * @property mixed settings
+ * @property mixed item
+ * @property mixed map
+ * @property mixed id
  * @property mixed|string name
  * @property mixed|string description
- * @property Carbon|mixed date
  */
 class Event extends Model
 {
@@ -22,7 +26,11 @@ class Event extends Model
     protected $fillable = [
         'name',
         'description',
-        'date',
+        'image',
+    ];
+
+    protected $hidden = [
+        'updated_at', 'created_at','deleted_at'
     ];
 
     public function map(){
@@ -37,9 +45,9 @@ class Event extends Model
 
     }
 
-    public function item(){
+    public function program(){
 
-        return $this->hasMany('App\Item', 'event_id');
+        return $this->hasMany('App\Program', 'event_id');
 
     }
 }

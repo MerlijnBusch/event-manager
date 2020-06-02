@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use App\RegistrationEvents;
+use App\Rules\Base64Validator;
 use App\Rules\EventExistValidator;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class EventController extends Controller
-{
+{//@todo update this controller
     /**
      * Display a listing of the resource.
      *
@@ -53,9 +54,9 @@ class EventController extends Controller
         $this->authorize('write', Event::class);
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
-            'description' => 'required|min:10',
-            'date' => 'required|date',
+            'name' => ['required','max:255'],
+            'description' => ['required','min:10'],
+            'image' => ['required'],
         ]);
 
         if ($validator->fails()) {
@@ -80,9 +81,9 @@ class EventController extends Controller
         $this->authorize('write', Event::class);
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
-            'description' => 'required|min:10',
-            'date' => 'required|date',
+            'name' => ['required','max:255'],
+            'description' => ['required','min:10'],
+            'image' => ['required'],
         ]);
 
         if ($validator->fails()) {

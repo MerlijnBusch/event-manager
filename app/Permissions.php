@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use ReflectionClass;
 
 class Permissions extends Model {
@@ -29,7 +30,7 @@ class Permissions extends Model {
 
     public const __READ_EVENT__ = 'read_event';
     public const __WRITE_EVENT__ = 'write_event';
-    
+
     public const __READ_ITEM__ = 'read_item';
     public const __WRITE_ITEM__ = 'write_item';
 
@@ -38,5 +39,14 @@ class Permissions extends Model {
 
     public const __READ_MAP__ = 'read_map';
     public const __WRITE_MAP__ = 'write_map';
+
+    public const __READ_PROGRAMS__ = 'read_programs';
+    public const __WRITE_PROGRAMS__ = 'write_programs';
+
+    public const __READ_BLOCK__ = 'read_block';
+    public const __WRITE_BLOCK__ = 'write_block';
+
+    public const __READ_USER__ = 'read_user';
+    public const __WRITE_USER__ = 'write_user';
 
 }

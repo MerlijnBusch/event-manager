@@ -1,0 +1,156 @@
+& {
+  .event-congress-title {
+    color: $mid-gray;
+    font-size: $font-size-big;
+  }
+
+  .event-congress-description {
+    color: $basic-gray;
+    font-weight: 600;
+    font-size: $font-size-normal;
+  }
+
+  .event-congress-rounds {
+    .event-congress-round {
+
+      @media (max-width: $tablet-breakpoint) {
+        margin-top: $padding-medium;
+        &:after{
+          border: none;
+          border-top: solid 1px $mid-gray;
+          width: 100% !important;
+          height: 0 !important;
+          left: 0 !important;
+          top: -$padding-small !important;
+        }
+      }
+
+      .event-congress-round-content {
+        @media (max-width: $tablet-breakpoint) {
+          padding: 0 !important;
+        }
+      }
+    }
+
+    .event-congress-round:first-child .event-congress-round-content {
+      padding-right: $padding-huge;
+
+    }
+
+    .event-congress-round:not(:first-child):not(:last-child) {
+      &:after {
+        left: -$padding-huge/4;
+      }
+
+      .event-congress-round-content {
+        padding-left: $padding-huge/2;
+        padding-right: $padding-huge/2;
+      }
+    }
+
+    .event-congress-round:last-child {
+      &:after {
+        left: $padding-huge/4;
+      }
+
+      .event-congress-round-content {
+        padding-left: $padding-huge;
+      }
+    }
+
+    .event-congress-round + .event-congress-round {
+      position: relative;
+
+      &:after {
+        position: absolute;
+        content: '';
+        height: 100%;
+        border-left: solid 1px $mid-gray;
+        top: 0;
+
+      }
+    }
+    .event-congress-round-speakers + .event-congress-round-title{
+      margin-top: $padding-medium;
+    }
+    .event-congress-round-title {
+      display: block;
+      color: var(--theme-color);
+      font-size: $font-size-normal;
+      margin-bottom: $padding-small;
+      > b{
+        display: inline-block;
+        text-align: left;
+        width: 135px;
+      }
+
+      > span {
+        display: inline-block;
+        color: $basic-gray;
+        float: right;
+        width: 120px;
+        text-align: right;
+      }
+    }
+
+    .event-congress-round-speakers .event-congress-round-speaker, .event-congress-round-keynote {
+      padding-top: $padding-tiny;
+      padding-bottom: $padding-tiny;
+      display: flex;
+      width: 100%;
+
+      .event-congress-round-speaker-content {
+        flex: 1;
+
+        .event-congress-round-speaker-title {
+          display: block;
+          color: $basic-gray;
+        }
+
+        .event-congress-round-speaker-position {
+          display: block;
+          color: $basic-gray;
+        }
+      }
+
+      .event-congress-round-checkbox-holder {
+        width: 26px;
+
+        .event-congress-round-speaker-checkbox {
+          width: 26px;
+          height: 26px;
+          border-radius: (26px/2);
+          background: transparent;
+          border: solid 2px var(--theme-color);
+          position: relative;
+
+          > div {
+            border-radius: 1px;
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            background-color: var(--theme-color);
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            transition: width ($animation-time/2) ease-out, opacity $animation-time ease-out;
+          }
+
+          > div + div {
+            transform: translate(-50%, -50%) rotate(90deg);
+          }
+
+          &.active {
+            > div {
+              opacity: 0;
+              width: 0;
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+
+}
