@@ -51,7 +51,6 @@
                                 >
                                     <i class="fas fa-pencil"></i>
                                 </div>
-                                {{event.id}}
                                 <div
                                     class="admin-sidebar-icon"
                                     v-on:click="deleteEvent(event.id)"
