@@ -23,26 +23,30 @@
 
                 <div class="form-line">
                     <label class="form-label" for="name">Naam</label>
-                    <input class="form-text-input" type="text" id="name" v-model="name">
+                    <input class="form-text-input" type="text" v-model="name">
                 </div>
                 <div class="form-line">
                     <label class="form-label" for="email">E-mail</label>
-                    <input class="form-text-input" type="text" id="email" v-model="email" required>
+                    <input class="form-text-input" type="text" v-model="email" required>
                 </div>
                 <div class="form-line">
                     <label class="form-label" for="password">Wachtwoord</label>
-                    <input class="form-text-input" type="password" id="password" v-model="password">
+                    <input class="form-text-input" type="password" v-model="password">
                 </div>
                 <div class="form-line">
                     <label class="form-label" for="password_confirmation">Bevestig Wachtwoord</label>
-                    <input class="form-text-input" type="password" id="password_confirmation"
+                    <input class="form-text-input" type="password" 
                            v-model="password_confirmation">
                 </div>
                 <div class="form-line">
                     <label class="form-label" for="role">Soort Bezoeker</label>
                     <select class="form-text-input" id="role" v-model="role">
-                        <option v-for="userrole in roles" :value="userrole.id">{{userrole.role_name}}</option>                  
+                        <option v-for="userrole in roles" :value="userrole.id">{{userrole.role_name}}</option>
                     </select>
+                </div>
+                <div class="form-line">
+                    <input type="checkbox" name="terms" />
+                    <label class="form-label" for="terms">Algemene voorwaarden</label>
                 </div>
                 <div class="form-line form-line-hasbutton">
                     <input type="submit" class="form-button" value="registreer account">
@@ -83,15 +87,8 @@
                         this.isLoading = false;
                         this.errors.push('Er is niks ingevuld');
                         break;
-                    // case /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$  /.test(this.email) === false:
-                    //     this.isLoading = false;
-                    //     this.errors.push('Er is geen email ingevuld');
-                    //     break;
-                    case /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,} /.test(this.password) === false:
-                        this.isLoading = false;
-                        this.errors.push('Het wachtwoord is incorrect. Gebruik minimaal 8 karakters, een hoofdletter en een nummer.');
                     default:
-                        axios.post("/register", {email: this.email}).then(result => {
+                        axios.post("/api/register", {email: this.email}).then(result => {
                             this.message = result.data.message;
                             this.isLoading = false;
                         }, error => {
@@ -104,6 +101,7 @@
             axios
                 .get('/api/selectable-roles')
                 .then(response => (this.roles = response.data))
+            console.log(this.roles)
         }
     }
 </script>
