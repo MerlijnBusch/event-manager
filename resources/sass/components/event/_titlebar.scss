@@ -9,6 +9,19 @@
   }
 
   .event-titlebar-part-holder {
+    &.part-half{
+      @media (max-width: ($tablet-breakpoint - 1)){
+        flex: 1 0 50%;
+        width: 50%;
+        @media (max-width: ($mobile-breakpoint - 1)){
+          flex: 1 0 100%;
+          width: 100%;
+          * {
+            justify-content: center;
+          }
+        }
+      }
+    }
     &.contains-btn {
       margin-top: -$padding-medium;
       @media (max-width: $tablet-breakpoint) {
@@ -26,6 +39,10 @@
     font-size: $font-size-enormous;
     width: 55%;
     line-height: 1;
+    @media (max-width: ($tablet-breakpoint - 1)) {
+      width: unset;
+      padding-bottom: .25em;
+    }
   }
 
     @media (min-width: 671px) and (max-width: 1000px) {
