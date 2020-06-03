@@ -11,29 +11,29 @@
 <script>
     export default {
         name: 'search',
-        data(){
-            return{
+        data() {
+            return {
                 searchString: '',
                 oldSearchString: '',
                 sendTimeout: null,
             }
         },
-        watch:{
-          searchString(){
-              this.send()
+        watch: {
+            searchString() {
+                this.send()
             }
         },
         methods: {
-            send(){
-                if (this.searchString.length && this.searchString !== this.oldSearchString){
-                    this.oldSearchString = this.searchString;
-                    clearTimeout(this.sendTimeout);
-                    this.sendTimeout = setTimeout(()=>{
+            send() {
+                clearTimeout(this.sendTimeout);
+                this.sendTimeout = setTimeout(() => {
+                    if (this.searchString.length && this.searchString !== this.oldSearchString) {
+                        this.oldSearchString = this.searchString;
                         //TODO: call here
                         console.log(this.searchString);
-                    },500);
+                    }
+                }, 500);
 
-                }
             }
         }
     }
@@ -42,7 +42,7 @@
 <style lang="scss">
     @import "../../sass/variables";
 
-    .search{
+    .search {
         background: $dark-gray;
         flex: 1;
     }
