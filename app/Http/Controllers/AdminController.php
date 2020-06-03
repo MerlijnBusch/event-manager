@@ -144,6 +144,8 @@ class AdminController extends Controller
     public function user(User $user){
         $this->authorize('write', User::class);
 
+        $user->makeVisible(['role_id']);
+
         return response()->json($user, 200);
     }
 }

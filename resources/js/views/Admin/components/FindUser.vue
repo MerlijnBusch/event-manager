@@ -30,13 +30,13 @@
                     <div class="admin-find-user-table-cell">{{user.role.role_name}}</div>
                     <div class="admin-find-user-table-cell-actions">
                         <div
-                            class=""
+                            class="admin-find-user-action-icon"
                             v-on:click="updateUser(user.id)"
                         >
                             <i class="fas fa-pencil"></i>
                         </div>
                         <div
-                            class=""
+                            class="admin-find-user-action-icon"
                             v-on:click="deleteUser(user.id)"
                         >
                             <i class="fas fa-trash"></i>
