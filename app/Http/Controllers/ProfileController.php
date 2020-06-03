@@ -64,8 +64,8 @@ class ProfileController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'phone_number' => ['string',new PhoneNumberValidator, 'required_without_all:image'],
-            'image' => ['string',new UrlValidator, 'required_without_all:phone_number'],
+            'phone_number' => ['string', new PhoneNumberValidator, 'required_without_all:image'],
+            'image' => ['string', new UrlValidator, 'required_without_all:phone_number'],
         ]);
 
         if ($validator->fails()) {
@@ -85,7 +85,6 @@ class ProfileController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param Profile $profile
      * @return JsonResponse
      * @throws AuthorizationException
      */
@@ -94,16 +93,16 @@ class ProfileController extends Controller
         $this->authorize('write', Profile::class);
 
         Profile::updateOrCreate(
-        ['user_id' => Auth::id()],
-        ['about' => $request->about,
-        'image' => $request->image,
-        'facebook' => $request->facebook,
-        'twitter' => $request->twitter,
-        'linkedin' => $request->linkedin,
-        'phone_number' => $request->phonenumber,
-        'contact_email' => $request->contact_email]
+            ['user_id' => Auth::id()],
+            ['about' => $request->about,
+                'image' => $request->image,
+                'facebook' => $request->facebook,
+                'twitter' => $request->twitter,
+                'linkedin' => $request->linkedin,
+                'phone_number' => $request->phonenumber,
+                'contact_email' => $request->contact_email]
         );
-       
+
         return response()->json(['message' => 'Profile updated successfully '], 200);
     }
 
@@ -198,7 +197,12 @@ class ProfileController extends Controller
         return response()->json(['message' => 'CV updated successfully'], 200);
     }
 
-    public function check(){
+    /**
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function check()
+    {
         $this->authorize('read', Profile::class);
         $this->authorize('readCV', Profile::class);
 
@@ -207,7 +211,7 @@ class ProfileController extends Controller
             ->with('profile')
             ->with('role:id,role_name')
             ->first();
-    return response()->json($user, 200);
+        return response()->json($user, 200);
 
     }
 }

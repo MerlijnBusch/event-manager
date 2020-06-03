@@ -20,15 +20,25 @@
                     <div class="admin-find-user-table-cell">Rol</div>
                     <div class="admin-find-user-table-cell-actions"></div>
                 </div>
-                <div v-for="user in users" class="admin-find-user-display-table">
+                <div
+                    v-for="user in users"
+                    class="admin-find-user-display-table"
+                    :id="'admin-user-' + user.id"
+                >
                     <div class="admin-find-user-table-cell">{{user.name}}</div>
                     <div class="admin-find-user-table-cell">{{user.email}}</div>
                     <div class="admin-find-user-table-cell">{{user.role.role_name}}</div>
                     <div class="admin-find-user-table-cell-actions">
-                        <div class="">
+                        <div
+                            class=""
+                            v-on:click="updateUser(user.id)"
+                        >
                             <i class="fas fa-pencil"></i>
                         </div>
-                        <div class="">
+                        <div
+                            class=""
+                            v-on:click="deleteUser(user.id)"
+                        >
                             <i class="fas fa-trash"></i>
                         </div>
                     </div>
@@ -62,6 +72,15 @@
                 console.log(this.users)
 
                 e.preventDefault();
+            },
+            updateUser(id) {
+
+            },
+            async deleteUser(id) {
+                if (!confirm('Weet u zeker dat u deze user wilt verweideren')) return;
+                await API.delete('/api/admin/user/' + id)
+                let item = document.getElementById('admin-user-' + id);
+                item.parentNode.removeChild(item);
             }
         },
     };

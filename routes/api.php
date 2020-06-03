@@ -78,6 +78,7 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::get('/admin/{event}', 'AdminController@event');
     Route::post('/admin/excel', 'AdminController@excel');
     Route::post('/admin/search', 'AdminController@search');
+    Route::delete('/admin/user/{user}', 'AdminController@search');
 
     Route::post('/program', 'ProgramController@store');
     Route::delete('/program/{program}', 'ProgramController@destroy');
