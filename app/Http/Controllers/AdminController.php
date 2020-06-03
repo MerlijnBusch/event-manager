@@ -6,12 +6,11 @@ use App\Event;
 use App\EventSettings;
 use App\Program;
 use App\Role;
-use App\Rules\RoleSelectableValidator;
 use App\User;
+use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
@@ -123,4 +122,28 @@ class AdminController extends Controller
         return response()->json(['message' => $user], 200);
     }
 
+    /**
+     * @param User $user
+     * @return JsonResponse
+     * @throws AuthorizationException
+     * @throws Exception
+     */
+    public function deleteUser(User $user){
+        $this->authorize('write', User::class);
+
+        $user->delete();
+
+        return response()->json(['message' => 'User deleted successfully'], 200);
+    }
+
+    /**
+     * @param User $user
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function user(User $user){
+        $this->authorize('write', User::class);
+
+        return response()->json($user, 200);
+    }
 }

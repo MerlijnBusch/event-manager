@@ -104,6 +104,6 @@ class BlockController extends Controller
 
         $block->delete();
 
-        return response()->json(['message' => 'Item deleted successfully'], 200);
+        return response()->json(['message' => 'Block deleted successfully'], 200);
     }
 }

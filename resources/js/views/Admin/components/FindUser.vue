@@ -46,18 +46,32 @@
             </div>
         </div>
         <div class="admin-item-container-footer"></div>
+
+        <update-user-modal
+            v-if="user_id"
+            v-bind:id="user_id"
+            v-show="updateUserModal"
+            @close="setModalState(`updateUserModal`)"
+        />
+
     </div>
 </template>
 
 <script>
     import API from "../../../Api";
+    import UpdateUserModal from "./modal/UpdateUserModal";
 
     export default {
         data() {
             return {
                 search: '',
                 users: [],
+                updateUserModal: false,
+                user_id: null
             }
+        },
+        components: {
+            UpdateUserModal
         },
         name: 'FindUser',
         methods: {
@@ -74,14 +88,18 @@
                 e.preventDefault();
             },
             updateUser(id) {
-
+                this.user_id = id;
+                this.setModalState(`updateUserModal`);
             },
             async deleteUser(id) {
                 if (!confirm('Weet u zeker dat u deze user wilt verweideren')) return;
                 await API.delete('/api/admin/user/' + id)
                 let item = document.getElementById('admin-user-' + id);
                 item.parentNode.removeChild(item);
-            }
+            },
+            async setModalState(state) {
+                this[state] = !this[state];
+            },
         },
     };
 </script>
