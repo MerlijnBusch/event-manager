@@ -51,13 +51,13 @@
                             </div>
 
                             <div class="form-line">
-                                <label class="form-label" for="color">visible registrations</label>
-                                <input class="form-text-input" id="color" v-model="color" type="color" name="color"
+                                <label class="form-label" for="color">Color</label>
+                                <input class="form-color-input" id="color" v-model="color" type="color" name="color"
                                        placeholder="Event name">
                             </div>
 
                             <div class="form-line">
-                                <label class="form-label" for="light_theme">Active</label>
+                                <label class="form-label" for="light_theme">Light themed</label>
                                 <input class="form-text-input" id="light_theme" v-model="light_theme" type="checkbox" name="light_theme"
                                        placeholder="Event name">
                             </div>
@@ -99,7 +99,7 @@
                 date_start: null,
                 max_registrations: null,
                 visible_registrations: null,
-                color: null,
+                color: '#000000',
                 light_theme: false,
             }
         },
@@ -121,13 +121,16 @@
                     light_theme: this.light_theme,
                 };
 
-                API.post(data, '/api/settings');
+                API.post(data, '/api/event-settings');
 
                 this.close();
 
                 e.preventDefault();
             }
         },
+        mounted(){
+            console.log(this.id)
+        }
     };
 </script>
 

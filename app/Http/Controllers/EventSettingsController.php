@@ -60,9 +60,10 @@ class EventSettingsController extends Controller
             'event_id' => ['required', new EventExistValidator],
             'visible_registrations' => ['required', 'integer'],
             'max_registrations' => ['required', 'gt:visible_registrations', 'integer'],
-            'primary_color' => ['required', new ColorValidator],
-            'secondary_color' => ['required', new ColorValidator],
-            'active' => ['required', 'boolean'],
+            'date_start' => ['required', 'date'],
+            'date_end' => ['required', 'date'],
+            'color' => ['required', new ColorValidator],
+            'light_theme' => ['required', 'boolean'],
         ]);
 
         if ($validator->fails()) {
@@ -73,14 +74,7 @@ class EventSettingsController extends Controller
             return response()->json(['message' => 'Event Settings already exist for this Event'], 403);
         }
 
-        $settings = new EventSettings;
-        $settings->event_id = $request->event_id;
-        $settings->visible_registrations = $request->visible_registrations;
-        $settings->max_registrations = $request->max_registrations;
-        $settings->primary_color = $request->primary_color;
-        $settings->secondary_color = $request->secondary_color;
-        $settings->active = $request->active;
-        $settings->save();
+        EventSettings::create($request->all());
 
         return response()->json(['message' => 'Event Settings created successfully'], 200);
     }

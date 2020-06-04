@@ -245,6 +245,7 @@
 
         <create-event-settings-modal
             v-if="settingsId"
+            v-bind:id="settingsId"
             v-show="createEventSettingsModal"
             @close="setModalState(`createEventSettingsModal`)"
         />
@@ -385,6 +386,7 @@
             },
             openEventSettings(id){
                 this.settingsId = id;
+                console.log(id)
                 this.setModalState(`createEventSettingsModal`)
             }
         },
