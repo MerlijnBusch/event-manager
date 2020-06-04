@@ -3,19 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Event;
-use App\EventSettings;
-use App\Item;
-use App\Map;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\JsonResponse;
 
 class OverviewController extends Controller
 {
+    /**
+     * @param Event $event
+     * @return JsonResponse
+     */
     public function index(Event $event)
     {
-        $eventSettings = EventSettings::query()->where('event_id', $event->id)->first();
-        $eventMaps = Map::query()->where('event_id', $event->id)->get();
-        $eventItems = Item::query()->where('event_id', $event->id)->get();
-        return response()->json([$event, $eventSettings, $eventMaps, $eventItems], 200);
+        $s = Event::query()
+            ->where('id', $event->id)
+            ->with('program')
+            ->with('settings')
+            ->with('program.block')
+            ->with('program.block.items')
+            ->get();
+
+        return response()->json($s, 200);
     }
 }
