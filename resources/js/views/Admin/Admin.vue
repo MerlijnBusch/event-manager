@@ -47,6 +47,12 @@
                             <div class="admin-sidebar-icon-container">
                                 <div
                                     class="admin-sidebar-icon"
+                                    v-on:click="openEventSettings(event.id)"
+                                >
+                                    <i class="fas fa-cog"></i>
+                                </div>
+                                <div
+                                    class="admin-sidebar-icon"
                                     v-on:click="setModalState(`updateEventModal`)"
                                 >
                                     <i class="fas fa-pencil"></i>
@@ -237,6 +243,12 @@
             @close="setModalState(`updateEventModal`)"
         />
 
+        <create-event-settings-modal
+            v-if="settingsId"
+            v-show="createEventSettingsModal"
+            @close="setModalState(`createEventSettingsModal`)"
+        />
+
     </div>
 </template>
 
@@ -255,6 +267,7 @@
     import UpdateEventModal from "./components/modal/UpdateEventModal";
     import FindUser from "./components/FindUser";
     import Rolls from "./components/Rolls";
+    import CreateEventSettingsModal from "./components/modal/CreateEventSettingsModal";
 
     export default {
         name: 'Admin',
@@ -275,6 +288,8 @@
                 updateBlockModal: false,
                 uploadExcelUsersModal: false,
                 updateEventModal: false,
+                createEventSettingsModal: false,
+                settingsId: null,
             }
         },
         components: {
@@ -291,6 +306,7 @@
             UpdateEventModal,
             FindUser,
             Rolls,
+            CreateEventSettingsModal,
         },
         methods: {
             async setSelectedEventId(id) {
@@ -366,6 +382,10 @@
                 let height = target.getBoundingClientRect().height;
                 if (height === 0) target.style.height = (60 * amount) + "px";
                 else target.style.height = "0px";
+            },
+            openEventSettings(id){
+                this.settingsId = id;
+                this.setModalState(`createEventSettingsModal`)
             }
         },
         async mounted() {

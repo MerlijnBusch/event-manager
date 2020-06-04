@@ -56,8 +56,8 @@
                                 </select>
                             </div>
 
-                            <date-picker v-model="date_start" @update="(v)=>{date_start = v}"></date-picker>
-                            <date-picker v-model="date_end" @update="(v)=>{date_end = v}"></date-picker>
+                            <date-picker v-if="type === 'keynotes'" v-model="date_start" @update="(v)=>{date_start = v}"></date-picker>
+                            <date-picker v-if="type === 'keynotes'" v-model="date_end" @update="(v)=>{date_end = v}"></date-picker>
 
                             <div class="form-line">
                                 <label class="form-label" for="active">Active</label>
@@ -113,17 +113,36 @@
             },
             checkForm: function (e) {
 
-                const data = {
-                    name:  this.name,
-                    type: this.type,
-                    description:  this.description,
-                    block_id:  this.id,
-                    date_start:  this.date_start,
-                    date_end:  this.date_end,
-                    active:  this.active,
-                };
+                let data;
+
+                if(this.type === 'keynotes'){
+                    data = {
+                        name:  this.name,
+                        type: this.type,
+                        description:  this.description,
+                        block_id:  this.id,
+                        date_start:  this.date_start,
+                        date_end:  this.date_end,
+                        active:  this.active,
+                    };
+                } else {
+                    data = {
+                        name:  this.name,
+                        type: this.type,
+                        description:  this.description,
+                        block_id:  this.id,
+                        active:  this.active,
+                    };
+                }
 
                 API.post(data, '/api/item');
+
+                this.name = null;
+                this.type = null;
+                this.description = null;
+                this.date_start = null;
+                this.date_end = null;
+                this.active = false;
 
                 this.close();
 

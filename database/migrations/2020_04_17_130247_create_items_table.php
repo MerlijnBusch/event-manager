@@ -19,8 +19,8 @@ class CreateItemsTable extends Migration
             $table->string('type');
             $table->longText('description');
             $table->integer('block_id');
-            $table->string('date_start');
-            $table->string('date_end');
+            $table->string('date_start')->nullable();
+            $table->string('date_end')->nullable();
             $table->boolean('active')->default(false);
             $table->timestamps();
         });

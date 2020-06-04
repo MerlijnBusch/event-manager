@@ -43,8 +43,8 @@ class ItemController extends Controller
             'type' => ['required', new ItemTypeValidator],
             'description' => ['required'],
             'block_id' => ['required', new BlockExistValidator],
-            'date_start' => ['required', 'date'],
-            'date_end' => ['required', 'date'],
+            'date_start' => ['date'],
+            'date_end' => ['date'],
             'active' => ['required', 'boolean'],
         ]);
 
