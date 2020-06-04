@@ -5,29 +5,29 @@
                 <p>users:</p>
                 <div>
                     <div
-                        class="admin-sidebar-name-holder"
-                        v-on:click="setPage(3)"
+                            class="admin-sidebar-name-holder"
+                            v-on:click="setPage(3)"
                     >
                         <div
-                            class="admin-sidebar-text-name"
+                                class="admin-sidebar-text-name"
                         >Rollen en permissions
                         </div>
                     </div>
                     <div
-                        class="admin-sidebar-name-holder"
-                        v-on:click="setPage(2)"
+                            class="admin-sidebar-name-holder"
+                            v-on:click="setPage(2)"
                     >
                         <div
-                            class="admin-sidebar-text-name"
+                                class="admin-sidebar-text-name"
                         >Find user
                         </div>
                     </div>
                     <div
-                        class="admin-sidebar-name-holder"
-                        v-on:click="setModalState(`uploadExcelUsersModal`)"
+                            class="admin-sidebar-name-holder"
+                            v-on:click="setModalState(`uploadExcelUsersModal`)"
                     >
                         <div
-                            class="admin-sidebar-text-name"
+                                class="admin-sidebar-text-name"
                         >Upload multiple users (excel)
                         </div>
                     </div>
@@ -35,32 +35,32 @@
                 <p>events:</p>
                 <div v-for="event in events" :key="event.name" class="admin-sidebar-event-container">
                     <div
-                        class="admin-sidebar-event-list-item"
-                        v-on:click="setSelectedEventId(event.id)"
+                            class="admin-sidebar-event-list-item"
+                            v-on:click="setSelectedEventId(event.id)"
                     >
                         <div class="admin-sidebar-name-holder">
                             <div
-                                class="admin-sidebar-text-name"
-                                v-on:click="eventDropDown(event.id)"
+                                    class="admin-sidebar-text-name"
+                                    v-on:click="eventDropDown(event.id)"
                             >{{event.name}}
                             </div>
                             <div class="admin-sidebar-icon-container">
                                 <div
-                                    class="admin-sidebar-icon"
-                                    v-on:click="openEventSettings(event.id)"
+                                        class="admin-sidebar-icon"
+                                        v-on:click="openEventSettings(event.id)"
                                 >
                                     <i class="fas fa-cog"></i>
                                 </div>
                                 <div
-                                    class="admin-sidebar-icon"
-                                    v-on:click="setModalState(`updateEventModal`)"
+                                        class="admin-sidebar-icon"
+                                        v-on:click="setModalState(`updateEventModal`)"
                                 >
                                     <i class="fas fa-pencil"></i>
                                 </div>
                                 <div
-                                    class="admin-sidebar-icon"
-                                    v-on:click="deleteEvent(event.id)"
-                                    title="evenment verweideren"
+                                        class="admin-sidebar-icon"
+                                        v-on:click="deleteEvent(event.id)"
+                                        title="evenment verweideren"
                                 >
                                     <i class="fas fa-trash"></i>
                                 </div>
@@ -78,8 +78,8 @@
                                             <i class="fas fa-pencil"></i>
                                         </div>
                                         <div
-                                            class="admin-sidebar-program-action-delete"
-                                            v-on:click="deleteProgram(prog.id)"
+                                                class="admin-sidebar-program-action-delete"
+                                                v-on:click="deleteProgram(prog.id)"
                                         >
                                             <i class="fas fa-trash"></i>
                                         </div>
@@ -88,8 +88,8 @@
                             </div>
 
                             <div
-                                class="admin-create-program-sidebar"
-                                v-on:click="setModalState(`createProgramModal`)"
+                                    class="admin-create-program-sidebar"
+                                    v-on:click="setModalState(`createProgramModal`)"
                             >
                                 <div class="admin-sidebar-program-create-button">
                                     <i class="fas fa-plus-circle"></i> Create Program
@@ -101,8 +101,8 @@
             </div>
             <div class="admin-sidebar-create-event-container">
                 <div
-                    class="admin-create-event-sidebar"
-                    v-on:click="setModalState(`createEventModal`)"
+                        class="admin-create-event-sidebar"
+                        v-on:click="setModalState(`createEventModal`)"
                 >
                     <i class="fas fa-plus-circle admin-sidebar-event-create-icon"></i>Create Event
                 </div>
@@ -116,43 +116,43 @@
                         <div class="admin-block-list">
                             <div v-for="block in program.block" class="admin-block-list-holder">
                                 <div
-                                    class="admin-block-list-header"
+                                        class="admin-block-list-header"
                                 >
                                     <div
-                                        class="admin-block-date-holder"
+                                            class="admin-block-date-holder"
                                     >
                                         <div
-                                            class="admin-block-list-date"
-                                            v-on:click="displayBlockItems(block.id, block.items.length)"
+                                                class="admin-block-list-date"
+                                                v-on:click="displayBlockItems(block.id, block.items.length)"
                                         >
                                             {{block.date_start.slice(5)}} / {{block.date_end.slice(5)}}
                                         </div>
                                         <div
-                                            class="admin-block-action"
-                                            v-on:click="displayBlockActions(block.id)"
+                                                class="admin-block-action"
+                                                v-on:click="displayBlockActions(block.id)"
                                         >
                                             <i class="fas fa-chevron-left"></i>
                                         </div>
                                     </div>
                                     <div class="admin-block-action-holder" :id="'block-' + block.id">
                                         <div
-                                            class="admin-block-action-icon-holder"
-                                            v-on:click="addItemToBlock(block.id)"
-                                            title="add item"
+                                                class="admin-block-action-icon-holder"
+                                                v-on:click="addItemToBlock(block.id)"
+                                                title="add item"
                                         >
                                             <i class="fas fa-plus-circle admin-block-action-icon"></i>
                                         </div>
                                         <div
-                                            class="admin-block-action-icon-holder"
-                                            v-on:click="updateBlock(block.id)"
-                                            title="update this block"
+                                                class="admin-block-action-icon-holder"
+                                                v-on:click="updateBlock(block.id)"
+                                                title="update this block"
                                         >
                                             <i class="fas fa-pencil admin-block-action-icon"></i>
                                         </div>
                                         <div
-                                            class="admin-block-action-icon-holder"
-                                            v-on:click="deleteBlock(block.id)"
-                                            title="delete this block"
+                                                class="admin-block-action-icon-holder"
+                                                v-on:click="deleteBlock(block.id)"
+                                                title="delete this block"
                                         >
                                             <i class="fas fa-trash admin-block-action-icon"></i>
                                         </div>
@@ -175,8 +175,8 @@
                         </div>
                         <div>
                             <div
-                                class="admin-block-list-add-block"
-                                v-on:click="setModalState(`createBlockModal`)"
+                                    class="admin-block-list-add-block"
+                                    v-on:click="setModalState(`createBlockModal`)"
                             >
                                 <i class="fas fa-plus-circle admin-block-list-add-icon"></i>Add block
                             </div>
@@ -199,55 +199,55 @@
         </div>
 
         <create-item-modal
-            v-if="blockId"
-            v-show="createItemModal"
-            v-bind:id="blockId"
-            @close="setModalState(`createItemModal`)"
+                v-if="blockId"
+                v-show="createItemModal"
+                v-bind:id="blockId"
+                @close="setModalState(`createItemModal`)"
         />
 
         <create-block-modal
-            v-if="program"
-            v-show="createBlockModal"
-            v-bind:id="program.id"
-            @close="setModalState(`createBlockModal`)"
+                v-if="program"
+                v-show="createBlockModal"
+                v-bind:id="program.id"
+                @close="setModalState(`createBlockModal`)"
         />
 
         <create-program-modal
-            v-if="currentEvent.event"
-            v-show="createProgramModal"
-            v-bind:id="currentEvent.event.id"
-            @close="setModalState(`createProgramModal`)"
+                v-if="currentEvent.event"
+                v-show="createProgramModal"
+                v-bind:id="currentEvent.event.id"
+                @close="setModalState(`createProgramModal`)"
         />
 
         <create-event-modal
-            v-show="createEventModal"
-            @close="setModalState(`createEventModal`)"
+                v-show="createEventModal"
+                @close="setModalState(`createEventModal`)"
         />
 
         <update-block-modal
-            v-if="updateBlockId"
-            v-bind:id="updateBlockId"
-            v-show="updateBlockModal"
-            @close="setModalState(`updateBlockModal`)"
+                v-if="updateBlockId"
+                v-bind:id="updateBlockId"
+                v-show="updateBlockModal"
+                @close="setModalState(`updateBlockModal`)"
         />
 
         <upload-excel-users-modal
-            v-show="uploadExcelUsersModal"
-            @close="setModalState(`uploadExcelUsersModal`)"
+                v-show="uploadExcelUsersModal"
+                @close="setModalState(`uploadExcelUsersModal`)"
         />
 
         <update-event-modal
-            v-if="currentEvent.event"
-            v-bind:id="currentEvent.event.id"
-            v-show="updateEventModal"
-            @close="setModalState(`updateEventModal`)"
+                v-if="currentEvent.event"
+                v-bind:id="currentEvent.event.id"
+                v-show="updateEventModal"
+                @close="setModalState(`updateEventModal`)"
         />
 
         <create-event-settings-modal
-            v-if="settingsId"
-            v-bind:id="settingsId"
-            v-show="createEventSettingsModal"
-            @close="setModalState(`createEventSettingsModal`)"
+                v-if="settingsId"
+                v-bind:id="settingsId"
+                v-show="createEventSettingsModal"
+                @close="setModalState(`createEventSettingsModal`)"
         />
 
     </div>
@@ -291,6 +291,7 @@
                 updateEventModal: false,
                 createEventSettingsModal: false,
                 settingsId: null,
+                timeOut: null,
             }
         },
         components: {
@@ -312,8 +313,11 @@
         methods: {
             async setSelectedEventId(id) {
                 this.selectedEventId = id;
-                const data = await API.get('/api/admin/' + id);
-                this.currentEvent = data.data;
+                if (this.timeOut !== null) return;
+                this.timeOut = await setTimeout(async () => {
+                    const data = await API.get('/api/admin/' + id);
+                    this.currentEvent = data.data;
+                }, 1000);
             },
             setPage(id) {
                 this.page = id;
@@ -327,6 +331,7 @@
             updateDisplay(display) {
                 this.program = display;
                 this.setPage(1);
+                this.timeOut = null;
             },
             async setModalState(state) {
                 this[state] = !this[state];
@@ -358,7 +363,7 @@
                     this.selectedEventId = null;
                     this.currentEvent = null;
                 }
-                if(this.selectedEventId) API.delete('/api/event/' + id);
+                if (this.selectedEventId) API.delete('/api/event/' + id);
                 if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
                 this.forceUpdate();
             },
@@ -384,7 +389,7 @@
                 if (height === 0) target.style.height = (60 * amount) + "px";
                 else target.style.height = "0px";
             },
-            openEventSettings(id){
+            openEventSettings(id) {
                 this.settingsId = id;
                 console.log(id)
                 this.setModalState(`createEventSettingsModal`)

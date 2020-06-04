@@ -19,7 +19,7 @@ class OverviewController extends Controller
             ->with('settings')
             ->with('program.block')
             ->with('program.block.items')
-            ->get();
+            ->first();
 
         return response()->json($s, 200);
     }
