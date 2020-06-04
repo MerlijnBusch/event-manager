@@ -65,5 +65,10 @@
         padding: $padding-medium $padding-big $padding-big + $border-radius-big;
       }
     }
+
+    &.row-reverse{
+      display: flex;
+      flex-direction: row-reverse;
+    }
   }
 }

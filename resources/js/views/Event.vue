@@ -13,7 +13,7 @@
                         <div class="event-titlebar-part-holder column-desktop-4 column-tablet-12 column-mobile-12 description-holder">
                             <h4 class="event-titlebar-description" v-text="description"></h4>
                         </div>
-                        <div class="event-titlebar-part-holder column-desktop-4 column-tablet-4 column-mobile-6">
+                        <div class="event-titlebar-part-holder part-half column-desktop-4 column-tablet-4 column-mobile-6">
                             <div class="event-titlebar-ticketcounter-holder">
                                 <p class="event-titlebar-ticketcounter-text">Aantal tickets verkrijgbaar</p>
                                 <div class="event-titlebar-ticketcounter" v-if="tickets.isShowing">
@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         <div class="event-titlebar-whitespace column-desktop-12"></div>
-                        <div class="event-titlebar-part-holder column-desktop-4 column-tablet-8 column-mobile-6 date-holder">
+                        <div class="event-titlebar-part-holder part-half column-desktop-4 column-tablet-8 column-mobile-6 date-holder">
                             <span class="event-titlebar-date" v-text="formatDate(info.date)"></span>
                         </div>
                         <div class="event-titlebar-part-holder column-desktop-4 column-tablet-12 column-mobile-12">
@@ -112,10 +112,7 @@
                     </div>
                 </div>
             </div>
-            <!--TODO: Modal?-->
-
-            <div class="event-content-row flex-grid column-desktop-12 column-tablet-12 column-mobile-12">
-                <div class="event-modal column-desktop-4 column-tablet-5 column-mobile-12"></div>
+            <div class="event-content-row row-reverse flex-grid column-desktop-12 column-tablet-12 column-mobile-12">
                 <div class="event-my_speakers column-desktop-8 column-tablet-7 column-mobile-12 flex-grid">
                     <b class="event-my_speakers-title column-desktop-4 column-tablet-12 column-mobile-12">Geselecteerde
                         Sprekers</b>
@@ -149,6 +146,8 @@
                         </div>
                     </div>
                 </div>
+                <!--TODO: Modal?-->
+                <div class="event-modal column-desktop-4 column-tablet-5 column-mobile-12"></div>
             </div>
         </div>
     </div>
