@@ -8,6 +8,16 @@ use Illuminate\Http\JsonResponse;
 class OverviewController extends Controller
 {
     /**
+     * @return JsonResponse
+     */
+    public function event()
+    {
+        $s = Event::query()->get();
+
+        return response()->json($s, 200);
+    }
+
+    /**
      * @param Event $event
      * @return JsonResponse
      */
