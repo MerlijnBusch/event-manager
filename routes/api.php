@@ -19,7 +19,7 @@ Route::get('selectable-roles', 'RoleController@showSelectables');
 Route::post('reset-password', 'Auth\ForgotPasswordController@sendPasswordResetLink');
 Route::post('reset/password', 'Auth\ResetPasswordController@callResetPassword');
 Route::get('/event-overview/{event}', 'OverviewController@index')->name('event.overview');
-Route::get('/event-overview/', 'OverviewController@event')->name('event');
+Route::get('/event-overview', 'OverviewController@event')->name('event');
 
 Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::post('logout', 'Auth\LoginController@logout');
