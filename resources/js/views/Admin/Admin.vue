@@ -229,6 +229,7 @@
                 createCongressModal: false,
                 settingsId: null,
                 displayType: null,
+                timeOut: null,
             }
         },
         components: {
@@ -249,9 +250,11 @@
         methods: {
             async setSelectedEventId(id) {
                 this.selectedEventId = id;
-                const data = await API.get('/api/admin/' + id);
-                this.currentEvent = data.data;
-                console.log(this.currentEvent, 'current event');
+                if (this.timeOut !== null) return;
+                this.timeOut = await setTimeout(async () => {
+                    const data = await API.get('/api/admin/' + id);
+                    this.currentEvent = data.data;
+                }, 1000);
             },
             setPage(id) {
                 this.page = id;
@@ -282,7 +285,6 @@
                 setTimeout(async () => {
                     const data = await API.get('/api/admin');
                     this.events = data.data;
-                    console.log(this.events);
                 }, 0)
             },
             async deleteEvent(id) {

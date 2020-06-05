@@ -56,8 +56,8 @@
                                 </select>
                             </div>
 
-                            <date-picker v-if="type === 'keynotes'" v-model="date_start" @update="(v)=>{date_start = v}"></date-picker>
-                            <date-picker v-if="type === 'keynotes'" v-model="date_end" @update="(v)=>{date_end = v}"></date-picker>
+                            <date-picker v-if="type !== 'speaker'" v-model="date_start" @update="(v)=>{date_start = v}"></date-picker>
+                            <date-picker v-if="type !== 'speaker'" v-model="date_end" @update="(v)=>{date_end = v}"></date-picker>
 
                             <div class="form-line">
                                 <label class="form-label" for="active">Active</label>
@@ -115,7 +115,7 @@
 
                 let data;
 
-                if(this.type === 'keynotes'){
+                if(this.type !== 'speaker'){
                     data = {
                         name:  this.name,
                         type: this.type,
