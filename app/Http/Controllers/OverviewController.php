@@ -12,7 +12,7 @@ class OverviewController extends Controller
      */
     public function event()
     {
-        $s = Event::query()->get();
+        $s = Event::query()->with('settings')->get();
 
         return response()->json($s, 200);
     }
