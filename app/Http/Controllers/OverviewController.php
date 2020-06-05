@@ -15,10 +15,12 @@ class OverviewController extends Controller
     {
         $s = Event::query()
             ->where('id', $event->id)
-            ->with('program')
             ->with('settings')
-            ->with('program.block')
-            ->with('program.block.items')
+            ->with('program')
+            ->with('program.programItems')
+            ->with('congress')
+            ->with('congress.block')
+            ->with('congress.block.items')
             ->first();
 
         return response()->json($s, 200);
