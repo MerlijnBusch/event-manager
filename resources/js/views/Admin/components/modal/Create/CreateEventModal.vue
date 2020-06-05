@@ -14,7 +14,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Create Item
+                            Create Event
                         </p>
 
                         <button
@@ -43,27 +43,14 @@
 
                             <div class="form-line">
                                 <label class="form-label" for="description">description</label>
-                                <textarea class="form-text-input" id="description" v-model="description" type="text" name="description"
+                                <textarea class="form-text-input" id="description" v-model="description" type="text"
+                                          name="description"
                                           placeholder="Event name"></textarea>
                             </div>
 
-                            <div class="form-line">
-                                <label class="form-label" for="type">Name</label>
-                                <select id="type" v-model="type">
-                                    <option value="keynotes">Key notes</option>
-                                    <option value="speaker">Speaker</option>
-                                    <option value="none">none</option>
-                                </select>
-                            </div>
+                            <input type="file" name="image" @change="onFileChange">
 
-                            <date-picker v-if="type === 'keynotes'" v-model="date_start" @update="(v)=>{date_start = v}"></date-picker>
-                            <date-picker v-if="type === 'keynotes'" v-model="date_end" @update="(v)=>{date_end = v}"></date-picker>
-
-                            <div class="form-line">
-                                <label class="form-label" for="active">Active</label>
-                                <input class="form-text-input" id="active" v-model="active" type="checkbox" name="active"
-                                       placeholder="Event name">
-                            </div>
+                            <div class="event-form-preview-image-holder" ref="previewImage"></div>
 
                             <div class="form-line admin-from-submit">
                                 <input type="submit" value="Submit" class="submit-btn admin-form-submit">
@@ -90,64 +77,70 @@
 </template>
 
 <script>
-    import API from "../../../../Api";
-    import DatePicker from "../../../../components/datePicker";
+    import API from "../../../../../Api";
+    import create from 'dom-create-element';
 
     export default {
-        components: {DatePicker},
         data() {
             return {
-                name: null,
-                type:null,
-                description: null,
-                date_start: null,
-                date_end: null,
-                active: false,
+                name: '',
+                description: '',
+                image: null,
             }
         },
-        name: 'CreateItemModal',
-        props: ['id'],
+        name: 'CreateEventModal',
         methods: {
             close() {
                 this.$emit('close');
             },
             checkForm: function (e) {
 
-                let data;
+                if (this.image === null) return;
 
-                if(this.type === 'keynotes'){
-                    data = {
-                        name:  this.name,
-                        type: this.type,
-                        description:  this.description,
-                        block_id:  this.id,
-                        date_start:  this.date_start,
-                        date_end:  this.date_end,
-                        active:  this.active,
-                    };
-                } else {
-                    data = {
-                        name:  this.name,
-                        type: this.type,
-                        description:  this.description,
-                        block_id:  this.id,
-                        active:  this.active,
-                    };
-                }
+                const data = {
+                    name: this.name,
+                    description: this.description,
+                    image: this.image,
+                };
 
-                API.post(data, '/api/item');
-
-                this.name = null;
-                this.type = null;
-                this.description = null;
-                this.date_start = null;
-                this.date_end = null;
-                this.active = false;
+                API.post(data, '/api/event');
 
                 this.close();
 
                 e.preventDefault();
-            }
+            },
+            async onFileChange(e) {
+                let base64;
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                const imageTypes = ["png", "jpeg"];
+                const prev = this.$refs.previewImage;
+
+                if (!imageTypes.includes(file.type.split('/')[1])) {
+                    e.target.value = null;
+                    this.image = null;
+                    alert('Verkeerde image type toegestaan [png, jpeg]');
+                    return;
+                }
+                const vueComp = this;
+
+                reader.onload = function () {
+                    base64 = this.result;
+
+                    const image = create({
+                        selector: 'img',
+                        styles: 'event-form-preview-image',
+                    });
+
+                    image.src = base64;
+                    prev.innerHTML = '';
+                    prev.appendChild(image);
+
+                    vueComp.image = base64
+                };
+
+                await reader.readAsDataURL(file);
+            },
         },
     };
 </script>

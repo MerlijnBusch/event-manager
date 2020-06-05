@@ -67,10 +67,11 @@
                             </div>
                         </div>
                         <div :id="'event-' + event.id" class="admin-sidebar-display-event-options">
+                            <!--for looping programs-->
                             <div v-if="event.program" v-for="prog in event.program">
                                 <div class="admin-sidebar-program-container" v-if="prog.event_id === event.id">
                                     <div class="admin-sidebar-program-title"
-                                         v-on:click="updateDisplay(prog)">
+                                         v-on:click="updateDisplay(prog, 'program')">
                                         {{prog.name}}
                                     </div>
                                     <div class="admin-sidebar-program-action-container">
@@ -86,13 +87,43 @@
                                     </div>
                                 </div>
                             </div>
+                            <!--for looping congress-->
+                            <div v-if="event.congress" v-for="cong in event.congress">
+                                <div class="admin-sidebar-program-container" v-if="cong.event_id === event.id">
+                                    <div class="admin-sidebar-program-title"
+                                         v-on:click="updateDisplay(cong, 'congress')">
+                                        {{cong.name}}
+                                    </div>
+                                    <div class="admin-sidebar-program-action-container">
+                                        <div class="admin-sidebar-program-action-update">
+                                            <i class="fas fa-pencil"></i>
+                                        </div>
+                                        <div
+                                            class="admin-sidebar-program-action-delete"
+                                            v-on:click="deleteCongress(cong.id)"
+                                        >
+                                            <i class="fas fa-trash"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="admin-action-container">
+                                <div
+                                    class="admin-create-program-sidebar"
+                                >
+                                    <div class="admin-sidebar-program-create-button"
+                                         v-on:click="setModalState(`createProgramModal`)">
+                                        <i class="fas fa-plus-circle"></i> Create Program
+                                    </div>
+                                </div>
 
-                            <div
-                                class="admin-create-program-sidebar"
-                                v-on:click="setModalState(`createProgramModal`)"
-                            >
-                                <div class="admin-sidebar-program-create-button">
-                                    <i class="fas fa-plus-circle"></i> Create Program
+                                <div
+                                    class="admin-create-program-sidebar"
+                                >
+                                    <div class="admin-sidebar-program-create-button"
+                                         v-on:click="setModalState(`createCongressModal`)">
+                                        <i class="fas fa-plus-circle"></i> Create Congress
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -109,126 +140,36 @@
             </div>
         </div>
         <div class="admin-main">
-            <div class="admin-main-program-container" v-if="program && page === 1">
-                <program v-if="program" v-bind:program="program"></program>
-                <div class="admin-item-container" v-if="program">
-                    <div class="admin-item-list">
-                        <div class="admin-block-list">
-                            <div v-for="block in program.block" class="admin-block-list-holder">
-                                <div
-                                    class="admin-block-list-header"
-                                >
-                                    <div
-                                        class="admin-block-date-holder"
-                                    >
-                                        <div
-                                            class="admin-block-list-date"
-                                            v-on:click="displayBlockItems(block.id, block.items.length)"
-                                        >
-                                            {{block.date_start.slice(5)}} / {{block.date_end.slice(5)}}
-                                        </div>
-                                        <div
-                                            class="admin-block-action"
-                                            v-on:click="displayBlockActions(block.id)"
-                                        >
-                                            <i class="fas fa-chevron-left"></i>
-                                        </div>
-                                    </div>
-                                    <div class="admin-block-action-holder" :id="'block-' + block.id">
-                                        <div
-                                            class="admin-block-action-icon-holder"
-                                            v-on:click="addItemToBlock(block.id)"
-                                            title="add item"
-                                        >
-                                            <i class="fas fa-plus-circle admin-block-action-icon"></i>
-                                        </div>
-                                        <div
-                                            class="admin-block-action-icon-holder"
-                                            v-on:click="updateBlock(block.id)"
-                                            title="update this block"
-                                        >
-                                            <i class="fas fa-pencil admin-block-action-icon"></i>
-                                        </div>
-                                        <div
-                                            class="admin-block-action-icon-holder"
-                                            v-on:click="deleteBlock(block.id)"
-                                            title="delete this block"
-                                        >
-                                            <i class="fas fa-trash admin-block-action-icon"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="admin-block-item-list" :id="'block-items-' + block.id">
-                                    <div v-for="item in block.items" class="admin-item-list-holder">
-                                        <div>{{item.name}}</div>
-                                        <div class="admin-sidebar-item-action-container">
-                                            <div class="admin-sidebar-item-action-update">
-                                                <i class="fas fa-pencil"></i>
-                                            </div>
-                                            <div class="admin-sidebar-item-action-delete">
-                                                <i class="fas fa-trash"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div
-                                class="admin-block-list-add-block"
-                                v-on:click="setModalState(`createBlockModal`)"
-                            >
-                                <i class="fas fa-plus-circle admin-block-list-add-icon"></i>Add block
-                            </div>
-                        </div>
-                    </div>
-                    <div class="admin-item-display-container">
-                        <div v-for="block in program.block" class="admin-item-display-container-for">
-                            <div v-for="item in block.items">
-                                <item v-bind:item="item"></item>
-                                <div class="admin-item-hr"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="admin-item-container-line"></div>
-                </div>
-            </div>
+            <congress-display
+                v-if="page === 1 && displayType === 'congress'"
+                v-bind:congress="display"
+            ></congress-display>
+            <program-display
+                v-if="page === 1 && displayType === 'program'"
+                v-bind:program="display"
+            ></program-display>
             <div v-if="page === 1" class="admin-item-container-footer"></div>
             <find-user v-if="page === 2"></find-user>
             <rolls v-if="page === 3"></rolls>
         </div>
 
-        <create-item-modal
-            v-if="blockId"
-            v-show="createItemModal"
-            v-bind:id="blockId"
-            @close="setModalState(`createItemModal`)"
-        />
-
-        <create-block-modal
-            v-if="program"
-            v-show="createBlockModal"
-            v-bind:id="program.id"
-            @close="setModalState(`createBlockModal`)"
-        />
-
         <create-program-modal
-            v-if="currentEvent.event"
+            v-if="currentEvent"
             v-show="createProgramModal"
-            v-bind:id="currentEvent.event.id"
+            v-bind:id="currentEvent.id"
             @close="setModalState(`createProgramModal`)"
+        />
+
+        <create-congress-modal
+            v-if="currentEvent"
+            v-show="createCongressModal"
+            v-bind:id="currentEvent.id"
+            @close="setModalState(`createCongressModal`)"
         />
 
         <create-event-modal
             v-show="createEventModal"
             @close="setModalState(`createEventModal`)"
-        />
-
-        <update-block-modal
-            v-if="updateBlockId"
-            v-bind:id="updateBlockId"
-            v-show="updateBlockModal"
-            @close="setModalState(`updateBlockModal`)"
         />
 
         <upload-excel-users-modal
@@ -255,20 +196,19 @@
 
 <script>
     import API from "@/js/Api";
-    import Program from "./components/Program";
     import Item from "./components/Item";
     import Settings from "./components/Settings";
-    import CreateEventModal from "./components/modal/CreateEventModal";
-    import CreateProgramModal from "./components/modal/CreateProgramModal";
-    import CreateBlockModal from "./components/modal/CreateBlockModal";
-    import CreateItemModal from "./components/modal/CreateItemModal";
-    import UpdateEventSettingsModal from "./components/modal/UpdateEventSettingsModal";
-    import UpdateBlockModal from "./components/modal/UpdateBlockModal";
+    import CreateEventModal from "./components/modal/Create/CreateEventModal";
+    import CreateProgramModal from "./components/modal/Create/CreateProgramModal";
+    import UpdateEventSettingsModal from "./components/modal/Update/UpdateEventSettingsModal";
     import UploadExcelUsersModal from "./components/modal/UploadExcelUsersModal";
-    import UpdateEventModal from "./components/modal/UpdateEventModal";
+    import UpdateEventModal from "./components/modal/Update/UpdateEventModal";
     import FindUser from "./components/FindUser";
     import Rolls from "./components/Rolls";
-    import CreateEventSettingsModal from "./components/modal/CreateEventSettingsModal";
+    import CreateEventSettingsModal from "./components/modal/Create/CreateEventSettingsModal";
+    import CreateCongressModal from "./components/modal/Create/CreateCongressModal";
+    import CongressDisplay from "./components/CongressDisplay";
+    import ProgramDisplay from "./components/ProgramDisplay";
 
     export default {
         name: 'Admin',
@@ -278,42 +218,40 @@
                 events: [],
                 selectedEventId: null,
                 currentEvent: [],
-                program: null,
-                blockId: null,
+                display: null,
                 updateBlockId: null,
                 createEventModal: false,
                 createProgramModal: false,
-                createBlockModal: false,
-                createItemModal: false,
                 updateEventSettingsModal: false,
-                updateBlockModal: false,
                 uploadExcelUsersModal: false,
                 updateEventModal: false,
                 createEventSettingsModal: false,
+                createCongressModal: false,
                 settingsId: null,
+                displayType: null,
             }
         },
         components: {
-            Program,
             Item,
             Settings,
             CreateEventModal,
             CreateProgramModal,
-            CreateBlockModal,
-            CreateItemModal,
             UpdateEventSettingsModal,
-            UpdateBlockModal,
             UploadExcelUsersModal,
             UpdateEventModal,
             FindUser,
             Rolls,
             CreateEventSettingsModal,
+            CreateCongressModal,
+            CongressDisplay,
+            ProgramDisplay,
         },
         methods: {
             async setSelectedEventId(id) {
                 this.selectedEventId = id;
                 const data = await API.get('/api/admin/' + id);
                 this.currentEvent = data.data;
+                console.log(this.currentEvent, 'current event');
             },
             setPage(id) {
                 this.page = id;
@@ -324,8 +262,10 @@
                 if (height === 0) target.style.maxHeight = "500px";
                 else target.style.maxHeight = "0";
             },
-            updateDisplay(display) {
-                this.program = display;
+            updateDisplay(display, type) {
+                console.log(display, 'display', type);
+                this.displayType = type;
+                this.display = display;
                 this.setPage(1);
             },
             async setModalState(state) {
@@ -342,15 +282,8 @@
                 setTimeout(async () => {
                     const data = await API.get('/api/admin');
                     this.events = data.data;
+                    console.log(this.events);
                 }, 0)
-            },
-            addItemToBlock(id) {
-                this.blockId = id;
-                this.setModalState('createItemModal');
-            },
-            updateBlock(id) {
-                this.updateBlockId = id;
-                this.setModalState('updateBlockModal');
             },
             async deleteEvent(id) {
                 if (!confirm('Weet u zeker dat u dit event wilt verwiederen')) return;
@@ -358,33 +291,19 @@
                     this.selectedEventId = null;
                     this.currentEvent = null;
                 }
-                if(this.selectedEventId) API.delete('/api/event/' + id);
-                if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
-                this.forceUpdate();
-            },
-            async deleteBlock(id) {
-                API.delete('/api/block/' + id);
+                if (this.selectedEventId) API.delete('/api/event/' + id);
                 if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
                 this.forceUpdate();
             },
             async deleteProgram(id) {
                 API.delete('/api/program/' + id);
-                if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
                 this.forceUpdate();
             },
-            displayBlockActions(id) {
-                let target = document.getElementById('block-' + id)
-                let width = target.getBoundingClientRect().width;
-                if (width === 0) target.style.width = "120px";
-                else target.style.width = "0px";
+            async deleteCongress(id) {
+                API.delete('/api/congress/' + id);
+                this.forceUpdate();
             },
-            displayBlockItems(id, amount) {
-                let target = document.getElementById('block-items-' + id)
-                let height = target.getBoundingClientRect().height;
-                if (height === 0) target.style.height = (60 * amount) + "px";
-                else target.style.height = "0px";
-            },
-            openEventSettings(id){
+            openEventSettings(id) {
                 this.settingsId = id;
                 console.log(id)
                 this.setModalState(`createEventSettingsModal`)

@@ -14,7 +14,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Create Block
+                            Update Block
                         </p>
 
                         <button
@@ -63,14 +63,14 @@
 </template>
 
 <script>
-    import API from "../../../../Api";
-    import DatePicker from "../../../../components/datePicker";
+    import API from "../../../../../Api";
+    import DatePicker from "../../../../../components/datePicker";
 
     export default {
         components: {DatePicker},
         data() {
             return {
-                program_id: null,
+                block_id: null,
                 date_start: null,
                 date_end: null,
             }
@@ -83,19 +83,32 @@
             },
             checkForm: function (e) {
 
+
                 const data = {
-                    program_id: this.id,
                     date_start: this.date_start,
                     date_end: this.date_end,
                 };
 
-                API.post(data, '/api/block');
+                API.post(data, '/api/block/' + this.block_id, true);
 
                 this.close();
 
                 e.preventDefault();
+            },
+            setFormData(data){
+                this.date_start = data.data.date_start;
+                this.date_end = data.data.date_end;
+                this.block_id = data.data.id;
             }
         },
+        watch: {
+            id: async function(newVal, oldVal) {
+                this.setFormData(await API.get('/api/block/' + this.id));
+            }
+        },
+        async mounted() {
+            this.setFormData(await API.get('/api/block/' + this.id));
+        }
     };
 </script>
 

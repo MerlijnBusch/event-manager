@@ -12,7 +12,7 @@ class Block extends Model
      * @var array
      */
     protected $fillable = [
-        'program_id',
+        'congress_id',
         'date_start',
         'date_end',
     ];
@@ -27,9 +27,9 @@ class Block extends Model
 
     }
 
-    public function program(){
+    public function congress(){
 
-        return $this->belongsTo('App\Program');
+        return $this->belongsTo('App\Congress');
 
     }
 

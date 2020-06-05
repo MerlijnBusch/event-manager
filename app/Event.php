@@ -50,4 +50,10 @@ class Event extends Model
         return $this->hasMany('App\Program', 'event_id');
 
     }
+
+    public function congress(){
+
+        return $this->hasMany('App\Congress', 'event_id');
+
+    }
 }

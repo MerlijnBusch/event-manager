@@ -12,6 +12,12 @@
     justify-content: flex-start;
 }
 
+.admin-action-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
 
 .admin-sidebar-event-list-item {
     font-size: larger;
@@ -115,7 +121,7 @@
 }
 
 .admin-create-program-sidebar {
-    margin-top: 24px;
+    margin: 5px;
     width: 100%;
     height: 50px;
     align-items: center;
@@ -165,6 +171,7 @@
 .admin-sidebar-program-create-button {
     background: blueviolet;
     padding: 8px;
+    font-size: 15px;
 }
 
 .admin-sidebar-create-event-container {

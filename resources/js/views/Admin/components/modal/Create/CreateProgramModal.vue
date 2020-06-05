@@ -48,17 +48,6 @@
                             </div>
 
                             <div class="form-line">
-                                <label class="form-label" for="type">Name</label>
-                                <select id="type" v-model="type">
-                                    <option value="congress_program">Congress</option>
-                                    <option value="program">Program</option>
-                                </select>
-                            </div>
-
-                            <date-picker v-model="date_start" @update="(v)=>{date_start = v}"></date-picker>
-                            <date-picker v-model="date_end" @update="(v)=>{date_end = v}"></date-picker>
-
-                            <div class="form-line">
                                 <label class="form-label" for="active">Active</label>
                                 <input class="form-text-input" id="active" v-model="active" type="checkbox" name="active"
                                        placeholder="Event name">
@@ -89,17 +78,14 @@
 </template>
 
 <script>
-    import API from "../../../../Api";
-    import DatePicker from "../../../../components/datePicker";
+    import API from "../../../../../Api";
+    import DatePicker from "../../../../../components/datePicker";
 
     export default {
         data() {
             return {
                 name: null,
                 description: null,
-                date_start: null,
-                date_end: null,
-                type: null,
                 active: false,
             }
         },
@@ -116,9 +102,6 @@
                     event_id: this.id,
                     name: this.name,
                     description: this.description,
-                    date_start: this.date_start,
-                    date_end: this.date_end,
-                    type: this.type,
                     active: this.active,
                 };
 

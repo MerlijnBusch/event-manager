@@ -59,7 +59,7 @@
 
 <script>
     import API from "../../../Api";
-    import UpdateUserModal from "./modal/UpdateUserModal";
+    import UpdateUserModal from "./modal/Update/UpdateUserModal";
 
     export default {
         data() {

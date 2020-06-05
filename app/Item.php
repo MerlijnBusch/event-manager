@@ -31,7 +31,6 @@ class Item extends Model
 
     public const __KEYNOTES__ = 'keynotes';
     public const __SPEAKER__ = 'speaker';
-    public const __NONE__ = 'none';
 
     /**
      * The attributes that are mass assignable.

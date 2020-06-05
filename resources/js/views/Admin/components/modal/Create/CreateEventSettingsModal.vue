@@ -87,8 +87,8 @@
 </template>
 
 <script>
-    import API from "../../../../Api";
-    import DatePicker from "../../../../components/datePicker";
+    import API from "../../../../../Api";
+    import DatePicker from "../../../../../components/datePicker";
 
     export default {
         components: {DatePicker},

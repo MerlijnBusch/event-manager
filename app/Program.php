@@ -19,18 +19,6 @@ use ReflectionClass;
  */
 class Program extends Model
 {
-    public function getAllItemTypes() {
-        try {
-            $reflectionClass = new ReflectionClass($this);
-            return $reflectionClass->getConstants();
-        } catch (\ReflectionException $e) {
-            abort(500, "Internal Server Error");
-        }
-    }
-
-    public const __CONGRESS__ = 'congress_program';
-    public const __PROGRAM__ = 'program';
-
     /**
      * The attributes that are mass assignable.
      *
@@ -38,18 +26,15 @@ class Program extends Model
      */
     protected $fillable = [
         'name',
-        'type',
         'description',
         'event_id',
-        'date_start',
-        'date_end',
         'active',
     ];
 
 
-    public function block(){
+    public function programItems(){
 
-        return $this->hasMany('App\Block');
+        return $this->hasMany('App\ProgramItems', 'program_id');
 
     }
 
@@ -61,7 +46,7 @@ class Program extends Model
 
     public function delete()
     {
-        $this->block()->delete();
+        $this->programItems()->delete();
         return parent::delete();
     }
 }

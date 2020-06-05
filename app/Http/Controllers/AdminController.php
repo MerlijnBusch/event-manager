@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Congress;
 use App\Event;
 use App\EventSettings;
 use App\Program;
@@ -24,10 +25,12 @@ class AdminController extends Controller
         $this->authorize('read', Event::class);
 
         $s = Event::query()
-            ->with('program')
             ->with('settings')
-            ->with('program.block')
-            ->with('program.block.items')
+            ->with('program')
+            ->with('program.programItems')
+            ->with('congress')
+            ->with('congress.block')
+            ->with('congress.block.items')
             ->get();
 
         return response()->json($s, 200);
@@ -43,16 +46,19 @@ class AdminController extends Controller
         $this->authorize('read', Event::class);
         $this->authorize('read', EventSettings::class);
         $this->authorize('read', Program::class);
+        $this->authorize('read', Congress::class);
 
-        $eventSettings = EventSettings::query()->where('event_id', $event->id)->first();
+        $s = Event::query()
+            ->where('id', $event->id)
+            ->with('settings')
+            ->with('program')
+            ->with('program.programItems')
+            ->with('congress')
+            ->with('congress.block')
+            ->with('congress.block.items')
+            ->first();
 
-        $programs = Program::query()
-                ->where('event_id', $event->id)
-                ->with('block')
-                ->with('block.items')->get();
-
-
-        return response()->json(["event" => $event, "settings" => $eventSettings, "programs" => $programs], 200);
+        return response()->json($s, 200);
     }
 
     /**

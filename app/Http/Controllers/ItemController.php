@@ -98,7 +98,7 @@ class ItemController extends Controller
         $item = Item::findOrFail($item->id);
         $item->update($request->all());
 
-        return response()->json(['message' => 'Item ' . $item->name . ' updated successfully']);
+        return response()->json(['message' => 'Item ' . $item->name . ' updated successfully'], 200);
     }
 
     /**

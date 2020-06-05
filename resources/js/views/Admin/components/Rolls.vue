@@ -62,8 +62,8 @@
 
 <script>
     import API from "../../../Api";
-    import UpdateRoleModal from "./modal/UpdateRoleModal";
-    import CreateRoleModal from "./modal/CreateRoleModal";
+    import UpdateRoleModal from "./modal/Update/UpdateRoleModal";
+    import CreateRoleModal from "./modal/Create/CreateRoleModal";
 
     export default {
         name: 'Rolls',

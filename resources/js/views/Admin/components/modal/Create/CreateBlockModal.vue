@@ -14,7 +14,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Update Event Settings
+                            Create Block
                         </p>
 
                         <button
@@ -63,23 +63,20 @@
 </template>
 
 <script>
-    import API from "../../../../Api";
-    import DatePicker from "../../../../components/datePicker";
+    import API from "../../../../../Api";
+    import DatePicker from "../../../../../components/datePicker";
 
     export default {
         components: {DatePicker},
         data() {
             return {
-                date_end: null,
+                congress_id: null,
                 date_start: null,
-                max_registrations: null,
-                visible_registrations: null,
-                primary_color: null,
-                secondary_color: null,
+                date_end: null,
             }
         },
-        name: 'UpdateEventSettingsModal',
-        props: ['settings'],
+        name: 'CreateBlockModal',
+        props: ['id'],
         methods: {
             close() {
                 this.$emit('close');
@@ -87,7 +84,7 @@
             checkForm: function (e) {
 
                 const data = {
-                    program_id: this.id,
+                    congress_id: this.id,
                     date_start: this.date_start,
                     date_end: this.date_end,
                 };
@@ -97,15 +94,7 @@
                 this.close();
 
                 e.preventDefault();
-            },
-            mounted() {
-                this.date_end = this.settings.date_end;
-                this.date_start = this.settings.date_start;
-                this.max_registrations = this.settings.max_registrations;
-                this.visible_registrations = this.settings.visible_registrations;
-                this.primary_color = this.settings.primary_color;
-                this.secondary_color = this.settings.secondary_color;
-            },
+            }
         },
     };
 </script>

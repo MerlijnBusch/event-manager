@@ -81,6 +81,14 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::get('/admin/user/{user}', 'AdminController@user');
     Route::delete('/admin/user/{user}', 'AdminController@deleteUser');
 
+    Route::get('/program-item/{id}', 'ProgramItemsController@show')->name('program.item.show');
+    Route::post('/program-item', 'ProgramItemsController@store')->name('program.item.store');
+    Route::patch('/program-item/{id}', 'ProgramItemsController@update')->name('program.item.update');
+    Route::delete('/program-item/{id}', 'ProgramItemsController@destroy')->name('program.item.destroy');
+
+    Route::post('/congress', 'CongressController@store');
+    Route::delete('/congress/{congress}', 'CongressController@destroy');
+
     Route::post('/program', 'ProgramController@store');
     Route::delete('/program/{program}', 'ProgramController@destroy');
 

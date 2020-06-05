@@ -14,7 +14,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Update Block
+                            Create Congress
                         </p>
 
                         <button
@@ -35,8 +35,23 @@
 
                         <form class="form" @submit.prevent="checkForm" method="post">
 
-                            <date-picker v-model="date_start" @update="(v)=>{date_start = v}"></date-picker>
-                            <date-picker v-model="date_end" @update="(v)=>{date_end = v}"></date-picker>
+                            <div class="form-line">
+                                <label class="form-label" for="name">Name</label>
+                                <input class="form-text-input" id="name" v-model="name" type="text" name="name"
+                                       placeholder="Event name">
+                            </div>
+
+                            <div class="form-line">
+                                <label class="form-label" for="description">description</label>
+                                <textarea class="form-text-input" id="description" v-model="description" type="text" name="description"
+                                          placeholder="Event name"></textarea>
+                            </div>
+
+                            <div class="form-line">
+                                <label class="form-label" for="active">Active</label>
+                                <input class="form-text-input" id="active" v-model="active" type="checkbox" name="active"
+                                       placeholder="Event name">
+                            </div>
 
                             <div class="form-line admin-from-submit">
                                 <input type="submit" value="Submit" class="submit-btn admin-form-submit">
@@ -63,19 +78,19 @@
 </template>
 
 <script>
-    import API from "../../../../Api";
-    import DatePicker from "../../../../components/datePicker";
+    import API from "../../../../../Api";
+    import DatePicker from "../../../../../components/datePicker";
 
     export default {
-        components: {DatePicker},
         data() {
             return {
-                block_id: null,
-                date_start: null,
-                date_end: null,
+                name: null,
+                description: null,
+                active: false,
             }
         },
-        name: 'CreateBlockModal',
+        components: {DatePicker},
+        name: 'CreateCongressModal',
         props: ['id'],
         methods: {
             close() {
@@ -83,32 +98,20 @@
             },
             checkForm: function (e) {
 
-
                 const data = {
-                    date_start: this.date_start,
-                    date_end: this.date_end,
+                    event_id: this.id,
+                    name: this.name,
+                    description: this.description,
+                    active: this.active,
                 };
 
-                API.post(data, '/api/block/' + this.block_id, true);
+                API.post(data, '/api/congress');
 
                 this.close();
 
                 e.preventDefault();
-            },
-            setFormData(data){
-                this.date_start = data.data.date_start;
-                this.date_end = data.data.date_end;
-                this.block_id = data.data.id;
             }
         },
-        watch: {
-            id: async function(newVal, oldVal) {
-                this.setFormData(await API.get('/api/block/' + this.id));
-            }
-        },
-        async mounted() {
-            this.setFormData(await API.get('/api/block/' + this.id));
-        }
     };
 </script>
 

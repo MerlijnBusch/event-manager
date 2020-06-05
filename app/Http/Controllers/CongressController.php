@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Program;
+use App\Congress;
 use App\Rules\EventExistValidator;
-use App\Rules\ProgramTypeValidator;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
 
-class ProgramController extends Controller
+class CongressController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,17 +19,6 @@ class ProgramController extends Controller
      * @return Response
      */
     public function index()
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param Program $program
-     * @return Response
-     */
-    public function show(Program $program)
     {
         //
     }
@@ -44,7 +32,7 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        $this->authorize('write', Program::class);
+        $this->authorize('write', Congress::class);
 
         $validator = Validator::make($request->all(), [
             'event_id' => ['required', new EventExistValidator],
@@ -57,20 +45,41 @@ class ProgramController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        Program::create($request->all());
+        Congress::create($request->all());
 
-        return response()->json(['message' => 'Program created successfully'], 200);
+        return response()->json(['message' => 'Congress created successfully'], 200);
+    }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param Congress $congress
+     * @return Response
+     */
+    public function show(Congress $congress)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Congress $congress
+     * @return Response
+     */
+    public function edit(Congress $congress)
+    {
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param Program $program
+     * @param Congress $congress
      * @return Response
      */
-    public function update(Request $request, Program $program)
+    public function update(Request $request, Congress $congress)
     {
         //
     }
@@ -78,17 +87,17 @@ class ProgramController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Program $program
+     * @param Congress $congress
      * @return JsonResponse
      * @throws AuthorizationException
      * @throws Exception
      */
-    public function destroy(Program $program)
+    public function destroy(Congress $congress)
     {
-        $this->authorize('write', Program::class);
+        $this->authorize('write', Congress::class);
 
-        $program->delete();
+        $congress->delete();
 
-        return response()->json(['message' => 'Program deleted successfully'], 200);
+        return response()->json(['message' => 'Congress deleted successfully'], 200);
     }
 }

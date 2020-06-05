@@ -14,7 +14,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Update Block
+                            Update Event Settings
                         </p>
 
                         <button
@@ -35,20 +35,8 @@
 
                         <form class="form" @submit.prevent="checkForm" method="post">
 
-                            <div class="form-line">
-                                <label class="form-label" for="create_role_name">Role Name</label>
-                                <input class="form-text-input" id="create_role_name" v-model="role_name" type="text" name="create_role_name"
-                                       placeholder="Role name">
-                            </div>
-                            <div class="form-line">
-                                <label class="form-label" for="create_color">Color</label>
-                                <input class="form-color-input" id="create_color" v-model="color" type="color" name="create_color"
-                                       placeholder="Color"
-                                />
-                            </div>
-                            <div class="form-line">
-                                <dropdown placeholder="role permisions" :options="options" :current="current" @setCurrent="setCurrent"></dropdown>
-                            </div>
+                            <date-picker v-model="date_start" @update="(v)=>{date_start = v}"></date-picker>
+                            <date-picker v-model="date_end" @update="(v)=>{date_end = v}"></date-picker>
 
                             <div class="form-line admin-from-submit">
                                 <input type="submit" value="Submit" class="submit-btn admin-form-submit">
@@ -75,54 +63,50 @@
 </template>
 
 <script>
-    import API from "../../../../Api";
-    import dropdown from '@/js/components/dropdown';
+    import API from "../../../../../Api";
+    import DatePicker from "../../../../../components/datePicker";
 
     export default {
-        components: {dropdown},
+        components: {DatePicker},
         data() {
             return {
-                role_name: '',
-                color: '#111111',
-                permissions: [],
-                options: [],
-                current: [],
+                date_end: null,
+                date_start: null,
+                max_registrations: null,
+                visible_registrations: null,
+                primary_color: null,
+                secondary_color: null,
             }
         },
-        name: 'CreateRollModal',
+        name: 'UpdateEventSettingsModal',
+        props: ['settings'],
         methods: {
             close() {
                 this.$emit('close');
             },
-            setCurrent(v){
-                this.current = v;
-            },
             checkForm: function (e) {
 
-
                 const data = {
-                    color: this.color,
-                    role_name: this.role_name,
-                    permissions: this.current,
+                    program_id: this.id,
+                    date_start: this.date_start,
+                    date_end: this.date_end,
                 };
 
-                API.post(data, '/api/role');
+                API.post(data, '/api/block');
 
                 this.close();
 
                 e.preventDefault();
             },
+            mounted() {
+                this.date_end = this.settings.date_end;
+                this.date_start = this.settings.date_start;
+                this.max_registrations = this.settings.max_registrations;
+                this.visible_registrations = this.settings.visible_registrations;
+                this.primary_color = this.settings.primary_color;
+                this.secondary_color = this.settings.secondary_color;
+            },
         },
-        async mounted() {
-            const data = await API.get('/api/permissions');
-            let options = this.options;
-            for (const key in data.data.message) {
-                if (data.data.message.hasOwnProperty(key) && key.substring(0, 2) === "__") {
-                    options.push(data.data.message[key]);
-                }
-            }
-            this.options = options;
-        }
     };
 </script>
 

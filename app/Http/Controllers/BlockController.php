@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Block;
+use App\Rules\CongressExistValidator;
 use App\Rules\ProgramExistValidator;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -49,7 +50,7 @@ class BlockController extends Controller
         $this->authorize('write', Block::class);
 
         $validator = Validator::make($request->all(), [
-            'program_id' => ['required', new ProgramExistValidator],
+            'congress_id' => ['required', new CongressExistValidator],
             'date_start' => ['required', 'date'],
             'date_end' => ['required', 'date'],
         ]);
