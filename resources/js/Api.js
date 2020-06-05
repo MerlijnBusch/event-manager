@@ -2,50 +2,49 @@ import axios from 'axios';
 import create from 'dom-create-element';
 
 export default class API {
-
-    constructor() {
-        this.token = null
-        this.headers = null
+    constructor () {
+        this.token = null;
+        this.headers = null;
     }
 
     /**
      * @param token
      */
-    static setToken(token){
+    static setToken (token) {
         this.token = token;
         this.headers = {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + token
-        }
+            Authorization: 'Bearer ' + token
+        };
     }
 
     /**
      * Error handling to front end that creates a snackbar to give user feedback
      * @param data
      */
-    static errorCheck(data){
-        let error = "";
+    static errorCheck (data) {
+        let error = '';
         const res = data.response;
 
         switch (res.status) {
-            case 422:
-                for (const key in res.data) {
-                    if (res.data.hasOwnProperty(key)) error += res.data[key] + "</br>";
-                }
-                break;
-            case 403:
-                error = res.data.message;
-                window.location.href = window.location.origin;
-                
-                break;
-            case 404:
-                error = "Not found";
-                break;
-            case 500:
-                error = "Internal server error";
-                break;
-            default:
-                error = "An error occurs try again"
+        case 422:
+            for (const key in res.data) {
+                if (Object.prototype.hasOwnProperty.call(res.data, key)) error += res.data[key] + '</br>';
+            }
+            break;
+        case 403:
+            error = res.data.message;
+            window.location.href = window.location.origin;
+
+            break;
+        case 404:
+            error = 'Not found';
+            break;
+        case 500:
+            error = 'Internal server error';
+            break;
+        default:
+            error = 'An error occurs try again';
         }
 
         const html = create({
@@ -53,30 +52,30 @@ export default class API {
             styles: 'error-display',
             children: create({
                 selector: 'p',
-                html: error,
+                html: error
             })
         });
 
-        document.getElementById("body").appendChild(html);
+        document.getElementById('body').appendChild(html);
 
         setTimeout(() => {
             html.style.opacity = 0;
-        }, 5000)
+        }, 5000);
 
         setTimeout(() => {
             html.parentNode.removeChild(html);
-        }, 7000)
+        }, 7000);
     }
 
     /**
      * @param url
      * @returns {Promise<AxiosResponse<any>>}
      */
-    static async get(url){
+    static async get (url) {
         try {
-            return await axios.get(window.location.origin + url, {headers: this.headers});
+            return await axios.get(window.location.origin + url, { headers: this.headers });
         } catch (e) {
-            this.errorCheck(e)
+            this.errorCheck(e);
         }
     }
 
@@ -86,12 +85,12 @@ export default class API {
      * @param update
      * @returns {Promise<AxiosResponse<any>>}
      */
-    static async post(data, url, update = false){
+    static async post (data, url, update = false) {
         try {
-            if(update) return await axios.patch(window.location.origin + url, data, {headers: this.headers});
-            return await axios.post(window.location.origin + url, data, {headers: this.headers});
+            if (update) return await axios.patch(window.location.origin + url, data, { headers: this.headers });
+            return await axios.post(window.location.origin + url, data, { headers: this.headers });
         } catch (e) {
-            this.errorCheck(e)
+            this.errorCheck(e);
         }
     }
 
@@ -99,13 +98,11 @@ export default class API {
      * @param url
      * @returns {Promise<AxiosResponse<any>>}
      */
-    static async delete(url){
+    static async delete (url) {
         try {
-            return await axios.delete(window.location.origin + url, {headers: this.headers});
+            return await axios.delete(window.location.origin + url, { headers: this.headers });
         } catch (e) {
-            this.errorCheck(e)
+            this.errorCheck(e);
         }
     }
 }
-
-

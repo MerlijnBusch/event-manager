@@ -1,52 +1,60 @@
 <template>
-    <div class="force-height">
-        <NavBar @logout="logOut()" @openLogin="openLogin" :loggedIn="loggedIn"></NavBar>
-        <Modal v-if="modal_open" @loggedIn="loggedInHandler" @close="closeLogin"></Modal>
-        <div class="main">
-            <transition name="fade">
-                <router-view></router-view>
-            </transition>
-        </div>
+  <div class="force-height">
+    <NavBar
+      :logged-in="loggedIn"
+      @logout="logOut()"
+      @openLogin="openLogin"
+    />
+    <Modal
+      v-if="modal_open"
+      @loggedIn="loggedInHandler"
+      @close="closeLogin"
+    />
+    <div class="main">
+      <transition name="fade">
+        <router-view />
+      </transition>
     </div>
+  </div>
 </template>
 
 <script>
-    import NavBar from '@/js/components/Navbar.vue'
-    import Modal from '@/js/components/modal/Modal.vue'
+import NavBar from '@/js/components/Navbar.vue';
+import Modal from '@/js/components/modal/Modal.vue';
 
-    export default {
-        data() {
-            return {
-                loggedIn: false,
-                modal_open: false,
-            }
+export default {
+    data () {
+        return {
+            loggedIn: false,
+            modal_open: false
+        };
+    },
+    methods: {
+        openLogin () {
+            this.modal_open = true;
         },
-        methods: {
-            openLogin() {
-                this.modal_open = true;
-            },
-            closeLogin() {
-                this.modal_open = false;
-            },
-            logOut() {
-                this.loggedIn = false;
-                this.$user.data = {};
-                localStorage.removeItem('user');
-            },
-            loggedInHandler(e) {
-                this.loggedIn = true;
-                this.$user.data = JSON.parse(e).data;
-                localStorage.setItem('user', JSON.stringify(this.$user.data));
-            },
+        closeLogin () {
+            this.modal_open = false;
         },
-        created(){
-            if (localStorage.getItem('user') !== null){
-                this.loggedIn = true;
-                this.$user.data = JSON.parse(localStorage.getItem('user'));
-            }
+        logOut () {
+            this.loggedIn = false;
+            this.$user.data = {};
+            localStorage.removeItem('user');
         },
-        components: {Modal, NavBar},
-    }
+        loggedInHandler (e) {
+            this.loggedIn = true;
+            this.$user.data = JSON.parse(e).data;
+            localStorage.setItem('user', JSON.stringify(this.$user.data));
+        }
+    },
+    created () {
+        if (localStorage.getItem('user') !== null) {
+            this.loggedIn = true;
+            this.$user.data = JSON.parse(localStorage.getItem('user'));
+        }
+    },
+    components: { Modal, NavBar }
+};
 </script>
 
 <style lang="scss">

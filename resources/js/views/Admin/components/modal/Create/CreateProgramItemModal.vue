@@ -1,128 +1,160 @@
 <template>
-    <transition name="modal-fade">
-        <div class="admin-modal-backdrop">
-            <div class="admin-modal"
-                 role="dialog"
-                 aria-labelledby="modalTitle"
-                 aria-describedby="modalDescription"
+  <transition name="modal-fade">
+    <div class="admin-modal-backdrop">
+      <div
+        class="admin-modal"
+        role="dialog"
+        aria-labelledby="modalTitle"
+        aria-describedby="modalDescription"
+      >
+        <header
+          id="modalTitle"
+          class="admin-modal-header"
+        >
+          <slot name="header">
+            <p
+              class="admin-modal-title"
             >
-                <header
-                    class="admin-modal-header"
-                    id="modalTitle"
+              Create Program Item
+            </p>
+
+            <button
+              type="button"
+              class="admin-modal-btn-close"
+              aria-label="Close modal"
+              @click="close"
+            >
+              x
+            </button>
+          </slot>
+        </header>
+        <section
+          id="modalDescription"
+          class="admin-modal-body"
+        >
+          <slot name="body">
+            <form
+              class="form"
+              method="post"
+              @submit.prevent="checkForm"
+            >
+              <div class="form-line">
+                <label
+                  class="form-label"
+                  for="name"
+                >Name</label>
+                <input
+                  id="name"
+                  v-model="name"
+                  class="form-text-input"
+                  type="text"
+                  name="name"
+                  placeholder="Event name"
                 >
-                    <slot name="header">
-                        <p
-                            class="admin-modal-title"
-                        >
-                            Create Program Item
-                        </p>
+              </div>
 
-                        <button
-                            type="button"
-                            class="admin-modal-btn-close"
-                            @click="close"
-                            aria-label="Close modal"
-                        >
-                            x
-                        </button>
-                    </slot>
-                </header>
-                <section
-                    class="admin-modal-body"
-                    id="modalDescription"
+              <div class="form-line">
+                <label
+                  class="form-label"
+                  for="description"
+                >description</label>
+                <textarea
+                  id="description"
+                  v-model="description"
+                  class="form-text-input"
+                  type="text"
+                  name="description"
+                  placeholder="Event name"
+                />
+              </div>
+
+              <date-picker
+                v-model="date"
+                @update="(v)=>{date = v}"
+              />
+
+              <div class="form-line">
+                <label
+                  class="form-label"
+                  for="active"
+                >Active</label>
+                <input
+                  id="active"
+                  v-model="active"
+                  class="form-text-input"
+                  type="checkbox"
+                  name="active"
                 >
-                    <slot name="body">
+              </div>
 
-                        <form class="form" @submit.prevent="checkForm" method="post">
-
-                            <div class="form-line">
-                                <label class="form-label" for="name">Name</label>
-                                <input class="form-text-input" id="name" v-model="name" type="text" name="name"
-                                       placeholder="Event name">
-                            </div>
-
-                            <div class="form-line">
-                                <label class="form-label" for="description">description</label>
-                                <textarea class="form-text-input" id="description" v-model="description" type="text"
-                                          name="description"
-                                          placeholder="Event name"></textarea>
-                            </div>
-
-                            <date-picker v-model="date" @update="(v)=>{date = v}"></date-picker>
-
-                            <div class="form-line">
-                                <label class="form-label" for="active">Active</label>
-                                <input class="form-text-input" id="active" v-model="active" type="checkbox" name="active">
-                            </div>
-
-                            <div class="form-line admin-from-submit">
-                                <input type="submit" value="Submit" class="submit-btn admin-form-submit">
-                            </div>
-                        </form>
-
-                    </slot>
-                </section>
-                <footer class="admin-modal-footer">
-                    <slot name="footer">
-                        <button
-                            type="button"
-                            class="admin-modal-btn-green"
-                            @click="close"
-                            aria-label="Close modal"
-                        >
-                            Close
-                        </button>
-                    </slot>
-                </footer>
-            </div>
-        </div>
-    </transition>
+              <div class="form-line admin-from-submit">
+                <input
+                  type="submit"
+                  value="Submit"
+                  class="submit-btn admin-form-submit"
+                >
+              </div>
+            </form>
+          </slot>
+        </section>
+        <footer class="admin-modal-footer">
+          <slot name="footer">
+            <button
+              type="button"
+              class="admin-modal-btn-green"
+              aria-label="Close modal"
+              @click="close"
+            >
+              Close
+            </button>
+          </slot>
+        </footer>
+      </div>
+    </div>
+  </transition>
 </template>
 
 <script>
-    import API from "../../../../../Api";
-    import DatePicker from "../../../../../components/datePicker";
+import API from '../../../../../Api';
+import DatePicker from '../../../../../components/datePicker';
 
-    export default {
-        components: {DatePicker},
-        data() {
-            return {
-                name: null,
-                description: null,
-                date: null,
-                active: false,
-            }
+export default {
+    components: { DatePicker },
+    data () {
+        return {
+            name: null,
+            description: null,
+            date: null,
+            active: false
+        };
+    },
+    name: 'CreateProgramItemModal',
+    props: ['id'],
+    methods: {
+        close () {
+            this.$emit('close');
         },
-        name: 'CreateProgramItemModal',
-        props: ['id'],
-        methods: {
-            close() {
-                this.$emit('close');
-            },
-            checkForm: function (e) {
+        checkForm: function (e) {
+            const data = {
+                name: this.name,
+                description: this.description,
+                program_id: this.id,
+                date: this.date,
+                active: this.active
+            };
 
-                const data = {
-                    name: this.name,
-                    description: this.description,
-                    program_id: this.id,
-                    date: this.date,
-                    active: this.active,
-                };
+            API.post(data, '/api/program-item');
 
+            this.name = null;
+            this.type = null;
+            this.description = null;
+            this.date = null;
+            this.active = false;
 
-                API.post(data, '/api/program-item');
+            this.close();
 
-                this.name = null;
-                this.type = null;
-                this.description = null;
-                this.date = null;
-                this.active = false;
-
-                this.close();
-
-                e.preventDefault();
-            }
-        },
-    };
+            e.preventDefault();
+        }
+    }
+};
 </script>
-

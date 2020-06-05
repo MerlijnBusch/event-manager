@@ -1,28 +1,38 @@
 <template>
-    <div class="admin-item-display-holder">
-        <input class="admin-item-title-input" :id="'name' + item.id" v-model="item.name" type="text" name="name"
-               placeholder="Event name"/>
+  <div class="admin-item-display-holder">
+    <input
+      :id="'name' + item.id"
+      v-model="item.name"
+      class="admin-item-title-input"
+      type="text"
+      name="name"
+      placeholder="Event name"
+    >
 
-        <div class="form-line">
-            <textarea class="admin-item-text-editor" :id="'description' + item.id" v-model="item.description" type="text" name="description"
-                      placeholder="Event name"></textarea>
-        </div>
-
+    <div class="form-line">
+      <textarea
+        :id="'description' + item.id"
+        v-model="item.description"
+        class="admin-item-text-editor"
+        type="text"
+        name="description"
+        placeholder="Event name"
+      />
     </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: 'Item',
-        props: ['item'],
-        data() {
-            return {
+export default {
+    name: 'Item',
+    props: ['item'],
+    data () {
+        return {
 
-            }
-        },
-        methods: {
+        };
+    },
+    methods: {
 
-        },
     }
+};
 </script>
-
