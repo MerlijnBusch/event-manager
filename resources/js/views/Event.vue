@@ -1,6 +1,6 @@
 <template>
     <div class="event-page" v-if="!!data" :style="{'--theme-color': data.settings.color}"
-         :class="{'light': data.settings.light_theme}">
+         :class="{'light': !data.settings.light_theme}">
         <!--TODO: remove this button later-->
         <div class="event-background" :style="{'backgroundImage': 'url(' + data.image + ')'}"></div>
         <div class="event-content flex-grid">
@@ -42,17 +42,15 @@
             <div class="event-content-row flex-grid column-desktop-12 column-tablet-12 column-mobile-12">
                 <div class="event-program_and_info column-desktop-4 column-tablet-5 column-mobile-12">
                     <div class="event-program_and_info-content">
-                        <div class="event-program" v-for="program in data.program.filter((f)=> f.type === 'program')">
+                        <div class="event-program" v-for="program in data.program">
                             <b class="event-program-title">{{program.name}}</b>
-                            <template v-for="block in program.block">
-                                <div class="event-program-part" v-for="part in block.items">
-                                    <div class="event-program-part-text">
-                                        <b class="event-program-part-title">{{part.name}}</b>
-                                        <p class="event-program-part-description">{{part.description}}</p>
-                                    </div>
-                                    <span class="event-program-part-time">{{getTime(part.date_start)}}</span>
+                            <div class="event-program-part" v-for="part in program.program_items">
+                                <div class="event-program-part-text">
+                                    <b class="event-program-part-title">{{part.name}}</b>
+                                    <p class="event-program-part-description">{{part.description}}</p>
                                 </div>
-                            </template>
+                                <span class="event-program-part-time">{{getTime(part.date)}}</span>
+                            </div>
                         </div>
                         <div class="event-info">
                             <hr class="event-info-divider">
@@ -79,45 +77,53 @@
                         per ronde voor dit evenement.
                     </p>
                     <div class="event-congress-rounds column-desktop-12 column-tablet-12 column-mobile-12 flex-grid">
-                        <div class="event-congress-round  column-desktop-4 column-tablet-12 column-mobile-12"
-                             v-for="(round, index) in congress">
-                            <div class="event-congress-round-content">
-                                <b class="event-congress-round-title"><b>Ronde {{index+1}}</b>
-                                    <span>{{round.time}}</span></b>
-                                <div class="event-congress-round-speakers">
-                                    <div class="event-congress-round-speaker" v-for="speaker in round.speakers">
-                                        <div class="event-congress-round-speaker-content">
-                                            <b class="event-congress-round-speaker-title">{{speaker.name}}</b>
-                                            <span class="event-congress-round-speaker-position">{{speaker.position}}</span>
+                        <template v-for="congress in data.congress">
+                            <div class="event-congress-round  column-desktop-4 column-tablet-12 column-mobile-12"
+                                 v-for="(round, index) in congress.block">
+                                <div class="event-congress-round-content">
+                                    <b class="event-congress-round-title"><b>Ronde {{index+1}}</b>
+                                        <span>{{getTime(round.date_start)}}</span>
+                                    </b>
+                                    <div class="event-congress-round-speakers">
+                                        <div class="event-congress-round-speaker"
+                                             v-for="speaker in round.items.filter((s)=> s.type === 'speaker')">
+                                            <div class="event-congress-round-speaker-content">
+                                                <b class="event-congress-round-speaker-title">{{speaker.name}}</b>
+                                                <span class="event-congress-round-speaker-position">{{speaker.description}}</span>
+                                            </div>
+                                            <div class="event-congress-round-checkbox-holder">
+                                                <button class="event-congress-round-speaker-checkbox"
+                                                        :class="{'active' : selectedSpeakers.length && !!selectedSpeakers[index] && selectedSpeakers[index].id === speaker.id}"
+                                                        @click="setSpeaker(index, speaker, getTime(round.date_start))">
+                                                    <div></div>
+                                                    <div></div>
+                                                </button>
+                                            </div>
                                         </div>
-                                        <div class="event-congress-round-checkbox-holder">
+                                    </div>
+                                    <template v-for="keynote in round.items.filter((s)=> s.type === 'keynotes')">
+                                        <b class="event-congress-round-title">
+                                            <b>Keynotespreker</b>
+                                            <span>{{getTime(keynote.date_start)}}</span>
+                                        </b>
+                                        <div class="event-congress-round-keynote">
+                                            <div class="event-congress-round-speaker-content">
+                                                <b class="event-congress-round-speaker-title">{{keynote.name}}</b>
+                                                <span class="event-congress-round-speaker-position">{{keynote.description}}</span>
+                                            </div>
+                                            <div class="event-congress-round-checkbox-holder">
                                             <button class="event-congress-round-speaker-checkbox"
-                                                    :class="{'active' : selectedSpeakers.length && !!selectedSpeakers[index] && selectedSpeakers[index].id === speaker.id}"
-                                                    @click="setSpeaker(index, speaker, round.time)">
-                                                <div></div>
-                                                <div></div>
+                                            :class="{'active' : selectedSpeakers.length && !!selectedSpeakers[index] && selectedSpeakers[index].id === keynote.id}"
+                                            @click="setSpeaker(index, keynote, getTime(keynote.date_start), true)">
+                                            <div></div>
+                                            <div></div>
                                             </button>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <b class="event-congress-round-title"><b>Keynotespreker</b>
-                                    <span>{{round.speaker.time}}</span></b>
-                                <div class="event-congress-round-keynote">
-                                    <div class="event-congress-round-speaker-content">
-                                        <b class="event-congress-round-speaker-title">{{round.speaker.name}}</b>
-                                        <span class="event-congress-round-speaker-position">{{round.speaker.position}}</span>
-                                    </div>
-                                    <div class="event-congress-round-checkbox-holder">
-                                        <button class="event-congress-round-speaker-checkbox"
-                                                :class="{'active' : selectedSpeakers.length && !!selectedSpeakers[index] && selectedSpeakers[index].id === round.speaker.id}"
-                                                @click="setSpeaker(index, round.speaker, round.speaker.time, true)">
-                                            <div></div>
-                                            <div></div>
-                                        </button>
-                                    </div>
+                                    </template>
                                 </div>
                             </div>
-                        </div>
+                        </template>
                     </div>
                 </div>
             </div>
@@ -140,7 +146,7 @@
                                 <div class="event-my_speakers-round-speaker" v-if="!!speaker">
                                     <div class="event-my_speakers-speaker-content">
                                         <b class="event-my_speakers-round-speaker-title">{{speaker.name}}</b>
-                                        <span class="event-my_speakers-round-speaker-description">{{speaker.position}}</span>
+                                        <span class="event-my_speakers-round-speaker-description">{{speaker.description}}</span>
                                     </div>
                                     <div class="event-my_speakers-round-speaker-button-holder"
                                          @click="removeSelection(index)">
@@ -169,9 +175,10 @@
     export default ({
         name: 'Event',
         async mounted() {
-            this.selectedSpeakers = new Array(this.congress.length);
             let response = await API.get('/api/event-overview/' + 1);
             this.data = response.data;
+            console.log(JSON.parse(JSON.stringify(response.data)));
+            this.selectedSpeakers = new Array(this.data.congress[0].block.length);
         },
         methods: {
             formatDate(date) {
@@ -209,127 +216,9 @@
                 data: null,
                 selectedSpeakers: [],
                 currentTickets: 135,
-                program: [
-                    {
-                        title: 'Opening',
-                        description: 'Voor ondernemers en werkzoekende',
-                        time: '11:00-12:00'
-                    },
-                    {
-                        title: 'Officele Opening',
-                        description: 'Door Edward Stigter',
-                        time: '12:30-13:00'
-                    },
-                    {
-                        title: 'Speeddates',
-                        description: 'Voor studenten',
-                        time: '13:00-13:30'
-                    },
-                    {
-                        title: 'Finale',
-                        description: 'Prijsuitrijking',
-                        time: '13:30-14:00'
-                    }
-                ],
                 info: {
-                    date: '17 november 2018',
                     location: 'Alkmaar entrance B',
                 },
-                congress: [
-                    {
-                        time: '9:00 - 10:00',
-                        speakers: [
-                            {
-                                name: 'Merijn Everaarts',
-                                id: 1,
-                                position: 'CEO Dopper',
-                            },
-                            {
-                                name: 'Eva Janssen',
-                                id: 2,
-                                position: 'Market analyst',
-                            },
-                            {
-                                name: 'Merijn Everaarts',
-                                id: 3,
-                                position: 'CEO Dopper',
-                            },
-                            {
-                                name: 'Eva Janssen',
-                                id: 4,
-                                position: 'Market analyst',
-                            }
-                        ],
-                        speaker: {
-                            time: '11:00 - 12:00',
-                            name: 'Syp Arends',
-                            id: 5,
-                            position: 'CEO Pyroil',
-                        },
-                    },
-                    {
-                        time: '13:00 - 14:00',
-                        speakers: [
-                            {
-                                name: 'Merijn Everaarts',
-                                id: 1,
-                                position: 'CEO Dopper',
-                            },
-                            {
-                                name: 'Eva Janssen',
-                                id: 2,
-                                position: 'Market analyst',
-                            },
-                            {
-                                name: 'Merijn Everaarts',
-                                id: 3,
-                                position: 'CEO Dopper',
-                            },
-                            {
-                                name: 'Eva Janssen',
-                                id: 4,
-                                position: 'Market analyst',
-                            }
-                        ],
-                        speaker: {
-                            time: '14:00 - 15:00',
-                            name: 'Syp Arends',
-                            id: 5,
-                            position: 'CEO Pyroil',
-                        },
-                    },
-                    {
-                        time: '15:30 - 16:30',
-                        speakers: [
-                            {
-                                name: 'Merijn Everaarts',
-                                id: 1,
-                                position: 'CEO Dopper',
-                            },
-                            {
-                                name: 'Eva Janssen',
-                                id: 2,
-                                position: 'Market analyst',
-                            },
-                            {
-                                name: 'Merijn Everaarts',
-                                id: 3,
-                                position: 'CEO Dopper',
-                            },
-                            {
-                                name: 'Eva Janssen',
-                                id: 4,
-                                position: 'Market analyst',
-                            }
-                        ],
-                        speaker: {
-                            time: '14:00 - 15:00',
-                            name: 'Syp Arends',
-                            id: 5,
-                            position: 'CEO Pyroil',
-                        },
-                    },
-                ]
             }
         }
     });
