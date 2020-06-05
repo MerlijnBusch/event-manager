@@ -1,6 +1,6 @@
 <template>
     <div class="event-page" v-if="!!data" :style="{'--theme-color': data.settings.color}"
-         :class="{'light': !data.settings.light_theme}">
+         :class="{'light': data.settings.light_theme}">
         <!--TODO: remove this button later-->
         <div class="event-background" :style="{'backgroundImage': 'url(' + data.image + ')'}"></div>
         <div class="event-content flex-grid">
@@ -175,9 +175,11 @@
     export default ({
         name: 'Event',
         async mounted() {
-            let response = await API.get('/api/event-overview/' + 1);
+            let response = await API.get('/api/event-overview/' + this.$route.params.id);
+            if (response === undefined){
+                this.$router.replace('/404');
+            }
             this.data = response.data;
-            console.log(JSON.parse(JSON.stringify(response.data)));
             this.selectedSpeakers = new Array(this.data.congress[0].block.length);
         },
         methods: {

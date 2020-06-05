@@ -6,14 +6,15 @@
 
         <div class="flex-wrapper homepage-inner">
             <div class="home-events flex-grid">
-                <div v-for="item in [...items, ...items]" class="home-event-outer column-desktop-4 column-tablet-6 column-mobile-12">
-                    <div class="home-event" @click="$router.push('event')">
-                        <div class="home-event-background" :style="{backgroundColor: item.color, backgroundImage: 'url(' + item.image + ')'}">
-                            <!--TODO: Image Background-->
+                <div v-for="item in [...data,...data,...data,...data,...data,...data]"
+                     class="home-event-outer column-desktop-4 column-tablet-6 column-mobile-12">
+                    <div class="home-event" @click="$router.push('event/' + item.id)">
+                        <div class="home-event-background"
+                             :style="{backgroundColor: item.settings.color, backgroundImage: 'url(' + item.image + ')'}">
                         </div>
                         <div class="home-event-content">
-                            <h2>{{item.title}}</h2>
-                            <hr class="home-divider" :style="{borderColor: item.color}">
+                            <h2>{{item.name}}</h2>
+                            <hr class="home-divider" :style="{borderColor: item.settings.color}">
                             <p class="home-description">
                                 {{item.description}}
                             </p>
@@ -21,9 +22,11 @@
                             <div class="home-event-details">
                                 <div class="flex-grid">
                                     <p class="home-date column-desktop-6 column-tablet-6 column-mobile-12">
-                                        {{formatDate(item.date)}}</p>
+                                        {{formatDate(item.settings.date_start)}}</p>
                                     <p class="home-location column-desktop-6 column-tablet-6 column-mobile-12">
-                                        {{item.location}}</p>
+                                        <!--{{item.location}}-->
+                                        LOCATION HERE <!--TODO:-->
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -31,50 +34,21 @@
                 </div>
             </div>
         </div>
-
     </div>
 </template>
 
 <script>
+    import API from "@/js/Api";
+
     export default ({
+        async mounted() {
+            let response = await API.get('/api/event-overview');
+            this.data = response.data;
+            console.log(JSON.parse(JSON.stringify(response.data)));
+        },
         data() {
             return {
-                items: [
-                    {
-                        title: 'TIDES Europe',
-                        color: '#E6A65C',
-                        image: '/img/header1.jpg',
-                        description:
-                            'Tides offers the science,\n' +
-                            'technologies and partners you\n' +
-                            'need to grow your business',
-                        date: '17 november 2018',
-                        location: 'Alkmaar'
-                    },
-                    {
-                        title: 'METS Trade',
-                        color: '#5CE6B1',
-                        image: '/img/20191017-CN-1571.jpg',
-                        description:
-                            'Kickstart Europe is een strategie & netwerk\n' +
-                            'conferentie aan de start van het jaar, voor\n' +
-                            'C-level in data center, connectivity en\n' +
-                            'cloud professionals.',
-                        date: '3 december 2019',
-                        location: 'Alkmaar'
-                    },
-                    {
-                        title: 'Home delivery europe',
-                        color: '#5CB6E6',
-                        image: '/img/14468493_657439241084419_4737269611901623894_o.jpg',
-                        description:
-                            'Home Delivery World Europe 2020 is the\n' +
-                            'industry’s best retail logistics event,\n' +
-                            'covering Parcel, Heavy Goods, Data &\n' +
-                            'Analytics, Grocery, Urban Logistic',
-                        date: '4 januari 2020',
-                        location: 'Alkmaar'
-                    }],
+                data: [],
             }
         },
         methods: {

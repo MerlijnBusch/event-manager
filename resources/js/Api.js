@@ -24,7 +24,7 @@ export default class API {
      * @param data
      */
     static errorCheck(data){
-        let error = ""
+        let error = "";
         const res = data.response;
 
         switch (res.status) {
