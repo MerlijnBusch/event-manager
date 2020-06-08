@@ -1,22 +1,22 @@
 <template>
-  <div>
-    <input
-      id="pdf"
-      ref="pdf"
-      type="file"
-      name="pdf"
-    >
-    <button
-      class="button-create-item map-settings-container-items"
-      @click="submit"
-    >
-      upload
-    </button>
-    <canvas
-      id="theCanvas"
-      ref="canvas"
-    />
-  </div>
+    <div>
+        <input
+            id="pdf"
+            ref="pdf"
+            type="file"
+            name="pdf"
+        >
+        <button
+            class="button-create-item map-settings-container-items"
+            @click="submit"
+        >
+            upload
+        </button>
+        <canvas
+            id="theCanvas"
+            ref="canvas"
+        />
+    </div>
 </template>
 
 <script>

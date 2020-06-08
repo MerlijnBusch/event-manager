@@ -1,69 +1,69 @@
 <template>
-  <div class="admin-main-program-container">
-    <TitleDisplay
-      v-if="program"
-      :display="program"
-    />
-    <div class="admin-item-container">
-      <div class="admin-item-list">
-        <div class="admin-block-list">
-          <div
-            v-for="item in program.program_items"
-            :key="item.id"
-            class="admin-item-list-holder"
-          >
-            <div>{{ item.name }}</div>
-            <div class="admin-sidebar-item-action-container">
-              <div
-                class="admin-sidebar-item-action-update"
-                @click="updateItem(item.id)"
-              >
-                <i class="fas fa-pencil" />
-              </div>
-              <div
-                class="admin-sidebar-item-action-delete"
-                @click="deleteItem(item.id)"
-              >
-                <i class="fas fa-trash" />
-              </div>
+    <div class="admin-main-program-container">
+        <TitleDisplay
+            v-if="program"
+            :display="program"
+        />
+        <div class="admin-item-container">
+            <div class="admin-item-list">
+                <div class="admin-block-list">
+                    <div
+                        v-for="item in program.program_items"
+                        :key="item.id"
+                        class="admin-item-list-holder"
+                    >
+                        <div>{{ item.name }}</div>
+                        <div class="admin-sidebar-item-action-container">
+                            <div
+                                class="admin-sidebar-item-action-update"
+                                @click="updateItem(item.id)"
+                            >
+                                <i class="fas fa-pencil" />
+                            </div>
+                            <div
+                                class="admin-sidebar-item-action-delete"
+                                @click="deleteItem(item.id)"
+                            >
+                                <i class="fas fa-trash" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div
+                        class="admin-block-list-add-block"
+                        @click="setModalState(`createProgramItemModal`)"
+                    >
+                        <i class="fas fa-plus-circle admin-block-list-add-icon" />Add Program Item
+                    </div>
+                </div>
             </div>
-          </div>
+            <div class="admin-item-display-container">
+                <div
+                    v-for="item in program.program_items"
+                    :key="'program_item_' + item.id"
+                    class="admin-item-display-container-for"
+                >
+                    <item :item="item" />
+                    <div class="admin-item-hr" />
+                </div>
+            </div>
+            <div class="admin-item-container-line" />
         </div>
-        <div>
-          <div
-            class="admin-block-list-add-block"
-            @click="setModalState(`createProgramItemModal`)"
-          >
-            <i class="fas fa-plus-circle admin-block-list-add-icon" />Add Program Item
-          </div>
-        </div>
-      </div>
-      <div class="admin-item-display-container">
-        <div
-          v-for="item in program.program_items"
-          :key="'program_item_' + item.id"
-          class="admin-item-display-container-for"
-        >
-          <item :item="item" />
-          <div class="admin-item-hr" />
-        </div>
-      </div>
-      <div class="admin-item-container-line" />
+
+        <create-program-item-modal
+            v-if="createProgramItemModal"
+            v-show="createProgramItemModal"
+            :id="program.id"
+            @close="setModalState(`createProgramItemModal`)"
+        />
+
+        <update-program-item-modal
+            v-show="updateProgramItemModal"
+            :id="ItemId"
+            @close="setModalState(`updateProgramItemModal`)"
+        />
     </div>
-
-    <create-program-item-modal
-      v-if="createProgramItemModal"
-      v-show="createProgramItemModal"
-      :id="program.id"
-      @close="setModalState(`createProgramItemModal`)"
-    />
-
-    <update-program-item-modal
-      v-show="updateProgramItemModal"
-      :id="ItemId"
-      @close="setModalState(`updateProgramItemModal`)"
-    />
-  </div>
 </template>
 
 <script>

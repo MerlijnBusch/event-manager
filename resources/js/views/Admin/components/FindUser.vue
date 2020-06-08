@@ -1,84 +1,84 @@
 <template>
-  <div class="admin-display-page">
-    <div class="admin-display-page-main">
-      <form
-        class="form admin-form-find-user"
-        method="post"
-        @submit.prevent="checkForm"
-      >
-        <div class="form-line admin-form-find-user-input">
-          <input
-            id="search"
-            v-model="search"
-            class="form-text-input"
-            type="text"
-            name="search"
-            placeholder="Search profile"
-          >
-        </div>
+    <div class="admin-display-page">
+        <div class="admin-display-page-main">
+            <form
+                class="form admin-form-find-user"
+                method="post"
+                @submit.prevent="checkForm"
+            >
+                <div class="form-line admin-form-find-user-input">
+                    <input
+                        id="search"
+                        v-model="search"
+                        class="form-text-input"
+                        type="text"
+                        name="search"
+                        placeholder="Search profile"
+                    >
+                </div>
 
-        <div class="admin-from-submit">
-          <input
-            type="submit"
-            value="Submit"
-            class="submit-btn admin-form-submit"
-          >
-        </div>
-      </form>
-      <div class="admin-display-page-main-container">
-        <div class="admin-find-user-display-table">
-          <div class="admin-find-user-table-cell">
-            Naam
-          </div>
-          <div class="admin-find-user-table-cell">
-            Email
-          </div>
-          <div class="admin-find-user-table-cell">
-            Rol
-          </div>
-          <div class="admin-find-user-table-cell-actions" />
-        </div>
-        <div
-          v-for="user in users"
-          :id="'admin-user-' + user.id"
-          :key="'admin-user-' + user.id"
-          class="admin-find-user-display-table"
-        >
-          <div class="admin-find-user-table-cell">
-            {{ user.name }}
-          </div>
-          <div class="admin-find-user-table-cell">
-            {{ user.email }}
-          </div>
-          <div class="admin-find-user-table-cell">
-            {{ user.role.role_name }}
-          </div>
-          <div class="admin-find-user-table-cell-actions">
-            <div
-              class="admin-find-user-action-icon"
-              @click="updateUser(user.id)"
-            >
-              <i class="fas fa-pencil" />
+                <div class="admin-from-submit">
+                    <input
+                        type="submit"
+                        value="Submit"
+                        class="submit-btn admin-form-submit"
+                    >
+                </div>
+            </form>
+            <div class="admin-display-page-main-container">
+                <div class="admin-find-user-display-table">
+                    <div class="admin-find-user-table-cell">
+                        Naam
+                    </div>
+                    <div class="admin-find-user-table-cell">
+                        Email
+                    </div>
+                    <div class="admin-find-user-table-cell">
+                        Rol
+                    </div>
+                    <div class="admin-find-user-table-cell-actions" />
+                </div>
+                <div
+                    v-for="user in users"
+                    :id="'admin-user-' + user.id"
+                    :key="'admin-user-' + user.id"
+                    class="admin-find-user-display-table"
+                >
+                    <div class="admin-find-user-table-cell">
+                        {{ user.name }}
+                    </div>
+                    <div class="admin-find-user-table-cell">
+                        {{ user.email }}
+                    </div>
+                    <div class="admin-find-user-table-cell">
+                        {{ user.role.role_name }}
+                    </div>
+                    <div class="admin-find-user-table-cell-actions">
+                        <div
+                            class="admin-find-user-action-icon"
+                            @click="updateUser(user.id)"
+                        >
+                            <i class="fas fa-pencil" />
+                        </div>
+                        <div
+                            class="admin-find-user-action-icon"
+                            @click="deleteUser(user.id)"
+                        >
+                            <i class="fas fa-trash" />
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div
-              class="admin-find-user-action-icon"
-              @click="deleteUser(user.id)"
-            >
-              <i class="fas fa-trash" />
-            </div>
-          </div>
         </div>
-      </div>
+        <div class="admin-item-container-footer" />
+
+        <update-user-modal
+            v-if="user_id"
+            v-show="updateUserModal"
+            :id="user_id"
+            @close="setModalState(`updateUserModal`)"
+        />
     </div>
-    <div class="admin-item-container-footer" />
-
-    <update-user-modal
-      v-if="user_id"
-      v-show="updateUserModal"
-      :id="user_id"
-      @close="setModalState(`updateUserModal`)"
-    />
-  </div>
 </template>
 
 <script>

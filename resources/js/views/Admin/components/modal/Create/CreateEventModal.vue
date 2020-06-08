@@ -1,109 +1,109 @@
 <template>
-  <transition name="modal-fade">
-    <div class="admin-modal-backdrop">
-      <div
-        class="admin-modal"
-        role="dialog"
-        aria-labelledby="modalTitle"
-        aria-describedby="modalDescription"
-      >
-        <header
-          id="modalTitle"
-          class="admin-modal-header"
-        >
-          <slot name="header">
-            <p
-              class="admin-modal-title"
+    <transition name="modal-fade">
+        <div class="admin-modal-backdrop">
+            <div
+                class="admin-modal"
+                role="dialog"
+                aria-labelledby="modalTitle"
+                aria-describedby="modalDescription"
             >
-              Create Event
-            </p>
-
-            <button
-              type="button"
-              class="admin-modal-btn-close"
-              aria-label="Close modal"
-              @click="close"
-            >
-              x
-            </button>
-          </slot>
-        </header>
-        <section
-          id="modalDescription"
-          class="admin-modal-body"
-        >
-          <slot name="body">
-            <form
-              class="form"
-              method="post"
-              @submit.prevent="checkForm"
-            >
-              <div class="form-line">
-                <label
-                  class="form-label"
-                  for="name"
-                >Name</label>
-                <input
-                  id="name"
-                  v-model="name"
-                  class="form-text-input"
-                  type="text"
-                  name="name"
-                  placeholder="Event name"
+                <header
+                    id="modalTitle"
+                    class="admin-modal-header"
                 >
-              </div>
+                    <slot name="header">
+                        <p
+                            class="admin-modal-title"
+                        >
+                            Create Event
+                        </p>
 
-              <div class="form-line">
-                <label
-                  class="form-label"
-                  for="description"
-                >description</label>
-                <textarea
-                  id="description"
-                  v-model="description"
-                  class="form-text-input"
-                  type="text"
-                  name="description"
-                  placeholder="Event name"
-                />
-              </div>
-
-              <input
-                type="file"
-                name="image"
-                @change="onFileChange"
-              >
-
-              <div
-                ref="previewImage"
-                class="event-form-preview-image-holder"
-              />
-
-              <div class="form-line admin-from-submit">
-                <input
-                  type="submit"
-                  value="Submit"
-                  class="submit-btn admin-form-submit"
+                        <button
+                            type="button"
+                            class="admin-modal-btn-close"
+                            aria-label="Close modal"
+                            @click="close"
+                        >
+                            x
+                        </button>
+                    </slot>
+                </header>
+                <section
+                    id="modalDescription"
+                    class="admin-modal-body"
                 >
-              </div>
-            </form>
-          </slot>
-        </section>
-        <footer class="admin-modal-footer">
-          <slot name="footer">
-            <button
-              type="button"
-              class="admin-modal-btn-green"
-              aria-label="Close modal"
-              @click="close"
-            >
-              Close
-            </button>
-          </slot>
-        </footer>
-      </div>
-    </div>
-  </transition>
+                    <slot name="body">
+                        <form
+                            class="form"
+                            method="post"
+                            @submit.prevent="checkForm"
+                        >
+                            <div class="form-line">
+                                <label
+                                    class="form-label"
+                                    for="name"
+                                >Name</label>
+                                <input
+                                    id="name"
+                                    v-model="name"
+                                    class="form-text-input"
+                                    type="text"
+                                    name="name"
+                                    placeholder="Event name"
+                                >
+                            </div>
+
+                            <div class="form-line">
+                                <label
+                                    class="form-label"
+                                    for="description"
+                                >description</label>
+                                <textarea
+                                    id="description"
+                                    v-model="description"
+                                    class="form-text-input"
+                                    type="text"
+                                    name="description"
+                                    placeholder="Event name"
+                                />
+                            </div>
+
+                            <input
+                                type="file"
+                                name="image"
+                                @change="onFileChange"
+                            >
+
+                            <div
+                                ref="previewImage"
+                                class="event-form-preview-image-holder"
+                            />
+
+                            <div class="form-line admin-from-submit">
+                                <input
+                                    type="submit"
+                                    value="Submit"
+                                    class="submit-btn admin-form-submit"
+                                >
+                            </div>
+                        </form>
+                    </slot>
+                </section>
+                <footer class="admin-modal-footer">
+                    <slot name="footer">
+                        <button
+                            type="button"
+                            class="admin-modal-btn-green"
+                            aria-label="Close modal"
+                            @click="close"
+                        >
+                            Close
+                        </button>
+                    </slot>
+                </footer>
+            </div>
+        </div>
+    </transition>
 </template>
 
 <script>

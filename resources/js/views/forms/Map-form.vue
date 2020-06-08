@@ -1,59 +1,59 @@
 <template>
-  <div class="map-container">
-    <div class="map-settings-container">
-      <button
-        class="button-create-item map-settings-container-items"
-        @click="addNewItem"
-      >
-        AddNewItem
-      </button>
-      <div class="map-settings-container-items">
-        <hr>
-        <label for="select-color">Select color</label>
-        <input
-          id="select-color"
-          type="color"
-          name="select-color"
-          :value="backgroundColorCodeItem"
-          @change="setItemBackgroundColorData($event)"
-        >
-        <hr>
-        <label for="map_width">Select Map Width in meters</label>
-        <input
-          id="map_width"
-          type="text"
-          name="map_width"
-          :value="mapWidth"
-          @change="updateMapWidth($event)"
-        >
-        <label for="map_height">Select Map Height in meters</label>
-        <input
-          id="map_height"
-          type="text"
-          name="map_height"
-          :value="mapHeight"
-          @change="updateMapHeight($event)"
-        >
-        <hr>
-      </div>
-      <button
-        class="button-create-item map-settings-container-items"
-        @click="storeMap"
-      >
-        Store Map
-      </button>
-      <button
-        class="button-create-item map-settings-container-items"
-        @click="clearMap"
-      >
-        Clear map
-      </button>
+    <div class="map-container">
+        <div class="map-settings-container">
+            <button
+                class="button-create-item map-settings-container-items"
+                @click="addNewItem"
+            >
+                AddNewItem
+            </button>
+            <div class="map-settings-container-items">
+                <hr>
+                <label for="select-color">Select color</label>
+                <input
+                    id="select-color"
+                    type="color"
+                    name="select-color"
+                    :value="backgroundColorCodeItem"
+                    @change="setItemBackgroundColorData($event)"
+                >
+                <hr>
+                <label for="map_width">Select Map Width in meters</label>
+                <input
+                    id="map_width"
+                    type="text"
+                    name="map_width"
+                    :value="mapWidth"
+                    @change="updateMapWidth($event)"
+                >
+                <label for="map_height">Select Map Height in meters</label>
+                <input
+                    id="map_height"
+                    type="text"
+                    name="map_height"
+                    :value="mapHeight"
+                    @change="updateMapHeight($event)"
+                >
+                <hr>
+            </div>
+            <button
+                class="button-create-item map-settings-container-items"
+                @click="storeMap"
+            >
+                Store Map
+            </button>
+            <button
+                class="button-create-item map-settings-container-items"
+                @click="clearMap"
+            >
+                Clear map
+            </button>
+        </div>
+        <div
+            ref="mapHolder"
+            class="map-holder"
+        />
     </div>
-    <div
-      ref="mapHolder"
-      class="map-holder"
-    />
-  </div>
 </template>
 
 <script>
@@ -176,8 +176,8 @@ export default {
             const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
             const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
             target.style.webkitTransform =
-                    target.style.transform =
-                        'translate(' + x + 'px, ' + y + 'px)';
+                target.style.transform =
+                'translate(' + x + 'px, ' + y + 'px)';
             target.setAttribute('data-x', x);
             target.setAttribute('data-y', y);
         },
@@ -235,7 +235,7 @@ export default {
             x += event.deltaRect.left;
             y += event.deltaRect.top;
             target.style.webkitTransform = target.style.transform =
-                    'translate(' + x + 'px,' + y + 'px)';
+                'translate(' + x + 'px,' + y + 'px)';
             target.setAttribute('data-x', x);
             target.setAttribute('data-y', y);
             target.lastChild.innerHTML = 'width: ' + (event.rect.width / meterToPixel) + 'm,<br> height: ' + (event.rect.height / meterToPixel) + 'm';

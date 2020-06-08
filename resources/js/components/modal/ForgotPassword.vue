@@ -1,68 +1,68 @@
 <template>
-  <form
-    class="form"
-    autocomplete="off"
-    @submit.prevent="requestResetPassword"
-  >
-    <h2 class="form-title">
-      Wachtwoord vergeten
-    </h2>
-
-    <div
-      v-if="isLoading"
-      class="form-line form-loading"
+    <form
+        class="form"
+        autocomplete="off"
+        @submit.prevent="requestResetPassword"
     >
-      <loading />
-    </div>
+        <h2 class="form-title">
+            Wachtwoord vergeten
+        </h2>
 
-    <div
-      v-if="errors.length"
-      class="form-errors"
-    >
-      <p>Fout:</p>
-      <ul>
-        <li
-          v-for="error in errors"
-          :key="error"
+        <div
+            v-if="isLoading"
+            class="form-line form-loading"
         >
-          {{ error }}
-        </li>
-      </ul>
-    </div>
+            <loading />
+        </div>
 
-    <div
-      v-if="!!message"
-      class="form-message"
-    >
-      {{ message }}
-    </div>
+        <div
+            v-if="errors.length"
+            class="form-errors"
+        >
+            <p>Fout:</p>
+            <ul>
+                <li
+                    v-for="error in errors"
+                    :key="error"
+                >
+                    {{ error }}
+                </li>
+            </ul>
+        </div>
 
-    <div class="form-line">
-      <label
-        class="form-label"
-        for="email"
-      >E-mail</label>
-      <input
-        id="email"
-        v-model="email"
-        class="form-text-input"
-        type="text"
-      >
-      <button
-        class="form-afterinput-link"
-        @click="$emit('login')"
-      >
-        Ik heb al een account
-      </button>
-    </div>
-    <div class="form-line form-line-hasbutton">
-      <input
-        type="submit"
-        class="form-button"
-        value="Stuur wachtwoord reset link"
-      >
-    </div>
-  </form>
+        <div
+            v-if="!!message"
+            class="form-message"
+        >
+            {{ message }}
+        </div>
+
+        <div class="form-line">
+            <label
+                class="form-label"
+                for="email"
+            >E-mail</label>
+            <input
+                id="email"
+                v-model="email"
+                class="form-text-input"
+                type="text"
+            >
+            <button
+                class="form-afterinput-link"
+                @click="$emit('login')"
+            >
+                Ik heb al een account
+            </button>
+        </div>
+        <div class="form-line form-line-hasbutton">
+            <input
+                type="submit"
+                class="form-button"
+                value="Stuur wachtwoord reset link"
+            >
+        </div>
+    </form>
 </template>
 
 <script>
