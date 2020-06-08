@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Congress;
-use App\Rules\EventExistValidator;
+use App\Http\Requests\CongressStoreValidationRequest;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Validator;
 
 class CongressController extends Controller
 {
@@ -26,24 +25,13 @@ class CongressController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param CongressStoreValidationRequest $request
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function store(Request $request)
+    public function store(CongressStoreValidationRequest $request)
     {
         $this->authorize('write', Congress::class);
-
-        $validator = Validator::make($request->all(), [
-            'event_id' => ['required', new EventExistValidator],
-            'name' => ['string'],
-            'description' => ['string'],
-            'active' => ['boolean'],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
 
         Congress::create($request->all());
 

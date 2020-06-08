@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProgramStoreValidationRequest;
 use App\Program;
 use App\Rules\EventExistValidator;
 use App\Rules\ProgramTypeValidator;
@@ -38,24 +39,13 @@ class ProgramController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param ProgramStoreValidationRequest $request
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function store(Request $request)
+    public function store(ProgramStoreValidationRequest $request)
     {
         $this->authorize('write', Program::class);
-
-        $validator = Validator::make($request->all(), [
-            'event_id' => ['required', new EventExistValidator],
-            'name' => ['string'],
-            'description' => ['string'],
-            'active' => ['boolean'],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
 
         Program::create($request->all());
 

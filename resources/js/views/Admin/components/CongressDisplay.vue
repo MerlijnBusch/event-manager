@@ -66,10 +66,15 @@
                             >
                                 <div>{{ item.name }}</div>
                                 <div class="admin-sidebar-item-action-container">
-                                    <div class="admin-sidebar-item-action-update">
+                                    <div class="admin-sidebar-item-action-update"
+                                         @click="updateItem(item.id)"
+                                        >
                                         <i class="fas fa-pencil" />
                                     </div>
-                                    <div class="admin-sidebar-item-action-delete">
+                                    <div
+                                        class="admin-sidebar-item-action-delete"
+                                        @click="deleteItem(item.id)"
+                                    >
                                         <i class="fas fa-trash" />
                                     </div>
                                 </div>
@@ -123,6 +128,13 @@
             :id="blockId"
             @close="setModalState(`createItemModal`)"
         />
+
+        <update-item-modal
+            v-if="itemId"
+            v-show="updateItemModal"
+            :id="itemId"
+            @close="setModalState(`updateItemModal`)"
+        />
     </div>
 </template>
 
@@ -133,6 +145,7 @@ import CreateBlockModal from './modal/Create/CreateBlockModal';
 import API from '../../../Api';
 import UpdateBlockModal from './modal/Update/UpdateBlockModal';
 import CreateItemModal from './modal/Create/CreateItemModal';
+import UpdateItemModal from "./modal/Update/UpdateItemModal";
 
 export default {
     name: 'CongressDisplay',
@@ -141,6 +154,7 @@ export default {
         CreateBlockModal,
         UpdateBlockModal,
         CreateItemModal,
+        UpdateItemModal,
         Item
     },
     props: ['congress'],
@@ -149,7 +163,9 @@ export default {
             createBlockModal: false,
             updateBlockModal: false,
             createItemModal: false,
+            updateItemModal: false,
             blockId: null,
+            itemId: null,
             updateBlockId: null
         };
     },
@@ -181,6 +197,14 @@ export default {
         updateBlock (id) {
             this.updateBlockId = id;
             this.setModalState('updateBlockModal');
+        },
+        updateItem(id){
+            this.itemId = id;
+            this.setModalState('updateItemModal');
+        },
+        async deleteItem(id){
+            await API.delete('/api/item/' + id);
+            this.forceUpdate();
         },
         forceUpdate () {
 
