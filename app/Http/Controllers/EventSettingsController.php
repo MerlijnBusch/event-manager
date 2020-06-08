@@ -32,17 +32,17 @@ class EventSettingsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Event $event
+     * @param $id
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function show(Event $event)
+    public function show($id)
     {
         $this->authorize('read', EventSettings::class);
 
-        $event = Event::findOrFail($event->id)->with('settings')->get();
+        $settings = Event::findOrFail($id);
 
-        return response()->json($event, 200);
+        return response()->json($settings, 200);
     }
 
     /**
@@ -63,6 +63,7 @@ class EventSettingsController extends Controller
             'date_start' => ['required', 'date'],
             'date_end' => ['required', 'date'],
             'color' => ['required', new ColorValidator],
+            'location' => ['required', 'string'],
             'light_theme' => ['required', 'boolean'],
         ]);
 
@@ -84,36 +85,30 @@ class EventSettingsController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param Event $event
+     * @param $id
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function update(Request $request, Event $event)
+    public function update(Request $request, $id)
     {
         $this->authorize('write', EventSettings::class);
 
         $validator = Validator::make($request->all(), [
-            'event_id' => ['required', new EventExistValidator],
             'visible_registrations' => ['required', 'integer'],
             'max_registrations' => ['required', 'gt:visible_registrations', 'integer'],
-            'primary_color' => ['required', new ColorValidator],
-            'secondary_color' => ['required', new ColorValidator],
-            'active' => ['required', 'boolean']
+            'date_start' => ['required', 'date'],
+            'date_end' => ['required', 'date'],
+            'color' => ['required', new ColorValidator],
+            'location' => ['required', 'string'],
+            'light_theme' => ['required', 'boolean'],
         ]);
 
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
 
-        $settings = EventSettings::query()->where('event_id', $event->id)->first();
-
-        $settings->event_id = $request->event_id;
-        $settings->visible_registrations = $request->visible_registrations;
-        $settings->max_registrations = $request->max_registrations;
-        $settings->primary_color = $request->primary_color;
-        $settings->secondary_color = $request->secondary_color;
-        $settings->active = $request->active;
-        $settings->update();
+        $event = Event::findOrFail($id);
+        $event->update($request->all());
 
         return response()->json(['message' => 'Event Settings updated successfully'], 200);
 

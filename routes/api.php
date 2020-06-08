@@ -39,9 +39,9 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::delete('event/{event}/subscribe', 'EventController@unsubscribe')->name('event.subscribe.destroy');
 
     Route::get('event-settings', 'EventSettingsController@index')->name('event-settings');
-    Route::get('event-settings/{event}', 'EventSettingsController@show')->name('event-settings.show');
+    Route::get('event-settings/{id}', 'EventSettingsController@show')->name('event-settings.show');
     Route::post('event-settings', 'EventSettingsController@store')->name('event-settings.store');
-    Route::patch('event-settings/{event}', 'EventSettingsController@update')->name('event-settings.update');
+    Route::patch('event-settings/{id}', 'EventSettingsController@update')->name('event-settings.update');
     Route::delete('event-settings/{event}', 'EventSettingsController@destroy')->name('event-settings.destroy');
 
     Route::get('profile', 'ProfileController@index')->name('profile');
