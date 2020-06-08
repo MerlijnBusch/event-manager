@@ -1,12 +1,12 @@
 <template>
-  <div>
-    <h1>datePicker example component</h1>
-    {{ dateString }}
-    <datePicker
-      v-model="dateString"
-      @update="(v)=>{dateString = v}"
-    />
-  </div>
+    <div>
+        <h1>datePicker example component</h1>
+        {{ dateString }}
+        <datePicker
+            v-model="dateString"
+            @update="(v)=>{dateString = v}"
+        />
+    </div>
 </template>
 <script>
 import datePicker from '@/js/components/datePicker';

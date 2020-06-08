@@ -1,21 +1,21 @@
 <template>
-  <div class="force-height">
-    <NavBar
-      :logged-in="loggedIn"
-      @logout="logOut()"
-      @openLogin="openLogin"
-    />
-    <Modal
-      v-if="modal_open"
-      @loggedIn="loggedInHandler"
-      @close="closeLogin"
-    />
-    <div class="main">
-      <transition name="fade">
-        <router-view />
-      </transition>
+    <div class="force-height">
+        <NavBar
+            :logged-in="loggedIn"
+            @logout="logOut()"
+            @openLogin="openLogin"
+        />
+        <Modal
+            v-if="modal_open"
+            @loggedIn="loggedInHandler"
+            @close="closeLogin"
+        />
+        <div class="main">
+            <transition name="fade">
+                <router-view />
+            </transition>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>

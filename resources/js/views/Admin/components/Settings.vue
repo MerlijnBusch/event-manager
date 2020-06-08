@@ -1,36 +1,36 @@
 <template>
-  <div
-    class="admin-item-display-holder"
-    rel="settings_container"
-  >
-    <h1>Settings</h1>
-    <input
-      v-model="date_start"
-      rel="date_start"
-      type="date"
+    <div
+        class="admin-item-display-holder"
+        rel="settings_container"
     >
-    <input
-      v-model="date_end"
-      rel="date_end"
-      type="date"
-    >
-    <input
-      v-model="max_registrations"
-      type="text"
-    >
-    <input
-      v-model="visible_registrations"
-      type="text"
-    >
-    <input
-      v-model="primary_color"
-      type="color"
-    >
-    <input
-      v-model="secondary_color"
-      type="color"
-    >
-  </div>
+        <h1>Settings</h1>
+        <input
+            v-model="date_start"
+            rel="date_start"
+            type="date"
+        >
+        <input
+            v-model="date_end"
+            rel="date_end"
+            type="date"
+        >
+        <input
+            v-model="max_registrations"
+            type="text"
+        >
+        <input
+            v-model="visible_registrations"
+            type="text"
+        >
+        <input
+            v-model="primary_color"
+            type="color"
+        >
+        <input
+            v-model="secondary_color"
+            type="color"
+        >
+    </div>
 </template>
 
 <script>

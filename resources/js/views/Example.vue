@@ -1,27 +1,27 @@
 <template>
-  <div>
-    <h1 v-if="boolean">
-      {{ title }}
-    </h1>
-    <h2 v-else-if="title.length">
-      Cool
-    </h2>
-    <input
-      v-model="title"
-      :disabled="boolean"
-      type="text"
-    >
-    <button @click="boolean = !boolean">
-      Yay
-    </button>
-    <button @click="checkDate">
-      Date!
-    </button>
-    <!--<loading/>-->
-    <div :class="{'active' : boolean}">
-      I'm a div!
+    <div>
+        <h1 v-if="boolean">
+            {{ title }}
+        </h1>
+        <h2 v-else-if="title.length">
+            Cool
+        </h2>
+        <input
+            v-model="title"
+            :disabled="boolean"
+            type="text"
+        >
+        <button @click="boolean = !boolean">
+            Yay
+        </button>
+        <button @click="checkDate">
+            Date!
+        </button>
+        <!--<loading/>-->
+        <div :class="{'active' : boolean}">
+            I'm a div!
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -43,7 +43,7 @@ export default {
             this.useless();
         },
         useless () {
-            // i do nothing!
+        // i do nothing!
         }
     }
 };

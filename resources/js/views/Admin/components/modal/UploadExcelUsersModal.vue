@@ -1,66 +1,66 @@
 <template>
-  <transition name="modal-fade">
-    <div class="admin-modal-backdrop">
-      <div
-        class="admin-modal"
-        role="dialog"
-        aria-labelledby="modalTitle"
-        aria-describedby="modalDescription"
-      >
-        <header
-          id="modalTitle"
-          class="admin-modal-header"
-        >
-          <slot name="header">
-            <p
-              class="admin-modal-title"
+    <transition name="modal-fade">
+        <div class="admin-modal-backdrop">
+            <div
+                class="admin-modal"
+                role="dialog"
+                aria-labelledby="modalTitle"
+                aria-describedby="modalDescription"
             >
-              Update Block
-            </p>
+                <header
+                    id="modalTitle"
+                    class="admin-modal-header"
+                >
+                    <slot name="header">
+                        <p
+                            class="admin-modal-title"
+                        >
+                            Update Block
+                        </p>
 
-            <button
-              type="button"
-              class="admin-modal-btn-close"
-              aria-label="Close modal"
-              @click="close"
-            >
-              x
-            </button>
-          </slot>
-        </header>
-        <section
-          id="modalDescription"
-          class="admin-modal-body"
-        >
-          <slot name="body">
-            <input
-              id="my_file_input"
-              ref="excell"
-              type="file"
-            >
-            <button
-              class="button-create-item map-settings-container-items"
-              @click="parseFileInPut"
-            >
-              upload
-            </button>
-          </slot>
-        </section>
-        <footer class="admin-modal-footer">
-          <slot name="footer">
-            <button
-              type="button"
-              class="admin-modal-btn-green"
-              aria-label="Close modal"
-              @click="close"
-            >
-              Close
-            </button>
-          </slot>
-        </footer>
-      </div>
-    </div>
-  </transition>
+                        <button
+                            type="button"
+                            class="admin-modal-btn-close"
+                            aria-label="Close modal"
+                            @click="close"
+                        >
+                            x
+                        </button>
+                    </slot>
+                </header>
+                <section
+                    id="modalDescription"
+                    class="admin-modal-body"
+                >
+                    <slot name="body">
+                        <input
+                            id="my_file_input"
+                            ref="excell"
+                            type="file"
+                        >
+                        <button
+                            class="button-create-item map-settings-container-items"
+                            @click="parseFileInPut"
+                        >
+                            upload
+                        </button>
+                    </slot>
+                </section>
+                <footer class="admin-modal-footer">
+                    <slot name="footer">
+                        <button
+                            type="button"
+                            class="admin-modal-btn-green"
+                            aria-label="Close modal"
+                            @click="close"
+                        >
+                            Close
+                        </button>
+                    </slot>
+                </footer>
+            </div>
+        </div>
+    </transition>
 </template>
 
 <script>
