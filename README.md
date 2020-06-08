@@ -14,7 +14,7 @@
 * ``composer install`` install new composer dependencies
 * ``npm run watch`` enable the watcher only use full when working on ``js or sass``
 * ``npm install`` install node packages
-* ``npm run lint`` fixes linting errors and warning (needs to have ESLINT installed globally ``npm i -g eslint``) 
+* ``npm run lint`` fixes linting errors and warning
 
 ## Folder structure
 ``.env`` put in folder for all env variables if this files doesnt exit copy the ``.env.example`` and set all the env variables correct
