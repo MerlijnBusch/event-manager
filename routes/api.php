@@ -89,10 +89,14 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::patch('/program-item/{id}', 'ProgramItemsController@update')->name('program.item.update');
     Route::delete('/program-item/{id}', 'ProgramItemsController@destroy')->name('program.item.destroy');
 
+    Route::get('/congress/{congress}', 'CongressController@show');
     Route::post('/congress', 'CongressController@store');
+    Route::patch('/congress/{congress}', 'CongressController@update');
     Route::delete('/congress/{congress}', 'CongressController@destroy');
 
+    Route::get('/program/{program}', 'ProgramController@show');
     Route::post('/program', 'ProgramController@store');
+    Route::patch('/program/{program}', 'ProgramController@update');
     Route::delete('/program/{program}', 'ProgramController@destroy');
 
     Route::get('/block/{block}', 'BlockController@show');

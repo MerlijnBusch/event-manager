@@ -95,7 +95,10 @@
                                         {{ prog.name }}
                                     </div>
                                     <div class="admin-sidebar-program-action-container">
-                                        <div class="admin-sidebar-program-action-update">
+                                        <div
+                                            class="admin-sidebar-program-action-update"
+                                            @click="updateProgram(prog.id)"
+                                        >
                                             <i class="fas fa-pencil" />
                                         </div>
                                         <div
@@ -196,6 +199,13 @@
             @close="setModalState(`createProgramModal`)"
         />
 
+        <update-program-modal
+            v-if="currentEvent"
+            v-show="updateProgramModal"
+            :id="updateProgramId"
+            @close="setModalState(`updateProgramModal`)"
+        />
+
         <create-congress-modal
             v-if="currentEvent"
             v-show="createCongressModal"
@@ -249,6 +259,7 @@ import CreateCongressModal from './components/modal/Create/CreateCongressModal';
 import CongressDisplay from './components/CongressDisplay';
 import ProgramDisplay from './components/ProgramDisplay';
 import UpdateEventSettingsModal from './components/modal/Update/UpdateEventSettingsModal';
+import UpdateProgramModal from './components/modal/Update/UpdateProgramModal';
 
 export default {
     name: 'Admin',
@@ -259,7 +270,6 @@ export default {
             selectedEventId: null,
             currentEvent: [],
             display: null,
-            updateBlockId: null,
             createEventModal: false,
             createProgramModal: false,
             updateEventSettingsModal: false,
@@ -267,6 +277,8 @@ export default {
             updateEventModal: false,
             createEventSettingsModal: false,
             createCongressModal: false,
+            updateProgramModal: false,
+            updateProgramId: null,
             settingsId: null,
             displayType: null,
             timeOut: null
@@ -283,7 +295,8 @@ export default {
         CreateCongressModal,
         CongressDisplay,
         ProgramDisplay,
-        UpdateEventSettingsModal
+        UpdateEventSettingsModal,
+        UpdateProgramModal
     },
     methods: {
         async setSelectedEventId (id) {
@@ -327,6 +340,10 @@ export default {
             if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
             await this.forceUpdate();
         },
+        async updateProgram(id) {
+          this.updateProgramId = id;
+          await this.setModalState('updateProgramModal');
+        },
         async deleteProgram (id) {
             API.delete('/api/program/' + id);
             await this.forceUpdate();
@@ -338,10 +355,8 @@ export default {
         openEventSettings (id, settings) {
             if (settings === null) {
                 this.settingsId = id;
-                console.log(id, settings);
                 this.setModalState('createEventSettingsModal');
             } else {
-                console.log(id, settings);
                 this.settingsId = settings.id;
                 this.setModalState('updateEventSettingsModal');
             }

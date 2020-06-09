@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Congress;
 use App\Http\Requests\CongressStoreValidationRequest;
+use App\Http\Requests\CongressUpdateValidationRequest;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
@@ -20,6 +21,21 @@ class CongressController extends Controller
     public function index()
     {
         //
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Congress $congress
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function show(Congress $congress)
+    {
+        $this->authorize('read', Congress::class);
+
+        return response()->json($congress, 200);
     }
 
     /**
@@ -39,37 +55,21 @@ class CongressController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param Congress $congress
-     * @return Response
-     */
-    public function show(Congress $congress)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Congress $congress
-     * @return Response
-     */
-    public function edit(Congress $congress)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param CongressUpdateValidationRequest $request
      * @param Congress $congress
-     * @return Response
+     * @return JsonResponse
+     * @throws AuthorizationException
      */
-    public function update(Request $request, Congress $congress)
+    public function update(CongressUpdateValidationRequest $request, Congress $congress)
     {
-        //
+        $this->authorize('write', Congress::class);
+
+        $congress = Congress::findOrFail($congress->id);
+        $congress->update($request->all());
+
+        return response()->json(['message' => 'Congress created successfully'], 200);
     }
 
     /**

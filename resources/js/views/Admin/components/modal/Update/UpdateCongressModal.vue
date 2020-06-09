@@ -15,7 +15,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Update Program Item
+                            Update Congress
                         </p>
 
                         <button
@@ -68,11 +68,6 @@
                                 />
                             </div>
 
-                            <date-picker
-                                v-model="date"
-                                @update="(v)=>{date = v}"
-                            />
-
                             <div class="form-line">
                                 <label
                                     class="form-label"
@@ -84,6 +79,7 @@
                                     class="form-text-input"
                                     type="checkbox"
                                     name="active"
+                                    placeholder="Event name"
                                 >
                             </div>
 
@@ -116,19 +112,16 @@
 
 <script>
     import API from '../../../../../Api';
-    import DatePicker from '../../../../../components/datePicker';
 
     export default {
-        components: { DatePicker },
         data () {
             return {
                 name: null,
                 description: null,
-                date: null,
                 active: false
             };
         },
-        name: 'UpdateProgramItemModal',
+        name: 'UpdateCongressModal',
         props: ['id'],
         methods: {
             close () {
@@ -138,15 +131,10 @@
                 const data = {
                     name: this.name,
                     description: this.description,
-                    date: this.date,
                     active: this.active
                 };
 
-                API.post(data, '/api/program/' + this.id, true);
-
-                this.name = null;
-                this.description = null;
-                this.active = false;
+                API.post(data, '/api/congress/' + this.id, true);
 
                 this.close();
 
@@ -157,18 +145,18 @@
 
                 const data = res.data;
                 this.name = data.name;
-                this.date = data.date;
                 this.description = data.description;
                 this.active = data.active;
             }
         },
         watch: {
             id: async function (newVal, oldVal) {
-                if (this.id) this.setFormData(await API.get('/api/program/' + this.id));
+                if (this.id) this.setFormData(await API.get('/api/congress/' + this.id));
             }
         },
         async mounted () {
-            if (this.id) this.setFormData(await API.get('/api/program/' + this.id));
+            if (this.id) this.setFormData(await API.get('/api/congress/' + this.id));
         }
+    };
     };
 </script>
