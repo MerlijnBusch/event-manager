@@ -111,52 +111,51 @@
 </template>
 
 <script>
-    import API from '../../../../../Api';
+import API from '../../../../../Api';
 
-    export default {
-        data () {
-            return {
-                name: null,
-                description: null,
-                active: false
+export default {
+    data () {
+        return {
+            name: null,
+            description: null,
+            active: false
+        };
+    },
+    name: 'UpdateCongressModal',
+    props: ['id'],
+    methods: {
+        close () {
+            this.$emit('close');
+        },
+        checkForm: function (e) {
+            const data = {
+                name: this.name,
+                description: this.description,
+                active: this.active
             };
+
+            API.post(data, '/api/congress/' + this.id, true);
+
+            this.close();
+
+            e.preventDefault();
         },
-        name: 'UpdateCongressModal',
-        props: ['id'],
-        methods: {
-            close () {
-                this.$emit('close');
-            },
-            checkForm: function (e) {
-                const data = {
-                    name: this.name,
-                    description: this.description,
-                    active: this.active
-                };
+        setFormData (res) {
+            console.log(res);
 
-                API.post(data, '/api/congress/' + this.id, true);
-
-                this.close();
-
-                e.preventDefault();
-            },
-            setFormData (res) {
-                console.log(res);
-
-                const data = res.data;
-                this.name = data.name;
-                this.description = data.description;
-                this.active = data.active;
-            }
-        },
-        watch: {
-            id: async function (newVal, oldVal) {
-                if (this.id) this.setFormData(await API.get('/api/congress/' + this.id));
-            }
-        },
-        async mounted () {
+            const data = res.data;
+            this.name = data.name;
+            this.description = data.description;
+            this.active = data.active;
+        }
+    },
+    watch: {
+        id: async function (newVal, oldVal) {
             if (this.id) this.setFormData(await API.get('/api/congress/' + this.id));
         }
-    };
-    };
+    },
+    async mounted () {
+        if (this.id) this.setFormData(await API.get('/api/congress/' + this.id));
+    }
+};
 </script>

@@ -340,9 +340,9 @@ export default {
             if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
             await this.forceUpdate();
         },
-        async updateProgram(id) {
-          this.updateProgramId = id;
-          await this.setModalState('updateProgramModal');
+        async updateProgram (id) {
+            this.updateProgramId = id;
+            await this.setModalState('updateProgramModal');
         },
         async deleteProgram (id) {
             API.delete('/api/program/' + id);

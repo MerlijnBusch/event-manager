@@ -115,60 +115,60 @@
 </template>
 
 <script>
-    import API from '../../../../../Api';
-    import DatePicker from '../../../../../components/datePicker';
+import API from '../../../../../Api';
+import DatePicker from '../../../../../components/datePicker';
 
-    export default {
-        components: { DatePicker },
-        data () {
-            return {
-                name: null,
-                description: null,
-                date: null,
-                active: false
+export default {
+    components: { DatePicker },
+    data () {
+        return {
+            name: null,
+            description: null,
+            date: null,
+            active: false
+        };
+    },
+    name: 'UpdateProgramItemModal',
+    props: ['id'],
+    methods: {
+        close () {
+            this.$emit('close');
+        },
+        checkForm: function (e) {
+            const data = {
+                name: this.name,
+                description: this.description,
+                date: this.date,
+                active: this.active
             };
+
+            API.post(data, '/api/program/' + this.id, true);
+
+            this.name = null;
+            this.description = null;
+            this.active = false;
+
+            this.close();
+
+            e.preventDefault();
         },
-        name: 'UpdateProgramItemModal',
-        props: ['id'],
-        methods: {
-            close () {
-                this.$emit('close');
-            },
-            checkForm: function (e) {
-                const data = {
-                    name: this.name,
-                    description: this.description,
-                    date: this.date,
-                    active: this.active
-                };
+        setFormData (res) {
+            console.log(res);
 
-                API.post(data, '/api/program/' + this.id, true);
-
-                this.name = null;
-                this.description = null;
-                this.active = false;
-
-                this.close();
-
-                e.preventDefault();
-            },
-            setFormData (res) {
-                console.log(res);
-
-                const data = res.data;
-                this.name = data.name;
-                this.date = data.date;
-                this.description = data.description;
-                this.active = data.active;
-            }
-        },
-        watch: {
-            id: async function (newVal, oldVal) {
-                if (this.id) this.setFormData(await API.get('/api/program/' + this.id));
-            }
-        },
-        async mounted () {
+            const data = res.data;
+            this.name = data.name;
+            this.date = data.date;
+            this.description = data.description;
+            this.active = data.active;
+        }
+    },
+    watch: {
+        id: async function (newVal, oldVal) {
             if (this.id) this.setFormData(await API.get('/api/program/' + this.id));
         }
-    };
+    },
+    async mounted () {
+        if (this.id) this.setFormData(await API.get('/api/program/' + this.id));
+    }
+};
 </script>
