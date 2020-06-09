@@ -7,7 +7,7 @@ export default class API {
         this.token = null;
         this.headers = null;
 
-        visible.setIdleDuration(1800) // half hour
+        visible.setIdleDuration(3200) // 1 hour
 
         ifvisible.idle(() => { //logout the user
             localStorage.removeItem('user');
