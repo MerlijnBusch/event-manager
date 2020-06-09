@@ -47,7 +47,7 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::get('profile', 'ProfileController@index')->name('profile');
     Route::get('profile/{profile}', 'ProfileController@show')->name('profile.show');
     Route::post('profile', 'ProfileController@store')->name('profile.store');
-    Route::patch('profile-edit', 'ProfileController@update')->name('profile.update');
+    Route::patch('profile/{profile}', 'ProfileController@update')->name('profile.update');
     Route::delete('profile/{profile}', 'ProfileController@destroy')->name('profile.destroy');
 
     Route::get('profile-check','ProfileController@check')->name('profile.check');

@@ -231,7 +231,9 @@ export default {
             contact_email: null,
             edit: false,
             image: null,
-            user_id: null
+            user_id: null,
+            profileExist: false,
+            profileId: null
         };
     },
     async mounted () {
@@ -248,6 +250,9 @@ export default {
         }
 
         if (data.profile) {
+            this.profileId = data.profile.id;
+            this.profileExist = true;
+
             this.about = data.profile.about;
             this.image = data.profile.image;
             this.facebook = data.profile.facebook;
@@ -255,6 +260,8 @@ export default {
             this.linkedin = data.profile.linkedin;
             this.phonenumber = data.profile.phonenumber;
             this.contact_email = data.profile.contact_email;
+        } else {
+            this.profileExist = false;
         }
 
         if (data.role) {
@@ -287,22 +294,27 @@ export default {
             await reader.readAsDataURL(file);
         },
         async editProfile () {
-            const data = {
-                about: this.about,
-                image: this.image,
-                facebook: this.facebook,
-                twitter: this.twitter,
-                linkedin: this.linkedin,
-                phonenumber: this.phonenumber,
-                contact_email: this.contact_email
-            };
+            let data = {};
+            const pObj = ['about', 'image', 'facebook', 'twitter', 'linkedin', 'phonenumber', 'contact_email'];
 
             const roleData = {
                 id: this.role,
                 user_id: this.user_id
             };
 
-            await API.post(data, '/api/profile-edit', true);
+            pObj.forEach((i) => {
+                if (this[i] === null) return;
+                const tmp = {};
+                tmp[i] = this[i];
+                data = window._.merge(data, tmp);
+            });
+
+            if (this.profileExist) {
+                await API.post(data, '/api/profile/' + this.profileId, true);
+            } else {
+                await API.post(data, '/api/profile');
+            }
+
             if (this.role) {
                 await API.post(roleData, '/api/selectable-role-edit', true);
             }
