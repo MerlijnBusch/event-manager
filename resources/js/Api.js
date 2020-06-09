@@ -22,7 +22,7 @@ export default class API {
      * Error handling to front end that creates a snackbar to give user feedback
      * @param data
      */
-    static errorCheck (data) {
+    static async errorCheck (data) {
         let error = '';
         const res = data.response;
 
@@ -33,6 +33,7 @@ export default class API {
             }
             break;
         case 403:
+            if(!await this.get('/api/user/login-check').data) localStorage.removeItem('user');
             error = res.data.message;
             window.location.href = window.location.origin;
 
@@ -75,7 +76,7 @@ export default class API {
         try {
             return await axios.get(window.location.origin + url, { headers: this.headers });
         } catch (e) {
-            this.errorCheck(e);
+            await this.errorCheck(e);
         }
     }
 
@@ -90,7 +91,7 @@ export default class API {
             if (update) return await axios.patch(window.location.origin + url, data, { headers: this.headers });
             return await axios.post(window.location.origin + url, data, { headers: this.headers });
         } catch (e) {
-            this.errorCheck(e);
+            await this.errorCheck(e);
         }
     }
 
@@ -102,7 +103,7 @@ export default class API {
         try {
             return await axios.delete(window.location.origin + url, { headers: this.headers });
         } catch (e) {
-            this.errorCheck(e);
+            await this.errorCheck(e);
         }
     }
 }

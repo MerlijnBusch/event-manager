@@ -89,6 +89,12 @@ class UserController extends Controller
         $user->role_id = $request->id;
         $user->update();
 
-        return response()->json(['message' => "Role Edited"]);
+        return response()->json(['message' => "Role Edited"], 200);
+    }
+
+    public function isLoggedIn(){
+
+        return response()->json(Auth::check(), 200);
+
     }
 }

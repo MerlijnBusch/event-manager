@@ -20,12 +20,13 @@ Route::post('reset-password', 'Auth\ForgotPasswordController@sendPasswordResetLi
 Route::post('reset/password', 'Auth\ResetPasswordController@callResetPassword');
 Route::get('/event-overview/{event}', 'OverviewController@index')->name('event.overview');
 Route::get('/event-overview', 'OverviewController@event')->name('event');
+Route::get('/user/login-check', 'UserController@isLoggedIn');
 
 Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::post('logout', 'Auth\LoginController@logout');
     Route::patch('selectable-role-edit', 'UserController@UpdateSelectableUserRole');
 
-    Route::get('refresh-token','UserController@updatetoken');
+    Route::get('/refresh-token','UserController@updatetoken');
     Route::post('/search/profile','UserController@search');
     Route::get('/permissions', 'UserController@permissions')->name('user.permissions');
 
