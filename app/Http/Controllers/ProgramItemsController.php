@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProgramItemStoreValidationRequest;
 use App\Http\Requests\ProgramItemUpdateValidationRequest;
-use App\Http\Requests\ProgramStoreValidationRequest;
 use App\ProgramItems;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
@@ -29,11 +29,11 @@ class ProgramItemsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param ProgramStoreValidationRequest $request
+     * @param ProgramItemStoreValidationRequest $request
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function store(ProgramStoreValidationRequest $request)
+    public function store(ProgramItemStoreValidationRequest $request)
     {
         $this->authorize('write', ProgramItems::class);
 

@@ -77,9 +77,11 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
 
     Route::get('/admin', 'AdminController@index');
     Route::get('/admin/{event}', 'AdminController@event');
+    Route::get('/admin/user/{user}', 'AdminController@user');
+    Route::get('/admin/program/{id}', 'AdminController@program');
+    Route::get('/admin/congress/{id}', 'AdminController@congress');
     Route::post('/admin/excel', 'AdminController@excel');
     Route::post('/admin/search', 'AdminController@search');
-    Route::get('/admin/user/{user}', 'AdminController@user');
     Route::delete('/admin/user/{user}', 'AdminController@deleteUser');
 
     Route::get('/program-item/{id}', 'ProgramItemsController@show')->name('program.item.show');

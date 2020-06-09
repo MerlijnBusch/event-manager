@@ -310,13 +310,12 @@
             },
             async setModalState(state) {
                 this[state] = !this[state];
-                if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
                 await this.forceUpdate();
             },
             async forceUpdate() {
                 const data = await API.get('/api/admin');
                 this.events = data.data;
-                console.log(this.events);
+                if(this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
             },
             async deleteEvent(id) {
                 if (!confirm('Weet u zeker dat u dit event wilt verwiederen')) return;

@@ -172,11 +172,11 @@ export default {
     methods: {
         async setModalState (state) {
             this[state] = !this[state];
-            this.forceUpdate();
+            await this.forceUpdate();
         },
         async deleteBlock (id) {
             await API.delete('/api/block/' + id);
-            this.forceUpdate();
+            await this.forceUpdate();
         },
         displayBlockItems (id, amount) {
             const target = document.getElementById('block-items-' + id);
@@ -204,19 +204,12 @@ export default {
         },
         async deleteItem(id){
             await API.delete('/api/item/' + id);
-            this.forceUpdate();
+            await this.forceUpdate();
         },
-        forceUpdate () {
-
+        async forceUpdate () {
+            const res = await API.get('/api/admin/congress/' + this.congress.id);
+            this.congress = res.data;
         }
-    },
-    watch: {
-        congress: async function (newVal, oldVal) {
-            console.log(newVal, oldVal, this.congress, 'thiscongress');
-        }
-    },
-    mounted () {
-        console.log('this.congress', this.congress);
     }
 };
 </script>
