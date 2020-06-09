@@ -31,6 +31,10 @@ class Role extends Model
         'created_at'
     ];
 
+    protected $casts = [
+        'selectable' => 'boolean',
+    ];
+
     public function user(){
 
         return $this->hasMany('App\User', 'role_id');

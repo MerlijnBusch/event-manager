@@ -19,6 +19,11 @@ class Congress extends Model
     ];
 
 
+    protected $casts = [
+        'event_id' => 'integer',
+        'active' => 'boolean',
+    ];
+
     public function block(){
 
         return $this->hasMany('App\Block');

@@ -21,6 +21,10 @@ class Block extends Model
         'updated_at', 'created_at','deleted_at'
     ];
 
+    protected $casts = [
+        'congress_id' => 'integer',
+    ];
+
     public function items(){
 
         return $this->hasMany('App\Item');

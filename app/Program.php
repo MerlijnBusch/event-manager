@@ -31,6 +31,10 @@ class Program extends Model
         'active',
     ];
 
+    protected $casts = [
+        'event_id' => 'integer',
+        'active' => 'boolean',
+    ];
 
     public function programItems(){
 
