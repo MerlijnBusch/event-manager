@@ -141,8 +141,6 @@ export default {
             e.preventDefault();
         },
         setFormData (res) {
-            console.log(res);
-
             const data = res.data;
             this.name = data.name;
             this.description = data.description;
