@@ -1,10 +1,18 @@
 import axios from 'axios';
 import create from 'dom-create-element';
+import visible from 'ifvisible.js';
 
 export default class API {
     constructor () {
         this.token = null;
         this.headers = null;
+
+        visible.setIdleDuration(1800) // half hour
+
+        ifvisible.idle(() => { //logout the user
+            localStorage.removeItem('user');
+            window.location.href = window.location.origin;
+        });
     }
 
     /**
@@ -36,7 +44,6 @@ export default class API {
             if(!await this.get('/api/user/login-check').data) localStorage.removeItem('user');
             error = res.data.message;
             window.location.href = window.location.origin;
-
             break;
         case 404:
             error = 'Not found';
