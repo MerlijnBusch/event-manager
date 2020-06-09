@@ -28,8 +28,8 @@ export default class API {
 
         switch (res.status) {
         case 422:
-            for (const key in res.data) {
-                if (Object.prototype.hasOwnProperty.call(res.data, key)) error += res.data[key] + '</br>';
+            for (const key in res.data.errors) {
+                if (Object.prototype.hasOwnProperty.call(res.data.errors, key)) error += res.data.errors[key] + '</br>';
             }
             break;
         case 403:
