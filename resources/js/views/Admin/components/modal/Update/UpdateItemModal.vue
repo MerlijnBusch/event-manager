@@ -143,80 +143,80 @@
 </template>
 
 <script>
-    import API from '../../../../../Api';
-    import DatePicker from '../../../../../components/datePicker';
+import API from '../../../../../Api';
+import DatePicker from '../../../../../components/datePicker';
 
-    export default {
-        components: {DatePicker},
-        data() {
-            return {
-                name: null,
-                type: null,
-                description: null,
-                date_start: null,
-                date_end: null,
-                active: false
-            };
+export default {
+    components: { DatePicker },
+    data () {
+        return {
+            name: null,
+            type: null,
+            description: null,
+            date_start: null,
+            date_end: null,
+            active: false
+        };
+    },
+    name: 'CreateItemModal',
+    props: ['id'],
+    methods: {
+        close () {
+            this.$emit('close');
         },
-        name: 'CreateItemModal',
-        props: ['id'],
-        methods: {
-            close() {
-                this.$emit('close');
-            },
-            checkForm: function (e) {
-                let data;
+        checkForm: function (e) {
+            let data;
 
-                if (this.type !== 'speaker') {
-                    data = {
-                        name: this.name,
-                        type: this.type,
-                        description: this.description,
-                        date_start: this.date_start,
-                        date_end: this.date_end,
-                        active: this.active
-                    };
-                } else {
-                    data = {
-                        name: this.name,
-                        type: this.type,
-                        description: this.description,
-                        active: this.active
-                    };
-                }
-
-                API.post(data, '/api/item/' + this.id, true);
-
-                this.name = null;
-                this.type = null;
-                this.description = null;
-                this.date_start = null;
-                this.date_end = null;
-                this.active = false;
-
-                this.close();
-
-                e.preventDefault();
-            },
-            setFormData(res) {
-                const data = res.data;
-
-                this.name = data.name;
-                this.type = data.type;
-                this.description = data.description;
-                this.block_id = data.id;
-                this.date_start = data.date_start;
-                this.date_end = data.date_end;
-                this.active = data.active
+            if (this.type !== 'speaker') {
+                data = {
+                    name: this.name,
+                    type: this.type,
+                    description: this.description,
+                    date_start: this.date_start,
+                    date_end: this.date_end,
+                    active: this.active
+                };
+            } else {
+                data = {
+                    name: this.name,
+                    type: this.type,
+                    description: this.description,
+                    active: this.active
+                };
             }
+
+            API.post(data, '/api/item/' + this.id, true);
+
+            this.name = null;
+            this.type = null;
+            this.description = null;
+            this.date_start = null;
+            this.date_end = null;
+            this.active = false;
+
+            this.close();
+
+            e.preventDefault();
         },
-        watch: {
-            id: async function (newVal, oldVal) {
-                if (this.id) this.setFormData(await API.get('/api/item/' + this.id));
-            }
-        },
-        async mounted() {
+        setFormData (res) {
+            const data = res.data;
+
+            this.name = data.name;
+            this.type = data.type;
+            this.description = data.description;
+            this.block_id = data.id;
+            this.date_start = data.date_start;
+            this.date_end = data.date_end;
+            this.active = data.active;
+        }
+    },
+    watch: {
+        id: async function (newVal, oldVal) {
             if (this.id) this.setFormData(await API.get('/api/item/' + this.id));
         }
-    };
+    },
+    async mounted () {
+        if (this.id) this.setFormData(await API.get('/api/item/' + this.id));
+    }
+};
 </script>

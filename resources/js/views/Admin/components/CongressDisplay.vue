@@ -66,9 +66,10 @@
                             >
                                 <div>{{ item.name }}</div>
                                 <div class="admin-sidebar-item-action-container">
-                                    <div class="admin-sidebar-item-action-update"
-                                         @click="updateItem(item.id)"
-                                        >
+                                    <div
+                                        class="admin-sidebar-item-action-update"
+                                        @click="updateItem(item.id)"
+                                    >
                                         <i class="fas fa-pencil" />
                                     </div>
                                     <div
@@ -145,7 +146,7 @@ import CreateBlockModal from './modal/Create/CreateBlockModal';
 import API from '../../../Api';
 import UpdateBlockModal from './modal/Update/UpdateBlockModal';
 import CreateItemModal from './modal/Create/CreateItemModal';
-import UpdateItemModal from "./modal/Update/UpdateItemModal";
+import UpdateItemModal from './modal/Update/UpdateItemModal';
 
 export default {
     name: 'CongressDisplay',
@@ -198,11 +199,11 @@ export default {
             this.updateBlockId = id;
             this.setModalState('updateBlockModal');
         },
-        updateItem(id){
+        updateItem (id) {
             this.itemId = id;
             this.setModalState('updateItemModal');
         },
-        async deleteItem(id){
+        async deleteItem (id) {
             await API.delete('/api/item/' + id);
             await this.forceUpdate();
         },

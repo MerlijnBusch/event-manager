@@ -181,7 +181,7 @@ export default {
                 visible_registrations: this.visible_registrations,
                 color: this.color,
                 light_theme: this.light_theme,
-                location: this.location,
+                location: this.location
             };
 
             API.post(data, '/api/event-settings/' + this.id, true);

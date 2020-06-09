@@ -57,20 +57,20 @@
                                     class="admin-sidebar-icon"
                                     @click="openEventSettings(event.id, event.settings)"
                                 >
-                                    <i class="fas fa-cog"/>
+                                    <i class="fas fa-cog" />
                                 </div>
                                 <div
                                     class="admin-sidebar-icon"
                                     @click="setModalState(`updateEventModal`)"
                                 >
-                                    <i class="fas fa-pencil"/>
+                                    <i class="fas fa-pencil" />
                                 </div>
                                 <div
                                     class="admin-sidebar-icon"
                                     title="evenment verweideren"
                                     @click="deleteEvent(event.id)"
                                 >
-                                    <i class="fas fa-trash"/>
+                                    <i class="fas fa-trash" />
                                 </div>
                             </div>
                         </div>
@@ -96,13 +96,13 @@
                                     </div>
                                     <div class="admin-sidebar-program-action-container">
                                         <div class="admin-sidebar-program-action-update">
-                                            <i class="fas fa-pencil"/>
+                                            <i class="fas fa-pencil" />
                                         </div>
                                         <div
                                             class="admin-sidebar-program-action-delete"
                                             @click="deleteProgram(prog.id)"
                                         >
-                                            <i class="fas fa-trash"/>
+                                            <i class="fas fa-trash" />
                                         </div>
                                     </div>
                                 </div>
@@ -125,13 +125,13 @@
                                     </div>
                                     <div class="admin-sidebar-program-action-container">
                                         <div class="admin-sidebar-program-action-update">
-                                            <i class="fas fa-pencil"/>
+                                            <i class="fas fa-pencil" />
                                         </div>
                                         <div
                                             class="admin-sidebar-program-action-delete"
                                             @click="deleteCongress(cong.id)"
                                         >
-                                            <i class="fas fa-trash"/>
+                                            <i class="fas fa-trash" />
                                         </div>
                                     </div>
                                 </div>
@@ -144,7 +144,7 @@
                                         class="admin-sidebar-program-create-button"
                                         @click="setModalState(`createProgramModal`)"
                                     >
-                                        <i class="fas fa-plus-circle"/> Create Program
+                                        <i class="fas fa-plus-circle" /> Create Program
                                     </div>
                                 </div>
 
@@ -155,7 +155,7 @@
                                         class="admin-sidebar-program-create-button"
                                         @click="setModalState(`createCongressModal`)"
                                     >
-                                        <i class="fas fa-plus-circle"/> Create Congress
+                                        <i class="fas fa-plus-circle" /> Create Congress
                                     </div>
                                 </div>
                             </div>
@@ -168,7 +168,7 @@
                     class="admin-create-event-sidebar"
                     @click="setModalState(`createEventModal`)"
                 >
-                    <i class="fas fa-plus-circle admin-sidebar-event-create-icon"/>Create Event
+                    <i class="fas fa-plus-circle admin-sidebar-event-create-icon" />Create Event
                 </div>
             </div>
         </div>
@@ -185,8 +185,8 @@
                 v-if="page === 1"
                 class="admin-item-container-footer"
             />
-            <find-user v-if="page === 2"/>
-            <rolls v-if="page === 3"/>
+            <find-user v-if="page === 2" />
+            <rolls v-if="page === 3" />
         </div>
 
         <create-program-modal
@@ -237,118 +237,118 @@
 </template>
 
 <script>
-    import API from '@/js/Api';
-    import CreateEventModal from './components/modal/Create/CreateEventModal';
-    import CreateProgramModal from './components/modal/Create/CreateProgramModal';
-    import UploadExcelUsersModal from './components/modal/UploadExcelUsersModal';
-    import UpdateEventModal from './components/modal/Update/UpdateEventModal';
-    import FindUser from './components/FindUser';
-    import Rolls from './components/Rolls';
-    import CreateEventSettingsModal from './components/modal/Create/CreateEventSettingsModal';
-    import CreateCongressModal from './components/modal/Create/CreateCongressModal';
-    import CongressDisplay from './components/CongressDisplay';
-    import ProgramDisplay from './components/ProgramDisplay';
-    import UpdateEventSettingsModal from "./components/modal/Update/UpdateEventSettingsModal";
+import API from '@/js/Api';
+import CreateEventModal from './components/modal/Create/CreateEventModal';
+import CreateProgramModal from './components/modal/Create/CreateProgramModal';
+import UploadExcelUsersModal from './components/modal/UploadExcelUsersModal';
+import UpdateEventModal from './components/modal/Update/UpdateEventModal';
+import FindUser from './components/FindUser';
+import Rolls from './components/Rolls';
+import CreateEventSettingsModal from './components/modal/Create/CreateEventSettingsModal';
+import CreateCongressModal from './components/modal/Create/CreateCongressModal';
+import CongressDisplay from './components/CongressDisplay';
+import ProgramDisplay from './components/ProgramDisplay';
+import UpdateEventSettingsModal from './components/modal/Update/UpdateEventSettingsModal';
 
-    export default {
-        name: 'Admin',
-        data() {
-            return {
-                page: 1,
-                events: [],
-                selectedEventId: null,
-                currentEvent: [],
-                display: null,
-                updateBlockId: null,
-                createEventModal: false,
-                createProgramModal: false,
-                updateEventSettingsModal: false,
-                uploadExcelUsersModal: false,
-                updateEventModal: false,
-                createEventSettingsModal: false,
-                createCongressModal: false,
-                settingsId: null,
-                displayType: null,
-                timeOut: null
-            };
+export default {
+    name: 'Admin',
+    data () {
+        return {
+            page: 1,
+            events: [],
+            selectedEventId: null,
+            currentEvent: [],
+            display: null,
+            updateBlockId: null,
+            createEventModal: false,
+            createProgramModal: false,
+            updateEventSettingsModal: false,
+            uploadExcelUsersModal: false,
+            updateEventModal: false,
+            createEventSettingsModal: false,
+            createCongressModal: false,
+            settingsId: null,
+            displayType: null,
+            timeOut: null
+        };
+    },
+    components: {
+        CreateEventModal,
+        CreateProgramModal,
+        UploadExcelUsersModal,
+        UpdateEventModal,
+        FindUser,
+        Rolls,
+        CreateEventSettingsModal,
+        CreateCongressModal,
+        CongressDisplay,
+        ProgramDisplay,
+        UpdateEventSettingsModal
+    },
+    methods: {
+        async setSelectedEventId (id) {
+            this.selectedEventId = id;
+            if (this.timeOut !== null) return;
+            this.timeOut = await setTimeout(async () => {
+                const data = await API.get('/api/admin/' + id);
+                this.currentEvent = data.data;
+            }, 1000);
         },
-        components: {
-            CreateEventModal,
-            CreateProgramModal,
-            UploadExcelUsersModal,
-            UpdateEventModal,
-            FindUser,
-            Rolls,
-            CreateEventSettingsModal,
-            CreateCongressModal,
-            CongressDisplay,
-            ProgramDisplay,
-            UpdateEventSettingsModal,
+        setPage (id) {
+            this.page = id;
         },
-        methods: {
-            async setSelectedEventId(id) {
-                this.selectedEventId = id;
-                if (this.timeOut !== null) return;
-                this.timeOut = await setTimeout(async () => {
-                    const data = await API.get('/api/admin/' + id);
-                    this.currentEvent = data.data;
-                }, 1000);
-            },
-            setPage(id) {
-                this.page = id;
-            },
-            eventDropDown(id) {
-                const target = document.getElementById('event-' + id);
-                const height = target.getBoundingClientRect().height;
-                if (height === 0) target.style.maxHeight = '500px';
-                else target.style.maxHeight = '0';
-            },
-            updateDisplay(display, type) {
-                this.displayType = type;
-                this.display = display;
-                this.setPage(1);
-            },
-            async setModalState(state) {
-                this[state] = !this[state];
-                await this.forceUpdate();
-            },
-            async forceUpdate() {
-                const data = await API.get('/api/admin');
-                this.events = data.data;
-                if(this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
-            },
-            async deleteEvent(id) {
-                if (!confirm('Weet u zeker dat u dit event wilt verwiederen')) return;
-                if (!this.currentEvent.event && id === this.currentEvent.event.id) {
-                    this.selectedEventId = null;
-                    this.currentEvent = null;
-                }
-                if (this.selectedEventId) API.delete('/api/event/' + id);
-                if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
-                await this.forceUpdate();
-            },
-            async deleteProgram(id) {
-                API.delete('/api/program/' + id);
-                await this.forceUpdate();
-            },
-            async deleteCongress(id) {
-                API.delete('/api/congress/' + id);
-                await this.forceUpdate();
-            },
-            openEventSettings(id, settings) {
-                if(settings === null) {
-                    this.settingsId = id;
-                    console.log(id, settings);
-                    this.setModalState('createEventSettingsModal');
-                } else {
-                    console.log(id, settings);
-                    this.settingsId = settings.id;
-                    this.setModalState('updateEventSettingsModal');
-                }
-            }
+        eventDropDown (id) {
+            const target = document.getElementById('event-' + id);
+            const height = target.getBoundingClientRect().height;
+            if (height === 0) target.style.maxHeight = '500px';
+            else target.style.maxHeight = '0';
         },
-        async mounted() {
+        updateDisplay (display, type) {
+            this.displayType = type;
+            this.display = display;
+            this.setPage(1);
+        },
+        async setModalState (state) {
+            this[state] = !this[state];
             await this.forceUpdate();
+        },
+        async forceUpdate () {
+            const data = await API.get('/api/admin');
+            this.events = data.data;
+            if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
+        },
+        async deleteEvent (id) {
+            if (!confirm('Weet u zeker dat u dit event wilt verwiederen')) return;
+            if (!this.currentEvent.event && id === this.currentEvent.event.id) {
+                this.selectedEventId = null;
+                this.currentEvent = null;
+            }
+            if (this.selectedEventId) API.delete('/api/event/' + id);
+            if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
+            await this.forceUpdate();
+        },
+        async deleteProgram (id) {
+            API.delete('/api/program/' + id);
+            await this.forceUpdate();
+        },
+        async deleteCongress (id) {
+            API.delete('/api/congress/' + id);
+            await this.forceUpdate();
+        },
+        openEventSettings (id, settings) {
+            if (settings === null) {
+                this.settingsId = id;
+                console.log(id, settings);
+                this.setModalState('createEventSettingsModal');
+            } else {
+                console.log(id, settings);
+                this.settingsId = settings.id;
+                this.setModalState('updateEventSettingsModal');
+            }
         }
-    };
+    },
+    async mounted () {
+        await this.forceUpdate();
+    }
+};
 </script>
