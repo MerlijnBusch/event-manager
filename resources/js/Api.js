@@ -6,13 +6,31 @@ export default class API {
     constructor () {
         this.token = null;
         this.headers = null;
+        this.interval = null;
 
-        visible.setIdleDuration(3200) // 1 hour
+        visible.setIdleDuration(600);// 5 min
 
-        ifvisible.idle(() => { //logout the user
+        visible.idle(() => { // logout the user
             localStorage.removeItem('user');
             window.location.href = window.location.origin;
         });
+    }
+
+    /**
+     * Start the Interval
+     */
+    static async startInterval () {
+        this.interval = setInterval(async () => { // half hour refresh token
+            const res = await axios.get(window.location.origin + '/api/refresh-token', { headers: this.headers });
+            this.setToken(res.data.message);
+        }, (1000 * 60) * 30);
+    }
+
+    /**
+     * Stop the Interval
+     */
+    static stopInterval () {
+        if (this.interval !== null) this.interval = null;
     }
 
     /**
@@ -41,7 +59,7 @@ export default class API {
             }
             break;
         case 403:
-            if(!await this.get('/api/user/login-check').data) localStorage.removeItem('user');
+            if (!await this.get('/api/user/login-check').data) localStorage.removeItem('user');
             error = res.data.message;
             window.location.href = window.location.origin;
             break;

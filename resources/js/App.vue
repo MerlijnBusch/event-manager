@@ -21,6 +21,7 @@
 <script>
 import NavBar from '@/js/components/Navbar.vue';
 import Modal from '@/js/components/modal/Modal.vue';
+import API from './Api';
 
 export default {
     data () {
@@ -39,6 +40,7 @@ export default {
         logOut () {
             this.loggedIn = false;
             this.$user.data = {};
+            API.stopInterval();
             localStorage.removeItem('user');
         },
         loggedInHandler (e) {
