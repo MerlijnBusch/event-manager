@@ -149,10 +149,10 @@ export default {
                 this.isLoading = false;
                 this.errors.push('Er is niks ingevuld');
                 break;
-                // case /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$  /.test(this.email) === false:
-                //     this.isLoading = false;
-                //     this.errors.push('Er is geen email ingevuld');
-                //     break;
+            // case /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$  /.test(this.email) === false:
+            //     this.isLoading = false;
+            //     this.errors.push('Er is geen email ingevuld');
+            //     break;
             case /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,} /.test(this.password) === false:
                 this.isLoading = false;
                 this.errors.push('Het wachtwoord is incorrect. Gebruik minimaal 8 karakters, een hoofdletter en een nummer.');
