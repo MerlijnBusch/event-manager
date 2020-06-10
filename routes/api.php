@@ -20,12 +20,13 @@ Route::post('reset-password', 'Auth\ForgotPasswordController@sendPasswordResetLi
 Route::post('reset/password', 'Auth\ResetPasswordController@callResetPassword');
 Route::get('/event-overview/{event}', 'OverviewController@index')->name('event.overview');
 Route::get('/event-overview', 'OverviewController@event')->name('event');
+Route::get('/user/login-check', 'UserController@isLoggedIn');
 
 Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::post('logout', 'Auth\LoginController@logout');
     Route::patch('selectable-role-edit', 'UserController@UpdateSelectableUserRole');
 
-    Route::get('refresh-token','UserController@updatetoken');
+    Route::get('/refresh-token','UserController@updatetoken');
     Route::post('/search/profile','UserController@search');
     Route::get('/permissions', 'UserController@permissions')->name('user.permissions');
 
@@ -39,15 +40,15 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::delete('event/{event}/subscribe', 'EventController@unsubscribe')->name('event.subscribe.destroy');
 
     Route::get('event-settings', 'EventSettingsController@index')->name('event-settings');
-    Route::get('event-settings/{event}', 'EventSettingsController@show')->name('event-settings.show');
+    Route::get('event-settings/{id}', 'EventSettingsController@show')->name('event-settings.show');
     Route::post('event-settings', 'EventSettingsController@store')->name('event-settings.store');
-    Route::patch('event-settings/{event}', 'EventSettingsController@update')->name('event-settings.update');
+    Route::patch('event-settings/{id}', 'EventSettingsController@update')->name('event-settings.update');
     Route::delete('event-settings/{event}', 'EventSettingsController@destroy')->name('event-settings.destroy');
 
     Route::get('profile', 'ProfileController@index')->name('profile');
     Route::get('profile/{profile}', 'ProfileController@show')->name('profile.show');
     Route::post('profile', 'ProfileController@store')->name('profile.store');
-    Route::patch('profile-edit', 'ProfileController@update')->name('profile.update');
+    Route::patch('profile/{profile}', 'ProfileController@update')->name('profile.update');
     Route::delete('profile/{profile}', 'ProfileController@destroy')->name('profile.destroy');
 
     Route::get('profile-check','ProfileController@check')->name('profile.check');
@@ -77,9 +78,11 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
 
     Route::get('/admin', 'AdminController@index');
     Route::get('/admin/{event}', 'AdminController@event');
+    Route::get('/admin/user/{user}', 'AdminController@user');
+    Route::get('/admin/program/{id}', 'AdminController@program');
+    Route::get('/admin/congress/{id}', 'AdminController@congress');
     Route::post('/admin/excel', 'AdminController@excel');
     Route::post('/admin/search', 'AdminController@search');
-    Route::get('/admin/user/{user}', 'AdminController@user');
     Route::delete('/admin/user/{user}', 'AdminController@deleteUser');
 
     Route::get('/program-item/{id}', 'ProgramItemsController@show')->name('program.item.show');
@@ -87,10 +90,14 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::patch('/program-item/{id}', 'ProgramItemsController@update')->name('program.item.update');
     Route::delete('/program-item/{id}', 'ProgramItemsController@destroy')->name('program.item.destroy');
 
+    Route::get('/congress/{congress}', 'CongressController@show');
     Route::post('/congress', 'CongressController@store');
+    Route::patch('/congress/{congress}', 'CongressController@update');
     Route::delete('/congress/{congress}', 'CongressController@destroy');
 
+    Route::get('/program/{program}', 'ProgramController@show');
     Route::post('/program', 'ProgramController@store');
+    Route::patch('/program/{program}', 'ProgramController@update');
     Route::delete('/program/{program}', 'ProgramController@destroy');
 
     Route::get('/block/{block}', 'BlockController@show');

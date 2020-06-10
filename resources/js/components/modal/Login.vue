@@ -1,72 +1,72 @@
 <template>
-  <form
-    id="app"
-    class="form"
-    method="post"
-    @submit="checkForm"
-  >
-    <h2 class="form-title">
-      Login
-    </h2>
-
-    <div
-      v-if="errors.length"
-      class="form-errors"
+    <form
+        id="app"
+        class="form"
+        method="post"
+        @submit="checkForm"
     >
-      <p>Fout:</p>
-      <ul>
-        <li
-          v-for="(error, index) in errors"
-          :key="(index)"
+        <h2 class="form-title">
+            Login
+        </h2>
+
+        <div
+            v-if="errors.length"
+            class="form-errors"
         >
-          {{ error }}
-        </li>
-      </ul>
-    </div>
+            <p>Fout:</p>
+            <ul>
+                <li
+                    v-for="(error, index) in errors"
+                    :key="(index)"
+                >
+                    {{ error }}
+                </li>
+            </ul>
+        </div>
 
-    <div class="form-line">
-      <label
-        class="form-label"
-        for="email"
-      >E-mail</label>
-      <input
-        id="email"
-        v-model="email"
-        class="form-text-input"
-        type="email"
-        name="email"
-        placeholder="Email"
-      >
-    </div>
+        <div class="form-line">
+            <label
+                class="form-label"
+                for="email"
+            >E-mail</label>
+            <input
+                id="email"
+                v-model="email"
+                class="form-text-input"
+                type="email"
+                name="email"
+                placeholder="Email"
+            >
+        </div>
 
-    <div class="form-line">
-      <label
-        class="form-label"
-        for="password"
-      >Wachtwoord</label>
-      <input
-        id="password"
-        v-model="password"
-        class="form-text-input"
-        type="password"
-        name="password"
-        placeholder="Password"
-      >
-      <button
-        class="form-afterinput-link"
-        @click="$emit('forgotpassword')"
-      >
-        Wachtwoord vergeten
-      </button>
-    </div>
-    <div class="form-line form-line-hasbutton">
-      <input
-        type="submit"
-        value="Login"
-        class="form-button"
-      >
-    </div>
-  </form>
+        <div class="form-line">
+            <label
+                class="form-label"
+                for="password"
+            >Wachtwoord</label>
+            <input
+                id="password"
+                v-model="password"
+                class="form-text-input"
+                type="password"
+                name="password"
+                placeholder="Password"
+            >
+            <button
+                class="form-afterinput-link"
+                @click="$emit('forgotpassword')"
+            >
+                Wachtwoord vergeten
+            </button>
+        </div>
+        <div class="form-line form-line-hasbutton">
+            <input
+                type="submit"
+                value="Login"
+                class="form-button"
+            >
+        </div>
+    </form>
 </template>
 
 <script>

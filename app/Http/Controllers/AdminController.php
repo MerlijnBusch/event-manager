@@ -154,4 +154,41 @@ class AdminController extends Controller
 
         return response()->json($user, 200);
     }
+
+    /**
+     * @param $id
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function program($id){
+
+        $this->authorize('read', Program::class);
+
+        $s = Program::query()
+            ->where('id', $id)
+            ->with('programItems')
+            ->first();
+
+        return response()->json($s, 200);
+
+    }
+
+    /**
+     * @param $id
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function congress($id){
+
+        $this->authorize('read', Congress::class);
+
+        $s = Congress::query()
+            ->where('id', $id)
+            ->with('block')
+            ->with('block.items')
+            ->first();
+
+        return response()->json($s, 200);
+
+    }
 }

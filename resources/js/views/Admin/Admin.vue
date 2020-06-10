@@ -1,232 +1,249 @@
 <template>
-  <div class="admin-container">
-    <div class="admin-sidebar">
-      <div>
-        <p>users:</p>
-        <div>
-          <div
-            class="admin-sidebar-name-holder"
-            @click="setPage(3)"
-          >
-            <div
-              class="admin-sidebar-text-name"
-            >
-              Rollen en permissions
-            </div>
-          </div>
-          <div
-            class="admin-sidebar-name-holder"
-            @click="setPage(2)"
-          >
-            <div
-              class="admin-sidebar-text-name"
-            >
-              Find user
-            </div>
-          </div>
-          <div
-            class="admin-sidebar-name-holder"
-            @click="setModalState(`uploadExcelUsersModal`)"
-          >
-            <div
-              class="admin-sidebar-text-name"
-            >
-              Upload multiple users (excel)
-            </div>
-          </div>
-        </div>
-        <p>events:</p>
-        <div
-          v-for="event in events"
-          :key="event.name"
-          class="admin-sidebar-event-container"
-        >
-          <div
-            class="admin-sidebar-event-list-item"
-            @click="setSelectedEventId(event.id)"
-          >
-            <div class="admin-sidebar-name-holder">
-              <div
-                class="admin-sidebar-text-name"
-                @click="eventDropDown(event.id)"
-              >
-                {{ event.name }}
-              </div>
-              <div class="admin-sidebar-icon-container">
-                <div
-                  class="admin-sidebar-icon"
-                  @click="openEventSettings(event.id)"
-                >
-                  <i class="fas fa-cog" />
-                </div>
-                <div
-                  class="admin-sidebar-icon"
-                  @click="setModalState(`updateEventModal`)"
-                >
-                  <i class="fas fa-pencil" />
-                </div>
-                <div
-                  class="admin-sidebar-icon"
-                  title="evenment verweideren"
-                  @click="deleteEvent(event.id)"
-                >
-                  <i class="fas fa-trash" />
-                </div>
-              </div>
-            </div>
-            <div
-              :id="'event-' + event.id"
-              class="admin-sidebar-display-event-options"
-            >
-              <!--for looping programs-->
-              <div
-                v-for="prog in event.program"
-                v-if="event.program"
-                :key="'event.program-prog_' + prog.id"
-              >
-                <div
-                  v-if="prog.event_id === event.id"
-                  class="admin-sidebar-program-container"
-                >
-                  <div
-                    class="admin-sidebar-program-title"
-                    @click="updateDisplay(prog, 'program')"
-                  >
-                    {{ prog.name }}
-                  </div>
-                  <div class="admin-sidebar-program-action-container">
-                    <div class="admin-sidebar-program-action-update">
-                      <i class="fas fa-pencil" />
+    <div class="admin-container">
+        <div class="admin-sidebar">
+            <div>
+                <p>users:</p>
+                <div>
+                    <div
+                        class="admin-sidebar-name-holder"
+                        @click="setPage(3)"
+                    >
+                        <div
+                            class="admin-sidebar-text-name"
+                        >
+                            Rollen en permissions
+                        </div>
                     </div>
                     <div
-                      class="admin-sidebar-program-action-delete"
-                      @click="deleteProgram(prog.id)"
+                        class="admin-sidebar-name-holder"
+                        @click="setPage(2)"
                     >
-                      <i class="fas fa-trash" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--for looping congress-->
-              <div
-                v-for="cong in event.congress"
-                v-if="event.congress"
-                :key="'event.congress-congress_' + cong.id"
-              >
-                <div
-                  v-if="cong.event_id === event.id"
-                  class="admin-sidebar-program-container"
-                >
-                  <div
-                    class="admin-sidebar-program-title"
-                    @click="updateDisplay(cong, 'congress')"
-                  >
-                    {{ cong.name }}
-                  </div>
-                  <div class="admin-sidebar-program-action-container">
-                    <div class="admin-sidebar-program-action-update">
-                      <i class="fas fa-pencil" />
+                        <div
+                            class="admin-sidebar-text-name"
+                        >
+                            Find user
+                        </div>
                     </div>
                     <div
-                      class="admin-sidebar-program-action-delete"
-                      @click="deleteCongress(cong.id)"
+                        class="admin-sidebar-name-holder"
+                        @click="setModalState(`uploadExcelUsersModal`)"
                     >
-                      <i class="fas fa-trash" />
+                        <div
+                            class="admin-sidebar-text-name"
+                        >
+                            Upload multiple users (excel)
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-              <div class="admin-action-container">
+                <p>events:</p>
                 <div
-                  class="admin-create-program-sidebar"
+                    v-for="event in events"
+                    :key="event.name"
+                    class="admin-sidebar-event-container"
                 >
-                  <div
-                    class="admin-sidebar-program-create-button"
-                    @click="setModalState(`createProgramModal`)"
-                  >
-                    <i class="fas fa-plus-circle" /> Create Program
-                  </div>
-                </div>
+                    <div
+                        class="admin-sidebar-event-list-item"
+                        @click="setSelectedEventId(event.id)"
+                    >
+                        <div class="admin-sidebar-name-holder">
+                            <div
+                                class="admin-sidebar-text-name"
+                                @click="eventDropDown(event.id)"
+                            >
+                                {{ event.name }}
+                            </div>
+                            <div class="admin-sidebar-icon-container">
+                                <div
+                                    class="admin-sidebar-icon"
+                                    @click="openEventSettings(event.id, event.settings)"
+                                >
+                                    <i class="fas fa-cog" />
+                                </div>
+                                <div
+                                    class="admin-sidebar-icon"
+                                    @click="setModalState(`updateEventModal`)"
+                                >
+                                    <i class="fas fa-pencil" />
+                                </div>
+                                <div
+                                    class="admin-sidebar-icon"
+                                    title="evenment verweideren"
+                                    @click="deleteEvent(event.id)"
+                                >
+                                    <i class="fas fa-trash" />
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            :id="'event-' + event.id"
+                            class="admin-sidebar-display-event-options"
+                        >
+                            <!--for looping programs-->
+                            <div
+                                v-for="prog in event.program"
+                                v-if="event.program"
+                                :key="'event.program-prog_' + prog.id"
+                            >
+                                <div
+                                    v-if="prog.event_id === event.id"
+                                    class="admin-sidebar-program-container"
+                                >
+                                    <div
+                                        class="admin-sidebar-program-title"
+                                        @click="updateDisplay(prog, 'program')"
+                                    >
+                                        {{ prog.name }}
+                                    </div>
+                                    <div class="admin-sidebar-program-action-container">
+                                        <div
+                                            class="admin-sidebar-program-action-update"
+                                            @click="updateProgram(prog.id)"
+                                        >
+                                            <i class="fas fa-pencil" />
+                                        </div>
+                                        <div
+                                            class="admin-sidebar-program-action-delete"
+                                            @click="deleteProgram(prog.id)"
+                                        >
+                                            <i class="fas fa-trash" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--for looping congress-->
+                            <div
+                                v-for="cong in event.congress"
+                                v-if="event.congress"
+                                :key="'event.congress-congress_' + cong.id"
+                            >
+                                <div
+                                    v-if="cong.event_id === event.id"
+                                    class="admin-sidebar-program-container"
+                                >
+                                    <div
+                                        class="admin-sidebar-program-title"
+                                        @click="updateDisplay(cong, 'congress')"
+                                    >
+                                        {{ cong.name }}
+                                    </div>
+                                    <div class="admin-sidebar-program-action-container">
+                                        <div class="admin-sidebar-program-action-update">
+                                            <i class="fas fa-pencil" />
+                                        </div>
+                                        <div
+                                            class="admin-sidebar-program-action-delete"
+                                            @click="deleteCongress(cong.id)"
+                                        >
+                                            <i class="fas fa-trash" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="admin-action-container">
+                                <div
+                                    class="admin-create-program-sidebar"
+                                >
+                                    <div
+                                        class="admin-sidebar-program-create-button"
+                                        @click="setModalState(`createProgramModal`)"
+                                    >
+                                        <i class="fas fa-plus-circle" /> Create Program
+                                    </div>
+                                </div>
 
-                <div
-                  class="admin-create-program-sidebar"
-                >
-                  <div
-                    class="admin-sidebar-program-create-button"
-                    @click="setModalState(`createCongressModal`)"
-                  >
-                    <i class="fas fa-plus-circle" /> Create Congress
-                  </div>
+                                <div
+                                    class="admin-create-program-sidebar"
+                                >
+                                    <div
+                                        class="admin-sidebar-program-create-button"
+                                        @click="setModalState(`createCongressModal`)"
+                                    >
+                                        <i class="fas fa-plus-circle" /> Create Congress
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
+            <div class="admin-sidebar-create-event-container">
+                <div
+                    class="admin-create-event-sidebar"
+                    @click="setModalState(`createEventModal`)"
+                >
+                    <i class="fas fa-plus-circle admin-sidebar-event-create-icon" />Create Event
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="admin-sidebar-create-event-container">
-        <div
-          class="admin-create-event-sidebar"
-          @click="setModalState(`createEventModal`)"
-        >
-          <i class="fas fa-plus-circle admin-sidebar-event-create-icon" />Create Event
+        <div class="admin-main">
+            <congress-display
+                v-if="page === 1 && displayType === 'congress'"
+                :congress="display"
+            />
+            <program-display
+                v-if="page === 1 && displayType === 'program'"
+                :program="display"
+            />
+            <div
+                v-if="page === 1"
+                class="admin-item-container-footer"
+            />
+            <find-user v-if="page === 2" />
+            <rolls v-if="page === 3" />
         </div>
-      </div>
+
+        <create-program-modal
+            v-if="currentEvent"
+            v-show="createProgramModal"
+            :id="currentEvent.id"
+            @close="setModalState(`createProgramModal`)"
+        />
+
+        <update-program-modal
+            v-if="currentEvent"
+            v-show="updateProgramModal"
+            :id="updateProgramId"
+            @close="setModalState(`updateProgramModal`)"
+        />
+
+        <create-congress-modal
+            v-if="currentEvent"
+            v-show="createCongressModal"
+            :id="currentEvent.id"
+            @close="setModalState(`createCongressModal`)"
+        />
+
+        <create-event-modal
+            v-show="createEventModal"
+            @close="setModalState(`createEventModal`)"
+        />
+
+        <upload-excel-users-modal
+            v-show="uploadExcelUsersModal"
+            @close="setModalState(`uploadExcelUsersModal`)"
+        />
+
+        <update-event-modal
+            v-if="currentEvent.event"
+            v-show="updateEventModal"
+            :id="currentEvent.event.id"
+            @close="setModalState(`updateEventModal`)"
+        />
+
+        <create-event-settings-modal
+            v-if="settingsId"
+            v-show="createEventSettingsModal"
+            :id="settingsId"
+            @close="setModalState(`createEventSettingsModal`)"
+        />
+
+        <update-event-settings-modal
+            v-if="settingsId"
+            v-show="updateEventSettingsModal"
+            :id="settingsId"
+            @close="setModalState(`updateEventSettingsModal`)"
+        />
     </div>
-    <div class="admin-main">
-      <congress-display
-        v-if="page === 1 && displayType === 'congress'"
-        :congress="display"
-      />
-      <program-display
-        v-if="page === 1 && displayType === 'program'"
-        :program="display"
-      />
-      <div
-        v-if="page === 1"
-        class="admin-item-container-footer"
-      />
-      <find-user v-if="page === 2" />
-      <rolls v-if="page === 3" />
-    </div>
-
-    <create-program-modal
-      v-if="currentEvent"
-      v-show="createProgramModal"
-      :id="currentEvent.id"
-      @close="setModalState(`createProgramModal`)"
-    />
-
-    <create-congress-modal
-      v-if="currentEvent"
-      v-show="createCongressModal"
-      :id="currentEvent.id"
-      @close="setModalState(`createCongressModal`)"
-    />
-
-    <create-event-modal
-      v-show="createEventModal"
-      @close="setModalState(`createEventModal`)"
-    />
-
-    <upload-excel-users-modal
-      v-show="uploadExcelUsersModal"
-      @close="setModalState(`uploadExcelUsersModal`)"
-    />
-
-    <update-event-modal
-      v-if="currentEvent.event"
-      v-show="updateEventModal"
-      :id="currentEvent.event.id"
-      @close="setModalState(`updateEventModal`)"
-    />
-
-    <create-event-settings-modal
-      v-if="settingsId"
-      v-show="createEventSettingsModal"
-      :id="settingsId"
-      @close="setModalState(`createEventSettingsModal`)"
-    />
-  </div>
 </template>
 
 <script>
@@ -241,6 +258,8 @@ import CreateEventSettingsModal from './components/modal/Create/CreateEventSetti
 import CreateCongressModal from './components/modal/Create/CreateCongressModal';
 import CongressDisplay from './components/CongressDisplay';
 import ProgramDisplay from './components/ProgramDisplay';
+import UpdateEventSettingsModal from './components/modal/Update/UpdateEventSettingsModal';
+import UpdateProgramModal from './components/modal/Update/UpdateProgramModal';
 
 export default {
     name: 'Admin',
@@ -251,7 +270,6 @@ export default {
             selectedEventId: null,
             currentEvent: [],
             display: null,
-            updateBlockId: null,
             createEventModal: false,
             createProgramModal: false,
             updateEventSettingsModal: false,
@@ -259,6 +277,8 @@ export default {
             updateEventModal: false,
             createEventSettingsModal: false,
             createCongressModal: false,
+            updateProgramModal: false,
+            updateProgramId: null,
             settingsId: null,
             displayType: null,
             timeOut: null
@@ -274,7 +294,9 @@ export default {
         CreateEventSettingsModal,
         CreateCongressModal,
         CongressDisplay,
-        ProgramDisplay
+        ProgramDisplay,
+        UpdateEventSettingsModal,
+        UpdateProgramModal
     },
     methods: {
         async setSelectedEventId (id) {
@@ -295,26 +317,18 @@ export default {
             else target.style.maxHeight = '0';
         },
         updateDisplay (display, type) {
-            console.log(display, 'display', type);
             this.displayType = type;
             this.display = display;
             this.setPage(1);
         },
         async setModalState (state) {
             this[state] = !this[state];
-            if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
-            this.forceUpdate();
+            await this.forceUpdate();
         },
-        forceUpdate () {
-            if (this.currentEvent && this.currentEvent.programs) {
-                this.currentEvent.programs.forEach((item, index) => {
-                    if (item.id === this.program.id) this.program = this.currentEvent.programs[index];
-                });
-            }
-            setTimeout(async () => {
-                const data = await API.get('/api/admin');
-                this.events = data.data;
-            }, 0);
+        async forceUpdate () {
+            const data = await API.get('/api/admin');
+            this.events = data.data;
+            if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
         },
         async deleteEvent (id) {
             if (!confirm('Weet u zeker dat u dit event wilt verwiederen')) return;
@@ -324,24 +338,32 @@ export default {
             }
             if (this.selectedEventId) API.delete('/api/event/' + id);
             if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
-            this.forceUpdate();
+            await this.forceUpdate();
+        },
+        async updateProgram (id) {
+            this.updateProgramId = id;
+            await this.setModalState('updateProgramModal');
         },
         async deleteProgram (id) {
             API.delete('/api/program/' + id);
-            this.forceUpdate();
+            await this.forceUpdate();
         },
         async deleteCongress (id) {
             API.delete('/api/congress/' + id);
-            this.forceUpdate();
+            await this.forceUpdate();
         },
-        openEventSettings (id) {
-            this.settingsId = id;
-            console.log(id);
-            this.setModalState('createEventSettingsModal');
+        openEventSettings (id, settings) {
+            if (settings === null) {
+                this.settingsId = id;
+                this.setModalState('createEventSettingsModal');
+            } else {
+                this.settingsId = settings.id;
+                this.setModalState('updateEventSettingsModal');
+            }
         }
     },
     async mounted () {
-        this.forceUpdate();
+        await this.forceUpdate();
     }
 };
 </script>

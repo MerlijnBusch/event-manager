@@ -1,107 +1,107 @@
 <template>
-  <div class="datePicker">
-    <div @click="isOpen = !isOpen">
-      <span v-if="!!value && value.length">{{ value }}</span><span
-        v-else
-      >Pick a date</span>
-    </div>
-    <div
-      v-if="isOpen"
-      class="datePicker-window"
-    >
-      <div>
-        <div @click="previous">
-          previous
+    <div class="datePicker">
+        <div @click="isOpen = !isOpen">
+            <span v-if="!!value && value.length">{{ value }}</span><span
+                v-else
+            >Pick a date</span>
         </div>
-        <span>{{ months[date.current.month] }} {{ date.current.year }}</span>
-        <div @click="next">
-          next
-        </div>
-      </div>
-      <table
-        id="calendar"
-        class="table table-bordered table-responsive-sm"
-      >
-        <thead>
-          <tr>
-            <th>Sun</th>
-            <th>Mon</th>
-            <th>Tue</th>
-            <th>Wed</th>
-            <th>Thu</th>
-            <th>Fri</th>
-            <th>Sat</th>
-          </tr>
-        </thead>
-
-        <tbody id="calendar-body">
-          <tr
-            v-for="(row,indexR) in table.rows"
-            :key="'row-' + indexR"
-          >
-            <td
-              v-for="(column,indexC) in row"
-              :key="'row-' + indexR + '-column-' + indexC"
-            >
-              <div
-                v-if="column"
-                :class="{'selected' : parseInt(date.current.day) === parseInt(column)}"
-                @click="pushDate(column)"
-              >
-                {{ column }}
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div>
-        <div><b>Jump to</b></div>
-        <label>
-          Year:
-          <select
-            v-model="date.current.year"
-            @change="yearMonthIntUpdate"
-          >
-            <option
-              v-for="n in 11"
-              v-if="date.today"
-              :key="'year-' + n"
-              :value="n + date.today.getFullYear() - 1"
-            >
-              {{ n + date.today.getFullYear() - 1 }}
-            </option>
-          </select>
-        </label>
-        <label>
-          Month:
-          <select
-            v-model="date.current.month"
-            @change="yearMonthIntUpdate"
-          >
-            <option
-              v-for="(month,index) in months"
-              :key="'month-' + index"
-              :value="index"
-            >
-              {{ month }}
-            </option>
-          </select>
-        </label>
-      </div>
-      <div>
-        <h3>Time: <span style="font-weight: 300">{{ getTimeString(time) }}</span></h3>
-        <input
-          v-model="time"
-          style="width: 100%"
-          type="range"
-          min="0"
-          :max="24 * 12"
-          @change="updateValue"
+        <div
+            v-if="isOpen"
+            class="datePicker-window"
         >
-      </div>
+            <div>
+                <div @click="previous">
+                    previous
+                </div>
+                <span>{{ months[date.current.month] }} {{ date.current.year }}</span>
+                <div @click="next">
+                    next
+                </div>
+            </div>
+            <table
+                id="calendar"
+                class="table table-bordered table-responsive-sm"
+            >
+                <thead>
+                    <tr>
+                        <th>Sun</th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                    </tr>
+                </thead>
+
+                <tbody id="calendar-body">
+                    <tr
+                        v-for="(row,indexR) in table.rows"
+                        :key="'row-' + indexR"
+                    >
+                        <td
+                            v-for="(column,indexC) in row"
+                            :key="'row-' + indexR + '-column-' + indexC"
+                        >
+                            <div
+                                v-if="column"
+                                :class="{'selected' : parseInt(date.current.day) === parseInt(column)}"
+                                @click="pushDate(column)"
+                            >
+                                {{ column }}
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div>
+                <div><b>Jump to</b></div>
+                <label>
+                    Year:
+                    <select
+                        v-model="date.current.year"
+                        @change="yearMonthIntUpdate"
+                    >
+                        <option
+                            v-for="n in 11"
+                            v-if="date.today"
+                            :key="'year-' + n"
+                            :value="n + date.today.getFullYear() - 1"
+                        >
+                            {{ n + date.today.getFullYear() - 1 }}
+                        </option>
+                    </select>
+                </label>
+                <label>
+                    Month:
+                    <select
+                        v-model="date.current.month"
+                        @change="yearMonthIntUpdate"
+                    >
+                        <option
+                            v-for="(month,index) in months"
+                            :key="'month-' + index"
+                            :value="index"
+                        >
+                            {{ month }}
+                        </option>
+                    </select>
+                </label>
+            </div>
+            <div>
+                <h3>Time: <span style="font-weight: 300">{{ getTimeString(time) }}</span></h3>
+                <input
+                    v-model="time"
+                    style="width: 100%"
+                    type="range"
+                    min="0"
+                    :max="24 * 12"
+                    @change="updateValue"
+                >
+            </div>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>

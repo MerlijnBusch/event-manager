@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Congress;
-use App\Rules\EventExistValidator;
+use App\Http\Requests\CongressStoreValidationRequest;
+use App\Http\Requests\CongressUpdateValidationRequest;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Validator;
 
 class CongressController extends Controller
 {
@@ -23,27 +23,31 @@ class CongressController extends Controller
         //
     }
 
+
     /**
-     * Store a newly created resource in storage.
+     * Display the specified resource.
      *
-     * @param Request $request
+     * @param Congress $congress
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function store(Request $request)
+    public function show(Congress $congress)
+    {
+        $this->authorize('read', Congress::class);
+
+        return response()->json($congress, 200);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param CongressStoreValidationRequest $request
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function store(CongressStoreValidationRequest $request)
     {
         $this->authorize('write', Congress::class);
-
-        $validator = Validator::make($request->all(), [
-            'event_id' => ['required', new EventExistValidator],
-            'name' => ['string'],
-            'description' => ['string'],
-            'active' => ['boolean'],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
 
         Congress::create($request->all());
 
@@ -51,37 +55,21 @@ class CongressController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param Congress $congress
-     * @return Response
-     */
-    public function show(Congress $congress)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Congress $congress
-     * @return Response
-     */
-    public function edit(Congress $congress)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param CongressUpdateValidationRequest $request
      * @param Congress $congress
-     * @return Response
+     * @return JsonResponse
+     * @throws AuthorizationException
      */
-    public function update(Request $request, Congress $congress)
+    public function update(CongressUpdateValidationRequest $request, Congress $congress)
     {
-        //
+        $this->authorize('write', Congress::class);
+
+        $congress = Congress::findOrFail($congress->id);
+        $congress->update($request->all());
+
+        return response()->json(['message' => 'Congress created successfully'], 200);
     }
 
     /**

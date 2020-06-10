@@ -22,15 +22,9 @@ class UserController extends Controller
     public function updatetoken()
     {
         $user = User::find(Auth::id());
-        $user->api_token = Hash::make(Str::random(120), [
-            'memory' => 1024,
-            'time' => 2,
-            'threads' => 2,
-        ]);
-        $user->api_token_expired_date = Carbon::now()->addHour();
-        $user->update();
+        $s = $user->generateToken();
 
-        return response()->json(['message' => $user->api_token], 200);
+        return response()->json(['message' => $s], 200);
     }
 
     /**
@@ -95,6 +89,12 @@ class UserController extends Controller
         $user->role_id = $request->id;
         $user->update();
 
-        return response()->json(['message' => "Role Edited"]);
+        return response()->json(['message' => "Role Edited"], 200);
+    }
+
+    public function isLoggedIn(){
+
+        return response()->json(Auth::check(), 200);
+
     }
 }

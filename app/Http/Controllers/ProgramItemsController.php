@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Program;
+use App\Http\Requests\ProgramItemStoreValidationRequest;
+use App\Http\Requests\ProgramItemUpdateValidationRequest;
 use App\ProgramItems;
-use App\Rules\ProgramExistValidator;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Validator;
 
 class ProgramItemsController extends Controller
 {
@@ -32,25 +29,13 @@ class ProgramItemsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param ProgramItemStoreValidationRequest $request
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function store(Request $request)
+    public function store(ProgramItemStoreValidationRequest $request)
     {
         $this->authorize('write', ProgramItems::class);
-
-        $validator = Validator::make($request->all(), [
-            'name' => ['required', 'max:255'],
-            'description' => ['required'],
-            'program_id' => ['required', new ProgramExistValidator],
-            'date' => ['date'],
-            'active' => ['required', 'boolean'],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
 
         ProgramItems::create($request->all());
 
@@ -60,26 +45,14 @@ class ProgramItemsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param ProgramItemUpdateValidationRequest $request
      * @param $id
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function update(Request $request, $id)
+    public function update(ProgramItemUpdateValidationRequest $request, $id)
     {
         $this->authorize('write', ProgramItems::class);
-
-        $validator = Validator::make($request->all(), [
-            'name' => ['required', 'max:255'],
-            'description' => ['required'],
-            'program_id' => ['required', new ProgramExistValidator],
-            'date' => ['date'],
-            'active' => ['required', 'boolean'],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
 
         $item = ProgramItems::findOrFail($id);
         $item->update($request->all());

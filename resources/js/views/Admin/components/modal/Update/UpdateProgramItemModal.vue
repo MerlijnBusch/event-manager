@@ -1,117 +1,117 @@
 <template>
-  <transition name="modal-fade">
-    <div class="admin-modal-backdrop">
-      <div
-        class="admin-modal"
-        role="dialog"
-        aria-labelledby="modalTitle"
-        aria-describedby="modalDescription"
-      >
-        <header
-          id="modalTitle"
-          class="admin-modal-header"
-        >
-          <slot name="header">
-            <p
-              class="admin-modal-title"
+    <transition name="modal-fade">
+        <div class="admin-modal-backdrop">
+            <div
+                class="admin-modal"
+                role="dialog"
+                aria-labelledby="modalTitle"
+                aria-describedby="modalDescription"
             >
-              Update Program Item
-            </p>
-
-            <button
-              type="button"
-              class="admin-modal-btn-close"
-              aria-label="Close modal"
-              @click="close"
-            >
-              x
-            </button>
-          </slot>
-        </header>
-        <section
-          id="modalDescription"
-          class="admin-modal-body"
-        >
-          <slot name="body">
-            <form
-              class="form"
-              method="post"
-              @submit.prevent="checkForm"
-            >
-              <div class="form-line">
-                <label
-                  class="form-label"
-                  for="name"
-                >Name</label>
-                <input
-                  id="name"
-                  v-model="name"
-                  class="form-text-input"
-                  type="text"
-                  name="name"
-                  placeholder="Event name"
+                <header
+                    id="modalTitle"
+                    class="admin-modal-header"
                 >
-              </div>
+                    <slot name="header">
+                        <p
+                            class="admin-modal-title"
+                        >
+                            Update Program Item
+                        </p>
 
-              <div class="form-line">
-                <label
-                  class="form-label"
-                  for="description"
-                >description</label>
-                <textarea
-                  id="description"
-                  v-model="description"
-                  class="form-text-input"
-                  type="text"
-                  name="description"
-                  placeholder="Event name"
-                />
-              </div>
-
-              <date-picker
-                v-model="date"
-                @update="(v)=>{date = v}"
-              />
-
-              <div class="form-line">
-                <label
-                  class="form-label"
-                  for="active"
-                >Active</label>
-                <input
-                  id="active"
-                  v-model="active"
-                  class="form-text-input"
-                  type="checkbox"
-                  name="active"
+                        <button
+                            type="button"
+                            class="admin-modal-btn-close"
+                            aria-label="Close modal"
+                            @click="close"
+                        >
+                            x
+                        </button>
+                    </slot>
+                </header>
+                <section
+                    id="modalDescription"
+                    class="admin-modal-body"
                 >
-              </div>
+                    <slot name="body">
+                        <form
+                            class="form"
+                            method="post"
+                            @submit.prevent="checkForm"
+                        >
+                            <div class="form-line">
+                                <label
+                                    class="form-label"
+                                    for="name"
+                                >Name</label>
+                                <input
+                                    id="name"
+                                    v-model="name"
+                                    class="form-text-input"
+                                    type="text"
+                                    name="name"
+                                    placeholder="Event name"
+                                >
+                            </div>
 
-              <div class="form-line admin-from-submit">
-                <input
-                  type="submit"
-                  value="Submit"
-                  class="submit-btn admin-form-submit"
-                >
-              </div>
-            </form>
-          </slot>
-        </section>
-        <footer class="admin-modal-footer">
-          <slot name="footer">
-            <button
-              type="button"
-              class="admin-modal-btn-green"
-              aria-label="Close modal"
-              @click="close"
-            >
-              Close
-            </button>
-          </slot>
-        </footer>
-      </div>
-    </div>
-  </transition>
+                            <div class="form-line">
+                                <label
+                                    class="form-label"
+                                    for="description"
+                                >description</label>
+                                <textarea
+                                    id="description"
+                                    v-model="description"
+                                    class="form-text-input"
+                                    type="text"
+                                    name="description"
+                                    placeholder="Event name"
+                                />
+                            </div>
+
+                            <date-picker
+                                v-model="date"
+                                @update="(v)=>{date = v}"
+                            />
+
+                            <div class="form-line">
+                                <label
+                                    class="form-label"
+                                    for="active"
+                                >Active</label>
+                                <input
+                                    id="active"
+                                    v-model="active"
+                                    class="form-text-input"
+                                    type="checkbox"
+                                    name="active"
+                                >
+                            </div>
+
+                            <div class="form-line admin-from-submit">
+                                <input
+                                    type="submit"
+                                    value="Submit"
+                                    class="submit-btn admin-form-submit"
+                                >
+                            </div>
+                        </form>
+                    </slot>
+                </section>
+                <footer class="admin-modal-footer">
+                    <slot name="footer">
+                        <button
+                            type="button"
+                            class="admin-modal-btn-green"
+                            aria-label="Close modal"
+                            @click="close"
+                        >
+                            Close
+                        </button>
+                    </slot>
+                </footer>
+            </div>
+        </div>
+    </transition>
 </template>
 
 <script>

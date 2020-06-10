@@ -1,65 +1,65 @@
 <template>
-  <div class="admin-display-page">
-    <div class="admin-display-page-main">
-      <div class="admin-display-page-main-title">
-        titel
-      </div>
-      <div class="admin-display-page-main-container">
-        <div
-          v-for="roll in rolls"
-          :key="roll.id"
-        >
-          <div class="admin-roll-list-item">
-            <div class="admin-roll-list-item-title">
-              {{ roll.role_name }}
+    <div class="admin-display-page">
+        <div class="admin-display-page-main">
+            <div class="admin-display-page-main-title">
+                titel
             </div>
-            <div class="admin-roll-action-holder">
-              <input
-                :id="roll.id"
-                v-model="roll.selectable"
-                class="admin-roll-action-icon-holder"
-                type="checkbox"
-                title="Of de rol ge selecteerd kan worden bij het regristeren"
-                @change="handleChange"
-              >
-              <div
-                class="admin-roll-action-icon-holder"
-                title="update this roll"
-                @click="updateRoll(roll.id)"
-              >
-                <i class="fas fa-pencil admin-roll-action-icon" />
-              </div>
-              <div
-                class="admin-roll-action-icon-holder"
-                title="delete this roll"
-                @click="deleteRoll(roll.id)"
-              >
-                <i class="fas fa-trash admin-roll-action-icon" />
-              </div>
+            <div class="admin-display-page-main-container">
+                <div
+                    v-for="roll in rolls"
+                    :key="roll.id"
+                >
+                    <div class="admin-roll-list-item">
+                        <div class="admin-roll-list-item-title">
+                            {{ roll.role_name }}
+                        </div>
+                        <div class="admin-roll-action-holder">
+                            <input
+                                :id="roll.id"
+                                v-model="roll.selectable"
+                                class="admin-roll-action-icon-holder"
+                                type="checkbox"
+                                title="Of de rol ge selecteerd kan worden bij het regristeren"
+                                @change="handleChange"
+                            >
+                            <div
+                                class="admin-roll-action-icon-holder"
+                                title="update this roll"
+                                @click="updateRoll(roll.id)"
+                            >
+                                <i class="fas fa-pencil admin-roll-action-icon" />
+                            </div>
+                            <div
+                                class="admin-roll-action-icon-holder"
+                                title="delete this roll"
+                                @click="deleteRoll(roll.id)"
+                            >
+                                <i class="fas fa-trash admin-roll-action-icon" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="admin-role-create-container"
+                    @click="setModalState('createRollModal')"
+                >
+                    <i class="fas fa-plus-circle admin-role-create-icon" />create role
+                </div>
             </div>
-          </div>
         </div>
-        <div
-          class="admin-role-create-container"
-          @click="setModalState('createRollModal')"
-        >
-          <i class="fas fa-plus-circle admin-role-create-icon" />create role
-        </div>
-      </div>
+        <div class="admin-item-container-footer" />
+
+        <update-role-modal
+            v-show="updateRollModal"
+            :id="rollId"
+            @close="setModalState(`updateRollModal`)"
+        />
+
+        <create-role-modal
+            v-show="createRollModal"
+            @close="setModalState(`createRollModal`)"
+        />
     </div>
-    <div class="admin-item-container-footer" />
-
-    <update-role-modal
-      v-show="updateRollModal"
-      :id="rollId"
-      @close="setModalState(`updateRollModal`)"
-    />
-
-    <create-role-modal
-      v-show="createRollModal"
-      @close="setModalState(`createRollModal`)"
-    />
-  </div>
 </template>
 
 <script>

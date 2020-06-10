@@ -1,137 +1,152 @@
 <template>
-  <transition name="modal-fade">
-    <div class="admin-modal-backdrop">
-      <div
-        class="admin-modal"
-        role="dialog"
-        aria-labelledby="modalTitle"
-        aria-describedby="modalDescription"
-      >
-        <header
-          id="modalTitle"
-          class="admin-modal-header"
-        >
-          <slot name="header">
-            <p
-              class="admin-modal-title"
+    <transition name="modal-fade">
+        <div class="admin-modal-backdrop">
+            <div
+                class="admin-modal"
+                role="dialog"
+                aria-labelledby="modalTitle"
+                aria-describedby="modalDescription"
             >
-              Create Event Settings
-            </p>
-
-            <button
-              type="button"
-              class="admin-modal-btn-close"
-              aria-label="Close modal"
-              @click="close"
-            >
-              x
-            </button>
-          </slot>
-        </header>
-        <section
-          id="modalDescription"
-          class="admin-modal-body"
-        >
-          <slot name="body">
-            <form
-              class="form"
-              method="post"
-              @submit.prevent="checkForm"
-            >
-              <date-picker
-                v-model="date_start"
-                @update="(v)=>{date_start = v}"
-              />
-              <date-picker
-                v-model="date_end"
-                @update="(v)=>{date_end = v}"
-              />
-
-              <div class="form-line">
-                <label
-                  class="form-label"
-                  for="max_registrations"
-                >max registrations</label>
-                <input
-                  id="max_registrations"
-                  v-model="max_registrations"
-                  class="form-text-input"
-                  type="text"
-                  name="max_registrations"
-                  placeholder="Event name"
+                <header
+                    id="modalTitle"
+                    class="admin-modal-header"
                 >
-              </div>
+                    <slot name="header">
+                        <p
+                            class="admin-modal-title"
+                        >
+                            Create Event Settings
+                        </p>
 
-              <div class="form-line">
-                <label
-                  class="form-label"
-                  for="visible_registrations"
-                >visible registrations</label>
-                <input
-                  id="visible_registrations"
-                  v-model="visible_registrations"
-                  class="form-text-input"
-                  type="text"
-                  name="visible_registrations"
-                  placeholder="Event name"
+                        <button
+                            type="button"
+                            class="admin-modal-btn-close"
+                            aria-label="Close modal"
+                            @click="close"
+                        >
+                            x
+                        </button>
+                    </slot>
+                </header>
+                <section
+                    id="modalDescription"
+                    class="admin-modal-body"
                 >
-              </div>
+                    <slot name="body">
+                        <form
+                            class="form"
+                            method="post"
+                            @submit.prevent="checkForm"
+                        >
+                            <date-picker
+                                v-model="date_start"
+                                @update="(v)=>{date_start = v}"
+                            />
+                            <date-picker
+                                v-model="date_end"
+                                @update="(v)=>{date_end = v}"
+                            />
 
-              <div class="form-line">
-                <label
-                  class="form-label"
-                  for="color"
-                >Color</label>
-                <input
-                  id="color"
-                  v-model="color"
-                  class="form-color-input"
-                  type="color"
-                  name="color"
-                  placeholder="Event name"
-                >
-              </div>
+                            <div class="form-line">
+                                <label
+                                    class="form-label"
+                                    for="location"
+                                >location</label>
+                                <input
+                                    id="location"
+                                    v-model="location"
+                                    class="form-text-input"
+                                    type="text"
+                                    name="location"
+                                    placeholder="Event location"
+                                >
+                            </div>
 
-              <div class="form-line">
-                <label
-                  class="form-label"
-                  for="light_theme"
-                >Light themed</label>
-                <input
-                  id="light_theme"
-                  v-model="light_theme"
-                  class="form-text-input"
-                  type="checkbox"
-                  name="light_theme"
-                  placeholder="Event name"
-                >
-              </div>
+                            <div class="form-line">
+                                <label
+                                    class="form-label"
+                                    for="max_registrations"
+                                >max registrations</label>
+                                <input
+                                    id="max_registrations"
+                                    v-model="max_registrations"
+                                    class="form-text-input"
+                                    type="text"
+                                    name="max_registrations"
+                                    placeholder="Event name"
+                                >
+                            </div>
 
-              <div class="form-line admin-from-submit">
-                <input
-                  type="submit"
-                  value="Submit"
-                  class="submit-btn admin-form-submit"
-                >
-              </div>
-            </form>
-          </slot>
-        </section>
-        <footer class="admin-modal-footer">
-          <slot name="footer">
-            <button
-              type="button"
-              class="admin-modal-btn-green"
-              aria-label="Close modal"
-              @click="close"
-            >
-              Close
-            </button>
-          </slot>
-        </footer>
-      </div>
-    </div>
-  </transition>
+                            <div class="form-line">
+                                <label
+                                    class="form-label"
+                                    for="visible_registrations"
+                                >visible registrations</label>
+                                <input
+                                    id="visible_registrations"
+                                    v-model="visible_registrations"
+                                    class="form-text-input"
+                                    type="text"
+                                    name="visible_registrations"
+                                    placeholder="Event name"
+                                >
+                            </div>
+
+                            <div class="form-line">
+                                <label
+                                    class="form-label"
+                                    for="color"
+                                >Color</label>
+                                <input
+                                    id="color"
+                                    v-model="color"
+                                    class="form-color-input"
+                                    type="color"
+                                    name="color"
+                                    placeholder="Event name"
+                                >
+                            </div>
+
+                            <div class="form-line">
+                                <label
+                                    class="form-label"
+                                    for="light_theme"
+                                >Light themed</label>
+                                <input
+                                    id="light_theme"
+                                    v-model="light_theme"
+                                    class="form-text-input"
+                                    type="checkbox"
+                                    name="light_theme"
+                                    placeholder="Event name"
+                                >
+                            </div>
+
+                            <div class="form-line admin-from-submit">
+                                <input
+                                    type="submit"
+                                    value="Submit"
+                                    class="submit-btn admin-form-submit"
+                                >
+                            </div>
+                        </form>
+                    </slot>
+                </section>
+                <footer class="admin-modal-footer">
+                    <slot name="footer">
+                        <button
+                            type="button"
+                            class="admin-modal-btn-green"
+                            aria-label="Close modal"
+                            @click="close"
+                        >
+                            Close
+                        </button>
+                    </slot>
+                </footer>
+            </div>
+        </div>
+    </transition>
 </template>
 
 <script>
@@ -147,6 +162,7 @@ export default {
             date_start: null,
             max_registrations: null,
             visible_registrations: null,
+            location: null,
             color: '#000000',
             light_theme: false
         };
@@ -165,6 +181,7 @@ export default {
                 max_registrations: this.max_registrations,
                 visible_registrations: this.visible_registrations,
                 color: this.color,
+                location: this.location,
                 light_theme: this.light_theme
             };
 

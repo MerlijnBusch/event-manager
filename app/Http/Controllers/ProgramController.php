@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProgramStoreValidationRequest;
+use App\Http\Requests\ProgramUpdateValidationRequest;
 use App\Program;
 use App\Rules\EventExistValidator;
 use App\Rules\ProgramTypeValidator;
@@ -28,34 +30,26 @@ class ProgramController extends Controller
      * Display the specified resource.
      *
      * @param Program $program
-     * @return Response
+     * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function show(Program $program)
     {
-        //
+        $this->authorize('read', Program::class);
+
+        return response()->json($program, 200);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param ProgramStoreValidationRequest $request
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function store(Request $request)
+    public function store(ProgramStoreValidationRequest $request)
     {
         $this->authorize('write', Program::class);
-
-        $validator = Validator::make($request->all(), [
-            'event_id' => ['required', new EventExistValidator],
-            'name' => ['string'],
-            'description' => ['string'],
-            'active' => ['boolean'],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
 
         Program::create($request->all());
 
@@ -66,13 +60,19 @@ class ProgramController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param ProgramUpdateValidationRequest $request
      * @param Program $program
-     * @return Response
+     * @return JsonResponse
+     * @throws AuthorizationException
      */
-    public function update(Request $request, Program $program)
+    public function update(ProgramUpdateValidationRequest $request, Program $program)
     {
-        //
+        $this->authorize('write', Program::class);
+
+        $program = Program::findOrFail($program->id);
+        $program->update($request->all());
+
+        return response()->json(['message' => 'Program created successfully'], 200);
     }
 
     /**
