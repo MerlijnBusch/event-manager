@@ -94,6 +94,7 @@ export default {
                     if (response.status === 200 && response.data.data) {
                         this.$user.data = JSON.parse(response.request.response);
                         API.setToken(this.$user.data.data.api_token);
+                        API.startInterval();
                         this.$emit('loggedIn', response.request.response);
                         this.$emit('close');
                     }
