@@ -84,32 +84,19 @@
         },
         methods: {
             checkForm: async function (e) {
-                this.errors = [];
-
-                if (this.email && this.password) {
-                    let response;
-                    try {
-                        response = await axios.post(window.location.origin + '/api/login', {
-                            email: this.email,
-                            password: this.password
-                        })
-                    } catch (e) {
-                        this.errors.push(e);
-                    }
-                    if (response.status === 200 && response.data.data) {
-                        this.$user.data = JSON.parse(response.request.response);
-                        API.setToken(this.$user.data.data.api_token);
-                        await API.startInterval();
-                        this.$emit('loggedIn', response.request.response);
-                        this.$emit('close');
-                    }
+                const data = {
+                    email: this.email,
+                    password: this.password
                 }
 
-                if (!this.email) {
-                    this.errors.push('email required.');
-                }
-                if (!this.password) {
-                    this.errors.push('password required.');
+                const response = await API.post(data, '/api/login');
+
+                if (response.status === 200 && response.data.data) {
+                    this.$user.data = JSON.parse(response.request.response);
+                    API.setToken(this.$user.data.data.api_token);
+                    await API.startInterval();
+                    this.$emit('loggedIn', response.request.response);
+                    this.$emit('close');
                 }
 
                 e.preventDefault();
