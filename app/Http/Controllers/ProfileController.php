@@ -162,6 +162,7 @@ class ProfileController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
+     * @param Profile $profile
      * @return JsonResponse
      * @throws AuthorizationException
      */

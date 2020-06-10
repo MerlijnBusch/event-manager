@@ -238,9 +238,9 @@
         />
 
         <update-event-settings-modal
-            v-if="settingsId"
+            v-if="updateSettingsId"
             v-show="updateEventSettingsModal"
-            :id="settingsId"
+            :id="updateSettingsId"
             @close="setModalState(`updateEventSettingsModal`)"
         />
     </div>
@@ -280,6 +280,7 @@ export default {
             updateProgramModal: false,
             updateProgramId: null,
             settingsId: null,
+            updateSettingsId: null,
             displayType: null,
             timeOut: null
         };
@@ -353,11 +354,13 @@ export default {
             await this.forceUpdate();
         },
         openEventSettings (id, settings) {
+            console.log(settings);
             if (settings === null) {
                 this.settingsId = id;
                 this.setModalState('createEventSettingsModal');
             } else {
-                this.settingsId = settings.id;
+                console.log('test');
+                this.updateSettingsId = settings.id;
                 this.setModalState('updateEventSettingsModal');
             }
         }

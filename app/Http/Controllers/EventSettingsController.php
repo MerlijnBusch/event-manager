@@ -42,7 +42,7 @@ class EventSettingsController extends Controller
     {
         $this->authorize('read', EventSettings::class);
 
-        $settings = Event::findOrFail($id);
+        $settings = EventSettings::findOrFail($id);
 
         return response()->json($settings, 200);
     }
