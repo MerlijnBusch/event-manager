@@ -9,21 +9,6 @@
             Login
         </h2>
 
-        <div
-            v-if="errors.length"
-            class="form-errors"
-        >
-            <p>Fout:</p>
-            <ul>
-                <li
-                    v-for="(error, index) in errors"
-                    :key="(index)"
-                >
-                    {{ error }}
-                </li>
-            </ul>
-        </div>
-
         <div class="form-line">
             <label
                 class="form-label"
@@ -76,8 +61,6 @@
     export default {
         data() {
             return {
-                errors: [],
-                // TODO: remove this later
                 email: 'Admin@example.com',
                 password: 'password'
             };
