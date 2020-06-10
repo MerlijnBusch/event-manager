@@ -34,7 +34,8 @@ class EventSettings extends Model
         'date_start',
         'date_end',
         'light_theme',
-        'color'
+        'color',
+        'location'
     ];
 
     protected $hidden = [
