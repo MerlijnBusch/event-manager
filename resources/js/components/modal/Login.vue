@@ -9,21 +9,6 @@
             Login
         </h2>
 
-        <div
-            v-if="errors.length"
-            class="form-errors"
-        >
-            <p>Fout:</p>
-            <ul>
-                <li
-                    v-for="(error, index) in errors"
-                    :key="(index)"
-                >
-                    {{ error }}
-                </li>
-            </ul>
-        </div>
-
         <div class="form-line">
             <label
                 class="form-label"
@@ -52,12 +37,12 @@
                 name="password"
                 placeholder="Password"
             >
-            <button
+            <div
                 class="form-afterinput-link"
                 @click="$emit('forgotpassword')"
             >
                 Wachtwoord vergeten
-            </button>
+            </div>
         </div>
         <div class="form-line form-line-hasbutton">
             <input
@@ -70,49 +55,35 @@
 </template>
 
 <script>
-import axios from 'axios';
-import API from '../../Api';
+    import axios from 'axios';
+    import API from '../../Api';
 
-export default {
-    data () {
-        return {
-            errors: [],
-            // TODO: remove this later
-            email: 'Admin@example.com',
-            password: 'password'
-        };
-    },
-    methods: {
-        checkForm: function (e) {
-            this.errors = [];
-
-            if (this.email && this.password) {
-                axios.post(window.location.origin + '/api/login', {
+    export default {
+        data() {
+            return {
+                email: 'Admin@example.com',
+                password: 'password'
+            };
+        },
+        methods: {
+            checkForm: async function (e) {
+                const data = {
                     email: this.email,
                     password: this.password
-                }).then(response => {
-                    if (response.status === 200 && response.data.data) {
-                        this.$user.data = JSON.parse(response.request.response);
-                        API.setToken(this.$user.data.data.api_token);
-                        API.startInterval();
-                        this.$emit('loggedIn', response.request.response);
-                        this.$emit('close');
-                    }
-                })
-                    .catch(e => {
-                        this.errors.push(e);
-                    });
-            }
+                }
 
-            if (!this.email) {
-                this.errors.push('email required.');
-            }
-            if (!this.password) {
-                this.errors.push('password required.');
-            }
+                const response = await API.post(data, '/api/login');
 
-            e.preventDefault();
+                if (response.status === 200 && response.data.data) {
+                    this.$user.data = JSON.parse(response.request.response);
+                    API.setToken(this.$user.data.data.api_token);
+                    await API.startInterval();
+                    this.$emit('loggedIn', response.request.response);
+                    this.$emit('close');
+                }
+
+                e.preventDefault();
+            }
         }
-    }
-};
+    };
 </script>
