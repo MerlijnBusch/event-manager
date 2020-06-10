@@ -52,12 +52,12 @@
                 name="password"
                 placeholder="Password"
             >
-            <button
+            <div
                 class="form-afterinput-link"
                 @click="$emit('forgotpassword')"
             >
                 Wachtwoord vergeten
-            </button>
+            </div>
         </div>
         <div class="form-line form-line-hasbutton">
             <input
