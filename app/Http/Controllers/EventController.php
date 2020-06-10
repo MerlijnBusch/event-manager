@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use App\Http\Requests\EventValidationRequest;
+use App\Http\Requests\SubscribeValidationRequest;
 use App\RegistrationEvents;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -92,11 +93,13 @@ class EventController extends Controller
     }
 
     /**
-     * @param Event $event
+     * @param SubscribeValidationRequest $request
      * @return JsonResponse
      */
-    public function subscribe(Event $event)
+    public function subscribe(SubscribeValidationRequest $request)
     {
+        $event = Event::findOrFail($request->event_id);
+
         if (RegistrationEvents::query()
                 ->where('user_id', Auth::id())
                 ->where('event_id', $event->id)
@@ -111,6 +114,7 @@ class EventController extends Controller
         $subscribe = new RegistrationEvents;
         $subscribe->user_id = Auth::id();
         $subscribe->event_id = $event->id;
+        $subscribe->item_ids = $request->item_ids;
         $subscribe->save();
 
         return response()->json(['message' => 'successfully subscribed to the event'], 200);
