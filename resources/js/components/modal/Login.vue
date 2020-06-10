@@ -70,49 +70,50 @@
 </template>
 
 <script>
-import axios from 'axios';
-import API from '../../Api';
+    import axios from 'axios';
+    import API from '../../Api';
 
-export default {
-    data () {
-        return {
-            errors: [],
-            // TODO: remove this later
-            email: 'Admin@example.com',
-            password: 'password'
-        };
-    },
-    methods: {
-        checkForm: function (e) {
-            this.errors = [];
+    export default {
+        data() {
+            return {
+                errors: [],
+                // TODO: remove this later
+                email: 'Admin@example.com',
+                password: 'password'
+            };
+        },
+        methods: {
+            checkForm: async function (e) {
+                this.errors = [];
 
-            if (this.email && this.password) {
-                axios.post(window.location.origin + '/api/login', {
-                    email: this.email,
-                    password: this.password
-                }).then(response => {
+                if (this.email && this.password) {
+                    let response;
+                    try {
+                        response = await axios.post(window.location.origin + '/api/login', {
+                            email: this.email,
+                            password: this.password
+                        })
+                    } catch (e) {
+                        this.errors.push(e);
+                    }
                     if (response.status === 200 && response.data.data) {
                         this.$user.data = JSON.parse(response.request.response);
                         API.setToken(this.$user.data.data.api_token);
-                        API.startInterval();
+                        await API.startInterval();
                         this.$emit('loggedIn', response.request.response);
                         this.$emit('close');
                     }
-                })
-                    .catch(e => {
-                        this.errors.push(e);
-                    });
-            }
+                }
 
-            if (!this.email) {
-                this.errors.push('email required.');
-            }
-            if (!this.password) {
-                this.errors.push('password required.');
-            }
+                if (!this.email) {
+                    this.errors.push('email required.');
+                }
+                if (!this.password) {
+                    this.errors.push('password required.');
+                }
 
-            e.preventDefault();
+                e.preventDefault();
+            }
         }
-    }
-};
+    };
 </script>
