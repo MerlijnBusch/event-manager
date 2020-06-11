@@ -55,35 +55,35 @@
 </template>
 
 <script>
-    import API from '../../Api';
+import API from '../../Api';
+import axios from 'axios';
 
-    export default {
-        data() {
-            return {
-                email: 'Admin@example.com',
-                password: 'password'
-            };
-        },
-        methods: {
-            checkForm: function (e) {
-                if (this.email && this.password) {
-                    axios.post(window.location.origin + `/api/login`, {
-                        "email": this.email,
-                        "password": this.password,
-                    }).then(response => {
-                        this.$user.data = JSON.parse(response.request.response);
-                        API.setToken(this.$user.data.data.api_token);
-                        API.startInterval();
-                        this.$emit("loggedIn", response.request.response);
-                        this.$emit("close");
-
-                    }).catch(e => {
-                        API.errorCheck(e)
-                    })
-                }
-
-                e.preventDefault();
+export default {
+    data () {
+        return {
+            email: 'Admin@example.com',
+            password: 'password'
+        };
+    },
+    methods: {
+        checkForm: function (e) {
+            if (this.email && this.password) {
+                axios.post(window.location.origin + '/api/login', {
+                    email: this.email,
+                    password: this.password
+                }).then(response => {
+                    this.$user.data = JSON.parse(response.request.response);
+                    API.setToken(this.$user.data.data.api_token);
+                    API.startInterval();
+                    this.$emit('loggedIn', response.request.response);
+                    this.$emit('close');
+                }).catch(e => {
+                    API.errorCheck(e);
+                });
             }
+
+            e.preventDefault();
         }
-    };
+    }
+};
 </script>
