@@ -3,8 +3,13 @@
 namespace App\Console\Commands;
 
 use App\Event;
+use App\Mail\NotifyUserOfEventsMail;
+use App\RegistrationEvents;
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class NotifyUsersForEvents extends Command
 {
@@ -41,11 +46,23 @@ class NotifyUsersForEvents extends Command
     {
         Log::debug('this works every minute');
 
-        $events = Event::query()->whereHas('settings', function ($query) {
-            return $query->where('active', true);
-        })->get();
+        $events = Event::query()
+            ->with('settings')
+            ->has('settings')
+            ->get();
 
-        dd($events);
-
+        foreach ($events as $event) {
+            $week = Carbon::now()->addWeek();
+            $sixDays = $week->copy()->subDay();
+            if (Carbon::create($event->settings->date_start)->between($week, $sixDays)) {
+                $subscriptions = RegistrationEvents::query()
+                    ->where('event_id', $event->id)
+                    ->get();
+                foreach ($subscriptions as $subscription) {
+                    $user = User::findOrFail($subscription->user_id);
+                    Mail::to($user->email)->queue(new NotifyUserOfEventsMail($event));
+                }
+            }
+        }
     }
 }
