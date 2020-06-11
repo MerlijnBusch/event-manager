@@ -55,7 +55,6 @@
 </template>
 
 <script>
-    import axios from 'axios';
     import API from '../../Api';
 
     export default {
@@ -66,20 +65,21 @@
             };
         },
         methods: {
-            checkForm: async function (e) {
-                const data = {
-                    email: this.email,
-                    password: this.password
-                }
+            checkForm: function (e) {
+                if (this.email && this.password) {
+                    axios.post(window.location.origin + `/api/login`, {
+                        "email": this.email,
+                        "password": this.password,
+                    }).then(response => {
+                        this.$user.data = JSON.parse(response.request.response);
+                        API.setToken(this.$user.data.data.api_token);
+                        API.startInterval();
+                        this.$emit("loggedIn", response.request.response);
+                        this.$emit("close");
 
-                const response = await API.post(data, '/api/login');
-
-                if (response.status === 200 && response.data.data) {
-                    this.$user.data = JSON.parse(response.request.response);
-                    API.setToken(this.$user.data.data.api_token);
-                    await API.startInterval();
-                    this.$emit('loggedIn', response.request.response);
-                    this.$emit('close');
+                    }).catch(e => {
+                        API.errorCheck(e)
+                    })
                 }
 
                 e.preventDefault();

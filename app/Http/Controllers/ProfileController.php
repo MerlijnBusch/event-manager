@@ -72,7 +72,7 @@ class ProfileController extends Controller
             $s->$k = $v;
         }
 
-        Profile::create($s);
+        Profile::create((array)$s);
 
         return response()->json(['message' => 'profile created successfully'], 200);
     }
