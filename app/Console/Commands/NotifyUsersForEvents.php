@@ -63,6 +63,19 @@ class NotifyUsersForEvents extends Command
                     Mail::to($user->email)->queue(new NotifyUserOfEventsMail($event));
                 }
             }
+
+            $now = Carbon::now();
+            $oneDay = $now->copy()->addDay();
+            if (Carbon::create($event->settings->date_start)->between($now, $oneDay)) {
+                $subscriptions = RegistrationEvents::query()
+                    ->where('event_id', $event->id)
+                    ->get();
+                foreach ($subscriptions as $subscription) {
+                    $user = User::findOrFail($subscription->user_id);
+                    Mail::to($user->email)->queue(new NotifyUserOfEventsMail($event));
+                }
+            }
         }
+
     }
 }
