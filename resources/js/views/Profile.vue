@@ -4,7 +4,7 @@
             <h1>{{name}}'s profiel</h1>
         </div>
         <form autocomplete="off" @submit.prevent="editProfile" method="post" class="form-profile-edit">
-            <div class="mobile-wrapper flex-grid column-desktop-full">
+            <div class="mobile-wrapper flex-grid column-desktop-full column-tablet-12">
                 <div class="column-desktop-4 column-tablet-12 column-mobile-12 profile-border profile-main-wrapper">
                     <p class="profile-edit" :class="{'profile-save-padding': edit}"><a href="#" @click.prevent="edit = !edit"
                         id="disableLink"><span>Profiel aanpassen </span><i
@@ -20,7 +20,7 @@
                         <input type="text" v-model="name" class="profile-name-edit" v-else>
                         <p class="profile-role" v-if="!edit">{{role_name}}</p>
                         <select class="form-text-input" v-model="role_name" v-else>
-                            <option :value="roles.id" selected disabled>{{role_name}} uw rol</option>
+                            <option :value="roles.id" selected disabled>Uw rol is {{role_name}}</option>
                             <option v-for="userrole in roles" :value="userrole.id">{{userrole.role_name}}</option>
                         </select>
                         <div v-if="company && !edit">
@@ -31,11 +31,11 @@
                             <p class="profile-company">Bedrijf</p>
                             <input type="text" v-model="company" class="profile-name-edit" >
                         </div>
+                        <hr class="profile-line-phone" v-if="!edit">
                         <input type="file" name="cv"  v-if="edit" class="profile-cv-input">
-                        <button class="download-cv" v-else>Download CV</button>
+                        <button class="download-cv" type="button" onclick="console.log('hoi')" v-else>Download CV</button>
                     </div>
                 </div>
-                <hr class="profile-line-phone">
                 <div class="column-desktop-8 column-tablet-12 column-mobile-12 profile-about-mobile profile-row-right">
                     <div class="profile-border profile-about">
                         <div class="profile-about-border">
