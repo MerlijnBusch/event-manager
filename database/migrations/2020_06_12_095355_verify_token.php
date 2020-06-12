@@ -17,7 +17,7 @@ class VerifyToken extends Migration
             $table->id();
             $table->string('email')->unique();
             $table->string('token');
-            $table->timestamps();
+            $table->string('date');
         });
     }
 

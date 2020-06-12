@@ -2,7 +2,7 @@
 
 namespace App\Notifications;
 
-use Illuminate\Support\Carbon;
+use App\User;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Auth\Notifications\VerifyEmail as VerifyEmailBase;
 
@@ -16,8 +16,9 @@ class VerifyApiEmail extends VerifyEmailBase
     */
     protected function verificationUrl($notifiable)
     {
-        dd($notifiable);
+        $user = new User;
+        $token = $user->generateVerificationToken($notifiable->email);
+
         return URL::to('/verify/mails/' . $token);
-        
     }
 }

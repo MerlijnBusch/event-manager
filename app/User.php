@@ -3,6 +3,7 @@
 namespace App;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Notifications\VerifyApiEmail;
@@ -26,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','role_id'
+        'name', 'email', 'password', 'role_id'
     ];
 
     /**
@@ -35,7 +36,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token','role_id','email_verified_at', 'api_token_expired_date', 'updated_at', 'created_at',
+        'password', 'remember_token', 'role_id', 'email_verified_at', 'api_token_expired_date', 'updated_at', 'created_at',
     ];
 
     /**
@@ -47,19 +48,25 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function profile(){
+    public function profile()
+    {
 
         return $this->hasOne('App\Profile', 'user_id');
 
     }
 
-    public function role(){
+    public function role()
+    {
 
         return $this->belongsTo('App\Role');
 
     }
 
-    public function generateToken() {
+    /**
+     * @return mixed|string
+     */
+    public function generateToken()
+    {
         $this->api_token = Str::random(120);
         $this->api_token_expired_date = Carbon::now()->addHour();
         $this->save();
@@ -67,11 +74,34 @@ class User extends Authenticatable
         return $this->api_token;
     }
 
+    /**
+     * @param $email
+     * @return string
+     */
+    public function generateVerificationToken($email)
+    {
+        $token = Str::random(120);
+        DB::table('verify_token')->insert([
+            'email' => $email,
+            'token' => $token,
+            'date' => Carbon::now()
+            ]);
+
+        return $token;
+    }
+
+    /**
+     * send password reset notification
+     * @param string $token
+     */
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new \App\Notifications\MailResetPasswordNotification($token));
     }
 
+    /**
+     * Send new email Verification
+     */
     public function sendApiEmailVerificationNotification()
     {
         $this->notify(new VerifyApiEmail);
