@@ -5,7 +5,7 @@ namespace App;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-//use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Notifications\VerifyApiEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -70,5 +70,10 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new \App\Notifications\MailResetPasswordNotification($token));
+    }
+
+    public function sendApiEmailVerificationNotification()
+    {
+        $this->notify(new VerifyApiEmail);
     }
 }

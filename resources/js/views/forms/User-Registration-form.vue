@@ -1,6 +1,12 @@
 <template>
     <div class="full-page-form">
         <div class="form-holder">
+            <div class="form-errors" v-if="errors.length">
+                <p>Fout:</p>
+                <ul>
+                    <li v-for="error in errors">{{ error }}</li>
+                </ul>
+            </div>
             <form class="form" autocomplete="off" @submit.prevent="requestRegister">
                 <h2 class="form-title">
                     Register Account
@@ -8,17 +14,6 @@
 
                 <div class="form-line form-loading" v-if="isLoading">
                     <loading></loading>
-                </div>
-
-                <div class="form-errors" v-if="errors.length">
-                    <p>Fout:</p>
-                    <ul>
-                        <li v-for="error in errors">{{ error }}</li>
-                    </ul>
-                </div>
-
-                <div class="form-message" v-if="!!message">
-                    {{message}}
                 </div>
 
                 <div class="form-line">
@@ -35,7 +30,7 @@
                 </div>
                 <div class="form-line">
                     <label class="form-label" for="password_confirmation">Bevestig Wachtwoord</label>
-                    <input class="form-text-input" type="password" 
+                    <input class="form-text-input" type="password"
                            v-model="password_confirmation">
                 </div>
                 <div class="form-line">
@@ -45,7 +40,7 @@
                     </select>
                 </div>
                 <div class="form-line">
-                    <input type="checkbox" name="terms" />
+                    <input type="checkbox" v-model="terms" />
                     <label class="form-label" for="terms">Algemene voorwaarden</label>
                 </div>
                 <div class="form-line form-line-hasbutton">
@@ -59,7 +54,6 @@
 <script>
     import axios from 'axios';
     import loading from '@/js/components/loading'
-    import dropdown from "@/js/components/dropdown";
 
     export default {
         name: "Registration",
@@ -70,32 +64,32 @@
                 password: null,
                 password_confirmation: null,
                 role: null,
-                message: null,
-                isLoading: false,
+                terms: false,
                 errors: [],
+                isLoading: false,
                 roles:[]
             }
         },
-        components: {loading, dropdown},
+        components: {loading},
         methods: {
-            requestRegister() {
-                this.errors = [];
-                this.isLoading = true;
-
-                switch (true) {
-                    case this.email.length === 0:
-                        this.isLoading = false;
-                        this.errors.push('Er is niks ingevuld');
-                        break;
-                    default:
-                        axios.post("/api/register", {email: this.email}).then(result => {
-                            this.message = result.data.message;
+            async requestRegister() {
+                    this.isLoading = true;
+                    axios.post("/api/register",
+                        {
+                            name: this.name,
+                            email: this.email,
+                            password: this.password,
+                            password_confirmation: this.password_confirmation,
+                            role_id: this.role,
+                            terms: this.terms
+                        }).then(result => {
+                            console.log(result.data)
                             this.isLoading = false;
+                            this.message = result.data.message;
                         }, error => {
                             this.errors.push(error)
                         });
-                }
-            },
+            }
         },
         mounted(){
             axios

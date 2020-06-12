@@ -8,8 +8,9 @@
             </button>
             <div>
                 <p v-if="($route.params.loggedIn !== undefined && !$route.params.loggedIn)">You need to be logged in to acces this route!</p>
-                <login @close="close" @forgotpassword="selectroute='ForgotPassword'" @loggedIn="loggedInHandler" v-if="selectroute==='login'"></login>
+                <login @close="close" @openAccountVerification="selectroute='Accountverification'"  @forgotpassword="selectroute='ForgotPassword'" @loggedIn="loggedInHandler" v-if="selectroute==='login'"></login>
                 <forgot-password v-else-if="selectroute==='ForgotPassword'" @login="selectroute='login'"></forgot-password>
+                <account-verification v-else-if="selectroute==='Accountverification'"   ></account-verification> 
             </div>
         </div>
     </div>
@@ -18,7 +19,7 @@
 <script>
     import login from "@/js/components/modal/Login"
     import ForgotPassword from "@/js/components/modal/ForgotPassword"
-
+    import AccountVerification from "@/js/components/modal/AccountVerification"
     export default {
         name: "Modal",
         data() {
@@ -27,7 +28,7 @@
 
             }
         },
-        components: {login, ForgotPassword},
+        components: {login, ForgotPassword, AccountVerification},
         methods: {
             close() {
                 this.$emit("close");
