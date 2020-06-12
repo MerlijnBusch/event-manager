@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\VerifyEmailTokenValidator;
 use Illuminate\Foundation\Http\FormRequest;
 
 class VerifyUserIdForEmailVerificationRequest extends FormRequest
@@ -24,7 +25,8 @@ class VerifyUserIdForEmailVerificationRequest extends FormRequest
     public function rules()
     {
         return [
-             'id' => ['required', 'integer'],
+            'id' => ['required', 'integer'],
+            'token' => ['string', new VerifyEmailTokenValidator] // @todo amin custom validator if token is valid
         ];
     }
 }
