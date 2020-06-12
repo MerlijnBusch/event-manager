@@ -269,7 +269,28 @@
                 </div>
                 <!--TODO: Modal?-->
                 <div class="event-modal column-desktop-4 column-tablet-5 column-mobile-12">
-                    <button @click="subscribeEvent">Aanmelden event</button>
+                    <template v-if="subscribed">
+                        <div >
+                            Je bent al ingeschreven, als je aanpassingen wilt maken moet je eerst uitschrijven
+                        </div>
+                        <button @click="unsubscribeEvent">
+                            uitschrijven
+                        </button>
+                    </template>
+                    <template v-else>
+                        <div v-if="!(!!this.$user.data && !!this.$user.data.name)">
+                            Je moet ingelogd zijn om je in te kunnen schrijven.
+                        </div>
+                        <button
+
+                                :disabled="!(!!this.$user.data && !!this.$user.data.name)"
+                                class="event-modal-button"
+                                :class="{'inactive':!(!!this.$user.data && !!this.$user.data.name)}"
+                                @click="subscribeEvent"
+                        >
+                            inschrijven
+                        </button>
+                    </template>
                 </div>
             </div>
         </div>
@@ -289,11 +310,47 @@
             this.data = response.data;
             this.selectedSpeakers = new Array(this.data.congress[0].block.length);
             this.selectedKeyNotes = new Array(this.data.congress[0].block.length);
+            if (!!this.$user.data && !!this.$user.data.name) {
+                this.getSubscripedData()
+            }
         },
         methods: {
-            subscribeEvent() {
-                let selectedIDs = [...this.selectedSpeakers.filter(v => !!v).map(v => v.id), ...this.selectedKeyNotes.filter(v => !!v).map(v => v.id)];
-                API.post({event_id: this.$route.params.id, item_ids: JSON.stringify(selectedIDs)}, '/api/event/subscribe/')
+            async getSubscripedData() {
+                const res = await API.get('/api/is-subscribed/' + this.$route.params.id);
+                if (res.data !== false) {
+                    this.subscribed = true;
+                    let selected = JSON.parse(res.data.item_ids);
+                    for (let roundNumbmer = 0; roundNumbmer < this.data.congress[0].block.length; roundNumbmer++) {
+                        let round = this.data.congress[0].block[roundNumbmer];
+                        for (let i = 0; i < round.items.length; i++) {
+                            if (selected.includes(round.items[i].id)) {
+                                if (round.items[i].type === 'keynotes') {
+                                    this.setSpeaker(roundNumbmer, round.items[i], this.getTime(round.items[i].date_start), true)
+                                } else {
+                                    this.setSpeaker(roundNumbmer, round.items[i], round.date_start, false)
+                                }
+                            }
+                        }
+
+                    }
+                }
+            },
+            async unsubscribeEvent() {
+                const res = await API.delete('/api/event/unsubscribe/' + this.$route.params.id);
+                if (res.status == 200) {
+                    this.subscribed = false;
+                }
+            },
+            async subscribeEvent() {
+                const selectedIDs = [...this.selectedSpeakers.filter(v => !!v).map(v => v.id), ...this.selectedKeyNotes.filter(v => !!v).map(v => v.id)];
+                let res = await API.post({
+                    event_id: this.$route.params.id,
+                    item_ids: JSON.stringify(selectedIDs)
+                }, '/api/event/subscribe/');
+                if (res.status == 200) {
+                    this.subscribed = true;
+                }
+
             },
             formatDate(date) {
                 const datetime = new Date(date);
@@ -335,6 +392,7 @@
         data() {
             return {
                 data: null,
+                subscribed: false,
                 selectedSpeakers: [],
                 selectedKeyNotes: [],
                 currentTickets: 135,

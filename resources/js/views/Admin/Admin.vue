@@ -353,7 +353,7 @@ export default {
             API.delete('/api/congress/' + id);
             await this.forceUpdate();
         },
-        async updateEvent(id){
+        async updateEvent (id) {
             this.updateEventId = id;
             await this.setModalState('updateEventModal');
         },

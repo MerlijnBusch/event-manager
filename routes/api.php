@@ -23,6 +23,8 @@ Route::get('/event-overview', 'OverviewController@event')->name('event');
 Route::get('/user/login-check', 'UserController@isLoggedIn');
 
 Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
+    Route::get('/is-subscribed/{event}', 'OverviewController@isSubscribed')->name('isSubscribed');
+
     Route::post('logout', 'Auth\LoginController@logout');
     Route::patch('selectable-role-edit', 'UserController@UpdateSelectableUserRole');
 
@@ -37,7 +39,7 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::delete('event/{event}', 'EventController@destroy')->name('event.destroy');
 
     Route::post('event/subscribe/', 'EventController@subscribe')->name('event.subscribe.store');
-    Route::delete('event/subscribe/{event}', 'EventController@unsubscribe')->name('event.subscribe.destroy');
+    Route::delete('event/unsubscribe/{event}', 'EventController@unsubscribe')->name('event.subscribe.destroy');
 
     Route::get('event-settings', 'EventSettingsController@index')->name('event-settings');
     Route::get('event-settings/{id}', 'EventSettingsController@show')->name('event-settings.show');

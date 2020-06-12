@@ -53,6 +53,9 @@ export default class API {
         const res = data.response;
 
         switch (res.status) {
+        case 401:
+            error = res.data.message;
+            break;
         case 422:
             for (const key in res.data.errors) {
                 if (Object.prototype.hasOwnProperty.call(res.data.errors, key)) error += res.data.errors[key] + '</br>';
