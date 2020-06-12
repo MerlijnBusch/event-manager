@@ -32,8 +32,8 @@
                             <input type="text" v-model="company" class="profile-name-edit" >
                         </div>
                         <hr class="profile-line-phone" v-if="!edit">
+                        <button class="download-cv" type="button" onclick="console.log('hoi')" v-else-if="!edit && cv">Download CV</button>
                         <input type="file" name="cv"  v-if="edit" class="profile-cv-input">
-                        <button class="download-cv" type="button" onclick="console.log('hoi')" v-else>Download CV</button>
                     </div>
                 </div>
                 <div class="column-desktop-8 column-tablet-12 column-mobile-12 profile-about-mobile profile-row-right">
@@ -46,7 +46,8 @@
                     </div>
                     <div class="profile-border profile-contact profile-border">
                         <p class="contact-title">Contact</p>
-                        <p class="contact-logo">
+                        <div class="contact-logo" :class="{'contact-logo-edit' : edit}">
+                            <div>
                             <a :href="linkedin" v-if="!edit && linkedin || edit" target="_blank">    
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                     <path
@@ -54,6 +55,8 @@
                                 </svg>
                             </a>
                             <input type="url" v-model="linkedin" class="contact-input" v-if="edit" placeholder="https://www.linkedin.com/">
+                            </div>
+                            <div>
                             <a :href="facebook" v-if="!edit && facebook || edit">    
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                     <path 
@@ -61,6 +64,8 @@
                                 </svg>
                             </a>
                             <input type="url" v-model="facebook" class="contact-input" v-if="edit" placeholder="https://www.facebook.com/">
+                            </div>
+                            <div>
                             <a :href="twitter" v-if="!edit && twitter || edit">    
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                     <path 
@@ -68,6 +73,8 @@
                                 </svg>
                             </a>
                             <input type="url" v-model="twitter" class="contact-input" v-if="edit" placeholder="https://twitter.com/">
+                            </div>
+                            <div>
                             <a :href="contact_email" v-if="!edit && contact_email || edit">    
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                     <path 
@@ -75,6 +82,8 @@
                                 </svg>
                             </a>
                             <input type="email" v-model="contact_email" class="contact-input" v-if="edit" placeholder="henk@email.nl">
+                            </div>
+                            <div>
                             <a :href="phonenumber" v-if="!edit && phonenumber || edit">    
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                     <path 
@@ -82,13 +91,18 @@
                                 </svg>
                             </a>
                             <input type="text" v-model="phonenumber" class="contact-input" v-if="edit" placeholder="+31 6 1234567">
-                        </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </form>
     </div>
 </template>
+
+<style lang='scss'>
+
+</style>
 
 
 <script>
@@ -111,7 +125,8 @@
                 contact_email: null,
                 edit: false,
                 image: null,
-                company: 'null',
+                company: null,
+                cv: null,
             }
         },
         async mounted() {

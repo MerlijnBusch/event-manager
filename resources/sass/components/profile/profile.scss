@@ -236,7 +236,30 @@ div.profile-container{
     height: 40px;
     padding-top: 10px;
   }
-  
+  .contact-logo{
+    display: flex;
+    flex-wrap: wrap;
+    > div {
+        padding: 0 12px;
+        flex: 0;
+        width: 40px;
+        display: flex;
+        align-items: center;
+        a{
+            flex: 0 0 40px;
+            padding-right: 8px;
+        }
+        input{
+            flex: 1;
+        }
+    }
+    &.contact-logo-edit{
+        > div{
+        flex: 0 0 220px;
+            }
+    }
+    
+}
 
   .download-cv{
     background: $mid-gray;
