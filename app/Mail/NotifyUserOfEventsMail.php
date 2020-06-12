@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Event;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -20,7 +21,17 @@ class NotifyUserOfEventsMail extends Mailable
      */
     public function __construct($event)
     {
-        $this->event = $event;
+        $s = Event::query()
+            ->where('id', $event->id)
+            ->with('settings')
+            ->with('program')
+            ->with('program.programItems')
+            ->with('congress')
+            ->with('congress.block')
+            ->with('congress.block.items')
+            ->first();
+
+        $this->event = $s;
     }
 
     /**
@@ -33,9 +44,6 @@ class NotifyUserOfEventsMail extends Mailable
         return $this->from('mail@example.com', 'Mailtrap')
             ->subject('Mailtrap Confirmation')
             ->view('mails.NotifyUserOfEvents')
-            ->with([
-                'name' => $this->event->name,
-                'date' => $this->event->settings->start_date,
-            ]);
+            ->with(['event' => $this->event]);
     }
 }

@@ -1,3 +1,3 @@
 <div>Hello</div>
-Name: {{ $name }}
-Start date: {{ $date }}
+Name: {{ $event->name }}
+Start date: {{ $event->settings->date_start }}
