@@ -293,7 +293,7 @@
         methods: {
             subscribeEvent() {
                 let selectedIDs = [...this.selectedSpeakers.filter(v => !!v).map(v => v.id), ...this.selectedKeyNotes.filter(v => !!v).map(v => v.id)];
-                API.post({event_id: this.$route.params.id, item_ids: selectedIDs}, '/api/event/subscribe/')
+                API.post({event_id: this.$route.params.id, item_ids: JSON.stringify(selectedIDs)}, '/api/event/subscribe/')
             },
             formatDate(date) {
                 const datetime = new Date(date);
