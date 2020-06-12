@@ -15,8 +15,18 @@
             </div>
             <button class="button-create-item map-settings-container-items" v-on:click="storeMap">Store Map</button>
             <button class="button-create-item map-settings-container-items" v-on:click="clearMap">Clear map</button>
+            <div
+                class="map-admin-info"
+                @click="setModalState(`modalMapForm`)"
+            >
+                Map info
+            </div>
         </div>
         <div class="map-holder" ref="mapHolder"></div>
+        <modal-map-form
+            v-show="modalMapForm"
+            @close="setModalState(`modalMapForm`)"
+        />
     </div>
 </template>
 
@@ -24,6 +34,8 @@
     import interact from 'interactjs'
     import create from 'dom-create-element';
     import API from "../../Api";
+    import ModalMapForm from './ModalMapForm';
+
 
     /** @todo display this is the front end a popup for if the user forgets
      double tap items on box to delete item,
@@ -38,6 +50,9 @@
     const meterToPixel = 50;
 
     export default {
+        components: {
+            ModalMapForm,
+        },
         data() {
             return {
                 event_id: this.$route.params.event_id,
@@ -51,9 +66,13 @@
                 copyItem: {},
                 timeoutPaste: undefined,
                 timeoutUndo: undefined,
+                modalMapForm: false,
             }
         },
         methods: {
+            setModalState (state) {
+                this[state] = !this[state];
+            },
             init() {
                 interact('.draggable')
                     .resizable({
