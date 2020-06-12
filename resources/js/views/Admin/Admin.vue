@@ -61,7 +61,7 @@
                                 </div>
                                 <div
                                     class="admin-sidebar-icon"
-                                    @click="setModalState(`updateEventModal`)"
+                                    @click="updateEvent(event.id)"
                                 >
                                     <i class="fas fa-pencil" />
                                 </div>
@@ -224,9 +224,8 @@
         />
 
         <update-event-modal
-            v-if="currentEvent.event"
             v-show="updateEventModal"
-            :id="currentEvent.event.id"
+            :id="updateEventId"
             @close="setModalState(`updateEventModal`)"
         />
 
@@ -266,6 +265,7 @@ export default {
     data () {
         return {
             page: 1,
+            updateEventId: null,
             events: [],
             selectedEventId: null,
             currentEvent: [],
@@ -352,6 +352,10 @@ export default {
         async deleteCongress (id) {
             API.delete('/api/congress/' + id);
             await this.forceUpdate();
+        },
+        async updateEvent(id){
+            this.updateEventId = id;
+            await this.setModalState('updateEventModal');
         },
         openEventSettings (id, settings) {
             console.log(settings);
