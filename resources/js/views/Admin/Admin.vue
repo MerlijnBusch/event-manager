@@ -75,7 +75,7 @@
                                 v-for="prog in event.program"
                                 v-if="event.program"
                                 :key="'event.program-prog_' + prog.id"
-                                class="admin-sidebar-event-option"
+                                class="admin-sidebar-event-option" @click="updateDisplay(prog, 'program')"
                             >
                                 <div
                                     v-if="prog.event_id === event.id"
@@ -83,7 +83,7 @@
                                 >
                                     <div
                                         class="admin-sidebar-program-title"
-                                        @click="updateDisplay(prog, 'program')"
+
                                     >
                                         {{ prog.name }}
                                     </div>
@@ -111,6 +111,7 @@
                                 v-if="event.congress"
                                 :key="'event.congress-congress_' + cong.id"
                                 class="admin-sidebar-event-option"
+                                @click="updateDisplay(cong, 'congress')"
                             >
                                 <div
                                     v-if="cong.event_id === event.id"
@@ -118,7 +119,6 @@
                                 >
                                     <div
                                         class="admin-sidebar-program-title"
-                                        @click="updateDisplay(cong, 'congress')"
                                     >
                                         {{ cong.name }}
                                     </div>

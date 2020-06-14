@@ -28,6 +28,7 @@
       color: $basic-gray;
       border: none;
       position: relative;
+      cursor: pointer;
       &:hover:before{
         border-color: transparent transparent transparent $theme-color;
       }
@@ -83,6 +84,9 @@
 }
 
 .admin-sidebar-event-option {
+  &:first-child{
+    margin-top: $padding-small;
+  }
 }
 
 .admin-sidebar-event-option + .admin-sidebar-event-option {
@@ -126,6 +130,7 @@
 
 .admin-sidebar-program-container {
   color: $basic-gray;
+  z-index: 0;
   padding: $padding-small $padding-medium;
   display: flex;
   justify-content: space-between;
@@ -133,6 +138,7 @@
   position: relative;
   transition: color $animation-time;
   &:hover {
+    cursor: pointer;
     background-color: $pretty-black;
     color: white;
     &:before{
@@ -150,6 +156,7 @@
     background-color: transparentize($theme-color, .8);
     right: -100%;
     top: 0;
+    z-index: -1;
     position: absolute;
   }
   &:before{
@@ -182,13 +189,20 @@
   justify-content: center;
   border-radius: 50%;
   margin: 0 4px;
+  transition: background-color $animation-time, color $animation-time;
+  &:hover{
+    cursor: pointer;
+    background-color: $theme-color;
+    color: $pretty-black;
+  }
 }
 
 .admin-sidebar-program-title {
-
+  cursor: pointer;
   padding: 0 0 0 $padding-small*2;
   white-space: nowrap;
   overflow: hidden;
+  position: relative;
   text-overflow: ellipsis;
 }
 
@@ -265,6 +279,12 @@
   color: $basic-gray;
   padding: 8px;
   font-size: $font-size-normal;
+  animation: color $animation-time, box-shadow $animation-time;
+  &:hover{
+    cursor: pointer;
+    color: white;
+    box-shadow: $shadow;
+  }
 }
 
 .admin-sidebar-create-event-container {
