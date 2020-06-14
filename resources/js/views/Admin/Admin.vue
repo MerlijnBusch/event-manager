@@ -1,61 +1,52 @@
 <template>
     <div class="admin-container">
         <div class="admin-sidebar">
-            <div>
-                <p>users:</p>
-                <div>
-                    <div
-                        class="admin-sidebar-name-holder"
-                        @click="setPage(3)"
-                    >
-                        <div
-                            class="admin-sidebar-text-name"
-                        >
-                            Rollen en permissions
-                        </div>
-                    </div>
-                    <div
-                        class="admin-sidebar-name-holder"
-                        @click="setPage(2)"
-                    >
-                        <div
-                            class="admin-sidebar-text-name"
-                        >
-                            Find user
-                        </div>
-                    </div>
-                    <div
-                        class="admin-sidebar-name-holder"
-                        @click="setModalState(`uploadExcelUsersModal`)"
-                    >
-                        <div
-                            class="admin-sidebar-text-name"
-                        >
-                            Upload multiple users (excel)
-                        </div>
-                    </div>
+            <div class="admin-sidebar-content">
+                <p class="admin-sidebar-title-divider">
+                    Gebruikers:
+                </p>
+                <div class="admin-sidebar-links">
+                    <button class="admin-sidebar-link" @click="setPage(3)">
+                        Rollen en permissies
+                    </button>
+                    <button class="admin-sidebar-link" @click="setPage(2)">
+                        Vind een gebruiker
+                    </button>
+                    <button class="admin-sidebar-link" @click="setModalState(`uploadExcelUsersModal`)">
+                        Upload meerdere gebruikers (excel)
+                    </button>
                 </div>
-                <p>events:</p>
+                <p class="admin-sidebar-title-divider">
+                    Evenementen:
+                </p>
                 <div
                     v-for="event in events"
                     :key="event.name"
                     class="admin-sidebar-event-container"
                 >
                     <div
-                        class="admin-sidebar-event-list-item"
+                        class="admin-sidebar-event-list-item admin-sidebar-links"
                         @click="setSelectedEventId(event.id)"
                     >
-                        <div class="admin-sidebar-name-holder">
+                        <div
+                            class="admin-sidebar-name-holder"
+                            :class="{'open' : event.open}"
+                            @click="event.open = !event.open"
+                        >
                             <div
                                 class="admin-sidebar-text-name"
-                                @click="eventDropDown(event.id)"
                             >
                                 {{ event.name }}
                             </div>
                             <div class="admin-sidebar-icon-container">
                                 <div
                                     class="admin-sidebar-icon"
-                                    @click="openEventSettings(event.id, event.settings)"
+                                    @click="
+                                        openEventSettings(
+                                            event.id,
+                                            event.settings
+                                        )
+                                    "
                                 >
                                     <i class="fas fa-cog" />
                                 </div>
@@ -76,6 +67,7 @@
                         </div>
                         <div
                             :id="'event-' + event.id"
+                            :class="{'closed' : !event.open}"
                             class="admin-sidebar-display-event-options"
                         >
                             <!--for looping programs-->
@@ -83,6 +75,7 @@
                                 v-for="prog in event.program"
                                 v-if="event.program"
                                 :key="'event.program-prog_' + prog.id"
+                                class="admin-sidebar-event-option"
                             >
                                 <div
                                     v-if="prog.event_id === event.id"
@@ -94,7 +87,9 @@
                                     >
                                         {{ prog.name }}
                                     </div>
-                                    <div class="admin-sidebar-program-action-container">
+                                    <div
+                                        class="admin-sidebar-program-action-container"
+                                    >
                                         <div
                                             class="admin-sidebar-program-action-update"
                                             @click="updateProgram(prog.id)"
@@ -115,6 +110,7 @@
                                 v-for="cong in event.congress"
                                 v-if="event.congress"
                                 :key="'event.congress-congress_' + cong.id"
+                                class="admin-sidebar-event-option"
                             >
                                 <div
                                     v-if="cong.event_id === event.id"
@@ -126,8 +122,12 @@
                                     >
                                         {{ cong.name }}
                                     </div>
-                                    <div class="admin-sidebar-program-action-container">
-                                        <div class="admin-sidebar-program-action-update">
+                                    <div
+                                        class="admin-sidebar-program-action-container"
+                                    >
+                                        <div
+                                            class="admin-sidebar-program-action-update"
+                                        >
                                             <i class="fas fa-pencil" />
                                         </div>
                                         <div
@@ -140,25 +140,27 @@
                                 </div>
                             </div>
                             <div class="admin-action-container">
-                                <div
-                                    class="admin-create-program-sidebar"
-                                >
+                                <div class="admin-create-program-sidebar">
                                     <div
                                         class="admin-sidebar-program-create-button"
-                                        @click="setModalState(`createProgramModal`)"
+                                        @click="
+                                            setModalState(`createProgramModal`)
+                                        "
                                     >
-                                        <i class="fas fa-plus-circle" /> Create Program
+                                        <i class="fas fa-plus-circle" />
+                                        Nieuw Programma
                                     </div>
                                 </div>
 
-                                <div
-                                    class="admin-create-program-sidebar"
-                                >
+                                <div class="admin-create-program-sidebar">
                                     <div
                                         class="admin-sidebar-program-create-button"
-                                        @click="setModalState(`createCongressModal`)"
+                                        @click="
+                                            setModalState(`createCongressModal`)
+                                        "
                                     >
-                                        <i class="fas fa-plus-circle" /> Create Congress
+                                        <i class="fas fa-plus-circle" />
+                                        Nieuw Congress
                                     </div>
                                 </div>
                             </div>
@@ -171,7 +173,9 @@
                     class="admin-create-event-sidebar"
                     @click="setModalState(`createEventModal`)"
                 >
-                    <i class="fas fa-plus-circle admin-sidebar-event-create-icon" />Create Event
+                    <i
+                        class="fas fa-plus-circle admin-sidebar-event-create-icon"
+                    />Creëer Evenement
                 </div>
             </div>
         </div>
@@ -184,10 +188,7 @@
                 v-if="page === 1 && displayType === 'program'"
                 :program="display"
             />
-            <div
-                v-if="page === 1"
-                class="admin-item-container-footer"
-            />
+            <div v-if="page === 1" class="admin-item-container-footer" />
             <find-user v-if="page === 2" />
             <rolls v-if="page === 3" />
         </div>
@@ -311,12 +312,6 @@ export default {
         setPage (id) {
             this.page = id;
         },
-        eventDropDown (id) {
-            const target = document.getElementById('event-' + id);
-            const height = target.getBoundingClientRect().height;
-            if (height === 0) target.style.maxHeight = '500px';
-            else target.style.maxHeight = '0';
-        },
         updateDisplay (display, type) {
             this.displayType = type;
             this.display = display;
@@ -328,7 +323,11 @@ export default {
         },
         async forceUpdate () {
             const data = await API.get('/api/admin');
-            this.events = data.data;
+            const events = data.data;
+            for (let i = 0; i < events.length; i++) {
+                events[i].open = false;
+            }
+            this.events = events;
             if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
         },
         async deleteEvent (id) {

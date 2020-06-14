@@ -6,6 +6,7 @@ module.exports = {
     },
     extends: [
         'plugin:vue/recommended',
+        'prettier/standard',
         'standard'
     ],
     globals: {
@@ -27,7 +28,13 @@ module.exports = {
         'vue/no-use-v-if-with-v-for': 0,
         'vue/order-in-components': 0,
         'no-useless-escape': 0,
-
+        "vue/max-attributes-per-line": ["error", {
+            "singleline": 3,
+            "multiline": {
+                "max": 1,
+                "allowFirstLine": false
+            }
+        }],
         "vue/html-indent": ["error", 4, {
             "attribute": 1,
             "baseIndent": 1,
