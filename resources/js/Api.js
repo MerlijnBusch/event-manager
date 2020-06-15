@@ -57,8 +57,14 @@ export default class API {
             error = res.data.message;
             break;
         case 422:
-            for (const key in res.data.errors) {
-                if (Object.prototype.hasOwnProperty.call(res.data.errors, key)) error += res.data.errors[key] + '</br>';
+            if (res.data.errors) {
+                for (const key in res.data.errors) {
+                    if (Object.prototype.hasOwnProperty.call(res.data.errors, key)) error += res.data.errors[key] + '</br>';
+                }
+            } else {
+                for (const key in res.data) {
+                    if (Object.prototype.hasOwnProperty.call(res.data, key)) error += res.data[key] + '</br>';
+                }
             }
             break;
         case 403:

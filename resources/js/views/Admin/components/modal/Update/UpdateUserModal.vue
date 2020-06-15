@@ -38,7 +38,6 @@
                             method="post"
                             @submit.prevent="checkForm"
                         >
-
                             <div class="form-line">
                                 <label
                                     class="form-label"
@@ -70,7 +69,7 @@
                             </div>
 
                             <select v-model="role_id">
-                                <option v-for="role in roles" v-bind:value="role.id">
+                                <option v-for="role in roles" :key="role.id" :value="role.id">
                                     {{ role.role_name }}
                                 </option>
                             </select>
@@ -108,11 +107,11 @@ import API from '../../../../../Api';
 export default {
     data () {
         return {
-            id: null,
+            userId: null,
             email: null,
             name: null,
             role_id: null,
-            roles: [],
+            roles: []
         };
     },
     name: 'UpdateUserModal',
@@ -122,14 +121,13 @@ export default {
             this.$emit('close');
         },
         checkForm: async function (e) {
-
             const data = {
                 email: this.email,
                 name: this.name,
-                role_id: this.role_id,
-            }
+                role_id: this.role_id
+            };
 
-            await API.post(data, '/api/admin/update/user/' + this.id, true)
+            await API.post(data, '/api/admin/update/user/' + this.userId, true);
 
             this.close();
 
@@ -137,7 +135,7 @@ export default {
         },
         async setFormData (res) {
             const data = res.data;
-            this.id = data.id;
+            this.userId = data.id;
             this.email = data.email;
             this.name = data.name;
             this.role_id = data.role_id;

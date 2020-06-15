@@ -1,7 +1,9 @@
 <template>
     <div class="admin-main-program-container">
-        <TitleDisplay :display="congress"
-                      :pretext="eventTitle +' | congres'" />
+        <TitleDisplay
+            :display="congress"
+            :pretext="eventTitle +' | congres'"
+        />
         <div class="admin-item-container">
             <div class="admin-item-list">
                 <div class="admin-block-list">
