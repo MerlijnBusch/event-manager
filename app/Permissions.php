@@ -18,6 +18,7 @@ class Permissions extends Model {
     }
 
     public const __ADMIN__ = 'Admin';
+    public const __NOTIFY_USER__ = 'notify_users';
 
     public const __READ_ROLE__ = 'read_role';
     public const __WRITE_ROLE__ = 'write_role';
@@ -48,5 +49,11 @@ class Permissions extends Model {
 
     public const __READ_USER__ = 'read_user';
     public const __WRITE_USER__ = 'write_user';
+
+    public const __READ_CONGRESS__ = 'read_congress';
+    public const __WRITE_CONGRESS__ = 'write_congress';
+
+    public const __READ_PROGRAM_ITEMS__ = 'read_program_items';
+    public const __WRITE_PROGRAM_ITEMS__ = 'write_program_items';
 
 }

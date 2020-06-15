@@ -1,0 +1,18 @@
+.map-admin-info {
+    background-color: $basic-gray;
+    text-align: center;
+    height: 30px;
+    padding-top: 4px;
+}
+
+.admin-modal {
+
+    .admin-modal-title, .admin-modal-btn-close {
+        color: $theme-color;
+    }
+
+    .admin-modal-btn-green {
+        background-color: $theme-color;
+        border: $theme-color;
+    }
+}

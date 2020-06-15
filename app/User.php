@@ -46,6 +46,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'role_id' => 'integer',
     ];
 
     public function profile()

@@ -1,30 +1,62 @@
 <template>
-    <form class="form" id="app" @submit="checkForm" method="post">
+    <form
+        id="app"
+        class="form"
+        method="post"
+        @submit="checkForm"
+    >
         <h2 class="form-title">
             Login
         </h2>
 
-
         <div class="form-line">
-            <label class="form-label" for="email">E-mail</label>
-            <input class="form-text-input" id="email" v-model="email" type="email" name="email" placeholder="Email" required>
+            <label
+                class="form-label"
+                for="email"
+            >E-mail</label>
+            <input
+                id="email"
+                v-model="email"
+                class="form-text-input"
+                type="email"
+                name="email"
+                placeholder="Email"
+            >
         </div>
 
         <div class="form-line">
-            <label class="form-label" for="password">Wachtwoord</label>
-            <input class="form-text-input" id="password" v-model="password" type="password" name="password"
-                   placeholder="Password" required>
-            <button class="form-afterinput-link" type="button" @click="$emit('forgotpassword')">Wachtwoord vergeten</button>
+            <label
+                class="form-label"
+                for="password"
+            >Wachtwoord</label>
+            <input
+                id="password"
+                v-model="password"
+                class="form-text-input"
+                type="password"
+                name="password"
+                placeholder="Password"
+            >
+            <div
+                class="form-afterinput-link"
+                @click="$emit('forgotpassword')"
+            >
+                Wachtwoord vergeten
+            </div>
         </div>
         <div class="form-line form-line-hasbutton">
-            <input type="submit" value="Login" class="form-button">
+            <input
+                type="submit"
+                value="Login"
+                class="form-button"
+            >
         </div>
     </form>
 </template>
 
 <script>
-    import axios from 'axios';
-    import API from '../../Api';
+import API from '../../Api';
+import axios from 'axios';
 
     export default {
         data() {
@@ -41,15 +73,18 @@
                         "email": this.email,
                         "password": this.password,
                     }).then(response => {
+                        if(response.status === 200 && response.data.data){
                             this.$user.data = JSON.parse(response.request.response);
                             API.setToken(this.$user.data.data.api_token);
+                            API.startInterval();
                             this.$emit("loggedIn", response.request.response);
                             this.$emit("close");
+                        }else{
+                            API.generateHtml(response.data.message);
+                        }
                     }).catch((e) => {
                         if (e.response.status == 403) {
                             this.$emit("openAccountVerification");
-                        } else {
-                             API.errorCheck(e);
                         }
 
                        

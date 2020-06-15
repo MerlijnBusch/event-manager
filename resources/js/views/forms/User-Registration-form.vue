@@ -1,42 +1,110 @@
 <template>
     <div class="full-page-form">
         <div class="form-holder">
-            <div class="form-errors" v-if="errors.length">
-                <p>Fout:</p>
-                <ul>
-                    <li v-for="error in errors">{{ error }}</li>
-                </ul>
-            </div>
-            <form class="form" autocomplete="off" @submit.prevent="requestRegister">
+            <form
+                class="form"
+                autocomplete="off"
+                @submit.prevent="requestRegister"
+            >
                 <h2 class="form-title">
                     Register Account
                 </h2>
 
-                <div class="form-line form-loading" v-if="isLoading">
-                    <loading></loading>
+                <div
+                    v-if="isLoading"
+                    class="form-line form-loading"
+                >
+                    <loading />
+                </div>
+
+                <div
+                    v-if="errors.length"
+                    class="form-errors"
+                >
+                    <p>Fout:</p>
+                    <ul>
+                        <li
+                            v-for="error in errors"
+                            :key="error"
+                        >
+                            {{ error }}
+                        </li>
+                    </ul>
+                </div>
+
+                <div
+                    v-if="!!message"
+                    class="form-message"
+                >
+                    {{ message }}
                 </div>
 
                 <div class="form-line">
-                    <label class="form-label" for="name">Naam</label>
-                    <input class="form-text-input" type="text" v-model="name">
+                    <label
+                        class="form-label"
+                        for="name"
+                    >Naam</label>
+                    <input
+                        id="name"
+                        v-model="name"
+                        class="form-text-input"
+                        type="text"
+                    >
                 </div>
                 <div class="form-line">
-                    <label class="form-label" for="email">E-mail</label>
-                    <input class="form-text-input" type="text" v-model="email" required>
+                    <label
+                        class="form-label"
+                        for="email"
+                    >E-mail</label>
+                    <input
+                        id="email"
+                        v-model="email"
+                        class="form-text-input"
+                        type="text"
+                        required
+                    >
                 </div>
                 <div class="form-line">
-                    <label class="form-label" for="password">Wachtwoord</label>
-                    <input class="form-text-input" type="password" v-model="password">
+                    <label
+                        class="form-label"
+                        for="password"
+                    >Wachtwoord</label>
+                    <input
+                        id="password"
+                        v-model="password"
+                        class="form-text-input"
+                        type="password"
+                    >
                 </div>
                 <div class="form-line">
-                    <label class="form-label" for="password_confirmation">Bevestig Wachtwoord</label>
-                    <input class="form-text-input" type="password"
-                           v-model="password_confirmation">
+                    <label
+                        class="form-label"
+                        for="password_confirmation"
+                    >Bevestig Wachtwoord</label>
+                    <input
+                        id="password_confirmation"
+                        v-model="password_confirmation"
+                        class="form-text-input"
+                        type="password"
+                    >
                 </div>
                 <div class="form-line">
-                    <label class="form-label" for="role">Soort Bezoeker</label>
-                    <select class="form-text-input" id="role" v-model="role">
-                        <option v-for="userrole in roles" :value="userrole.id">{{userrole.role_name}}</option>
+                    <label
+                        class="form-label"
+                        for="role"
+                    >Soort Bezoeker</label>
+                    <select
+                        id="role"
+                        v-model="role"
+                        class="form-text-input"
+                    >
+                        <option
+                            v-for="userrole in roles"
+                            :key="userrole.id"
+                            :value="userrole.id"
+                        >
+                            {{ userrole.role_name }}
+                        </option>
                     </select>
                 </div>
                 <div class="form-line">
@@ -44,7 +112,11 @@
                     <label class="form-label" for="terms">Algemene voorwaarden</label>
                 </div>
                 <div class="form-line form-line-hasbutton">
-                    <input type="submit" class="form-button" value="registreer account">
+                    <input
+                        type="submit"
+                        class="form-button"
+                        value="registreer account"
+                    >
                 </div>
             </form>
         </div>
@@ -52,8 +124,8 @@
 </template>
 
 <script>
-    import axios from 'axios';
-    import loading from '@/js/components/loading'
+import axios from 'axios';
+import loading from '@/js/components/loading';
 
     export default {
         name: "Registration",
@@ -95,9 +167,10 @@
             axios
                 .get('/api/selectable-roles')
                 .then(response => (this.roles = response.data))
-            console.log(this.roles)
+
         }
     }
+};
 </script>
 
 <style scoped>
