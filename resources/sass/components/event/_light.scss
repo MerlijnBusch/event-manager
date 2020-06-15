@@ -1,4 +1,4 @@
-$dark-text: #373737;
+$over-color-text: #FFFFFF;
 $gray: #8A8A8A;
 $medium-text: $gray;
 $white: #FFFFFF;
@@ -31,7 +31,7 @@ $light-gray: #E7E7E7;
     }
 
     span, .event-congress-description {
-      color: $dark-text !important;
+      color: $over-color-text !important;
     }
 
     .event-congress-round {
@@ -42,7 +42,7 @@ $light-gray: #E7E7E7;
 
     .event-congress-round-content {
       .event-congress-round-title {
-        color: $dark-text;
+        color: $over-color-text;
 
         > b {
           color: $almost-white;
@@ -59,7 +59,7 @@ $light-gray: #E7E7E7;
 
       .event-congress-round-speaker-content {
         .event-congress-round-speaker-title, .event-congress-round-speaker-position {
-          color: $dark-text !important;
+          color: $over-color-text !important;
         }
       }
 
@@ -75,14 +75,18 @@ $light-gray: #E7E7E7;
 
     .event-my_speaker-round-content {
       .event-my_speakers-title, .event-my_speakers-round-title-time, .event-my_speakers-round-title-keynote {
-        color: $dark-text !important;
+        color: var(--theme-color) !important;
+      }
+
+      .event-my_speakers-round-title-keynote {
+          font-weight: 500 !important;
       }
 
       .event-my_speakers-round-speaker {
         background-color: $almost-white;
         box-shadow: 0 0 12px rgb(0, 0, 0, .1);
         h4{
-          color: $dark-text !important;
+          color: $over-color-text !important;
         }
 
         .event-my_speakers-round-speaker-title {
@@ -90,7 +94,7 @@ $light-gray: #E7E7E7;
         }
 
         .event-my_speakers-round-speaker-description {
-          color: $dark-text
+          color: var(--theme-color);
         }
       }
     }

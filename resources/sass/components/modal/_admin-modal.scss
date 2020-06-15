@@ -1,24 +1,40 @@
 .admin-modal-backdrop {
-    z-index: 100;
     padding: 100px;
     position: fixed;
-    top: 0;
-    bottom: 0;
+    top: $navbar-height;
     left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.3);
+    height: calc(100vh - #{$navbar-height});
+    width: 100vw;
+    background-color: rgba(0,0,0,.2);
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 999;
 }
 
 .admin-modal {
     width: 100%;
     min-height: 200px;
     background: #FFFFFF;
-    box-shadow: 2px 2px 20px 1px;
+    box-shadow: rgba(0,0,0,.5) 0 0 25px 25px;
     display: flex;
     flex-direction: column;
+    form {
+        .form-label {
+            color: $theme-color;
+            font-weight: 400;
+        }
+        input[type='file']{
+            color: #ffffff;
+        }
+    }
+}
+
+.event-form-preview-image{
+    max-height: 200px;
+    width: auto;
+    height: auto;
+    max-width: 100%;
 }
 
 .admin-modal-header,
@@ -29,43 +45,42 @@
 
 .admin-modal-header {
     background-color: #111111;
-    border-bottom: 1px solid #eeeeee;
     color: #4AAE9B;
     justify-content: space-between;
 }
 
 .admin-modal-footer {
     background-color: #111111;
-    border-top: 1px solid #eeeeee;
     justify-content: flex-end;
 }
 
-.admin-modal-body::-webkit-scrollbar {
-    display: none;
-}
 
 .admin-modal-body {
     padding: 20px 10px;
     max-height: 60vh;
     overflow: auto;
+    background-color: $dark-gray;
     position: relative;
 }
 
 .admin-modal-btn-close {
     border: none;
-    font-size: 20px;
-    padding: 20px;
+    font-size: $font-size-normal;
+    padding: $padding-small $padding-medium;
+    border-radius: $border-radius-small;
     cursor: pointer;
     font-weight: bold;
-    color: #4AAE9B;
+    color: $theme-color;
     background: transparent;
 }
 
 .admin-modal-btn-green {
     color: white;
     background: #4AAE9B;
-    border: 1px solid #4AAE9B;
-    border-radius: 2px;
+    border-radius: $border-radius-small;
+    border: none;
+    font-size: $font-size-normal;padding: $padding-small $padding-medium;
+    min-width: 150px;
 }
 
 .admin-from-submit {

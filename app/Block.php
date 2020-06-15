@@ -12,7 +12,7 @@ class Block extends Model
      * @var array
      */
     protected $fillable = [
-        'program_id',
+        'congress_id',
         'date_start',
         'date_end',
     ];
@@ -21,15 +21,19 @@ class Block extends Model
         'updated_at', 'created_at','deleted_at'
     ];
 
+    protected $casts = [
+        'congress_id' => 'integer',
+    ];
+
     public function items(){
 
         return $this->hasMany('App\Item');
 
     }
 
-    public function program(){
+    public function congress(){
 
-        return $this->belongsTo('App\Program');
+        return $this->belongsTo('App\Congress');
 
     }
 
