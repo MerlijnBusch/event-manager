@@ -64,6 +64,7 @@
                                         @click="deleteEvent(event)"
                                 >
                                     <i class="fas fa-trash"/>
+
                                 </div>
                             </div>
                         </div>
@@ -85,7 +86,6 @@
                                 >
                                     <div
                                             class="admin-sidebar-program-title"
-
                                     >
                                         {{ prog.name }}
                                     </div>

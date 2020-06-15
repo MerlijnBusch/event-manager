@@ -6,7 +6,6 @@ module.exports = {
     },
     extends: [
         'plugin:vue/recommended',
-        'prettier/standard',
         'standard'
     ],
     globals: {

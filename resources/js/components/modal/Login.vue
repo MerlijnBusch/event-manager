@@ -72,7 +72,7 @@ export default {
                     email: this.email,
                     password: this.password
                 }).then(response => {
-                    if(response.status === 200 && response.data.data) {
+                    if (response.status === 200 && response.data.data) {
                         API.setToken(this.$user.data.data);
                         API.startInterval();
                         this.$emit('loggedIn', response.request.response);
@@ -80,7 +80,7 @@ export default {
                     } else {
                         API.generateHtml(response.data.message);
                     }
-                })
+                });
             }
 
             e.preventDefault();
