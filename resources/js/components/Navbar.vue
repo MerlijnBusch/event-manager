@@ -27,9 +27,6 @@
                 <router-link to="/" exact>
                     Home
                 </router-link>
-                <router-link v-if="loggedIn" to="/admin">
-                    Admin
-                </router-link>
                 <router-link v-if="loggedIn" to="/Profile">
                     Profiel
                 </router-link>

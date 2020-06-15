@@ -1,7 +1,7 @@
 <template>
     <div class="admin-main-program-title-holder">
         <div class="admin-main-program-title">
-            <span>{{type}}:</span> {{ display.name }}
+            <span>{{ type }}:</span> {{ display.name }}
         </div>
         <div class="admin-main-program-icon">
             <i class="fas fa-ellipsis-v" />

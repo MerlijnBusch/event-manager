@@ -1,7 +1,9 @@
 <template>
     <div class="admin-main-program-container">
-        <TitleDisplay :display="congress"
-                      type="congress" />
+        <TitleDisplay
+            :display="congress"
+            type="congress"
+        />
         <div class="admin-item-container">
             <div class="admin-item-list">
                 <div class="admin-block-list">
@@ -13,7 +15,7 @@
                         <div
                             class="admin-block-list-header"
                         >
-                            <div class="admin-block-date-holder" @click="block.open = !block.open" :class="{'open' : block.open}">
+                            <div class="admin-block-date-holder" :class="{'open' : block.open}" @click="block.open = !block.open">
                                 <div class="admin-block-list-date">
                                     {{ block.date_start.slice(5) }} / {{ block.date_end.slice(5) }}
                                 </div>
@@ -168,12 +170,12 @@ export default {
             updateBlockId: null
         };
     },
-    mounted(){
-      let congressData = JSON.parse(JSON.stringify(this.congress));
-      for (let i = 0; i < congressData.block.length; i++){
-          congressData.block[i].open = false;
-      }
-      this.congressData = congressData;
+    mounted () {
+        const congressData = JSON.parse(JSON.stringify(this.congress));
+        for (let i = 0; i < congressData.block.length; i++) {
+            congressData.block[i].open = false;
+        }
+        this.congressData = congressData;
     },
     methods: {
         async setModalState (state) {

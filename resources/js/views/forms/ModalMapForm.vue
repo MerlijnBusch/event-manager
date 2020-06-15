@@ -1,14 +1,15 @@
 <template>
     <transition name="modal-fade">
         <div class="admin-modal-backdrop">
-            <div class="admin-modal"
-                 role="dialog"
-                 aria-labelledby="modalTitle"
-                 aria-describedby="modalDescription"
+            <div
+                class="admin-modal"
+                role="dialog"
+                aria-labelledby="modalTitle"
+                aria-describedby="modalDescription"
             >
                 <header
-                    class="admin-modal-header"
                     id="modalTitle"
+                    class="admin-modal-header"
                 >
                     <slot name="header">
                         <p
@@ -20,19 +21,18 @@
                         <button
                             type="button"
                             class="admin-modal-btn-close"
-                            @click="close"
                             aria-label="Close modal"
+                            @click="close"
                         >
                             x
                         </button>
                     </slot>
                 </header>
                 <section
-                    class="admin-modal-body"
                     id="modalDescription"
+                    class="admin-modal-body"
                 >
                     <slot name="body">
-
                         <h1>Hieronder alle informatie over de plattegrond voor de admin</h1>
                         <ul>
                             <li>Dubbel klik op een blok om deze te verwijderen</li>
@@ -43,7 +43,6 @@
                             <li>key ctrl + z undo last item from copy state</li>
                             <li>key escape to stop the copy state and clear the copy item</li>
                         </ul>
-
                     </slot>
                 </section>
                 <footer class="admin-modal-footer">
@@ -51,8 +50,8 @@
                         <button
                             type="button"
                             class="admin-modal-btn-green"
-                            @click="close"
                             aria-label="Close modal"
+                            @click="close"
                         >
                             Close
                         </button>
@@ -64,16 +63,16 @@
 </template>
 
 <script>
-    export default {
-        data () {
-            return {
-            };
-        },
-        name: 'CreateBlockModal',
-        methods: {
-            close () {
-                this.$emit('close');
-            },
+export default {
+    data () {
+        return {
+        };
+    },
+    name: 'CreateBlockModal',
+    methods: {
+        close () {
+            this.$emit('close');
         }
-    };
+    }
+};
 </script>

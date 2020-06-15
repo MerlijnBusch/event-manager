@@ -79,7 +79,7 @@ export default class API {
         await this.generateHtml(error);
     }
 
-    static async generateHtml(message){
+    static async generateHtml (message) {
         const html = create({
             selector: 'div',
             styles: 'error-display',

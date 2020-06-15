@@ -16,7 +16,7 @@
                         Upload meerdere gebruikers (excel)
                     </button>
                     <button class="admin-sidebar-link" @click="checkEmails()">
-                       Notify Gebruikers voor evenementen
+                        Notify Gebruikers voor evenementen
                     </button>
                 </div>
                 <p class="admin-sidebar-title-divider">
@@ -65,6 +65,7 @@
                                     @click="deleteEvent(event.id)"
                                 >
                                     <i class="fas fa-trash" />
+                                    {{ event.id }}
                                 </div>
                             </div>
                         </div>
@@ -78,7 +79,8 @@
                                 v-for="prog in event.program"
                                 v-if="event.program"
                                 :key="'event.program-prog_' + prog.id"
-                                class="admin-sidebar-event-option" @click="updateDisplay(prog, 'program')"
+                                class="admin-sidebar-event-option"
+                                @click="updateDisplay(prog, 'program')"
                             >
                                 <div
                                     v-if="prog.event_id === event.id"
@@ -86,7 +88,6 @@
                                 >
                                     <div
                                         class="admin-sidebar-program-title"
-
                                     >
                                         {{ prog.name }}
                                     </div>
@@ -335,12 +336,12 @@ export default {
         },
         async deleteEvent (id) {
             if (!confirm('Weet u zeker dat u dit event wilt verwiederen')) return;
-            if (!this.currentEvent.event && id === this.currentEvent.event.id) {
+            if (this.currentEvent.event && id === this.currentEvent.event.id) {
                 this.selectedEventId = null;
                 this.currentEvent = null;
             }
-            if (this.selectedEventId) API.delete('/api/event/' + id);
-            if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
+            API.delete('/api/event/' + id);
+
             await this.forceUpdate();
         },
         async updateProgram (id) {
@@ -368,7 +369,7 @@ export default {
                 this.setModalState('updateEventSettingsModal');
             }
         },
-        checkEmails(){
+        checkEmails () {
             API.get('/api/notify');
         }
     },
