@@ -195,7 +195,7 @@
                                     v-model="contact_email"
                                     type="email"
                                     class="contact-input"
-                                    placeholder="henk@email.nl"
+                                    placeholder="voorbeeld@email.nl"
                                 >
                             </div>
                             <div>
