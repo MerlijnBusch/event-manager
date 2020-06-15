@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Rules\TermsValidator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+
+use VerifiesEmails;
 
 class RegisterController extends Controller
 {
@@ -55,7 +58,8 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'role_id' => ['required', 'int', new RoleSelectableValidator]
+            'role_id' => ['required', 'int', new RoleSelectableValidator],
+            'terms' => ['required', 'bool', new TermsValidator]
         ]);
     }
 
@@ -67,6 +71,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -77,9 +82,8 @@ class RegisterController extends Controller
 
     protected function registered(Request $request, $user)
     {
-        $user->generateToken();
-
-        return response()->json(['data' => $user->toArray()], 201);
+        $user->sendApiEmailVerificationNotification();
+        return response()->json(['message' => 'Bedankt voor het aanmaken van een account, er is een activatielink naar uw e-mailadres gestuurd. Activeer uw account om u aan te melden voor evenementen.'], 201);
     }
 
 

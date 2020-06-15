@@ -19,11 +19,11 @@ class CreateEventSettingsTable extends Migration
             $table->integer('event_id');
             $table->integer('visible_registrations')->default(EventSettings::__VISIBLE_REGISTRATIONS__);
             $table->integer('max_registrations')->default(EventSettings::__MAX_REGISTRATIONS__);
-            $table->string('primary_color');
-            $table->string('secondary_color');
+            $table->string('color');
+            $table->string('location');
+            $table->boolean('light_theme');
             $table->string('date_start');
             $table->string('date_end');
-            $table->boolean('active');
             $table->timestamps();
         });
     }
