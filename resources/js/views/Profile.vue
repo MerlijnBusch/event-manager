@@ -228,100 +228,98 @@
 </template>
 
 <script>
+    import API from '../Api';
 
-import API from '../Api';
-
-export default {
-    name: 'Profile',
-    data () {
-        return {
-            name: null,
-            data: {},
-            roles: [],
-            role_name: null,
-            about: null,
-            facebook: null,
-            twitter: null,
-            linkedin: null,
-            phonenumber: null,
-            contact_email: null,
-            edit: false,
-            image: null,
-            company: null,
-            cv: null
-        };
-    },
-    async mounted () {
-        const res = await API.get('/api/profile-check');
-
-        if (!res.data) return;
-
-        const data = res.data;
-
-        if (data.name) {
-            this.name = data.name;
-        }
-
-        if (data.profile) {
-            this.about = data.profile.about;
-            this.image = data.profile.image;
-            this.facebook = data.profile.facebook;
-            this.twitter = data.profile.twitter;
-            this.linkedin = data.profile.linkedin;
-            this.phonenumber = data.profile.phonenumber;
-            this.contact_email = data.profile.contact_email;
-        }
-
-        if (data.role) {
-            this.role_name = data.role.role_name;
-        }
-
-        const roles = await API.get('/api/selectable-roles');
-        if (!roles.data) {
-            this.roles = 'Er zijn geen selecteerbare rollen.';
-            return;
-        }
-
-        this.roles = roles.data;
-    },
-    methods: {
-        async onFileChange (e) {
-            const imgData = this;
-            const file = e.target.files[0];
-            const reader = new FileReader();
-            const imageTypes = ['png', 'jpeg'];
-
-            if (!imageTypes.includes(file.type.split('/')[1])) {
-                e.target.value = null;
-                this.image = null;
-                alert('Verkeerde image type toegestaan [png, jpeg]');
-                return;
-            }
-
-            reader.onload = function () {
-                imgData.image = this.result;
+    export default {
+        name: 'Profile',
+        data () {
+            return {
+                name: null,
+                data: {},
+                roles: [],
+                role_name: null,
+                role: null,
+                about: null,
+                facebook: null,
+                twitter: null,
+                linkedin: null,
+                phonenumber: null,
+                contact_email: null,
+                edit: false,
+                image: null,
+                user_id: null,
+                profileExist: false,
+                profileId: null
             };
-
-            await reader.readAsDataURL(file);
         },
-        async editProfile () {
-            const data = {
-                about: this.about,
-                image: this.image,
-                facebook: this.facebook,
-                twitter: this.twitter,
-                linkedin: this.linkedin,
-                phonenumber: this.phonenumber,
-                contact_email: this.contact_email
-            };
-
-            this.edit = false;
-
-            await API.post(data, '/api/profile-edit', true);
-            if (this.role_name) {
-                await API.post(this.role_name, '/api/selectable-role-edit', true);
+        async mounted () {
+            const res = await API.get('/api/profile-check');
+            if (!res.data) return;
+            const data = res.data;
+            this.user_id = data.id;
+            if (data.name) {
+                this.name = data.name;
+            }
+            if (data.profile) {
+                this.profileId = data.profile.id;
+                this.profileExist = true;
+                this.about = data.profile.about;
+                this.image = data.profile.image;
+                this.facebook = data.profile.facebook;
+                this.twitter = data.profile.twitter;
+                this.linkedin = data.profile.linkedin;
+                this.phonenumber = data.profile.phonenumber;
+                this.contact_email = data.profile.contact_email;
+            } else {
+                this.profileExist = false;
+            }
+            if (data.role) {
+                this.role_name = data.role.role_name;
+            }
+            const roles = await API.get('/api/selectable-roles');
+            if (!roles.data) return (this.roles = 'Er zijn geen selecteerbare rollen.');
+            this.roles = roles.data;
+        },
+        methods: {
+            async onFileChange (e) {
+                const imgData = this;
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                const imageTypes = ['png', 'jpeg'];
+                if (!imageTypes.includes(file.type.split('/')[1])) {
+                    e.target.value = null;
+                    this.image = null;
+                    alert('Verkeerde image type toegestaan [png, jpeg]');
+                    return;
+                }
+                reader.onload = function () {
+                    imgData.image = this.result;
+                };
+                await reader.readAsDataURL(file);
+            },
+            async editProfile () {
+                let data = {};
+                const pObj = ['about', 'image', 'facebook', 'twitter', 'linkedin', 'phonenumber', 'contact_email'];
+                const roleData = {
+                    id: this.role,
+                    user_id: this.user_id
+                };
+                pObj.forEach((i) => {
+                    if (this[i] === null) return;
+                    const tmp = {};
+                    tmp[i] = this[i];
+                    data = window._.merge(data, tmp);
+                });
+                if (this.profileExist) {
+                    await API.post(data, '/api/profile/' + this.profileId, true);
+                } else {
+                    await API.post(data, '/api/profile');
+                }
+                if (this.role) {
+                    await API.post(roleData, '/api/selectable-role-edit', true);
+                }
+                this.edit = false;
             }
         }
-    }
-};
+    };
 </script>
