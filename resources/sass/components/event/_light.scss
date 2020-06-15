@@ -75,7 +75,11 @@ $light-gray: #E7E7E7;
 
     .event-my_speaker-round-content {
       .event-my_speakers-title, .event-my_speakers-round-title-time, .event-my_speakers-round-title-keynote {
-        color: $over-color-text !important;
+        color: var(--theme-color) !important;
+      }
+
+      .event-my_speakers-round-title-keynote {
+          font-weight: 500 !important;
       }
 
       .event-my_speakers-round-speaker {
@@ -90,7 +94,7 @@ $light-gray: #E7E7E7;
         }
 
         .event-my_speakers-round-speaker-description {
-          color: $over-color-text
+          color: var(--theme-color);
         }
       }
     }
