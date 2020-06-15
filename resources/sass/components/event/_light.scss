@@ -82,21 +82,31 @@ $light-gray: #E7E7E7;
           font-weight: 500 !important;
       }
 
-      .event-my_speakers-round-speaker {
-        background-color: $almost-white;
-        box-shadow: 0 0 12px rgb(0, 0, 0, .1);
-        h4{
-          color: $over-color-text !important;
-        }
 
-        .event-my_speakers-round-speaker-title {
-          color: var(--theme-color) !important;
-        }
+    }
+  }
+  .event-my_speakers-round-speaker {
+    background-color: $almost-white !important;
+    box-shadow: 0 0 12px rgb(0, 0, 0, .1);
+    h4{
+      color: $pretty-black !important;
+    }
 
-        .event-my_speakers-round-speaker-description {
-          color: var(--theme-color);
-        }
-      }
+    .event-my_speakers-round-speaker-title {
+      color: var(--theme-color) !important;
+    }
+
+    .event-my_speakers-round-speaker-description {
+      color: $pretty-black !important;
+    }
+  }
+
+  .event-modal-signup-button{
+    background-color: transparent;
+    border-color: white;
+    color: white;
+    &:after{
+      background-color: white;
     }
   }
 }
