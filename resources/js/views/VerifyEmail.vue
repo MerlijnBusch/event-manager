@@ -24,7 +24,11 @@
                 })
                 .then(response => {
                     console.log(response);
-                    this.message = response.message;
+                    this.message = response.data;
+                }).catch(e => {
+                    if (e.response.status == 422) {
+                        this.message = e.response.data.message;
+                    }
                 })
         }
     }
