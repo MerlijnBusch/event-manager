@@ -22,15 +22,9 @@ class UserController extends Controller
     public function updatetoken()
     {
         $user = User::find(Auth::id());
-        $user->api_token = Hash::make(Str::random(120), [
-            'memory' => 1024,
-            'time' => 2,
-            'threads' => 2,
-        ]);
-        $user->api_token_expired_date = Carbon::now()->addHour();
-        $user->update();
+        $s = $user->generateToken();
 
-        return response()->json(['message' => $user->api_token], 200);
+        return response()->json(['message' => $s], 200);
     }
 
     /**
@@ -39,7 +33,6 @@ class UserController extends Controller
      */
     public function search(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
             'search' => ['string']
         ]);
@@ -62,28 +55,46 @@ class UserController extends Controller
      */
     public function permissions()
     {
-
         $this->authorize('write', Role::class);
 
         $permissions = new Permissions;
         return response()->json(['message' => $permissions->getAllPermissions()], 200);
     }
 
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function UpdateSelectableUserRole(Request $request)
     {
-        $this->authorize('write', User::class);
+        $validator = Validator::make($request->all(), [
+            'id' => ['integer'],
+            'user_id' => ['integer']
+        ]);
 
-       if(!$request && !in_array($request->role_name, Role::query()->where("selectable", true)->get(["id"])->toArray())){
-           abort(403);
-       }
+        if ($validator->fails()) {
+            abort(403);
+        }
 
+        if($request->user_id != Auth::id()){
+            abort(403);
+        }
 
-       if($request->role_name){
+        $user = User::findOrFail($request->user_id);
 
-            $user->role_id = $request->role_name;
-            $user->update();
+        if (!in_array($request->id, Role::query()->where("selectable", true)->get(["id"])->toArray())) {
+            abort(403);
+        }
 
-            return  response()-json(['message' => "Role Edited"]);
-       }  
+        $user->role_id = $request->id;
+        $user->update();
+
+        return response()->json(['message' => "Role Edited"], 200);
+    }
+
+    public function isLoggedIn(){
+
+        return response()->json(Auth::check(), 200);
+
     }
 }

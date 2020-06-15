@@ -31,7 +31,6 @@ class Item extends Model
 
     public const __KEYNOTES__ = 'keynotes';
     public const __SPEAKER__ = 'speaker';
-    public const __NONE__ = 'none';
 
     /**
      * The attributes that are mass assignable.
@@ -50,6 +49,11 @@ class Item extends Model
 
     protected $hidden = [
         'updated_at', 'created_at','deleted_at'
+    ];
+
+    protected $casts = [
+        'block_id' => 'integer',
+        'active' => 'boolean',
     ];
 
     public function block(){

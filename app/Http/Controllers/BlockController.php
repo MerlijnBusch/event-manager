@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Block;
-use App\Rules\ProgramExistValidator;
+use App\Http\Requests\BlockStoreValidationRequest;
+use App\Http\Requests\BlockUpdateValidationRequest;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
 
 class BlockController extends Controller
 {
@@ -40,23 +39,13 @@ class BlockController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param BlockStoreValidationRequest $request
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function store(Request $request)
+    public function store(BlockStoreValidationRequest $request)
     {
         $this->authorize('write', Block::class);
-
-        $validator = Validator::make($request->all(), [
-            'program_id' => ['required', new ProgramExistValidator],
-            'date_start' => ['required', 'date'],
-            'date_end' => ['required', 'date'],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
 
         Block::create($request->all());
 
@@ -67,23 +56,14 @@ class BlockController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param BlockUpdateValidationRequest $request
      * @param Block $block
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function update(Request $request, Block $block)
+    public function update(BlockUpdateValidationRequest $request, Block $block)
     {
         $this->authorize('write', Block::class);
-
-        $validator = Validator::make($request->all(), [
-            'date_start' => ['required', 'date'],
-            'date_end' => ['required', 'date'],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
 
         $block = Block::findOrFail($block->id);
         $block->update($request->all());
@@ -104,6 +84,6 @@ class BlockController extends Controller
 
         $block->delete();
 
-        return response()->json(['message' => 'Item deleted successfully'], 200);
+        return response()->json(['message' => 'Block deleted successfully'], 200);
     }
 }

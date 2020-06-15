@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -48,6 +47,12 @@ class Event extends Model
     public function program(){
 
         return $this->hasMany('App\Program', 'event_id');
+
+    }
+
+    public function congress(){
+
+        return $this->hasMany('App\Congress', 'event_id');
 
     }
 }

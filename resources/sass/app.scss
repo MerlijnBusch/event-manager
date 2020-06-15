@@ -4,7 +4,7 @@
 
 @import "error";
 @import "./Admin/admin";
-
+@import "components/datePicker";
 @import '../../node_modules/font-awesome/scss/font-awesome';
 
 .fas, .fas:before, .fas:after {
@@ -62,6 +62,11 @@ body {
 .fade-enter-active, .fade-leave-active {
     transition: .5s;
     position: absolute;
+    width: 100%;
+    min-height: 100vh;
+    &.event-page{
+        transition: 1s;
+    }
 }
 
 .fade-enter {
@@ -69,8 +74,11 @@ body {
 }
 
 .fade-leave-to {
-    opacity: 0;
+    opacity: 0 !important;
     transform: translateY(50vw);
+    &.event-page{
+        transform: translateY(100vw);
+    }
 }
 
 $scrollbar-width: 20px;

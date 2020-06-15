@@ -1,7 +1,7 @@
 <template>
     <div class="profile-container">
         <div class="flex-wrapper profile-top">
-            <h1>{{name}}'s profiel</h1>
+            <h1>{{ name }}'s profiel</h1>
         </div>
         <form autocomplete="off" @submit.prevent="editProfile" method="post" class="form-profile-edit">
             <div class="mobile-wrapper flex-grid column-desktop-full column-tablet-12">
@@ -39,9 +39,20 @@
                 <div class="column-desktop-8 column-tablet-12 column-mobile-12 profile-about-mobile profile-row-right">
                     <div class="profile-border profile-about">
                         <div class="profile-about-border">
-                            <p class="profile-about-title">Vertel over jezelf</p>
-                            <p class="profile-about-description" v-if="!edit">{{about}}</p>
-                            <textarea v-model="about" class="profile-about-description" v-else></textarea>
+                            <p class="profile-about-title">
+                                Vertel over jezelf
+                            </p>
+                            <p
+                                v-if="!edit"
+                                class="profile-about-description"
+                            >
+                                {{ about }}
+                            </p>
+                            <textarea
+                                v-else
+                                v-model="about"
+                                class="profile-about-description"
+                            />
                         </div>
                     </div>
                     <div class="profile-border profile-contact profile-border">
@@ -51,7 +62,8 @@
                             <a :href="linkedin" v-if="!edit && linkedin || edit" target="_blank">    
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                     <path
-                                        d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 8c0 .557-.447 1.008-1 1.008s-1-.45-1-1.008c0-.557.447-1.008 1-1.008s1 .452 1 1.008zm0 2h-2v6h2v-6zm3 0h-2v6h2v-2.861c0-1.722 2.002-1.881 2.002 0v2.861h1.998v-3.359c0-3.284-3.128-3.164-4-1.548v-1.093z"/>
+                                        d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 8c0 .557-.447 1.008-1 1.008s-1-.45-1-1.008c0-.557.447-1.008 1-1.008s1 .452 1 1.008zm0 2h-2v6h2v-6zm3 0h-2v6h2v-2.861c0-1.722 2.002-1.881 2.002 0v2.861h1.998v-3.359c0-3.284-3.128-3.164-4-1.548v-1.093z"
+                                    />
                                 </svg>
                             </a>
                             <input type="url" v-model="linkedin" class="contact-input" v-if="edit" placeholder="https://www.linkedin.com/">
@@ -99,11 +111,6 @@
         </form>
     </div>
 </template>
-
-<style lang='scss'>
-
-</style>
-
 
 <script>
 
