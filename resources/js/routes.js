@@ -14,6 +14,7 @@ import datepickerExample from '@/js/views/DateTimeExample';
 import AdminIndex from '@/js/views/Admin/Admin';
 import UserRegistrationForm from '@/js/views/forms/User-Registration-form';
 import NotFound from '@/js/views/NotFound';
+import VerifyEmail from './views/VerifyEmail';
 
 Vue.use(VueRouter);
 
@@ -87,6 +88,11 @@ const router = new VueRouter({
             path: '*',
             name: 'Pagina niet gevonden',
             component: NotFound
+        },
+        {
+            path: '/verify/mails/:token',
+            name: 'verify.email',
+            component: VerifyEmail
         }
 
     ]

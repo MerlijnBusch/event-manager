@@ -57,10 +57,10 @@ class GenerateBasicRolesCommand extends Command
         $role->permissions = json_encode([
             Permissions::__READ_USER__,
             Permissions::__WRITE_USER__,
-            Permissions::__READ_CV__,
-            Permissions::__WRITE_CV__,
+            Permissions::__WRITE_PROFILE__,
             Permissions::__READ_PROFILE__,
-            Permissions::__WRITE_PROFILE__
+            Permissions::__READ_MAP__
+
         ]);
         $role->save();
 

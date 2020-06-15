@@ -107,6 +107,10 @@
                         </option>
                     </select>
                 </div>
+                <div class="form-line">
+                    <input v-model="terms" type="checkbox">
+                    <label class="form-label" for="terms">Algemene voorwaarden</label>
+                </div>
                 <div class="form-line form-line-hasbutton">
                     <input
                         type="submit"
@@ -132,39 +136,32 @@ export default {
             password: null,
             password_confirmation: null,
             role: null,
-            message: null,
-            isLoading: false,
+            terms: false,
             errors: [],
+            isLoading: false,
             roles: []
         };
     },
     components: { loading },
     methods: {
-        requestRegister () {
-            this.errors = [];
+        async requestRegister () {
             this.isLoading = true;
-
-            switch (true) {
-            case this.email.length === 0:
+            axios.post('/api/register',
+                {
+                    name: this.name,
+                    email: this.email,
+                    password: this.password,
+                    password_confirmation: this.password_confirmation,
+                    role_id: this.role,
+                    terms: this.terms
+                }).then(result => {
+                alert(result.data.message);
                 this.isLoading = false;
-                this.errors.push('Er is niks ingevuld');
-                break;
-            // case /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$  /.test(this.email) === false:
-            //     this.isLoading = false;
-            //     this.errors.push('Er is geen email ingevuld');
-            //     break;
-            case /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,} /.test(this.password) === false:
-                this.isLoading = false;
-                this.errors.push('Het wachtwoord is incorrect. Gebruik minimaal 8 karakters, een hoofdletter en een nummer.');
-                break;
-            default:
-                axios.post('/register', { email: this.email }).then(result => {
-                    this.message = result.data.message;
-                    this.isLoading = false;
-                }, error => {
-                    this.errors.push(error);
-                });
-            }
+                this.message = result.data.message;
+                this.$router.push('/');
+            }, error => {
+                this.errors.push(error);
+            });
         }
     },
     mounted () {
