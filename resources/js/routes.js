@@ -87,6 +87,11 @@ const router = new VueRouter({
             path: '*',
             name: 'Pagina niet gevonden',
             component: NotFound
+        },
+        {
+            path:'/verify/mails/:token',
+            name: 'verify.emaxil',
+            component: VerifyEmail,
         }
 
     ]
