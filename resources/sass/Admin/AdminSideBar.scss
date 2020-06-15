@@ -63,24 +63,6 @@
   flex-direction: row;
   background: $pretty-black;
   cursor: pointer;
-  position: relative;
-  &:before{
-    content: '';
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 6px 0 6px 12px;
-    border-color: transparent transparent transparent #ffffff;
-    position: absolute;
-    left: #{$padding-medium/2};
-    top: 50%;
-    transform: translateY(-50%) rotate(0deg);
-    transition: transform $animation-time ease-in-out, border $animation-time;
-  }
-  &.open:before{
-
-    transform: translateY(-50%) rotate(90deg);
-  }
 }
 
 .admin-sidebar-event-option {
