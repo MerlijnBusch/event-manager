@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\User;
 use Illuminate\Http\JsonResponse;
@@ -35,8 +36,7 @@ class VerificationController extends Controller
     */
     public function __construct()
     {
-        $this->middleware('signed')->only('verify');
-        $this->middleware('throttle:6,1')->only('verify', 'resend');
+      
     }
 
 
@@ -48,9 +48,17 @@ class VerificationController extends Controller
      */
     public function verify(VerifyUserIdForEmailVerificationRequest $request) {
 
-        $userTokenMail = DB::table('verify_token')->where('token', $request.token)->first();
+        $userTokenMail = DB::table('verify_token')->where('token', $request->token)->first();
+    
+        if($userTokenMail == NULL){
+            return response()->json('token not found ', 200);
+        }
 
         $user = User::query()->where('email', $userTokenMail->email)->first();
+
+        if($user == NULL){
+           return response()->json('user not found ', 200);
+        }
         $date = Carbon::now();
         $user->email_verified_at = $date;
         $user->update();

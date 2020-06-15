@@ -3,6 +3,8 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class VerifyEmailTokenValidator implements Rule
 {
@@ -26,7 +28,7 @@ class VerifyEmailTokenValidator implements Rule
     public function passes($attribute, $value)
     {
         $token = DB::table('verify_token')->where('token', $value)->first();
-        if($token == NULL){
+        if($token == NULL){ 
             return false;
         }
         $now = Carbon::create($token->date);

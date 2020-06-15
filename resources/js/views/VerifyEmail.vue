@@ -16,7 +16,7 @@
         },
         mounted() {
             axios
-                .post('/api/email/verify', {
+                .patch('/api/email/verify', {
                     token: this.$route.params.token
                 })
                 .then(response => {

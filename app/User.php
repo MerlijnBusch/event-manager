@@ -81,11 +81,16 @@ class User extends Authenticatable
     public function generateVerificationToken($email)
     {
         $token = Str::random(120);
-        DB::table('verify_token')->insert([
+        $q = DB::table('verify_token')->where('email', $email)->first();
+        if($q == NULL){
+             DB::table('verify_token')->insert([
             'email' => $email,
             'token' => $token,
             'date' => Carbon::now()
             ]);
+        }else{
+            DB::table('verify_token')->where('email', $email)->update(['token' => $token, 'date' => Carbon::now()]);
+        }
 
         return $token;
     }

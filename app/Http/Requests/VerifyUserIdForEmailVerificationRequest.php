@@ -25,8 +25,7 @@ class VerifyUserIdForEmailVerificationRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => ['required', 'integer'],
-            'token' => ['string', new VerifyEmailTokenValidator] // @todo amin custom validator if token is valid
+            'token' => ['string', new VerifyEmailTokenValidator]
         ];
     }
 }

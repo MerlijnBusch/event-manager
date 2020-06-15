@@ -54,7 +54,14 @@ class GenerateBasicRolesCommand extends Command
         $role->role_name = 'Visitor';
         $role->color = '#a0a867';
         $role->selectable = true;
-        $role->permissions = json_encode([]);
+        $role->permissions = json_encode([
+            Permissions::__READ_USER__,
+            Permissions::__WRITE_USER__,
+            Permissions::__WRITE_PROFILE__,
+            Permissions::__READ_PROFILE__,
+            Permissions::__READ_MAP__
+
+        ]);
         $role->save();
 
         $role = new Role;
