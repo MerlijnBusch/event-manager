@@ -7,6 +7,7 @@ use App\Mail\NotifyUserOfEventsMail;
 use App\RegistrationEvents;
 use App\User;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -41,11 +42,10 @@ class NotifyUsersForEvents extends Command
      * Execute the console command.
      *
      * @return mixed
+     * @throws Exception
      */
     public function handle()
     {
-        Log::debug('this works every minute');
-
         $events = Event::query()
             ->with('settings')
             ->has('settings')
