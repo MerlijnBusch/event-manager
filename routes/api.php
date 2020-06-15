@@ -22,9 +22,10 @@ Route::get('/event-overview/{event}', 'OverviewController@index')->name('event.o
 Route::get('/event-overview', 'OverviewController@event')->name('event');
 Route::get('/user/login-check', 'UserController@isLoggedIn');
 
-Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
-    Route::get('/is-subscribed/{event}', 'OverviewController@isSubscribed')->name('isSubscribed');
+Route::patch('email/verify', 'Auth\VerificationController@verify')->name('verificationapi.verify');
+Route::post('email/resend', 'Auth\VerificationController@resend')->name('verificationapi.resend');
 
+Route::group(['middleware' => ['auth:api', 'api_token_valid', 'verified']], function () {
     Route::post('logout', 'Auth\LoginController@logout');
     Route::patch('selectable-role-edit', 'UserController@UpdateSelectableUserRole');
 

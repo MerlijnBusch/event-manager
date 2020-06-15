@@ -194,7 +194,6 @@ class ProfileController extends Controller
     public function check()
     {
         $this->authorize('read', Profile::class);
-        $this->authorize('readCV', Profile::class);
 
         $user = User::query()
             ->where('id', Auth::id())
