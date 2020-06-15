@@ -326,13 +326,16 @@ export default {
             await this.forceUpdate();
         },
         async forceUpdate () {
-            const data = await API.get('/api/admin');
-            const events = data.data;
-            for (let i = 0; i < events.length; i++) {
-                events[i].open = false;
-            }
-            this.events = events;
-            if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
+            const _this = this;
+            await setTimeout(async () => {
+                const data = await API.get('/api/admin');
+                const events = data.data;
+                for (let i = 0; i < events.length; i++) {
+                    events[i].open = false;
+                }
+                if (_this.selectedEventId) await _this.setSelectedEventId(_this.selectedEventId);
+                _this.events = events;
+            }, 1000)
         },
         async deleteEvent (block) {
             block.open = !block.open;
