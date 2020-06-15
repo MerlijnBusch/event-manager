@@ -83,7 +83,7 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
         $user->sendApiEmailVerificationNotification();
-        return response()->json(['data' => $user->toArray()], 201);
+        return response()->json(['message' => 'Bedankt voor het aanmaken van een account, er is een activatielink naar uw e-mailadres gestuurd. Activeer uw account om u aan te melden voor evenementen.'], 201);
     }
 
 

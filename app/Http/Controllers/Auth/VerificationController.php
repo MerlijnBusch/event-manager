@@ -51,19 +51,24 @@ class VerificationController extends Controller
         $userTokenMail = DB::table('verify_token')->where('token', $request->token)->first();
     
         if($userTokenMail == NULL){
-            return response()->json('token not found ', 200);
+            return response()->json('De activatielink is ongeldig .', 200);
         }
 
         $user = User::query()->where('email', $userTokenMail->email)->first();
 
         if($user == NULL){
-           return response()->json('user not found ', 200);
+           return response()->json('Geen geldige account gevonden, probeer opnieuw een activatielink op te sturen via het inlog systeem. ', 200);
         }
+      
         $date = Carbon::now();
         $user->email_verified_at = $date;
         $user->update();
 
-        return response()->json('test goed ', 200);
+        //Deleting activation token after verifying
+        DB::table('verify_token')->where('token', $request->token)->delete();
+
+        return response()->json('Uw account is geactiveerd, u kunt nu inloggen en uw aanmelden voor evenementen.', 200);
+
     }
 
     /**

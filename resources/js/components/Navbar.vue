@@ -35,8 +35,11 @@
                 </router-link>
                 <div class="sidenav-link-divider" />
                 <button v-if="!loggedIn" @click="openLogin">
-                    Aanmelden
+                    Inloggen
                 </button>
+                <router-link to="/user-registration"  v-if="!loggedIn">
+                    Registreren
+                </router-link>
                 <button v-else @click="logout">
                     Uitloggen
                 </button>

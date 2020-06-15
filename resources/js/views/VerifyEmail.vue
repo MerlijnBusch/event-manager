@@ -1,6 +1,7 @@
 <template>
     <div>
-        test
+        <h2>Account Verificatie</h2>
+        <p>{{message}}</p>
     </div>
 </template>
 
@@ -11,8 +12,10 @@
     export default {
         name: "VerifyEmail",
         data() {
-            verify: false
-            return{}
+            return {
+                verify: false,
+                message: ''
+            }
         },
         mounted() {
             axios
@@ -20,7 +23,8 @@
                     token: this.$route.params.token
                 })
                 .then(response => {
-
+                    console.log(response);
+                    this.message = response.message;
                 })
         }
     }

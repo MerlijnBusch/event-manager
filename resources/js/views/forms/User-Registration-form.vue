@@ -155,9 +155,10 @@ import loading from '@/js/components/loading';
                             role_id: this.role,
                             terms: this.terms
                         }).then(result => {
-                            console.log(result.data)
+                            alert(result.data.message);
                             this.isLoading = false;
                             this.message = result.data.message;
+                            this.$router.push('/')
                         }, error => {
                             this.errors.push(error)
                         });
@@ -170,7 +171,6 @@ import loading from '@/js/components/loading';
 
         }
     }
-};
 </script>
 
 <style scoped>
