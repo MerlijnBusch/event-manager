@@ -25,9 +25,19 @@ class VerifyEmailTokenValidator implements Rule
      */
     public function passes($attribute, $value)
     {
+        $token = DB::table('verify_token')->where('token', $value)->first();
+        if($token == NULL){
+            return false;
+        }
+        $now = Carbon::create($token->date);
+        $oneDay = $now->copy()->addHour();
 
-        // if date is still in houre and if token are the same
-        return true;
+        if (Carbon::now()->between($now, $oneDay)) {
+
+            return true;
+        }
+
+        return false;
     }
 
     /**

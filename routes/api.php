@@ -20,7 +20,7 @@ Route::post('reset-password', 'Auth\ForgotPasswordController@sendPasswordResetLi
 Route::post('reset/password', 'Auth\ResetPasswordController@callResetPassword');
 Route::get('event-overview/{event}', 'OverviewController@index')->name('event.overview');
 
-Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verificationapi.verify');
+Route::patch('email/verify', 'Auth\VerificationController@verify')->name('verificationapi.verify');
 Route::post('email/resend', 'Auth\VerificationController@resend')->name('verificationapi.resend');
 
 Route::group(['middleware' => ['auth:api', 'api_token_valid', 'verified']], function () {

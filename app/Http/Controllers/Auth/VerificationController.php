@@ -48,13 +48,14 @@ class VerificationController extends Controller
      */
     public function verify(VerifyUserIdForEmailVerificationRequest $request) {
 
-        $userID = $request['id'];
-        $user = User::findOrFail($userID);
+        $userTokenMail = DB::table('verify_token')->where('token', $request.token)->first();
+
+        $user = User::query()->where('email', $userTokenMail->email)->first();
         $date = Carbon::now();
         $user->email_verified_at = $date;
-        $user->save();
+        $user->update();
 
-        return response()->json('test', 200);
+        return response()->json('test goed ', 200);
     }
 
     /**
