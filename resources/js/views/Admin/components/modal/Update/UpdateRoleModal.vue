@@ -15,7 +15,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Update Block
+                            Update rol
                         </p>
 
                         <button
@@ -42,33 +42,33 @@
                                 <label
                                     class="form-label"
                                     for="role_name"
-                                >Role Name</label>
+                                >Rol Naam</label>
                                 <input
                                     id="role_name"
                                     v-model="role_name"
                                     class="form-text-input"
                                     type="text"
                                     name="role_name"
-                                    placeholder="Role name"
+                                    placeholder="Rol naam"
                                 >
                             </div>
                             <div class="form-line">
                                 <label
                                     class="form-label"
                                     for="color"
-                                >Color</label>
+                                >Kleur</label>
                                 <input
                                     id="color"
                                     v-model="color"
                                     class="form-color-input"
                                     type="color"
                                     name="color"
-                                    placeholder="Color"
+                                    placeholder="kleur"
                                 >
                             </div>
                             <div class="form-line">
                                 <dropdown
-                                    placeholder="role permisions"
+                                    placeholder="rol permissies"
                                     :options="options"
                                     :current="current"
                                     @setCurrent="setCurrent"
@@ -78,7 +78,7 @@
                             <div class="form-line admin-from-submit">
                                 <input
                                     type="submit"
-                                    value="Submit"
+                                    value="Indienen"
                                     class="submit-btn admin-form-submit"
                                 >
                             </div>
@@ -93,7 +93,7 @@
                             aria-label="Close modal"
                             @click="close"
                         >
-                            Close
+                            Sluit
                         </button>
                     </slot>
                 </footer>

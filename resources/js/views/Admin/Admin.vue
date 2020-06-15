@@ -16,7 +16,7 @@
                         Upload meerdere gebruikers (excel)
                     </button>
                     <button class="admin-sidebar-link" @click="checkEmails()">
-                        Notify Gebruikers voor evenementen
+                        Informeer gebruikers voor evenementen
                     </button>
                 </div>
                 <p class="admin-sidebar-title-divider">

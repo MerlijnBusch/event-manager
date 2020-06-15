@@ -43,7 +43,7 @@
                     class="admin-role-create-container"
                     @click="setModalState('createRollModal')"
                 >
-                    <i class="fas fa-plus-circle admin-role-create-icon" />create role
+                    <i class="fas fa-plus-circle admin-role-create-icon" />Creëer rol
                 </div>
             </div>
         </div>

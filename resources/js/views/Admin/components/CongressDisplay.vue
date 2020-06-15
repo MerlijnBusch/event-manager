@@ -85,7 +85,7 @@
                         class="admin-block-list-add-block"
                         @click="setModalState(`createBlockModal`)"
                     >
-                        <i class="fas fa-plus-circle admin-block-list-add-icon" />Add block
+                        <i class="fas fa-plus-circle admin-block-list-add-icon" />Voeg blok toe
                     </div>
                 </div>
             </div>
