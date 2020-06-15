@@ -4,7 +4,33 @@
 @import "AdminSideBar";
 @import "FindUser";
 @import "Rolls";
+@import "Controls";
 @import "../variables";
+
+//everything with dropdown triangle:
+.admin-item-list-holder:not(.in-congress),
+.admin-block-date-holder,
+.admin-sidebar-name-holder{
+    padding-left: $padding-medium + $padding-small !important;
+    position: relative;
+
+    &.open:before{
+        transform: translateY(-50%) rotate(90deg);
+    }
+    &:before{
+        content: '';
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 6px 0 6px 12px;
+        border-color: transparent transparent transparent #ffffff;
+        position: absolute;
+        left: #{$padding-medium/2};
+        top: 50%;
+        transform: translateY(-50%) rotate(0deg);
+        transition: transform $animation-time ease-in-out, border $animation-time;
+    }
+}
 
 .admin-container {
     margin: 0;
@@ -15,7 +41,7 @@
 }
 
 .admin-main-program-container {
-    background-color: #111111;
+    background-color: $pretty-black;
     color: whitesmoke;
     flex-grow: 1;
     height: 100%;
@@ -34,7 +60,7 @@
     flex-direction: column;
     height: 100%;
     flex-shrink: 0;
-    background-color: #404040;
+    background-color: darken($dark-gray,5);
 }
 
 .admin-item-container {
@@ -66,7 +92,7 @@
     align-content: center;
     flex-direction: column;
     flex: 1;
-    background: #2e2e2e;
+    background: $deep-gray;
     padding-left: 16px;
     padding-top: 8px;
     overflow-y: scroll;
@@ -77,12 +103,16 @@
 }
 
 .admin-item-list-holder {
-    background-color: #2e2e2e;;
+    background-color: $dark-gray;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 60px;
     padding: 8px 24px;
+    .admin-sidebar-item-action-update,
+    .admin-sidebar-item-action-delete{
+        background-color: $deep-gray;
+    }
 }
 
 .admin-main-block-action-add-item {
@@ -101,7 +131,7 @@
 }
 
 .admin-item-hr {
-    background: #3e3e3e;
+    background: $dark-gray;
     height: 4px;
     margin-left: 32px;
     margin-bottom: 8px;
@@ -109,7 +139,7 @@
 }
 
 .admin-block-list-header {
-    background: #1f1f1f;
+    background: $pretty-black;
     display: flex;
     flex-direction: row;
     height: 70px;
@@ -130,7 +160,7 @@
 }
 
 .admin-block-list-add-block {
-    background: #2e2e2e;
+    background: $deep-gray;
     height: 60px;
     align-items: center;
     display: flex;
@@ -174,7 +204,7 @@
 }
 
 .admin-block-action-icon-holder {
-    background: #404040;
+    background: $dark-gray;
     min-width: 30px;
     height: 30px;
     align-items: center;
@@ -190,11 +220,18 @@
 
 .admin-block-item-list {
     overflow: hidden;
-    height: 0;
-    -webkit-transition: height .3s ease-in-out;
-    -moz-transition: height .3s ease-in-out;
-    -o-transition: height .3s ease-in-out;
-    transition: height .3s ease-in-out;
+    max-height: 0;
+    overflow-y: auto;
+    -webkit-transition: max-height .3s ease-in-out;
+    -moz-transition: max-height .3s ease-in-out;
+    -o-transition: max-height .3s ease-in-out;
+    transition: max-height .3s ease-in-out;
+    &::-webkit-scrollbar-track {
+        background: $dark-gray;
+    }
+    &.showing{
+     max-height: 300px;
+    }
 }
 
 .admin-block-list-date {
@@ -204,7 +241,7 @@
 }
 
 .admin-item-list-holder:hover {
-    background-color: #111111;
+    background-color: $mid-gray;
 }
 
 .admin-display-page {
@@ -216,14 +253,14 @@
 .admin-display-page-main {
     flex-direction: column;
     display: flex;
-    background: #121212;
+    background: $pretty-black;
     padding: 12px 0px 0px 24px;
     flex: 1;
 }
 
 .admin-display-page-main-container{
     display: flex;
-    background: #2E2E2E;
+    background: $deep-gray;
     flex: 1;
     flex-direction: column;
 }

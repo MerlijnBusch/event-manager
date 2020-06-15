@@ -6,25 +6,20 @@
             <div class="admin-item-list">
                 <div class="admin-block-list">
                     <div
-                        v-for="block in congress.block"
-                        :key="'congress.block_' + block.id"
+                        v-for="block in congressData.block"
+                        :key="'congressData.block_' + block.id"
                         class="admin-block-list-holder"
                     >
                         <div
                             class="admin-block-list-header"
                         >
-                            <div
-                                class="admin-block-date-holder"
-                            >
-                                <div
-                                    class="admin-block-list-date"
-                                    @click="displayBlockItems(block.id, block.items.length)"
-                                >
+                            <div class="admin-block-date-holder" @click="block.open = !block.open" :class="{'open' : block.open}">
+                                <div class="admin-block-list-date">
                                     {{ block.date_start.slice(5) }} / {{ block.date_end.slice(5) }}
                                 </div>
                                 <div
                                     class="admin-block-action"
-                                    @click="displayBlockActions(block.id)"
+                                    @click.prevent="displayBlockActions(block)"
                                 >
                                     <i class="fas fa-chevron-left" />
                                 </div>
@@ -59,11 +54,12 @@
                         <div
                             :id="'block-items-' + block.id"
                             class="admin-block-item-list"
+                            :class="{'showing': block.open}"
                         >
                             <div
                                 v-for="item in block.items"
                                 :key="'block-items-' + block.id + '-' + item.id"
-                                class="admin-item-list-holder"
+                                class="admin-item-list-holder in-congress"
                             >
                                 <div>{{ item.name }}</div>
                                 <div class="admin-sidebar-item-action-container">
@@ -162,6 +158,7 @@ export default {
     props: ['congress'],
     data () {
         return {
+            congressData: [],
             createBlockModal: false,
             updateBlockModal: false,
             createItemModal: false,
@@ -170,6 +167,13 @@ export default {
             itemId: null,
             updateBlockId: null
         };
+    },
+    mounted(){
+      let congressData = JSON.parse(JSON.stringify(this.congress));
+      for (let i = 0; i < congressData.block.length; i++){
+          congressData.block[i].open = false;
+      }
+      this.congressData = congressData;
     },
     methods: {
         async setModalState (state) {
@@ -186,8 +190,9 @@ export default {
             if (height === 0) target.style.height = (60 * amount) + 'px';
             else target.style.height = '0px';
         },
-        displayBlockActions (id) {
-            const target = document.getElementById('block-' + id);
+        displayBlockActions (block) {
+            block.open = !block.open;
+            const target = document.getElementById('block-' + block.id);
             const width = target.getBoundingClientRect().width;
             if (width === 0) target.style.width = '120px';
             else target.style.width = '0px';

@@ -61,8 +61,8 @@ import axios from 'axios';
 export default {
     data () {
         return {
-            email: 'Admin@example.com',
-            password: 'password'
+            email: '',
+            password: ''
         };
     },
     methods: {
@@ -72,14 +72,15 @@ export default {
                     email: this.email,
                     password: this.password
                 }).then(response => {
-                    this.$user.data = JSON.parse(response.request.response);
-                    API.setToken(this.$user.data.data.api_token);
-                    API.startInterval();
-                    this.$emit('loggedIn', response.request.response);
-                    this.$emit('close');
-                }).catch(e => {
-                    API.errorCheck(e);
-                });
+                    if(response.status === 200 && response.data.data) {
+                        API.setToken(this.$user.data.data);
+                        API.startInterval();
+                        this.$emit('loggedIn', response.request.response);
+                        this.$emit('close');
+                    } else {
+                        API.generateHtml(response.data.message);
+                    }
+                })
             }
 
             e.preventDefault();

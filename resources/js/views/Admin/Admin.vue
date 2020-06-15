@@ -15,6 +15,9 @@
                     <button class="admin-sidebar-link" @click="setModalState(`uploadExcelUsersModal`)">
                         Upload meerdere gebruikers (excel)
                     </button>
+                    <button class="admin-sidebar-link" @click="checkEmails()">
+                       Notify Gebruikers voor evenementen
+                    </button>
                 </div>
                 <p class="admin-sidebar-title-divider">
                     Evenementen:
@@ -357,15 +360,16 @@ export default {
             await this.setModalState('updateEventModal');
         },
         openEventSettings (id, settings) {
-            console.log(settings);
             if (settings === null) {
                 this.settingsId = id;
                 this.setModalState('createEventSettingsModal');
             } else {
-                console.log('test');
                 this.updateSettingsId = settings.id;
                 this.setModalState('updateEventSettingsModal');
             }
+        },
+        checkEmails(){
+            API.get('/api/notify');
         }
     },
     async mounted () {
