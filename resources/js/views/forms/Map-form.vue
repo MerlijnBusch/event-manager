@@ -1,20 +1,17 @@
 <template>
     <div class="map-container">
         <div class="map-settings-container">
-            <button
-                class="button-create-item map-settings-container-items"
-                @click="addNewItem"
-            >
+            <button class="button-create-item map-settings-container-items" @click="addNewItem">
                 AddNewItem
             </button>
-            <div class="map-settings-container-items">
+            <div class="map-settings-container-items map-settings-container-items-color">
                 <hr>
                 <label for="select-color">Select color</label>
                 <input
                     id="select-color"
                     type="color"
                     name="select-color"
-                    :value="backgroundColorCodeItem"
+                    :value="this.backgroundColorCodeItem"
                     @change="setItemBackgroundColorData($event)"
                 >
                 <hr>
@@ -23,7 +20,7 @@
                     id="map_width"
                     type="text"
                     name="map_width"
-                    :value="mapWidth"
+                    :value="this.mapWidth"
                     @change="updateMapWidth($event)"
                 >
                 <label for="map_height">Select Map Height in meters</label>
@@ -31,27 +28,54 @@
                     id="map_height"
                     type="text"
                     name="map_height"
-                    :value="mapHeight"
+                    :value="this.mapHeight"
                     @change="updateMapHeight($event)"
                 >
                 <hr>
+                <div v-if="selectedItem.id">
+                    <label for="item_width">Zet Item Breedte in meters</label>
+                    <input
+                        id="item_width"
+                        type="number"
+                        name="item_width"
+                        :value="(selectedItem.style.width / 50)"
+                        @change="updateItemWidth($event, selectedItem.id)"
+                    >
+                    <label for="item_height">Zet Item Hoogte in meters</label>
+                    <input
+                        id="item_height"
+                        type="number"
+                        name="item_height"
+                        :value="(selectedItem.style.height / 50)"
+                        @change="updateItemHeight($event, selectedItem.id)"
+                    >
+                    <label for="item_url">Zet ticket url</label>
+                    <input
+                        id="item_url"
+                        type="text"
+                        name="item_url"
+                        :value="selectedItem.url"
+                        @change="updateItemUrl($event, selectedItem.id)"
+                    >
+                </div>
             </div>
-            <button
-                class="button-create-item map-settings-container-items"
-                @click="storeMap"
-            >
+            <button class="button-create-item map-settings-container-items" @click="storeMap">
                 Store Map
             </button>
-            <button
-                class="button-create-item map-settings-container-items"
-                @click="clearMap"
-            >
+            <button class="button-create-item map-settings-container-items" @click="clearMap">
                 Clear map
             </button>
+            <div
+                class="map-admin-info"
+                @click="setModalState(`modalMapForm`)"
+            >
+                Map info
+            </div>
         </div>
-        <div
-            ref="mapHolder"
-            class="map-holder"
+        <div ref="mapHolder" class="map-holder" />
+        <modal-map-form
+            v-show="modalMapForm"
+            @close="setModalState(`modalMapForm`)"
         />
     </div>
 </template>
@@ -60,20 +84,14 @@
 import interact from 'interactjs';
 import create from 'dom-create-element';
 import API from '../../Api';
-
-/** @todo display this is the front end a popup for if the user forgets
-     double tap items on box to delete item,
-     when color is selected and items is holden it will change that items color,
-     when items is tapped it will take the see that as the selected item when the copy state is on true
-     key ctrl + c start copy state
-     key ctrl + v start copying items and copy state on false in case user mis clicks
-     key ctrl + z undo last item from copy state
-     key escape to stop the copy state and clear the copy item
-     */
+import ModalMapForm from './ModalMapForm';
 
 const meterToPixel = 50;
 
 export default {
+    components: {
+        ModalMapForm
+    },
     data () {
         return {
             event_id: this.$route.params.event_id,
@@ -84,12 +102,16 @@ export default {
             backgroundColorCodeItem: '#2195e8',
             counter: 0,
             copyState: false,
-            copyItem: {},
+            selectedItem: {},
             timeoutPaste: undefined,
-            timeoutUndo: undefined
+            timeoutUndo: undefined,
+            modalMapForm: false
         };
     },
     methods: {
+        setModalState (state) {
+            this[state] = !this[state];
+        },
         init () {
             interact('.draggable')
                 .resizable({
@@ -147,7 +169,7 @@ export default {
             window.addEventListener('delete-item', this.deleteItemFromArray, false);
             window.addEventListener('update-background-color', this.updateItemBackgroundColor, false);
             window.addEventListener('keydown', this.startCopyPasteState, false);
-            window.addEventListener('set-copied-item', this.setCopyPasteItem, false);
+            window.addEventListener('set-copied-item', this.setSelectedItem, false);
 
             const container = this.$refs.mapHolder;
             container.style.minWidth = this.map.width + 'px';
@@ -176,8 +198,8 @@ export default {
             const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
             const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
             target.style.webkitTransform =
-                target.style.transform =
-                'translate(' + x + 'px, ' + y + 'px)';
+                    target.style.transform =
+                        'translate(' + x + 'px, ' + y + 'px)';
             target.setAttribute('data-x', x);
             target.setAttribute('data-y', y);
         },
@@ -235,7 +257,7 @@ export default {
             x += event.deltaRect.left;
             y += event.deltaRect.top;
             target.style.webkitTransform = target.style.transform =
-                'translate(' + x + 'px,' + y + 'px)';
+                    'translate(' + x + 'px,' + y + 'px)';
             target.setAttribute('data-x', x);
             target.setAttribute('data-y', y);
             target.lastChild.innerHTML = 'width: ' + (event.rect.width / meterToPixel) + 'm,<br> height: ' + (event.rect.height / meterToPixel) + 'm';
@@ -256,21 +278,21 @@ export default {
             if (event.code === 'KeyC' && event.ctrlKey === true) {
                 this.copyState = true;
             }
-            if (event.code === 'KeyV' && event.ctrlKey === true && this.copyItem.id !== undefined) {
+            if (event.code === 'KeyV' && event.ctrlKey === true && this.selectedItem.id !== undefined) {
                 this.copyState = false; // set copy state on false and start pasting the items
                 if (this.timeoutPaste === undefined) {
                     this.items.push(this.generateItemObject(
-                        this.copyItem.style.width,
-                        this.copyItem.style.height,
-                        this.copyItem.positionFromParent.x,
-                        this.copyItem.positionFromParent.y,
-                        this.copyItem.style.backgroundColor
+                        this.selectedItem.style.width,
+                        this.selectedItem.style.height,
+                        this.selectedItem.positionFromParent.x,
+                        this.selectedItem.positionFromParent.y,
+                        this.selectedItem.style.backgroundColor
                     ));
                     const container = this.$refs.mapHolder;
                     container.appendChild(this.createNewDomElement(
-                        this.copyItem.style.backgroundColor,
-                        this.copyItem.style.width,
-                        this.copyItem.style.height
+                        this.selectedItem.style.backgroundColor,
+                        this.selectedItem.style.width,
+                        this.selectedItem.style.height
                     ));
                     this.timeoutPaste = setTimeout(() => {
                         this.timeoutPaste = undefined;
@@ -278,7 +300,7 @@ export default {
                 }
             }
             if (event.code === 'KeyZ' && event.ctrlKey === true) {
-                if (this.items[this.items.length - 1].id !== this.copyItem.id && this.timeoutUndo === undefined) {
+                if (this.items[this.items.length - 1].id !== this.selectedItem.id && this.timeoutUndo === undefined) {
                     this.items.pop();
                     const container = this.$refs.mapHolder;
                     container.removeChild(container.lastChild);
@@ -293,16 +315,43 @@ export default {
         },
         clearCopyState () {
             this.copyState = false; // clear copy state
-            this.copyItem = {};
+            this.selectedItem = {};
         },
-        setCopyPasteItem (event) {
-            if (this.copyState) this.copyItem = this.items.find(el => el.id === event.detail.currentTarget.id);
+        setSelectedItem (event) {
+            this.selectedItem = this.items.find(el => el.id === event.detail.currentTarget.id);
+            console.log(this.selectedItem);
         },
-        generateItemObject (width = 100, height = 100, x = 0, y = 0, backgroundColorCodeItem = this.backgroundColorCodeItem) {
+        updateItemWidth (event, itemId) {
+            const item = document.getElementById(itemId);
+            item.style.width = (parseInt(event.target.value) * meterToPixel) + 'px';
+            item.lastChild.innerHTML =
+                    'width: ' + (parseInt(item.style.width.slice(0, -2)) / meterToPixel) + 'm,<br>' +
+                    'height: ' + (parseInt(item.style.height.slice(0, -2)) / meterToPixel) + 'm';
+            this.items.forEach(el => {
+                if (el.id === itemId) el.style.width = parseInt(item.style.width.slice(0, -2));
+            });
+        },
+        updateItemHeight (event, itemId) {
+            const item = document.getElementById(itemId);
+            item.style.height = (parseInt(event.target.value) * meterToPixel) + 'px';
+            item.lastChild.innerHTML =
+                    'width: ' + (parseInt(item.style.width.slice(0, -2)) / meterToPixel) + 'm,<br>' +
+                    'height: ' + (parseInt(item.style.height.slice(0, -2)) / meterToPixel) + 'm';
+            this.items.forEach(el => {
+                if (el.id === itemId) el.style.height = parseInt(item.style.height.slice(0, -2));
+            });
+        },
+        updateItemUrl (event, itemId) {
+            this.items.forEach(el => {
+                if (el.id === itemId) el.url = event.target.value;
+            });
+        },
+        generateItemObject (width = 150, height = 150, x = 0, y = 0, backgroundColorCodeItem = this.backgroundColorCodeItem) {
             this.counter++;
             return {
                 id: `stand-id-${this.counter}`,
                 user_id: undefined,
+                url: null,
                 style: {
                     width: width,
                     height: height,
@@ -339,7 +388,7 @@ export default {
         this.deleteItemFromArray = this.deleteItemFromArray.bind(this);
         this.updateItemBackgroundColor = this.updateItemBackgroundColor.bind(this);
         this.startCopyPasteState = this.startCopyPasteState.bind(this);
-        this.setCopyPasteItem = this.setCopyPasteItem.bind(this);
+        this.setSelectedItem = this.setSelectedItem.bind(this);
         this.init();
     },
     beforeDestroy () {
@@ -347,7 +396,7 @@ export default {
         window.removeEventListener('delete-item', this.deleteItemFromArray, false);
         window.removeEventListener('update-background-color', this.updateItemBackgroundColor, false);
         window.removeEventListener('keydown', this.startCopyPasteState, false);
-        window.removeEventListener('set-copied-item', this.setCopyPasteItem, false);
+        window.removeEventListener('set-copied-item', this.setSelectedItem, false);
     }
 };
 </script>
@@ -385,6 +434,10 @@ export default {
 
     .button-create-item {
         height: 30px;
+    }
+
+    .map-settings-container-items-color {
+        color: white;
     }
 
     .map-settings-container-items {

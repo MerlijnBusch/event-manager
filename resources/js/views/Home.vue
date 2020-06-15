@@ -7,7 +7,7 @@
         <div class="flex-wrapper homepage-inner">
             <div class="home-events flex-grid">
                 <div
-                    v-for="item in [...data,...data,...data,...data,...data,...data]"
+                    v-for="item in data"
                     :key="item.id"
                     class="home-event-outer column-desktop-4 column-tablet-6 column-mobile-12"
                 >

@@ -1,74 +1,67 @@
 <template>
     <div class="admin-container">
         <div class="admin-sidebar">
-            <div>
-                <p>users:</p>
-                <div>
-                    <div
-                        class="admin-sidebar-name-holder"
-                        @click="setPage(3)"
-                    >
-                        <div
-                            class="admin-sidebar-text-name"
-                        >
-                            Rollen en permissions
-                        </div>
-                    </div>
-                    <div
-                        class="admin-sidebar-name-holder"
-                        @click="setPage(2)"
-                    >
-                        <div
-                            class="admin-sidebar-text-name"
-                        >
-                            Find user
-                        </div>
-                    </div>
-                    <div
-                        class="admin-sidebar-name-holder"
-                        @click="setModalState(`uploadExcelUsersModal`)"
-                    >
-                        <div
-                            class="admin-sidebar-text-name"
-                        >
-                            Upload multiple users (excel)
-                        </div>
-                    </div>
+            <div class="admin-sidebar-content">
+                <p class="admin-sidebar-title-divider">
+                    Gebruikers:
+                </p>
+                <div class="admin-sidebar-links">
+                    <button class="admin-sidebar-link" @click="setPage(3)">
+                        Rollen en permissies
+                    </button>
+                    <button class="admin-sidebar-link" @click="setPage(2)">
+                        Vind een gebruiker
+                    </button>
+                    <button class="admin-sidebar-link" @click="setModalState(`uploadExcelUsersModal`)">
+                        Upload meerdere gebruikers (excel)
+                    </button>
+                    <button class="admin-sidebar-link" @click="checkEmails()">
+                        Notify Gebruikers voor evenementen
+                    </button>
                 </div>
-                <p>events:</p>
+                <p class="admin-sidebar-title-divider">
+                    Evenementen:
+                </p>
                 <div
                     v-for="event in events"
                     :key="event.name"
                     class="admin-sidebar-event-container"
                 >
                     <div
-                        class="admin-sidebar-event-list-item"
+                        class="admin-sidebar-event-list-item admin-sidebar-links"
                         @click="setSelectedEventId(event.id)"
                     >
-                        <div class="admin-sidebar-name-holder">
+                        <div
+                            class="admin-sidebar-name-holder"
+                            :class="{'open' : event.open}"
+                            @click="event.open = !event.open"
+                        >
                             <div
                                 class="admin-sidebar-text-name"
-                                @click="eventDropDown(event.id)"
                             >
                                 {{ event.name }}
                             </div>
                             <div class="admin-sidebar-icon-container">
                                 <div
                                     class="admin-sidebar-icon"
-                                    @click="openEventSettings(event.id)"
+                                    @click="
+                                        openEventSettings(
+                                            event
+                                        )
+                                    "
                                 >
                                     <i class="fas fa-cog" />
                                 </div>
                                 <div
                                     class="admin-sidebar-icon"
-                                    @click="setModalState(`updateEventModal`)"
+                                    @click="updateEvent(event)"
                                 >
                                     <i class="fas fa-pencil" />
                                 </div>
                                 <div
                                     class="admin-sidebar-icon"
                                     title="evenment verweideren"
-                                    @click="deleteEvent(event.id)"
+                                    @click="deleteEvent(event)"
                                 >
                                     <i class="fas fa-trash" />
                                 </div>
@@ -76,6 +69,7 @@
                         </div>
                         <div
                             :id="'event-' + event.id"
+                            :class="{'closed' : !event.open}"
                             class="admin-sidebar-display-event-options"
                         >
                             <!--for looping programs-->
@@ -83,6 +77,8 @@
                                 v-for="prog in event.program"
                                 v-if="event.program"
                                 :key="'event.program-prog_' + prog.id"
+                                class="admin-sidebar-event-option"
+                                @click="updateDisplay(prog, 'program')"
                             >
                                 <div
                                     v-if="prog.event_id === event.id"
@@ -90,12 +86,16 @@
                                 >
                                     <div
                                         class="admin-sidebar-program-title"
-                                        @click="updateDisplay(prog, 'program')"
                                     >
                                         {{ prog.name }}
                                     </div>
-                                    <div class="admin-sidebar-program-action-container">
-                                        <div class="admin-sidebar-program-action-update">
+                                    <div
+                                        class="admin-sidebar-program-action-container"
+                                    >
+                                        <div
+                                            class="admin-sidebar-program-action-update"
+                                            @click="updateProgram(prog.id)"
+                                        >
                                             <i class="fas fa-pencil" />
                                         </div>
                                         <div
@@ -112,6 +112,8 @@
                                 v-for="cong in event.congress"
                                 v-if="event.congress"
                                 :key="'event.congress-congress_' + cong.id"
+                                class="admin-sidebar-event-option"
+                                @click="updateDisplay(cong, 'congress')"
                             >
                                 <div
                                     v-if="cong.event_id === event.id"
@@ -119,12 +121,15 @@
                                 >
                                     <div
                                         class="admin-sidebar-program-title"
-                                        @click="updateDisplay(cong, 'congress')"
                                     >
                                         {{ cong.name }}
                                     </div>
-                                    <div class="admin-sidebar-program-action-container">
-                                        <div class="admin-sidebar-program-action-update">
+                                    <div
+                                        class="admin-sidebar-program-action-container"
+                                    >
+                                        <div
+                                            class="admin-sidebar-program-action-update"
+                                        >
                                             <i class="fas fa-pencil" />
                                         </div>
                                         <div
@@ -137,25 +142,27 @@
                                 </div>
                             </div>
                             <div class="admin-action-container">
-                                <div
-                                    class="admin-create-program-sidebar"
-                                >
+                                <div class="admin-create-program-sidebar">
                                     <div
                                         class="admin-sidebar-program-create-button"
-                                        @click="setModalState(`createProgramModal`)"
+                                        @click="
+                                            setModalState(`createProgramModal`)
+                                        "
                                     >
-                                        <i class="fas fa-plus-circle" /> Create Program
+                                        <i class="fas fa-plus-circle" />
+                                        Nieuw programma
                                     </div>
                                 </div>
 
-                                <div
-                                    class="admin-create-program-sidebar"
-                                >
+                                <div class="admin-create-program-sidebar">
                                     <div
                                         class="admin-sidebar-program-create-button"
-                                        @click="setModalState(`createCongressModal`)"
+                                        @click="
+                                            setModalState(`createCongressModal`)
+                                        "
                                     >
-                                        <i class="fas fa-plus-circle" /> Create Congress
+                                        <i class="fas fa-plus-circle" />
+                                        Nieuw congres
                                     </div>
                                 </div>
                             </div>
@@ -168,7 +175,9 @@
                     class="admin-create-event-sidebar"
                     @click="setModalState(`createEventModal`)"
                 >
-                    <i class="fas fa-plus-circle admin-sidebar-event-create-icon" />Create Event
+                    <i
+                        class="fas fa-plus-circle admin-sidebar-event-create-icon"
+                    />Creëer Evenement
                 </div>
             </div>
         </div>
@@ -176,15 +185,14 @@
             <congress-display
                 v-if="page === 1 && displayType === 'congress'"
                 :congress="display"
+                :event-title="(events.filter(v=>v.id === display.event_id)[0]).name"
             />
             <program-display
                 v-if="page === 1 && displayType === 'program'"
                 :program="display"
+                :event-title="(events.filter(v=>v.id === display.event_id)[0]).name"
             />
-            <div
-                v-if="page === 1"
-                class="admin-item-container-footer"
-            />
+            <div v-if="page === 1" class="admin-item-container-footer" />
             <find-user v-if="page === 2" />
             <rolls v-if="page === 3" />
         </div>
@@ -194,6 +202,13 @@
             v-show="createProgramModal"
             :id="currentEvent.id"
             @close="setModalState(`createProgramModal`)"
+        />
+
+        <update-program-modal
+            v-if="currentEvent"
+            v-show="updateProgramModal"
+            :id="updateProgramId"
+            @close="setModalState(`updateProgramModal`)"
         />
 
         <create-congress-modal
@@ -214,9 +229,8 @@
         />
 
         <update-event-modal
-            v-if="currentEvent.event"
             v-show="updateEventModal"
-            :id="currentEvent.event.id"
+            :id="updateEventId"
             @close="setModalState(`updateEventModal`)"
         />
 
@@ -225,6 +239,13 @@
             v-show="createEventSettingsModal"
             :id="settingsId"
             @close="setModalState(`createEventSettingsModal`)"
+        />
+
+        <update-event-settings-modal
+            v-if="updateSettingsId"
+            v-show="updateEventSettingsModal"
+            :id="updateSettingsId"
+            @close="setModalState(`updateEventSettingsModal`)"
         />
     </div>
 </template>
@@ -241,17 +262,19 @@ import CreateEventSettingsModal from './components/modal/Create/CreateEventSetti
 import CreateCongressModal from './components/modal/Create/CreateCongressModal';
 import CongressDisplay from './components/CongressDisplay';
 import ProgramDisplay from './components/ProgramDisplay';
+import UpdateEventSettingsModal from './components/modal/Update/UpdateEventSettingsModal';
+import UpdateProgramModal from './components/modal/Update/UpdateProgramModal';
 
 export default {
     name: 'Admin',
     data () {
         return {
             page: 1,
+            updateEventId: null,
             events: [],
             selectedEventId: null,
             currentEvent: [],
             display: null,
-            updateBlockId: null,
             createEventModal: false,
             createProgramModal: false,
             updateEventSettingsModal: false,
@@ -259,7 +282,10 @@ export default {
             updateEventModal: false,
             createEventSettingsModal: false,
             createCongressModal: false,
+            updateProgramModal: false,
+            updateProgramId: null,
             settingsId: null,
+            updateSettingsId: null,
             displayType: null,
             timeOut: null
         };
@@ -274,7 +300,9 @@ export default {
         CreateEventSettingsModal,
         CreateCongressModal,
         CongressDisplay,
-        ProgramDisplay
+        ProgramDisplay,
+        UpdateEventSettingsModal,
+        UpdateProgramModal
     },
     methods: {
         async setSelectedEventId (id) {
@@ -288,60 +316,68 @@ export default {
         setPage (id) {
             this.page = id;
         },
-        eventDropDown (id) {
-            const target = document.getElementById('event-' + id);
-            const height = target.getBoundingClientRect().height;
-            if (height === 0) target.style.maxHeight = '500px';
-            else target.style.maxHeight = '0';
-        },
         updateDisplay (display, type) {
-            console.log(display, 'display', type);
             this.displayType = type;
             this.display = display;
             this.setPage(1);
         },
         async setModalState (state) {
             this[state] = !this[state];
-            if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
-            this.forceUpdate();
+            await this.forceUpdate();
         },
-        forceUpdate () {
-            if (this.currentEvent && this.currentEvent.programs) {
-                this.currentEvent.programs.forEach((item, index) => {
-                    if (item.id === this.program.id) this.program = this.currentEvent.programs[index];
-                });
+        async forceUpdate () {
+            const data = await API.get('/api/admin');
+            const events = data.data;
+            for (let i = 0; i < events.length; i++) {
+                events[i].open = false;
             }
-            setTimeout(async () => {
-                const data = await API.get('/api/admin');
-                this.events = data.data;
-            }, 0);
+            this.events = events;
+            if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
         },
-        async deleteEvent (id) {
+        async deleteEvent (block) {
+            block.open = !block.open;
             if (!confirm('Weet u zeker dat u dit event wilt verwiederen')) return;
-            if (!this.currentEvent.event && id === this.currentEvent.event.id) {
+            if (!this.currentEvent.event && block.id === this.currentEvent.event.id) {
                 this.selectedEventId = null;
                 this.currentEvent = null;
             }
-            if (this.selectedEventId) API.delete('/api/event/' + id);
+            if (this.selectedEventId) API.delete('/api/event/' + block.id);
             if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
-            this.forceUpdate();
+            await this.forceUpdate();
+        },
+        async updateProgram (id) {
+            this.updateProgramId = id;
+            await this.setModalState('updateProgramModal');
         },
         async deleteProgram (id) {
             API.delete('/api/program/' + id);
-            this.forceUpdate();
+            await this.forceUpdate();
         },
         async deleteCongress (id) {
             API.delete('/api/congress/' + id);
-            this.forceUpdate();
+            await this.forceUpdate();
         },
-        openEventSettings (id) {
-            this.settingsId = id;
-            console.log(id);
-            this.setModalState('createEventSettingsModal');
+        async updateEvent (block) {
+            block.open = !block.open;
+            this.updateEventId = block.id;
+            await this.setModalState('updateEventModal');
+        },
+        openEventSettings (event) {
+            event.open = !event.open;
+            if (event.settings === null) {
+                this.settingsId = event.id;
+                this.setModalState('createEventSettingsModal');
+            } else {
+                this.updateSettingsId = event.settings.id;
+                this.setModalState('updateEventSettingsModal');
+            }
+        },
+        checkEmails () {
+            API.get('/api/notify');
         }
     },
     async mounted () {
-        this.forceUpdate();
+        await this.forceUpdate();
     }
 };
 </script>

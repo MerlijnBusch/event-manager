@@ -50,6 +50,21 @@
                             <div class="form-line">
                                 <label
                                     class="form-label"
+                                    for="location"
+                                >location</label>
+                                <input
+                                    id="location"
+                                    v-model="location"
+                                    class="form-text-input"
+                                    type="text"
+                                    name="location"
+                                    placeholder="Event location"
+                                >
+                            </div>
+
+                            <div class="form-line">
+                                <label
+                                    class="form-label"
                                     for="max_registrations"
                                 >max registrations</label>
                                 <input
@@ -147,6 +162,7 @@ export default {
             date_start: null,
             max_registrations: null,
             visible_registrations: null,
+            location: null,
             color: '#000000',
             light_theme: false
         };
@@ -165,6 +181,7 @@ export default {
                 max_registrations: this.max_registrations,
                 visible_registrations: this.visible_registrations,
                 color: this.color,
+                location: this.location,
                 light_theme: this.light_theme
             };
 

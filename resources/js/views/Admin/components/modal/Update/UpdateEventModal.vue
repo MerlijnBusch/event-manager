@@ -15,7 +15,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Create Event
+                            Update Event
                         </p>
 
                         <button

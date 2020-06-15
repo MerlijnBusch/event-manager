@@ -51,6 +51,11 @@ class Item extends Model
         'updated_at', 'created_at','deleted_at'
     ];
 
+    protected $casts = [
+        'block_id' => 'integer',
+        'active' => 'boolean',
+    ];
+
     public function block(){
 
         return $this->belongsTo('App\Block');

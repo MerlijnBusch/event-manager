@@ -5,13 +5,18 @@ namespace App\Http\Controllers;
 use App\Congress;
 use App\Event;
 use App\EventSettings;
+use App\Http\Requests\UserUpdateValidationRequest;
+use App\Mail\NotifyUserOfEventsMail;
 use App\Program;
+use App\RegistrationEvents;
 use App\Role;
 use App\User;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
@@ -153,5 +158,102 @@ class AdminController extends Controller
         $user->makeVisible(['role_id']);
 
         return response()->json($user, 200);
+    }
+
+    /**
+     * @param $id
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function program($id){
+
+        $this->authorize('read', Program::class);
+
+        $s = Program::query()
+            ->where('id', $id)
+            ->with('programItems')
+            ->first();
+
+        return response()->json($s, 200);
+
+    }
+
+    /**
+     * @param $id
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function congress($id){
+
+        $this->authorize('read', Congress::class);
+
+        $s = Congress::query()
+            ->where('id', $id)
+            ->with('block')
+            ->with('block.items')
+            ->first();
+
+        return response()->json($s, 200);
+
+    }
+
+    /**
+     * this code is duplicated but Artisan::call doesnt reconize the command and can not find and execute so this works for now
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function forceNotify(){
+
+        $this->authorize('notify', User::class);
+
+        $events = Event::query()
+            ->with('settings')
+            ->has('settings')
+            ->get();
+
+        foreach ($events as $event) {
+            $week = Carbon::now()->addWeek();
+            $sixDays = $week->copy()->subDay();
+            if (Carbon::create($event->settings->date_start)->between($week, $sixDays)) {
+                $subscriptions = RegistrationEvents::query()
+                    ->where('event_id', $event->id)
+                    ->get();
+                foreach ($subscriptions as $subscription) {
+                    $user = User::findOrFail($subscription->user_id);
+                    Mail::to($user->email)->queue(new NotifyUserOfEventsMail($event));
+                }
+            }
+
+            $now = Carbon::now();
+            $oneDay = $now->copy()->addDay();
+            if (Carbon::create($event->settings->date_start)->between($now, $oneDay)) {
+                $subscriptions = RegistrationEvents::query()
+                    ->where('event_id', $event->id)
+                    ->get();
+                foreach ($subscriptions as $subscription) {
+                    $user = User::findOrFail($subscription->user_id);
+                    Mail::to($user->email)->queue(new NotifyUserOfEventsMail($event));
+                }
+            }
+        }
+
+        return response()->json(['message' => 'Successfully notified users'], 200);
+    }
+
+    /**
+     * @param UserUpdateValidationRequest $request
+     * @param User $user
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function updateUser(UserUpdateValidationRequest $request, User $user){
+
+        $this->authorize('AdminUser', User::class);
+
+        $user = User::findOrFail($user->id);
+        $user->update($request->all());
+
+        return response()->json(['message' => 'User updated successfully'], 200);
+
     }
 }

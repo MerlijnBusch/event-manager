@@ -27,6 +27,11 @@ class ProgramItems extends Model
         'deleted_at'
     ];
 
+    protected $casts = [
+        'program_id' => 'integer',
+        'active' => 'boolean',
+    ];
+
     public function program(){
 
         return $this->belongsTo('App\Program');

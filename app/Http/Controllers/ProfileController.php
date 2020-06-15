@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileValidationRequest;
 use App\Profile;
 use App\User;
 use App\Rules\Base64Validator;
@@ -13,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Access\AuthorizationException;
+use stdClass;
 
 class ProfileController extends Controller
 {
@@ -51,11 +53,11 @@ class ProfileController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param ProfileValidationRequest $request
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function store(Request $request)
+    public function store(ProfileValidationRequest $request)
     {
         $this->authorize('write', Profile::class);
 
@@ -63,45 +65,32 @@ class ProfileController extends Controller
             return response()->json(['message' => 'Profile already exist on this user']);
         }
 
-        $validator = Validator::make($request->all(), [
-            'phone_number' => ['string', new PhoneNumberValidator, 'required_without_all:image'],
-            'image' => ['string', new UrlValidator, 'required_without_all:phone_number'],
-        ]);
+        $s = new stdClass();
+        $s->user_id = Auth::id();
 
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
+        foreach($request->all() as $k => $v) {
+            $s->$k = $v;
         }
 
-        $profile = new Profile;
-        $profile->user_id = Auth::id();
-        $profile->phone_number = $request->phone_number;
-        $profile->image = $request->image;
-        $profile->save();
+        Profile::create((array)$s);
 
-        return response()->json(['message' => 'Profile created succesfully'], 200);
+        return response()->json(['message' => 'profile created successfully'], 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param ProfileValidationRequest $request
+     * @param Profile $profile
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function update(Request $request)
+    public function update(ProfileValidationRequest $request, Profile $profile)
     {
         $this->authorize('write', Profile::class);
 
-        Profile::updateOrCreate(
-            ['user_id' => Auth::id()],
-            ['about' => $request->about,
-                'image' => $request->image,
-                'facebook' => $request->facebook,
-                'twitter' => $request->twitter,
-                'linkedin' => $request->linkedin,
-                'phone_number' => $request->phonenumber,
-                'contact_email' => $request->contact_email]
-        );
+        $profile = Profile::findOrFail($profile->id);
+        $profile->update($request->all());
 
         return response()->json(['message' => 'Profile updated successfully '], 200);
     }
@@ -173,6 +162,7 @@ class ProfileController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
+     * @param Profile $profile
      * @return JsonResponse
      * @throws AuthorizationException
      */

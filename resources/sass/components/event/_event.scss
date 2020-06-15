@@ -1,6 +1,12 @@
 .event-page {
   --theme-color: #{$theme-color};
+  animation-name: fade-in-even;
+  animation-duration: 2s;
+}
 
+@keyframes fade-in-even {
+  from {opacity: 0;}
+  to {opacity: 100%;}
 }
 
 @import "./light";

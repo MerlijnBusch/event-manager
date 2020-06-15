@@ -2,6 +2,7 @@
     <div class="admin-main-program-container">
         <TitleDisplay
             v-if="program"
+            :pretext="eventTitle+' | programma'"
             :display="program"
         />
         <div class="admin-item-container">
@@ -75,7 +76,7 @@ import API from '../../../Api';
 
 export default {
     name: 'Program',
-    props: ['program'],
+    props: ['program', 'event-title'],
     components: {
         CreateProgramItemModal,
         UpdateProgramItemModal,
@@ -92,22 +93,20 @@ export default {
     methods: {
         async setModalState (state) {
             this[state] = !this[state];
-            this.forceUpdate();
+            await this.forceUpdate();
         },
         updateItem (id) {
             this.ItemId = id;
             this.setModalState('updateProgramItemModal');
         },
-        forceUpdate () {
-
+        async forceUpdate () {
+            const res = await API.get('/api/admin/program/' + this.program.id);
+            this.program = res.data;
         },
         async deleteItem (id) {
             await API.delete('/api/program-item/' + id);
-            this.forceUpdate();
+            await this.forceUpdate();
         }
-    },
-    mounted () {
-        console.log(this.program);
     }
 };
 </script>
