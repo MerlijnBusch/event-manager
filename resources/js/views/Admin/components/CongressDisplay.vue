@@ -1,9 +1,7 @@
 <template>
     <div class="admin-main-program-container">
-        <TitleDisplay
-            :display="congress"
-            type="congress"
-        />
+        <TitleDisplay :display="congress"
+                      :pretext="eventTitle +' | congres'" />
         <div class="admin-item-container">
             <div class="admin-item-list">
                 <div class="admin-block-list">
@@ -157,7 +155,7 @@ export default {
         UpdateItemModal,
         Item
     },
-    props: ['congress'],
+    props: ['congress', 'event-title'],
     data () {
         return {
             congressData: [],
