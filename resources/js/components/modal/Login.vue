@@ -61,8 +61,8 @@ import axios from 'axios';
 export default {
     data () {
         return {
-            email: 'Admin@example.com',
-            password: 'password'
+            email: '',
+            password: ''
         };
     },
     methods: {

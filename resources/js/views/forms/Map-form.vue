@@ -36,17 +36,6 @@
     import API from "../../Api";
     import ModalMapForm from './ModalMapForm';
 
-
-    /** @todo display this is the front end a popup for if the user forgets
-     double tap items on box to delete item,
-     when color is selected and items is holden it will change that items color,
-     when items is tapped it will take the see that as the selected item when the copy state is on true
-     key ctrl + c start copy state
-     key ctrl + v start copying items and copy state on false in case user mis clicks
-     key ctrl + z undo last item from copy state
-     key escape to stop the copy state and clear the copy item
-     */
-
     const meterToPixel = 50;
 
     export default {
