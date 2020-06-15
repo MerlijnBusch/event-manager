@@ -2,6 +2,7 @@
     <div class="admin-main-program-container">
         <TitleDisplay
             v-if="program"
+            type="program"
             :display="program"
         />
         <div class="admin-item-container">
