@@ -340,12 +340,10 @@ export default {
         async deleteEvent (block) {
             block.open = !block.open;
             if (!confirm('Weet u zeker dat u dit event wilt verwiederen')) return;
-            if (!this.currentEvent.event && block.id === this.currentEvent.event.id) {
-                this.selectedEventId = null;
-                this.currentEvent = null;
-            }
-            if (this.selectedEventId) API.delete('/api/event/' + block.id);
-            if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
+            this.selectedEventId = null;
+            this.currentEvent = null;
+
+            API.delete('/api/event/' + block.id);
             await this.forceUpdate();
         },
         async updateProgram (id) {
