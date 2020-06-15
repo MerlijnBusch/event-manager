@@ -22,6 +22,7 @@ class AuthServiceProvider extends ServiceProvider
          'App\Map' => 'App\Policies\MapPolicy',
          'App\Program' => 'App\Policies\ProgramPolicy',
          'App\User' => 'App\Policies\UserPolicy',
+         'App\Congress' => 'App\Policies\CongressPolicy',
     ];
 
     /**

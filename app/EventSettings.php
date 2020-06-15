@@ -33,13 +33,21 @@ class EventSettings extends Model
         'max_registrations',
         'date_start',
         'date_end',
-        'active',
+        'light_theme',
+        'color',
+        'location'
     ];
 
     protected $hidden = [
         'updated_at', 'created_at','active','deleted_at'
     ];
 
+    protected $casts = [
+        'event_id' => 'integer',
+        'visible_registrations' => 'integer',
+        'max_registrations' => 'integer',
+        'light_theme' => 'boolean',
+    ];
 
     public function event(){
 

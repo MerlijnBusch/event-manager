@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RoleStoreValidationRequest;
+use App\Http\Requests\RoleUpdateValidationRequest;
 use App\Permissions;
 use App\Role;
 use App\Rules\ColorValidator;
@@ -45,23 +47,13 @@ class RoleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param RoleStoreValidationRequest $request
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function store(Request $request)
+    public function store(RoleStoreValidationRequest $request)
     {
         $this->authorize('write', Role::class);
-
-        $validator = Validator::make($request->all(), [
-            'role_name' => ['string', 'required', 'max:100'],
-            'color' => ['string', new ColorValidator],
-            'permissions' => [new PermissionExistValidator],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
 
         $role = new Role;
         $role->role_name = $request->role_name;
@@ -75,24 +67,14 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param RoleUpdateValidationRequest $request
      * @param Role $role
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function update(Request $request, Role $role)
+    public function update(RoleUpdateValidationRequest $request, Role $role)
     {
         $this->authorize('write', Role::class);
-
-        $validator = Validator::make($request->all(), [
-            'role_name' => ['string', 'required', 'max:100'],
-            'color' => ['string', new ColorValidator],
-            'permissions' => [new PermissionExistValidator],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
 
         $role = Role::findOrFail($role->id);
         $role->role_name = $request->role_name;
@@ -102,7 +84,7 @@ class RoleController extends Controller
 
         return response()->json(['message' => 'Role updated successfully'], 200);
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *

@@ -19,12 +19,16 @@ class Profile extends Model
         'facebook',
         'linkedin',
         'contact_email',
-        'twitter',  
+        'twitter',
         'cv',
     ];
 
     protected $hidden = [
         'updated_at', 'created_at',
+    ];
+
+    protected $casts = [
+        'user_id' => 'integer',
     ];
 
     public function user(){

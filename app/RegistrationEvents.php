@@ -14,6 +14,12 @@ class RegistrationEvents extends Model
     protected $fillable = [
         'user_id',
         'event_id',
+        'item_ids'
+    ];
+
+    protected $casts = [
+        'user_id' => 'integer',
+        'event_id' => 'integer',
     ];
 
     public function user(){

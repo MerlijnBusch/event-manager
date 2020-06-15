@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Congress;
 use App\Event;
 use App\EventSettings;
 use App\Program;
 use App\Role;
-use App\Rules\RoleSelectableValidator;
 use App\User;
+use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
@@ -25,10 +25,12 @@ class AdminController extends Controller
         $this->authorize('read', Event::class);
 
         $s = Event::query()
-            ->with('program')
             ->with('settings')
-            ->with('program.block')
-            ->with('program.block.items')
+            ->with('program')
+            ->with('program.programItems')
+            ->with('congress')
+            ->with('congress.block')
+            ->with('congress.block.items')
             ->get();
 
         return response()->json($s, 200);
@@ -44,16 +46,19 @@ class AdminController extends Controller
         $this->authorize('read', Event::class);
         $this->authorize('read', EventSettings::class);
         $this->authorize('read', Program::class);
+        $this->authorize('read', Congress::class);
 
-        $eventSettings = EventSettings::query()->where('event_id', $event->id)->first();
+        $s = Event::query()
+            ->where('id', $event->id)
+            ->with('settings')
+            ->with('program')
+            ->with('program.programItems')
+            ->with('congress')
+            ->with('congress.block')
+            ->with('congress.block.items')
+            ->first();
 
-        $programs = Program::query()
-                ->where('event_id', $event->id)
-                ->with('block')
-                ->with('block.items')->get();
-
-
-        return response()->json(["event" => $event, "settings" => $eventSettings, "programs" => $programs], 200);
+        return response()->json($s, 200);
     }
 
     /**
@@ -96,4 +101,94 @@ class AdminController extends Controller
         return response()->json(['message' => 'Successfully uploaded the excel'], 200);
     }
 
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function search(Request $request)
+    {
+        $this->authorize('read', User::class);
+        $this->authorize('read', Role::class);
+
+        $validator = Validator::make($request->all(), [
+            'search' => ['string']
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        $user = User::query()
+            ->where('name', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('email', 'LIKE', '%' . $request->search . '%')
+            ->with('role')
+            ->get();
+
+        return response()->json(['message' => $user], 200);
+    }
+
+    /**
+     * @param User $user
+     * @return JsonResponse
+     * @throws AuthorizationException
+     * @throws Exception
+     */
+    public function deleteUser(User $user){
+        $this->authorize('write', User::class);
+
+        $user->delete();
+
+        return response()->json(['message' => 'User deleted successfully'], 200);
+    }
+
+    /**
+     * @param User $user
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function user(User $user){
+        $this->authorize('write', User::class);
+
+        $user->makeVisible(['role_id']);
+
+        return response()->json($user, 200);
+    }
+
+    /**
+     * @param $id
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function program($id){
+
+        $this->authorize('read', Program::class);
+
+        $s = Program::query()
+            ->where('id', $id)
+            ->with('programItems')
+            ->first();
+
+        return response()->json($s, 200);
+
+    }
+
+    /**
+     * @param $id
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function congress($id){
+
+        $this->authorize('read', Congress::class);
+
+        $s = Congress::query()
+            ->where('id', $id)
+            ->with('block')
+            ->with('block.items')
+            ->first();
+
+        return response()->json($s, 200);
+
+    }
 }

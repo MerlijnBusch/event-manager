@@ -9,6 +9,19 @@
   }
 
   .event-titlebar-part-holder {
+    &.part-half{
+      @media (max-width: ($tablet-breakpoint - 1)){
+        flex: 1 0 50%;
+        width: 50%;
+        @media (max-width: ($mobile-breakpoint - 1)){
+          flex: 1 0 100%;
+          width: 100%;
+          * {
+            justify-content: center;
+          }
+        }
+      }
+    }
     &.contains-btn {
       margin-top: -$padding-medium;
       @media (max-width: $tablet-breakpoint) {
@@ -26,7 +39,17 @@
     font-size: $font-size-enormous;
     width: 55%;
     line-height: 1;
+    @media (max-width: ($tablet-breakpoint - 1)) {
+      width: unset;
+      padding-bottom: .25em;
+    }
   }
+
+    @media (min-width: 671px) and (max-width: 1000px) {
+        .event-titlebar-title {
+            margin-bottom: $padding-small;
+        }
+    }
 
   @media (max-width: 670px) {
     .title-holder {
@@ -46,6 +69,12 @@
       margin: 0 0 $padding-big 0;
     }
   }
+
+    @media (min-width: 671px) and (max-width: 1000px) {
+        .event-titlebar-description {
+            margin-bottom: $padding-medium;
+        }
+    }
 
   .event-titlebar-date {
     color: $mid-gray;
@@ -157,7 +186,20 @@
     }
   }
 
-  @media (max-width: 670px) {
+  @media (max-width: 1000px) {
+      .event-titlebar-ticketcounter-holder {
+          flex-direction: unset;
+
+          .event-titlebar-ticketcounter-text {
+              font-size: $font-size-medium;
+          }
+          .event-titlebar-ticketcounter{
+              &:before {display:none;}
+          }
+      }
+  }
+
+  @media (max-width: 1000px) {
     .event-titlebar-line {
       display: none;
     }

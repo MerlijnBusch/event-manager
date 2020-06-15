@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ItemStoreValidationRequest;
+use App\Http\Requests\ItemUpdateValidationRequest;
 use App\Item;
-use App\Rules\BlockExistValidator;
-use App\Rules\EventExistValidator;
-use App\Rules\ItemTypeValidator;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Validator;
 
 class ItemController extends Controller
 {
@@ -30,27 +26,13 @@ class ItemController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param ItemStoreValidationRequest $request
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function store(Request $request)
+    public function store(ItemStoreValidationRequest $request)
     {
         $this->authorize('write', Item::class);
-
-        $validator = Validator::make($request->all(), [
-            'name' => ['required', 'max:255'],
-            'type' => ['required', new ItemTypeValidator],
-            'description' => ['required'],
-            'block_id' => ['required', new BlockExistValidator],
-            'date_start' => ['required', 'date'],
-            'date_end' => ['required', 'date'],
-            'active' => ['required', 'boolean'],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
 
         Item::create($request->all());
 
@@ -74,31 +56,19 @@ class ItemController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param ItemUpdateValidationRequest $request
      * @param Item $item
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function update(Request $request, Item $item)
+    public function update(ItemUpdateValidationRequest $request, Item $item)
     {
         $this->authorize('write', Item::class);
-
-        $validator = Validator::make($request->all(), [
-            'name' => ['required', 'max:255'],
-            'type' => ['required', 'max:255', new ItemTypeValidator],
-            'description' => ['required', 'min:10'],
-            'event_id' => ['required', new EventExistValidator],
-            'date' => ['required', 'date'],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
 
         $item = Item::findOrFail($item->id);
         $item->update($request->all());
 
-        return response()->json(['message' => 'Item ' . $item->name . ' updated successfully']);
+        return response()->json(['message' => 'Item ' . $item->name . ' updated successfully'], 200);
     }
 
     /**
