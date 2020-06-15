@@ -4,7 +4,7 @@
   background-color: $deep-gray;
   color: whitesmoke;
   min-width: max-content;
-  max-width: 350px;
+  max-width: 400px;
 }
 
 .admin-sidebar-content {
@@ -218,11 +218,12 @@
 }
 
 .admin-create-program-sidebar {
-  margin: $padding-tiny;
-  width: 100%;
-  height: 50px;
+  flex: 1 0 0;
+  margin: $padding-tiny/2;
+  width: max-content;
+  max-width: 100%;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   display: flex;
 }
 
@@ -257,15 +258,14 @@
 
 .admin-sidebar-program-create-button {
   background: $black;
-  border-bottom: solid 2px $theme-color;
+  box-shadow: 0 2px $theme-color;
   color: $basic-gray;
-  padding: 8px;
+  padding: $padding-tiny $padding-small;
   font-size: $font-size-normal;
   animation: color $animation-time, box-shadow $animation-time;
   &:hover{
     cursor: pointer;
     color: white;
-    box-shadow: $shadow;
   }
 }
 
