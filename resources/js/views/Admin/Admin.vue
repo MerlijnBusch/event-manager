@@ -326,23 +326,24 @@ export default {
             await this.forceUpdate();
         },
         async forceUpdate () {
-            const data = await API.get('/api/admin');
-            const events = data.data;
-            for (let i = 0; i < events.length; i++) {
-                events[i].open = false;
-            }
-            this.events = events;
-            if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
+            const _this = this;
+            await setTimeout(async () => {
+                const data = await API.get('/api/admin');
+                const events = data.data;
+                for (let i = 0; i < events.length; i++) {
+                    events[i].open = false;
+                }
+                if (_this.selectedEventId) await _this.setSelectedEventId(_this.selectedEventId);
+                _this.events = events;
+            }, 1000)
         },
         async deleteEvent (block) {
             block.open = !block.open;
             if (!confirm('Weet u zeker dat u dit event wilt verwiederen')) return;
-            if (!this.currentEvent.event && block.id === this.currentEvent.event.id) {
-                this.selectedEventId = null;
-                this.currentEvent = null;
-            }
-            if (this.selectedEventId) API.delete('/api/event/' + block.id);
-            if (this.selectedEventId) await this.setSelectedEventId(this.selectedEventId);
+            this.selectedEventId = null;
+            this.currentEvent = null;
+
+            API.delete('/api/event/' + block.id);
             await this.forceUpdate();
         },
         async updateProgram (id) {
