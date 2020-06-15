@@ -104,11 +104,11 @@ class EventController extends Controller
                 ->where('user_id', Auth::id())
                 ->where('event_id', $event->id)
                 ->first() != null) {
-            return response()->json(['message' => 'Already subscribed to this event'], 403);
+            return response()->json(['message' => 'Already subscribed to this event'], 401);
         }
 
         if(RegistrationEvents::query()->where('event_id',$event->id)->count() >= $event->settings->max_registrations){
-            return response()->json(['message' => 'Event is already full'], 403);
+            return response()->json(['message' => 'Event is already full'], 401);
         }
 
         $subscribe = new RegistrationEvents;

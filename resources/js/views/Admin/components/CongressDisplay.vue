@@ -1,6 +1,7 @@
 <template>
     <div class="admin-main-program-container">
-        <TitleDisplay :display="congress" />
+        <TitleDisplay :display="congress"
+                      type="congress" />
         <div class="admin-item-container">
             <div class="admin-item-list">
                 <div class="admin-block-list">
