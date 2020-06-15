@@ -13,10 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/demo', function () {
-    $event = \App\Event::query()->first();
-    return new NotifyUserOfEventsMail($event);
-});
+
 
 Route::get('/{any}', function () {
     return view('vue');
