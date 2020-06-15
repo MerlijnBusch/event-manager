@@ -203,6 +203,9 @@ class AdminController extends Controller
      * @throws Exception
      */
     public function forceNotify(){
+
+        $this->authorize('notify', User::class);
+
         $events = Event::query()
             ->with('settings')
             ->has('settings')
