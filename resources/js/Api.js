@@ -76,12 +76,16 @@ export default class API {
             error = 'An error occurs try again';
         }
 
+        await this.generateHtml(error);
+    }
+
+    static async generateHtml(message){
         const html = create({
             selector: 'div',
             styles: 'error-display',
             children: create({
                 selector: 'p',
-                html: error
+                html: message
             })
         });
 
