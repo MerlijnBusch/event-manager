@@ -2,7 +2,7 @@
     <div class="admin-main-program-container">
         <TitleDisplay
             v-if="program"
-            type="program"
+            :pretext="eventTitle+' | programma'"
             :display="program"
         />
         <div class="admin-item-container">
@@ -76,7 +76,7 @@ import API from '../../../Api';
 
 export default {
     name: 'Program',
-    props: ['program'],
+    props: ['program', 'event-title'],
     components: {
         CreateProgramItemModal,
         UpdateProgramItemModal,

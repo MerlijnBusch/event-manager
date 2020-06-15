@@ -1,7 +1,7 @@
 <template>
     <div class="admin-main-program-title-holder">
         <div class="admin-main-program-title">
-            <span>{{type}}:</span> {{ display.name }}
+            <span>{{pretext}}:</span> {{ display.name }}
         </div>
         <div class="admin-main-program-icon">
             <i class="fas fa-ellipsis-v" />
@@ -13,7 +13,7 @@
 
 export default {
     name: 'TitleDisplay',
-    props: ['display', 'type'],
+    props: ['display', 'pretext'],
     data () {
         return {
 
