@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Congress;
 use App\Event;
 use App\EventSettings;
+use App\Http\Requests\UserUpdateValidationRequest;
 use App\Mail\NotifyUserOfEventsMail;
 use App\Program;
 use App\RegistrationEvents;
@@ -237,5 +238,22 @@ class AdminController extends Controller
         }
 
         return response()->json(['message' => 'Successfully notified users'], 200);
+    }
+
+    /**
+     * @param UserUpdateValidationRequest $request
+     * @param User $user
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function updateUser(UserUpdateValidationRequest $request, User $user){
+
+        $this->authorize('AdminUser', User::class);
+
+        $user = User::findOrFail($user->id);
+        $user->update($request->all());
+
+        return response()->json(['message' => 'User updated successfully'], 200);
+
     }
 }

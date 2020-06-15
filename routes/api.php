@@ -86,6 +86,7 @@ Route::group(['middleware' => ['auth:api', 'api_token_valid']], function () {
     Route::get('/admin/notify', 'AdminController@forceNotify');
     Route::post('/admin/excel', 'AdminController@excel');
     Route::post('/admin/search', 'AdminController@search');
+    Route::patch('/admin/update/user/{user}', 'AdminController@updateUser');
     Route::delete('/admin/user/{user}', 'AdminController@deleteUser');
 
     Route::get('/program-item/{id}', 'ProgramItemsController@show')->name('program.item.show');

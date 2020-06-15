@@ -25,7 +25,7 @@ class RoleController extends Controller
     {
         $this->authorize('read', Role::class);
 
-        $roles = Role::all();
+        $roles = Role::query()->get();
 
         return response()->json($roles, 200);
     }
