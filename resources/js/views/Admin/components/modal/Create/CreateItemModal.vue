@@ -15,7 +15,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Create Item
+                            Creëer spreker
                         </p>
 
                         <button
@@ -42,14 +42,14 @@
                                 <label
                                     class="form-label"
                                     for="name"
-                                >Name</label>
+                                >Naam spreker</label>
                                 <input
                                     id="name"
                                     v-model="name"
                                     class="form-text-input"
                                     type="text"
                                     name="name"
-                                    placeholder="Event name"
+                                    placeholder="naam spreker"
                                 >
                             </div>
 
@@ -57,14 +57,14 @@
                                 <label
                                     class="form-label"
                                     for="description"
-                                >description</label>
+                                >Omschrijving</label>
                                 <textarea
                                     id="description"
                                     v-model="description"
                                     class="form-text-input"
                                     type="text"
                                     name="description"
-                                    placeholder="Event name"
+                                    placeholder="omschrijving spreker"
                                 />
                             </div>
 
@@ -72,19 +72,19 @@
                                 <label
                                     class="form-label"
                                     for="type"
-                                >Name</label>
+                                >Type spreker</label>
                                 <select
                                     id="type"
                                     v-model="type"
                                 >
                                     <option value="keynotes">
-                                        Key notes
+                                        Keynote spreker
                                     </option>
                                     <option value="speaker">
-                                        Speaker
+                                        Spreker
                                     </option>
                                     <option value="none">
-                                        none
+                                        Geen
                                     </option>
                                 </select>
                             </div>
@@ -118,7 +118,7 @@
                             <div class="form-line admin-from-submit">
                                 <input
                                     type="submit"
-                                    value="Submit"
+                                    value="Indienen"
                                     class="submit-btn admin-form-submit"
                                 >
                             </div>
@@ -133,7 +133,7 @@
                             aria-label="Close modal"
                             @click="close"
                         >
-                            Close
+                            Sluit
                         </button>
                     </slot>
                 </footer>

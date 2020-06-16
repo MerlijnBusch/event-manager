@@ -35,7 +35,7 @@
                         class="admin-block-list-add-block"
                         @click="setModalState(`createProgramItemModal`)"
                     >
-                        <i class="fas fa-plus-circle admin-block-list-add-icon" />Add Program Item
+                        <i class="fas fa-plus-circle admin-block-list-add-icon" />Voeg programma item toe
                     </div>
                 </div>
             </div>

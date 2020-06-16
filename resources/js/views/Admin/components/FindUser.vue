@@ -13,14 +13,14 @@
                         class="form-text-input"
                         type="text"
                         name="search"
-                        placeholder="Search profile"
+                        placeholder="Zoek profiel"
                     >
                 </div>
 
                 <div class="admin-from-submit">
                     <input
                         type="submit"
-                        value="Submit"
+                        value="Zoek"
                         class="submit-btn admin-form-submit"
                     >
                 </div>

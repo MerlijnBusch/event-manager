@@ -15,7 +15,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Create Block
+                            Creëer blok
                         </p>
 
                         <button
@@ -50,7 +50,7 @@
                             <div class="form-line admin-from-submit">
                                 <input
                                     type="submit"
-                                    value="Submit"
+                                    value="Indienen"
                                     class="submit-btn admin-form-submit"
                                 >
                             </div>
@@ -65,7 +65,7 @@
                             aria-label="Close modal"
                             @click="close"
                         >
-                            Close
+                            Sluit
                         </button>
                     </slot>
                 </footer>
