@@ -137,7 +137,7 @@
                             <div class="event-info-line">
                                 <b class="event-info-line-title">Locatie</b><br>
                                 <span class="event-info-line-content">{{
-                                    info.location
+                                    data.settings.location
                                 }}</span>
                             </div>
                         </div>
@@ -601,9 +601,6 @@
                 selectedSpeakers: [],
                 selectedKeyNotes: [],
                 currentTickets: 135,
-                info: {
-                    location: 'Alkmaar entrance B'
-                }
             };
         }
     };
