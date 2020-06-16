@@ -15,6 +15,9 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpFoundation\Response;
 
+use VerifiesEmails;
+
+
 class LoginController extends Controller
 {
     /*
@@ -55,17 +58,21 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $this->validateLogin($request);
+        $userCheck = User::query()->where('email',$request->email)->first();
 
         if ($this->attemptLogin($request)) {
-            $user = $this->guard()->user();
-            $user->generateToken();
+            if($userCheck->email_verified_at !== NULL){
+                $user = $this->guard()->user();
+                $user->generateToken();
+                return response()->json([
+                    'data' => $user->toArray(),
+                ]);
+            }
 
-            return response()->json([
-                'data' => $user->toArray(),
-            ]);
+            return response()->json(['error' => 'Please Verify Email'], 403);
         }
 
-        return response()->json(['message' => 'Login failed'], 200);
+        return response()->json(['message' => 'Login failed'], 401);   
     }
 
     /**

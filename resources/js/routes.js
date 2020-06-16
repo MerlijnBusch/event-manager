@@ -1,20 +1,21 @@
 import Vue from 'vue';
-import VueRouter from "vue-router";
+import VueRouter from 'vue-router';
 
 import Home from '@/js/views/Home';
 import Event from '@/js/views/Event';
 import Search from '@/js/views/Search';
 import Profile from '@/js/views/Profile';
-import EventForm from '@/js/views/forms/Event-form'
+import EventForm from '@/js/views/forms/Event-form';
 import ResetPasswordForm from '@/js/views/forms/ResetPasswordForm';
-import EventSettingsForm from '@/js/views/forms/Event-Settings-form'
-import MapForm from '@/js/views/forms/Map-form'
-import ProfileForm from '@/js/views/forms/Profile-form'
-import CVForm from '@/js/views/forms/CV-form'
-import datepickerExample from '@/js/views/DateTimeExample'
+import EventSettingsForm from '@/js/views/forms/Event-Settings-form';
+import MapForm from '@/js/views/forms/Map-form';
+import ProfileForm from '@/js/views/forms/Profile-form';
+import CVForm from '@/js/views/forms/CV-form';
+import datepickerExample from '@/js/views/DateTimeExample';
 import AdminIndex from '@/js/views/Admin/Admin';
 import UserRegistrationForm from '@/js/views/forms/User-Registration-form';
 import NotFound from '@/js/views/NotFound';
+import VerifyEmail from './views/VerifyEmail';
 
 Vue.use(VueRouter);
 
@@ -27,7 +28,7 @@ const router = new VueRouter({
             component: Home
         },
         {
-            path: '/event',
+            path: '/event/:id',
             name: 'event',
             component: Event
         },
@@ -44,7 +45,7 @@ const router = new VueRouter({
         {
             path: '/form/event',
             name: 'event-form',
-            component: EventForm,
+            component: EventForm
         },
         {
             path: '/form/map/:event_id',
@@ -72,7 +73,7 @@ const router = new VueRouter({
         {
             path: '/reset-password/:token',
             name: 'reset-password-form',
-            component: ResetPasswordForm,
+            component: ResetPasswordForm
         },
         {
             path: '/user-registration',
@@ -82,7 +83,7 @@ const router = new VueRouter({
         {
             path: '/admin',
             name: 'admin',
-            component: AdminIndex,
+            component: AdminIndex
         },
         {
             path: '/datepicker',
@@ -93,6 +94,11 @@ const router = new VueRouter({
             path: '*',
             name: 'Pagina niet gevonden',
             component: NotFound
+        },
+        {
+            path: '/verify/mails/:token',
+            name: 'verify.email',
+            component: VerifyEmail
         }
 
     ]

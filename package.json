@@ -3,6 +3,7 @@
     "scripts": {
         "heroku-postbuild": "npm run prod",
         "dev": "npm run development",
+        "lint": "eslint resources --ext .js,.vue --fix",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "npm run development -- --watch",
         "watch-poll": "npm run watch -- --watch-poll",
@@ -14,6 +15,13 @@
         "axios": "^0.19",
         "bootstrap": "^4.0.0",
         "cross-env": "^7.0",
+        "eslint": "^7.1.0",
+        "eslint-config-standard": "^14.1.1",
+        "eslint-plugin-import": "^2.20.2",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-standard": "^4.0.1",
+        "eslint-plugin-vue": "^6.2.2",
         "jquery": "^3.2",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.13",
@@ -25,9 +33,10 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "font-awesome": "^4.7.0",
         "byte-base64": "^1.0.1",
         "dom-create-element": "^1.0.2",
+        "font-awesome": "^4.7.0",
+        "ifvisible.js": "^1.0.6",
         "interactjs": "^1.9.13",
         "pdfjs-dist": "^2.3.200",
         "vue-router": "^3.1.6"
