@@ -263,6 +263,7 @@
             };
         },
         async mounted() {
+            //TODO: add route.id so user can check other profiles
             const res = await API.get('/api/profile-check');
             if (!res.data) return;
             const data = res.data;

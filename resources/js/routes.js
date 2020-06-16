@@ -38,6 +38,11 @@ const router = new VueRouter({
             component: Profile
         },
         {
+            path: '/profile/:id',
+            name: 'profile',
+            component: Profile
+        },
+        {
             path: '/search',
             name: 'search',
             component: Search
