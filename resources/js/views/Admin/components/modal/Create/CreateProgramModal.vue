@@ -15,7 +15,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Create Program
+                            Creëer Programma
                         </p>
 
                         <button
@@ -42,14 +42,14 @@
                                 <label
                                     class="form-label"
                                     for="name"
-                                >Name</label>
+                                >Programma naam</label>
                                 <input
                                     id="name"
                                     v-model="name"
                                     class="form-text-input"
                                     type="text"
                                     name="name"
-                                    placeholder="Event name"
+                                    placeholder="Programma naam"
                                 >
                             </div>
 
@@ -57,14 +57,14 @@
                                 <label
                                     class="form-label"
                                     for="description"
-                                >description</label>
+                                >Omschrijving</label>
                                 <textarea
                                     id="description"
                                     v-model="description"
                                     class="form-text-input"
                                     type="text"
                                     name="description"
-                                    placeholder="Event name"
+                                    placeholder="Programma omschrijving"
                                 />
                             </div>
 
@@ -86,7 +86,7 @@
                             <div class="form-line admin-from-submit">
                                 <input
                                     type="submit"
-                                    value="Submit"
+                                    value="Indienen"
                                     class="submit-btn admin-form-submit"
                                 >
                             </div>
@@ -101,7 +101,7 @@
                             aria-label="Close modal"
                             @click="close"
                         >
-                            Close
+                            Sluit
                         </button>
                     </slot>
                 </footer>

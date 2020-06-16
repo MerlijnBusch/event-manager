@@ -140,7 +140,7 @@
                             aria-label="Close modal"
                             @click="close"
                         >
-                            Close
+                            Sluit
                         </button>
                     </slot>
                 </footer>

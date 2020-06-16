@@ -15,7 +15,7 @@
                         <p
                             class="admin-modal-title"
                         >
-                            Update Block
+                            Upload Excel bestand
                         </p>
 
                         <button
@@ -54,7 +54,7 @@
                             aria-label="Close modal"
                             @click="close"
                         >
-                            Close
+                            Sluit
                         </button>
                     </slot>
                 </footer>
