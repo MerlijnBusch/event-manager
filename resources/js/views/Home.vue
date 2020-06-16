@@ -32,11 +32,10 @@
                             <div class="home-event-details">
                                 <div class="flex-grid">
                                     <p class="home-date column-desktop-6 column-tablet-6 column-mobile-12">
-                                        {{ formatDate(item.settings.date_start) }}
+                                        {{ formatDate(item.settings) }}
                                     </p>
                                     <p class="home-location column-desktop-6 column-tablet-6 column-mobile-12">
-                                        <!--{{item.location}}-->
-                                        LOCATION HERE <!--TODO:-->
+                                        {{item.settings.location}}
                                     </p>
                                 </div>
                             </div>
@@ -63,10 +62,21 @@ export default ({
         };
     },
     methods: {
-        formatDate (date) {
-            const datetime = new Date(date);
-            const formattedDate = datetime.getDate() + '-' + (datetime.getMonth() + 1) + '-' + datetime.getFullYear();
-            return formattedDate;
+        formatDate (settings) {
+            let dateStart = new Date(settings.date_start).getTime();
+            let dateEnd = new Date(settings.date_end).getTime();
+            const months = ['Jan','Feb', 'Mar', 'Apr', 'Mei','Jun','Jul','Aug','Sep', 'Oct', 'Nov','Dec'];
+            if (dateStart + 1000*60*60*24 > dateEnd){
+                return stringifyDate(dateStart);
+            }  else {
+                return stringifyDate(dateStart) + "/"  + stringifyDate(dateEnd)
+            }
+
+            function stringifyDate(date) {
+                date = new Date(date);
+                const formattedDate = date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
+                return formattedDate;
+            }
         }
     }
 });

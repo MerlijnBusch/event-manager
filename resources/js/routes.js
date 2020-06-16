@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 
 import Home from '@/js/views/Home';
 import Event from '@/js/views/Event';
+import Search from '@/js/views/Search';
 import Profile from '@/js/views/Profile';
 import EventForm from '@/js/views/forms/Event-form';
 import ResetPasswordForm from '@/js/views/forms/ResetPasswordForm';
@@ -35,6 +36,16 @@ const router = new VueRouter({
             path: '/profile',
             name: 'profile',
             component: Profile
+        },
+        {
+            path: '/profile/:id',
+            name: 'profile',
+            component: Profile
+        },
+        {
+            path: '/search',
+            name: 'search',
+            component: Search
         },
         {
             path: '/form/event',

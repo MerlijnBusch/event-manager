@@ -66,7 +66,7 @@
                         >
                             <span
                                     class="event-titlebar-date"
-                                    v-text="formatDate(data.settings.date_start)"
+                                    v-text="formatDate(data.settings)"
                             />
                         </div>
                         <div
@@ -131,11 +131,7 @@
                             <div class="event-info-line">
                                 <b class="event-info-line-title">Datum</b><br>
                                 <span class="event-info-line-content">
-                                    {{ formatDate(data.settings.date_start) }}
-                                    {{ getTime(data.settings.date_start) }}
-                                    tot
-                                    {{ formatDate(data.settings.date_end) }}
-                                    {{ getTime(data.settings.date_end) }}
+                                    {{ formatDate(data.settings) }}
                                 </span>
                             </div>
                             <div class="event-info-line">
@@ -548,15 +544,21 @@
                     this.subscribed = true;
                 }
             },
-            formatDate(date) {
-                const datetime = new Date(date);
-                return (
-                    datetime.getDate() +
-                    '-' +
-                    (datetime.getMonth() + 1) +
-                    '-' +
-                    datetime.getFullYear()
-                );
+            formatDate (settings) {
+                let dateStart = new Date(settings.date_start).getTime();
+                let dateEnd = new Date(settings.date_end).getTime();
+                const months = ['Jan','Feb', 'Mar', 'Apr', 'Mei','Jun','Jul','Aug','Sep', 'Oct', 'Nov','Dec'];
+                if (dateStart + 1000*60*60*24 > dateEnd){
+                    return stringifyDate(dateStart);
+                }  else {
+                    return stringifyDate(dateStart) + " tot "  + stringifyDate(dateEnd)
+                }
+
+                function stringifyDate(date) {
+                    date = new Date(date);
+                    const formattedDate = date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
+                    return formattedDate;
+                }
             },
             getTime(dateObj) {
                 const date = new Date(dateObj);
