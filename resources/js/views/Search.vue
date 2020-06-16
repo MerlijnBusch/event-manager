@@ -11,12 +11,21 @@
             </span>
         </label>
         <div class="search-results">
-
+            <template v-for="(user,index) in data">
+                <router-link class="search-result" :to="'profile/' + user.id">
+                    <b>{{index + 1}}</b><p>{{user.name}}</p>
+                </router-link>
+            </template>
+            <div class="search-result" v-if="!data.length">
+                <b>Sorry,</b><p>Er zijn geen resulataten gevonden</p>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+    import API from '@/js/Api';
+
     export default {
         name: 'search',
         data() {
@@ -28,6 +37,7 @@
                 selectedRole: '',
                 //TODO: Get roles from DB
                 roles: ['Bezoeker', 'StandHouder', 'Werkzoekende'],
+                data: [],
             }
         },
         watch: {
@@ -42,10 +52,16 @@
                     this.newSearchString = this.searchString.trim();
                     if (this.newSearchString.length && this.newSearchString !== this.oldSearchString) {
                         this.oldSearchString = this.newSearchString;
-                        //TODO: call here
-                        console.log(this.newSearchString);
+                        this.sendApiCall(this.newSearchString);
                     }
                 }, 500);
+
+            },
+            async sendApiCall(string){
+                const response = await API.post({ search: string }, '/api/search/profile' );
+               if (response.status === 200){
+                   this.data = response.data.message;
+               }
 
             }
         }
@@ -85,6 +101,28 @@
                     border: none;
                     width: max-content;
                 }
+            }
+        }
+    }
+    .search-results{
+        padding: $padding-medium $padding-big;
+        display: flex;
+        flex-wrap: wrap;
+        .search-result{
+            flex: 1 0 100%;
+            margin-bottom: .5em;
+            padding: $padding-tiny $padding-small;
+            background: $pretty-black;
+            width: 100%;
+            color: $basic-gray;
+            text-decoration: none;
+            border-radius: $border-radius-small;
+            b{
+                color: $theme-color;
+                padding-right: 1em;
+            }
+            p{
+                display: inline-block;
             }
         }
     }
